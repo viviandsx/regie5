@@ -135,11 +135,15 @@ std::string default_config_path() { return "/app0/config.json"; }
 
 std::string system_lang()
 {
-    /* SCE_SYSTEM_SERVICE_PARAM_ID_LANG; 2 French (France), 22 French (Canada). */
+    /* SCE_SYSTEM_SERVICE_PARAM_ID_LANG -> a language code; i18n::find() picks
+     * the interface's language from it (English when Régie5 has no such one). */
+    static const char *const kCodes[] = {
+        "ja", "en_US", "fr_FR", "es_ES", "de", "it", "nl", "pt_PT", "ru", "ko", "zh_TW", "zh_CN", "fi", "sv",
+        "da", "no", "pl", "pt_BR", "en_GB", "tr", "es_419", "ar", "fr_CA", "cs", "hu", "el", "ro", "th", "vi", "id"};
     int lang = -1;
-    if (sceSystemServiceParamGetInt(1, &lang) != 0)
+    if (sceSystemServiceParamGetInt(1, &lang) != 0 || lang < 0 || lang >= (int)(sizeof kCodes / sizeof kCodes[0]))
         return {};
-    return lang == 2 || lang == 22 ? "fr_FR" : "en_US";
+    return kCodes[lang];
 }
 
 namespace {

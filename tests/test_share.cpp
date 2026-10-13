@@ -109,7 +109,7 @@ TEST(share_server_on_the_loopback)
     std::ofstream(path) << kConfig;
 
     std::string error;
-    CHECK(platform::share_start(path, "127.0.0.1", true, &error));
+    CHECK(platform::share_start(path, "127.0.0.1", &error));
     const platform::ShareInfo info = platform::share_info();
     CHECK(info.running);
     CHECK_EQ(info.code.size(), (size_t)6);
@@ -121,6 +121,8 @@ TEST(share_server_on_the_loopback)
     http::Response r = http.perform(req, nullptr);
     CHECK_EQ(r.status, 200);
     CHECK(r.body.find("<html lang=\"fr\"") != std::string::npos);
+    CHECK(r.body.find("const T = {lead:\"Adresses et clés") != std::string::npos);   /* the texts, from fr.cpp */
+    CHECK(r.body.find("__") == std::string::npos);                                  /* nothing left to fill */
 
     req.url = info.shown + "/api/config?c=000000" + (info.code == "000000" ? "1" : "");
     CHECK_EQ(http.perform(req, nullptr).status, 403);

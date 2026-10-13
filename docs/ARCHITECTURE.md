@@ -111,7 +111,8 @@ src/
     app.{h,cpp}        boucle logique : input → navigation → écrans → dessin
     model/             Media, QueueItem, Request, Session, Task, Health, DiskSpace…
     store.{h,cpp}      état partagé + versions (les écrans redessinent quand la version change)
-    i18n.{h,cpp}       FR / EN
+    i18n.{h,cpp}       clés et langue courante (repli sur l'anglais)
+    lang/              une langue par fichier (en.cpp, fr.cpp…) + languages.cpp, docs/TRANSLATING.md
     config.{h,cpp}     lecture de config.json (cJSON) ; les clés ne sont jamais loggées
     log.{h,cpp}        journal avec masquage des clés (X-Api-Key, Token="…")
   api/
@@ -351,7 +352,7 @@ zone à demi-résolution, la floute en deux passes, puis applique le shader du v
   chargement, vide, hors ligne, clé refusée, mixte, désactivé, sans config), en FR et en EN,
   avec une planche par état (`build/states/`). En `--mock`, avec `REGIE5_MOCK_EMPTY` et
   `REGIE5_MOCK_OFF` en plus de `REGIE5_MOCK_FAIL`.
-- `scripts/list-strings.py` : toutes les chaînes FR / EN en tableau Markdown, pour la relecture.
+- `scripts/list-strings.py` : toutes les chaînes, une colonne par langue (ou `list-strings.py de`), en tableau Markdown, pour la relecture et la traduction.
 
 ---
 

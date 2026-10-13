@@ -2,16 +2,15 @@
  * Regie5 — a TV front end for a self-hosted media stack
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
- * The interface's language: French or English. Every string has a key
- * (i18n::S); tr() gives it in the current language.
+ * The interface's language. Every string has a key (i18n::S); tr() gives it
+ * in the current language, or in English when that language does not have it
+ * yet. The languages themselves are in src/core/lang/ (one file each).
  */
 #pragma once
 
 #include <string>
 
 namespace i18n {
-
-enum class Lang { French, English };
 
 enum S {
     TabHome,
@@ -399,14 +398,44 @@ enum S {
     Jelly5LookFor,
     VersionUnsupported,
     VersionMinimum,
+    PhoneLead,
+    PhoneName,
+    PhoneUrl,
+    PhoneKey,
+    PhoneKeyKept,
+    PhoneUser,
+    PhonePass,
+    PhonePassKept,
+    PhoneOn,
+    PhoneK4,
+    PhoneInsecure,
+    PhoneAdd,
+    PhoneRemove,
+    PhoneSave,
+    PhoneSaving,
+    PhoneSaved,
+    PhoneFailed,
+    PhoneLost,
+    PhoneBadcode,
+    PhoneOptional,
+    PhoneAskCode,
     Count
 };
 
-void set_lang(Lang l);
-Lang lang();
-/* "fr", "fr_FR.UTF-8", "en-US" ...: French for anything starting with "fr",
- * English otherwise. */
-Lang parse(const std::string &code);
+struct Language;
+
+/* The language for a code: "fr", "fr_FR.UTF-8", "pt-BR"… (a full match first,
+ * then the first two letters); English when none matches. */
+const Language &find(const std::string &code);
+/* Whether a language with this code exists (--lang). */
+bool known(const std::string &code);
+/* Called once, before the first frame (not thread-safe). */
+void set_lang(const Language &l);
+const Language &language();
+/* The current language's code ("fr"): Seerr's details are asked in it. */
+const char *code();
+/* Whether n takes the singular in the current language. */
+bool singular(long long n);
 
 const char *tr(S key);
 

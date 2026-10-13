@@ -4,6 +4,8 @@
  */
 #include "core/options.h"
 
+#include "core/i18n.h"
+
 #include <cstdio>
 #include <cstring>
 
@@ -29,8 +31,8 @@ bool parse(int argc, char **argv, Options *out, std::string *error)
             const char *v = value(a);
             if (!v)
                 return false;
-            if (std::strcmp(v, "fr") && std::strcmp(v, "en")) {
-                *error = "--lang takes fr or en";
+            if (!i18n::known(v)) {
+                *error = std::string("--lang: no language ") + v + " (src/core/lang/)";
                 return false;
             }
             out->lang = v;
@@ -66,7 +68,7 @@ const char *usage()
 {
     return "Usage: regie5 [options]\n"
            "  --config <path>   configuration file (default: ~/.config/regie5/config.json)\n"
-           "  --lang fr|en      interface language (default: the system's)\n"
+           "  --lang <code>     interface language: en, fr… (default: the system's)\n"
            "  --mock            run on fixtures/, without any server\n"
            "  --demo            run on demo/: free films with their posters, no server\n"
            "  --size WxH        window size (default 1280x720)\n"

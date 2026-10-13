@@ -59,8 +59,8 @@ struct ShareInfo {
 /* Whether a page can be served here at all (else the button is hidden). */
 bool can_share_config();
 /* hint_host: a server of the user's (the console's address facing it is the
- * one the phone can reach); french: the page's language. */
-bool share_start(const std::string &config_path, const std::string &hint_host, bool french, std::string *error);
+ * one the phone can reach). The page is in the interface's language. */
+bool share_start(const std::string &config_path, const std::string &hint_host, std::string *error);
 void share_stop();
 ShareInfo share_info();
 

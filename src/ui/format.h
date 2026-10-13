@@ -27,6 +27,8 @@ std::string day(time_t t, time_t now);
 std::string clock(time_t t);
 /* A guide column's day: "lun. 6" / "Mon 6". */
 std::string weekday(time_t t);
+/* "Oct 15, 2026", "15 oct. 2026". */
+std::string date_full(const struct tm &tm);
 /* A week from its first day: "6 – 12 oct." / "Oct 6 – 12" (months named when they differ). */
 std::string week_range(time_t first_day);
 /* Local midnight of the Monday of t's week. */

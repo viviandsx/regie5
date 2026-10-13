@@ -9,6 +9,8 @@
  */
 #include "core/config_web.h"
 
+#include "core/i18n.h"
+
 namespace config_web {
 
 namespace {
@@ -43,24 +45,7 @@ button.small{padding:6px 10px;font-size:14px}
 <div id="msg"></div>
 <form id="f"></form>
 <script>
-const FR = __FR__;
-const T = FR ? {
- lead:"Adresses et clés d'API de vos services. Les clés déjà enregistrées ne sont jamais affichées : laissez le champ vide pour les garder.",
- name:"Nom (facultatif)", url:"Adresse", key:"Clé d'API", keyKept:"Clé enregistrée — vide pour la garder",
- user:"Utilisateur (facultatif)", pass:"Mot de passe (facultatif)", passKept:"Mot de passe enregistré — vide pour le garder",
- on:"Activé", k4:"Instance 4K", insecure:"Certificat auto-signé (https, non vérifié)", add:"+ Instance", remove:"Retirer", save:"Enregistrer sur la console",
- saving:"Enregistrement…", saved:"Enregistré. Régie5 teste les services : regardez la TV.", failed:"Refusé : ",
- lost:"La console ne répond plus (fenêtre fermée sur la TV ?).", badcode:"Code refusé : rouvrez la page depuis le QR code affiché sur la TV.",
- optional:"facultatif", askCode:"Code à 6 chiffres affiché sur la TV :"
-} : {
- lead:"Addresses and API keys of your services. Saved keys are never shown: leave the field empty to keep them.",
- name:"Name (optional)", url:"Address", key:"API key", keyKept:"Key saved — leave empty to keep it",
- user:"User (optional)", pass:"Password (optional)", passKept:"Password saved — leave empty to keep it",
- on:"On", k4:"4K instance", insecure:"Self-signed certificate (https, not checked)", add:"+ Instance", remove:"Remove", save:"Save on the console",
- saving:"Saving…", saved:"Saved. Régie5 is testing the services: look at the TV.", failed:"Refused: ",
- lost:"The console does not answer (window closed on the TV?).", badcode:"Code refused: open the page again from the QR code on the TV.",
- optional:"optional", askCode:"6-digit code shown on the TV:"
-};
+const T = __T__;
 const SERVICES = [["sonarr","Sonarr",true],["radarr","Radarr",true],["seerr","Seerr",false],["jellyfin","Jellyfin",false],["glances","Glances",false]];
 const PORTS = {sonarr: 8989, radarr: 7878, seerr: 5055, jellyfin: 8096, glances: 61208};
 const code = new URLSearchParams(location.search).get("c") || (prompt(T.askCode) || "").replace(/\D/g, "");
@@ -173,11 +158,58 @@ void replace(std::string &s, const std::string &from, const std::string &to)
 
 } // namespace
 
-std::string page_html(bool french)
+/* A text as a JavaScript string. */
+static std::string js(const char *s)
 {
+    std::string out = "\"";
+    for (const char *p = s; *p; p++) {
+        if (*p == '"' || *p == '\\')
+            out += '\\';
+        if (*p == '<')
+            out += "\\u003c";   /* never a closing tag inside the script */
+        else if (*p == '\n')
+            out += "\\n";
+        else
+            out += *p;
+    }
+    return out + "\"";
+}
+
+std::string page_html()
+{
+    static const struct {
+        const char *name;
+        i18n::S key;
+    } kTexts[] = {
+        {"lead", i18n::PhoneLead},
+        {"name", i18n::PhoneName},
+        {"url", i18n::PhoneUrl},
+        {"key", i18n::PhoneKey},
+        {"keyKept", i18n::PhoneKeyKept},
+        {"user", i18n::PhoneUser},
+        {"pass", i18n::PhonePass},
+        {"passKept", i18n::PhonePassKept},
+        {"on", i18n::PhoneOn},
+        {"k4", i18n::PhoneK4},
+        {"insecure", i18n::PhoneInsecure},
+        {"add", i18n::PhoneAdd},
+        {"remove", i18n::PhoneRemove},
+        {"save", i18n::PhoneSave},
+        {"saving", i18n::PhoneSaving},
+        {"saved", i18n::PhoneSaved},
+        {"failed", i18n::PhoneFailed},
+        {"lost", i18n::PhoneLost},
+        {"badcode", i18n::PhoneBadcode},
+        {"optional", i18n::PhoneOptional},
+        {"askCode", i18n::PhoneAskCode},
+    };
+    std::string t = "{";
+    for (const auto &x : kTexts)
+        t += std::string(t.size() > 1 ? ", " : "") + x.name + ":" + js(i18n::tr(x.key));
+    t += "}";
     std::string page = kPage;
-    replace(page, "__LANG__", french ? "fr" : "en");
-    replace(page, "__FR__", french ? "true" : "false");
+    replace(page, "__LANG__", i18n::code());
+    replace(page, "__T__", t);
     return page;
 }
 

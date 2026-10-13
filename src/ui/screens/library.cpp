@@ -88,8 +88,7 @@ char letter_of(const std::string &folded)
 /* "12 shown of 53", "1 affiché sur 53". */
 std::string shown_of(int n, int total)
 {
-    const bool single = i18n::lang() == i18n::Lang::French ? n <= 1 : n == 1;
-    return fmt::f(i18n::tr(single ? i18n::ShownOfOne : i18n::ShownOf), n, total);
+    return fmt::f(i18n::tr(i18n::singular(n) ? i18n::ShownOfOne : i18n::ShownOf), n, total);
 }
 
 /* The poster's decoded width for a card (as draw_poster_card asks for it). */

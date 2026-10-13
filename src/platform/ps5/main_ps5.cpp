@@ -411,8 +411,8 @@ int main()
         (void)skew;
     }
     ps5::log("[regie5] step: language");
-    i18n::set_lang(i18n::parse(platform::system_lang()));
-    ps5::log("[regie5] language %s", i18n::lang() == i18n::Lang::French ? "fr" : "en");
+    i18n::set_lang(i18n::find(platform::system_lang()));
+    ps5::log("[regie5] language %s (system: %s)", i18n::code(), platform::system_lang().c_str());
 
     step("display (EGL, OpenGL 4.6)");
     ps5::Display display;
@@ -517,7 +517,7 @@ int main()
 #endif
     http::Pool pool(transport, 4, nullptr);
     http::Pool images(transport, 3, nullptr);
-    api::Services services(cfg, pool, i18n::lang() == i18n::Lang::French ? "fr" : "en");
+    api::Services services(cfg, pool, i18n::code());
     art::init(&services, &images);
     step("screens");
 

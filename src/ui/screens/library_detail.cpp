@@ -46,13 +46,7 @@ std::string date(time_t t)
 {
     struct tm tm;
     localtime_r(&t, &tm);
-    static const char *const kFr[12] = {"janv.", "févr.", "mars", "avr.", "mai", "juin",
-                                        "juil.", "août", "sept.", "oct.", "nov.", "déc."};
-    static const char *const kEn[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-    if (i18n::lang() == i18n::Lang::French)
-        return fmt::f("%d %s %d", tm.tm_mday, kFr[tm.tm_mon], tm.tm_year + 1900);
-    return fmt::f("%s %d, %d", kEn[tm.tm_mon], tm.tm_mday, tm.tm_year + 1900);
+    return fmt::date_full(tm);
 }
 
 /* A line of the information block: a quiet label, then the value. */

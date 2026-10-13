@@ -8,6 +8,7 @@
 #   scripts/capture-states.sh                 all states, both languages
 #   scripts/capture-states.sh empty offline   only these states
 #   OUT=/tmp/states scripts/capture-states.sh
+#   LANGS=de scripts/capture-states.sh        other languages (default: fr en)
 #
 # Writes <OUT>/<state>-<lang>-<screen>.png and one sheet per state and
 # language, <OUT>/<state>-<lang>.png (ImageMagick; without it, PPM files only).
@@ -55,7 +56,7 @@ tour() {
 }
 
 for state in "${STATES[@]}"; do
-    for lang in fr en; do
+    for lang in ${LANGS:-fr en}; do
         p="${OUT}/${state}-${lang}"
         rm -f "${p}"-*.ppm "${p}"-*.png
         env=(REGIE5_MOCK_DELAY_MS=0 REGIE5_MOCK_CLEANUP=1)

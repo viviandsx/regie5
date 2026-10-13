@@ -21,8 +21,13 @@ find_package(Threads REQUIRED)
 
 # Portable code: no SDL, no OpenGL, no platform header (see docs/ARCHITECTURE.md).
 
+# The languages of the interface: every file of src/core/lang/ (a new one is
+# picked up without touching this file; docs/TRANSLATING.md).
+file(GLOB REGIE5_LANGUAGES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/core/lang/*.cpp")
+
 # The data: configuration, models, API clients and parsers.
 add_library(regie5_data STATIC
+    ${REGIE5_LANGUAGES}
     third_party/cjson/cJSON.c
     src/core/app_settings.cpp
     src/core/cleanup.cpp

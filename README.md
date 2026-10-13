@@ -39,7 +39,7 @@ Also:
 - **Several instances** of a service (for example Radarr and Radarr 4K) are shown together, each named.
 - **HTTPS** and reverse-proxy sub-paths (`https://example.lan/sonarr`), self-signed certificates on request.
 - **Liquid-glass interface** made for a TV: large type readable from 3 m, a springy focus drop, 4K at 60 fps.
-- **English and French**, following the console's language.
+- **English and French**, following the console's language; [more are welcome](docs/TRANSLATING.md).
 
 <p align="center">
   <img src="docs/images/movies.jpg" width="400" alt="Library: films">
@@ -208,6 +208,9 @@ The design and the porting notes are in `docs/` (in French).
 Bug reports and ideas are welcome in the issues. Please read the scope above
 first: features around download clients, indexers or release searching will not
 be added.
+
+**Translations** are welcome too: a language is a single file, and
+[docs/TRANSLATING.md](docs/TRANSLATING.md) explains how to add one.
 
 ## How Régie5 was made
 

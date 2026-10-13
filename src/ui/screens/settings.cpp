@@ -201,7 +201,7 @@ void SettingsScreen::open_share()
     m_qr.clear();
     m_qr_size = 0;
     std::string why;
-    if (!platform::share_start(m_ctx.config_path, hint, i18n::lang() == i18n::Lang::French, &why)) {
+    if (!platform::share_start(m_ctx.config_path, hint, &why)) {
         m_share_error = why;
         std::fprintf(stderr, "regie5: phone page: %s\n", why.c_str());
     } else {

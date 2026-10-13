@@ -80,7 +80,7 @@ int main(int argc, char **argv)
         std::printf("Régie5 %s\n", REGIE5_VERSION);
         return 0;
     }
-    i18n::set_lang(i18n::parse(!opt.lang.empty() ? opt.lang : platform::system_lang()));
+    i18n::set_lang(i18n::find(!opt.lang.empty() ? opt.lang : platform::system_lang()));
     const std::string config_path = !opt.config_path.empty() ? opt.config_path : platform::default_config_path();
 
     /* The configuration, or in --mock the fixtures' own. Never logged: it holds the keys. */
@@ -195,7 +195,7 @@ int main(int argc, char **argv)
         e.type = wake_event;
         SDL_PushEvent(&e);
     });
-    api::Services services(cfg, pool, i18n::lang() == i18n::Lang::French ? "fr" : "en");
+    api::Services services(cfg, pool, i18n::code());
     art::init(&services, &images);
 
     ui::Context ctx;

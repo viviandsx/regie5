@@ -45,7 +45,6 @@ constexpr int kMaxWrongCodes = 10;
 std::mutex s_lock;
 ShareInfo s_info;                /* under s_lock */
 std::string s_path;              /* config.json, under s_lock */
-bool s_french = true;
 std::atomic<bool> s_stop{false};
 int s_listen = -1;
 pthread_t s_thread;
@@ -218,17 +217,15 @@ void serve(int fd, const std::string &peer)
     if (!read_request(fd, &method, &target, &body))
         return reply(fd, 400, "text/plain", "bad request");
     std::string code, path;
-    bool french;
     {
         std::lock_guard<std::mutex> lock(s_lock);
         code = s_info.code;
         path = s_path;
-        french = s_french;
         s_info.phone_seen = true;
     }
     const std::string where = target.substr(0, target.find('?'));
     if (method == "GET" && (where == "/" || where == "/index.html"))
-        return reply(fd, 200, "text/html; charset=utf-8", config_web::page_html(french));
+        return reply(fd, 200, "text/html; charset=utf-8", config_web::page_html());
     if (where != "/api/config")
         return reply(fd, 404, "text/plain", "not found");
     if (!same(code_of(target), code)) {
@@ -286,7 +283,7 @@ void *run(void *)
 
 bool can_share_config() { return &bind && &listen && &accept && &getsockname; }
 
-bool share_start(const std::string &config_path, const std::string &hint_host, bool french, std::string *error)
+bool share_start(const std::string &config_path, const std::string &hint_host, std::string *error)
 {
     share_stop();
     if (!can_share_config()) {
@@ -333,7 +330,6 @@ bool share_start(const std::string &config_path, const std::string &hint_host, b
         s_info.shown = "http://" + ip + ":" + std::to_string(port);
         s_info.address = s_info.shown + "/?c=" + code;
         s_path = config_path;
-        s_french = french;
         s_wrong = 0;
     }
     s_listen = fd;

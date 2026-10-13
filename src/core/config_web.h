@@ -26,8 +26,8 @@ std::string public_view(const std::string &config_text);
  * answer is not usable. */
 bool apply(const std::string &current_text, const std::string &posted, std::string *out, std::string *error);
 
-/* The page itself (one file: HTML, style and script), in French or English. */
-std::string page_html(bool french);
+/* The page itself (one file: HTML, style and script), in the interface's language. */
+std::string page_html();
 
 /* Whether a peer address may use the page: loopback or a private network. */
 bool is_local_address(const std::string &ip);

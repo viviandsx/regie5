@@ -352,6 +352,26 @@ pré-release tant que la PR #244 n'est pas fusionnée.**
       Régie5 demande la 4.0 ou plus récente » ; les écrans essaient quand même. Tableau
       « Minimum / Testé avec » dans le README. `REGIE5_MOCK_OLD=sonarr,jellyfin` et l'état
       `old` de `capture-states.sh` pour le voir sans serveur.
+- [x] **b) Une langue = un fichier** : `src/core/lang/en.cpp`, `fr.cpp` (textes par clé,
+      dans n'importe quel ordre) avec les règles de la langue (pluriel, séparateur décimal,
+      jours, mois, unités, modèles de dates) ; `languages.cpp` les liste, CMake prend tout
+      le dossier. Une clé absente s'affiche en anglais. `--lang <code>`, langue système de la
+      PS5 lue pour 30 langues (anglais si Régie5 ne l'a pas), textes de la page du téléphone
+      inclus. Test : clés valides, pas de doublon, mêmes `%d`/`%s` que l'anglais dans le même
+      ordre, en et fr complets. `list-strings.py [code]`, `LANGS=de capture-states.sh`,
+      **`docs/TRANSLATING.md`** (en anglais, pour les contributeurs). Rendu FR/EN identique
+      au pixel près. **Défaut corrigé** au passage (présent depuis la 0.2.0) : les textes
+      `ConfigMissing` et `ConfigFromBackup` étaient inversés dans l'ancienne table par
+      position (« absent : la copie gardée par l'app est utilisée » affiché quand
+      `config.json` manque).
+- [ ] **c) Reverse proxy** (prochaine étape) : nginx temporaire en Docker (`nginx:1.27-alpine`)
+      sur `127.0.0.1:8443`, HTTPS auto-signé, sous-chemins `/sonarr/`… vers les serveurs de
+      Vivian sans rien y changer ; Régie5 sous Linux en lecture seule, config temporaire
+      (`insecure: true`), puis arrêt du conteneur. Rien n'a encore été lancé.
+- [ ] **d) Pastilles de compteur** sur les onglets.
+- [ ] **e) Signalements Seerr** (lecture, puis résoudre / commenter ; à ajouter aux écritures
+      autorisées de CLAUDE.md §3 ; `--mock` seulement).
+- [ ] **f) Jellyfin** : bibliothèques (nombre, taille) et utilisateurs (dernière activité).
 
 ## 3. En attente
 
@@ -392,7 +412,7 @@ il touche ce qui est codé, sinon il est planifié ici.
 | Plusieurs instances (Radarr 1080p + 4K…) | Config : objet **ou** liste nommée, `is4k` par instance ; tous les écrans parcourent toutes les instances | Fait (4 ter) |
 | Fonctions destructives désactivées par défaut | — | 4 bis (B) : Ménage activé seulement dans Réglages, après un avertissement |
 | Configuration sans FTP | Étudiée dans `FEATURES.md` (annexe) : clavier système, QR + page locale, Quick Connect Jellyfin | Décision en phase 6 |
-| Ajouter une langue | Aujourd'hui : FR et EN dans `core/i18n.cpp`, une colonne par langue | Après la 4 bis : une langue = un fichier de table, plus `docs/TRANSLATING.md` |
+| Ajouter une langue | Une langue = un fichier (`src/core/lang/`), `docs/TRANSLATING.md` | Fait (0.3.0, b) |
 | Publication | README (captures du mode démo), INSTALL, modèles d'issues : faits pour 0.2.0. Liste des versions prises en charge : avec l'étape « versions » | 0.2.0 publiée ; affiches libres de droits pour les captures : à décider |
 
 ---
@@ -516,3 +536,4 @@ la Bibliothèque).
 | 13 oct. 2026 | 0.3.0 : fixtures anonymes (titres et identifiants inventés, `anonymize_titles.py`). |
 | 13 oct. 2026 | 0.3.0 : jeu de démo (`--demo`, films Blender sous CC BY), captures du README refaites. |
 | 13 oct. 2026 | 0.3.0 a) : versions minimales par service, message dans Réglages, tableau du README. |
+| 13 oct. 2026 | 0.3.0 b) : une langue = un fichier, `TRANSLATING.md` ; textes ConfigMissing / ConfigFromBackup remis à l'endroit. |

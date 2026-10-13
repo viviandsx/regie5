@@ -11,8 +11,11 @@
 #include "core/cleanup.h"
 #include "core/config.h"
 #include "core/i18n.h"
+#include "core/lang/language.h"
 #include "core/versions.h"
 
+#include <cctype>
+#include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
 
@@ -102,14 +105,97 @@ TEST(json_parses_timespans)
     CHECK_EQ((long long)json::parse_timespan("later"), -1LL);
 }
 
-TEST(i18n_every_string_in_both_languages)
+/* The printf conversions of a text ("%d", "%s"…), in order: a translation
+ * must keep them, or the app would read the wrong argument. */
+static std::string conversions(const char *t)
 {
-    for (i18n::Lang l : {i18n::Lang::French, i18n::Lang::English}) {
-        i18n::set_lang(l);
+    std::string out;
+    for (const char *p = t; *p; p++) {
+        if (*p != '%')
+            continue;
+        if (p[1] == '%') {
+            p++;
+            continue;
+        }
+        const char *q = p + 1;
+        while (*q && !std::isalpha((unsigned char)*q))
+            q++;
+        while (*q == 'l' || *q == 'h' || *q == 'z')
+            q++;
+        out += std::string(p, q + (*q ? 1 : 0)) + " ";
+        p = *q ? q : q - 1;
+    }
+    return out;
+}
+
+TEST(i18n_languages)
+{
+    int n = 0;
+    const i18n::Language *const *all = i18n::all_languages(&n);
+    CHECK(n >= 2);
+    CHECK_EQ(std::string(all[0]->code), std::string("en"));   /* the fallback */
+    const i18n::Language &en = *all[0];
+    const char *english[i18n::Count] = {};
+    for (int i = 0; i < en.count; i++)
+        english[en.texts[i].key] = en.texts[i].text;
+    for (int k = 0; k < i18n::Count; k++)
+        if (!english[k] || !english[k][0])
+            check::fail(__FILE__, __LINE__, "English has no text for key " + std::to_string(k));
+
+    for (int l = 0; l < n; l++) {
+        const i18n::Language &lang = *all[l];
+        const std::string where = std::string("language ") + lang.code + ": ";
+        bool seen[i18n::Count] = {};
+        int have = 0;
+        for (int i = 0; i < lang.count; i++) {
+            const i18n::Text &t = lang.texts[i];
+            if (t.key < 0 || t.key >= i18n::Count || !t.text) {
+                check::fail(__FILE__, __LINE__, where + "a bad entry, #" + std::to_string(i));
+                continue;
+            }
+            if (seen[t.key])
+                check::fail(__FILE__, __LINE__, where + "key " + std::to_string(t.key) + " twice");
+            seen[t.key] = true;
+            have++;
+            if (english[t.key] && conversions(t.text) != conversions(english[t.key]))
+                check::fail(__FILE__, __LINE__, where + "\"" + t.text + "\" does not keep the " +
+                                                    conversions(english[t.key]) + "of \"" + english[t.key] + "\"");
+        }
+        /* The languages shipped are complete; one still being translated falls
+         * back to English (and says how far it is). */
+        if (have < i18n::Count)
+            std::printf("  %s: %d of %d texts, the others in English\n", lang.code, have, (int)i18n::Count);
+        for (int d = 0; d < 7; d++)
+            CHECK(lang.days[d] && lang.days[d][0]);
+        for (int m = 0; m < 12; m++)
+            CHECK(lang.months[m] && lang.months[m][0]);
+        for (int u = 0; u < 6; u++)
+            CHECK(lang.size_units[u] && lang.size_units[u][0]);
+        CHECK(std::string(lang.week_same).find("{d1}") != std::string::npos);
+        CHECK(std::string(lang.week_other).find("{mon2}") != std::string::npos);
+        CHECK(i18n::known(lang.code));
+        CHECK(&i18n::find(lang.code) == &lang);
+    }
+    for (const char *shipped : {"en", "fr"}) {
+        i18n::set_lang(i18n::find(shipped));
         for (int k = 0; k < i18n::Count; k++)
             CHECK(i18n::tr((i18n::S)k)[0] != '\0');
     }
-    i18n::set_lang(i18n::Lang::French);
+
+    /* Codes as systems give them. */
+    CHECK_EQ(std::string(i18n::find("fr_FR.UTF-8").code), std::string("fr"));
+    CHECK_EQ(std::string(i18n::find("en-GB").code), std::string("en"));
+    CHECK_EQ(std::string(i18n::find("xx").code), std::string("en"));   /* unknown: English */
+    CHECK(!i18n::known("xx"));
+    CHECK(i18n::known("FR"));
+
+    i18n::set_lang(i18n::find("fr"));
+    CHECK(i18n::singular(0) && i18n::singular(1) && !i18n::singular(2));
+    CHECK(i18n::language().decimal == ',');
+    i18n::set_lang(i18n::find("en"));
+    CHECK(!i18n::singular(0) && i18n::singular(1));
+    CHECK(i18n::language().decimal == '.');
+    i18n::set_lang(i18n::find("fr"));
 }
 
 TEST(config_instances_and_ignored_users)

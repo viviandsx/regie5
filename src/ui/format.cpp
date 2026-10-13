@@ -5,24 +5,51 @@
 #include "ui/format.h"
 
 #include "core/i18n.h"
+#include "core/lang/language.h"
 
 #include <algorithm>
 #include <cctype>
 #include <cstdarg>
 #include <cstdio>
+#include <cstring>
 #include <set>
 
 namespace fmt {
 
 namespace {
 
-bool fr() { return i18n::lang() == i18n::Lang::French; }
+const i18n::Language &L() { return i18n::language(); }
 
-const char *const kDaysFr[7] = {"dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."};
-const char *const kDaysEn[7] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
-const char *const kMonthsFr[12] = {"janv.", "févr.", "mars", "avr.", "mai", "juin",
-                                   "juil.", "août", "sept.", "oct.", "nov.", "déc."};
-const char *const kMonthsEn[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+/* A language's date pattern: {name} replaced by its value. */
+std::string fill(const char *pattern, std::initializer_list<std::pair<const char *, std::string>> values)
+{
+    std::string out;
+    for (const char *p = pattern; *p;) {
+        bool done = false;
+        if (*p == '{')
+            for (const auto &v : values) {
+                const size_t n = std::strlen(v.first);
+                if (!std::strncmp(p + 1, v.first, n) && p[n + 1] == '}') {
+                    out += v.second;
+                    p += n + 2;
+                    done = true;
+                    break;
+                }
+            }
+        if (!done)
+            out += *p++;
+    }
+    return out;
+}
+
+std::string num(int n) { return std::to_string(n); }
+
+/* "5.6" in the language's way ("5,6"). */
+std::string decimal(std::string s)
+{
+    std::replace(s.begin(), s.end(), '.', L().decimal);
+    return s;
+}
 
 int64_t local_day(time_t t)
 {
@@ -59,16 +86,19 @@ std::string day(time_t t, time_t now)
         return i18n::tr(i18n::Tomorrow);
     if (diff == -1)
         return i18n::tr(i18n::Yesterday);
-    if (fr())
-        return f("%s %d %s", kDaysFr[tm.tm_wday], tm.tm_mday, kMonthsFr[tm.tm_mon]);
-    return f("%s, %s %d", kDaysEn[tm.tm_wday], kMonthsEn[tm.tm_mon], tm.tm_mday);
+    return fill(L().date_day, {{"wd", L().days[tm.tm_wday]}, {"d", num(tm.tm_mday)}, {"mon", L().months[tm.tm_mon]}});
+}
+
+std::string date_full(const struct tm &tm)
+{
+    return fill(L().date_full, {{"d", num(tm.tm_mday)}, {"mon", L().months[tm.tm_mon]}, {"y", num(tm.tm_year + 1900)}});
 }
 
 std::string weekday(time_t t)
 {
     struct tm tm;
     localtime_r(&t, &tm);
-    return f("%s %d", fr() ? kDaysFr[tm.tm_wday] : kDaysEn[tm.tm_wday], tm.tm_mday);
+    return f("%s %d", L().days[tm.tm_wday], tm.tm_mday);
 }
 
 std::string week_range(time_t first_day)
@@ -77,11 +107,9 @@ std::string week_range(time_t first_day)
     localtime_r(&first_day, &a);
     const time_t last = first_day + 6 * 86400 + 3600;   /* (a DST change on the way) */
     localtime_r(&last, &b);
-    if (fr())
-        return a.tm_mon == b.tm_mon ? f("%d – %d %s", a.tm_mday, b.tm_mday, kMonthsFr[b.tm_mon])
-                                    : f("%d %s – %d %s", a.tm_mday, kMonthsFr[a.tm_mon], b.tm_mday, kMonthsFr[b.tm_mon]);
-    return a.tm_mon == b.tm_mon ? f("%s %d – %d", kMonthsEn[a.tm_mon], a.tm_mday, b.tm_mday)
-                                : f("%s %d – %s %d", kMonthsEn[a.tm_mon], a.tm_mday, kMonthsEn[b.tm_mon], b.tm_mday);
+    return fill(a.tm_mon == b.tm_mon ? L().week_same : L().week_other,
+                {{"d1", num(a.tm_mday)}, {"mon1", L().months[a.tm_mon]}, {"d2", num(b.tm_mday)},
+                 {"mon2", L().months[b.tm_mon]}});
 }
 
 time_t week_start(time_t t)
@@ -109,7 +137,7 @@ std::string duration(int64_t s)
         return "< 1 min";
     const int64_t m = s / 60, h = m / 60, d = h / 24;
     if (d > 0)
-        return fr() ? f("%lld j %lld h", (long long)d, (long long)(h % 24)) : f("%lld d %lld h", (long long)d, (long long)(h % 24));
+        return f("%lld %s %lld h", (long long)d, L().day_unit, (long long)(h % 24));
     if (h > 0)
         return f("%lld h %02lld", (long long)h, (long long)(m % 60));
     return f("%lld min", (long long)m);
@@ -124,24 +152,17 @@ std::string ago(time_t t, time_t now)
     else if (s < 86400)
         d = f("%lld h", (long long)(s / 3600));
     else
-        d = fr() ? f("%lld j", (long long)(s / 86400)) : f("%lld d", (long long)(s / 86400));
+        d = f("%lld %s", (long long)(s / 86400), L().day_unit);
     return f(i18n::tr(i18n::Ago), d.c_str());
 }
 
 std::string size(int64_t bytes)
 {
-    static const char *const kFr[] = {"o", "Ko", "Mo", "Go", "To", "Po"};
-    static const char *const kEn[] = {"B", "KB", "MB", "GB", "TB", "PB"};
     double v = (double)bytes;
     int u = 0;
     while (v >= 1000 && u < 5)
         v /= 1000, u++;
-    std::string s = v < 10 && u > 0 ? f("%.1f", v) : f("%.0f", v);
-    if (fr())
-        for (char &c : s)
-            if (c == '.')
-                c = ',';
-    return s + " " + (fr() ? kFr[u] : kEn[u]);
+    return decimal(v < 10 && u > 0 ? f("%.1f", v) : f("%.0f", v)) + " " + L().size_units[u];
 }
 
 std::string episode(int season, int ep) { return f("S%02dE%02d", season, ep); }
@@ -223,8 +244,7 @@ std::string labelled(const std::string &who, const std::string &what)
 
 std::string count(i18n::S one, i18n::S many, int n)
 {
-    const bool single = i18n::lang() == i18n::Lang::French ? n <= 1 : n == 1;
-    return f(i18n::tr(single ? one : many), n);
+    return f(i18n::tr(i18n::singular(n) ? one : many), n);
 }
 
 std::string codec(const std::string &name)
@@ -280,10 +300,7 @@ std::string bitrate(int64_t bps)
 {
     if (bps <= 0)
         return {};
-    std::string s = f("%.1f Mb/s", bps / 1e6);
-    if (fr())
-        std::replace(s.begin(), s.end(), '.', ',');
-    return s;
+    return decimal(f("%.1f", bps / 1e6)) + " Mb/s";
 }
 
 std::string seconds(double s)
