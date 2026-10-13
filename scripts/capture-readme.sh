@@ -23,19 +23,21 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "${TMP:?}"' EXIT
 
 # Home (focus on the recently added row), the Library (a series' page, the
-# films, the guide, the cleanup), the queue, the requests, Jellyfin and a
-# playback diagnosis, Settings.
+# films, the guide, the cleanup), the queue, the requests and the issues,
+# Jellyfin, a playback diagnosis and the libraries, Settings.
 s="4 down 2.5 shot:${TMP}/home.ppm up "
 s+="r1 2.5 down cross 2 shot:${TMP}/series-detail.ppm circle 0.6 up "
 s+="right cross 2.5 shot:${TMP}/movies.ppm "
 s+="right cross 1.5 down 2 shot:${TMP}/guide.ppm up "
 s+="right cross 1 right cross 3 right cross 1 right cross 3 shot:${TMP}/cleanup.ppm "
 s+="r1 3 shot:${TMP}/queue.ppm "
-s+="r1 2.5 shot:${TMP}/requests.ppm "
+s+="r1 2.5 shot:${TMP}/requests.ppm right cross 2.5 shot:${TMP}/issues.ppm "
 s+="r1 2.5 shot:${TMP}/jellyfin.ppm cross 1.5 shot:${TMP}/diagnosis.ppm circle 0.6 "
+s+="down down down down down 2 shot:${TMP}/libraries.ppm "
 s+="r1 3 shot:${TMP}/settings.ppm quit"
 
-REGIE5_MOCK_DELAY_MS=0 REGIE5_MOCK_CLEANUP=1 REGIE5_RES=1920x1080 REGIE5_SCRIPT="${s}" \
+# Settings' display line as for the screenshots' size (else this monitor's).
+REGIE5_MOCK_DELAY_MS=0 REGIE5_MOCK_CLEANUP=1 REGIE5_RES=1920x1080 REGIE5_DISPLAY=1920x1080@60/0 REGIE5_SCRIPT="${s}" \
     "${BUILD}/regie5" --demo --lang en >/dev/null 2>&1
 for f in "${TMP}"/*.ppm; do
     n="$(basename "${f}" .ppm)"

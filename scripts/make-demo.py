@@ -268,7 +268,12 @@ def credits():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pictures", help="the originals downloaded from Wikimedia Commons (<key>.bin)")
+    ap.add_argument("--out", help="write there instead of demo/ (to look before replacing it); "
+                                  "the pictures stay those of demo/images/")
     args = ap.parse_args()
+    global OUT
+    if args.out:
+        OUT = os.path.abspath(args.out)
     files = {}
     for base, _, names in os.walk(FIXTURES):
         for n in sorted(names):
@@ -309,8 +314,24 @@ def main():
         {q.get("seriesId") for q in files["sonarr/queue.json"]["records"]}
     files["sonarr/series.json"] = [s for s in files["sonarr/series.json"]
                                    if s["id"] in keep or s["title"] in KEEP_SERIES + (CAMINANDES["title"],)]
+    # Jellyfin's libraries hold the same titles (and so are measured whole).
+    movie_ids = {m.get("tmdbId") for m in files["radarr/movie.json"]}
+    series_ids = {s.get("tvdbId") for s in files["sonarr/series.json"]}
+    for lib in files.get("jellyfin/library_virtualfolders.json", []):
+        rel = "jellyfin/items_parent_%s.json" % lib["ItemId"]
+        if rel not in files or lib.get("CollectionType") not in ("movies", "tvshows"):
+            continue
+        movies = lib["CollectionType"] == "movies"
+        items = [it for it in files[rel]["Items"]
+                 if int(it.get("ProviderIds", {}).get("Tmdb" if movies else "Tvdb", "0") or 0)
+                 in (movie_ids if movies else series_ids)]
+        files[rel] = {"Items": items, "TotalRecordCount": len(items)}
+        episodes = "jellyfin/items_parent_%s_episode.json" % lib["ItemId"]
+        if not movies and episodes in files:
+            files[episodes]["TotalRecordCount"] = sum(s.get("statistics", {}).get("episodeFileCount", 0)
+                                                      for s in files["sonarr/series.json"])
 
-    images = os.path.join(OUT, "images")
+    images = os.path.join(OUT if args.pictures or not args.out else os.path.join(ROOT, "demo"), "images")
     for svc in ("sonarr", "radarr", "seerr", "jellyfin", "glances"):
         if os.path.isdir(os.path.join(OUT, svc)):
             shutil.rmtree(os.path.join(OUT, svc))

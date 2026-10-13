@@ -30,15 +30,17 @@ never to the internet.
 | **Home** | Upcoming episodes and films (14 days, Sonarr + Radarr calendars), recently added to Jellyfin, disk space and health alerts of every instance. |
 | **Library** | Your series and films (read-only), a week-by-week **TV guide**, what is **missing**, and an optional **Cleanup** view. |
 | **Activity** | The download queue of Sonarr and Radarr merged (title, progress, time left, status; refreshed every 5 s), and a 14-day **log**: imports, Seerr requests, Jellyfin playback and sign-ins, health alerts. |
-| **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**. |
-| **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, scheduled tasks, and server load through [Glances](https://nicolargo.github.io/glances/) if you use it. |
-| **Settings** | Connection state of every service and instance, version, Cleanup on/off, and **set-up from a phone** (QR code). |
+| **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**; Seerr **issues** (open / resolved / all) with their comments, **Resolve** and **Comment** (ready-made sentences). |
+| **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, and server load through [Glances](https://nicolargo.github.io/glances/) if you use it. |
+| **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which is 60 Hz for now / 60 Hz / 120 Hz), and **set-up from a phone** (QR code). |
 
 Also:
 
+- **Counters on the tabs**: downloads in the queue, requests waiting for an answer, people watching.
 - **Several instances** of a service (for example Radarr and Radarr 4K) are shown together, each named.
 - **HTTPS** and reverse-proxy sub-paths (`https://example.lan/sonarr`), self-signed certificates on request.
-- **Liquid-glass interface** made for a TV: large type readable from 3 m, a springy focus drop, 4K at 60 fps.
+- **Liquid-glass interface** made for a TV: large type readable from 3 m, a springy focus drop, 4K at 60 fps,
+  and 120 Hz on request on a display that accepts it.
 - **English and French**, following the console's language; [more are welcome](docs/TRANSLATING.md).
 
 <p align="center">
@@ -47,8 +49,10 @@ Also:
   <img src="docs/images/guide.jpg" width="400" alt="Library: the TV guide">
   <img src="docs/images/queue.jpg" width="400" alt="Activity: the download queue">
   <img src="docs/images/requests.jpg" width="400" alt="Requests from Seerr">
+  <img src="docs/images/issues.jpg" width="400" alt="Requests: Seerr issues">
   <img src="docs/images/jellyfin.jpg" width="400" alt="Jellyfin: sessions and transcoding">
   <img src="docs/images/diagnosis.jpg" width="400" alt="Jellyfin: playback diagnosis">
+  <img src="docs/images/libraries.jpg" width="400" alt="Jellyfin: libraries and their size">
   <img src="docs/images/cleanup.jpg" width="400" alt="Library: Cleanup candidates">
 </p>
 
@@ -65,6 +69,7 @@ Almost nothing, and never without asking. It is read-only, except for these
 actions, each behind a confirmation whose focus starts on **Cancel**:
 
 - approve or decline a Seerr request;
+- resolve a Seerr issue, or post one of a few ready-made comments on it;
 - stop a Jellyfin playback session; scan the Jellyfin libraries;
 - **Cleanup** (off by default): delete a film or a series **with its files** in
   Radarr/Sonarr, always added to the import-list exclusions so no list brings it
@@ -94,8 +99,8 @@ names).
 |---|---|---|---|
 | [Sonarr](https://sonarr.tv) | 4.0 | 4.0 | calendar, queue, series, health, disk space, history; Cleanup |
 | [Radarr](https://radarr.video) | 5.0 | 6.4 | calendar, queue, films, health, disk space, history; Cleanup |
-| [Seerr](https://github.com/seerr-team/seerr) | 2.0 (Jellyseerr 2.x works too) | 3.5 | requests, approve / decline, posters through its image proxy |
-| [Jellyfin](https://jellyfin.org) | 10.9 | 12.2 | sessions, playback info, recently added, users, activity log, scheduled tasks |
+| [Seerr](https://github.com/seerr-team/seerr) | 2.0 (Jellyseerr 2.x works too) | 3.5 | requests, approve / decline, issues (resolve, comment), posters through its image proxy |
+| [Jellyfin](https://jellyfin.org) | 10.9 | 12.2 | sessions, playback info, recently added, libraries, users, activity log, scheduled tasks |
 | [Glances](https://nicolargo.github.io/glances/) (optional) | 4.0 (API 4) | 4.x | server load |
 
 Each service is optional: a service turned off simply leaves its sections out.
@@ -110,11 +115,12 @@ are welcome. Overseerr 1.x is not supported (it has no Jellyfin links).
 2. Unzip it on your computer: it holds a single folder, `PPSA99520`.
 3. Copy that whole folder into `/data/homebrew/` on the console (ps5upload or FTP),
    so that `/data/homebrew/PPSA99520/eboot.bin` exists.
-4. Wait about ten seconds: ShadowMount+ adds the **Régie5** tile to the home screen.
+4. Wait about ten seconds: ShadowMount+ adds the **Régie5** tile to the home screen, under **Media**.
 5. Open Régie5.
 
 **Updating:** copy the new `PPSA99520` folder over the old one. A release never
-contains a `config.json`, so yours is kept.
+contains a `config.json`, so yours is kept. From 0.3.0 the tile is under Media
+instead of Games: it moves there by itself after the copy.
 **Uninstalling:** delete `/data/homebrew/PPSA99520`.
 
 The same steps, in English and French, are in `INSTALL.txt` inside the zip.
@@ -147,6 +153,10 @@ instances; the fields are described in `config.example.json`.
 Where the API keys are: Sonarr and Radarr, *Settings › General › Security*; Seerr,
 *Settings › General*; Jellyfin, *Dashboard › API Keys*.
 
+Behind a **reverse proxy**, the address may carry a path
+(`https://media.lan/sonarr`); see [docs/CONFIG.md](docs/CONFIG.md) (in French) for the
+two ways to set the proxy up, and for redirects such as a login page in front of it.
+
 ## Controls
 
 | Button | Action |
@@ -157,7 +167,7 @@ Where the API keys are: Sonarr and Radarr, *Settings › General › Security*; 
 | L1 / R1 | previous / next tab |
 | L2 / R2 | previous / next letter (lists by title), week (guide) or page |
 | △ | refresh the screen |
-| Options | the selected item's menu (approve / decline, keep / delete, find in Jelly5) |
+| Options | the selected item's menu (approve / decline, resolve / comment, keep / delete, find in Jelly5) |
 
 ## Known limitations
 
@@ -172,6 +182,13 @@ Where the API keys are: Sonarr and Radarr, *Settings › General › Security*; 
 - **HTTPS on the console** uses TLS 1.2 (ECDHE with AES-GCM, ChaCha20-Poly1305 or
   AES-CBC; RSA and ECDSA certificates). A server that only accepts TLS 1.3 cannot be
   reached from the console.
+- **120 Hz** is chosen by hand (Settings › Display refresh › 120 Hz; it applies at the
+  next start) and needs a display and a link that take it: Settings says so when the
+  display refuses, and Régie5 stays at 60 Hz. At 120 Hz the 4K interface draws about 90
+  frames per second, so movement is not yet perfectly even; this is why Auto stays at
+  60 Hz for now.
+- **Library sizes** come from Radarr and Sonarr (Jellyfin gives none): a title they
+  do not know is counted but not measured, and the Jellyfin tab says how many were.
 - `config.json` holds your API keys in plain text on the console.
 - Only firmware 13.60 has been tested.
 

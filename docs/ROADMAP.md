@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 13 octobre 2026 : phase 7 terminée, Régie5 0.2.0 est sur homebrew.page (PR #244 fusionnée). 0.3.0 en préparation (§ 2 sexies) ; aucune release ni pré-release avant qu'elle soit finie et testée sur la console. Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 13 octobre 2026 (nuit) : 0.3.0 prête à sortir (c à h faits, Multimédia avec le `param.json` de Jelly5 ; Auto à 60 Hz, 120 Hz à la main). 0.3.1 : Auto à 120 Hz avec un rendu 1440p. Phase 7 terminée, Régie5 0.2.0 est sur homebrew.page (PR #244 fusionnée). 0.3.0 en préparation (§ 2 sexies) ; aucune release ni pré-release avant qu'elle soit finie et testée sur la console. Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -305,7 +305,7 @@ Règles lues : `docs/submitting.md`, `docs/review-policy.md`, `artifact-formats.
       `metadata.md`) et **notes de version** `build/publish/release-notes-v0.2.0.md`. Title ID
       et nom libres dans le catalogue (64 apps) le 13 octobre 2026.
 - [x] **Audit** : aucune clé (comparées à `config.json`, arbre, historique et zip), aucune
-      adresse du réseau de Vivian, fixtures anonymisées, `CLAUDE.md`, `.claude/`, `_ref/`
+      adresse du réseau de Vivian, fixtures anonymisées, les fichiers de consignes locaux, `_ref/`
       exclus. Mentions retirées de la doc. **L'historique** garde 4 mentions dans d'anciens
       diffs : publication conseillée en **historique neuf** (un seul commit).
 - [x] **Vivian, 13 octobre 2026** : dépôt public https://github.com/viviandsx/regie5, poussé en
@@ -406,8 +406,9 @@ publie seul toute release du dépôt.
       de choix. Fixtures inventées (`scripts/make-issue-fixtures.py`, 6 signalements),
       `demo/` régénéré, `capture-states.sh` (liste, fil, menu). Endpoints vérifiés contre
       `seerr-api.yml` et `server/routes/issue.ts` (branche develop). **Testé en `--mock`
-      seulement** (les deux POST journalisés, rien envoyé) ; aucun test réel sans accord de
-      Vivian. Ajouté aux écritures autorisées de CLAUDE.md §3.
+      seulement** (les deux POST journalisés, rien envoyé) ; lecture vérifiée sur le vrai
+      Seerr le 13 octobre 2026 (GET seulement : liste, filtres, fil avec les auteurs) ; aucune
+      écriture réelle sans accord de Vivian. Ajouté aux écritures autorisées des consignes du projet (§3).
 - [x] **f) Jellyfin : bibliothèques et utilisateurs** — deux sections de l'onglet Jellyfin,
       entre « Scanner les bibliothèques » et les tâches. **Bibliothèques**
       (`/Library/VirtualFolders`) : films, séries + épisodes, ou éléments pour les autres types
@@ -423,12 +424,77 @@ publie seul toute release du dépôt.
       dans `/Users`). Logique dans `core/libraries` (testée), `ui/JellyfinStats`. Fixtures
       inventées (`scripts/make-library-fixtures.py` : trois bibliothèques depuis l'index déjà
       anonyme ; il donne aussi des noms distincts aux trois utilisateurs que l'anonymiseur
-      avait appelés comme d'autres). **À vérifier sur le vrai serveur** (GET seulement) :
-      forme de `/Library/VirtualFolders` et des comptes en 12.x, temps de calcul des tailles.
+      avait appelés comme d'autres). **Vérifié sur le vrai serveur le 13 octobre 2026** (GET
+      seulement, accord de Vivian) : formes conformes, réponses en 20 à 160 ms ; tailles
+      trouvées pour 288 films sur 334 et 50 séries sur 51. Corrigé : une bibliothèque
+      **Collections** (`boxsets`) comptait les fichiers de ses films (déjà comptés ailleurs) ;
+      elle compte maintenant ses collections (`IncludeItemTypes=BoxSet`).
 
-À la sortie de la 0.3.0 : README (fonctions : pastilles, signalements, bibliothèques et
-utilisateurs Jellyfin, 120 Hz ; ligne Seerr du tableau des versions ; captures refaites avec
-`capture-readme.sh`), notes de version.
+- [x] **g) Interface à 120 Hz** — fait. Réglages › « Fréquence d'affichage : Auto (60 Hz) /
+      60 Hz / 120 Hz » (**décision de Vivian, 13 octobre 2026 : en 0.3.0, Auto demande 60 Hz**,
+      le 120 Hz se choisit à la main, à cause des 90 images/s mesurées en 4K ; appliqué au
+      prochain lancement :
+      ps5-opengl fixe la fréquence avant `eglInitialize`), ligne « Affichage » en entier sur
+      deux lignes au plus (`REGIE5_DISPLAY=3840x2160@60/120` pour la voir sous Linux), journal
+      `display: … at … Hz` et la ligne `[ps5-output-mode]` du pilote.
+      **Essais du 13 octobre 2026 sur le moniteur 144 Hz de Vivian** (sortie PS5 en 1080p) :
+      avec le `param.json` de la 0.2.0 (app-9, app-10b), `sceVideoOutIsOutputSupported(15)` = 1
+      puis `sceVideoOutConfigureOutput(15)` → `0x80290016` (mode non pris en charge), retour à
+      60 Hz ; Jelly5 annonçait aussi un refus. **Avec le `param.json` de Jelly5 (app-10d),
+      accepté** : `result=00000000`, `refresh_id=13` (119,88 Hz), « 3840 × 2160, 120 Hz »
+      dans Réglages. **Cause pas encore établie** : un champ de `param.json` (catégorie,
+      `attribute`, `attribute3`, blocs `amm` / `kernel`) ou un changement côté écran entre les
+      essais (menu de l'écran). Essai prévu : app-10b (ancien `param.json`, Jeux) relancé ;
+      s'il obtient 120 Hz, c'était l'écran ; sinon app-10e (Jeux avec les valeurs de Jelly5)
+      dit si c'est la catégorie ou les attributs.
+      **Mesures** : à 60 Hz (banc par phases, app-10b, 2 352 images) dessin CPU 4,7 ms en
+      moyenne, p95 7,7, pire 17,3 ; le GPU n'est pas séparable (ps5-opengl exécute les dessins
+      à l'échange : `deferred=1`, `gpu-present=1`). **À 120 Hz en 4K (app-10d) : 90 à 91
+      images/s**, intervalles de 12 à 14 ms, GPU 9 à 14 ms par image (horodatages, l'attente
+      de l'écran n'y est plus) : **la 4K ne tient pas le 120 Hz**. À 90 images/s sur un écran
+      à 120 Hz, les images durent tantôt une, tantôt deux périodes (saccade).
+      **Piste : dessiner moins de pixels à 120 Hz.** VideoOut annonce `3840x2160` à l'app
+      même quand le signal HDMI est en 1080p (dans les deux cas, 60 et 120 Hz) : la
+      résolution réelle de sortie n'est pas lisible par ce moyen, et `ConfigureOutput` ne
+      prend que le mode. Faisable autrement : à 120 Hz, rendre en 2560 × 1440 ou 1920 × 1080
+      (`eglSetDisplayModePS5` ; la PS5 met à l'échelle), ou un réglage « Résolution de
+      rendu ». Le travail du GPU suit à peu près le nombre de pixels (1440p ≈ 44 %, 1080p ≈ 25 %
+      de la 4K), le dessin CPU (4,7 ms) ne change pas : 1440p ou 1080p devraient tenir les
+      8,33 ms. À mesurer sur console (`output-1440p`, `output-1080p` existent déjà).
+- [ ] **0.3.1 : Auto à 120 Hz avec un rendu 1440p** (décidé par Vivian le 13 octobre 2026).
+      Quand le 120 Hz est demandé, rendre en 2560 × 1440 (`eglSetDisplayModePS5`) ; mesurer
+      sur console qu'on tient 120 images/s (banc `bench` + `output-1440p`, ou directement le
+      nouveau mode) ; si oui, Auto demande 120 Hz (repli 60 Hz si l'écran refuse) et la 4K
+      reste pour 60 Hz. Libellé « Auto (60 Hz) » à revoir alors.
+- [x] **h) Catégorie Multimédia** — **fait avec le `param.json` de Jelly5** (app-10d démarre,
+      tuile dans Multimédia, tas de 256 Mio accordé comme avant, 120 Hz accepté) :
+      `applicationCategoryType: 65536`, `contentBadgeType: 1`, intention `launchActivity`,
+      `attribute: 0`, `attribute3: 0x80040`, **sans** blocs `amm` ni `kernel` ; ne diffèrent de
+      Jelly5 que le titre, le Title ID, le `conceptId`, le `contentId` et la version. Échecs
+      (« Impossible de démarrer le jeu ou l'application », journal vide : refus avant la
+      première ligne) : app-10 (profil ps5-homebrew-ui : insigne 2, sans `gameIntent`) et
+      app-10c (65536 avec nos anciens `attribute` / `amm` / `kernel`). La tuile passe d'une
+      catégorie à l'autre par simple copie par-dessus (pas de cache bloquant). `build-ps5.sh`
+      élargit le contrôle de ps5-homebrew-ui à ce profil (copie temporaire) et garde
+      `REGIE5_PARAM`. `INSTALL.txt`, README et notes de version : « under Media ».
+
+**Sortie de la 0.3.0** (préparée le 13 octobre 2026) :
+
+- [x] Numéros : `contentVersion` `00.003.000`, `project(… VERSION 0.3.0)` ; la version
+      « -dev » de Linux suit maintenant `project(VERSION)` même dans un dossier de build
+      ancien (elle restait « 0.2.0-dev » dans le cache CMake).
+- [x] Auto à 60 Hz (option A de Vivian) : `refresh_asked(Auto)` = 60, libellé « Auto (60 Hz) »,
+      README, notes de version et recette en conséquence.
+- [x] README : signalements, bibliothèques et utilisateurs, pastilles, 120 Hz, reverse proxy,
+      tableau des services, deux captures de plus (`issues.jpg`, `libraries.jpg`) dans
+      `capture-readme.sh` (ligne « Display » fixée à la taille des captures).
+- [x] `make-demo.py` : bibliothèques Jellyfin de la démo réduites aux titres de la démo
+      (sinon « taille de 16 titres sur 414 ») ; `--out` pour regarder avant de remplacer.
+- [x] Notes de version `build/publish/release-notes-v0.3.0.md` ; recette console courte
+      `docs/RECETTE-0.3.0.md` (lecture seule).
+- [ ] Vivian : `make-demo.py` et `capture-readme.sh` (ils réécrivent `demo/` et
+      `docs/images/`), commits, puis `release-ps5.sh`, recette, tag, release
+      (`docs/RELEASING.md` §3).
 
 ## 3. En attente
 
@@ -549,7 +615,7 @@ cmake --build build/linux && ctest --test-dir build/linux --output-on-failure
 
 Variables de développement : `REGIE5_FPS=1` (temps d'image chaque seconde),
 `REGIE5_SCRIPT="…"` (rejoue des touches, captures PPM), `REGIE5_HTTP_LOG=1`,
-`REGIE5_MOCK_DELAY_MS`, `REGIE5_MOCK_FAIL=radarr:unreachable,…`,
+`REGIE5_MOCK_DELAY_MS`, `REGIE5_MOCK_FAIL=radarr:unreachable,…`, `REGIE5_MOCK_DIR=<dossier>` (autres données de `--mock`/`--demo`), `REGIE5_DISPLAY=3840x2160@60/120` (ce que répondrait une console : taille, fréquence obtenue, demandée),
 `REGIE5_WORKER_STACK_KIB=64` (pile des threads de travail, comme sur PS5),
 `REGIE5_HTTP=socket` (le client HTTP de la PS5 au lieu de libcurl, avec Mbed TLS pour `https://`),
 `REGIE5_NO_LAUNCH=1` (une console qui ne lance pas d'app : « Chercher dans Jelly5 »),
@@ -598,3 +664,9 @@ la Bibliothèque).
 | 13 oct. 2026 | 0.3.0 d) : pastilles de compteur sur Activité, Demandes, Jellyfin. |
 | 13 oct. 2026 | 0.3.0 e) : signalements Seerr (lecture, résoudre, commenter ; `--mock` seulement). |
 | 13 oct. 2026 | 0.3.0 f) : bibliothèques (nombres, taille d'après Radarr / Sonarr) et utilisateurs Jellyfin. |
+| 13 oct. 2026 | 0.3.0 g) : 120 Hz (réglage, journal, banc de mesure) ; build `app-9` prêt pour la console. |
+| 13 oct. 2026 | app-9 : 120 Hz refusé (`0x80290016`, sortie HDMI 2160p inchangée en 1440p), banc à refaire ; e) et f) vérifiés en lecture sur les vrais serveurs, Collections corrigées ; h) catégorie Multimédia ; build `app-10`. |
+| 13 oct. 2026 | app-10 refusé au lancement (Multimédia sans `launchActivity`) ; profil de Jelly5 ; builds `app-10b` (Jeux) et `app-10c` (Multimédia). |
+| 13 oct. 2026 | 120 Hz : Jelly5 refusé aussi sur cet écran ; banc par phases ; app-10c refusé, app-10d (profil Jelly5 entier) ; 0.3.0 préparée (version, README, notes, recette). |
+| 13 oct. 2026 | app-10d démarre en Multimédia (profil Jelly5 entier) et obtient le 120 Hz ; 4K à 120 Hz : 90 images/s ; dépôt en Multimédia, 0.3.0 prête. |
+| 13 oct. 2026 | Option A : Auto à 60 Hz en 0.3.0, 120 Hz à la main ; 0.3.1 : Auto à 120 Hz en rendu 1440p. Patches finaux dans `build/patches-5/`. |

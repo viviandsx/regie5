@@ -1,16 +1,6 @@
 {
  "Items": [
   {
-   "Id": "7eab2bf443c51bc8258b7089a44163a0",
-   "Name": "Harbor of Oakridge",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt95433746",
-    "Tmdb": "9406334",
-    "Tvdb": "9563122"
-   }
-  },
-  {
    "Id": "f4ee5eb37edeaab848cdfcea58955841",
    "Name": "Nadia and the Hollow Tide",
    "Type": "Series",
@@ -28,36 +18,6 @@
     "Imdb": "tt95123449",
     "Tmdb": "9818144",
     "Tvdb": "9863814"
-   }
-  },
-  {
-   "Id": "4056612c559bf053354f393cab19d398",
-   "Name": "Léa's Echo",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt96483591",
-    "Tmdb": "9819790",
-    "Tvdb": "9124322"
-   }
-  },
-  {
-   "Id": "92041feb9dbfb057f734efbefc128cea",
-   "Name": "Inès's Frontier",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt95997009",
-    "Tmdb": "9412777",
-    "Tvdb": "9861541"
-   }
-  },
-  {
-   "Id": "62f3af5bafbae5fec11b94b0e928743a",
-   "Name": "Oskar and the Velvet Lighthouse",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt96007998",
-    "Tmdb": "9455659",
-    "Tvdb": "9730248"
    }
   },
   {
@@ -101,46 +61,6 @@
    }
   },
   {
-   "Id": "1b76edbc56e665644e3a397017b02bb4",
-   "Name": "Oskar and the Endless Station",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt94598463",
-    "Tmdb": "9868419",
-    "Tvdb": "9383516"
-   }
-  },
-  {
-   "Id": "deeb4b4abe7dfd88832bf8ab1f7683e2",
-   "Name": "Quiet Tower",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt98301963",
-    "Tmdb": "9136708",
-    "Tvdb": "9817253"
-   }
-  },
-  {
-   "Id": "4906153cb1262665a9672a325c1867da",
-   "Name": "The Lost River II",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt94943288",
-    "Tmdb": "9498141",
-    "Tvdb": "9607938"
-   }
-  },
-  {
-   "Id": "2d4de5dad33cf9ad350117e80375efc5",
-   "Name": "Lonely Echo",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt97807296",
-    "Tmdb": "9036664",
-    "Tvdb": "9737033"
-   }
-  },
-  {
    "Id": "66e0cc29c354108d44a8efe10ef04711",
    "Name": "Wild Kingdom",
    "Type": "Series",
@@ -148,26 +68,6 @@
     "Imdb": "tt93024834",
     "Tmdb": "9897765",
     "Tvdb": "9674857"
-   }
-  },
-  {
-   "Id": "5c95a05d3f2314b2187bba2c41045944",
-   "Name": "Paradox of Elmstead",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt97162360",
-    "Tmdb": "9564936",
-    "Tvdb": "9788899"
-   }
-  },
-  {
-   "Id": "0982d0e039a6b35dc0f2d47620a1adb9",
-   "Name": "Camille's Forest",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt99352113",
-    "Tmdb": "9857085",
-    "Tvdb": "9364466"
    }
   },
   {
@@ -201,56 +101,6 @@
    }
   },
   {
-   "Id": "d681d4d9977053c1ee3c831ca06b0c74",
-   "Name": "The Wandering Ocean",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt98509831",
-    "Tmdb": "9118008",
-    "Tvdb": "9853745"
-   }
-  },
-  {
-   "Id": "7a6bd3fde16d2dd4c8e2575990f45282",
-   "Name": "Quillon: Hollow Quarry",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt92433612",
-    "Tmdb": "9750498",
-    "Tvdb": "9587441"
-   }
-  },
-  {
-   "Id": "b79faf74fe699122d8c2a259ceda89cd",
-   "Name": "Umber: Borrowed Horizon",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt90088117",
-    "Tmdb": "9096003",
-    "Tvdb": "9631678"
-   }
-  },
-  {
-   "Id": "ca643865d84f53aeab867acfef88a33f",
-   "Name": "Brightwater: Lonely Frontier",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt96176228",
-    "Tmdb": "9585977",
-    "Tvdb": "9258420"
-   }
-  },
-  {
-   "Id": "46d611431b724c59246f4ad196a319cd",
-   "Name": "Inès's Orchard",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt99770816",
-    "Tmdb": "9251539",
-    "Tvdb": "9502230"
-   }
-  },
-  {
    "Id": "c5f176eac13dc68f39942ec2452a0f8d",
    "Name": "Elias's Harvest",
    "Type": "Series",
@@ -258,66 +108,6 @@
     "Imdb": "tt99560138",
     "Tmdb": "9429910",
     "Tvdb": "9544202"
-   }
-  },
-  {
-   "Id": "9732b343f3d4b0511befbf1f97efac1b",
-   "Name": "Elmstead: Painted Citadel",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt97973598",
-    "Tmdb": "9728564",
-    "Tvdb": "9557246"
-   }
-  },
-  {
-   "Id": "6d039957541bd488d5a8f9a6371fb65f",
-   "Name": "Iris's Citadel",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt98327308",
-    "Tmdb": "9625207",
-    "Tvdb": "9280593"
-   }
-  },
-  {
-   "Id": "2b84d9653904e92b15b8e886370dcd8d",
-   "Name": "River of Oakridge",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt90926591",
-    "Tmdb": "9287215",
-    "Tvdb": "9584245"
-   }
-  },
-  {
-   "Id": "b613cf074f9d5e1baa4330dbc6067c1a",
-   "Name": "Mara's Canyon",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt92127511",
-    "Tmdb": "9380686",
-    "Tvdb": "9654810"
-   }
-  },
-  {
-   "Id": "03a4cd49caa735af600d2ec99067c252",
-   "Name": "Tower of Yarrow II",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt98268229",
-    "Tmdb": "9654072",
-    "Tvdb": "9418498"
-   }
-  },
-  {
-   "Id": "fa7748b845c091240a513f515e96d0e4",
-   "Name": "The Salt Summit",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt93579295",
-    "Tmdb": "9303458",
-    "Tvdb": "9268964"
    }
   },
   {
@@ -331,76 +121,6 @@
    }
   },
   {
-   "Id": "b55ccc179af28dbe8b01138587cee4d4",
-   "Name": "The Borrowed Signal",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt91185040",
-    "Tmdb": "9576072",
-    "Tvdb": "9323674"
-   }
-  },
-  {
-   "Id": "de8fb2ac235baec9bec4e14df069e73f",
-   "Name": "The Lonely Signal",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt93689075",
-    "Tmdb": "9185219",
-    "Tvdb": "9683918"
-   }
-  },
-  {
-   "Id": "37142c1741e775cbc297be84d8701895",
-   "Name": "The Amber Lantern",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt93884889",
-    "Tmdb": "9544246",
-    "Tvdb": "9163417"
-   }
-  },
-  {
-   "Id": "a2d97ffbf39e87e27a4b7d876a44e773",
-   "Name": "Distant Tower",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt91265908",
-    "Tmdb": "9428604",
-    "Tvdb": "9398709"
-   }
-  },
-  {
-   "Id": "cdef4bcdcacd8ec03483d45d88cc856e",
-   "Name": "Circuit of Northgate",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt93144816",
-    "Tmdb": "9559808",
-    "Tvdb": "9021456"
-   }
-  },
-  {
-   "Id": "e67fd1f227bee09df5dfedd9e6559cb4",
-   "Name": "Brightwater: Endless Summit",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt96263976",
-    "Tmdb": "9450423",
-    "Tvdb": "9441736"
-   }
-  },
-  {
-   "Id": "f9af90aa5d32607028fac98cf947983f",
-   "Name": "Léa's Frontier",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt96437974",
-    "Tmdb": "9649247",
-    "Tvdb": "9824211"
-   }
-  },
-  {
    "Id": "2446c0a3e7dacc42895167c89dabf15d",
    "Name": "Caminandes",
    "Type": "Series",
@@ -408,66 +128,6 @@
     "Imdb": "tt90398503",
     "Tmdb": "9687774",
     "Tvdb": "9536129"
-   }
-  },
-  {
-   "Id": "c3497710362624e99a5d1854944cb654",
-   "Name": "Amber Station",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt93924985",
-    "Tmdb": "9705975",
-    "Tvdb": "9209977"
-   }
-  },
-  {
-   "Id": "64bcf64d8d7bd27f3d578eecbf5b412e",
-   "Name": "Maud and the Hollow Meridian",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt90669309",
-    "Tmdb": "9511086",
-    "Tvdb": "9723009"
-   }
-  },
-  {
-   "Id": "f80ef0b3b21a11fb685efcda0bf92dd6",
-   "Name": "Open Frontier",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt91431542",
-    "Tmdb": "9793132",
-    "Tvdb": "9823478"
-   }
-  },
-  {
-   "Id": "8e4d01141d62fe8e1c07f555820d38e5",
-   "Name": "Harvest of Stonebridge",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt91525038",
-    "Tmdb": "9128053",
-    "Tvdb": "9799409"
-   }
-  },
-  {
-   "Id": "cd0a7a27fa25d5f9bcb7f96f98aca409",
-   "Name": "Kestrel: Burning Forest",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt91405813",
-    "Tmdb": "9586854",
-    "Tvdb": "9312135"
-   }
-  },
-  {
-   "Id": "89941a9f6df6e92b5b7c2dd67ea570a8",
-   "Name": "The Northern Kingdom",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt97312290",
-    "Tmdb": "9510398",
-    "Tvdb": "9728502"
    }
   },
   {
@@ -479,27 +139,7 @@
     "Tmdb": "9082412",
     "Tvdb": "9478850"
    }
-  },
-  {
-   "Id": "8d88054dc1e994122f035affe5f04a23",
-   "Name": "Quillon: Northern Ocean",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt95486563",
-    "Tmdb": "9585477",
-    "Tvdb": "9344324"
-   }
-  },
-  {
-   "Id": "893404f5358429e8a4a90c41013e6493",
-   "Name": "Léa and the Secret Mirror",
-   "Type": "Series",
-   "ProviderIds": {
-    "Imdb": "tt95512087",
-    "Tmdb": "9778177",
-    "Tvdb": "9116409"
-   }
   }
  ],
- "TotalRecordCount": 50
+ "TotalRecordCount": 14
 }

@@ -1,7 +1,7 @@
 # Regie5 — Linux desktop build (SDL2 + OpenGL 3.3)
 # SPDX-License-Identifier: GPL-3.0-or-later
 cmake_minimum_required(VERSION 3.20)
-project(regie5 VERSION 0.2.0 LANGUAGES C CXX)
+project(regie5 VERSION 0.3.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,6 +12,11 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 set(REGIE5_VERSION "${PROJECT_VERSION}-dev" CACHE STRING "Version shown in the app")
+# A -dev version follows project(VERSION) in a build folder made before it
+# changed; one given by hand (-DREGIE5_VERSION=...) is kept.
+if(REGIE5_VERSION MATCHES "-dev$" AND NOT REGIE5_VERSION STREQUAL "${PROJECT_VERSION}-dev")
+    set(REGIE5_VERSION "${PROJECT_VERSION}-dev" CACHE STRING "Version shown in the app" FORCE)
+endif()
 
 find_package(SDL2 REQUIRED)
 find_package(Freetype REQUIRED)
