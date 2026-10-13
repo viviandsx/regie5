@@ -5,6 +5,7 @@
 #include "api/jellyfin.h"
 
 #include "api/json.h"
+#include "core/libraries.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -50,6 +51,57 @@ std::string index_path()
 {
     return "/Items?Recursive=true&IncludeItemTypes=Movie,Series&Fields=ProviderIds&EnableUserData=false"
            "&EnableImages=false";
+}
+
+std::string libraries_path() { return "/Library/VirtualFolders"; }
+
+std::string library_items_path(const std::string &library_id)
+{
+    return "/Items?ParentId=" + library_id +
+           "&Recursive=true&IncludeItemTypes=Movie,Series&Fields=ProviderIds&EnableUserData=false&EnableImages=false";
+}
+
+std::string library_count_path(const std::string &library_id, const std::string &type)
+{
+    return "/Items?ParentId=" + library_id + "&Recursive=true" +
+           (type.empty() ? std::string("&IsFolder=false") : "&IncludeItemTypes=" + type) +
+           "&Limit=0&EnableTotalRecordCount=true&EnableImages=false&EnableUserData=false";
+}
+
+bool parse_libraries(const std::string &body, std::vector<model::JellyfinLibrary> *out)
+{
+    json::Doc d(body);
+    if (!cJSON_IsArray(d.root()))
+        return false;
+    out->clear();
+    const cJSON *it;
+    cJSON_ArrayForEach(it, d.root())
+    {
+        model::JellyfinLibrary l;
+        l.id = json::str(it, "ItemId");
+        l.name = json::str(it, "Name");
+        const std::string type = json::str(it, "CollectionType");
+        l.kind = type == "movies" ? model::JellyfinLibrary::Movies
+                 : type == "tvshows" ? model::JellyfinLibrary::Shows
+                                     : model::JellyfinLibrary::Other;
+        const cJSON *loc;
+        cJSON_ArrayForEach(loc, json::get(it, "Locations"))
+            if (cJSON_IsString(loc))
+                l.folders.push_back(libraries::last_name(loc->valuestring));
+        if (!l.id.empty())
+            out->push_back(std::move(l));
+    }
+    return true;
+}
+
+bool parse_count(const std::string &body, int *count)
+{
+    json::Doc d(body);
+    const cJSON *n = json::get(d.root(), "TotalRecordCount");
+    if (!cJSON_IsNumber(n))
+        return false;
+    *count = n->valueint;
+    return true;
 }
 
 bool parse_user_items(const std::string &body, std::vector<model::UserItem> *out)

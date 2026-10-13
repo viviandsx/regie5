@@ -300,6 +300,26 @@ void Services::activity(time_t since, std::function<void(Result<std::vector<mode
                                             jellyfin::parse_activity, std::move(done));
 }
 
+void Services::libraries(std::function<void(Result<std::vector<model::JellyfinLibrary>>)> done)
+{
+    call<std::vector<model::JellyfinLibrary>>(config::Jellyfin, "GET", jellyfin::libraries_path(),
+                                              jellyfin::parse_libraries, std::move(done));
+}
+
+void Services::library_items(const std::string &library_id,
+                             std::function<void(Result<std::vector<model::UserItem>>)> done)
+{
+    call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::library_items_path(library_id),
+                                       jellyfin::parse_user_items, std::move(done));
+}
+
+void Services::library_count(const std::string &library_id, const std::string &type,
+                             std::function<void(Result<int>)> done)
+{
+    call<int>(config::Jellyfin, "GET", jellyfin::library_count_path(library_id, type), jellyfin::parse_count,
+              std::move(done));
+}
+
 void Services::users(std::function<void(Result<std::vector<model::JellyfinUser>>)> done)
 {
     call<std::vector<model::JellyfinUser>>(config::Jellyfin, "GET", jellyfin::users_path(), jellyfin::parse_users,

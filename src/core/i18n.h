@@ -453,6 +453,21 @@ enum S {
     CommentCannotReproduce,
     CommentAsSeerr,
     Quoted,
+    SectionLibraries,
+    SectionUsers,
+    LibKindOther,
+    LibEpisodes,
+    LibEpisodesOne,
+    LibItems,
+    LibItemsOne,
+    LibSizePartial,
+    LibSizeFrom,
+    LibrariesEmpty,
+    UsersEmpty,
+    UserAdmin,
+    UserDisabled,
+    UserSeen,
+    UserNever,
     Count
 };
 

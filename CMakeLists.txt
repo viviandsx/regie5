@@ -39,6 +39,7 @@ add_library(regie5_data STATIC
     src/core/i18n.cpp
     src/core/input.cpp
     src/core/jelly5.cpp
+    src/core/libraries.cpp
     src/core/options.cpp
     src/core/perf.cpp
     src/core/schedule.cpp
@@ -82,6 +83,7 @@ add_library(regie5_ui STATIC
     src/ui/screens/home.cpp
     src/ui/screens/issues.cpp
     src/ui/screens/jellyfin_screen.cpp
+    src/ui/screens/jellyfin_stats.cpp
     src/ui/screens/journal.cpp
     src/ui/screens/library.cpp
     src/ui/screens/library_detail.cpp

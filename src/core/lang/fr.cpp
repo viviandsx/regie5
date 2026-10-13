@@ -451,6 +451,21 @@ const Text kTexts[] = {
     {CommentCannotReproduce, "Je n'arrive pas à reproduire le problème : pouvez-vous réessayer ?"},
     {Quoted, "« %s »"},
     {CommentAsSeerr, "Publié dans Seerr au nom du compte de la clé d'API."},
+    {SectionLibraries, "Bibliothèques"},
+    {SectionUsers, "Utilisateurs"},
+    {LibKindOther, "Autres médias"},
+    {LibEpisodes, "%d épisodes"},
+    {LibEpisodesOne, "%d épisode"},
+    {LibItems, "%d éléments"},
+    {LibItemsOne, "%d élément"},
+    {LibSizePartial, "taille de %d titres sur %d (Radarr / Sonarr)"},
+    {LibSizeFrom, "taille d'après Radarr / Sonarr"},
+    {LibrariesEmpty, "Aucune bibliothèque."},
+    {UsersEmpty, "Aucun utilisateur."},
+    {UserAdmin, "Admin"},
+    {UserDisabled, "Désactivé"},
+    {UserSeen, "Actif %s"},
+    {UserNever, "Jamais connecté"},
 };
 
 } // namespace

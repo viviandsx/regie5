@@ -5,6 +5,7 @@
 #include "api/arr.h"
 
 #include "api/json.h"
+#include "core/libraries.h"
 
 #include <algorithm>
 #include <cctype>
@@ -156,6 +157,7 @@ model::Movie read_movie(const cJSON *it)
     m.physical = json::parse_time(json::str(it, "physicalRelease"));
     m.quality_profile = json::integer(it, "qualityProfileId");
     m.size = json::i64(it, "sizeOnDisk");
+    m.root = libraries::last_name(json::str(it, "rootFolderPath"));
     m.studio = json::str(it, "studio");
     m.overview = json::str(it, "overview");
     m.runtime = json::integer(it, "runtime");
@@ -204,6 +206,7 @@ bool parse_series(const std::string &body, std::vector<model::Series> *out)
         s.episodes = json::integer(stats, "episodeCount");
         s.total = json::integer(stats, "totalEpisodeCount");
         s.size = json::i64(stats, "sizeOnDisk");
+        s.root = libraries::last_name(json::str(it, "rootFolderPath"));
         const cJSON *season;
         cJSON_ArrayForEach(season, json::get(it, "seasons"))
         {

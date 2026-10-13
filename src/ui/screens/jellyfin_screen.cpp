@@ -55,6 +55,7 @@ void JellyfinScreen::activate()
         refresh_sessions();
     if (now - m_last_tasks > 5)
         refresh_tasks();
+    m_stats.load(false, now);
 }
 
 void JellyfinScreen::refresh_sessions()
@@ -145,7 +146,23 @@ void JellyfinScreen::layout()
         y += 120 + kGap;   /* the empty or loading state */
     y += 16;
     m_slots.push_back({Slot::Scan, 0, y, kButtonH});
-    y += kButtonH + 90;   /* then the tasks' title */
+    y += kButtonH + 64;
+    /* A section: its title, then its rows (or the room of an empty / loading state). */
+    auto section = [&](float *title_y, Slot::Kind kind, int n) {
+        *title_y = y;
+        y += 26;
+        for (int i = 0; i < n; i++) {
+            m_slots.push_back({kind, i, y, kTaskH});
+            y += kTaskH + 8;
+        }
+        if (n == 0)
+            y += 120 + 8;
+        y += 56;
+    };
+    section(&m_libs_y, Slot::Library, (int)m_lib_lines.size());
+    section(&m_users_y, Slot::User, m_stats.users().ready() ? (int)m_stats.users().value.size() : 0);
+    m_tasks_y = y;
+    y += 26;
     const int nt = m_tasks.ready() ? (int)m_tasks.value.size() : 0;
     for (int i = 0; i < nt; i++) {
         m_slots.push_back({Slot::Task, i, y, kTaskH});
@@ -226,6 +243,7 @@ Action JellyfinScreen::input(const input::State &in)
         refresh_tasks();
         refresh_load();
         m_encoding.state = load::Idle;
+        m_stats.load(true, platform::now());
         activate();
         return Action::None;
     }
@@ -269,6 +287,8 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
         refresh_tasks();
     if (now - m_last_load >= 5.0 && m_ctx.services && m_ctx.services->enabled(config::Glances))
         refresh_load();
+    m_stats.load(false, now);
+    m_lib_lines = m_stats.library_lines();
     layout();
     const float x0 = kPad + ox;
     gfx::text(x0, 214, "Jellyfin", {gfx::Bold, 60}, kText);
@@ -386,7 +406,9 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
     }
 
     /* Scheduled tasks. */
-    const float tasks_title = scan ? scan->y + kButtonH + 64 : kTop;
+    draw_libraries(x0, dy, fs, now, animating);
+    draw_users(x0, dy, fs, now, animating);
+    const float tasks_title = m_tasks_y;
     gfx::text(x0, tasks_title + dy, i18n::tr(i18n::SectionTasks), {gfx::SemiBold, 32}, kText);
     if (!m_tasks.ready()) {
         const gfx::Rect r{x0, tasks_title + 26 + dy, kListW, 120};
@@ -433,6 +455,92 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
     gfx::pop_scissor();
     if (art::busy())
         *animating = true;
+}
+
+void JellyfinScreen::draw_libraries(float x0, float dy, const Slot &fs, double now, bool *animating)
+{
+    gfx::text(x0, m_libs_y + dy, i18n::tr(i18n::SectionLibraries), {gfx::SemiBold, 32}, kText);
+    const auto &libs = m_stats.libraries();
+    if (m_lib_lines.empty()) {
+        const gfx::Rect r{x0, m_libs_y + 26 + dy, kListW, 120};
+        if (libs.state == load::Failed)
+            draw_empty(r, fmt::labelled("Jellyfin", fmt::error(libs.error, libs.http_status)), i18n::tr(i18n::Retry),
+                       true);
+        else if (!libs.ready())
+            draw_skeleton(r, 18, now, animating);
+        else
+            draw_empty(r, i18n::tr(i18n::LibrariesEmpty));
+        return;
+    }
+    for (const Slot &slot : m_slots) {
+        if (slot.kind != Slot::Library || slot.index >= (int)m_lib_lines.size())
+            continue;
+        const JellyfinStats::LibraryLine &l = m_lib_lines[slot.index];
+        const float y = slot.y + dy;
+        if (y + slot.h < kViewTop || y > gfx::H)
+            continue;
+        const bool f = m_focused && &slot == &fs;
+        const float right = x0 + kListW - 28;
+        /* Counts and size on the right; skeletons while they come. */
+        float rw = 0;
+        if (!l.counts.empty()) {
+            const std::string text = l.size.empty() ? l.counts : l.counts + " · " + l.size;
+            rw = gfx::text_width(text, {gfx::Medium, 24});
+            gfx::text(right, y + 40, text, {gfx::Medium, 24}, kText2, 2);
+        } else {
+            rw = 260;
+            draw_skeleton({right - rw, y + 22, rw, 24}, 8, now, animating);
+        }
+        if (!l.size_note.empty())
+            gfx::text(right, y + 70, l.size_note, {gfx::Regular, 20}, kText3, 2);
+        const float tw = kListW - std::max(rw, 420.f) - 90;
+        gfx::text(x0 + 30, y + (l.kind.empty() ? 52 : 40), l.name, {f ? gfx::Bold : gfx::SemiBold, 28, tw}, kText);
+        if (!l.kind.empty())
+            gfx::text(x0 + 30, y + 70, l.kind, {gfx::Regular, 20, tw}, kText3);
+    }
+}
+
+void JellyfinScreen::draw_users(float x0, float dy, const Slot &fs, double now, bool *animating)
+{
+    gfx::text(x0, m_users_y + dy, i18n::tr(i18n::SectionUsers), {gfx::SemiBold, 32}, kText);
+    const auto &users = m_stats.users();
+    if (!users.ready() || users.value.empty()) {
+        const gfx::Rect r{x0, m_users_y + 26 + dy, kListW, 120};
+        if (users.state == load::Failed)
+            draw_empty(r, fmt::labelled("Jellyfin", fmt::error(users.error, users.http_status)), i18n::tr(i18n::Retry),
+                       true);
+        else if (!users.ready())
+            draw_skeleton(r, 18, now, animating);
+        else
+            draw_empty(r, i18n::tr(i18n::UsersEmpty));
+        return;
+    }
+    const time_t now_t = time(nullptr);
+    for (const Slot &slot : m_slots) {
+        if (slot.kind != Slot::User || slot.index >= (int)users.value.size())
+            continue;
+        const model::JellyfinUser &u = users.value[slot.index];
+        const float y = slot.y + dy;
+        if (y + slot.h < kViewTop || y > gfx::H)
+            continue;
+        const bool f = m_focused && &slot == &fs;
+        const float right = x0 + kListW - 28;
+        const std::string seen =
+            u.last_activity ? fmt::f(i18n::tr(i18n::UserSeen), fmt::ago(u.last_activity, now_t).c_str())
+                            : std::string(i18n::tr(i18n::UserNever));
+        /* Recently active: a green dot (within a day), else grey. */
+        const bool recent = u.last_activity && now_t - u.last_activity < 86400;
+        const float sw = gfx::text_width(seen, {gfx::Medium, 24});
+        gfx::text(right, y + 50, seen, {gfx::Medium, 24}, kText2, 2);
+        gfx::fill({right - sw - 26, y + 38, 12, 12}, recent ? kGreen : 0xff8e8e93u, 6);
+        const float nw = gfx::text(x0 + 30, y + 52, u.name, {f ? gfx::Bold : gfx::SemiBold, 28, kListW - sw - 400},
+                                   u.disabled ? kText3 : kText);
+        float cx = x0 + 30 + nw + 18;
+        if (u.admin)
+            cx += draw_chip(cx, y + 26, i18n::tr(i18n::UserAdmin), 0xffbf5af2u, 1.f, 22) + 10;
+        if (u.disabled)
+            draw_chip(cx, y + 26, i18n::tr(i18n::UserDisabled), kRed, 1.f, 22);
+    }
 }
 
 } // namespace ui

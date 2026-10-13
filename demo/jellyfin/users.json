@@ -73,7 +73,7 @@
  },
  {
   "Id": "78c29f6bc194e203cf3682ce67e5ce60",
-  "Name": "Alice",
+  "Name": "Inès",
   "Policy": {
    "IsDisabled": false,
    "IsAdministrator": false
@@ -82,7 +82,7 @@
  },
  {
   "Id": "8e04f6455baf8132994562ad84928b54",
-  "Name": "Bruno",
+  "Name": "Jules",
   "Policy": {
    "IsDisabled": false,
    "IsAdministrator": false
@@ -91,7 +91,7 @@
  },
  {
   "Id": "876476501bb5d500c82453f3322c63bb",
-  "Name": "Chloé",
+  "Name": "Karim",
   "Policy": {
    "IsDisabled": false,
    "IsAdministrator": true

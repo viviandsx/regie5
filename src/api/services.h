@@ -102,6 +102,11 @@ public:
     void delete_movie(int instance, int movie_id, std::function<void(Result<bool>)> done);
     void delete_series(int instance, int series_id, std::function<void(Result<bool>)> done);
 
+    /* Jellyfin's libraries: the list, one's films and series, a count. */
+    void libraries(std::function<void(Result<std::vector<model::JellyfinLibrary>>)> done);
+    void library_items(const std::string &library_id, std::function<void(Result<std::vector<model::UserItem>>)> done);
+    void library_count(const std::string &library_id, const std::string &type, std::function<void(Result<int>)> done);
+
     /* The playback diagnosis. */
     void encoding(std::function<void(Result<model::EncodingInfo>)> done);
     void server_load(std::function<void(Result<model::ServerLoad>)> done);   /* Glances */

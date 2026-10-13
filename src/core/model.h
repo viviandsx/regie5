@@ -114,6 +114,7 @@ struct Series {
     std::vector<SeasonStats> seasons;
     int tvdb_id = 0, tmdb_id = 0;   /* to find it in Jellyfin (the cleanup) */
     std::string imdb_id;
+    std::string root;   /* its root folder's last name ("tv4k"): which Jellyfin library holds it */
     int missing() const { return episodes > files ? episodes - files : 0; }
 };
 
@@ -130,6 +131,7 @@ struct Movie {
     std::string file_quality;   /* its file's quality ("Bluray-1080p"), never its name */
     int tmdb_id = 0;            /* to find it in Jellyfin (the cleanup) */
     std::string imdb_id;
+    std::string root;           /* its root folder's last name ("movies4k") */
     std::string studio, overview;
     int runtime = 0;
     /* The next release still to come, 0 when none. */
@@ -241,6 +243,14 @@ struct UserItem {
     bool played = false, favorite = false;
     time_t last_played = 0;
     int unplayed = -1;   /* series: episodes left to watch, -1 unknown */
+};
+
+/* A Jellyfin library: its name and kind, and its folders' last names (to
+ * tell which Radarr / Sonarr feeds it; the paths are never shown). */
+struct JellyfinLibrary {
+    std::string id, name;
+    enum Kind { Movies, Shows, Other } kind = Other;
+    std::vector<std::string> folders;
 };
 
 struct JellyfinUser {

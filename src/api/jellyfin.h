@@ -38,6 +38,16 @@ std::string user_items_path(const std::string &user_id);
  * user's data (Jelly5's links). Parsed by parse_user_items. */
 std::string index_path();
 bool parse_user_items(const std::string &body, std::vector<model::UserItem> *out);
+/* GET /Library/VirtualFolders (admin): name, kind, folders' last names
+ * (Locations are read for that alone, never kept whole). */
+std::string libraries_path();
+bool parse_libraries(const std::string &body, std::vector<model::JellyfinLibrary> *out);
+/* GET: a library's films and series with their ids (parse_user_items). */
+std::string library_items_path(const std::string &library_id);
+/* GET: how many items of a kind a library holds ("Episode"; empty: every
+ * item that is not a folder), without the items (Limit=0). */
+std::string library_count_path(const std::string &library_id, const std::string &type);
+bool parse_count(const std::string &body, int *count);
 /* GET /System/Configuration/encoding (admin) */
 bool parse_encoding(const std::string &body, model::EncodingInfo *out);
 /* GET: items by id (names for the journal), ids comma-separated. */

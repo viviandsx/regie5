@@ -10,6 +10,7 @@
 #include "core/app_settings.h"
 #include "core/badges.h"
 #include "core/cleanup.h"
+#include "core/libraries.h"
 #include "core/config.h"
 #include "core/i18n.h"
 #include "core/lang/language.h"
@@ -378,4 +379,38 @@ TEST(tab_badges)
     CHECK_EQ(badges::sessions(std::vector<model::Session>(2)).count, 2);
     CHECK_EQ(badges::label(7), std::string("7"));
     CHECK_EQ(badges::label(100), std::string("99+"));
+}
+
+TEST(library_sizes_from_radarr_and_sonarr)
+{
+    CHECK_EQ(libraries::last_name("/data/media/movies4k/"), std::string("movies4k"));
+    CHECK_EQ(libraries::last_name("D:\\Films"), std::string("Films"));
+    CHECK_EQ(libraries::last_name("movies"), std::string("movies"));
+    CHECK_EQ(libraries::last_name("/"), std::string());
+
+    model::Movie hd, uhd, other;
+    hd.tmdb_id = uhd.tmdb_id = 10;
+    hd.size = 8, uhd.size = 40;
+    hd.root = "movies", uhd.root = "movies4k";
+    other.imdb_id = "tt1", other.size = 5;
+    model::Series show;
+    show.tvdb_id = 7, show.size = 100;
+
+    std::vector<model::UserItem> items(4);
+    items[0].tmdb_id = 10;                          /* in both Radarr */
+    items[1].imdb_id = "tt1";                       /* found by IMDb */
+    items[2].series = true, items[2].tvdb_id = 7;   /* a series */
+    items[3].tmdb_id = 99;                          /* unknown to Radarr: not measured */
+
+    model::JellyfinLibrary lib4k;
+    lib4k.folders = {"movies4k"};
+    libraries::Size s = libraries::measure(lib4k, items, {hd, uhd, other}, {show});
+    CHECK_EQ(s.titles, 4);
+    CHECK_EQ(s.measured, 3);
+    CHECK_EQ((long long)s.bytes, 40LL + 5 + 100);   /* the 4K copy: its root folder is the library's */
+
+    model::JellyfinLibrary lib;   /* no folder matches: the smaller copy */
+    lib.folders = {"elsewhere"};
+    CHECK_EQ((long long)libraries::measure(lib, items, {hd, uhd, other}, {show}).bytes, 8LL + 5 + 100);
+    CHECK_EQ(libraries::measure(lib, items, {}, {}).measured, 0);
 }

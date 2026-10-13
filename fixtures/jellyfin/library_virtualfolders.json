@@ -1,0 +1,47 @@
+[
+ {
+  "Name": "Films",
+  "Locations": [
+   "/media/movies"
+  ],
+  "CollectionType": "movies",
+  "LibraryOptions": {
+   "Enabled": true,
+   "EnableRealtimeMonitor": true
+  },
+  "ItemId": "b435a1b07dfd777b031bda8e82361920",
+  "PrimaryImageItemId": "b435a1b07dfd777b031bda8e82361920",
+  "RefreshStatus": "Idle",
+  "_regie5_synthetic": true
+ },
+ {
+  "Name": "Series",
+  "Locations": [
+   "/media/tv"
+  ],
+  "CollectionType": "tvshows",
+  "LibraryOptions": {
+   "Enabled": true,
+   "EnableRealtimeMonitor": true
+  },
+  "ItemId": "7f008543d077e24931dfc5a50483b576",
+  "PrimaryImageItemId": "7f008543d077e24931dfc5a50483b576",
+  "RefreshStatus": "Idle",
+  "_regie5_synthetic": true
+ },
+ {
+  "Name": "Concerts",
+  "Locations": [
+   "/media/concerts"
+  ],
+  "CollectionType": "homevideos",
+  "LibraryOptions": {
+   "Enabled": true,
+   "EnableRealtimeMonitor": true
+  },
+  "ItemId": "c6b8ff3edf89224234725bf7b2a589f9",
+  "PrimaryImageItemId": "c6b8ff3edf89224234725bf7b2a589f9",
+  "RefreshStatus": "Idle",
+  "_regie5_synthetic": true
+ }
+]

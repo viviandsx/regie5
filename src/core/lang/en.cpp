@@ -452,6 +452,21 @@ const Text kTexts[] = {
     {CommentCannotReproduce, "I can't reproduce the problem: could you try again?"},
     {Quoted, "“%s”"},
     {CommentAsSeerr, "Posted in Seerr as the API key's account."},
+    {SectionLibraries, "Libraries"},
+    {SectionUsers, "Users"},
+    {LibKindOther, "Other media"},
+    {LibEpisodes, "%d episodes"},
+    {LibEpisodesOne, "%d episode"},
+    {LibItems, "%d items"},
+    {LibItemsOne, "%d item"},
+    {LibSizePartial, "size of %d of %d titles (Radarr / Sonarr)"},
+    {LibSizeFrom, "size from Radarr / Sonarr"},
+    {LibrariesEmpty, "No libraries."},
+    {UsersEmpty, "No users."},
+    {UserAdmin, "Admin"},
+    {UserDisabled, "Disabled"},
+    {UserSeen, "Active %s"},
+    {UserNever, "Never signed in"},
 };
 
 } // namespace

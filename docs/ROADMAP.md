@@ -25,7 +25,7 @@ pour ce qui a été fait après la phase 0).
 | **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | 🔶 en cours (§ 2 sexies) |
 
-Tests : **56** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **58** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -408,7 +408,23 @@ publie seul toute release du dépôt.
       `seerr-api.yml` et `server/routes/issue.ts` (branche develop). **Testé en `--mock`
       seulement** (les deux POST journalisés, rien envoyé) ; aucun test réel sans accord de
       Vivian. Ajouté aux écritures autorisées de CLAUDE.md §3.
-- [ ] **f) Jellyfin** : bibliothèques (nombre, taille) et utilisateurs (dernière activité).
+- [x] **f) Jellyfin : bibliothèques et utilisateurs** — deux sections de l'onglet Jellyfin,
+      entre « Scanner les bibliothèques » et les tâches. **Bibliothèques**
+      (`/Library/VirtualFolders`) : films, séries + épisodes, ou éléments pour les autres types
+      (`/Items?ParentId=…`, `Limit=0` pour compter). **Taille** : Jellyfin n'en donne aucune
+      (pas de champ dans `BaseItemDto`, seulement les `MediaSources` de chaque fichier, trop
+      lourdes) ; les films et séries de la bibliothèque sont retrouvés dans Radarr / Sonarr
+      (TMDB / TVDB / IMDb, comme le Ménage) et leurs tailles additionnées. Un titre dans deux
+      instances compte la copie dont le dossier racine (`rootFolderPath`) porte le nom d'un
+      dossier de la bibliothèque, sinon la plus petite ; « taille de 49 titres sur 50 » quand
+      tout n'est pas trouvé. Chemins lus pour leur dernier nom seulement, jamais affichés.
+      **Utilisateurs** (`/Users`, déjà lu par le Ménage) : nom, Admin, Désactivé, « Actif il y a
+      2 j » (pastille verte sous 24 h), du plus récent au plus ancien ; ni IP ni appareil (pas
+      dans `/Users`). Logique dans `core/libraries` (testée), `ui/JellyfinStats`. Fixtures
+      inventées (`scripts/make-library-fixtures.py` : trois bibliothèques depuis l'index déjà
+      anonyme ; il donne aussi des noms distincts aux trois utilisateurs que l'anonymiseur
+      avait appelés comme d'autres). **À vérifier sur le vrai serveur** (GET seulement) :
+      forme de `/Library/VirtualFolders` et des comptes en 12.x, temps de calcul des tailles.
 
 À la sortie de la 0.3.0 : README (fonctions : pastilles, signalements, bibliothèques et
 utilisateurs Jellyfin, 120 Hz ; ligne Seerr du tableau des versions ; captures refaites avec
@@ -581,3 +597,4 @@ la Bibliothèque).
 | 13 oct. 2026 | 0.3.0 c) : reverse proxy nginx (sous-chemins, HTTPS auto-signé, lecture seule) ; certificat refusé sous Linux, adresse avec chemin et redirections dans Réglages. |
 | 13 oct. 2026 | 0.3.0 d) : pastilles de compteur sur Activité, Demandes, Jellyfin. |
 | 13 oct. 2026 | 0.3.0 e) : signalements Seerr (lecture, résoudre, commenter ; `--mock` seulement). |
+| 13 oct. 2026 | 0.3.0 f) : bibliothèques (nombres, taille d'après Radarr / Sonarr) et utilisateurs Jellyfin. |

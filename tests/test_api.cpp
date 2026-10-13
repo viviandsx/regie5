@@ -296,6 +296,28 @@ TEST(seerr_issues)
     CHECK_EQ(api::MockTransport::file_for("http://seerr.mock/api/v1/issue/37"), std::string("seerr/issue_37.json"));
 }
 
+TEST(jellyfin_libraries)
+{
+    std::vector<model::JellyfinLibrary> libs;
+    CHECK(jellyfin::parse_libraries(fixture("jellyfin/library_virtualfolders.json"), &libs));
+    CHECK_EQ(libs.size(), (size_t)3);
+    CHECK(libs[0].kind == model::JellyfinLibrary::Movies);
+    CHECK(libs[1].kind == model::JellyfinLibrary::Shows);
+    CHECK(libs[2].kind == model::JellyfinLibrary::Other);
+    CHECK_EQ(libs[0].folders.size(), (size_t)1);
+    CHECK_EQ(libs[0].folders[0], std::string("movies"));   /* the last name alone */
+    CHECK(jellyfin::library_items_path("ab").find("ParentId=ab") != std::string::npos);
+    CHECK(jellyfin::library_count_path("ab", "Episode").find("Limit=0") != std::string::npos);
+    CHECK(jellyfin::library_count_path("ab", "").find("IsFolder=false") != std::string::npos);
+
+    int n = -1;
+    CHECK(jellyfin::parse_count(R"({"Items": [], "TotalRecordCount": 814})", &n));
+    CHECK_EQ(n, 814);
+    CHECK(!jellyfin::parse_count("[]", &n));
+    CHECK_EQ(api::MockTransport::file_for("http://jellyfin.mock/Items?ParentId=ab&Recursive=true&IncludeItemTypes=Episode&Limit=0"),
+             std::string("jellyfin/items_parent_ab_episode.json"));
+}
+
 TEST(seerr_details)
 {
     model::MediaDetail d;
