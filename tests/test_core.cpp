@@ -11,6 +11,7 @@
 #include "core/cleanup.h"
 #include "core/config.h"
 #include "core/i18n.h"
+#include "core/versions.h"
 
 #include <cstdlib>
 #include <unistd.h>
@@ -241,4 +242,28 @@ TEST(cleanup_candidates)
     CHECK(ids(c2) == (std::vector<int>{20, 2, 1, 6}));   /* "one" joins; favourite, recent, kept never */
     if (!c1.empty())
         CHECK_EQ(c1[0].watched_by.size(), (size_t)2);
+}
+
+TEST(versions_minimum)
+{
+    int o = 9;
+    CHECK(versions::compare("10.11.2", "10.9", &o) && o > 0);   /* number by number, not as text */
+    CHECK(versions::compare("4.0", "4.0.0.0", &o) && o == 0);
+    CHECK(versions::compare("3.0.10.1567", "4.0", &o) && o < 0);
+    CHECK(versions::compare("4.0.1-beta", "4.0.1", &o) && o == 0);
+    CHECK(!versions::compare("develop", "4.0", &o));
+
+    CHECK(versions::supported(config::Sonarr, "4.0.20.3014"));     /* the fixtures' */
+    CHECK(!versions::supported(config::Sonarr, "3.0.10.1567"));
+    CHECK(versions::supported(config::Radarr, "6.4.4.10685"));
+    CHECK(!versions::supported(config::Radarr, "4.7.5.7809"));
+    CHECK(versions::supported(config::Seerr, "3.5.0"));
+    CHECK(versions::supported(config::Seerr, "2.7.3"));             /* Jellyseerr */
+    CHECK(!versions::supported(config::Seerr, "1.34.0"));           /* Overseerr */
+    CHECK(versions::supported(config::Jellyfin, "12.2.0"));
+    CHECK(versions::supported(config::Jellyfin, "10.11.0"));
+    CHECK(!versions::supported(config::Jellyfin, "10.8.13"));
+    CHECK(versions::supported(config::Jellyfin, ""));                /* unknown: let through */
+    CHECK(versions::supported(config::Sonarr, "develop"));
+    CHECK(versions::supported(config::Glances, "Intel(R) Core(TM) i5"));   /* no minimum */
 }

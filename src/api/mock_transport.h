@@ -19,6 +19,8 @@
  *                                        (unreachable, timeout, unauthorized,
  *                                         notfound, servererror, badjson)
  *   REGIE5_MOCK_EMPTY=sonarr,seerr        their lists answer empty (same shape)
+ *   REGIE5_MOCK_OLD=sonarr,jellyfin       their connection test answers a version
+ *                                        older than Régie5's minimum (1.0.0)
  *   REGIE5_MOCK_OFF=jellyfin              off, as if "enabled": false
  *   REGIE5_MOCK_MULTI=1                   a second Radarr, "Radarr 4K", under
  *                                        http://radarr.mock/radarr4k
@@ -39,7 +41,8 @@ class MockTransport : public http::Transport {
 public:
     /* root: the fixtures directory. fail: REGIE5_MOCK_FAIL's syntax. empty:
      * REGIE5_MOCK_EMPTY's, services separated by commas. */
-    MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty = {});
+    MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty = {},
+                  const std::string &old = {});
     http::Response perform(const http::Request &req, const std::atomic<bool> *cancel) override;
 
     /* The fixture file a URL maps to, relative to root ("" when none). Public for the tests. */
@@ -57,6 +60,7 @@ private:
     int m_delay_ms;
     std::map<std::string, std::string> m_fail;   /* service -> failure */
     std::map<std::string, bool> m_empty;         /* services whose lists are empty */
+    std::map<std::string, bool> m_old;           /* services that answer an old version */
     std::map<std::string, std::string> m_pictures;   /* images.json: key -> file in images/ */
 };
 

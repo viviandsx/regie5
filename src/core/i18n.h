@@ -397,6 +397,8 @@ enum S {
     Jelly5Searching,
     FindInJelly5,
     Jelly5LookFor,
+    VersionUnsupported,
+    VersionMinimum,
     Count
 };
 

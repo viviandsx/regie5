@@ -90,17 +90,19 @@ names).
 
 ### Services and versions
 
-| Service | Tested with | Used for |
-|---|---|---|
-| [Sonarr](https://sonarr.tv) | 4.0 | calendar, queue, series, health, disk space, history; Cleanup |
-| [Radarr](https://radarr.video) | 6.4 | calendar, queue, films, health, disk space, history; Cleanup |
-| [Seerr](https://github.com/seerr-team/seerr) | 3.5 | requests, approve / decline, posters through its image proxy |
-| [Jellyfin](https://jellyfin.org) | 12.2 | sessions, playback info, recently added, users, activity log, scheduled tasks |
-| [Glances](https://nicolargo.github.io/glances/) (optional) | 4.x API | server load |
+| Service | Minimum | Tested with | Used for |
+|---|---|---|---|
+| [Sonarr](https://sonarr.tv) | 4.0 | 4.0 | calendar, queue, series, health, disk space, history; Cleanup |
+| [Radarr](https://radarr.video) | 5.0 | 6.4 | calendar, queue, films, health, disk space, history; Cleanup |
+| [Seerr](https://github.com/seerr-team/seerr) | 2.0 (Jellyseerr 2.x works too) | 3.5 | requests, approve / decline, posters through its image proxy |
+| [Jellyfin](https://jellyfin.org) | 10.9 | 12.2 | sessions, playback info, recently added, users, activity log, scheduled tasks |
+| [Glances](https://nicolargo.github.io/glances/) (optional) | 4.0 (API 4) | 4.x | server load |
 
-Older versions are not tested. Each service is optional: a service turned off simply
-leaves its sections out. Settings says plainly when a service does not answer as
-expected.
+Each service is optional: a service turned off simply leaves its sections out.
+Settings tests every service and says plainly when one does not answer as expected,
+or when its version is older than the minimum above ("Version too old"). Versions
+between the minimum and the tested one should work but have not been tried; reports
+are welcome. Overseerr 1.x is not supported (it has no Jellyfin links).
 
 ## Install
 

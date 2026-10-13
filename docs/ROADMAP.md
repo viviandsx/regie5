@@ -344,6 +344,14 @@ pré-release tant que la PR #244 n'est pas fusionnée.**
       Le transport de démo sert les images listées dans `demo/images.json` (mediacover,
       images Jellyfin, proxy Seerr) ; `fixtures/` n'en a toujours aucune. Hors du zip PS5.
       Captures du README refaites par `scripts/capture-readme.sh` (anglais, 1920 × 1080).
+- [x] **a) Versions minimales** (`core/versions`, testé) : Sonarr 4.0, Radarr 5.0, Seerr 2.0
+      (Jellyseerr 2.x accepté, Overseerr 1.x non : pas de lien Jellyfin), Jellyfin 10.9
+      (`/Items?userId=`, en-tête `MediaBrowser Token`) ; Glances : son chemin `/api/4` suffit.
+      Comparaison nombre par nombre ; une version illisible (build de développement) passe.
+      Trop ancienne : pastille orange dans Réglages, « Version trop ancienne » et « v3.0.10 —
+      Régie5 demande la 4.0 ou plus récente » ; les écrans essaient quand même. Tableau
+      « Minimum / Testé avec » dans le README. `REGIE5_MOCK_OLD=sonarr,jellyfin` et l'état
+      `old` de `capture-states.sh` pour le voir sans serveur.
 
 ## 3. En attente
 
@@ -380,7 +388,7 @@ il touche ce qui est codé, sinon il est planifié ici.
 |---|---|---|
 | HTTPS | Fonctionne sous Linux (libcurl, `http` et `https`). Il manque une option pour les certificats auto-signés (`"insecure": true` par service). Sur PS5 : TLS à porter | Option : étape « adresses » après la 4 bis ; PS5 : phase 6 |
 | Sous-chemins de reverse proxy, `urlBase` des *arr | L'`url` de config peut contenir un chemin (`https://domaine/sonarr`) : toutes les URL passent par `Services::url`. Pas encore testé avec un vrai reverse proxy | Fixture + test « url avec chemin » dans l'étape « adresses » |
-| Versions plus anciennes | La version est lue (test de connexion) mais aucune version minimale n'est vérifiée | Étape « versions » : minimums par service, message clair dans Réglages, liste publiée dans le README |
+| Versions plus anciennes | Minimums vérifiés au test de connexion, message clair dans Réglages, tableau dans le README | Fait (0.3.0, a) |
 | Plusieurs instances (Radarr 1080p + 4K…) | Config : objet **ou** liste nommée, `is4k` par instance ; tous les écrans parcourent toutes les instances | Fait (4 ter) |
 | Fonctions destructives désactivées par défaut | — | 4 bis (B) : Ménage activé seulement dans Réglages, après un avertissement |
 | Configuration sans FTP | Étudiée dans `FEATURES.md` (annexe) : clavier système, QR + page locale, Quick Connect Jellyfin | Décision en phase 6 |
@@ -468,7 +476,8 @@ Variables de développement : `REGIE5_FPS=1` (temps d'image chaque seconde),
 `REGIE5_MOCK_DELAY_MS`, `REGIE5_MOCK_FAIL=radarr:unreachable,…`,
 `REGIE5_WORKER_STACK_KIB=64` (pile des threads de travail, comme sur PS5),
 `REGIE5_HTTP=socket` (le client HTTP de la PS5 au lieu de libcurl, avec Mbed TLS pour `https://`),
-`REGIE5_NO_LAUNCH=1` (une console qui ne lance pas d'app : « Chercher dans Jelly5 »).
+`REGIE5_NO_LAUNCH=1` (une console qui ne lance pas d'app : « Chercher dans Jelly5 »),
+`REGIE5_MOCK_OLD=sonarr,jellyfin` (versions trop anciennes en `--mock`).
 `scripts/make-fixtures.py` régénère les fixtures en GET seulement (`--only library` pour
 la Bibliothèque).
 
@@ -506,3 +515,4 @@ la Bibliothèque).
 | 13 oct. 2026 | **Phase 7** : dépôt public (historique neuf), release `v0.2.0` avec `PPSA99520.zip`, PR #244 au catalogue (contrôles verts, relecture en attente). `docs/RELEASING.md` : branches, ce qui est gelé, sortie d'une version. |
 | 13 oct. 2026 | 0.3.0 : fixtures anonymes (titres et identifiants inventés, `anonymize_titles.py`). |
 | 13 oct. 2026 | 0.3.0 : jeu de démo (`--demo`, films Blender sous CC BY), captures du README refaites. |
+| 13 oct. 2026 | 0.3.0 a) : versions minimales par service, message dans Réglages, tableau du README. |

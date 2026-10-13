@@ -5,8 +5,10 @@
 #include "ui/screens/settings.h"
 
 #include "core/i18n.h"
+#include "core/versions.h"
 #include "platform/platform.h"
 #include "ui/art.h"
+#include "ui/format.h"
 #include "ui/style.h"
 #include "ui/tabbar.h"
 #include "ui/widgets.h"
@@ -395,6 +397,11 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
             status = i18n::tr(i18n::StatusOk);
             /* A version; Glances has none to give: its CPU's name. */
             detail = st.version.empty() ? "" : row.service == config::Glances ? st.version : "v" + st.version;
+            if (!versions::supported(row.service, st.version)) {   /* it answers, but too old to rely on */
+                dot = kOrange;
+                status = i18n::tr(i18n::VersionUnsupported);
+                detail = fmt::f(i18n::tr(i18n::VersionMinimum), st.version.c_str(), versions::minimum(row.service));
+            }
             break;
         case model::ServiceStatus::Failed:
             dot = kRed;
@@ -425,7 +432,10 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
         gfx::text(x0 + 86, ry + (show_url ? 40 : row_h / 2 + 11), name, {gfx::SemiBold, compact ? 28.f : 32.f}, kText);
         if (show_url)
             gfx::text(x0 + 86, ry + 70, host_of(c.url), {gfx::Regular, 22}, kText3);
-        const uint32_t ink = st.state == model::ServiceStatus::Failed ? 0xffff8a80u : kText;
+        const uint32_t ink = st.state == model::ServiceStatus::Failed ? 0xffff8a80u
+                             : st.state == model::ServiceStatus::Ok && !versions::supported(row.service, st.version)
+                                 ? 0xffffd60au
+                                 : kText;
         const bool two = !detail.empty() && !compact;
         gfx::text(x0 + kListW - 44, ry + (two ? 40 : row_h / 2 + 10), status, {gfx::Medium, 27, kListW * 0.55f}, ink, 2);
         if (two)

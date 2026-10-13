@@ -408,6 +408,8 @@ const Entry kTable[Count] = {
     /* Jelly5Searching */ {"Recherche de « %s » dans Jellyfin…", "Looking for “%s” in Jellyfin…"},
     /* FindInJelly5 */ {"Chercher dans Jelly5", "Find in Jelly5"},
     /* Jelly5LookFor */ {"Ouvrez Jelly5 et cherchez « %s »", "Open Jelly5 and search for “%s”"},
+    /* VersionUnsupported */ {"Version trop ancienne", "Version too old"},
+    /* VersionMinimum */ {"v%s — Régie5 demande la %s ou plus récente", "v%s — Régie5 needs %s or newer"},
 };
 
 } // namespace

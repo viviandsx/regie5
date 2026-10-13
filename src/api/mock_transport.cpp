@@ -100,9 +100,13 @@ void empty_lists(cJSON *o)
 
 } // namespace
 
-MockTransport::MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty)
+MockTransport::MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty,
+                             const std::string &old)
     : m_root(std::move(root)), m_delay_ms(delay_ms)
 {
+    for (const std::string &name : split_at(old, ','))
+        if (!name.empty())
+            m_old[name] = true;
     std::string index;
     if (read_file(m_root + "/images.json", &index)) {
         if (cJSON *o = cJSON_ParseWithLength(index.data(), index.size())) {
@@ -260,6 +264,16 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
     }
     r.status = 200;
     r.body = m_empty.count(service) ? emptied(rel, body) : body;
+    if (m_old.count(service)) {   /* the connection test's answer: an old version */
+        for (const char *key : {"version", "Version"}) {
+            const std::string k = std::string("\"") + key + "\": \"";
+            const size_t at = r.body.find(k);
+            if (at != std::string::npos && (rel.find("system_status") != std::string::npos ||
+                                            rel.find("settings_about") != std::string::npos ||
+                                            rel.find("system_info") != std::string::npos))
+                r.body.replace(at + k.size(), r.body.find('"', at + k.size()) - at - k.size(), "1.0.0");
+        }
+    }
     r.content_type = "application/json";
     return r;
 }

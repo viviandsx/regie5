@@ -156,8 +156,9 @@ int main(int argc, char **argv)
         const char *delay = std::getenv("REGIE5_MOCK_DELAY_MS");
         const char *fail = std::getenv("REGIE5_MOCK_FAIL");
         const char *empty = std::getenv("REGIE5_MOCK_EMPTY");
+        const char *old = std::getenv("REGIE5_MOCK_OLD");
         transport = std::make_unique<api::MockTransport>(fixtures, delay ? std::atoi(delay) : 250, fail ? fail : "",
-                                                         empty ? empty : "");
+                                                         empty ? empty : "", old ? old : "");
     } else if (const char *h = std::getenv("REGIE5_HTTP"); h && std::string(h) == "socket") {
         /* The PS5's transport, to try it here against the real servers. */
         const bool log = std::getenv("REGIE5_HTTP_LOG") != nullptr;
