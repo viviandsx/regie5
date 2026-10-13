@@ -1,0 +1,333 @@
+{
+ "page": 1,
+ "pageSize": 50,
+ "sortKey": "timeleft",
+ "sortDirection": "ascending",
+ "totalRecords": 3,
+ "records": [
+  {
+   "id": 9000,
+   "seriesId": 66,
+   "episodeId": 4262,
+   "seasonNumber": 1,
+   "series": {
+    "title": "Crystal Lake",
+    "sortTitle": "crystal lake",
+    "status": "upcoming",
+    "ended": false,
+    "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+    "network": "Peacock",
+    "airTime": "05:00",
+    "images": [
+     {
+      "coverType": "banner"
+     },
+     {
+      "coverType": "poster"
+     },
+     {
+      "coverType": "fanart"
+     },
+     {
+      "coverType": "clearlogo"
+     }
+    ],
+    "originalLanguage": {
+     "id": 1,
+     "name": "English"
+    },
+    "seasons": [
+     {
+      "seasonNumber": 1,
+      "monitored": true
+     }
+    ],
+    "year": 2026,
+    "qualityProfileId": 4,
+    "seasonFolder": true,
+    "monitored": true,
+    "monitorNewItems": "all",
+    "useSceneNumbering": false,
+    "runtime": 50,
+    "tvdbId": 426669,
+    "tvRageId": 0,
+    "tvMazeId": 64960,
+    "tmdbId": 213562,
+    "firstAired": "2026-10-15T00:00:00Z",
+    "lastAired": "2026-10-15T00:00:00Z",
+    "seriesType": "standard",
+    "cleanTitle": "crystallake",
+    "imdbId": "tt23148340",
+    "titleSlug": "crystal-lake",
+    "genres": [
+     "Drama"
+    ],
+    "tags": [],
+    "added": "2026-10-03T22:13:55Z",
+    "ratings": {
+     "votes": 237,
+     "value": 7.8
+    },
+    "languageProfileId": 1,
+    "id": 66
+   },
+   "episode": {
+    "seriesId": 66,
+    "tvdbId": 9431113,
+    "episodeFileId": 0,
+    "seasonNumber": 1,
+    "episodeNumber": 1,
+    "title": "Camp Crystal",
+    "airDate": "2026-10-15",
+    "airDateUtc": "2026-10-15T09:00:00Z",
+    "lastSearchTime": "2026-10-03T22:14:39Z",
+    "runtime": 0,
+    "overview": "Camp Crystal Lake's idyllic summer is cut short by Jason's death; as the town moves on, Pam continues looking for him; Levon invites her to Founder's Day, but it only triggers Pam's pain; as she runs from her present, Pam is soon met with her past.",
+    "hasFile": false,
+    "monitored": true,
+    "unverifiedSceneNumbering": false,
+    "id": 4262
+   },
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "source": "web",
+     "resolution": 1080
+    },
+    "revision": {
+     "version": 1,
+     "real": 0,
+     "isRepack": false
+    }
+   },
+   "size": 2400000000.0,
+   "sizeleft": 912000000.0,
+   "estimatedCompletionTime": "2026-10-11T12:07:45Z",
+   "timeleft": "00:21:00",
+   "added": "2026-10-11T10:46:45Z",
+   "status": "downloading",
+   "trackedDownloadStatus": "ok",
+   "trackedDownloadState": "downloading",
+   "protocol": "usenet",
+   "episodeHasFile": false,
+   "_regie5_synthetic": true
+  },
+  {
+   "id": 9001,
+   "seriesId": 66,
+   "episodeId": 4263,
+   "seasonNumber": 1,
+   "series": {
+    "title": "Crystal Lake",
+    "sortTitle": "crystal lake",
+    "status": "upcoming",
+    "ended": false,
+    "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+    "network": "Peacock",
+    "airTime": "05:00",
+    "images": [
+     {
+      "coverType": "banner"
+     },
+     {
+      "coverType": "poster"
+     },
+     {
+      "coverType": "fanart"
+     },
+     {
+      "coverType": "clearlogo"
+     }
+    ],
+    "originalLanguage": {
+     "id": 1,
+     "name": "English"
+    },
+    "seasons": [
+     {
+      "seasonNumber": 1,
+      "monitored": true
+     }
+    ],
+    "year": 2026,
+    "qualityProfileId": 4,
+    "seasonFolder": true,
+    "monitored": true,
+    "monitorNewItems": "all",
+    "useSceneNumbering": false,
+    "runtime": 50,
+    "tvdbId": 426669,
+    "tvRageId": 0,
+    "tvMazeId": 64960,
+    "tmdbId": 213562,
+    "firstAired": "2026-10-15T00:00:00Z",
+    "lastAired": "2026-10-15T00:00:00Z",
+    "seriesType": "standard",
+    "cleanTitle": "crystallake",
+    "imdbId": "tt23148340",
+    "titleSlug": "crystal-lake",
+    "genres": [
+     "Drama"
+    ],
+    "tags": [],
+    "added": "2026-10-03T22:13:55Z",
+    "ratings": {
+     "votes": 237,
+     "value": 7.8
+    },
+    "languageProfileId": 1,
+    "id": 66
+   },
+   "episode": {
+    "seriesId": 66,
+    "tvdbId": 11252252,
+    "episodeFileId": 0,
+    "seasonNumber": 1,
+    "episodeNumber": 2,
+    "title": "Part 2",
+    "airDate": "2026-10-15",
+    "airDateUtc": "2026-10-15T09:00:00Z",
+    "lastSearchTime": "2026-10-03T22:14:39Z",
+    "runtime": 0,
+    "overview": "While on a date with Levon, Pam bumps into Rita and is invited to a weekend seminar with a self-help guru; Grace goes to a high school party only to be sent away by Claudette; something sinister takes revenge for Grace.",
+    "hasFile": false,
+    "monitored": true,
+    "unverifiedSceneNumbering": false,
+    "id": 4263
+   },
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "source": "web",
+     "resolution": 1080
+    },
+    "revision": {
+     "version": 1,
+     "real": 0,
+     "isRepack": false
+    }
+   },
+   "size": 2400000000.0,
+   "sizeleft": 2400000000.0,
+   "estimatedCompletionTime": null,
+   "timeleft": null,
+   "added": "2026-10-11T10:46:45Z",
+   "status": "queued",
+   "trackedDownloadStatus": "ok",
+   "trackedDownloadState": "downloading",
+   "protocol": "usenet",
+   "episodeHasFile": false,
+   "_regie5_synthetic": true
+  },
+  {
+   "id": 9002,
+   "seriesId": 66,
+   "episodeId": 4264,
+   "seasonNumber": 1,
+   "series": {
+    "title": "Crystal Lake",
+    "sortTitle": "crystal lake",
+    "status": "upcoming",
+    "ended": false,
+    "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+    "network": "Peacock",
+    "airTime": "05:00",
+    "images": [
+     {
+      "coverType": "banner"
+     },
+     {
+      "coverType": "poster"
+     },
+     {
+      "coverType": "fanart"
+     },
+     {
+      "coverType": "clearlogo"
+     }
+    ],
+    "originalLanguage": {
+     "id": 1,
+     "name": "English"
+    },
+    "seasons": [
+     {
+      "seasonNumber": 1,
+      "monitored": true
+     }
+    ],
+    "year": 2026,
+    "qualityProfileId": 4,
+    "seasonFolder": true,
+    "monitored": true,
+    "monitorNewItems": "all",
+    "useSceneNumbering": false,
+    "runtime": 50,
+    "tvdbId": 426669,
+    "tvRageId": 0,
+    "tvMazeId": 64960,
+    "tmdbId": 213562,
+    "firstAired": "2026-10-15T00:00:00Z",
+    "lastAired": "2026-10-15T00:00:00Z",
+    "seriesType": "standard",
+    "cleanTitle": "crystallake",
+    "imdbId": "tt23148340",
+    "titleSlug": "crystal-lake",
+    "genres": [
+     "Drama"
+    ],
+    "tags": [],
+    "added": "2026-10-03T22:13:55Z",
+    "ratings": {
+     "votes": 237,
+     "value": 7.8
+    },
+    "languageProfileId": 1,
+    "id": 66
+   },
+   "episode": {
+    "seriesId": 66,
+    "tvdbId": 11252253,
+    "episodeFileId": 0,
+    "seasonNumber": 1,
+    "episodeNumber": 3,
+    "title": "Part III",
+    "airDate": "2026-10-15",
+    "airDateUtc": "2026-10-15T09:00:00Z",
+    "lastSearchTime": "2026-10-03T22:14:39Z",
+    "runtime": 0,
+    "overview": "The townspeople go bear hunting against Levon's orders; Pam and Levon bond over the loss of their loved ones; Pam visits Grace at her apartment and suspects she is being abused, leading to a confrontation with her mother, Valerie.",
+    "hasFile": false,
+    "monitored": true,
+    "unverifiedSceneNumbering": false,
+    "id": 4264
+   },
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "source": "web",
+     "resolution": 1080
+    },
+    "revision": {
+     "version": 1,
+     "real": 0,
+     "isRepack": false
+    }
+   },
+   "size": 2400000000.0,
+   "sizeleft": 0.0,
+   "estimatedCompletionTime": null,
+   "timeleft": null,
+   "added": "2026-10-11T10:46:45Z",
+   "status": "warning",
+   "trackedDownloadStatus": "warning",
+   "trackedDownloadState": "importBlocked",
+   "protocol": "usenet",
+   "episodeHasFile": false,
+   "_regie5_synthetic": true
+  }
+ ]
+}

@@ -1,0 +1,852 @@
+[
+ {
+  "id": 1621,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-27T17:16:48Z",
+  "movieId": 442,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 442,
+   "title": "Eden Lake",
+   "year": 2008
+  }
+ },
+ {
+  "id": 1624,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-27T19:08:12Z",
+  "movieId": 140,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 140,
+   "title": "The Equalizer",
+   "year": 2014
+  }
+ },
+ {
+  "id": 1627,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T01:46:33Z",
+  "movieId": 28,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 28,
+   "title": "Colony",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1630,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T02:47:36Z",
+  "movieId": 28,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 28,
+   "title": "Colony",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1633,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T08:53:33Z",
+  "movieId": 124,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 124,
+   "title": "The Godfather Part III",
+   "year": 1990
+  }
+ },
+ {
+  "id": 1635,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T12:26:16Z",
+  "movieId": 447,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 447,
+   "title": "The Mist",
+   "year": 2007
+  }
+ },
+ {
+  "id": 1638,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T12:58:42Z",
+  "movieId": 190,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 190,
+   "title": "The Martian",
+   "year": 2015
+  }
+ },
+ {
+  "id": 1641,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T18:29:44Z",
+  "movieId": 124,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 124,
+   "title": "The Godfather Part III",
+   "year": 1990
+  }
+ },
+ {
+  "id": 1643,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T19:25:23Z",
+  "movieId": 446,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 446,
+   "title": "The Human Centipede (First Sequence)",
+   "year": 2009
+  }
+ },
+ {
+  "id": 1646,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T19:36:37Z",
+  "movieId": 368,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 368,
+   "title": "Prometheus",
+   "year": 2012
+  }
+ },
+ {
+  "id": 1648,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T08:56:12Z",
+  "movieId": 449,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 449,
+   "title": "Dark Shadows",
+   "year": 2012
+  }
+ },
+ {
+  "id": 1651,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T10:19:16Z",
+  "movieId": 30,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 30,
+   "title": "Nuremberg",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1654,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T10:46:38Z",
+  "movieId": 56,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 56,
+   "title": "Backrooms",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1657,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T18:46:43Z",
+  "movieId": 187,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 187,
+   "title": "Escape Plan 2: Hades",
+   "year": 2018
+  }
+ },
+ {
+  "id": 1663,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T19:11:45Z",
+  "movieId": 56,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 56,
+   "title": "Backrooms",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1664,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T19:16:38Z",
+  "movieId": 30,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 30,
+   "title": "Nuremberg",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1665,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T19:18:42Z",
+  "movieId": 236,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 236,
+   "title": "The Uprising",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1667,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T22:29:56Z",
+  "movieId": 353,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 353,
+   "title": "Death Saved My Life",
+   "year": 2021
+  }
+ },
+ {
+  "id": 1672,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-01T17:17:03Z",
+  "movieId": 20,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 20,
+   "title": "De Gaulle: Résistance",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1673,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-01T17:20:23Z",
+  "movieId": 452,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 452,
+   "title": "Dikkenek",
+   "year": 2006
+  }
+ },
+ {
+  "id": 1674,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-01T17:24:01Z",
+  "movieId": 451,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 451,
+   "title": "Heat",
+   "year": 1995
+  }
+ },
+ {
+  "id": 1676,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-01T17:28:49Z",
+  "movieId": 279,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 279,
+   "title": "Heads of State",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1678,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T10:47:25Z",
+  "movieId": 450,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 450,
+   "title": "Handsome Guys",
+   "year": 2024
+  }
+ },
+ {
+  "id": 1681,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T10:52:24Z",
+  "movieId": 110,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 110,
+   "title": "American Psycho",
+   "year": 2000
+  }
+ },
+ {
+  "id": 1683,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:23:59Z",
+  "movieId": 453,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 453,
+   "title": "The Running Man",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1685,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T16:46:26Z",
+  "movieId": 454,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 454,
+   "title": "Teenage Sex and Death at Camp Miasma",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1688,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T20:12:30Z",
+  "movieId": 455,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 455,
+   "title": "Max & Leon",
+   "year": 2016
+  }
+ },
+ {
+  "id": 1691,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-04T02:42:11Z",
+  "movieId": 235,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 235,
+   "title": "The Notebook",
+   "year": 2004
+  }
+ },
+ {
+  "id": 1694,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-05T18:22:35Z",
+  "movieId": 220,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 220,
+   "title": "Spider-Man: Far From Home",
+   "year": 2019
+  }
+ },
+ {
+  "id": 1699,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-06T08:05:00Z",
+  "movieId": 60,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 60,
+   "title": "Spider-Man: Brand New Day",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1704,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:28:51Z",
+  "movieId": 60,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 60,
+   "title": "Spider-Man: Brand New Day",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1705,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:30:45Z",
+  "movieId": 414,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 414,
+   "title": "Two Worlds One Wish",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1708,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-08T16:53:10Z",
+  "movieId": 395,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 395,
+   "title": "The Hunger Games: Catching Fire",
+   "year": 2013
+  }
+ },
+ {
+  "id": 1710,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-08T17:04:53Z",
+  "movieId": 459,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 459,
+   "title": "Good Boy",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1713,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-08T17:48:59Z",
+  "movieId": 395,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 395,
+   "title": "The Hunger Games: Catching Fire",
+   "year": 2013
+  }
+ },
+ {
+  "id": 1715,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-08T18:57:44Z",
+  "movieId": 460,
+  "quality": {
+   "quality": {
+    "id": 14,
+    "name": "WEBRip-720p"
+   }
+  },
+  "movie": {
+   "id": 460,
+   "title": "Supernova: The Music Festival Massacre",
+   "year": 2023
+  }
+ },
+ {
+  "id": 1719,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-09T14:26:00Z",
+  "movieId": 461,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 461,
+   "title": "Little Brother",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1720,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-09T15:00:39Z",
+  "movieId": 462,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 462,
+   "title": "The Lost Boys",
+   "year": 1987
+  }
+ },
+ {
+  "id": 1722,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-09T20:21:38Z",
+  "movieId": 463,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 463,
+   "title": "Enemy",
+   "year": 2014
+  }
+ },
+ {
+  "id": 1725,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T08:16:09Z",
+  "movieId": 103,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 103,
+   "title": "Titanic",
+   "year": 1997
+  }
+ },
+ {
+  "id": 1728,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T09:22:50Z",
+  "movieId": 103,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 103,
+   "title": "Titanic",
+   "year": 1997
+  }
+ },
+ {
+  "id": 1732,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T11:59:44Z",
+  "movieId": 345,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 345,
+   "title": "Tom Clancy's Jack Ryan: Ghost War",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1735,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T14:47:55Z",
+  "movieId": 459,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 459,
+   "title": "Good Boy",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1739,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T21:18:26Z",
+  "movieId": 464,
+  "quality": {
+   "quality": {
+    "id": 19,
+    "name": "Bluray-2160p"
+   }
+  },
+  "movie": {
+   "id": 464,
+   "title": "Your Name.",
+   "year": 2016
+  }
+ },
+ {
+  "id": 1742,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T21:31:30Z",
+  "movieId": 465,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 465,
+   "title": "Princess Mononoke",
+   "year": 1997
+  }
+ },
+ {
+  "id": 1743,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T21:36:42Z",
+  "movieId": 466,
+  "quality": {
+   "quality": {
+    "id": 17,
+    "name": "WEBRip-2160p"
+   }
+  },
+  "movie": {
+   "id": 466,
+   "title": "Chainsaw Man - The Movie: Reze Arc",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1746,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-11T02:37:29Z",
+  "movieId": 254,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 254,
+   "title": "Captain America: Civil War",
+   "year": 2016
+  }
+ },
+ {
+  "id": 1750,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-11T08:32:03Z",
+  "movieId": 254,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 254,
+   "title": "Captain America: Civil War",
+   "year": 2016
+  }
+ },
+ {
+  "id": 1756,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-11T08:40:47Z",
+  "movieId": 337,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 337,
+   "title": "Iron Man 3",
+   "year": 2013
+  }
+ },
+ {
+  "id": 1759,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-11T15:32:29Z",
+  "movieId": 459,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 459,
+   "title": "Good Boy",
+   "year": 2026
+  }
+ }
+]

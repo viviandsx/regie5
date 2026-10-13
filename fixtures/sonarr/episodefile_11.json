@@ -1,0 +1,132 @@
+[
+ {
+  "id": 925,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1537638342,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 926,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1245287682,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 928,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1312362875,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1250,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1542583686,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1251,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1093901266,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1252,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1375296773,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1253,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1254487707,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1254,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1167141293,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1255,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1407236029,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1256,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "size": 1223136069,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ }
+]

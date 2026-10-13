@@ -1,0 +1,2230 @@
+[
+ {
+  "id": 900001,
+  "seriesId": 10,
+  "seasonNumber": 2,
+  "episodeNumber": 2,
+  "title": "",
+  "airDateUtc": "2026-09-28T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 10,
+   "title": "Mr. Robot",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900002,
+  "seriesId": 14,
+  "seasonNumber": 3,
+  "episodeNumber": 3,
+  "title": "",
+  "airDateUtc": "2026-09-28T18:30:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 14,
+   "title": "Cyberpunk: Edgerunners",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900003,
+  "seriesId": 18,
+  "seasonNumber": 1,
+  "episodeNumber": 4,
+  "title": "",
+  "airDateUtc": "2026-09-28T19:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 18,
+   "title": "All of Us Are Dead",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900004,
+  "seriesId": 17,
+  "seasonNumber": 2,
+  "episodeNumber": 5,
+  "title": "",
+  "airDateUtc": "2026-09-29T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 17,
+   "title": "The Day of the Jackal",
+   "year": 2024
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900005,
+  "seriesId": 11,
+  "seasonNumber": 3,
+  "episodeNumber": 6,
+  "title": "",
+  "airDateUtc": "2026-09-30T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 11,
+   "title": "Band of Brothers",
+   "year": 2001
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900006,
+  "seriesId": 15,
+  "seasonNumber": 1,
+  "episodeNumber": 7,
+  "title": "",
+  "airDateUtc": "2026-09-30T18:30:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 15,
+   "title": "True Detective",
+   "year": 2014
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900007,
+  "seriesId": 18,
+  "seasonNumber": 2,
+  "episodeNumber": 8,
+  "title": "",
+  "airDateUtc": "2026-10-01T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 18,
+   "title": "All of Us Are Dead",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900008,
+  "seriesId": 10,
+  "seasonNumber": 3,
+  "episodeNumber": 9,
+  "title": "",
+  "airDateUtc": "2026-10-01T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 10,
+   "title": "Mr. Robot",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900009,
+  "seriesId": 14,
+  "seasonNumber": 1,
+  "episodeNumber": 10,
+  "title": "",
+  "airDateUtc": "2026-10-01T19:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 14,
+   "title": "Cyberpunk: Edgerunners",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900010,
+  "seriesId": 12,
+  "seasonNumber": 2,
+  "episodeNumber": 1,
+  "title": "",
+  "airDateUtc": "2026-10-02T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 12,
+   "title": "Chernobyl",
+   "year": 2019
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900011,
+  "seriesId": 20,
+  "seasonNumber": 3,
+  "episodeNumber": 2,
+  "title": "",
+  "airDateUtc": "2026-10-03T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 20,
+   "title": "Arcane",
+   "year": 2021
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900012,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "episodeNumber": 3,
+  "title": "",
+  "airDateUtc": "2026-10-03T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 11,
+   "title": "Band of Brothers",
+   "year": 2001
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900013,
+  "seriesId": 14,
+  "seasonNumber": 2,
+  "episodeNumber": 4,
+  "title": "",
+  "airDateUtc": "2026-10-04T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 14,
+   "title": "Cyberpunk: Edgerunners",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900014,
+  "seriesId": 18,
+  "seasonNumber": 3,
+  "episodeNumber": 5,
+  "title": "",
+  "airDateUtc": "2026-10-04T18:30:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 18,
+   "title": "All of Us Are Dead",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900015,
+  "seriesId": 10,
+  "seasonNumber": 1,
+  "episodeNumber": 6,
+  "title": "",
+  "airDateUtc": "2026-10-04T19:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 10,
+   "title": "Mr. Robot",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900016,
+  "seriesId": 9,
+  "seasonNumber": 2,
+  "episodeNumber": 7,
+  "title": "",
+  "airDateUtc": "2026-10-05T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 9,
+   "title": "The Man in the High Castle",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900017,
+  "seriesId": 15,
+  "seasonNumber": 3,
+  "episodeNumber": 8,
+  "title": "",
+  "airDateUtc": "2026-10-06T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 15,
+   "title": "True Detective",
+   "year": 2014
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900018,
+  "seriesId": 20,
+  "seasonNumber": 1,
+  "episodeNumber": 9,
+  "title": "",
+  "airDateUtc": "2026-10-06T18:30:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 20,
+   "title": "Arcane",
+   "year": 2021
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900019,
+  "seriesId": 10,
+  "seasonNumber": 2,
+  "episodeNumber": 10,
+  "title": "",
+  "airDateUtc": "2026-10-07T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 10,
+   "title": "Mr. Robot",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900020,
+  "seriesId": 14,
+  "seasonNumber": 3,
+  "episodeNumber": 1,
+  "title": "",
+  "airDateUtc": "2026-10-07T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 14,
+   "title": "Cyberpunk: Edgerunners",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900021,
+  "seriesId": 18,
+  "seasonNumber": 1,
+  "episodeNumber": 2,
+  "title": "",
+  "airDateUtc": "2026-10-07T19:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 18,
+   "title": "All of Us Are Dead",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900022,
+  "seriesId": 17,
+  "seasonNumber": 2,
+  "episodeNumber": 3,
+  "title": "",
+  "airDateUtc": "2026-10-08T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 17,
+   "title": "The Day of the Jackal",
+   "year": 2024
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900023,
+  "seriesId": 11,
+  "seasonNumber": 3,
+  "episodeNumber": 4,
+  "title": "",
+  "airDateUtc": "2026-10-09T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 11,
+   "title": "Band of Brothers",
+   "year": 2001
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900024,
+  "seriesId": 15,
+  "seasonNumber": 1,
+  "episodeNumber": 5,
+  "title": "",
+  "airDateUtc": "2026-10-09T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 15,
+   "title": "True Detective",
+   "year": 2014
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900025,
+  "seriesId": 18,
+  "seasonNumber": 2,
+  "episodeNumber": 6,
+  "title": "",
+  "airDateUtc": "2026-10-10T17:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 18,
+   "title": "All of Us Are Dead",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900026,
+  "seriesId": 10,
+  "seasonNumber": 3,
+  "episodeNumber": 7,
+  "title": "",
+  "airDateUtc": "2026-10-10T18:30:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 10,
+   "title": "Mr. Robot",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900027,
+  "seriesId": 14,
+  "seasonNumber": 1,
+  "episodeNumber": 8,
+  "title": "",
+  "airDateUtc": "2026-10-10T19:00:00Z",
+  "hasFile": true,
+  "monitored": true,
+  "series": {
+   "id": 14,
+   "title": "Cyberpunk: Edgerunners",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900028,
+  "seriesId": 12,
+  "seasonNumber": 2,
+  "episodeNumber": 9,
+  "title": "",
+  "airDateUtc": "2026-10-11T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 12,
+   "title": "Chernobyl",
+   "year": 2019
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900029,
+  "seriesId": 20,
+  "seasonNumber": 3,
+  "episodeNumber": 10,
+  "title": "",
+  "airDateUtc": "2026-10-12T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 20,
+   "title": "Arcane",
+   "year": 2021
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900030,
+  "seriesId": 11,
+  "seasonNumber": 1,
+  "episodeNumber": 1,
+  "title": "",
+  "airDateUtc": "2026-10-12T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 11,
+   "title": "Band of Brothers",
+   "year": 2001
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900031,
+  "seriesId": 14,
+  "seasonNumber": 2,
+  "episodeNumber": 2,
+  "title": "",
+  "airDateUtc": "2026-10-13T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 14,
+   "title": "Cyberpunk: Edgerunners",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900032,
+  "seriesId": 18,
+  "seasonNumber": 3,
+  "episodeNumber": 3,
+  "title": "",
+  "airDateUtc": "2026-10-13T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 18,
+   "title": "All of Us Are Dead",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900033,
+  "seriesId": 10,
+  "seasonNumber": 1,
+  "episodeNumber": 4,
+  "title": "",
+  "airDateUtc": "2026-10-13T19:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 10,
+   "title": "Mr. Robot",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900034,
+  "seriesId": 9,
+  "seasonNumber": 2,
+  "episodeNumber": 5,
+  "title": "",
+  "airDateUtc": "2026-10-14T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 9,
+   "title": "The Man in the High Castle",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "seriesId": 66,
+  "tvdbId": 9431113,
+  "episodeFileId": 0,
+  "seasonNumber": 1,
+  "episodeNumber": 1,
+  "title": "Camp Crystal",
+  "airDate": "2026-10-15",
+  "airDateUtc": "2026-10-15T09:00:00Z",
+  "lastSearchTime": "2026-10-03T22:14:39Z",
+  "runtime": 0,
+  "overview": "Camp Crystal Lake's idyllic summer is cut short by Jason's death; as the town moves on, Pam continues looking for him; Levon invites her to Founder's Day, but it only triggers Pam's pain; as she runs from her present, Pam is soon met with her past.",
+  "hasFile": false,
+  "monitored": true,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Crystal Lake",
+   "sortTitle": "crystal lake",
+   "status": "upcoming",
+   "ended": false,
+   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+   "network": "Peacock",
+   "airTime": "05:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 1,
+    "name": "English"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    }
+   ],
+   "year": 2026,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 50,
+   "tvdbId": 426669,
+   "tvRageId": 0,
+   "tvMazeId": 64960,
+   "tmdbId": 213562,
+   "firstAired": "2026-10-15T00:00:00Z",
+   "lastAired": "2026-10-15T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "crystallake",
+   "imdbId": "tt23148340",
+   "titleSlug": "crystal-lake",
+   "genres": [
+    "Drama"
+   ],
+   "tags": [],
+   "added": "2026-10-03T22:13:55Z",
+   "ratings": {
+    "votes": 237,
+    "value": 7.8
+   },
+   "languageProfileId": 1,
+   "id": 66
+  },
+  "id": 4262
+ },
+ {
+  "seriesId": 66,
+  "tvdbId": 11252252,
+  "episodeFileId": 0,
+  "seasonNumber": 1,
+  "episodeNumber": 2,
+  "title": "Part 2",
+  "airDate": "2026-10-15",
+  "airDateUtc": "2026-10-15T09:00:00Z",
+  "lastSearchTime": "2026-10-03T22:14:39Z",
+  "runtime": 0,
+  "overview": "While on a date with Levon, Pam bumps into Rita and is invited to a weekend seminar with a self-help guru; Grace goes to a high school party only to be sent away by Claudette; something sinister takes revenge for Grace.",
+  "hasFile": false,
+  "monitored": true,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Crystal Lake",
+   "sortTitle": "crystal lake",
+   "status": "upcoming",
+   "ended": false,
+   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+   "network": "Peacock",
+   "airTime": "05:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 1,
+    "name": "English"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    }
+   ],
+   "year": 2026,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 50,
+   "tvdbId": 426669,
+   "tvRageId": 0,
+   "tvMazeId": 64960,
+   "tmdbId": 213562,
+   "firstAired": "2026-10-15T00:00:00Z",
+   "lastAired": "2026-10-15T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "crystallake",
+   "imdbId": "tt23148340",
+   "titleSlug": "crystal-lake",
+   "genres": [
+    "Drama"
+   ],
+   "tags": [],
+   "added": "2026-10-03T22:13:55Z",
+   "ratings": {
+    "votes": 237,
+    "value": 7.8
+   },
+   "languageProfileId": 1,
+   "id": 66
+  },
+  "id": 4263
+ },
+ {
+  "seriesId": 66,
+  "tvdbId": 11252253,
+  "episodeFileId": 0,
+  "seasonNumber": 1,
+  "episodeNumber": 3,
+  "title": "Part III",
+  "airDate": "2026-10-15",
+  "airDateUtc": "2026-10-15T09:00:00Z",
+  "lastSearchTime": "2026-10-03T22:14:39Z",
+  "runtime": 0,
+  "overview": "The townspeople go bear hunting against Levon's orders; Pam and Levon bond over the loss of their loved ones; Pam visits Grace at her apartment and suspects she is being abused, leading to a confrontation with her mother, Valerie.",
+  "hasFile": false,
+  "monitored": true,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Crystal Lake",
+   "sortTitle": "crystal lake",
+   "status": "upcoming",
+   "ended": false,
+   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+   "network": "Peacock",
+   "airTime": "05:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 1,
+    "name": "English"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    }
+   ],
+   "year": 2026,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 50,
+   "tvdbId": 426669,
+   "tvRageId": 0,
+   "tvMazeId": 64960,
+   "tmdbId": 213562,
+   "firstAired": "2026-10-15T00:00:00Z",
+   "lastAired": "2026-10-15T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "crystallake",
+   "imdbId": "tt23148340",
+   "titleSlug": "crystal-lake",
+   "genres": [
+    "Drama"
+   ],
+   "tags": [],
+   "added": "2026-10-03T22:13:55Z",
+   "ratings": {
+    "votes": 237,
+    "value": 7.8
+   },
+   "languageProfileId": 1,
+   "id": 66
+  },
+  "id": 4264
+ },
+ {
+  "seriesId": 66,
+  "tvdbId": 11252254,
+  "episodeFileId": 0,
+  "seasonNumber": 1,
+  "episodeNumber": 4,
+  "title": "A New Beginning",
+  "airDate": "2026-10-15",
+  "airDateUtc": "2026-10-15T09:00:00Z",
+  "lastSearchTime": "2026-10-03T22:14:39Z",
+  "runtime": 0,
+  "overview": "Willow looks for her friends; Pam returns to work at the camp alongside a group of new counselors.",
+  "hasFile": false,
+  "monitored": true,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Crystal Lake",
+   "sortTitle": "crystal lake",
+   "status": "upcoming",
+   "ended": false,
+   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+   "network": "Peacock",
+   "airTime": "05:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 1,
+    "name": "English"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    }
+   ],
+   "year": 2026,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 50,
+   "tvdbId": 426669,
+   "tvRageId": 0,
+   "tvMazeId": 64960,
+   "tmdbId": 213562,
+   "firstAired": "2026-10-15T00:00:00Z",
+   "lastAired": "2026-10-15T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "crystallake",
+   "imdbId": "tt23148340",
+   "titleSlug": "crystal-lake",
+   "genres": [
+    "Drama"
+   ],
+   "tags": [],
+   "added": "2026-10-03T22:13:55Z",
+   "ratings": {
+    "votes": 237,
+    "value": 7.8
+   },
+   "languageProfileId": 1,
+   "id": 66
+  },
+  "id": 4265
+ },
+ {
+  "seriesId": 66,
+  "tvdbId": 11252255,
+  "episodeFileId": 0,
+  "seasonNumber": 1,
+  "episodeNumber": 5,
+  "title": "The New Blood",
+  "airDate": "2026-10-15",
+  "airDateUtc": "2026-10-15T09:00:00Z",
+  "lastSearchTime": "2026-10-03T22:14:39Z",
+  "runtime": 0,
+  "overview": "Camp Crystal Lake reopens despite the mounting death toll; Pam discovers life-changing news.",
+  "hasFile": false,
+  "monitored": true,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Crystal Lake",
+   "sortTitle": "crystal lake",
+   "status": "upcoming",
+   "ended": false,
+   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+   "network": "Peacock",
+   "airTime": "05:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 1,
+    "name": "English"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    }
+   ],
+   "year": 2026,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 50,
+   "tvdbId": 426669,
+   "tvRageId": 0,
+   "tvMazeId": 64960,
+   "tmdbId": 213562,
+   "firstAired": "2026-10-15T00:00:00Z",
+   "lastAired": "2026-10-15T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "crystallake",
+   "imdbId": "tt23148340",
+   "titleSlug": "crystal-lake",
+   "genres": [
+    "Drama"
+   ],
+   "tags": [],
+   "added": "2026-10-03T22:13:55Z",
+   "ratings": {
+    "votes": 237,
+    "value": 7.8
+   },
+   "languageProfileId": 1,
+   "id": 66
+  },
+  "id": 4266
+ },
+ {
+  "seriesId": 66,
+  "tvdbId": 11252256,
+  "episodeFileId": 0,
+  "seasonNumber": 1,
+  "episodeNumber": 6,
+  "title": "Kill Them, Mommy",
+  "airDate": "2026-10-15",
+  "airDateUtc": "2026-10-15T09:00:00Z",
+  "lastSearchTime": "2026-10-03T22:14:39Z",
+  "runtime": 0,
+  "overview": "The counselors' drug trip takes a chilling turn; Briana receives a mysterious envelope.",
+  "hasFile": false,
+  "monitored": true,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Crystal Lake",
+   "sortTitle": "crystal lake",
+   "status": "upcoming",
+   "ended": false,
+   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+   "network": "Peacock",
+   "airTime": "05:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 1,
+    "name": "English"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    }
+   ],
+   "year": 2026,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 50,
+   "tvdbId": 426669,
+   "tvRageId": 0,
+   "tvMazeId": 64960,
+   "tmdbId": 213562,
+   "firstAired": "2026-10-15T00:00:00Z",
+   "lastAired": "2026-10-15T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "crystallake",
+   "imdbId": "tt23148340",
+   "titleSlug": "crystal-lake",
+   "genres": [
+    "Drama"
+   ],
+   "tags": [],
+   "added": "2026-10-03T22:13:55Z",
+   "ratings": {
+    "votes": 237,
+    "value": 7.8
+   },
+   "languageProfileId": 1,
+   "id": 66
+  },
+  "id": 4267
+ },
+ {
+  "seriesId": 66,
+  "tvdbId": 11252257,
+  "episodeFileId": 0,
+  "seasonNumber": 1,
+  "episodeNumber": 7,
+  "title": "Friday...",
+  "airDate": "2026-10-15",
+  "airDateUtc": "2026-10-15T09:00:00Z",
+  "lastSearchTime": "2026-10-03T22:14:39Z",
+  "runtime": 0,
+  "overview": "In the past, a young Jason shows alarming symptoms that lead Pam to question life as she knows it.",
+  "hasFile": false,
+  "monitored": true,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Crystal Lake",
+   "sortTitle": "crystal lake",
+   "status": "upcoming",
+   "ended": false,
+   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+   "network": "Peacock",
+   "airTime": "05:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 1,
+    "name": "English"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    }
+   ],
+   "year": 2026,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 50,
+   "tvdbId": 426669,
+   "tvRageId": 0,
+   "tvMazeId": 64960,
+   "tmdbId": 213562,
+   "firstAired": "2026-10-15T00:00:00Z",
+   "lastAired": "2026-10-15T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "crystallake",
+   "imdbId": "tt23148340",
+   "titleSlug": "crystal-lake",
+   "genres": [
+    "Drama"
+   ],
+   "tags": [],
+   "added": "2026-10-03T22:13:55Z",
+   "ratings": {
+    "votes": 237,
+    "value": 7.8
+   },
+   "languageProfileId": 1,
+   "id": 66
+  },
+  "id": 4268
+ },
+ {
+  "seriesId": 66,
+  "tvdbId": 11252258,
+  "episodeFileId": 0,
+  "seasonNumber": 1,
+  "episodeNumber": 8,
+  "title": "The Final Chapter",
+  "airDate": "2026-10-15",
+  "airDateUtc": "2026-10-15T09:00:00Z",
+  "lastSearchTime": "2026-10-03T22:14:39Z",
+  "runtime": 0,
+  "finaleType": "season",
+  "overview": "Elias arrives in Crystal Lake determined to find his family; Levon and Elias have a heated clash.",
+  "hasFile": false,
+  "monitored": true,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Crystal Lake",
+   "sortTitle": "crystal lake",
+   "status": "upcoming",
+   "ended": false,
+   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
+   "network": "Peacock",
+   "airTime": "05:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 1,
+    "name": "English"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    }
+   ],
+   "year": 2026,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 50,
+   "tvdbId": 426669,
+   "tvRageId": 0,
+   "tvMazeId": 64960,
+   "tmdbId": 213562,
+   "firstAired": "2026-10-15T00:00:00Z",
+   "lastAired": "2026-10-15T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "crystallake",
+   "imdbId": "tt23148340",
+   "titleSlug": "crystal-lake",
+   "genres": [
+    "Drama"
+   ],
+   "tags": [],
+   "added": "2026-10-03T22:13:55Z",
+   "ratings": {
+    "votes": 237,
+    "value": 7.8
+   },
+   "languageProfileId": 1,
+   "id": 66
+  },
+  "id": 4269
+ },
+ {
+  "id": 900035,
+  "seriesId": 15,
+  "seasonNumber": 3,
+  "episodeNumber": 6,
+  "title": "",
+  "airDateUtc": "2026-10-15T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 15,
+   "title": "True Detective",
+   "year": 2014
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900036,
+  "seriesId": 20,
+  "seasonNumber": 1,
+  "episodeNumber": 7,
+  "title": "",
+  "airDateUtc": "2026-10-15T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 20,
+   "title": "Arcane",
+   "year": 2021
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900037,
+  "seriesId": 10,
+  "seasonNumber": 2,
+  "episodeNumber": 8,
+  "title": "",
+  "airDateUtc": "2026-10-16T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 10,
+   "title": "Mr. Robot",
+   "year": 2015
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900038,
+  "seriesId": 14,
+  "seasonNumber": 3,
+  "episodeNumber": 9,
+  "title": "",
+  "airDateUtc": "2026-10-16T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 14,
+   "title": "Cyberpunk: Edgerunners",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900039,
+  "seriesId": 18,
+  "seasonNumber": 1,
+  "episodeNumber": 10,
+  "title": "",
+  "airDateUtc": "2026-10-16T19:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 18,
+   "title": "All of Us Are Dead",
+   "year": 2022
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900040,
+  "seriesId": 17,
+  "seasonNumber": 2,
+  "episodeNumber": 1,
+  "title": "",
+  "airDateUtc": "2026-10-17T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 17,
+   "title": "The Day of the Jackal",
+   "year": 2024
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900041,
+  "seriesId": 11,
+  "seasonNumber": 3,
+  "episodeNumber": 2,
+  "title": "",
+  "airDateUtc": "2026-10-18T17:00:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 11,
+   "title": "Band of Brothers",
+   "year": 2001
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "id": 900042,
+  "seriesId": 15,
+  "seasonNumber": 1,
+  "episodeNumber": 3,
+  "title": "",
+  "airDateUtc": "2026-10-18T18:30:00Z",
+  "hasFile": false,
+  "monitored": true,
+  "series": {
+   "id": 15,
+   "title": "True Detective",
+   "year": 2014
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229710,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 1,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 11,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1748
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229818,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 2,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 12,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1749
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229819,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 3,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 13,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1750
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229820,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 4,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 14,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1751
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229821,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 5,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 15,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1752
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229822,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 6,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 16,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1753
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229823,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 7,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 17,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1754
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229824,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 8,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 18,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1755
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229825,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 9,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 19,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1756
+ },
+ {
+  "seriesId": 14,
+  "tvdbId": 11229826,
+  "episodeFileId": 0,
+  "seasonNumber": 2,
+  "episodeNumber": 10,
+  "title": "TBA",
+  "airDate": "2026-10-20",
+  "airDateUtc": "2026-10-20T20:00:00Z",
+  "lastSearchTime": "2026-05-26T17:35:36Z",
+  "runtime": 0,
+  "finaleType": "season",
+  "hasFile": false,
+  "monitored": true,
+  "absoluteEpisodeNumber": 20,
+  "unverifiedSceneNumbering": false,
+  "series": {
+   "title": "Cyberpunk: Edgerunners",
+   "sortTitle": "cyberpunk edgerunners",
+   "status": "continuing",
+   "ended": false,
+   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
+   "network": "Netflix",
+   "airTime": "16:00",
+   "images": [
+    {
+     "coverType": "banner"
+    },
+    {
+     "coverType": "poster"
+    },
+    {
+     "coverType": "fanart"
+    },
+    {
+     "coverType": "clearlogo"
+    }
+   ],
+   "originalLanguage": {
+    "id": 8,
+    "name": "Japanese"
+   },
+   "seasons": [
+    {
+     "seasonNumber": 0,
+     "monitored": false
+    },
+    {
+     "seasonNumber": 1,
+     "monitored": true
+    },
+    {
+     "seasonNumber": 2,
+     "monitored": true
+    }
+   ],
+   "year": 2022,
+   "qualityProfileId": 4,
+   "seasonFolder": true,
+   "monitored": true,
+   "monitorNewItems": "all",
+   "useSceneNumbering": false,
+   "runtime": 26,
+   "tvdbId": 384541,
+   "tvRageId": 0,
+   "tvMazeId": 48945,
+   "tmdbId": 105248,
+   "firstAired": "2022-09-13T00:00:00Z",
+   "lastAired": "2026-10-20T00:00:00Z",
+   "seriesType": "standard",
+   "cleanTitle": "cyberpunkedgerunners",
+   "imdbId": "tt12590266",
+   "titleSlug": "cyberpunk-edgerunners",
+   "certification": "TV-MA",
+   "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Anime",
+    "Crime",
+    "Science Fiction",
+    "Thriller"
+   ],
+   "tags": [],
+   "added": "2026-05-26T17:35:28Z",
+   "ratings": {
+    "votes": 136224,
+    "value": 8.3
+   },
+   "languageProfileId": 1,
+   "id": 14
+  },
+  "id": 1757
+ }
+]

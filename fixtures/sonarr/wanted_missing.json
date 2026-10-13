@@ -1,0 +1,2535 @@
+{
+ "page": 1,
+ "pageSize": 250,
+ "totalRecords": 158,
+ "records": [
+  {
+   "id": 1564,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 1,
+   "title": "Hexagram 64",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1565,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 2,
+   "title": "Every Door Out...",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1566,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 3,
+   "title": "The Box",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1567,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 4,
+   "title": "Happy Trails",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1568,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 5,
+   "title": "Mauvaise Foi",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1569,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 6,
+   "title": "All Serious Daring",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1570,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 7,
+   "title": "No Masters But Ourselves",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1571,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 8,
+   "title": "Hitler Has Only Got One Ball",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1572,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 9,
+   "title": "For Want of a Nail",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1573,
+   "seriesId": 9,
+   "seasonNumber": 4,
+   "episodeNumber": 10,
+   "title": "Fire From the Gods",
+   "airDateUtc": "2019-11-15T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1554,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 1,
+   "title": "Now More Than Ever, We Care About You",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1555,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 2,
+   "title": "Imagine Manchuria",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1556,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 3,
+   "title": "Sensō Kōi",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1557,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 4,
+   "title": "Sabra",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1558,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 5,
+   "title": "The New Colossus",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1559,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 6,
+   "title": "History Ends",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1560,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 7,
+   "title": "Excess Animus",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1561,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 8,
+   "title": "Kasumi (Through the Mists)",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1562,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 9,
+   "title": "Baku",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1563,
+   "seriesId": 9,
+   "seasonNumber": 3,
+   "episodeNumber": 10,
+   "title": "Jahr Null",
+   "airDateUtc": "2018-10-05T04:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1544,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 1,
+   "title": "The Tiger's Cave",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1545,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 2,
+   "title": "The Road Less Traveled",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1546,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 3,
+   "title": "Travelers",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1547,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 4,
+   "title": "Escalation",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1548,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 5,
+   "title": "Duck and Cover",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1549,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 6,
+   "title": "Kintsugi",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1550,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 7,
+   "title": "Land O' Smiles",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1551,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 8,
+   "title": "Loose Lips",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1552,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 9,
+   "title": "Detonation",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 1553,
+   "seriesId": 9,
+   "seasonNumber": 2,
+   "episodeNumber": 10,
+   "title": "Fallout",
+   "airDateUtc": "2016-12-16T05:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 9,
+    "title": "The Man in the High Castle",
+    "sortTitle": "man in the high castle",
+    "year": 2015
+   }
+  },
+  {
+   "id": 2229,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 13,
+   "title": "White Orchids",
+   "airDateUtc": "2015-02-19T01:43:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2228,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 12,
+   "title": "Brown Shag Carpet",
+   "airDateUtc": "2015-02-19T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2227,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 11,
+   "title": "Byzantium",
+   "airDateUtc": "2015-02-12T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2226,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 10,
+   "title": "Nothing Gold Can Stay",
+   "airDateUtc": "2015-02-05T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2225,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 9,
+   "title": "Copper Bullet",
+   "airDateUtc": "2015-01-29T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2224,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 8,
+   "title": "The Whites of His Eyes",
+   "airDateUtc": "2015-01-22T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2223,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 7,
+   "title": "Little Yellow House",
+   "airDateUtc": "2015-01-15T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2222,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 6,
+   "title": "Green Light",
+   "airDateUtc": "2015-01-08T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2221,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 5,
+   "title": "The Silver Briefcase",
+   "airDateUtc": "2014-12-29T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2220,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 4,
+   "title": "Black Market",
+   "airDateUtc": "2014-12-22T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2219,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 3,
+   "title": "Orange Blossom Ice Cream",
+   "airDateUtc": "2014-12-15T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2218,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 2,
+   "title": "The Greybar Hotel",
+   "airDateUtc": "2014-12-08T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2217,
+   "seriesId": 22,
+   "seasonNumber": 7,
+   "episodeNumber": 1,
+   "title": "Nothing But Blue Skies",
+   "airDateUtc": "2014-12-01T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2216,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 22,
+   "title": "Blue Bird",
+   "airDateUtc": "2014-05-19T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2215,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 21,
+   "title": "Black Hearts",
+   "airDateUtc": "2014-05-12T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2214,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 20,
+   "title": "Il Tavolo Bianco",
+   "airDateUtc": "2014-05-05T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2213,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 19,
+   "title": "Brown Eyed Girls",
+   "airDateUtc": "2014-04-28T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2212,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 18,
+   "title": "Forest Green",
+   "airDateUtc": "2014-04-21T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2211,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 17,
+   "title": "Silver Wings of Time",
+   "airDateUtc": "2014-04-14T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2210,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 16,
+   "title": "Violets",
+   "airDateUtc": "2014-03-31T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2209,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 15,
+   "title": "White as the Driven Snow",
+   "airDateUtc": "2014-03-24T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2208,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 14,
+   "title": "Grey Water",
+   "airDateUtc": "2014-03-17T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2207,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 13,
+   "title": "Black Helicopters",
+   "airDateUtc": "2014-03-10T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2206,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 12,
+   "title": "The Golden Hammer",
+   "airDateUtc": "2014-01-13T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2205,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 11,
+   "title": "White Lines",
+   "airDateUtc": "2014-01-06T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2204,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 10,
+   "title": "Green Thumb",
+   "airDateUtc": "2013-12-09T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2203,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 9,
+   "title": "My Blue Heaven",
+   "airDateUtc": "2013-12-02T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2202,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 8,
+   "title": "Red John",
+   "airDateUtc": "2013-11-25T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2201,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 7,
+   "title": "The Great Red Dragon",
+   "airDateUtc": "2013-11-18T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2200,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 6,
+   "title": "Fire and Brimstone",
+   "airDateUtc": "2013-11-11T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2199,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 5,
+   "title": "The Red Tattoo",
+   "airDateUtc": "2013-10-28T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2198,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 4,
+   "title": "Red Listed",
+   "airDateUtc": "2013-10-21T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2197,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 3,
+   "title": "Wedding in Red",
+   "airDateUtc": "2013-10-14T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2196,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 2,
+   "title": "Black-Winged Redbird",
+   "airDateUtc": "2013-10-07T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2195,
+   "seriesId": 22,
+   "seasonNumber": 6,
+   "episodeNumber": 1,
+   "title": "The Desert Rose",
+   "airDateUtc": "2013-09-30T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2194,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 22,
+   "title": "Red John's Rules",
+   "airDateUtc": "2013-05-06T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2193,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 21,
+   "title": "Red and Itchy",
+   "airDateUtc": "2013-04-29T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2192,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 20,
+   "title": "Red Velvet Cupcakes",
+   "airDateUtc": "2013-04-22T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2191,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 19,
+   "title": "Red Letter Day",
+   "airDateUtc": "2013-04-15T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2190,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 18,
+   "title": "Behind the Red Curtain",
+   "airDateUtc": "2013-03-25T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2189,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 17,
+   "title": "Red, White and Blue",
+   "airDateUtc": "2013-03-18T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2188,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 16,
+   "title": "There Will Be Blood",
+   "airDateUtc": "2013-03-11T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2187,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 15,
+   "title": "Red Lacquer Nail Polish",
+   "airDateUtc": "2013-03-04T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2186,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 14,
+   "title": "Red in Tooth and Claw",
+   "airDateUtc": "2013-02-18T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2185,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 13,
+   "title": "The Red Barn",
+   "airDateUtc": "2013-01-28T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2184,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 12,
+   "title": "Little Red Corvette",
+   "airDateUtc": "2013-01-14T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2183,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 11,
+   "title": "Days of Wine and Roses",
+   "airDateUtc": "2013-01-07T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2182,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 10,
+   "title": "Panama Red",
+   "airDateUtc": "2012-12-10T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2181,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 9,
+   "title": "Black Cherry",
+   "airDateUtc": "2012-11-26T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2180,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 8,
+   "title": "Red Sails in the Sunset",
+   "airDateUtc": "2012-11-19T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2179,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 7,
+   "title": "If It Bleeds, It Leads",
+   "airDateUtc": "2012-11-12T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2178,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 6,
+   "title": "Cherry Picked",
+   "airDateUtc": "2012-11-05T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2177,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 5,
+   "title": "Red Dawn",
+   "airDateUtc": "2012-10-29T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2176,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 4,
+   "title": "Blood Feud",
+   "airDateUtc": "2012-10-22T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2175,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 3,
+   "title": "Not One Red Cent",
+   "airDateUtc": "2012-10-15T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2174,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 2,
+   "title": "Devil's Cherry",
+   "airDateUtc": "2012-10-08T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2173,
+   "seriesId": 22,
+   "seasonNumber": 5,
+   "episodeNumber": 1,
+   "title": "The Crimson Ticket",
+   "airDateUtc": "2012-10-01T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2172,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 24,
+   "title": "The Crimson Hat",
+   "airDateUtc": "2012-05-18T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2171,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 23,
+   "title": "Red Rover, Red Rover",
+   "airDateUtc": "2012-05-11T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2170,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 22,
+   "title": "So Long, and Thanks for All the Red Snapper",
+   "airDateUtc": "2012-05-04T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2169,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 21,
+   "title": "Ruby Slippers",
+   "airDateUtc": "2012-04-27T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2168,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 20,
+   "title": "Something's Rotten in Redmund",
+   "airDateUtc": "2012-04-06T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2167,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 19,
+   "title": "Pink Champagne on Ice",
+   "airDateUtc": "2012-03-30T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2166,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 18,
+   "title": "Ruddy Cheeks",
+   "airDateUtc": "2012-03-10T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2165,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 17,
+   "title": "Cheap Burgundy",
+   "airDateUtc": "2012-03-09T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2164,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 16,
+   "title": "His Thoughts Were Red Thoughts",
+   "airDateUtc": "2012-02-24T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2163,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 15,
+   "title": "War of the Roses",
+   "airDateUtc": "2012-02-17T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2162,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 14,
+   "title": "At First Blush",
+   "airDateUtc": "2012-02-10T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2161,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 13,
+   "title": "Red Is the New Black",
+   "airDateUtc": "2012-02-03T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2160,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 12,
+   "title": "My Bloody Valentine",
+   "airDateUtc": "2012-01-20T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2159,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 11,
+   "title": "Always Bet on Red",
+   "airDateUtc": "2012-01-13T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2158,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 10,
+   "title": "Fugue in Red",
+   "airDateUtc": "2011-12-16T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2157,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 9,
+   "title": "The Redshirt",
+   "airDateUtc": "2011-12-09T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2156,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 8,
+   "title": "Pink Tops",
+   "airDateUtc": "2011-11-18T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2155,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 7,
+   "title": "Blinking Red Light",
+   "airDateUtc": "2011-11-04T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2154,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 6,
+   "title": "Where in the World Is Carmine O'Brien?",
+   "airDateUtc": "2011-10-28T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2153,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 5,
+   "title": "Blood and Sand",
+   "airDateUtc": "2011-10-21T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2152,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 4,
+   "title": "Ring Around the Rosie",
+   "airDateUtc": "2011-10-14T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2151,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 3,
+   "title": "Pretty Red Balloon",
+   "airDateUtc": "2011-10-07T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2150,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 2,
+   "title": "Little Red Book",
+   "airDateUtc": "2011-09-30T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2149,
+   "seriesId": 22,
+   "seasonNumber": 4,
+   "episodeNumber": 1,
+   "title": "Scarlet Ribbons",
+   "airDateUtc": "2011-09-23T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2148,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 24,
+   "title": "Strawberries and Cream (2)",
+   "airDateUtc": "2011-05-20T00:43:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2147,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 23,
+   "title": "Strawberries and Cream (1)",
+   "airDateUtc": "2011-05-20T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2146,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 22,
+   "title": "Rhapsody in Red",
+   "airDateUtc": "2011-05-13T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2145,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 21,
+   "title": "Like a Redheaded Stepchild",
+   "airDateUtc": "2011-05-06T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2144,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 20,
+   "title": "Redacted",
+   "airDateUtc": "2011-04-29T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2143,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 19,
+   "title": "Every Rose Has Its Thorn",
+   "airDateUtc": "2011-04-08T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2142,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 18,
+   "title": "The Red Mile",
+   "airDateUtc": "2011-04-01T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2141,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 17,
+   "title": "Bloodstream",
+   "airDateUtc": "2011-03-11T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2140,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 16,
+   "title": "Red Queen",
+   "airDateUtc": "2011-02-25T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2139,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 15,
+   "title": "Red Gold",
+   "airDateUtc": "2011-02-18T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2138,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 14,
+   "title": "Blood for Blood",
+   "airDateUtc": "2011-02-11T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2137,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 13,
+   "title": "Red Alert",
+   "airDateUtc": "2011-02-04T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2136,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 12,
+   "title": "Bloodhounds",
+   "airDateUtc": "2011-01-21T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2135,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 11,
+   "title": "Bloodsport",
+   "airDateUtc": "2011-01-07T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2134,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 10,
+   "title": "Jolly Red Elf",
+   "airDateUtc": "2010-12-10T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2133,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 9,
+   "title": "Red Moon",
+   "airDateUtc": "2010-11-19T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2132,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 8,
+   "title": "Ball of Fire",
+   "airDateUtc": "2010-11-12T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2131,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 7,
+   "title": "Red Hot",
+   "airDateUtc": "2010-11-05T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2130,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 6,
+   "title": "Pink Chanel Suit",
+   "airDateUtc": "2010-10-29T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2129,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 5,
+   "title": "The Red Ponies",
+   "airDateUtc": "2010-10-22T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2128,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 4,
+   "title": "Red Carpet Treatment",
+   "airDateUtc": "2010-10-15T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2127,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 3,
+   "title": "The Blood on His Hands",
+   "airDateUtc": "2010-10-08T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2126,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 2,
+   "title": "Cackle-Bladder Blood",
+   "airDateUtc": "2010-10-01T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2125,
+   "seriesId": 22,
+   "seasonNumber": 3,
+   "episodeNumber": 1,
+   "title": "Red Sky at Night",
+   "airDateUtc": "2010-09-24T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2124,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 23,
+   "title": "Red Sky in the Morning",
+   "airDateUtc": "2010-05-21T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2123,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 22,
+   "title": "Red Letter",
+   "airDateUtc": "2010-05-14T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2122,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 21,
+   "title": "18-5-4",
+   "airDateUtc": "2010-05-07T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2121,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 20,
+   "title": "Red All Over",
+   "airDateUtc": "2010-04-30T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2120,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 19,
+   "title": "Blood Money",
+   "airDateUtc": "2010-04-23T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2119,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 18,
+   "title": "Aingavite Baa",
+   "airDateUtc": "2010-04-09T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2118,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 17,
+   "title": "The Red Box",
+   "airDateUtc": "2010-04-02T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2117,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 16,
+   "title": "Code Red",
+   "airDateUtc": "2010-03-12T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2116,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 15,
+   "title": "Red Herring",
+   "airDateUtc": "2010-03-05T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2115,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 14,
+   "title": "Blood In, Blood Out",
+   "airDateUtc": "2010-02-12T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2114,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 13,
+   "title": "Redline",
+   "airDateUtc": "2010-02-05T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2113,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 12,
+   "title": "Bleeding Heart",
+   "airDateUtc": "2010-01-22T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2112,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 11,
+   "title": "Rose-Colored Glasses",
+   "airDateUtc": "2010-01-15T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2111,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 10,
+   "title": "Throwing Fire",
+   "airDateUtc": "2009-12-18T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2110,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 9,
+   "title": "A Price Above Rubies",
+   "airDateUtc": "2009-12-11T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2109,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 8,
+   "title": "His Red Right Hand",
+   "airDateUtc": "2009-11-20T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2108,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 7,
+   "title": "Red Bulls",
+   "airDateUtc": "2009-11-13T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2107,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 6,
+   "title": "Black Gold and Red Blood",
+   "airDateUtc": "2009-11-06T01:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2106,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 5,
+   "title": "Red Scare",
+   "airDateUtc": "2009-10-30T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2105,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 4,
+   "title": "Red Menace",
+   "airDateUtc": "2009-10-16T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2104,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 3,
+   "title": "Red Badge",
+   "airDateUtc": "2009-10-09T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2103,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 2,
+   "title": "The Scarlet Letter",
+   "airDateUtc": "2009-10-02T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  },
+  {
+   "id": 2102,
+   "seriesId": 22,
+   "seasonNumber": 2,
+   "episodeNumber": 1,
+   "title": "Redemption",
+   "airDateUtc": "2009-09-25T00:00:00Z",
+   "hasFile": false,
+   "monitored": true,
+   "series": {
+    "id": 22,
+    "title": "The Mentalist",
+    "sortTitle": "mentalist",
+    "year": 2008
+   }
+  }
+ ]
+}

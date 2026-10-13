@@ -1,0 +1,6620 @@
+{
+ "Items": [
+  {
+   "Id": "05a6135f7471417c56ea9f1fabc86902",
+   "Name": "8 Mile",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0298203",
+    "Tmdb": "65"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b26fcbd105230422d8238063b09a944e",
+   "Name": "10 bonnes raisons de te larguer",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0147800",
+    "Tmdb": "4951"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c6b59afdbc933dff286039034c04eedb",
+   "Name": "300",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0416449",
+    "Tmdb": "1271"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "33436f082193a25431ba661cfcc2dd6a",
+   "Name": "300 : La Naissance d’un Empire",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1253863",
+    "Tmdb": "53182"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "01e3a50e4130b3a3d2e21a9ca08d945d",
+   "Name": "1917",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt8579674",
+    "Tmdb": "530915"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f18249e0f55b2ac2fed5e170e3943c66",
+   "Name": "2012",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1190080",
+    "Tmdb": "14161"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "da2d17f1a11aa8c2624d41cd55adaf41",
+   "Name": "À l'ouest rien de nouveau",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1016150",
+    "Tmdb": "49046"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7eab2bf443c51bc8258b7089a44163a0",
+   "Name": "Academie Minerva",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt28765828",
+    "Tmdb": "312557",
+    "Tvdb": "473120"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "UnplayedItemCount": 0,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0c5cde0fc47e023ea7e5d0ff73891fcd",
+   "Name": "Adaline",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1655441",
+    "Tmdb": "293863"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-25T18:40:26.4532663Z",
+    "PlayCount": 3
+   }
+  },
+  {
+   "Id": "95b1df09a84262971d5967728ce5097c",
+   "Name": "Akira",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0094625",
+    "Tmdb": "149"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f4ee5eb37edeaab848cdfcea58955841",
+   "Name": "All of Us Are Dead",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt14169960",
+    "Tmdb": "99966",
+    "Tvdb": "382142"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 12,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6cee2832b77e3e29cfa553884101c7ef",
+   "Name": "Allumeuses !",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0253867",
+    "Tmdb": "11812"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ccdddd70e79b92fd4d6384a0aa6a2b96",
+   "Name": "Along with the Gods: The Two Worlds",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt7160070",
+    "Tmdb": "397567"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4d9606ac332e3a8718101cc888fc4f38",
+   "Name": "The Amazing Spider-Man",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0948470",
+    "Tmdb": "1930"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "eb14b69be209327887581307ad404e9a",
+   "Name": "The Amazing Spider-Man : Le Destin d'un héros",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1872181",
+    "Tmdb": "102382"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b58f11322539bd3c7ff16431d1f4fcbb",
+   "Name": "American Assassin",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1961175",
+    "Tmdb": "415842"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3e18d0084e8ff75d992554a3b1da4e5d",
+   "Name": "American History X",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0120586",
+    "Tmdb": "73"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "365f16e6ba2cc571b305e906a96670e4",
+   "Name": "American Pie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0163651",
+    "Tmdb": "2105"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4943278d9f872861f2ccbef10a2c9090",
+   "Name": "American Pie 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0252866",
+    "Tmdb": "2770"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c883707645ae4e14e45314672790bffe",
+   "Name": "American Pie 4",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1605630",
+    "Tmdb": "71552"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "61fc78b041977b4486cce2e18ba4244d",
+   "Name": "American Pie : Marions-les !",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0328828",
+    "Tmdb": "8273"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6b5045f6ec36b509e01529d833e2ab04",
+   "Name": "American Psycho",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0144084",
+    "Tmdb": "1359"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0881c4b516a94512621daed4b045518a",
+   "Name": "American Psycho 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0283877",
+    "Tmdb": "10726"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "44a439891e1a9df1eb3195c68d212427",
+   "Name": "Ant-Man",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0478970",
+    "Tmdb": "102899"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "497a44182eaf41fdf147c8c6074303ba",
+   "Name": "Ant-Man et la Guêpe",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt5095030",
+    "Tmdb": "363088"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "afb5daaf30a9810c22dfc8b8eabe4726",
+   "Name": "Ant-Man et la Guêpe : Quantumania",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10954600",
+    "Tmdb": "640146"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4b211628aa8fe178cb0bd81a8257e649",
+   "Name": "Apocalypse Z : le début de la fin",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt27599851",
+    "Tmdb": "1118031"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7be24fed82bf48ec48fcb5463853b305",
+   "Name": "Arcane",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt11126994",
+    "Tmdb": "94605",
+    "Tvdb": "371028"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 18,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "60838a5f85352bc42e5928e6bca70763",
+   "Name": "Attirés Malgré Nous",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt36073210",
+    "Tmdb": "1440098"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-10-02T18:51:07.8638858Z",
+    "PlayCount": 3
+   }
+  },
+  {
+   "Id": "4056612c559bf053354f393cab19d398",
+   "Name": "Au milieu de la foule",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt14417718",
+    "Tmdb": "123192",
+    "Tvdb": "400723"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 10,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "26a4d93c8002f06eeba4d5d8f1c1f3c8",
+   "Name": "Avant toi",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2674426",
+    "Tmdb": "296096"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-08-30T19:49:15.7767263Z",
+    "PlayCount": 2
+   }
+  },
+  {
+   "Id": "6b373a5ae681ade9d0005b9a580b56ad",
+   "Name": "Avatar",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0499549",
+    "Tmdb": "19995"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f09435898769829d70436943d6a65f3f",
+   "Name": "Avatar : De feu et de cendres",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1757678",
+    "Tmdb": "83533"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d661caac6ea11c513bb0e4ad67872c65",
+   "Name": "Avengers : Endgame",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4154796",
+    "Tmdb": "299534"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a44b1fa2cdffe9495a443912ca70a1f3",
+   "Name": "Avengers : Infinity War",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4154756",
+    "Tmdb": "299536"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "90ad801e3d35ab1a1454dc1d6dfdf979",
+   "Name": "Avengers : L'Ère d'Ultron",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2395427",
+    "Tmdb": "99861"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "78aef9f8a8f8a6ac2eccde10e37864bc",
+   "Name": "Baby Driver",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3890160",
+    "Tmdb": "339403"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7077ef55d56c94a6be7e5eabad3668ce",
+   "Name": "BAC Nord",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10404944",
+    "Tmdb": "637534"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "590dae2810954757f00b8f16150c28a3",
+   "Name": "Backrooms",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt26657236",
+    "Tmdb": "1083381"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4f12fedf6d8de21ff9b12ba435876f70",
+   "Name": "Bagarre",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt34724686",
+    "Tmdb": "1418709"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bc7a635122a35aeed1737af407a2a261",
+   "Name": "Banlieue 13",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0414852",
+    "Tmdb": "10045"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e1a09ffb982489fe1a8d602f8fc8d4ed",
+   "Name": "Banlieue 13 : Ultimatum",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1247640",
+    "Tmdb": "15357"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "92041feb9dbfb057f734efbefc128cea",
+   "Name": "Banshee",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt2017109",
+    "Tmdb": "41727",
+    "Tvdb": "259765"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 38,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b165ed0306d7362caa07e4ce41fc3d2d",
+   "Name": "Barbaque",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt12887770",
+    "Tmdb": "730769"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9d6bff765c2e4d3d2a57589e72affbc9",
+   "Name": "Barry Lyndon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0072684",
+    "Tmdb": "3175"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0b7db4ae7864448e4ff4753931d0cf36",
+   "Name": "Batman Begins",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0372784",
+    "Tmdb": "272"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "64bcf64d8d7bd27f3d578eecbf5b412e",
+   "Name": "The Bear",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt14452776",
+    "Tmdb": "136315",
+    "Tvdb": "403294"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 46,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "62f3af5bafbae5fec11b94b0e928743a",
+   "Name": "Beauty in Black",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt31260386",
+    "Tmdb": "246246",
+    "Tvdb": "446065"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2aa6a05f7f9128b5555eba18f22bfe22",
+   "Name": "Big Fish",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0319061",
+    "Tmdb": "587"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0891eb6d32307810777c19232a5f9918",
+   "Name": "Black Panther",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1825683",
+    "Tmdb": "284054"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c6c0cd5ef76ca1fb2bddbf3f1a936516",
+   "Name": "Black Panther : Wakanda Forever",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt9114286",
+    "Tmdb": "505642"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5e33d089854bdf7cbb8969d3a4ad562f",
+   "Name": "Black Phone",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt7144666",
+    "Tmdb": "756999"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5652367002bf4dd019627e94dae84a4f",
+   "Name": "Black Phone 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt29644189",
+    "Tmdb": "1197137"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9b9d8e3b45e2ab20ef2db94e51308bef",
+   "Name": "Black Snake Moan",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0462200",
+    "Tmdb": "7874"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5f7b593e2baeb9b00b1ad3993af5b19f",
+   "Name": "Black Widow",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3480822",
+    "Tmdb": "497698"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "280048b043e0995c177c8e2f61f23bb0",
+   "Name": "Blade Runner 2049",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1856101",
+    "Tmdb": "335984"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "57b597e1c7b63f997139866fd424624c",
+   "Name": "Bleu d'Enfer",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0378109",
+    "Tmdb": "11968"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "98eafce9caef2e4458ca6b1899c103d3",
+   "Name": "Bloodshot",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1634106",
+    "Tmdb": "338762"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8fefc8d943aab54ff6587227fb3924f7",
+   "Name": "Blow Out",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0082085",
+    "Tmdb": "11644"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "171d917f044222469e9790613d11935e",
+   "Name": "Brothers",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0765010",
+    "Tmdb": "7445"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "858fd18c9273555d2f203973a940edab",
+   "Name": "Bullet Train",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt12593682",
+    "Tmdb": "718930"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "22184aa7c12e30c55edd8f9a81410509",
+   "Name": "Butcher 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1270835",
+    "Tmdb": "43919"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "19cd902306a089b6b21c9ce2fc4db7ce",
+   "Name": "Butcher : La Légende de Victor Crowley",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0422401",
+    "Tmdb": "11908"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d1bd8f79ebaa94247c3b800764a5dfd6",
+   "Name": "Butcher III",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1870419",
+    "Tmdb": "167575"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "67f93eccf1e0a589b93aa20d2357292a",
+   "Name": "Cannibal Holocaust",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0078935",
+    "Tmdb": "8689"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4433ec2c0fef5ce3228d0bd9f61ff461",
+   "Name": "Captain America : Brave New World",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt14513804",
+    "Tmdb": "822119"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a359aa74e5cb671a2891f800cdf491ed",
+   "Name": "Captain America : Civil War",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3498820",
+    "Tmdb": "271110"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5f8996b23d3fd93ad5f4828d2963dc91",
+   "Name": "Captain Marvel",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4154664",
+    "Tmdb": "299537"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1ad17ed767e42ef76d100cc445c4878e",
+   "Name": "Casino Royale",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0381061",
+    "Tmdb": "36557"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f67029b09cb2d3c2f3ae17df58457306",
+   "Name": "Ce que le jour doit à la nuit",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1934205",
+    "Tmdb": "119193"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "238245d89c1b17d8d833d5cf56ed6fb9",
+   "Name": "Chacal",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt24053860",
+    "Tmdb": "222766",
+    "Tvdb": "426866"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 10,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ad58ed81b4ef4280ee9fd7a930eccd05",
+   "Name": "Chainsaw Man – Le Film : L'arc de Reze",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt30472557",
+    "Tmdb": "1218925"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a55a2ca9709de474c4cf7235bf82aefa",
+   "Name": "Charm City Kings",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt9048840",
+    "Tmdb": "552532"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "133409694f60b842f30e78480fc5f4a4",
+   "Name": "Chernobyl",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt7366338",
+    "Tmdb": "87108",
+    "Tvdb": "360893"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 5,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "121104a3dbaa26438b03a4cf04ed88ba",
+   "Name": "Chiens de Paille",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0999913",
+    "Tmdb": "64639"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "17857dc182a9f5a99c500c2dabf8ea55",
+   "Name": "Colony",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt34385135",
+    "Tmdb": "1375646"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9940dbdef1ed1930cccfdb412f7a8430",
+   "Name": "Compostelle",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt39814688",
+    "Tmdb": "1404604"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "79adf0c7535a2913960f2aae8091470b",
+   "Name": "Coraline",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0327597",
+    "Tmdb": "14836"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c5424d1b24eb586b137a383dc091c480",
+   "Name": "Coup de tête",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0079002",
+    "Tmdb": "10792"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6fc83d5cf6aa8bd24d82536a2fa79246",
+   "Name": "Creed : L'héritage de Rocky Balboa",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3076658",
+    "Tmdb": "312221"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1eb7ab9705cda16764ecbffd24a9c5f1",
+   "Name": "Creed II",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6343314",
+    "Tmdb": "480530"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1b39fdeaf9c77d39c250f17f28a075d4",
+   "Name": "Creed III",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt11145118",
+    "Tmdb": "677179"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8a9da099c8304763f0ba81e64544c03a",
+   "Name": "Cyberpunk : Edgerunners",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt12590266",
+    "Tmdb": "105248",
+    "Tvdb": "384541"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 10,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a62a308ddddee85f4267e7ff3822f063",
+   "Name": "Dans les ténèbres",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0085496",
+    "Tmdb": "8220"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "068b2bee93158a84011f98fd2dba57ca",
+   "Name": "The Dark Knight : Le Chevalier noir",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0468569",
+    "Tmdb": "155"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b72f2dbc4d4ae9f391941b98793a5aa6",
+   "Name": "The Dark Knight Rises",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1345836",
+    "Tmdb": "49026"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2203a96243ed9cdfb799fe919c163fa6",
+   "Name": "Dark Shadows",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1077368",
+    "Tmdb": "62213"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "691c175fae63ba3b8b192d4f3ed77ac6",
+   "Name": "David",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt15678738",
+    "Tmdb": "1167307"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "088d68d009fc9ab12f45d1494313fb5f",
+   "Name": "Deadpool & Wolverine",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6263850",
+    "Tmdb": "533535"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1b76edbc56e665644e3a397017b02bb4",
+   "Name": "Dear You",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt32546170",
+    "Tmdb": "255247",
+    "Tvdb": "458914"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 15,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "aeda925170ad72f0f42f17db2d1f05ca",
+   "Name": "Demolition",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1172049",
+    "Tmdb": "303991"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "25d60b4c63b449084ff1cedc50712fdd",
+   "Name": "Des Minions et des monstres",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt32890033",
+    "Tmdb": "1315772"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "deeb4b4abe7dfd88832bf8ab1f7683e2",
+   "Name": "Des vivants",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt35363719",
+    "Tmdb": "258002",
+    "Tvdb": "459389"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b065f01fb38d665b26ca9fa2cb84317d",
+   "Name": "Deux mondes pour un vœu",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt36499994",
+    "Tmdb": "1522377"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-10-07T11:57:18.711725Z",
+    "PlayCount": 2
+   }
+  },
+  {
+   "Id": "4906153cb1262665a9672a325c1867da",
+   "Name": "Devil May Cry",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt15716776",
+    "Tmdb": "235930",
+    "Tvdb": "440193"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2d4de5dad33cf9ad350117e80375efc5",
+   "Name": "Dexter",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt0773262",
+    "Tmdb": "1405",
+    "Tvdb": "79349"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 60,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "66e0cc29c354108d44a8efe10ef04711",
+   "Name": "Dexter: New Blood",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt14164730",
+    "Tmdb": "131927",
+    "Tvdb": "412366"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 10,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5c95a05d3f2314b2187bba2c41045944",
+   "Name": "Dexter: Resurrection",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt33043892",
+    "Tmdb": "259909",
+    "Tvdb": "452595"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 10,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b810cb15f695db65656c89980d7fe10c",
+   "Name": "Dikkenek",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0456123",
+    "Tmdb": "8736"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b5029b0015b6b2d184215556267c6014",
+   "Name": "The Dinner",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0427152",
+    "Tmdb": "38778"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f90e01d0ae5faabcc054ae1f1975c704",
+   "Name": "Disclosure Day",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt15047880",
+    "Tmdb": "1275779"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bfb7973515078ec75a04c7a62a7250e7",
+   "Name": "District 9",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1136608",
+    "Tmdb": "17654"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "62353972b825e92c41c557b407041ea3",
+   "Name": "Doctor Strange",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1211837",
+    "Tmdb": "284052"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8af92e2f584126ec5f81887c549d53c6",
+   "Name": "Doctor Strange in the Multiverse of Madness",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt9419884",
+    "Tmdb": "453395"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "dc94e03d9bb9ee3782ef42fee9f22c64",
+   "Name": "Dogville",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0276919",
+    "Tmdb": "553"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "67fbbae967c0b45597238b3b7322902f",
+   "Name": "Don't Say Good Luck",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt36590417",
+    "Tmdb": "1504358"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7729d4f477ea166b9b2ea8f029630961",
+   "Name": "Dracula",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt31434030",
+    "Tmdb": "1246049"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c45a26824011956e174a7f305963128f",
+   "Name": "The Drama",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt33071426",
+    "Tmdb": "1325734"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "fe7ae887a6afcc3f7c8e7dfbe896b206",
+   "Name": "Drive",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0780504",
+    "Tmdb": "64690"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3bbc10fe0cea9d99dddf3bf0f37a79d2",
+   "Name": "DTF St. Louis",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt34385331",
+    "Tmdb": "206828",
+    "Tvdb": "468739"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 7,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f389dec5cdc9463fe2cb2ac3fe8aeda2",
+   "Name": "Dunkerque",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt5013056",
+    "Tmdb": "374720"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "27512e596f464687a0309560153f72aa",
+   "Name": "Eden",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt23149780",
+    "Tmdb": "1042834"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ec024ff3b130a41177d64c0e021c2286",
+   "Name": "Eden Lake",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1020530",
+    "Tmdb": "13510"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "891a48a8a52724c2fda4fa2603c59850",
+   "Name": "Effroyables Jardins",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0285052",
+    "Tmdb": "51163"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "af6f3aa0a933b3f6da7eaef379dcb460",
+   "Name": "En passant pécho",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt13669344",
+    "Tmdb": "659063"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "48beb2a9f3d751ea98484907ee6d21f9",
+   "Name": "Enemy",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2316411",
+    "Tmdb": "181886"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2e8410231ae287d02dd381b4a0cea03f",
+   "Name": "Equalizer",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0455944",
+    "Tmdb": "156022"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ccbc62f4797ca10d09f599f9f7553f89",
+   "Name": "Equalizer 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3766354",
+    "Tmdb": "345887"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "44e26e44047f59d2544179e20733fb47",
+   "Name": "Equalizer 3",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt17024450",
+    "Tmdb": "926393"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "172f877fe4f040b7dc87eb7746ea3024",
+   "Name": "Equilibrium",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0238380",
+    "Tmdb": "7299"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "39c74f41bfabfa9f4a1b5ac7eb63191b",
+   "Name": "Évasion",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1211956",
+    "Tmdb": "107846"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a327db645a60c8c78fc264d9cc7976b0",
+   "Name": "Évasion 2 : Le Labyrinthe d'Hadès",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6513656",
+    "Tmdb": "440471"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "183e67e9aff1733fcb212fb012735aa5",
+   "Name": "Évasion 3",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6772804",
+    "Tmdb": "480042"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "819f7eac09c6a4fe7418a308239a88c6",
+   "Name": "Everything Everywhere All at Once",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6710474",
+    "Tmdb": "545611"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0d693cc33b6e47eff760247d81c923c0",
+   "Name": "Exhuma",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt27802490",
+    "Tmdb": "838209"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ccf0e8156d76e40c90b42b69d8bf9e65",
+   "Name": "F1® Le Film",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt16311594",
+    "Tmdb": "911430"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "45779601afd598f8b78c220a5bae78b9",
+   "Name": "The Fall Guy",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1684562",
+    "Tmdb": "746036"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0982d0e039a6b35dc0f2d47620a1adb9",
+   "Name": "Fallout",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt12637874",
+    "Tmdb": "106379",
+    "Tvdb": "416744"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 16,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "69c996d7612b8cca4bc6c58086498a1f",
+   "Name": "Fausses Apparences",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0308878",
+    "Tmdb": "22958"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "LastPlayedDate": "2026-09-15T19:45:58.1382848Z",
+    "PlayCount": 2
+   }
+  },
+  {
+   "Id": "95fcd7799f50b5022dc4ccb1ec3f5f40",
+   "Name": "Fear",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0116287",
+    "Tmdb": "10543"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "04d01f11c1b4c04986238c5cc01b41ee",
+   "Name": "Fight Club",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0137523",
+    "Tmdb": "550"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3598fdbc6dd5eeae634ea4cefaf2b02a",
+   "Name": "Fighter",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0964517",
+    "Tmdb": "45317"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2d5307076053edd6403450179538de24",
+   "Name": "Fighter in the Wind",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0416499",
+    "Tmdb": "21115"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1567e827417ee5a3ca4e1740eee37e6f",
+   "Name": "Forrest Gump",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0109830",
+    "Tmdb": "13"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4ea4af911fb8e8f07fb3f0f197c3de9b",
+   "Name": "Free Guy",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6264654",
+    "Tmdb": "550988"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "902df4a4fe9bb084d27e49b41fad200a",
+   "Name": "Frères d'armes",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt0185906",
+    "Tmdb": "4613",
+    "Tvdb": "74205"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 10,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "788865d3b9f81404cbb52d4fe8e37f25",
+   "Name": "Fruitvale Station",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2334649",
+    "Tmdb": "157354"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "49061fc634f2fd5cb76592244541833e",
+   "Name": "Full Metal Jacket",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0093058",
+    "Tmdb": "600"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4db4dcc9dea68f20e317add933948b94",
+   "Name": "Fury",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2713180",
+    "Tmdb": "228150"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "788628fa2f3e42f81d44fd0dd947fc57",
+   "Name": "G.O.A.T.",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt20990442",
+    "Tmdb": "986097"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5cf4786c1ef1443cfd7c8cb71c0e2667",
+   "Name": "Game Night",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2704998",
+    "Tmdb": "445571"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "311ebac361be32f284ff8cec8b5e9d55",
+   "Name": "Génération perdue",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0093437",
+    "Tmdb": "1547"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c6c109ca02ebf61bfc3573537fdc96c8",
+   "Name": "The Gentlemen",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt8367814",
+    "Tmdb": "522627"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0a8556772f0e8a692624032645388f82",
+   "Name": "Gérald le Conquérant",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt29312656",
+    "Tmdb": "1174382"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a6ff94b3fca9c5194558357ab406fd58",
+   "Name": "Ghost in the Shell",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0113568",
+    "Tmdb": "9323"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5e05f6f0345bea7c4cb19386cbc8335c",
+   "Name": "GIGN",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt35495063",
+    "Tmdb": "281281",
+    "Tvdb": "479932"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 6,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5c454a9c0167b600ae3baea52e91a440",
+   "Name": "Gone Girl",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2267998",
+    "Tmdb": "210577"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "06048749db654723d414b620b0ad594e",
+   "Name": "The Good Boy",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt34381258",
+    "Tmdb": "1381027"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1bb63bf8cfb6568939ace8d2e6e7490e",
+   "Name": "The Gorge",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt13654226",
+    "Tmdb": "950396"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f6ee9c32e14306e06685cc496f15c948",
+   "Name": "Gourou",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt31777964",
+    "Tmdb": "1259983"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2967773d062cdc4569aa3f455b97185a",
+   "Name": "Gran Turismo",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4495098",
+    "Tmdb": "980489"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3b2fe73751409c3b690bde552e5d5018",
+   "Name": "Grand Theft Auto VI : un large aperçu",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt43749709",
+    "Tmdb": "1744462"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "084e7483a597cc200a6ed079cc406580",
+   "Name": "Green Book : Sur les routes du Sud",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6966692",
+    "Tmdb": "490132"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4a53f4c2cfc7755e0e3d3bd7888e7b38",
+   "Name": "Halal police d’État",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1708526",
+    "Tmdb": "57382"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e2588faaf991fe41e5e92a73afd10ecb",
+   "Name": "Handsome Guys",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt32475217",
+    "Tmdb": "736720"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e2136621822747b36eab0f92b4d827eb",
+   "Name": "Hannibal",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt2243973",
+    "Tmdb": "40008",
+    "Tvdb": "259063"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 39,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "611419c6c26f6f0bf14dd3c5e533fc38",
+   "Name": "Harry Potter à l'école des sorciers",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0241527",
+    "Tmdb": "671"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e6a7c3a1c9c10cd12e223c4e37f808a6",
+   "Name": "Harry Potter et la Chambre des secrets",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0295297",
+    "Tmdb": "672"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7020d1e3aeaff0283ebf419bdb35b1b3",
+   "Name": "Harry Potter et la Coupe de feu",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0330373",
+    "Tmdb": "674"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "20b16cf3f28f3b540bae8798889fa633",
+   "Name": "Harry Potter et le Prince de sang-mêlé",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0417741",
+    "Tmdb": "767"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9983ea38f115864144774ce2bd7ce7f3",
+   "Name": "Harry Potter et le Prisonnier d'Azkaban",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0304141",
+    "Tmdb": "673"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a30fbec12cc021233a91ceb6bc251d71",
+   "Name": "Harry Potter et les Reliques de la Mort - 1ère partie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0926084",
+    "Tmdb": "12444"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "29f15256ecbc492721fa468a242ffefe",
+   "Name": "Harry Potter et les Reliques de la Mort - 2ème partie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1201607",
+    "Tmdb": "12445"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ace6ae5c74d8293ae96aa4b00c3f7b60",
+   "Name": "Harry Potter et l'Ordre du Phénix",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0373889",
+    "Tmdb": "675"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d681d4d9977053c1ee3c831ca06b0c74",
+   "Name": "Hazbin Hotel",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt7216636",
+    "Tmdb": "94954",
+    "Tvdb": "358805"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 16,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "074415607898acc24343e95df434f742",
+   "Name": "Heads of State",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt13357520",
+    "Tmdb": "749170"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "88821d3d1c1f07c2b8579189f0fdab13",
+   "Name": "Heat",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0113277",
+    "Tmdb": "949"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "05ff5d6d73950e567b4c84b4a6c57016",
+   "Name": "Hercule",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1267297",
+    "Tmdb": "184315"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e8bc6e2f2a5988bb8a04729be14294a6",
+   "Name": "Histoires sensuelles",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt8439854",
+    "Tmdb": "530154"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "204fecf1bbaa2b813bbba48150c9ee21",
+   "Name": "Histoires sensuelles 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt27989067",
+    "Tmdb": "1136736"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7df9c43e046752e1968fafea7730ad87",
+   "Name": "Histoires Sensuelles 3",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt39667834",
+    "Tmdb": "1451944"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e462b06fa4c8a8379f89c7886c83e69c",
+   "Name": "Hitman: Agent 47",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2679042",
+    "Tmdb": "249070"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5c3e3fe660ec740f034d0db4ef6544aa",
+   "Name": "The Human Centipede",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1467304",
+    "Tmdb": "37169"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "150600d0afde57e1db028546da92889b",
+   "Name": "Hunger Games",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1392170",
+    "Tmdb": "70160"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "37550f81a32c5a93d38c24d8819a75cf",
+   "Name": "Hunger Games : L'Embrasement",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1951264",
+    "Tmdb": "101299"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a71614e4d302fe18b919082b51b6db6c",
+   "Name": "Hunger Games : La Ballade du serpent et de l'oiseau chanteur",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10545296",
+    "Tmdb": "695721"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "786ca1675f282ec6ce37c427cf4ab73c",
+   "Name": "Hunger Games : La Révolte - Partie 1",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1951265",
+    "Tmdb": "131631"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "264baeacdc71fddb87431cc3518e6ccd",
+   "Name": "Hunger Games : La Révolte - Partie 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1951266",
+    "Tmdb": "131634"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "75c86fd569e7a51c724fc5111d4e4e16",
+   "Name": "“Hurlevent”",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt32897959",
+    "Tmdb": "1316092"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f0759bf4cd5cb367ac0ad7c91e35175c",
+   "Name": "Immaculée",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt23137390",
+    "Tmdb": "1041613"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9893d0618b39f7175780ab136df9baa8",
+   "Name": "Inception",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1375666",
+    "Tmdb": "27205"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d99cc95540ecaa58cb63206dca60ef78",
+   "Name": "Inglourious Basterds",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0361748",
+    "Tmdb": "16869"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f5f6672734cb03a8451737547a3f19e9",
+   "Name": "Interstellar",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0816692",
+    "Tmdb": "157336"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "06c903d6f68e94942b46e0403c583ac5",
+   "Name": "Intouchables",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1675434",
+    "Tmdb": "77338"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "94af3f794a7232d9241b23a0d95fdd57",
+   "Name": "Iron Man",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0371746",
+    "Tmdb": "1726"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8caf2199e3923bbb014caf7c3322d83e",
+   "Name": "Iron Man 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1228705",
+    "Tmdb": "10138"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "02ae2e61d099b352d00306e9fa56174a",
+   "Name": "Iron Man 3",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1300854",
+    "Tmdb": "68721"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b099a880876894d9db54a71eb6263f4d",
+   "Name": "Jack et la mécanique du cœur",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1181840",
+    "Tmdb": "204436"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ca13ac7a7a1f48650d22513c8676abaa",
+   "Name": "Jack et le Haricot magique",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1079968",
+    "Tmdb": "36550"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "87e849d18a1eb54200745f840cee0d2b",
+   "Name": "Jack Mimoun et les secrets de Val Verde",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt21249808",
+    "Tmdb": "893369"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7a6bd3fde16d2dd4c8e2575990f45282",
+   "Name": "Jack Ryan",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt5057054",
+    "Tmdb": "73375",
+    "Tvdb": "336261"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 30,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "671cae1ac08546ba8e85479f68a86736",
+   "Name": "Jack Ryan de Tom Clancy : Guerre Fantôme",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt34378301",
+    "Tmdb": "1380291"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "83605ebc122f8ea43bb031896665caa7",
+   "Name": "Je suis une légende",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0480249",
+    "Tmdb": "6479"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b79faf74fe699122d8c2a259ceda89cd",
+   "Name": "Je te Connais",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt39397536",
+    "Tmdb": "320760",
+    "Tvdb": "482025"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9c2e10ba63b76b74ea31ef8b8a180a29",
+   "Name": "Je verrai toujours vos visages",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt24070754",
+    "Tmdb": "1000492"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "14a2a62dfad60083a1fe9eaad0acdb2e",
+   "Name": "Jeanne d'Arc",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0151137",
+    "Tmdb": "10047"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7eded5e51c6ae9759643b3d9525b56ec",
+   "Name": "John Q.",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0251160",
+    "Tmdb": "8470"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "eb6ecb9c4ced6790863338f89d7c8d2d",
+   "Name": "Joker",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt7286456",
+    "Tmdb": "475557"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "975846b9837bfb462db48b3a08ac18d8",
+   "Name": "Jungle",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3758172",
+    "Tmdb": "390062"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0bd0076721854a058c76cd7ef604c30f",
+   "Name": "Juré n°2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt27403986",
+    "Tmdb": "1106739"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a8b50abdd5cd76a3fcb75ccaa0e77178",
+   "Name": "Juste l'espace entre nous",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt28664733",
+    "Tmdb": "1165642"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9299e5b60ca4b75de6264b5ea3e57daf",
+   "Name": "Juste pour une Nuit",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt37853455",
+    "Tmdb": "1433367"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": true,
+    "LastPlayedDate": "2026-10-07T15:03:55.8892403Z",
+    "PlayCount": 2
+   }
+  },
+  {
+   "Id": "94a4397e129dbfc8e94d2b38e0cc67c1",
+   "Name": "Juste une illusion",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt36842933",
+    "Tmdb": "1404684"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2b63e68350a3fef10a7ba96956392d71",
+   "Name": "Kick-Ass",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1250777",
+    "Tmdb": "23483"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "921de06e4539d7224c5a4f771a55a646",
+   "Name": "Kick-Ass 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1650554",
+    "Tmdb": "59859"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5c87b18fbffc62b721aaa6ad42cba2e0",
+   "Name": "Kingdom of Heaven",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0320661",
+    "Tmdb": "1495"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "808a3683200ff33d1aabf1c2026954cf",
+   "Name": "Knock Knock",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3605418",
+    "Tmdb": "263472"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "02f803395de015f8d5936af5011d250a",
+   "Name": "Kraken",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt19838566",
+    "Tmdb": "1571766"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ee6fd7229ae240d7363f4d9d46b0c378",
+   "Name": "La bataille de Gaulle : L'âge de fer",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt28553375",
+    "Tmdb": "1165366"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "648546939e17b1751e27f073825f690a",
+   "Name": "La Dernière Maison sur la gauche",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0844708",
+    "Tmdb": "18405"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5080ee4f1303b9ae0eee63bd55ebda6c",
+   "Name": "La Femme de ménage",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt27543632",
+    "Tmdb": "1368166"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "30db46c9965eadb15642764a84812a62",
+   "Name": "La Femme secrète",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt37275992",
+    "Tmdb": "1631807"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-25T13:42:50.6638973Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "1e1fb4ffa7220b43a69e7b7a7e61c726",
+   "Name": "La Fin d'Oak Street",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt27165187",
+    "Tmdb": "1101383"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6defbb6c10f50e3954f88f93d66c4497",
+   "Name": "La Folle Histoire de Max et Léon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt5091538",
+    "Tmdb": "392142"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b2e17c2c3350d49a3befad6a4451c698",
+   "Name": "La Grande Java",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0211390",
+    "Tmdb": "72280"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b62a6234f080645a739be439fb910bd1",
+   "Name": "La La Land",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3783958",
+    "Tmdb": "313369"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "58f335bbd7a2e75e1aafd11aa7756e38",
+   "Name": "La Main",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10638522",
+    "Tmdb": "1008042"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e358bfaf6a905bdb3e4deea6a7e2b0e1",
+   "Name": "La mort m'a sauvé la vie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt13646412",
+    "Tmdb": "796989"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4c9e6e63f725162ef06b768192090ec4",
+   "Name": "La Passion du Christ",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0335345",
+    "Tmdb": "615"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ffcd818bd5c0fbb81a2f4d7e542cf2ce",
+   "Name": "La Rage au ventre",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1798684",
+    "Tmdb": "307081"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b6b960db73344ed6f02eb11f03bb7221",
+   "Name": "La tueuse à la valise : l'histoire vraie de Melanie McGuire",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt19813094",
+    "Tmdb": "986965"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-07T12:33:46.3628774Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "a914a7f034cfea017ab561a1b8b64f27",
+   "Name": "La Vie de David Gale",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0289992",
+    "Tmdb": "11615"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c4e51b414f901fdc305e74b8e68bfa00",
+   "Name": "La vie est belle",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0118799",
+    "Tmdb": "637"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8f65a4c5933e9d58e7f0440f666bcd75",
+   "Name": "L'abandon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt40435390",
+    "Tmdb": "1645368"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f5d5ab53a6c30b7d2166797bbd53fbee",
+   "Name": "L'Aigle de la Neuvième Légion",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1034389",
+    "Tmdb": "49494"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "853ffd2562fd97fb7e6f256fc6a27c7f",
+   "Name": "L'Aile ou la Cuisse",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0074103",
+    "Tmdb": "761"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ca643865d84f53aeab867acfef88a33f",
+   "Name": "Lascars",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt0856138",
+    "Tmdb": "21523",
+    "Tvdb": "82742"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 30,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "dad9e183aaf6844958266c2f23a31722",
+   "Name": "Lascars",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1043852",
+    "Tmdb": "19106"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "404848f7e3cdf5e2393af08c212ab5e5",
+   "Name": "The Last Sunrise",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt37654096",
+    "Tmdb": "1516698"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-08-29T18:45:42.5867477Z",
+    "PlayCount": 3
+   }
+  },
+  {
+   "Id": "46d611431b724c59246f4ad196a319cd",
+   "Name": "Le Collège Noir",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt32109806",
+    "Tmdb": "238438",
+    "Tvdb": "435256"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 6,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9e8237a0195cea56757d7e0784bd935f",
+   "Name": "Le Comte de Monte-Cristo",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt26446278",
+    "Tmdb": "1084736"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a78a4d7aa89079670ab1e80f987c33a8",
+   "Name": "Le Dîner de cons",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0119038",
+    "Tmdb": "9421"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4046aa835cf18ebf570e12985912c6b2",
+   "Name": "Le Gangster, le flic et l'assassin",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10208198",
+    "Tmdb": "581528"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e339406c5855149741073c2337846729",
+   "Name": "Le Labyrinthe",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1790864",
+    "Tmdb": "198663"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9592b098da2f165b6ae32f228d04a8f6",
+   "Name": "Le Labyrinthe : La Terre brûlée",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4046784",
+    "Tmdb": "294254"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "432a1cbc0db50474bdf5988d3460dcf3",
+   "Name": "Le Labyrinthe : Le Remède mortel",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4500922",
+    "Tmdb": "336843"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bacfec830a6784f3e7a77882050b7f0b",
+   "Name": "Le Loup de Wall Street",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0993846",
+    "Tmdb": "106646"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c5f176eac13dc68f39942ec2452a0f8d",
+   "Name": "Le Maître du Haut Château",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt1740299",
+    "Tmdb": "62017",
+    "Tvdb": "295829"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 10,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "11f1e831b798420e059764b4312d8fdd",
+   "Name": "Le Mans 66",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1950186",
+    "Tmdb": "359724"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2fd702322180f74f77db96945a3b478a",
+   "Name": "Le Parrain",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0068646",
+    "Tmdb": "238"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7e8a22c40628c9a0a790175101d0d349",
+   "Name": "Le Parrain, 2e partie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0071562",
+    "Tmdb": "240"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b766d6d04490220f20fdb3db6046804d",
+   "Name": "Le Parrain, 3e partie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0099674",
+    "Tmdb": "242"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9eff1276fa10f19c4e3f82e66824541d",
+   "Name": "Le Prestige",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0482571",
+    "Tmdb": "1124"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c63446a7ac193298b0fc4b14bf63ccc8",
+   "Name": "Le Roi",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt7984766",
+    "Tmdb": "504949"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f27b6e169725ad2a81ddf714b75ca516",
+   "Name": "Le Royaume des chats",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0347618",
+    "Tmdb": "15370"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e556c409c6ef3d755a0fbbf640eb7c35",
+   "Name": "Le Voyage de Chihiro",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0245429",
+    "Tmdb": "129"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2c77ca4fc0234160d58ab2fbc4f12812",
+   "Name": "L'Effet papillon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0289879",
+    "Tmdb": "1954"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a5ba700b2a75eb07e4e49bcf9dffd887",
+   "Name": "Léon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0110413",
+    "Tmdb": "101"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8fe0eb43cdd6d1ebe0e5bcbeb414fa91",
+   "Name": "Les 4 Fantastiques : Premiers Pas",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10676052",
+    "Tmdb": "617126"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "25abd4430c06f22e3d53b0162d4af77a",
+   "Name": "Les 7 jours du talion",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0445054",
+    "Tmdb": "39681"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6ee49b1e4e3d214bda078c7b87771a2e",
+   "Name": "Les Bidasses en folie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0187732",
+    "Tmdb": "72259"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3a5116822f3d2a424f479334bb147e6a",
+   "Name": "Les Bronzés font du ski",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0078907",
+    "Tmdb": "33701"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bd7c51f1686b02e448fac9092db7797a",
+   "Name": "Les Éternels",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt9032400",
+    "Tmdb": "524434"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "82ec9d467f4694aa3cc7385dcd274027",
+   "Name": "Les Évadés",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0111161",
+    "Tmdb": "278"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a47772794199ee650fd76515ad953868",
+   "Name": "Les Fils de l'homme",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0206634",
+    "Tmdb": "9693"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d5f9945616a048638c17d86a282ca65b",
+   "Name": "Les Fils du vent",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0345235",
+    "Tmdb": "25631"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "29258ef5c604e1ebe80bc71a8befab53",
+   "Name": "Les Fous du stade",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0197485",
+    "Tmdb": "62660"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1ac648cbdc629ae7111fd152d8f5b690",
+   "Name": "Les Gardiens de la Galaxie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2015381",
+    "Tmdb": "118340"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "72f99c4e8da5ce9817ebb2efdbb5cba8",
+   "Name": "Les Gardiens de la Galaxie : Volume 3",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6791350",
+    "Tmdb": "447365"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8f8cbe8566a88a1322d40bffb6814f22",
+   "Name": "Les Gardiens de la Galaxie Vol. 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3896198",
+    "Tmdb": "283995"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5c61959375fdaac22e4a693e991025e4",
+   "Name": "Les Huit Salopards",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3460252",
+    "Tmdb": "273248"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0004d72650dbd1980b348f534dff3e27",
+   "Name": "Les Noces rebelles",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0959337",
+    "Tmdb": "4148"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4100821de9923026cccb01797bbf9691",
+   "Name": "Les Nouveaux Mutants",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4682266",
+    "Tmdb": "340102"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4e60b45b9a6ca9ce1c15a88840f64dc8",
+   "Name": "Les reines du drame",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt28349668",
+    "Tmdb": "1001376"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9732b343f3d4b0511befbf1f97efac1b",
+   "Name": "Les Soprano",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt0141842",
+    "Tmdb": "1398",
+    "Tvdb": "75299"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 13,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9e92e3d91c840d8e1e2f3ee915606111",
+   "Name": "Les Spécialistes",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt27681354",
+    "Tmdb": "1122573"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5d1c79b86b4572fe2754a34b5829e0c0",
+   "Name": "L'Exécuteur",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4633690",
+    "Tmdb": "339692"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9ec8e28e0460a2a5dbc74e501a16416c",
+   "Name": "L'Expérience",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0250258",
+    "Tmdb": "575"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": true,
+    "LastPlayedDate": "2026-09-12T17:51:27.1193033Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "a05685650da64f5385b932b66cd2c67a",
+   "Name": "L'Honneur du Dragon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0427954",
+    "Tmdb": "8982"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "dae3b713433c02257d8d2f83e3756173",
+   "Name": "L'Honneur du dragon 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1925518",
+    "Tmdb": "110552"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c16bbb219ae094d9e6263a9e983527c1",
+   "Name": "Limitless",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1219289",
+    "Tmdb": "51876"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5e141ac615d55d7cb454eec1411fcb97",
+   "Name": "L'Invitation",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt14173636",
+    "Tmdb": "950028"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-07T19:27:46.127453Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "a111c204c6548f24001d78cc4990f434",
+   "Name": "Little Brother",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt34888871",
+    "Tmdb": "1397385"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "80a5d600d45a1f9e4752c27c97fce1a7",
+   "Name": "L'Odyssée de Pi",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0454876",
+    "Tmdb": "87827"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6d039957541bd488d5a8f9a6371fb65f",
+   "Name": "Loki",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt9140554",
+    "Tmdb": "84958",
+    "Tvdb": "362472"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 12,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9c2f16a7bec122286190c88ed3bc1e42",
+   "Name": "Lord of War",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0399295",
+    "Tmdb": "1830"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8314e486d07e54a0a12d45093f079a62",
+   "Name": "The Love Hypothesis",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt22526100",
+    "Tmdb": "1032863"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-25T11:18:55.0673529Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "47636fa7de8339b3c3cff1db6b956dc9",
+   "Name": "Love Me Love Me",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt36331860",
+    "Tmdb": "1317672"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "678872a4be8e63f91fe3eb80efd038e8",
+   "Name": "The Machinist",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0361862",
+    "Tmdb": "4553"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "09a6e9dd8a35d5bfc0f68177908bf4a3",
+   "Name": "Magazine Dreams",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt13652142",
+    "Tmdb": "784524"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2b84d9653904e92b15b8e886370dcd8d",
+   "Name": "Mal barrée",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt38218082",
+    "Tmdb": "300507",
+    "Tvdb": "467896"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 1,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "82ca352045c55ab39c01504ddd64e1f3",
+   "Name": "Manuel de survie à l'apocalypse zombie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1727776",
+    "Tmdb": "273477"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "280d488858ae22788159fffe73606dd5",
+   "Name": "Margin Call",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1615147",
+    "Tmdb": "50839"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d0f1d9bf32de2d3e3e1aa0caf5480aee",
+   "Name": "Marsupilami",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt33029380",
+    "Tmdb": "1145899"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a7f8e319e0729f1b4e26816cd6350d25",
+   "Name": "Marty Supreme",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt32916440",
+    "Tmdb": "1317288"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0047f78266b1a2fa60068bbf30f5f855",
+   "Name": "The Marvels",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10676048",
+    "Tmdb": "609681"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bfabf2bbec1dfff36d03105034e75eb8",
+   "Name": "MaXXXine",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt22048412",
+    "Tmdb": "1023922"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0be9d16d990f98f1333f28cf4363f2ac",
+   "Name": "Mayhem : Légitime Vengeance",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4348012",
+    "Tmdb": "429733"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e49bc59304fdbd58c52ed74e71e1d708",
+   "Name": "Memento",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0209144",
+    "Tmdb": "77"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b613cf074f9d5e1baa4330dbc6067c1a",
+   "Name": "Mentalist",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt1196946",
+    "Tmdb": "5920",
+    "Tvdb": "82459"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 23,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1791a813cbba700cc7740d2a110af3ac",
+   "Name": "Michael",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt11378946",
+    "Tmdb": "936075"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b3908df84ecb3d2411f155781525d2f1",
+   "Name": "Midsommar",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt8772262",
+    "Tmdb": "530385"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f80ef0b3b21a11fb685efcda0bf92dd6",
+   "Name": "The Mighty Nein",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt26453092",
+    "Tmdb": "219080",
+    "Tvdb": "430243"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e71143bce11447af9f5b733c543e3d47",
+   "Name": "Miller's Girl",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt8310486",
+    "Tmdb": "1026436"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7b0418fdf54782cbe533211c06a47ab5",
+   "Name": "Mission : Impossible",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0117060",
+    "Tmdb": "954"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "788e3dd742091b9bfd0b3634be42d7ad",
+   "Name": "Mission : Impossible - Dead Reckoning Partie 1",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt9603212",
+    "Tmdb": "575264"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bca516079196d51345ac4d961d0eee01",
+   "Name": "Mission : Impossible - Fallout",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt4912910",
+    "Tmdb": "353081"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "10bdd9228293263b778c5b0330d13011",
+   "Name": "Mission : Impossible - The Final Reckoning",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt9603208",
+    "Tmdb": "575265"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "03e2a0a54b8dcd0e1faff7adaab5befc",
+   "Name": "Mission : Impossible - Protocole Fantôme",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1229238",
+    "Tmdb": "56292"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3b8405562ae81efcfedbfe17ef81add4",
+   "Name": "Mission : Impossible - Rogue Nation",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2381249",
+    "Tmdb": "177677"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2a4dd8b5180c5a2ac3eccc7879930132",
+   "Name": "Mission : Impossible 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0120755",
+    "Tmdb": "955"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0f6c1b01bb5710bd767949a59a90682b",
+   "Name": "Mission : Impossible 3",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0317919",
+    "Tmdb": "956"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "946e7ce07e02b605dce8e0ed35b4b859",
+   "Name": "The Mist",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0884328",
+    "Tmdb": "5876"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "03a4cd49caa735af600d2ec99067c252",
+   "Name": "Modern Family",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt1442437",
+    "Tmdb": "1421",
+    "Tvdb": "95011"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 24,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1f4670e747d0e56d22483faee92f8269",
+   "Name": "Moi, député",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1790886",
+    "Tmdb": "77953"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "fa7748b845c091240a513f515e96d0e4",
+   "Name": "Mon petit renne",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt13649112",
+    "Tmdb": "241259",
+    "Tvdb": "417223"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 7,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "99513da8ff03c8c686c8dbde23dfb969",
+   "Name": "Mon voisin Totoro",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0096283",
+    "Tmdb": "8392"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3f0d6da22d20a5ffd66ea9ff12b6ffa5",
+   "Name": "Motor City",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2012616",
+    "Tmdb": "87513"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "11854a3ca126a9c461bb70dae141d5cf",
+   "Name": "Mourir peut attendre",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2382320",
+    "Tmdb": "370172"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "63a497f3ea978837d7da23e6356343c4",
+   "Name": "Mr. Robot",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt4158110",
+    "Tmdb": "62560",
+    "Tvdb": "289590"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 44,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "be3f011f5e581b5ddc5a9df75c8c5937",
+   "Name": "Mud - Sur les rives du Mississippi",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1935179",
+    "Tmdb": "103731"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b55ccc179af28dbe8b01138587cee4d4",
+   "Name": "My Name",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt12940504",
+    "Tmdb": "110356",
+    "Tvdb": "397441"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c7edd0157d7139519091fd549bf30a03",
+   "Name": "Napoléon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt13287846",
+    "Tmdb": "753342"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "de8fb2ac235baec9bec4e14df069e73f",
+   "Name": "Neagley",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt33539520",
+    "Tmdb": "273207",
+    "Tvdb": "455064"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "64483c84b654ac73b9d4da3f2b5c81b4",
+   "Name": "Next",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0435705",
+    "Tmdb": "1738"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "48b32ca9650fe63a79644c9bd93cc53d",
+   "Name": "Night Call",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2872718",
+    "Tmdb": "242582"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-20T18:14:02.2978046Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "c55fa1095346881e286995cf1e1b01fd",
+   "Name": "N'oublie jamais",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0332280",
+    "Tmdb": "11036"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-10-07T12:00:18.0344651Z",
+    "PlayCount": 2
+   }
+  },
+  {
+   "Id": "62febc4504493ba5c3d080245ddab9de",
+   "Name": "Nuremberg",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt29567915",
+    "Tmdb": "1214931"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bc96fc34eb3cecf40024bb71bfa1523d",
+   "Name": "Obsession",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt37287335",
+    "Tmdb": "1339713"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "cc42205fcaf4a7223915bb69723ce34c",
+   "Name": "Ocean's Eleven",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0240772",
+    "Tmdb": "161"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a7d932ac377d8416ffeda85940fbba60",
+   "Name": "Old Boy",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0364569",
+    "Tmdb": "670"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c43fe83439f52d8ee233d4d07fd009cd",
+   "Name": "On l'appelait Robin des Bois",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt32273171",
+    "Tmdb": "1284465"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "07b909e972bafd22a3bf2cbf922a7ad6",
+   "Name": "Ong-Bak",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0368909",
+    "Tmdb": "9316"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "0794bde15e5b12cd55957199847f7f9c",
+   "Name": "Ong-Bak 2 : La naissance du dragon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0785035",
+    "Tmdb": "16353"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "91293ed3be66b95a596da93974d64b15",
+   "Name": "Ong-Bak 3 : L'ultime combat",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1653690",
+    "Tmdb": "43209"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "080c618de126facd12e21e18b5b41c6e",
+   "Name": "Oppenheimer",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt15398776",
+    "Tmdb": "872585"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ff234dcf0c4f54b42dc406a551a47d11",
+   "Name": "Orange mécanique",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0066921",
+    "Tmdb": "185"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8e4d01141d62fe8e1c07f555820d38e5",
+   "Name": "The Paper",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt32159809",
+    "Tmdb": "253941",
+    "Tvdb": "449872"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 20,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "849ee9e257d33b1692de5190411c19c7",
+   "Name": "Paprika",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0851578",
+    "Tmdb": "4977"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "53368ec89dd7f35f2e491c4649b74a24",
+   "Name": "Papy fait de la résistance",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0086079",
+    "Tmdb": "48769"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1f7da3c4c97c67679232134abbb7c2e0",
+   "Name": "Pearl",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt18925334",
+    "Tmdb": "949423"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "37142c1741e775cbc297be84d8701895",
+   "Name": "Petits meurtres entre voisins",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt37439410",
+    "Tmdb": "325755",
+    "Tvdb": "479461"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 7,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6793c120a19f5f16b22b92c474022b83",
+   "Name": "Peur primale",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0117381",
+    "Tmdb": "1592"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "38b60f29950a64ebc10217e6259623c9",
+   "Name": "Phantom of the Paradise",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0071994",
+    "Tmdb": "27327"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "428589e1ea2f3c983b3dbac3268050c9",
+   "Name": "The Place Beyond the Pines",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1817273",
+    "Tmdb": "97367"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a2d97ffbf39e87e27a4b7d876a44e773",
+   "Name": "Plastic Beauty",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt37884325",
+    "Tmdb": "298008",
+    "Tvdb": "466773"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bad400d44472d1867243d2749ccd5458",
+   "Name": "Plus fort que moi",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt31514146",
+    "Tmdb": "1317149"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8d80b220e7ea737707b161b2ec5c9df0",
+   "Name": "Police Flash 80",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt37319567",
+    "Tmdb": "1002109"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "334af84b30bfb9f0628d130646e1c678",
+   "Name": "Pourquoi je me suis marié, déjà ?",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt38061210",
+    "Tmdb": "1522689"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "LastPlayedDate": "2026-10-09T16:11:14.6482049Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "3bc8970673f0e16fc98dc643b561f8d9",
+   "Name": "Predator: Badlands",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt31227572",
+    "Tmdb": "1242898"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1c4d4a960087077a77c832d8a678ea56",
+   "Name": "Premier Contact",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2543164",
+    "Tmdb": "329865"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d8e3b56df703377905c7b0049bd4d2ba",
+   "Name": "Pressure",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt32547691",
+    "Tmdb": "1318413"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c60f2ce9e3aaf5bcac89d1aae4c28eb2",
+   "Name": "Primate",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt33028778",
+    "Tmdb": "1315303"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b0df7143e91359430198d2df432e7239",
+   "Name": "Princesse Dragon",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt7805344",
+    "Tmdb": "588917"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "af28dcd3f3f692ef6a5d50e2efe86dd9",
+   "Name": "Princesse Mononoké",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0119698",
+    "Tmdb": "128"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "991916a5f992086d0b045550f77dcb84",
+   "Name": "Prisoners",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1392214",
+    "Tmdb": "146233"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "633f893439134899b197df5564a11dcf",
+   "Name": "Projet Dernière Chance",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt12042730",
+    "Tmdb": "687163"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "38766696b6aa18a91643bbc6bebd0dba",
+   "Name": "Projet X",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1636826",
+    "Tmdb": "57214"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f0ab85f53dab3d5984ee02723466a2b3",
+   "Name": "Prometheus",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1446714",
+    "Tmdb": "70981"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "99bbf2acf52184b3d9709f2231cc4341",
+   "Name": "Pulp Fiction",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0110912",
+    "Tmdb": "680"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "cd0a7a27fa25d5f9bcb7f96f98aca409",
+   "Name": "The Punisher (Marvel's)",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt5675620",
+    "Tmdb": "67178",
+    "Tvdb": "331980"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 13,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4069b756fbab55e684c07aaed0c8382c",
+   "Name": "Quantum of Solace",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0830515",
+    "Tmdb": "10764"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f7430f078ed47698ade0f27d57a38d4c",
+   "Name": "Raiponce",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0398286",
+    "Tmdb": "38757"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-08-29T15:34:48.9726322Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "c32297e21d7b1ad5aafbe930cffd3639",
+   "Name": "Ratatouille",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0382932",
+    "Tmdb": "2062"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "cdef4bcdcacd8ec03483d45d88cc856e",
+   "Name": "Reacher",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt9288030",
+    "Tmdb": "108978",
+    "Tvdb": "366924"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 32,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e900f4f6926cf8151400a8a2cbc0444b",
+   "Name": "Real Steel",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0433035",
+    "Tmdb": "39254"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "cc742e628bf3b9a0a14ebd6aa2d49547",
+   "Name": "Red 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1821694",
+    "Tmdb": "146216"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "859cc64cbda48418d38c67987e9a8366",
+   "Name": "Red Sparrow",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2873282",
+    "Tmdb": "401981"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8bf99ecd888046b9b2808bf4214ab558",
+   "Name": "Renaissances",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2140379",
+    "Tmdb": "238615"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "eaa9a7abc9d34d74d52c0add95190362",
+   "Name": "Resident Evil",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0120804",
+    "Tmdb": "1576"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "461fe29b260a4cd856efa2bc6af678a1",
+   "Name": "Resident Evil : Afterlife",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1220634",
+    "Tmdb": "35791"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bd6cf6dc9fb229de93a6e269d48c21ba",
+   "Name": "Resident Evil : Apocalypse",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0318627",
+    "Tmdb": "1577"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "207aa83106262f666cd2f21b1bdcc71f",
+   "Name": "Resident Evil : Chapitre Final",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2592614",
+    "Tmdb": "173897"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3f7657b44c3ceb4235b281ea4551eff5",
+   "Name": "Resident Evil : Extinction",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0432021",
+    "Tmdb": "7737"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "fe6806516f3619c91fd9cbeb776ce52f",
+   "Name": "Resident Evil : Retribution",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1855325",
+    "Tmdb": "71679"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a11ba4429bd458f3d9e016c42aeb6a98",
+   "Name": "Resident Evil : Death Island",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt26674627",
+    "Tmdb": "1083862"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ae11aa9aea35b22aaae2ac3bd8eaf212",
+   "Name": "Retour vers le futur",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0088763",
+    "Tmdb": "105"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "67726613690015759e9aa57fa24c031b",
+   "Name": "Retour vers le futur II",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0096874",
+    "Tmdb": "165"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "886c4b3a8486f895b83d2b864b289ddd",
+   "Name": "Retour vers le futur III",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0099088",
+    "Tmdb": "196"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "122f7c87e83c887ac1d79367abfdb646",
+   "Name": "The Return, le retour d'Ulysse",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt19861162",
+    "Tmdb": "975511"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3e60d52cd77a72c40c4fdc2a3e1ee1e1",
+   "Name": "Revenge",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6738136",
+    "Tmdb": "467938"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d06029044c6f6e8695487db111b499af",
+   "Name": "The Roundup",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt15838850",
+    "Tmdb": "619803"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c1fa2a27c32de9179b4cd85ae4931001",
+   "Name": "The Runner",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt34564059",
+    "Tmdb": "1386315"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-06T16:39:52.4539676Z",
+    "PlayCount": 2
+   }
+  },
+  {
+   "Id": "fb169d25544f5a513fe7d1f9796d8117",
+   "Name": "Running Man",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt14107334",
+    "Tmdb": "798645"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "dabc271020cd40ae150cbf46dea32678",
+   "Name": "Rush",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1979320",
+    "Tmdb": "96721"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "42df785b49500974b41c22c623240588",
+   "Name": "Sa mère ou moi !",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0369735",
+    "Tmdb": "4379"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e5660ccf1f0fc48e979615c48b0bf7db",
+   "Name": "Safe",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1656190",
+    "Tmdb": "72387"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2c2ff4894401851a675ecda5855e59f6",
+   "Name": "Samba",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3399024",
+    "Tmdb": "269148"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "61e157a67bc539c4a605bfc90cc80ac4",
+   "Name": "Scarface",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0086250",
+    "Tmdb": "111"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8b9628ae073fccaed517e244feb626dd",
+   "Name": "Send Help",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt8036976",
+    "Tmdb": "1198994"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "137b7e6436fa8549908577715068a544",
+   "Name": "Seul sur Mars",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3659388",
+    "Tmdb": "286217"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b8af67432a2a0dae8139d32a978146d6",
+   "Name": "Seven",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0114369",
+    "Tmdb": "807"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "247d697250e5b21e2f15461fd736bfab",
+   "Name": "Shang-Chi et la Légende des Dix Anneaux",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt9376612",
+    "Tmdb": "566525"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1c4cc925eb00e8cdc77237a26957e2ee",
+   "Name": "Shelter",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt32357218",
+    "Tmdb": "1290821"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "580cd102533c3811eec318a07b863ca2",
+   "Name": "Shining",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0081505",
+    "Tmdb": "694"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5182fb4aeb460df7958cda080ff56d05",
+   "Name": "Sicario",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3397884",
+    "Tmdb": "273481"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d7125aa263b23cbe40235b3cf84a403d",
+   "Name": "Sisu : De l'or et du sang",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt14846026",
+    "Tmdb": "840326"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7789c9970a3e5f62949d0146c5a29e6e",
+   "Name": "Sisu : Le Chemin de la vengeance",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt31844586",
+    "Tmdb": "1223601"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f346f00e59c14a6e156d2799d562163e",
+   "Name": "Skyfall",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1074638",
+    "Tmdb": "37724"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a136e8fec5f14734d174855da60779d1",
+   "Name": "Snatch, tu braques ou tu raques",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0208092",
+    "Tmdb": "107"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "550c9431a583b9338a5b3b50a8db536a",
+   "Name": "Sniper : Le Corbeau Blanc",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt19465630",
+    "Tmdb": "966220"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7ffb18643e8c49941f4c2a92dccca7b3",
+   "Name": "Source Code",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0945513",
+    "Tmdb": "45612"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c7dc8afcd3ca2becaa8675838414e1b6",
+   "Name": "Spectre",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2379713",
+    "Tmdb": "206647"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5c7de20ea0665a74038dcb41c0c0fabd",
+   "Name": "Spider-Man",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0145487",
+    "Tmdb": "557"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "42665b5b3dd61a8431a1398e6f6b36be",
+   "Name": "Spider-Man 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0316654",
+    "Tmdb": "558"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4395e32d91cf8de7fe83c19d939daf4b",
+   "Name": "Spider-Man 3",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0413300",
+    "Tmdb": "559"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "4728a13c16a29d9f76396a2b0287e9c8",
+   "Name": "Spider-Man : Brand New Day",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt22084616",
+    "Tmdb": "969681"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ac012cbb4c11bb0c148c687e44fb2244",
+   "Name": "Spider-Man : Far From Home",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6320628",
+    "Tmdb": "429617"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6968ec4520d67d318e1275ff7d5c379d",
+   "Name": "Spider-Man : Homecoming",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2250912",
+    "Tmdb": "315635"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "273590ec63104e2cd8996168c0b5c107",
+   "Name": "Spider-Man : No Way Home",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10872600",
+    "Tmdb": "634649"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "fb8d44c9c4f3fd1b640330ec68d18f79",
+   "Name": "Stay",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0371257",
+    "Tmdb": "8066"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e67fd1f227bee09df5dfedd9e6559cb4",
+   "Name": "Sterling Point",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt35618070",
+    "Tmdb": "283297",
+    "Tvdb": "459552"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7d761f4cd34307517f5f79e69635c568",
+   "Name": "Stronger",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3881784",
+    "Tmdb": "395993"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9100296ba36e1729df6051cf0e59c2e5",
+   "Name": "Super Mario Bros., le film",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6718170",
+    "Tmdb": "502356"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "fa92c2d7094cbc6847aaa842fbb3d7aa",
+   "Name": "Super Mario Galaxy, le film",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt28650488",
+    "Tmdb": "1226863"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "34590704c23996c321675b8172f475fc",
+   "Name": "SuperGrave",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0829482",
+    "Tmdb": "8363"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9eae8ec22e53a9e37cf1850fd521cf5b",
+   "Name": "Supernova: The Music Festival Massacre",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt30227310",
+    "Tmdb": "1245605"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f9af90aa5d32607028fac98cf947983f",
+   "Name": "Surveillant !",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt44924447",
+    "Tmdb": "299255",
+    "Tvdb": "476017"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "UnplayedItemCount": 8,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1e7e460b2017d98cec42d2c0bb64c1d3",
+   "Name": "Swimming with sharks",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0114594",
+    "Tmdb": "20306"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "2446c0a3e7dacc42895167c89dabf15d",
+   "Name": "Sword Art Online",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt2250192",
+    "Tmdb": "45782",
+    "Tvdb": "259640"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 96,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d8bebf727acf01d8171d5c4ffb95b50e",
+   "Name": "Taken",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0936501",
+    "Tmdb": "8681"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b9ed21209886e0fbb5e06b011e9f5c4b",
+   "Name": "Taken 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1397280",
+    "Tmdb": "82675"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "78557b5fd786525e741c41f1bb7541aa",
+   "Name": "Taken 3",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2446042",
+    "Tmdb": "260346"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c3497710362624e99a5d1854944cb654",
+   "Name": "Teen Wolf",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt1567432",
+    "Tmdb": "34524",
+    "Tvdb": "175001"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 12,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "5a28fddcf751e3947d1e3c43c815fdf7",
+   "Name": "Teenage Sex and Death at Camp Miasma",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt35298123",
+    "Tmdb": "1240889"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "27f6782f128bb305deca047804fe9ce8",
+   "Name": "They Will Kill You",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt31728330",
+    "Tmdb": "1292695"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "31ab7d98ef48031d338186b6fdf12c97",
+   "Name": "Thor : Love and Thunder",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt10648342",
+    "Tmdb": "616037"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a6dd4160cb179fc3245388297b7a07cc",
+   "Name": "Thor : Ragnarok",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3501632",
+    "Tmdb": "284053"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7c7622905acc276a85efd08dfde78ced",
+   "Name": "Thunderbolt : Pilote de l'extrême",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0114126",
+    "Tmdb": "10348"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "b7908d777b5bfd9d2043e6837d284f58",
+   "Name": "Thunderbolts*",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt20969586",
+    "Tmdb": "986056"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ea5c657ff042205b75ca0fa239f75631",
+   "Name": "Time Out",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1637688",
+    "Tmdb": "49530"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c7b489c79362625e8929d532cef80919",
+   "Name": "Titanic",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0120338",
+    "Tmdb": "597"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e9d5868aac739e9effcb4f730a8b008f",
+   "Name": "Toi+Moi - Seuls contre tous",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt43617372",
+    "Tmdb": "1641629"
+   },
+   "UserData": {
+    "Played": true,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-24T20:36:23.6293111Z",
+    "PlayCount": 4
+   }
+  },
+  {
+   "Id": "14bd6ee519bfffce497de142377ae341",
+   "Name": "Top Gun",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0092099",
+    "Tmdb": "744"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "aacf4177e8f9253e21593916f4480c52",
+   "Name": "Top Gun : Maverick",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1745960",
+    "Tmdb": "361743"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a6cda0ec0541d5399fbd8cb9b1353e8d",
+   "Name": "Tout le monde debout",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6838702",
+    "Tmdb": "458534"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-09-07T19:26:54.7751608Z",
+    "PlayCount": 1
+   }
+  },
+  {
+   "Id": "89941a9f6df6e92b5b7c2dd67ea570a8",
+   "Name": "Toute la Verité de mes Mensonges",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt37053085",
+    "Tmdb": "292558",
+    "Tvdb": "464126"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 5,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "fdf7a2c3ab1fd6ea29d92d493a5e0ebc",
+   "Name": "Toy Story 5",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt29355505",
+    "Tmdb": "1084244"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "34f4639c1f7474b48837475533aa6bbb",
+   "Name": "Traîné sur le bitume",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6491178",
+    "Tmdb": "438674"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "7a545f162360391bbb22b35cf75ec111",
+   "Name": "Triple Threat",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt6643972",
+    "Tmdb": "449985"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "595c26f87cecaea1d1b53697f7b44521",
+   "Name": "Troie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0332452",
+    "Tmdb": "652"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "22cd9b751251bfeaa9117fb357648017",
+   "Name": "True Detective",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt2356777",
+    "Tmdb": "46648",
+    "Tvdb": "270633"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 30,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "ea3704a89ee48ed1d8a5d4ed79438f61",
+   "Name": "The Truman Show",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0120382",
+    "Tmdb": "37165"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6d69901f9d5686b268881a08255ba536",
+   "Name": "Tuée pour son bébé : l'histoire vraie d'Heidi Broussard",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt29280965",
+    "Tmdb": "1182655"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": true,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "6d5705f92b8bf8a45bd4ff584e21f2dc",
+   "Name": "Twilight, chapitre 1 : Fascination",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1099212",
+    "Tmdb": "8966"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d90d97ff6d896adc0ff6927ca5524b33",
+   "Name": "Twilight, chapitre 2 : Tentation",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1259571",
+    "Tmdb": "18239"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a5aded13091380a684d5e773fd8518c1",
+   "Name": "Twilight, chapitre 3 : Hésitation",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1325004",
+    "Tmdb": "24021"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1b7f09a4b27d5b0af54ded24bc322fa8",
+   "Name": "Twilight, chapitre 4 : Révélation, 1ère partie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1324999",
+    "Tmdb": "50619"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "e6c94cb00370906fdc8918e346e1e932",
+   "Name": "Twilight, chapitre 5 : Révélation, 2ème partie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1673434",
+    "Tmdb": "50620"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1195f181e07506d5f6b6e44275802aa4",
+   "Name": "Un Homme en colère",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt11083552",
+    "Tmdb": "637649"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "a9013a2132c5c2e39742194d1159f41e",
+   "Name": "Uncharted",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1464335",
+    "Tmdb": "335787"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9a377972f87046ec50cd04e771ed2173",
+   "Name": "Underworld",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0320691",
+    "Tmdb": "277"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "52d53b4cc0cf1622712834f17779501e",
+   "Name": "Une bataille après l'autre",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt30144839",
+    "Tmdb": "1054867"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "f9d76eaaf9685dbc0cd862f1d649bac1",
+   "Name": "The Uprising",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt36983905",
+    "Tmdb": "977942"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "48260f819e9a8247c2bfcc9891bceb60",
+   "Name": "Voisin contre voisin",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0790604",
+    "Tmdb": "9969"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "8d88054dc1e994122f035affe5f04a23",
+   "Name": "Vortex",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt15850486",
+    "Tmdb": "206344",
+    "Tvdb": "414231"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 6,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d03652dc0668c0f554e7063003192cfd",
+   "Name": "The Walk : Rêver plus haut",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt3488710",
+    "Tmdb": "285783"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "893404f5358429e8a4a90c41013e6493",
+   "Name": "WandaVision",
+   "Type": "Series",
+   "ProviderIds": {
+    "Imdb": "tt9140560",
+    "Tmdb": "85271",
+    "Tvdb": "362392"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "UnplayedItemCount": 9,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "c51fa3567a05b61569ff6710a2c159fb",
+   "Name": "Wanted : Choisis ton destin",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0493464",
+    "Tmdb": "8909"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "794725938d85c2dee3d884536553a5d7",
+   "Name": "War Dogs",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt2005151",
+    "Tmdb": "308266"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3951371d9087eaf58479ce346eb6b602",
+   "Name": "War Machine",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt15940132",
+    "Tmdb": "1265609"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3d1f50c3a5582e9f9e1cb7570d0cb699",
+   "Name": "Warcraft : Le Commencement",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0803096",
+    "Tmdb": "68735"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "bb2a1b237622e679f1b5654d9a85ae0c",
+   "Name": "Warrior",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1291584",
+    "Tmdb": "59440"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "d9e23b3da6c3d56bd7b253554e000b34",
+   "Name": "Wasabi",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0281364",
+    "Tmdb": "2110"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "68ed0b9a6f15309c135ec1e272f49adf",
+   "Name": "Wedding Nightmare : Deuxième partie",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt33978029",
+    "Tmdb": "1266127"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "beab862f2423a8d8bb5ae5751f1019b7",
+   "Name": "X",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt13560574",
+    "Tmdb": "760104"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "976a3859aafbb8a841036bb8325d3478",
+   "Name": "X-Men Origins : Wolverine",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0458525",
+    "Tmdb": "2080"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "944a7690df5dd15fde59c4415ec6a03f",
+   "Name": "Yamakasi",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0267129",
+    "Tmdb": "6935"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "3d5ac34fa889a8687ec6ce550ec1b3ae",
+   "Name": "Yannick",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt28236368",
+    "Tmdb": "1110358"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "9f8c6e8824248fc5b0e428922e0521c8",
+   "Name": "Your Heart Will Be Broken",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt38190257",
+    "Tmdb": "1523145"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "eeab24e680580019fdae791987ce6953",
+   "Name": "Your Name.",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt5311514",
+    "Tmdb": "372058"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "1e7dd467a30eb69e6b79845cd00e612a",
+   "Name": "Zero Dark Thirty",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt1790885",
+    "Tmdb": "97630"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "61b10e708917a548e1863ccb035f0733",
+   "Name": "Zodiac",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt0443706",
+    "Tmdb": "1949"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  },
+  {
+   "Id": "432659df7057084caafb27b4d177ce94",
+   "Name": "Zootopie 2",
+   "Type": "Movie",
+   "ProviderIds": {
+    "Imdb": "tt26443597",
+    "Tmdb": "1084242"
+   },
+   "UserData": {
+    "Played": false,
+    "IsFavorite": false,
+    "PlayCount": 0
+   }
+  }
+ ],
+ "TotalRecordCount": 464
+}

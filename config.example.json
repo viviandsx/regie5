@@ -1,0 +1,44 @@
+{
+  "_comment": [
+    "PS5: easiest is Settings > From a phone. Or copy this file to config.json in /data/homebrew/PPSA99520/.",
+    "Linux: copy it to ~/.config/regie5/config.json. Fill in each service's address and API key.",
+    "https:// works; add \"insecure\": true to a service whose certificate is self-signed.",
+    "url may hold a path (https://example.lan/radarr) when a service sits behind a reverse proxy.",
+    "A service is one object, or a list of named instances, e.g. two Radarr:",
+    "  \"radarr\": [ {\"name\": \"Radarr\", \"url\": ..., \"apiKey\": ...},",
+    "              {\"name\": \"Radarr 4K\", \"url\": ..., \"apiKey\": ..., \"is4k\": true} ]",
+    "is4k (Radarr, Sonarr; false by default): true for the instance Seerr uses as its 4K server.",
+    "  It is never guessed from the name. See docs/CONFIG.md."
+  ],
+  "sonarr": {
+    "enabled": true,
+    "url": "http://192.168.1.10:8989",
+    "apiKey": "YOUR_SONARR_API_KEY",
+    "is4k": false
+  },
+  "radarr": {
+    "enabled": true,
+    "url": "http://192.168.1.10:7878",
+    "apiKey": "YOUR_RADARR_API_KEY",
+    "is4k": false
+  },
+  "seerr": {
+    "enabled": true,
+    "url": "http://192.168.1.10:5055",
+    "apiKey": "YOUR_SEERR_API_KEY"
+  },
+  "jellyfin": {
+    "enabled": true,
+    "url": "http://192.168.1.10:8096",
+    "apiKey": "YOUR_JELLYFIN_API_KEY"
+  },
+  "glances": {
+    "enabled": false,
+    "url": "http://192.168.1.10:61208",
+    "username": "",
+    "password": ""
+  },
+  "cleanup": {
+    "ignoreUsers": []
+  }
+}

@@ -1,0 +1,327 @@
+[
+ {
+  "id": 1539,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 389553660,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1540,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 455300738,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1541,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 361853937,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1542,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 380232129,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1543,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 406053189,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1544,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 380604550,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1545,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 371416866,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1546,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 448757842,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1547,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 310063883,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1548,
+  "seriesId": 62,
+  "seasonNumber": 2,
+  "size": 360348869,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1549,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 371737068,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1550,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 423232750,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1551,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 469588812,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1552,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 378164291,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1553,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 498107099,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1554,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 262198769,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1555,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 476829495,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1556,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 365360263,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1557,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 221887919,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1558,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 411486569,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1559,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 392190459,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1560,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 595197257,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1561,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 404514593,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1562,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 306660757,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1563,
+  "seriesId": 62,
+  "seasonNumber": 1,
+  "size": 441428408,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ }
+]

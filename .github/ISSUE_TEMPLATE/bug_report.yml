@@ -1,0 +1,62 @@
+name: Bug report
+description: Something in Régie5 does not work as it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. **Never paste API keys, passwords or your config.json as it is**:
+        replace keys with `xxx` and addresses with `192.168.x.x` if you need to show them.
+  - type: input
+    id: version
+    attributes:
+      label: Régie5 version
+      description: Shown at the bottom of Settings (the gear).
+      placeholder: "0.2.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Where does it happen?
+      options:
+        - PS5
+        - Linux (desktop build)
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: PS5 firmware and how Régie5 was installed
+      placeholder: "13.60, ShadowMount+ x.y, copied with ps5upload"
+  - type: textarea
+    id: services
+    attributes:
+      label: Services and their versions
+      description: Which services are configured, their versions (Settings shows them), several instances, http or https, reverse proxy with a sub-path…
+      placeholder: |
+        Sonarr 4.0.x, Radarr 6.4.x (two instances: 1080p and 4K), Seerr 3.5.0, Jellyfin 12.2.0
+        https behind a reverse proxy: https://example.lan/sonarr
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Library › Films
+        2. Press ✕ on a film
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Messages shown in Settings
+      description: The text next to a red dot, if any. A photo of the TV helps too.

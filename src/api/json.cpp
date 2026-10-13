@@ -1,0 +1,98 @@
+/*
+ * Regie5 — a TV front end for a self-hosted media stack
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+#include "api/json.h"
+
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+
+namespace json {
+
+const cJSON *get(const cJSON *o, const char *key)
+{
+    return cJSON_IsObject(o) ? cJSON_GetObjectItemCaseSensitive(o, key) : nullptr;
+}
+
+std::string str(const cJSON *o, const char *key, const std::string &def)
+{
+    const cJSON *v = get(o, key);
+    return cJSON_IsString(v) && v->valuestring ? std::string(v->valuestring) : def;
+}
+
+int64_t i64(const cJSON *o, const char *key, int64_t def)
+{
+    const cJSON *v = get(o, key);
+    return cJSON_IsNumber(v) ? (int64_t)std::llround(v->valuedouble) : def;
+}
+
+int integer(const cJSON *o, const char *key, int def) { return (int)i64(o, key, def); }
+
+double num(const cJSON *o, const char *key, double def)
+{
+    const cJSON *v = get(o, key);
+    return cJSON_IsNumber(v) ? v->valuedouble : def;
+}
+
+bool boolean(const cJSON *o, const char *key, bool def)
+{
+    const cJSON *v = get(o, key);
+    return cJSON_IsBool(v) ? cJSON_IsTrue(v) : def;
+}
+
+int64_t days_from_civil(int y, int m, int d)
+{
+    /* Howard Hinnant's algorithm. */
+    y -= m <= 2;
+    const int64_t era = (y >= 0 ? y : y - 399) / 400;
+    const unsigned yoe = (unsigned)(y - era * 400);
+    const unsigned doy = (153 * (m + (m > 2 ? -3 : 9)) + 2) / 5 + d - 1;
+    const unsigned doe = yoe * 365 + yoe / 4 - yoe / 100 + doy;
+    return era * 146097 + (int64_t)doe - 719468;
+}
+
+time_t parse_time(const std::string &s)
+{
+    int y = 0, mo = 0, d = 0, h = 0, mi = 0, sec = 0, n = 0;
+    if (std::sscanf(s.c_str(), "%4d-%2d-%2d%n", &y, &mo, &d, &n) != 3 || y < 1900 || mo < 1 || mo > 12 || d < 1 ||
+        d > 31)
+        return 0;
+    size_t i = (size_t)n;
+    if (i < s.size() && (s[i] == 'T' || s[i] == ' ')) {
+        int m2 = 0;
+        if (std::sscanf(s.c_str() + i + 1, "%2d:%2d:%2d%n", &h, &mi, &sec, &m2) != 3)
+            return 0;
+        i += 1 + m2;
+        if (i < s.size() && s[i] == '.')   /* fractions: dropped */
+            while (++i < s.size() && s[i] >= '0' && s[i] <= '9') {
+            }
+    }
+    int64_t offset = 0;
+    if (i < s.size() && (s[i] == '+' || s[i] == '-')) {
+        int oh = 0, om = 0;
+        if (std::sscanf(s.c_str() + i + 1, "%2d:%2d", &oh, &om) >= 1)
+            offset = (s[i] == '+' ? 1 : -1) * (oh * 3600 + om * 60);
+    }
+    return (time_t)(days_from_civil(y, mo, d) * 86400 + h * 3600 + mi * 60 + sec - offset);
+}
+
+int64_t parse_timespan(const std::string &s)
+{
+    if (s.empty())
+        return -1;
+    int64_t days = 0;
+    int h = 0, m = 0, sec = 0;
+    const size_t colon = s.find(':');
+    const size_t dot = s.find('.');
+    const char *p = s.c_str();
+    if (dot != std::string::npos && colon != std::string::npos && dot < colon) {   /* "d.hh:mm:ss" */
+        days = std::strtoll(p, nullptr, 10);
+        p += dot + 1;
+    }
+    if (std::sscanf(p, "%d:%d:%d", &h, &m, &sec) != 3 || h < 0 || m < 0 || sec < 0)
+        return -1;
+    return days * 86400 + h * 3600 + m * 60 + sec;
+}
+
+} // namespace json

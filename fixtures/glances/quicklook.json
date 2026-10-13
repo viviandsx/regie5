@@ -1,0 +1,12 @@
+{
+ "cpu": 71.4,
+ "mem": 63.2,
+ "swap": 4.1,
+ "load": 58.0,
+ "cpu_log_core": 6,
+ "cpu_phys_core": 6,
+ "cpu_name": "Intel(R) Core(TM) i5-8500T CPU @ 2.10GHz",
+ "gpu_mem": 0,
+ "gpu_proc": 0,
+ "_regie5_synthetic": true
+}

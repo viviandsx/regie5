@@ -1,0 +1,34 @@
+name: Feature request
+description: An idea to make Régie5 more useful from the couch.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Régie5 is a remote for **your own** media stack: mostly read-only, with a few actions behind a
+        confirmation. Some things are out of scope for good and will be closed: download clients,
+        indexers, release searching, release or tracker names, links to download sites.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: My idea does not involve a download client, an indexer, release searching or release names.
+          required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: What would you like to do from the TV, and why?
+      description: The situation first, then the feature you have in mind.
+    validations:
+      required: true
+  - type: input
+    id: service
+    attributes:
+      label: Which service does it involve?
+      placeholder: "Sonarr, Radarr, Seerr, Jellyfin, Glances, or another one (Bazarr, Lidarr…)"
+  - type: textarea
+    id: api
+    attributes:
+      label: API endpoint (if you know it)
+      description: The service's API call that gives the data or does the action, with a link to its documentation.

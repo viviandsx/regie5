@@ -1,0 +1,158 @@
+[
+ {
+  "id": 837,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 739929651,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 838,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 781036670,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 839,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 701234805,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 840,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 618664190,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 841,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 670001837,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 842,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 649923699,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 843,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 472156436,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 844,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 707448986,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 845,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 695785695,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 846,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 639034158,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 847,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 597835985,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 848,
+  "seriesId": 28,
+  "seasonNumber": 1,
+  "size": 531347624,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p",
+    "resolution": 1080
+   }
+  }
+ }
+]

@@ -1,0 +1,825 @@
+/*
+ * Regie5 — a TV front end for a self-hosted media stack
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * The parsers on fixtures/ (real answers, anonymised), the request paths, the
+ * errors, the mock transport and the pool.
+ */
+#include "check.h"
+
+#include "api/arr.h"
+#include "api/http.h"
+#include "api/http_wire.h"
+#include "api/jellyfin.h"
+#include "api/json.h"
+#include "api/mock_transport.h"
+#include "api/seerr.h"
+#include "api/services.h"
+#include "core/diagnosis.h"
+#include "core/jelly5.h"
+#include "core/schedule.h"
+#include "api/glances.h"
+
+#include <algorithm>
+#include <chrono>
+#include <filesystem>
+#include <thread>
+
+using check::fixture;
+
+/* ---- Sonarr / Radarr ---- */
+
+TEST(arr_status_and_paths)
+{
+    std::string v;
+    CHECK(arr::parse_status(fixture("sonarr/system_status.json"), &v));
+    CHECK(!v.empty() && v[0] == '4');
+    CHECK(arr::parse_status(fixture("radarr/system_status.json"), &v));
+    CHECK(!arr::parse_status("[]", &v));
+    CHECK_EQ(arr::calendar_path(config::Sonarr, 0, 86400),
+             std::string("/api/v3/calendar?start=1970-01-01T00:00:00Z&end=1970-01-02T00:00:00Z&unmonitored=false"
+                         "&includeSeries=true"));
+    CHECK(arr::queue_path(config::Radarr).find("includeMovie=true") != std::string::npos);
+    CHECK_EQ(arr::mediacover_path(66, "poster-500.jpg"), std::string("/api/v3/mediacover/66/poster-500.jpg"));
+}
+
+TEST(arr_health_withholds_client_and_indexer_names)
+{
+    std::vector<model::Health> h;
+    CHECK(arr::parse_health(fixture("sonarr/health.json"), config::Sonarr, &h));
+    CHECK_EQ(h.size(), (size_t)1);
+    CHECK(h[0].kind == model::Health::ClientRemovesCompleted);
+    CHECK(h[0].message.empty());   /* a known check: the interface words it */
+    CHECK(h[0].level == model::Health::Warning);
+
+    CHECK(arr::parse_health(R"([
+        {"source": "RootFolderCheck", "type": "error", "message": "Missing root folder: /tv"},
+        {"source": "IndexerStatusCheck", "type": "warning", "message": "Indexers unavailable due to failures: SomeTracker"},
+        {"source": "UpdateCheck", "type": "ok", "message": ""},
+        {"source": "BrandNewCheck", "type": "warning", "message": "Something new needs a look"},
+        {"source": "OtherNewCheck", "type": "error", "message": "Download client MyBox cannot reach /downloads"},
+        {"source": "PackageGlobalMessageCheck", "type": "notice", "message": "Version 5 is coming"}
+    ])",
+                            config::Radarr, &h));
+    CHECK_EQ(h.size(), (size_t)5);
+    CHECK(h[0].kind == model::Health::RootFolderMissing);
+    CHECK(h[0].message.empty());   /* its path is never kept */
+    CHECK(h[0].level == model::Health::Error);
+    CHECK(h[1].kind == model::Health::IndexerSomeDown);
+    CHECK(h[1].message.empty());
+    CHECK(h[2].kind == model::Health::Unknown);
+    CHECK_EQ(h[2].message, std::string("Something new needs a look"));   /* unknown and clean: kept */
+    CHECK(h[3].kind == model::Health::Unknown);
+    CHECK(h[3].message.empty());   /* unknown but it names a client and a path: withheld */
+    CHECK(h[4].kind == model::Health::Announcement);
+    CHECK(h[4].level == model::Health::Notice);
+}
+
+TEST(arr_health_kind_follows_the_level)
+{
+    using H = model::Health;
+    CHECK(arr::health_kind("DownloadClientStatusCheck", H::Error) == H::ClientsAllFailing);
+    CHECK(arr::health_kind("DownloadClientStatusCheck", H::Warning) == H::ClientSomeFailing);
+    CHECK(arr::health_kind("DownloadClientCheck", H::Error) == H::ClientUnreachable);
+    CHECK(arr::health_kind("DownloadClientCheck", H::Warning) == H::ClientNone);
+    CHECK(arr::health_kind("IndexerLongTermStatusCheck", H::Error) == H::IndexersAllDownLong);
+    CHECK(arr::health_kind("IndexerLongTermStatusCheck", H::Warning) == H::IndexerSomeDownLong);
+    CHECK(arr::health_kind("IndexerRssCheck", H::Error) == H::IndexersNoRss);
+    CHECK(arr::health_kind("UpdateCheck", H::Warning) == H::UpdateAvailable);
+    CHECK(arr::health_kind("UpdateCheck", H::Error) == H::UpdateBlocked);
+    CHECK(arr::health_kind("RemotePathMappingCheck", H::Error) == H::RemotePath);
+    CHECK(arr::health_kind("NoSuchCheck", H::Error) == H::Unknown);
+}
+
+TEST(arr_shareable_text)
+{
+    CHECK(arr::shareable("Something new needs a look"));
+    CHECK(arr::shareable("Version 5.0 is coming"));
+    CHECK(!arr::shareable(""));
+    CHECK(!arr::shareable("Download client qBit-VPN is set to remove completed downloads"));
+    CHECK(!arr::shareable("Indexers unavailable: MyTracker"));
+    CHECK(!arr::shareable("Le client de téléchargement est configuré"));
+    CHECK(!arr::shareable("Missing root folder: /data/tv"));
+    CHECK(!arr::shareable("Cannot write to C:\\Media"));
+    CHECK(!arr::shareable("Proxy at 192.168.1.10 failed"));
+    CHECK(!arr::shareable("See https://example.org"));
+    CHECK(!arr::shareable("SABnzbd is slow"));
+}
+
+TEST(arr_diskspace)
+{
+    std::vector<model::DiskSpace> d;
+    CHECK(arr::parse_diskspace(fixture("radarr/diskspace.json"), config::Radarr, &d));
+    CHECK(!d.empty());
+    for (const auto &s : d)
+        CHECK(s.total > 0 && s.free >= 0 && s.free <= s.total);
+}
+
+TEST(sonarr_calendar)
+{
+    std::vector<model::CalendarItem> c;
+    CHECK(arr::parse_sonarr_calendar(fixture("sonarr/calendar.json"), &c));
+    CHECK_EQ(c.size(), (size_t)60);   /* three weeks, for the guide */
+    const model::CalendarItem *first = nullptr;   /* a real one (the others are synthetic) */
+    for (const auto &e : c)
+        if (e.title == "Crystal Lake" && e.season == 1 && e.episode == 1)
+            first = &e;
+    CHECK(first != nullptr);
+    if (first)
+        CHECK(first->media_id > 0);
+    for (size_t i = 1; i < c.size(); i++)
+        CHECK(c[i - 1].when <= c[i].when);   /* in time order */
+}
+
+TEST(guide_days_and_states)
+{
+    /* A Monday at local midnight, and the week's days from it. */
+    struct tm tm = {};
+    tm.tm_year = 2026 - 1900, tm.tm_mon = 9, tm.tm_mday = 5, tm.tm_isdst = -1;   /* Monday 5 October 2026 */
+    const time_t monday = mktime(&tm);
+    CHECK_EQ(schedule::column_of(monday, monday), 0);
+    CHECK_EQ(schedule::column_of(monday + 6 * 86400 + 23 * 3600, monday), 6);   /* Sunday 23:00 */
+    CHECK_EQ(schedule::column_of(monday - 1, monday), -1);
+    CHECK_EQ(schedule::column_of(monday + 7 * 86400 + 3600, monday), -1);
+
+    model::CalendarItem c;
+    c.when = monday;
+    CHECK(schedule::state_of(c, monday + 3600) == schedule::Missing);
+    CHECK(schedule::state_of(c, monday - 3600) == schedule::Upcoming);
+    c.has_file = true;
+    CHECK(schedule::state_of(c, monday + 3600) == schedule::Available);
+    c.has_file = false;
+    c.from = config::Radarr, c.release = model::CalendarItem::Cinema;
+    CHECK(schedule::state_of(c, monday + 3600) == schedule::InCinemas);   /* gone by in cinemas: never "missing" */
+    CHECK(schedule::state_of(c, monday - 3600) == schedule::Upcoming);
+}
+
+TEST(radarr_calendar_keeps_dates_in_window)
+{
+    std::vector<model::CalendarItem> c;
+    const time_t start = json::parse_time("2026-10-10T00:00:00Z"), end = json::parse_time("2026-10-25T00:00:00Z");
+    CHECK(arr::parse_radarr_calendar(fixture("radarr/calendar.json"), start, end, &c));
+    /* Backrooms (physical 23rd), Juste pour une Nuit (physical 20th), Le Roi du Game (cinema 21st). */
+    CHECK_EQ(c.size(), (size_t)3);
+    for (const auto &it : c)
+        CHECK(it.when >= start && it.when <= end);
+    CHECK(c[0].release == model::CalendarItem::Physical);
+    CHECK(c[1].release == model::CalendarItem::Cinema);
+}
+
+TEST(sonarr_queue)
+{
+    std::vector<model::QueueItem> q;
+    int total = 0;
+    const time_t now = json::parse_time("2026-10-11T11:46:45Z");
+    CHECK(arr::parse_queue(fixture("sonarr/queue.json"), config::Sonarr, now, &q, &total));
+    CHECK_EQ(q.size(), (size_t)3);
+    CHECK_EQ(total, 3);
+    CHECK(q[0].status == model::QueueItem::Downloading);
+    CHECK(q[0].progress > 0.61 && q[0].progress < 0.63);   /* 1 - sizeleft/size */
+    CHECK_EQ((long long)q[0].time_left, 1260LL);             /* from estimatedCompletionTime */
+    CHECK_EQ(q[0].quality, std::string("WEBDL-1080p"));
+    CHECK(!q[0].title.empty());
+    CHECK(q[0].season > 0 && q[0].episode > 0);
+    CHECK(q[1].status == model::QueueItem::Queued);
+    CHECK(q[2].status == model::QueueItem::Warning);         /* importBlocked */
+
+    /* An estimate already past is stale: the timespan is used instead. */
+    CHECK(arr::parse_queue(fixture("sonarr/queue.json"), config::Sonarr, now + 86400, &q));
+    CHECK_EQ((long long)q[0].time_left, 1260LL);
+}
+
+TEST(radarr_queue)
+{
+    std::vector<model::QueueItem> q;
+    CHECK(arr::parse_queue(fixture("radarr/queue.json"), config::Radarr, 0, &q));
+    CHECK_EQ(q.size(), (size_t)3);
+    CHECK(q[0].status == model::QueueItem::Downloading);
+    CHECK(q[1].status == model::QueueItem::Importing);
+    CHECK(q[2].status == model::QueueItem::Error);
+    CHECK_EQ(q[0].title, std::string("Backrooms"));
+    CHECK(q[0].media_id > 0);
+}
+
+/* The rule that keeps Regie5 listable: release names, trackers, download
+ * clients and paths never reach the model, whatever the server sends. */
+TEST(queue_never_keeps_release_names)
+{
+    const char *body = R"({"totalRecords": 1, "records": [{
+        "id": 1, "seriesId": 2, "seasonNumber": 1,
+        "series": {"title": "A Show"}, "episode": {"seasonNumber": 1, "episodeNumber": 2, "title": "Pilot"},
+        "title": "LEAK-release-title", "downloadClient": "LEAK-client", "indexer": "LEAK-indexer",
+        "outputPath": "/downloads/LEAK-path", "downloadId": "LEAK-id", "errorMessage": "LEAK-error",
+        "statusMessages": [{"title": "LEAK-status-title", "messages": ["LEAK-message"]}],
+        "quality": {"quality": {"name": "HDTV-720p"}}, "size": 100, "sizeleft": 25,
+        "status": "downloading", "trackedDownloadStatus": "ok", "trackedDownloadState": "downloading",
+        "timeleft": "00:01:00"
+    }]})";
+    std::vector<model::QueueItem> q;
+    CHECK(arr::parse_queue(body, config::Sonarr, 0, &q));
+    CHECK_EQ(q.size(), (size_t)1);
+    const model::QueueItem &it = q[0];
+    for (const std::string *s : {&it.title, &it.episode_title, &it.quality})
+        CHECK(s->find("LEAK") == std::string::npos);
+    CHECK_EQ(it.title, std::string("A Show"));
+    CHECK_EQ(it.episode_title, std::string("Pilot"));
+    CHECK_EQ((long long)it.time_left, 60LL);
+    CHECK(it.progress > 0.74 && it.progress < 0.76);
+}
+
+/* ---- Seerr ---- */
+
+TEST(seerr_paths)
+{
+    CHECK_EQ(seerr::approve_path(42), std::string("/api/v1/request/42/approve"));
+    CHECK_EQ(seerr::decline_path(42), std::string("/api/v1/request/42/decline"));
+    CHECK(seerr::requests_path(seerr::Filter::Pending).find("filter=pending") != std::string::npos);
+    CHECK_EQ(seerr::image_path("/abc.jpg", "w342"), std::string("/imageproxy/tmdb/t/p/w342/abc.jpg"));
+    CHECK_EQ(seerr::image_path("", "w342"), std::string());
+    CHECK_EQ(seerr::detail_path(true, 5, "fr"), std::string("/api/v1/tv/5?language=fr"));
+}
+
+TEST(seerr_requests)
+{
+    model::RequestPage p;
+    CHECK(seerr::parse_requests(fixture("seerr/request_pending.json"), &p));
+    CHECK_EQ(p.requests.size(), (size_t)5);
+    for (const auto &r : p.requests) {
+        CHECK(r.status == model::Request::Pending);
+        CHECK(r.tmdb_id > 0);
+        CHECK(!r.requested_by.empty());
+        CHECK(r.created > 0);
+    }
+    CHECK(p.requests[4].tv);
+    CHECK_EQ(p.requests[4].seasons.size(), (size_t)1);
+
+    CHECK(seerr::parse_requests(fixture("seerr/request_all.json"), &p));
+    CHECK(p.total > (int)p.requests.size());   /* more pages */
+    std::string v;
+    CHECK(seerr::parse_about(fixture("seerr/settings_about.json"), &v));
+}
+
+TEST(seerr_details)
+{
+    model::MediaDetail d;
+    CHECK(seerr::parse_detail(fixture("seerr/movie_1218925.json"), false, &d));
+    CHECK(!d.title.empty());
+    CHECK(d.year >= 2020);
+    CHECK(!d.poster_path.empty() && d.poster_path[0] == '/');
+    CHECK(seerr::parse_detail(fixture("seerr/tv_171802.json"), true, &d));
+    CHECK_EQ(d.title, std::string("Blade Runner 2099"));
+}
+
+/* ---- Jellyfin ---- */
+
+TEST(jellyfin_auth_and_paths)
+{
+    CHECK_EQ(jellyfin::auth_value("k"), std::string("MediaBrowser Token=\"k\""));
+    CHECK_EQ(jellyfin::stop_path("abc"), std::string("/Sessions/abc/Playing/Stop"));
+    CHECK_EQ(jellyfin::library_refresh_path(), std::string("/Library/Refresh"));
+    CHECK(jellyfin::image_path("id1", "Primary", 400).find("/Items/id1/Images/Primary?fillWidth=400") == 0);
+    std::string v;
+    CHECK(jellyfin::parse_info(fixture("jellyfin/system_info.json"), &v));
+    CHECK(v.rfind("12.", 0) == 0);
+}
+
+TEST(jellyfin_sessions)
+{
+    std::vector<model::Session> s;
+    CHECK(jellyfin::parse_sessions(fixture("jellyfin/sessions.json"), &s));
+    CHECK_EQ(s.size(), (size_t)3);   /* only those playing something */
+    CHECK(s[0].method == model::Session::DirectPlay);
+    CHECK(s[0].runtime_ticks > 0);
+    CHECK(!s[0].user.empty() && !s[0].device.empty());
+    CHECK(s[1].method == model::Session::Transcode);
+    CHECK(!s[1].video_direct);
+    CHECK_EQ(s[1].transcode_reasons.size(), (size_t)3);
+    CHECK_EQ(s[1].hw_accel, std::string("none"));
+    CHECK(s[1].completion > 0);
+    CHECK_EQ(s[1].streams.size(), (size_t)3);
+    CHECK_EQ(s[1].subtitle_index, 2);
+
+    /* Older servers send the reasons as one string. */
+    CHECK(jellyfin::parse_sessions(R"([{"Id": "1", "NowPlayingItem": {"Name": "x"},
+        "PlayState": {"PlayMethod": "Transcode"},
+        "TranscodingInfo": {"TranscodeReasons": "ContainerNotSupported, AudioCodecNotSupported"}}])",
+                                   &s));
+    CHECK_EQ(s.size(), (size_t)1);
+    CHECK_EQ(s[0].transcode_reasons.size(), (size_t)2);
+}
+
+TEST(jellyfin_tasks)
+{
+    std::vector<model::Task> t;
+    CHECK(jellyfin::parse_tasks(fixture("jellyfin/scheduledtasks.json"), &t));
+    CHECK_EQ(t.size(), (size_t)38);
+    CHECK(t[0].state == model::Task::Running);
+    CHECK(t[0].progress > 42 && t[0].progress < 43);
+    int completed = 0;
+    for (const auto &x : t)
+        completed += x.last == model::Task::Completed && x.last_end > 0;
+    CHECK(completed > 20);
+}
+
+TEST(jellyfin_recent_folds_episodes)
+{
+    std::vector<model::RecentItem> r;
+    CHECK(jellyfin::parse_recent(fixture("jellyfin/items.json"), &r));
+    /* 10 films and 30 episodes of one series: 11 entries, the series counting 30. */
+    CHECK_EQ(r.size(), (size_t)11);
+    int episodes = 0;
+    for (const auto &x : r) {
+        CHECK(!x.title.empty() && !x.image_id.empty());
+        if (x.type == "Episode")
+            episodes += x.new_episodes;
+    }
+    CHECK_EQ(episodes, 30);
+}
+
+/* ---- errors, mock, pool ---- */
+
+TEST(errors_are_classified)
+{
+    http::Response r;
+    r.fail = http::Response::Connect;
+    CHECK(api::classify(r, false) == api::Error::Unreachable);
+    r = {};
+    r.fail = http::Response::Timeout;
+    CHECK(api::classify(r, false) == api::Error::Timeout);
+    r = {};
+    r.status = 401;
+    CHECK(api::classify(r, false) == api::Error::Unauthorized);
+    r.status = 403;
+    CHECK(api::classify(r, false) == api::Error::Unauthorized);
+    r.status = 404;
+    CHECK(api::classify(r, false) == api::Error::NotFound);
+    r.status = 502;
+    CHECK(api::classify(r, false) == api::Error::Http);
+    r.status = 200;
+    CHECK(api::classify(r, false) == api::Error::BadResponse);
+    CHECK(api::classify(r, true) == api::Error::None);
+}
+
+TEST(mock_maps_urls_to_fixtures)
+{
+    using M = api::MockTransport;
+    CHECK_EQ(M::file_for("http://sonarr.mock/api/v3/system/status"), std::string("sonarr/system_status.json"));
+    CHECK_EQ(M::file_for("http://sonarr.mock/api/v3/queue?page=1&includeSeries=true"),
+             std::string("sonarr/queue.json"));
+    CHECK_EQ(M::file_for("http://seerr.mock/api/v1/request?take=50&filter=pending"),
+             std::string("seerr/request_pending.json"));
+    CHECK_EQ(M::file_for("http://seerr.mock/api/v1/movie/128?language=fr"), std::string("seerr/movie_128.json"));
+    CHECK_EQ(M::file_for("http://jellyfin.mock/ScheduledTasks?isHidden=false"),
+             std::string("jellyfin/scheduledtasks.json"));
+    CHECK_EQ(M::file_for("http://192.168.1.10:8989/api/v3/queue"), std::string());   /* never a real server */
+}
+
+namespace {
+
+/* Runs the pool until every request is done (or 5 s). */
+void drain(http::Pool &pool)
+{
+    for (int i = 0; i < 500 && (pool.busy() > 0 || pool.pump() > 0); i++)
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    pool.pump();
+}
+
+} // namespace
+
+TEST(services_on_mock)
+{
+    api::MockTransport mock(REGIE5_FIXTURES, 0, "radarr:unreachable,seerr:unauthorized");
+    http::Pool pool(mock, 2, nullptr);
+    config::Config cfg = config::mock();
+    cfg.services[config::Jellyfin].enabled = false;
+    api::Services s(cfg, pool, "fr");
+
+    api::Result<std::string> sonarr, radarr, seerr_, jf;
+    s.test(config::Sonarr, [&](api::Result<std::string> r) { sonarr = r; });
+    s.test(config::Radarr, [&](api::Result<std::string> r) { radarr = r; });
+    s.test(config::Seerr, [&](api::Result<std::string> r) { seerr_ = r; });
+    s.test(config::Jellyfin, [&](api::Result<std::string> r) { jf = r; });   /* answered at once */
+    CHECK(jf.error == api::Error::Disabled);
+    drain(pool);
+    CHECK(sonarr.ok());
+    CHECK(!sonarr.value.empty());
+    CHECK(radarr.error == api::Error::Unreachable);
+    CHECK(seerr_.error == api::Error::Unauthorized);
+
+    api::Result<std::vector<model::QueueItem>> q;
+    s.queue(config::Sonarr, [&](api::Result<std::vector<model::QueueItem>> r) { q = r; });
+    drain(pool);
+    CHECK(q.ok());
+    CHECK_EQ(q.value.size(), (size_t)3);
+}
+
+TEST(mock_actions_do_nothing_but_answer)
+{
+    api::MockTransport mock(REGIE5_FIXTURES, 0, "");
+    http::Pool pool(mock, 1, nullptr);
+    api::Services s(config::mock(), pool, "en");
+    api::Result<bool> approve, stop, scan;
+    s.approve(517, [&](api::Result<bool> r) { approve = r; });
+    s.stop_session("abc", [&](api::Result<bool> r) { stop = r; });
+    s.refresh_library([&](api::Result<bool> r) { scan = r; });
+    drain(pool);
+    CHECK(approve.ok() && approve.value);
+    CHECK(stop.ok() && stop.value);
+    CHECK(scan.ok() && scan.value);
+}
+
+/* ---- libraries ---- */
+
+TEST(fixtures_hold_no_forbidden_field)
+{
+    /* Release names and groups, scene names, file names, clients, indexers: never kept. */
+    static const char *const kForbidden[] = {"\"releaseGroups\"", "\"releaseGroup\"", "\"sceneName\"",
+                                             "\"relativePath\"", "\"originalFilePath\"", "\"downloadClient\"",
+                                             "\"indexer\"", "\"outputPath\"", "\"downloadId\"",
+                                             "\"statusMessages\"", "\"sourceTitle\"", "\"ShortOverview\""};
+    int files = 0;
+    for (const auto &e : std::filesystem::recursive_directory_iterator(REGIE5_FIXTURES)) {
+        if (!e.is_regular_file() || e.path().extension() != ".json")
+            continue;
+        files++;
+        const std::string text = check::fixture(std::filesystem::relative(e.path(), REGIE5_FIXTURES).string());
+        for (const char *k : kForbidden)
+            if (text.find(k) != std::string::npos)
+                check::fail(__FILE__, __LINE__, e.path().string() + " holds " + k);
+    }
+    CHECK(files > 100);
+}
+
+TEST(library_series)
+{
+    std::vector<model::Series> s;
+    CHECK(arr::parse_series(fixture("sonarr/series.json"), &s));
+    CHECK_EQ(s.size(), (size_t)53);
+    int ended = 0, missing = 0;
+    for (const auto &x : s) {
+        CHECK(x.id > 0 && !x.title.empty() && !x.sort_title.empty());
+        CHECK(x.files <= x.total);
+        ended += x.status == model::Series::Ended;
+        missing += x.missing() > 0;
+        for (size_t i = 1; i < x.seasons.size(); i++)   /* in order, specials last */
+            CHECK(x.seasons[i - 1].number != 0 && (x.seasons[i].number == 0 || x.seasons[i - 1].number < x.seasons[i].number));
+    }
+    CHECK_EQ(ended, 30);
+    CHECK_EQ(missing, 2);
+}
+
+TEST(library_movies)
+{
+    std::vector<model::Movie> m;
+    CHECK(arr::parse_movies(fixture("radarr/movie.json"), &m));
+    CHECK_EQ(m.size(), (size_t)436);
+    int with_file = 0;
+    for (const auto &x : m) {
+        CHECK(!x.title.empty());
+        if (x.has_file) {
+            with_file++;
+            CHECK(!x.file_quality.empty());
+        }
+    }
+    CHECK_EQ(with_file, 414);
+    model::Movie t;
+    t.in_cinemas = 100, t.digital = 300, t.physical = 200;
+    CHECK_EQ((long long)t.next_release(150), 200LL);
+    CHECK_EQ((long long)t.next_release(400), 0LL);
+}
+
+TEST(library_missing_and_files)
+{
+    std::vector<model::MissingEpisode> eps;
+    int total = 0;
+    CHECK(arr::parse_missing_episodes(fixture("sonarr/wanted_missing.json"), &eps, &total));
+    CHECK_EQ(total, 158);
+    CHECK_EQ(eps.size(), (size_t)158);
+    CHECK(!eps[0].series_title.empty() && eps[0].aired > 0);
+    std::vector<model::Movie> movies;
+    CHECK(arr::parse_missing_movies(fixture("radarr/wanted_missing.json"), &movies, &total));
+    CHECK_EQ(total, 22);
+    for (const auto &x : movies)
+        CHECK(!x.has_file);
+    std::vector<model::QualityProfile> q;
+    CHECK(arr::parse_quality_profiles(fixture("sonarr/qualityprofile.json"), &q));
+    CHECK(!q.empty() && !q[0].name.empty());
+    model::FileSummary f;
+    std::vector<model::Series> s;
+    CHECK(arr::parse_series(fixture("sonarr/series.json"), &s));
+    CHECK(arr::parse_episode_files(fixture("sonarr/episodefile_" + std::to_string(s[0].id) + ".json"), &f));
+    int n = 0;
+    for (const auto &p : f.qualities)
+        n += p.second;
+    CHECK_EQ(n, s[0].files);   /* one quality per file */
+    CHECK(api::MockTransport::file_for("http://sonarr.mock/api/v3/episodefile?seriesId=12") ==
+          std::string("sonarr/episodefile_12.json"));
+}
+
+TEST(mock_empty_keeps_the_shape)
+{
+    using api::MockTransport;
+    std::vector<model::QueueItem> q;
+    int total = -1;
+    CHECK(arr::parse_queue(MockTransport::emptied("sonarr/queue.json", fixture("sonarr/queue.json")), config::Sonarr,
+                           time(nullptr), &q, &total));
+    CHECK(q.empty());
+    CHECK_EQ(total, 0);
+    CHECK_EQ(MockTransport::emptied("jellyfin/sessions.json", fixture("jellyfin/sessions.json")), std::string("[]"));
+    /* What the connection test reads is kept. */
+    const std::string status = fixture("sonarr/system_status.json");
+    CHECK_EQ(MockTransport::emptied("sonarr/system_status.json", status), status);
+}
+
+TEST(journal_imports_never_keep_the_release)
+{
+    /* The history holds the release in sourceTitle (and data, downloadId):
+     * none of it reaches the model, which has no field for it. */
+    const std::string body = R"([{"eventType": "downloadFolderImported", "date": "2026-10-10T20:00:00Z",
+        "sourceTitle": "Some.Show.S01E02.1080p.WEB.h264-GROUP", "downloadId": "ABC", "data": {"droppedPath": "/x"},
+        "seriesId": 7, "quality": {"quality": {"name": "WEBDL-1080p"}},
+        "series": {"id": 7, "title": "Some Show", "year": 2024},
+        "episode": {"seasonNumber": 1, "episodeNumber": 2, "title": "Two"}},
+        {"eventType": "grabbed", "date": "2026-10-10T19:00:00Z", "sourceTitle": "Some.Show.S01E02-GROUP"}])";
+    std::vector<model::ImportEvent> e;
+    CHECK(arr::parse_history_imports(body, config::Sonarr, &e));
+    CHECK_EQ(e.size(), (size_t)1);   /* the grab is not an import */
+    if (!e.empty()) {
+        CHECK_EQ(e[0].title, std::string("Some Show"));
+        CHECK_EQ(e[0].quality, std::string("WEBDL-1080p"));
+        CHECK_EQ(e[0].episode, 2);
+        CHECK(e[0].episode_title.find("GROUP") == std::string::npos);
+    }
+    std::vector<model::ImportEvent> s, r;
+    CHECK(arr::parse_history_imports(fixture("sonarr/history_since.json"), config::Sonarr, &s));
+    CHECK(arr::parse_history_imports(fixture("radarr/history_since.json"), config::Radarr, &r));
+    CHECK(!s.empty() && !r.empty());
+    for (size_t i = 1; i < s.size(); i++)
+        CHECK(s[i - 1].when >= s[i].when);   /* newest first */
+}
+
+TEST(journal_jellyfin_activity_keeps_no_text)
+{
+    const std::string body = R"({"Items": [{"Id": 1, "Name": "alice from 192.168.1.20 on Living room TV",
+        "ShortOverview": "IP address: 192.168.1.20", "Type": "AuthenticationSucceeded",
+        "Date": "2026-10-10T20:00:00Z", "UserId": "u1", "Severity": "Information"}]})";
+    std::vector<model::ActivityEntry> a;
+    CHECK(jellyfin::parse_activity(body, &a));
+    CHECK_EQ(a.size(), (size_t)1);
+    if (!a.empty()) {
+        CHECK_EQ(a[0].type, std::string("AuthenticationSucceeded"));
+        CHECK_EQ(a[0].user_id, std::string("u1"));
+    }
+    std::vector<model::ActivityEntry> log;
+    CHECK(jellyfin::parse_activity(fixture("jellyfin/system_activitylog_entries.json"), &log));
+    CHECK(!log.empty());
+    std::vector<model::JellyfinUser> users;
+    CHECK(jellyfin::parse_users(fixture("jellyfin/users.json"), &users));
+    CHECK(!users.empty());
+    std::vector<model::JellyfinItem> items;
+    CHECK(jellyfin::parse_items(fixture("jellyfin/items_ids.json"), &items));
+    CHECK(!items.empty());
+}
+
+TEST(diagnosis_of_the_fixture_sessions)
+{
+    std::vector<model::Session> sessions;
+    CHECK(jellyfin::parse_sessions(fixture("jellyfin/sessions.json"), &sessions));
+    model::EncodingInfo enc;
+    CHECK(jellyfin::parse_encoding(fixture("jellyfin/system_configuration_encoding.json"), &enc));
+    CHECK(enc.throttling);
+    const model::Session *pgs = nullptr, *bitrate = nullptr, *direct = nullptr;
+    for (const auto &s : sessions) {
+        if (s.method == model::Session::DirectPlay)
+            direct = &s;
+        else if (std::find(s.transcode_reasons.begin(), s.transcode_reasons.end(), "SubtitleCodecNotSupported") !=
+                 s.transcode_reasons.end())
+            pgs = &s;
+        else
+            bitrate = &s;
+    }
+    CHECK(pgs && bitrate && direct);
+    if (!pgs || !bitrate || !direct)
+        return;
+    /* Picture subtitles and HDR on the CPU, 9 s ahead: it does not keep up. */
+    const diagnosis::Pace p1 = diagnosis::pace(*pgs, -1, enc);
+    CHECK(p1.state == diagnosis::Pace::Behind);
+    const auto a1 = diagnosis::advice(*pgs, enc, p1);
+    CHECK(!a1.empty() && a1[0] == diagnosis::Slow);
+    for (diagnosis::Advice want : {diagnosis::SubImage, diagnosis::Hdr, diagnosis::Audio, diagnosis::NoHardware})
+        CHECK(std::find(a1.begin(), a1.end(), want) != a1.end());
+    CHECK(diagnosis::subtitle(*pgs) && !diagnosis::subtitle(*pgs)->text);
+    CHECK(diagnosis::video(*pgs) && diagnosis::video(*pgs)->range == "HDR10");
+    /* Over the bitrate limit with VAAPI, minutes ahead: fine. */
+    const diagnosis::Pace p2 = diagnosis::pace(*bitrate, -1, enc);
+    CHECK(p2.state == diagnosis::Pace::Ahead);
+    const auto a2 = diagnosis::advice(*bitrate, enc, p2);
+    CHECK_EQ(a2.size(), (size_t)1);
+    CHECK(!a2.empty() && a2[0] == diagnosis::Bitrate);
+    /* Direct play: nothing to say. */
+    CHECK(diagnosis::advice(*direct, enc, diagnosis::pace(*direct, -1, enc)).empty());
+    /* A lead that falls fast, under a minute: no longer "ahead". */
+    model::Session s = *bitrate;
+    s.completion = 100.0 * s.position_ticks / s.runtime_ticks + 100.0 * 45 / (s.runtime_ticks / 1e7);
+    CHECK(diagnosis::pace(s, 90, enc).state == diagnosis::Pace::Limit);
+}
+
+TEST(glances_quicklook)
+{
+    model::ServerLoad l;
+    CHECK(glances::parse_quicklook(fixture("glances/quicklook.json"), &l));
+    CHECK(l.cpu > 0 && l.mem > 0 && l.cores == 6);
+    CHECK(!glances::parse_quicklook("{\"status\": \"ok\"}", &l));
+}
+
+/* ---- Ouvrir dans Jelly5 ---- */
+
+TEST(jelly5_open_request)
+{
+    /* What Jelly5 is handed: the same request both ways. */
+    const jelly5::OpenRequest req{"srv1", "item2"};
+    const std::vector<std::string> args = jelly5::launch_args(req);
+    CHECK(args == std::vector<std::string>({"--open-item", "item2", "--server", "srv1"}));
+    json::Doc h(jelly5::handoff_json(req, 1760000000));
+    CHECK_EQ(json::str(h.root(), "serverId"), std::string("srv1"));
+    CHECK_EQ(json::str(h.root(), "itemId"), std::string("item2"));
+    CHECK_EQ(json::str(h.root(), "action"), std::string("open"));
+    CHECK_EQ(json::integer(h.root(), "createdAt"), 1760000000);
+    std::string server;
+    CHECK(jellyfin::parse_server_id(fixture("jellyfin/system_info.json"), &server) && server.size() == 32);
+
+    /* Library titles to Jellyfin items, by their ids: every film with a file
+     * in the fixtures is found; one with no id never is. */
+    CHECK_EQ(api::MockTransport::file_for("http://jellyfin.mock" + jellyfin::index_path()),
+             std::string("jellyfin/items_index.json"));
+    std::vector<model::UserItem> index;
+    CHECK(jellyfin::parse_user_items(fixture("jellyfin/items_index.json"), &index) && !index.empty());
+    std::vector<model::Movie> movies;
+    CHECK(arr::parse_movies(fixture("radarr/movie.json"), &movies));
+    int found = 0;
+    for (const auto &m : movies)
+        found += !jelly5::item_for(m, index).empty();
+    CHECK(found > 100);
+    model::Movie nothing;
+    nothing.title = "Sans identifiant";
+    CHECK(jelly5::item_for(nothing, index).empty());
+    std::vector<model::Series> series;
+    CHECK(arr::parse_series(fixture("sonarr/series.json"), &series));
+    CHECK(std::any_of(series.begin(), series.end(), [&](const model::Series &s) { return !jelly5::item_for(s, index).empty(); }));
+
+    /* A recent card: a film itself; several new episodes, their series. */
+    std::vector<model::RecentItem> recent;
+    CHECK(jellyfin::parse_recent(fixture("jellyfin/items.json"), &recent));
+    for (const auto &r : recent) {
+        CHECK(!jelly5::item_for(r).empty());
+        if (r.type == "Episode" && r.new_episodes > 1)
+            CHECK_EQ(jelly5::item_for(r), r.series_id);
+        else
+            CHECK_EQ(jelly5::item_for(r), r.id);
+    }
+
+    /* A request: only once Jellyfin has it, in the request's quality. */
+    model::RequestPage p;
+    CHECK(seerr::parse_requests(fixture("seerr/request_all.json"), &p));
+    int offered = 0;
+    for (const auto &r : p.requests) {
+        if (r.id == 516)   /* 4K, approved: the film is there, its 4K copy not yet */
+            CHECK(r.is4k && r.media_status == 3 && jelly5::item_for(r).empty());
+        if (r.id == 513)   /* still on its way */
+            CHECK(jelly5::item_for(r).empty());
+        offered += !jelly5::item_for(r).empty();
+    }
+    CHECK(offered > 10);
+}
+
+/* ---- several instances ---- */
+
+TEST(instances_tag_answers_and_calendar_keeps_one_copy)
+{
+    /* Two Radarr on the mock: each answer carries its instance. */
+    api::MockTransport mock(REGIE5_FIXTURES, 0, "");
+    http::Pool pool(mock, 2, nullptr);
+    api::Services svc(config::mock({}, true), pool, "fr");
+    CHECK_EQ(svc.instances(config::Radarr), 2);
+    std::vector<model::Movie> got[2];
+    for (int i = 0; i < 2; i++)
+        svc.movies([&got, i](api::Result<std::vector<model::Movie>> r) { got[i] = r.value; }, i);
+    drain(pool);
+    CHECK(!got[0].empty() && got[0].size() == got[1].size());
+    CHECK(got[0][0].instance == 0 && got[1][0].instance == 1);
+
+    /* The same release seen by both: kept once, the copy with its file. */
+    model::CalendarItem a;
+    a.from = config::Radarr, a.title = "Dune", a.release = model::CalendarItem::Digital, a.when = 1000;
+    model::CalendarItem b = a;
+    b.instance = 1, b.has_file = true;
+    model::CalendarItem other = a;
+    other.release = model::CalendarItem::Physical;
+    std::vector<model::CalendarItem> items = {a, other, b};
+    schedule::drop_duplicates(&items);
+    CHECK_EQ(items.size(), (size_t)2);
+    CHECK(items[0].instance == 1 && items[0].has_file);
+    CHECK(items[1].release == model::CalendarItem::Physical);
+}
+
+/* ---- HTTP on the wire (the PS5's transport) ---- */
+
+TEST(http_wire_urls_and_request)
+{
+    http::wire::Url u;
+    CHECK(http::wire::parse_url("http://192.168.1.20:8989/sonarr/api/v3/calendar?start=1", &u));
+    CHECK_EQ(u.scheme, std::string("http"));
+    CHECK_EQ(u.host, std::string("192.168.1.20"));
+    CHECK_EQ(u.port, 8989);
+    CHECK_EQ(u.target, std::string("/sonarr/api/v3/calendar?start=1"));
+    CHECK(http::wire::parse_url("HTTPS://media.example/radarr", &u));
+    CHECK_EQ(u.scheme, std::string("https"));
+    CHECK_EQ(u.port, 443);
+    CHECK_EQ(u.target, std::string("/radarr"));
+    CHECK(http::wire::parse_url("http://[fd00::5]:8096", &u));
+    CHECK_EQ(u.host, std::string("fd00::5"));
+    CHECK_EQ(u.target, std::string("/"));
+    CHECK(!http::wire::parse_url("ftp://host/", &u));
+    CHECK(!http::wire::parse_url("http://:80/", &u));
+    CHECK(!http::wire::parse_url("http://host:99999/", &u));
+
+    http::Request req;
+    req.method = "POST";
+    req.url = "http://10.0.0.2:5055/api/v1/request/7/approve";
+    req.headers = {"X-Api-Key: k"};
+    CHECK(http::wire::parse_url(req.url, &u));
+    const std::string t = http::wire::request_text(req, u);
+    CHECK(t.rfind("POST /api/v1/request/7/approve HTTP/1.1\r\nHost: 10.0.0.2:5055\r\n", 0) == 0);
+    CHECK(t.find("Content-Length: 0\r\n") != std::string::npos);
+    CHECK(t.find("X-Api-Key: k\r\n") != std::string::npos);
+    CHECK(t.find("Connection: close\r\n") != std::string::npos);
+    CHECK(t.size() >= 4 && t.compare(t.size() - 4, 4, "\r\n\r\n") == 0);
+}
+
+namespace {
+/* The whole answer fed in pieces of every size from 1 up: the reader must
+ * not care where the network cuts it. */
+void read_in_pieces(const std::string &wire, bool close_at_end, int status, const std::string &body)
+{
+    for (size_t step = 1; step <= wire.size(); step = step < 8 ? step + 1 : step * 2) {
+        http::wire::Reader r;
+        http::wire::Reader::State st = http::wire::Reader::More;
+        for (size_t i = 0; i < wire.size() && st == http::wire::Reader::More; i += step)
+            st = r.feed(wire.data() + i, std::min(step, wire.size() - i));
+        if (close_at_end && st == http::wire::Reader::More)
+            st = r.finish();
+        CHECK(st == http::wire::Reader::Done);
+        CHECK_EQ(r.status, status);
+        CHECK_EQ(r.body, body);
+    }
+}
+} // namespace
+
+TEST(http_wire_reader)
+{
+    read_in_pieces("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: 7\r\n\r\n[1,2,3]", false,
+                   200, "[1,2,3]");
+    read_in_pieces("HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\n\r\n4\r\n[1,2\r\nb;ext=1\r\n,3,4,5,6,7]\r\n"
+                   "0\r\nX-Trailer: y\r\n\r\n",
+                   false, 200, "[1,2,3,4,5,6,7]");
+    read_in_pieces("HTTP/1.0 200 OK\r\n\r\nuntil the end", true, 200, "until the end");
+    read_in_pieces("HTTP/1.1 100 Continue\r\n\r\nHTTP/1.1 204 No Content\r\n\r\n", false, 204, "");
+    read_in_pieces("HTTP/1.1 401 Unauthorized\r\ncontent-length: 0\r\n\r\n", false, 401, "");
+
+    http::wire::Reader ct;
+    const std::string a = "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg\r\nContent-Length: 2\r\n\r\nab";
+    CHECK(ct.feed(a.data(), a.size()) == http::wire::Reader::Done);
+    CHECK_EQ(ct.content_type, std::string("image/jpeg"));
+
+    http::wire::Reader cut;   /* closed before the end of a sized body */
+    const std::string b = "HTTP/1.1 200 OK\r\nContent-Length: 10\r\n\r\nabc";
+    CHECK(cut.feed(b.data(), b.size()) == http::wire::Reader::More);
+    CHECK(cut.finish() == http::wire::Reader::Bad);
+    CHECK(cut.body.empty());
+
+    http::wire::Reader gz;   /* never asked for, never taken as JSON */
+    const std::string c = "HTTP/1.1 200 OK\r\nContent-Encoding: gzip\r\nContent-Length: 2\r\n\r\nxx";
+    CHECK(gz.feed(c.data(), c.size()) == http::wire::Reader::Bad);
+
+    http::wire::Reader junk;
+    const std::string d = "SSH-2.0-OpenSSH_9.6\r\n\r\n";
+    CHECK(junk.feed(d.data(), d.size()) == http::wire::Reader::Bad);
+
+    http::wire::Reader none;
+    CHECK(none.finish() == http::wire::Reader::Bad);
+}
+
+TEST(http_wire_date)
+{
+    int64_t t = 0;
+    CHECK(http::wire::parse_http_date("Mon, 12 Oct 2026 12:34:32 GMT", &t));
+    CHECK_EQ(t, (int64_t)1791808472);
+    CHECK(http::wire::parse_http_date("Thu, 01 Jan 1970 00:00:00 GMT", &t));
+    CHECK_EQ(t, (int64_t)0);
+    CHECK(!http::wire::parse_http_date("Monday, 12-Oct-26 12:34:32 GMT", &t));
+    CHECK(!http::wire::parse_http_date("Mon, 12 Oct 2026 12:34:32 CEST", &t));
+    http::wire::Reader r;
+    const std::string a = "HTTP/1.1 204 No Content\r\nDate: Mon, 12 Oct 2026 12:34:32 GMT\r\n\r\n";
+    CHECK(r.feed(a.data(), a.size()) == http::wire::Reader::Done);
+    CHECK_EQ(r.server_date, (int64_t)1791808472);
+}

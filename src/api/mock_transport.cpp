@@ -1,0 +1,221 @@
+/*
+ * Regie5 — a TV front end for a self-hosted media stack
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+#include "api/mock_transport.h"
+
+#include "cJSON.h"
+
+#include <cctype>
+#include <chrono>
+#include <cstdio>
+#include <thread>
+#include <vector>
+
+namespace api {
+
+namespace {
+
+/* text split at sep (no iostreams: the PS5 runtime has no locales for them). */
+std::vector<std::string> split_at(const std::string &text, char sep)
+{
+    std::vector<std::string> out;
+    size_t start = 0;
+    while (start <= text.size()) {
+        const size_t end = text.find(sep, start);
+        out.push_back(text.substr(start, end == std::string::npos ? std::string::npos : end - start));
+        if (end == std::string::npos)
+            break;
+        start = end + 1;
+    }
+    return out;
+}
+
+/* Runs on worker threads, whose stacks may be small (the PS5's): the file
+ * goes straight into the string, no buffer on the stack. */
+bool read_file(const std::string &path, std::string *out)
+{
+    FILE *f = std::fopen(path.c_str(), "rb");
+    if (!f)
+        return false;
+    std::fseek(f, 0, SEEK_END);
+    const long size = std::ftell(f);
+    std::fseek(f, 0, SEEK_SET);
+    if (size > 0) {
+        out->resize((size_t)size);
+        out->resize(std::fread(&(*out)[0], 1, (size_t)size, f));
+    }
+    std::fclose(f);
+    return true;
+}
+
+/* "http://sonarr.mock/api/v3/queue?page=1" -> service "sonarr", path "/api/v3/queue", query "page=1". */
+bool split(const std::string &url, std::string *service, std::string *path, std::string *query)
+{
+    const size_t s = url.find("://");
+    if (s == std::string::npos)
+        return false;
+    const size_t host_end = url.find('/', s + 3);
+    const std::string host = url.substr(s + 3, host_end == std::string::npos ? std::string::npos : host_end - s - 3);
+    const size_t dot = host.find(".mock");
+    if (dot == std::string::npos)
+        return false;
+    *service = host.substr(0, dot);
+    const std::string rest = host_end == std::string::npos ? "/" : url.substr(host_end);
+    const size_t q = rest.find('?');
+    *path = rest.substr(0, q);
+    *query = q == std::string::npos ? "" : rest.substr(q + 1);
+    return true;
+}
+
+std::string query_value(const std::string &query, const std::string &key)
+{
+    for (const std::string &pair : split_at(query, '&')) {
+        const size_t eq = pair.find('=');
+        if (eq != std::string::npos && pair.substr(0, eq) == key)
+            return pair.substr(eq + 1);
+    }
+    return {};
+}
+
+/* Arrays emptied, counts set to 0, nested objects (Seerr's pageInfo) alike. */
+void empty_lists(cJSON *o)
+{
+    static const char *const kCounts[] = {"totalRecords", "TotalRecordCount", "results", "pages"};
+    cJSON *child = o->child;
+    while (child) {
+        cJSON *next = child->next;
+        if (cJSON_IsArray(child)) {
+            cJSON_ReplaceItemInObjectCaseSensitive(o, child->string, cJSON_CreateArray());
+        } else if (cJSON_IsObject(child)) {
+            empty_lists(child);
+        } else if (cJSON_IsNumber(child) && child->string) {
+            for (const char *k : kCounts)
+                if (std::string(child->string) == k)
+                    cJSON_SetNumberValue(child, 0);
+        }
+        child = next;
+    }
+}
+
+} // namespace
+
+MockTransport::MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty)
+    : m_root(std::move(root)), m_delay_ms(delay_ms)
+{
+    for (const std::string &name : split_at(empty, ','))
+        if (!name.empty())
+            m_empty[name] = true;
+    for (const std::string &item : split_at(fail, ',')) {
+        const size_t c = item.find(':');
+        if (c != std::string::npos)
+            m_fail[item.substr(0, c)] = item.substr(c + 1);
+    }
+}
+
+std::string MockTransport::file_for(const std::string &url)
+{
+    std::string service, path, query;
+    if (!split(url, &service, &path, &query))
+        return {};
+    std::string p = path;
+    /* An *arr behind a path of its own (urlBase, a reverse proxy): what
+     * precedes /api/ is not part of the file's name. */
+    const size_t api = p.find("/api/");
+    if (api != std::string::npos && api > 0)
+        p = p.substr(api);
+    for (const char *prefix : {"/api/v3/", "/api/v1/", "/api/4/"})
+        if (p.rfind(prefix, 0) == 0)
+            p = p.substr(std::string(prefix).size());
+    while (!p.empty() && p[0] == '/')
+        p.erase(0, 1);
+    std::string name;
+    for (char c : p)
+        name += c == '/' ? '_' : (char)std::tolower((unsigned char)c);
+    if (service == "sonarr" && name == "episodefile") {   /* one file per series */
+        const std::string id = query_value(query, "seriesId");
+        if (!id.empty())
+            name += "_" + id;
+    }
+    if (service == "jellyfin" && name == "items" && !query_value(query, "ids").empty())
+        name = "items_ids";   /* names for the journal (the recent row has items.json) */
+    else if (service == "jellyfin" && name == "items" && !query_value(query, "userId").empty())
+        name = "items_user_" + query_value(query, "userId");   /* one user's, for the cleanup */
+    else if (service == "jellyfin" && name == "items" && query_value(query, "IncludeItemTypes") == "Movie,Series")
+        name = "items_index";   /* every film and series (Jelly5's links) */
+    if (service == "seerr" && name == "request") {
+        const std::string f = query_value(query, "filter");
+        name += "_" + (f.empty() ? std::string("all") : f);
+    }
+    if (name.empty())
+        return {};
+    return service + "/" + name + ".json";
+}
+
+std::string MockTransport::emptied(const std::string &rel, const std::string &body)
+{
+    for (const char *kept : {"system_status", "settings_about", "system_info", "/movie_", "/tv_"})
+        if (rel.find(kept) != std::string::npos)
+            return body;
+    cJSON *root = cJSON_ParseWithLength(body.data(), body.size());
+    if (!root)
+        return body;
+    std::string out = "[]";
+    if (cJSON_IsObject(root)) {
+        empty_lists(root);
+        char *text = cJSON_PrintUnformatted(root);
+        out = text ? text : body;
+        cJSON_free(text);
+    }
+    cJSON_Delete(root);
+    return out;
+}
+
+http::Response MockTransport::perform(const http::Request &req, const std::atomic<bool> *cancel)
+{
+    http::Response r;
+    std::string service, path, query;
+    if (!split(req.url, &service, &path, &query)) {
+        r.fail = http::Response::Connect;
+        r.error = "mock: not a .mock address";
+        return r;
+    }
+    for (int waited = 0; waited < m_delay_ms && !(cancel && *cancel); waited += 10)
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+
+    auto f = m_fail.find(service);
+    if (f != m_fail.end()) {
+        const std::string &kind = f->second;
+        if (kind == "unreachable")
+            r.fail = http::Response::Connect;
+        else if (kind == "timeout")
+            r.fail = http::Response::Timeout;
+        else if (kind == "unauthorized")
+            r.status = 401;
+        else if (kind == "notfound")
+            r.status = 404;
+        else if (kind == "servererror")
+            r.status = 500;
+        else if (kind == "badjson")
+            r.status = 200, r.body = "<html>not json</html>", r.content_type = "text/html";
+        return r;
+    }
+
+    if (req.method != "GET") {   /* an action: logged, never carried out */
+        std::fprintf(stderr, "mock: %s %s (nothing done)\n", req.method.c_str(), path.c_str());
+        r.status = 204;
+        return r;
+    }
+    const std::string rel = file_for(req.url);
+    std::string body;
+    if (rel.empty() || !read_file(m_root + "/" + rel, &body)) {
+        r.status = 404;
+        return r;
+    }
+    r.status = 200;
+    r.body = m_empty.count(service) ? emptied(rel, body) : body;
+    r.content_type = "application/json";
+    return r;
+}
+
+} // namespace api
