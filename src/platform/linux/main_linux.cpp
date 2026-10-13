@@ -64,10 +64,15 @@ void fit_drawable()
 
 } // namespace
 
-/* The monitor decides the rate on the desktop: Régie5 only reads it. */
+/* The monitor decides the rate on the desktop: Régie5 only reads it.
+ * REGIE5_DISPLAY=3840x2160@60/120 shows what a console would answer (size,
+ * rate had, rate asked), to see Settings' line without one. */
 platform::DisplayMode platform::display_mode()
 {
     DisplayMode m;
+    if (const char *fake = std::getenv("REGIE5_DISPLAY"))
+        if (std::sscanf(fake, "%dx%d@%d/%d", &m.width, &m.height, &m.hz, &m.asked_hz) == 4)
+            return m;
     if (!s_window)
         return m;
     SDL_GL_GetDrawableSize(s_window, &m.width, &m.height);
@@ -166,6 +171,8 @@ int main(int argc, char **argv)
                 fixtures = beside;
             SDL_free(base);
         }
+        if (const char *dir = std::getenv("REGIE5_MOCK_DIR"))   /* another copy (make-demo.py --out) */
+            fixtures = dir;
         const char *delay = std::getenv("REGIE5_MOCK_DELAY_MS");
         const char *fail = std::getenv("REGIE5_MOCK_FAIL");
         const char *empty = std::getenv("REGIE5_MOCK_EMPTY");

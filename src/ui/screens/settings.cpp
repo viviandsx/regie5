@@ -442,8 +442,15 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
     }
 
     /* The app, and the picture it sends out. */
-    const float iy = by + kButtonH + 2 * kBarPad + 46;
+    const float iy = by + kButtonH + 2 * kBarPad + 34;
     gfx::text(x0, iy, std::string(i18n::tr(i18n::Version)) + " " + m_ctx.version, {gfx::Medium, 24}, kText2);
+    /* In --mock no file is read: its path would only show the user's home in screenshots. */
+    gfx::text(x0, iy + 34,
+              m_ctx.mock ? std::string(i18n::tr(i18n::ConfigUnusedMock))
+                         : std::string(i18n::tr(i18n::ConfigFile)) + " " +
+                               (m_ctx.config_shown.empty() ? m_ctx.config_path : m_ctx.config_shown),
+              {gfx::Medium, 24, kListW}, kText2);
+    /* Then the picture sent out, on up to two lines of its own: left of the pad's hints. */
     const platform::DisplayMode dm = platform::display_mode();
     if (dm.hz > 0) {
         std::string line = fmt::f(i18n::tr(i18n::DisplayInfo), dm.width, dm.height, dm.hz);
@@ -453,14 +460,9 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
             line += std::string(" — ") + i18n::tr(i18n::DisplayNoTv120);
         if (dm.asked_hz != 0 && app_settings::refresh_asked(refresh) != dm.asked_hz)
             line += std::string(" — ") + i18n::tr(i18n::DisplayNextStart);
-        gfx::text(x0 + kListW, iy, line, {gfx::Medium, 24, kListW * 0.6f}, kText2, 2);
+        const bool warn = dm.asked_hz > dm.hz;
+        gfx::text(x0, iy + 68, line, {gfx::Medium, 24, kListW * 0.55f, 2, 32}, warn ? 0xffffd60au : kText2);
     }
-    /* In --mock no file is read: its path would only show the user's home in screenshots. */
-    gfx::text(x0, iy + 34,
-              m_ctx.mock ? std::string(i18n::tr(i18n::ConfigUnusedMock))
-                         : std::string(i18n::tr(i18n::ConfigFile)) + " " +
-                               (m_ctx.config_shown.empty() ? m_ctx.config_path : m_ctx.config_shown),
-              {gfx::Medium, 24, kListW}, kText2);
 }
 
 } // namespace ui
