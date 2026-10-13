@@ -16,7 +16,8 @@ First install
 2. Copy the whole PPSA99520 folder into /data/homebrew/ on the console, so that
    /data/homebrew/PPSA99520/eboot.bin exists.
 3. Wait about ten seconds: ShadowMount+ adds the "Régie5" tile to the home
-   screen. (If it does not appear, restart ShadowMount+ or the console.)
+   screen, under Media. (If it does not appear, restart ShadowMount+ or the
+   console.)
 4. Open Régie5. Press R1 until the gear (Settings) is selected.
 5. Choose "From a phone". A QR code and a 6-digit code appear on the TV.
 6. Scan the QR code with your phone (same network as the console), or type the

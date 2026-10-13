@@ -19,6 +19,16 @@
 # Needs: scripts/setup-ps5-toolchain.sh run once; clang, lld, ninja, python3.
 # Development builds send their log over UDP to this machine
 # (REGIE5_LOG_HOST overrides the address; REGIE5_LOG_HOST=none: no UDP log).
+# REGIE5_PARAM=<file>: another param.json for an app test build (to compare
+# categories), instead of ps5/app/sce_sys/param.json.
+#
+# Category: Régie5 is in the Media area with Jelly5's param.json profile, the
+# only one that starts there on firmware 13.60 (13 October 2026): category
+# 65536, badge 1, the launchActivity intent, attribute 0, attribute3 0x80040,
+# no amm or kernel block. With ps5-homebrew-ui's Media profile (badge 2, no
+# game intent: app-10) or with our former attributes (app-10c) the console
+# said "cannot start the application". ps5-homebrew-ui's check is widened, in
+# its temporary copy, to accept 65536 with badge 1 and launchActivity.
 set -euo pipefail
 export LC_ALL=C
 
@@ -60,6 +70,10 @@ fi
 SCE_SYS="${ROOT}/ps5/sce_sys"            # the probe's
 [[ "${KIND}" == app ]] && SCE_SYS="${ROOT}/ps5/app/sce_sys"
 PARAM="${SCE_SYS}/param.json"
+if [[ -n "${REGIE5_PARAM:-}" ]]; then
+    [[ "${KIND}" == app && -f "${REGIE5_PARAM}" ]] || { echo "REGIE5_PARAM: an app build and an existing file" >&2; exit 2; }
+    PARAM="${REGIE5_PARAM}"
+fi
 TITLE_ID="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["titleId"])' "${PARAM}")"
 # contentVersion 00.001.000 is shown as 0.1.0
 VERSION="$(python3 -c 'import json,sys; print(".".join(str(int(p)) for p in json.load(open(sys.argv[1]))["contentVersion"].split(".")))' "${PARAM}")"
@@ -79,12 +93,26 @@ for item in Makefile tools tooling runtime; do
 done
 mkdir -p "${T}/sce_sys" "${T}/assets" "${T}/src/platform" "${T}/src/runtime" "${T}/src/third_party" "${T}/deps/lib"
 if [[ "${KIND}" == app ]]; then   # icon0.png is kept in the repository (the catalog links it); pic0, pic1 are drawn
-    cp "${SCE_SYS}/param.json" "${SCE_SYS}/icon0.png" "${T}/sce_sys/"
+    cp "${PARAM}" "${T}/sce_sys/param.json"
+    cp "${SCE_SYS}/icon0.png" "${T}/sce_sys/"
     python3 "${ROOT}/scripts/make-icons.py" "${T}/sce_sys" --backgrounds
     bash "${HUI}/tools/validate-assets.sh" "${T}/sce_sys"
 else
     cp "${SCE_SYS}/"* "${T}/sce_sys/"
 fi
+# Jelly5's Media profile (see the top of this file), in the temporary copy of
+# ps5-homebrew-ui's check only.
+python3 - "${T}/tools/build.sh" <<'PY'
+import sys
+path = sys.argv[1]
+s = open(path, encoding="utf-8").read()
+old_set = "if (category, badge) not in {(0, 1), (65536, 2)}:"
+old_intent = 'elif "gameIntent" in value:'
+assert s.count(old_set) == 1 and s.count(old_intent) == 1, "ps5-homebrew-ui's param.json check changed: look at it again"
+s = s.replace(old_set, "if (category, badge) not in {(0, 1), (65536, 1), (65536, 2)}:")
+s = s.replace(old_intent, 'elif badge == 2 and "gameIntent" in value:')
+open(path, "w", encoding="utf-8").write(s)
+PY
 cp -a "${ROOT}/assets/fonts" "${T}/assets/fonts"
 [[ "${KIND}" == probe ]] && cp -a "${ROOT}/fixtures" "${T}/assets/fixtures"   # the demo data
 for d in core api ui; do

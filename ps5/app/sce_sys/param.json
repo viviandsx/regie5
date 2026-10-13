@@ -2,16 +2,11 @@
   "ageLevel": {
     "default": 0
   },
-  "amm": {
-    "multimapVaRangeInGib": 512,
-    "pagetableMemorySizeInMib": 256,
-    "vaRangeInGib": 512
-  },
-  "applicationCategoryType": 0,
+  "applicationCategoryType": 65536,
   "applicationDrmType": "free",
-  "attribute": 1644167168,
+  "attribute": 0,
   "attribute2": 0,
-  "attribute3": 1048576,
+  "attribute3": 524352,
   "conceptId": "99520",
   "contentBadgeType": 1,
   "contentId": "UP9000-PPSA99520_00-REGIE50000000000",
@@ -24,19 +19,18 @@
       }
     ]
   },
-  "kernel": {
-    "cpuPageTableSize": 268435456,
-    "gpuPageTableSize": 268435456
-  },
   "localizedParameters": {
     "defaultLanguage": "en-US",
     "en-US": {
+      "titleName": "Régie5"
+    },
+    "nb-NO": {
       "titleName": "Régie5"
     }
   },
   "masterVersion": "01.00",
   "pubtools": {
-    "creationDate": "2026-08-22 00:00:00",
+    "creationDate": "2026-10-03 00:00:00",
     "loudnessSnd0": "-28.00",
     "toolVersion": "2.00"
   },
