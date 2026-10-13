@@ -201,6 +201,13 @@ Bug reports and ideas are welcome in the issues. Please read the scope above
 first: features around download clients, indexers or release searching will not
 be added.
 
+## How Régie5 was made
+
+Régie5 was entirely "vibe-coded" with **Claude Opus 5.5** (Anthropic). Vivian defined
+the project, made every product and design decision, tested each step on Linux and
+on the console against a real server, and published it; the code and the
+documentation were written by the AI.
+
 ## License and credits
 
 Régie5 is free software under the **GNU General Public License v3.0 or later**
