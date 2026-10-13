@@ -69,6 +69,7 @@ void JellyfinScreen::refresh_sessions()
         if (alive.expired())
             return;
         m_sessions.take(std::move(r), platform::now());
+        m_ctx.badges[TabJellyfin] = m_sessions.ready() ? badges::sessions(m_sessions.value) : badges::Badge{};
         if (!m_sessions.ready())
             return;
         /* Each transcode's pace, against its lead at the last reading. */

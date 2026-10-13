@@ -8,6 +8,7 @@
 
 #include "api/json.h"
 #include "core/app_settings.h"
+#include "core/badges.h"
 #include "core/cleanup.h"
 #include "core/config.h"
 #include "core/i18n.h"
@@ -352,4 +353,29 @@ TEST(versions_minimum)
     CHECK(versions::supported(config::Jellyfin, ""));                /* unknown: let through */
     CHECK(versions::supported(config::Sonarr, "develop"));
     CHECK(versions::supported(config::Glances, "Intel(R) Core(TM) i5"));   /* no minimum */
+}
+
+TEST(tab_badges)
+{
+    std::vector<model::QueueItem> q(3);
+    CHECK_EQ(badges::queue(q).count, 3);
+    CHECK(badges::queue(q).tone == badges::Neutral);
+    q[1].status = model::QueueItem::Warning;
+    CHECK(badges::queue(q).tone == badges::Warning);
+    q[0].status = model::QueueItem::Error;   /* the worst wins, wherever it is */
+    CHECK(badges::queue(q).tone == badges::Problem);
+    CHECK(!badges::queue({}).shown());   /* an empty queue: no badge */
+    CHECK(!badges::Badge{}.shown());     /* unknown: none either */
+
+    model::RequestPage page;
+    page.requests.resize(20);   /* one page of a longer list */
+    page.total = 27;
+    CHECK_EQ(badges::requests(page).count, 27);
+    page.total = 0;   /* no pageInfo: the page itself */
+    CHECK_EQ(badges::requests(page).count, 20);
+    CHECK(badges::requests(page).tone == badges::Attention);
+
+    CHECK_EQ(badges::sessions(std::vector<model::Session>(2)).count, 2);
+    CHECK_EQ(badges::label(7), std::string("7"));
+    CHECK_EQ(badges::label(100), std::string("99+"));
 }

@@ -117,9 +117,16 @@ void DownloadsScreen::refresh()
 void DownloadsScreen::merge()
 {
     m_items.clear();
-    for (const auto &src : m_queues)
-        if (src.queue.ready())
+    bool waiting = false, any = false;
+    for (const auto &src : m_queues) {
+        waiting |= src.queue.loading() || src.queue.state == load::Idle;
+        if (src.queue.ready()) {
+            any = true;
             m_items.insert(m_items.end(), src.queue.value.begin(), src.queue.value.end());
+        }
+    }
+    if (!waiting)   /* the tab's counter, from what is on screen */
+        m_ctx.badges[TabDownloads] = any ? badges::queue(m_items) : badges::Badge{};
     std::stable_sort(m_items.begin(), m_items.end(), [](const model::QueueItem &a, const model::QueueItem &b) {
         if (rank(a.status) != rank(b.status))
             return rank(a.status) < rank(b.status);

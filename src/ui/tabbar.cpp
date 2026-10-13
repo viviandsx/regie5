@@ -7,6 +7,7 @@
 #include "core/i18n.h"
 #include "ui/style.h"
 
+#include <algorithm>
 #include <cmath>
 #include <cstdio>
 #include <ctime>
@@ -35,9 +36,46 @@ void draw_gear(float cx, float cy, float r, uint32_t ink, uint32_t hole)
     gfx::fill({cx - r * 0.32f, cy - r * 0.32f, r * 0.64f, r * 0.64f}, hole, r * 0.32f);
 }
 
+uint32_t tone_color(badges::Tone t)
+{
+    switch (t) {
+    case badges::Attention: return 0xff7c8cffu;   /* the wordmark's blue: someone waits */
+    case badges::Live: return kGreen;
+    case badges::Warning: return kOrange;
+    case badges::Problem: return kRed;
+    case badges::Neutral: break;
+    }
+    return 0xff5a5a6au;
+}
+
 } // namespace
 
-void TabBar::draw(float a, int active, bool focused, float dt, bool *animating)
+void TabBar::draw_badge(float x, float y, int tab, const badges::Badge &b, float a, float dt, bool *animating)
+{
+    Anim &in = m_badge_in[tab];
+    if (b.shown())
+        m_badge_last[tab] = b;
+    in.to(b.shown() ? 1.f : 0.f);
+    if (in.step(dt, 9.f))
+        *animating = true;
+    if (in.value < 0.01f || !m_badge_last[tab].shown())
+        return;
+    const badges::Badge &show = m_badge_last[tab];
+    /* A little overshoot as it appears (an eased back curve), none as it goes. */
+    const float t = in.value, grow = in.target > 0.5f ? 1.f + 0.18f * std::sin(t * 3.14159f) : 1.f;
+    const std::string text = badges::label(show.count);
+    /* The text keeps one size (a glyph atlas entry per size): only the pill grows. */
+    const gfx::TextStyle st{gfx::Bold, 19};
+    const float w0 = std::max(28.f, gfx::text_width(text, st) + 16);
+    const float h = 28 * grow, w = w0 + (h - 28);
+    const gfx::Rect r{x + 14 - w / 2, y + 14 - h / 2, w, h};
+    const float op = a * smoothstep(t);
+    gfx::shadow(r, h / 2, 8, 0.45f * op, 0);
+    gfx::fill(r, alpha(tone_color(show.tone), op), h / 2);
+    gfx::text(x + 14, y + 14 + 7, text, st, alpha(kText, op), 1);
+}
+
+void TabBar::draw(float a, int active, bool focused, const badges::Badge *badges, float dt, bool *animating)
 {
     if (a <= 0.01f)
         return;
@@ -75,6 +113,9 @@ void TabBar::draw(float a, int active, bool focused, float dt, bool *animating)
         if (i == active)
             on = {x - 4, cy - 33, widths[i] + 8, 66};
         gfx::text(x + widths[i] / 2, cy + 9, tab_label(i), st, alpha(i == active ? kText : kText2, a), 1);
+        /* The counter sits on the label's top right corner, in the tab's margin. */
+        draw_badge(x + widths[i] / 2 + (widths[i] - 68) / 2 - 2, cy - 30, i, badges ? badges[i] : badges::Badge{}, a, dt,
+                   animating);
         x += widths[i] + 6;
     }
     m_drop.to(on, active, 0, cy);

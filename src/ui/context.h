@@ -7,10 +7,12 @@
 #pragma once
 
 #include "api/services.h"
+#include "core/badges.h"
 #include "core/app_settings.h"
 #include "core/config.h"
 #include "core/i18n.h"
 #include "ui/jelly5_link.h"
+#include "ui/tabbar.h"
 
 #include <string>
 
@@ -49,6 +51,9 @@ struct Context {
         int tab = -1, view = -1;
         time_t when = 0;
     } go;
+    /* The counters on the tabs (by ui::Tab): posted by BadgeWatch, and by a
+     * screen as soon as it loads the same data. */
+    badges::Badge badges[TabCount];
     /* Options › « Ouvrir dans Jelly5 », for every screen. */
     Jelly5Link jelly5;
     /* settings.json (the app's own); settings_path empty: not written (--mock). */

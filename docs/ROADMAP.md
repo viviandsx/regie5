@@ -25,7 +25,7 @@ pour ce qui a été fait après la phase 0).
 | **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | 🔶 en cours (§ 2 sexies) |
 
-Tests : **54** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **55** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -383,7 +383,16 @@ publie seul toute release du dépôt.
       jour (Régie5 n'écrit plus dans Seerr depuis le 13 octobre). Conteneur arrêté.
       Non testé : chemin gardé par le proxy + `URL Base` réglée dans le service (demande de
       changer le serveur de Vivian).
-- [ ] **d) Pastilles de compteur** sur les onglets.
+- [x] **d) Pastilles de compteur** sur les onglets : Activité (téléchargements dans la file
+      de toutes les instances ; rouge s'il y a une erreur, orange un avertissement, gris
+      sinon), Demandes (demandes en attente, total de Seerr sur toutes les pages, bleu),
+      Jellyfin (lectures en cours, vert). Rien à 0 ni quand le compte est inconnu (service
+      coupé ou muet). `ui/BadgeWatch` relit les trois toutes les 30 s (lectures seules,
+      appelé à chaque tour de boucle, même au repos) ; un écran qui charge les mêmes
+      données publie son compte aussitôt (après une approbation, la pastille suit). Apparition
+      avec un petit rebond, disparition en fondu, en fonction du temps écoulé ; texte à taille
+      fixe (l'atlas ne rastérise rien de plus). Logique dans `core/badges` (testée). Les
+      captures du README les montreront à la prochaine série (0.3.0).
 - [ ] **e) Signalements Seerr** (lecture, puis résoudre / commenter ; à ajouter aux écritures
       autorisées de CLAUDE.md §3 ; `--mock` seulement).
 - [ ] **f) Jellyfin** : bibliothèques (nombre, taille) et utilisateurs (dernière activité).
@@ -553,3 +562,4 @@ la Bibliothèque).
 | 13 oct. 2026 | 0.3.0 b) : une langue = un fichier, `TRANSLATING.md` ; textes ConfigMissing / ConfigFromBackup remis à l'endroit. |
 | 13 oct. 2026 | **Phase 7 terminée** : PR #244 fusionnée, Régie5 0.2.0 sur homebrew.page. `RELEASING.md` : le catalogue suit chaque release, aucune avant la 0.3.0 testée sur console. |
 | 13 oct. 2026 | 0.3.0 c) : reverse proxy nginx (sous-chemins, HTTPS auto-signé, lecture seule) ; certificat refusé sous Linux, adresse avec chemin et redirections dans Réglages. |
+| 13 oct. 2026 | 0.3.0 d) : pastilles de compteur sur Activité, Demandes, Jellyfin. |

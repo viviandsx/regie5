@@ -30,6 +30,7 @@ add_library(regie5_data STATIC
     ${REGIE5_LANGUAGES}
     third_party/cjson/cJSON.c
     src/core/app_settings.cpp
+    src/core/badges.cpp
     src/core/cleanup.cpp
     src/core/config.cpp
     src/core/config_page.cpp
@@ -61,6 +62,7 @@ target_compile_options(regie5_data PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-Wall -Wext
 add_library(regie5_ui STATIC
     src/ui/ambient.cpp
     src/ui/art.cpp
+    src/ui/badges.cpp
     src/ui/drop.cpp
     src/ui/font.cpp
     src/ui/format.cpp

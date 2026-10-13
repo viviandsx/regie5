@@ -82,6 +82,9 @@ void RequestsScreen::load(int filter)
         if (alive.expired())
             return;
         m_pages[filter].take(std::move(r), platform::now());
+        if (kFilterApi[filter] == api::Services::RequestFilter::Pending)   /* the tab's counter */
+            m_ctx.badges[TabRequests] =
+                m_pages[filter].ready() ? badges::requests(m_pages[filter].value) : badges::Badge{};
         if (filter == m_filter && m_focus >= (int)m_pages[filter].value.requests.size())
             m_focus = (int)m_pages[filter].value.requests.size() - 1;
     });

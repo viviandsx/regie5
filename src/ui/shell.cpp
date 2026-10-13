@@ -18,7 +18,7 @@
 
 namespace ui {
 
-Shell::Shell(Context &ctx) : m_ctx(ctx), m_config_gen(ctx.config_gen)
+Shell::Shell(Context &ctx) : m_ctx(ctx), m_config_gen(ctx.config_gen), m_watch(ctx)
 {
     static const char *const kMade[TabCount] = {"screen made: Home",     "screen made: Library",
                                                 "screen made: Activity", "screen made: Requests",
@@ -63,6 +63,7 @@ void Shell::switch_tab(int tab, double now)
 
 bool Shell::input(const input::State &in, double now)
 {
+    m_watch.tick(now);   /* every turn, pressed or not */
     const uint32_t p = in.pressed;
     if (!p)
         return false;
@@ -141,7 +142,7 @@ bool Shell::draw(double now, float dt)
     /* Content that scrolls under the tab bar or the hints fades into the background. */
     gfx::fill_vgradient({0, 0, gfx::W, 170}, alpha(kBg, 0.92f), alpha(kBg, 0.f));
     gfx::fill_vgradient({0, gfx::H - 150, gfx::W, 150}, alpha(kBg, 0.f), alpha(kBg, 0.92f));
-    m_bar.draw(1.f, m_tab, m_on_bar, dt, &animating);
+    m_bar.draw(1.f, m_tab, m_on_bar, m_ctx.badges, dt, &animating);
 
     std::vector<PadHint> hints = scr.hints();
     for (PadHint h : {PadHint{PadButton::Cross, i18n::tr(i18n::HintSelect)},

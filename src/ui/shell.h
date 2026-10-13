@@ -10,6 +10,7 @@
 #include "core/input.h"
 #include "ui/ambient.h"
 #include "ui/anim.h"
+#include "ui/badges.h"
 #include "ui/context.h"
 #include "ui/screen.h"
 #include "ui/tabbar.h"
@@ -38,6 +39,7 @@ private:
 
     std::unique_ptr<Screen> m_screens[TabCount];
     TabBar m_bar;
+    BadgeWatch m_watch;
     Ambient m_ambient;
     int m_tab = TabHome;
     bool m_on_bar = false;   /* the focus is in the tab bar */
