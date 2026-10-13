@@ -1,7 +1,7 @@
 # Régie5 — travailler et publier une version
 
 Mode d'emploi depuis la publication (dépôt public https://github.com/viviandsx/regie5,
-release `v0.2.0`, fiche au catalogue homebrew.page). Règles du catalogue suivies :
+release `v0.2.0`, listée sur homebrew.page depuis la fusion de la PR #244). Règles du catalogue suivies :
 `docs/submitting.md` et `docs/versioning.md` de `blackbearreloaded/ps5-homebrew-catalog`.
 
 ---
@@ -10,34 +10,15 @@ release `v0.2.0`, fiche au catalogue homebrew.page). Règles du catalogue suivie
 
 ### Où on travaille
 
-Sur le dépôt GitHub, une seule branche : `main`. En local, deux branches aujourd'hui :
+Sur le dépôt GitHub, une seule branche : `main`. En local (renommage fait le 13 octobre 2026) :
 
 | Branche locale | Contenu | Règle |
 |---|---|---|
-| `public` | l'historique neuf, suit `origin/main` | **la branche de travail** |
-| `main` | l'ancien historique (avec des mentions retirées de la version publique) | archive, **jamais poussée** |
+| `main` | l'historique public, suit `origin/main` | **la branche de travail** |
+| `archive-privee` | l'ancien historique (avec des mentions retirées de la version publique) | archive, **jamais poussée** |
 
-Pour ne plus se tromper, renommer une fois les deux branches (rien n'est perdu, rien n'est
-envoyé) :
-
-```bash
-git branch -m main archive-privee
-```
-
-```bash
-git branch -m public main
-```
-
-```bash
-git branch -u origin/main main
-```
-
-```bash
-git config push.default upstream
-```
-
-Après ça, `git push` sans argument n'envoie que `main` vers `origin/main`. Ne jamais lancer
-`git push --all`, ni `git push origin archive-privee`.
+`push.default` vaut `upstream` : `git push` sans argument n'envoie que `main` vers
+`origin/main`. Ne jamais lancer `git push --all`, ni `git push origin archive-privee`.
 
 ### Au quotidien
 
@@ -67,33 +48,32 @@ qui n'est pas une release prête (§3).
 
 ---
 
-## 2. Tant que la PR #244 n'est pas fusionnée
+## 2. Régie5 est au catalogue : ce qui publie quoi
 
-La fiche proposée (`apps/PPSA99520.json`) pointe vers des choses précises. Si l'une change,
-les vérifications du catalogue échouent ou la relecture recommence.
+La PR #244 sur `blackbearreloaded/ps5-homebrew-catalog` a été fusionnée le 13 octobre 2026 :
+Régie5 0.2.0 est sur homebrew.page (fiche `apps/PPSA99520.json`).
+
+**Le catalogue suit seul chaque nouvelle release GitHub du dépôt, pré-releases comprises.**
+Chaque jour, sa tâche cherche la dernière release et propose la mise à jour de la fiche :
+toute release (ou pré-release) publiée sur `viviandsx/regie5` finit chez les utilisateurs.
+Donc :
+
+- **aucune release ni pré-release** tant que la version suivante (0.3.0) n'est pas finie et
+  testée sur la console (recette rapide, §3 étape 2) ;
+- pas de « release de test » sur GitHub : les zips de test se copient sur la console à la
+  main, sans passer par GitHub ;
+- pousser des commits sur `main` reste sans effet pour les utilisateurs (§1).
+
+Ne jamais toucher à ce qui est déjà publié :
 
 | Ne pas toucher | Pourquoi |
 |---|---|
-| Le tag `v0.2.0` (ni supprimer, ni déplacer) | `version` de la fiche = le tag ; `icon_url` est lu **à ce tag** |
-| La release « Régie5 0.2.0 » et son `PPSA99520.zip` (ni remplacer, ni renommer, ni supprimer) | `artifact_url` et `sha256` de la fiche : un autre zip, même identique en apparence, n'a pas la même empreinte |
-| `ps5/app/sce_sys/icon0.png` et `param.json` **au tag** | le catalogue lit `contentVersion` dans le `param.json` voisin de l'icône. Les modifier sur `main` ne gêne pas (le tag reste figé) |
-| Le dépôt : nom, visibilité (public), propriétaire | `source_repo`, et « le compte qui ouvre la PR possède le dépôt » |
-| La branche `viviandsx-patch-1` du fork | seulement pour répondre au mainteneur, et seulement `apps/PPSA99520.json` (tout autre fichier fait échouer la PR) |
+| Les tags publiés (`v0.2.0`…) : ni supprimer, ni déplacer | `icon_url` de la fiche est lu **au tag**, avec le `param.json` voisin |
+| Les releases publiées et leur `PPSA99520.zip` (ni remplacer, ni renommer, ni supprimer) | `artifact_url` et `sha256` de la fiche : un autre zip n'a pas la même empreinte, et les utilisateurs peuvent revenir à une ancienne version |
+| Le dépôt : nom, visibilité (public), propriétaire | `source_repo`, et seul le propriétaire du dépôt peut mettre à jour la fiche |
 
-À éviter aussi pendant la relecture : **publier une autre release ou une pré-release** du
-dépôt. La tâche quotidienne du catalogue suit les nouvelles releases, pré-releases comprises ;
-une 0.3.0 qui sort pendant la relecture obligerait à refaire la fiche.
-
-Si le mainteneur demande un changement :
-
-- sur la fiche (description, licence…) : modifier `apps/PPSA99520.json` sur
-  `viviandsx-patch-1` ; les contrôles se relancent seuls ;
-- sur le zip lui-même : **pas de remplacement**. On sort une `0.2.1` (§3) et la fiche est
-  mise à jour vers elle (`version`, `artifact_url`, `sha256`, `icon_url`).
-
-Le travail sur `main` (code, doc, README) continue normalement pendant ce temps.
-
----
+Un défaut dans un zip publié : **pas de remplacement**. Soit il attend la 0.3.0, soit Vivian
+décide de sortir un correctif (`0.2.1`, §3), testé sur la console comme une version.
 
 ## 3. Sortir une version (exemple : 0.3.0)
 
@@ -151,7 +131,7 @@ affichée de `contentVersion` ; il refuse de reconstruire un dossier `release-<v
 
 ### Mise à jour de la fiche du catalogue
 
-Une fois Régie5 listé (PR #244 fusionnée), deux chemins :
+Régie5 est listé (PR #244 fusionnée) ; deux chemins :
 
 - **Automatique** : chaque jour, le catalogue cherche les nouvelles releases et ouvre lui-même
   une PR qui fait pointer la fiche vers la dernière. Vérifier dans cette PR que `version`,

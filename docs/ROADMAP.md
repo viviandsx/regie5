@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 13 octobre 2026 : phase 7 en cours : dépôt public, release `v0.2.0` publiée, PR #244 au catalogue en attente de relecture (§ 2 quinquies). Marche à suivre désormais : `docs/RELEASING.md`.**
+**Dernière mise à jour : 13 octobre 2026 : phase 7 terminée, Régie5 0.2.0 est sur homebrew.page (PR #244 fusionnée). 0.3.0 en préparation (§ 2 sexies) ; aucune release ni pré-release avant qu'elle soit finie et testée sur la console. Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -22,7 +22,8 @@ pour ce qui a été fait après la phase 0).
 | 4 ter. Multi-instances dans les écrans | Accueil, Bibliothèque, Activité › File d'attente sur toutes les instances Radarr/Sonarr | ✅ fait (`fd10118`) |
 | 5. Recette V1 sous Linux | Checklist complète contre le vrai serveur | ✅ passe automatique faite et commitée (`e65bea1`). La **recette express** (15 points) est **reportée sur PS5**, en fin de phase 6 (décision de Vivian) |
 | **6. Portage PS5** | Feu vert donné le 11 octobre 2026 | ✅ validée le 13 octobre 2026 (6.4 par le repli « Chercher dans Jelly5 ») |
-| **7. Publication** | homebrew.page, version 0.2.0 | 🔶 en cours : dépôt public, release `v0.2.0` et PR #244 faits ; contrôles du catalogue verts, **relecture du mainteneur en attente** (§ 2 quinquies) |
+| **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
+| 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | 🔶 en cours (§ 2 sexies) |
 
 Tests : **51** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -313,17 +314,19 @@ Règles lues : `docs/submitting.md`, `docs/review-policy.md`, `artifact-formats.
       `blackbearreloaded/ps5-homebrew-catalog` (fichier `apps/PPSA99520.json`, branche
       `viviandsx-patch-1` du fork de Vivian). Contrôles « Scan the release » et « Validate
       submission » verts.
-- [ ] **Relecture de la PR #244** par le mainteneur, puis fusion : Régie5 apparaît sur
-      homebrew.page. D'ici là, rien ne bouge dans la release `v0.2.0` (`docs/RELEASING.md` §2).
+- [x] **PR #244 validée et fusionnée** (13 octobre 2026) : Régie5 0.2.0 est sur homebrew.page.
+      Le catalogue suit seul chaque nouvelle release GitHub, pré-releases comprises
+      (`docs/RELEASING.md` §2).
 - [ ] Règle ufw du port 5555 : **gardée ouverte** par Vivian pour continuer les tests ; à
       fermer quand ils seront finis.
-- [ ] Branches locales : la `main` locale porte l'**ancien historique** (avec les mentions
-      retirées) et ne doit **jamais** être poussée ; renommage proposé dans `docs/RELEASING.md` §1.
+- [x] Branches locales renommées par Vivian : `main` suit `origin/main`, l'ancien historique est
+      dans `archive-privee` (jamais poussée), `push.default=upstream`.
 
 ## 2 sexies. Version 0.3.0 (en préparation)
 
 Demandé par Vivian le 13 octobre 2026. Une étape = un commit. **Aucune release ni
-pré-release tant que la PR #244 n'est pas fusionnée.**
+pré-release tant que la 0.3.0 n'est pas finie et testée sur la console** : le catalogue
+publie seul toute release du dépôt.
 
 - [x] **Fixtures anonymes** : les fixtures publiées montraient les vrais titres de la
       bibliothèque de Vivian. `scripts/anonymize_titles.py` remplace titres, titres
@@ -377,7 +380,6 @@ pré-release tant que la PR #244 n'est pas fusionnée.**
 
 | Sujet | Qui | Détail |
 |---|---|---|
-| PR #244 au catalogue | mainteneur | Contrôles verts, relecture en attente. Répondre aux demandes en modifiant seulement `apps/PPSA99520.json` sur `viviandsx-patch-1` (`docs/RELEASING.md` §2). |
 | Port 5555 (ufw) | Vivian | Ouvert pour les tests, à refermer à la fin. |
 | Série supprimée, dans Seerr | après le 14 oct. 05:00 | Statut 7 (`DELETED`) attendu après « Media Availability Sync » ; vérifier en GET (`/api/v1/tv/{id}`). |
 | PR Jelly5 | Vivian | Sans lanceur depuis une app, Régie5 ne s'en sert pas sur PS5 : la proposer ou non est une décision à part (`docs/JELLY5-PR.md`). |
@@ -537,3 +539,4 @@ la Bibliothèque).
 | 13 oct. 2026 | 0.3.0 : jeu de démo (`--demo`, films Blender sous CC BY), captures du README refaites. |
 | 13 oct. 2026 | 0.3.0 a) : versions minimales par service, message dans Réglages, tableau du README. |
 | 13 oct. 2026 | 0.3.0 b) : une langue = un fichier, `TRANSLATING.md` ; textes ConfigMissing / ConfigFromBackup remis à l'endroit. |
+| 13 oct. 2026 | **Phase 7 terminée** : PR #244 fusionnée, Régie5 0.2.0 sur homebrew.page. `RELEASING.md` : le catalogue suit chaque release, aucune avant la 0.3.0 testée sur console. |
