@@ -25,9 +25,15 @@ std::string path_beside(const std::string &config_path)
     return (slash == std::string::npos ? std::string(".") : config_path.substr(0, slash)) + "/settings.json";
 }
 
+const char *refresh_key(Refresh r) { return r == Refresh::Hz60 ? "60" : r == Refresh::Hz120 ? "120" : "auto"; }
+
+int refresh_asked(Refresh r) { return r == Refresh::Hz60 ? 60 : 120; }
+
 std::string to_json(const Settings &s)
 {
     cJSON *root = cJSON_CreateObject();
+    cJSON *display = cJSON_AddObjectToObject(root, "display");
+    cJSON_AddStringToObject(display, "refresh", refresh_key(s.refresh));
     cJSON *c = cJSON_AddObjectToObject(root, "cleanup");
     cJSON_AddBoolToObject(c, "enabled", s.cleanup_enabled);
     cJSON_AddStringToObject(c, "watchedBy", s.cleanup_everyone ? "everyone" : "anyone");
@@ -56,6 +62,11 @@ bool from_json(const std::string &text, Settings *out)
         cJSON_Delete(root);
         return false;
     }
+    const cJSON *refresh = cJSON_GetObjectItemCaseSensitive(cJSON_GetObjectItemCaseSensitive(root, "display"), "refresh");
+    if (cJSON_IsString(refresh))
+        for (Refresh r : {Refresh::Auto, Refresh::Hz60, Refresh::Hz120})
+            if (std::string(refresh->valuestring) == refresh_key(r))
+                out->refresh = r;
     const cJSON *c = cJSON_GetObjectItemCaseSensitive(root, "cleanup");
     out->cleanup_enabled = cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(c, "enabled"));
     const cJSON *by = cJSON_GetObjectItemCaseSensitive(c, "watchedBy");

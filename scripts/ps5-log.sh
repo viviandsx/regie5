@@ -7,7 +7,8 @@
 # The OpenGL driver (ps5-opengl, built with its profiling on) prints many
 # "[ps5-...]" lines it cannot be told to keep quiet: they go to a second file,
 # console-<date>.driver.log, and stay off the screen and out of the main log,
-# except those that warn of a slow path (software-blit, fallback, error, fail).
+# except those that warn of a slow path (software-blit, fallback, error, fail)
+# and the refresh rate's answer (ps5-output-mode, ps5-output-restore).
 # SPDX-License-Identifier: GPL-3.0-or-later
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -20,7 +21,7 @@ echo "(the driver's [ps5-...] lines: ${DRIVER#"${ROOT}/"}; Ctrl-C to stop)"
 exec python3 -u - "${PORT}" "${FILE}" "${DRIVER}" "${REGIE5_DRIVER_LOG:-}" <<'PY'
 import codecs, re, socket, sys
 port, path, driver_path, show = int(sys.argv[1]), sys.argv[2], sys.argv[3], sys.argv[4] == "show"
-worth_seeing = re.compile(r"software-blit|fallback|error|fail", re.I)
+worth_seeing = re.compile(r"software-blit|fallback|error|fail|ps5-output-mode|ps5-output-restore", re.I)
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.bind(("0.0.0.0", port))
 decode = codecs.getincrementaldecoder("utf-8")("replace")   # an "é" may straddle two datagrams

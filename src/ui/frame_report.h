@@ -20,7 +20,9 @@ namespace ui {
 
 class FrameReport {
 public:
-    static constexpr double kSlowMs = 25;
+    /* A frame is slow past one and a half periods of the display (25 ms at
+     * 60 Hz, 12.5 ms at 120 Hz). */
+    void set_hz(int hz) { m_slow_ms = 1500.0 / (hz > 0 ? hz : 60); }
 
     void drawn(uint64_t index, double gap_ms, double now)
     {
@@ -37,7 +39,7 @@ public:
         m_uploads += f.uploads;
         m_draws_worst = std::max(m_draws_worst, f.draws);
         m_upload_ms_worst = std::max(m_upload_ms_worst, f.upload_ms);
-        if (gap_ms > kSlowMs)
+        if (gap_ms > m_slow_ms)
             m_slow.push_back({index, gap_ms});
         /* The GPU's answer for a frame comes some frames after it. */
         if (const perf::Frame *old = perf::at(index - 5))
@@ -66,8 +68,10 @@ public:
                      m_blur_worst, m_blurs_worst, m_draws_worst, m_texts, m_glyphs, m_text_ms_worst, m_uploads,
                      m_upload_ms_worst, gfx::text_cache_size());
         std::vector<Slow> slow = std::move(m_slow);   /* still to be printed */
+        const double slow_ms = m_slow_ms;
         *this = FrameReport{};
         m_slow = std::move(slow);
+        m_slow_ms = slow_ms;
         m_since = now;
     }
 
@@ -107,6 +111,7 @@ private:
     double m_gap_worst = 0, m_cpu_worst = 0, m_text_ms_worst = 0, m_upload_ms_worst = 0;
     double m_gpu_sum = 0, m_gpu_worst = 0, m_blur_worst = 0;
     double m_since = platform::now();
+    double m_slow_ms = 25;
     std::vector<Slow> m_slow;
 };
 

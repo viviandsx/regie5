@@ -23,7 +23,16 @@ struct Kept {
     std::string title;
 };
 
+/* The display's refresh rate (PS5): Auto asks for 120 Hz, which a TV that
+ * cannot show it turns into 60 Hz. Taken at the next start (the mode is set
+ * before the display opens). */
+enum class Refresh { Auto, Hz60, Hz120 };
+const char *refresh_key(Refresh r);   /* "auto", "60", "120" */
+/* The rate asked of the display for a choice. */
+int refresh_asked(Refresh r);
+
 struct Settings {
+    Refresh refresh = Refresh::Auto;
     bool cleanup_enabled = false;
     bool cleanup_everyone = true;   /* watched by every active user (else by at least one) */
     int cleanup_months = 6;         /* last watched more than this long ago */

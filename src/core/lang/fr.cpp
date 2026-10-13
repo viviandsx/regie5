@@ -466,6 +466,13 @@ const Text kTexts[] = {
     {UserDisabled, "Désactivé"},
     {UserSeen, "Actif %s"},
     {UserNever, "Jamais connecté"},
+    {RefreshAuto, "Fréquence d'affichage : Auto"},
+    {Refresh60, "Fréquence d'affichage : 60 Hz"},
+    {Refresh120, "Fréquence d'affichage : 120 Hz"},
+    {DisplayInfo, "Affichage : %d × %d, %d Hz"},
+    {DisplayNoTv120, "120 Hz refusé par l'écran (voir la sortie vidéo de la PS5)"},
+    {DisplayNextStart, "le nouveau réglage s'appliquera au prochain lancement"},
+    {DisplayDesktop, "ici le moniteur choisit (réglage pour la PS5)"},
 };
 
 } // namespace

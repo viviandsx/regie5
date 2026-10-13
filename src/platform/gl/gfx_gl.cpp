@@ -75,6 +75,7 @@ GLuint s_vao = 0, s_vbo = 0, s_ibo = 0, s_empty_vao = 0;
 Texture s_white;
 
 Program s_ui, s_blur, s_glass, s_copy;
+bool s_bench = false;
 enum { U_CANVAS, U_TEX, U_SCALE, U_LIGHT };
 enum { B_QUAD, B_UVRECT, B_SRC, B_STEP, B_SIGMA, B_CLAMP };
 enum { C_QUAD, C_UVRECT, C_SRC };
@@ -435,6 +436,7 @@ void set_render_size(int w, int h)
 }
 
 void set_present(void (*present)()) { s_present = present; }
+void set_bench(bool on) { s_bench = on; }
 
 bool read_canvas(std::vector<uint8_t> *rgb, int *w, int *h)
 {
@@ -486,7 +488,12 @@ void end_frame()
 {
     perf::Frame &pf = perf::cur();
     perf::Timer submit(&pf.phase_ms[perf::Submit]);
+    const double scene_t0 = s_bench ? perf::now_ms() : 0;
     flush();
+    if (s_bench) {   /* the scene, blur included, finished on the GPU: no display wait in it */
+        glFinish();
+        pf.scene_ms = perf::now_ms() - scene_t0;
+    }
     /* The scene to the screen by a drawn quad (a blit is done on the CPU by
      * ps5-gallium). Same size: texel centres fall on pixel centres. */
     glDisable(GL_SCISSOR_TEST);

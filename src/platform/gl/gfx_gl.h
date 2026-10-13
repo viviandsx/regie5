@@ -27,6 +27,10 @@ void set_render_size(int w, int h);
 /* Called by gfx::end_frame once the frame is on the default framebuffer
  * (SDL_GL_SwapWindow on the desktop). */
 void set_present(void (*present)());
+/* The bench: the GPU is waited for once the scene is drawn, before the copy
+ * to the screen, and perf::Frame::scene_ms says how long that took. It makes
+ * frames slower; for measuring only. */
+void set_bench(bool on);
 
 /* The last frame drawn, as 8-bit RGB rows top to bottom (a development aid). */
 bool read_canvas(std::vector<uint8_t> *rgb, int *w, int *h);

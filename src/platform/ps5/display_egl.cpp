@@ -43,8 +43,11 @@ void Display::fail(const char *what)
     log("[regie5] egl %s failed: 0x%04x", what, (unsigned)e);
 }
 
-bool Display::open(int width, int height)
+bool Display::open(int width, int height, int hz)
 {
+    m_asked_hz = hz == 120 ? 120 : 60;
+    m_hz = 0;
+    m_presented = false;
     EGLint major = 0, minor = 0, count = 0;
     EGLConfig config = nullptr;
     log("[regie5] egl: eglGetDisplay (%dx%d asked)", width, height);
@@ -55,13 +58,17 @@ bool Display::open(int width, int height)
     }
 #ifdef PS5_OPENGL_DYNAMIC_DISPLAY
     /* The mode is fixed while EGL runs: chosen before eglInitialize. */
-    log("[regie5] egl: eglSetDisplayModePS5 %dx%d, 60 Hz", width, height);
+    log("[regie5] egl: eglSetDisplayModePS5 %dx%d, %d Hz asked", width, height, m_asked_hz);
     if (!eglSetDisplayModePS5(m_display, width, height))
         fail("eglSetDisplayModePS5");
-    eglSetDisplayRefreshPS5(m_display, 60);
+    /* 120: the SDK asks the output for 119.88 Hz (as Jelly5 does) and keeps
+     * 60 Hz on a TV that cannot. */
+    if (!eglSetDisplayRefreshPS5(m_display, m_asked_hz))
+        fail("eglSetDisplayRefreshPS5");
 #else
     (void)width;
     (void)height;
+    m_asked_hz = 60;
 #endif
     log("[regie5] egl: eglInitialize");
     if (!eglInitialize(m_display, &major, &minor)) {
@@ -115,7 +122,20 @@ bool Display::swap()
         fail("eglSwapBuffers");
         return false;
     }
+    m_presented = true;
     return true;
+}
+
+int Display::refresh()
+{
+#ifdef PS5_OPENGL_DYNAMIC_DISPLAY
+    if (m_hz == 0 && m_presented && m_display != EGL_NO_DISPLAY) {
+        EGLint w = 0, h = 0, hz = 0;
+        if (eglGetDisplayModePS5(m_display, &w, &h, &hz) && hz > 0)
+            m_hz = hz;
+    }
+#endif
+    return m_hz > 0 ? m_hz : m_asked_hz;
 }
 
 void Display::close()

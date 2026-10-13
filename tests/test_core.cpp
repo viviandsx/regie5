@@ -258,6 +258,14 @@ TEST(app_settings_round_trip)
     CHECK(t.cleanup_enabled && !t.cleanup_everyone && t.cleanup_months == 12);
     CHECK(t.is_kept(config::Radarr, "Radarr 4K", 42));
     CHECK(!t.is_kept(config::Radarr, "Radarr", 42));
+    CHECK(t.refresh == app_settings::Refresh::Auto);   /* Auto by default */
+    s.refresh = app_settings::Refresh::Hz60;
+    CHECK(app_settings::from_json(app_settings::to_json(s), &t));
+    CHECK(t.refresh == app_settings::Refresh::Hz60);
+    CHECK_EQ(app_settings::refresh_asked(app_settings::Refresh::Auto), 120);   /* the TV falls back to 60 */
+    CHECK_EQ(app_settings::refresh_asked(app_settings::Refresh::Hz60), 60);
+    CHECK(app_settings::from_json(R"({"display": {"refresh": "75"}})", &t));   /* unknown: Auto */
+    CHECK(t.refresh == app_settings::Refresh::Auto);
     CHECK_EQ(app_settings::path_beside("/home/x/.config/regie5/config.json"),
              std::string("/home/x/.config/regie5/settings.json"));
 }

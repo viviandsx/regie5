@@ -20,12 +20,17 @@ public:
     Display &operator=(const Display &) = delete;
     ~Display() { close(); }
 
-    /* 1920x1080, 2560x1440 or 3840x2160 (the SDK's runtime display modes). */
-    bool open(int width, int height);
+    /* 1920x1080, 2560x1440 or 3840x2160 (the SDK's runtime display modes),
+     * at 60 or 120 Hz (a TV without 120 Hz keeps 60: see refresh()). */
+    bool open(int width, int height, int hz = 60);
     bool swap();
     void close();
     int width() const { return m_w; }
     int height() const { return m_h; }
+    /* The rate asked, and the one the output accepted: final once a frame
+     * has been presented (until then, what was asked). */
+    int asked_hz() const { return m_asked_hz; }
+    int refresh();
 
 private:
     void fail(const char *what);
@@ -34,6 +39,8 @@ private:
     EGLSurface m_surface = EGL_NO_SURFACE;
     EGLContext m_context = EGL_NO_CONTEXT;
     int m_w = 0, m_h = 0;
+    int m_asked_hz = 60, m_hz = 0;
+    bool m_presented = false;   /* the accepted rate is known from the first frame on */
 };
 
 } // namespace ps5

@@ -167,7 +167,7 @@ void SettingsScreen::toggle_cleanup()
 int SettingsScreen::button_count() const
 {
     /* From a phone: on a real configuration only (--mock reads no file). */
-    return !m_ctx.mock && !m_ctx.config_path.empty() && platform::can_share_config() ? 3 : 2;
+    return !m_ctx.mock && !m_ctx.config_path.empty() && platform::can_share_config() ? 4 : 3;
 }
 
 void SettingsScreen::open_share()
@@ -307,6 +307,12 @@ Action SettingsScreen::input(const input::State &in)
             test_all();
         } else if (m_button == 1) {
             toggle_cleanup();
+        } else if (m_button == 2) {   /* Auto → 60 Hz → 120 Hz → Auto; taken at the next start */
+            app_settings::Refresh &r = m_ctx.settings.refresh;
+            r = r == app_settings::Refresh::Auto  ? app_settings::Refresh::Hz60
+                : r == app_settings::Refresh::Hz60 ? app_settings::Refresh::Hz120
+                                                   : app_settings::Refresh::Auto;
+            m_ctx.save_settings();
         } else {
             open_share();
         }
@@ -338,15 +344,19 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
     const gfx::Rect pane{x0, kListY, kListW, n * row_h + 2 * kListPad};
     glass_panel(pane, 32, 1.f, true);
 
-    /* Under it, the buttons: test all, the cleanup's switch, and set up from a phone. */
+    /* Under it, the buttons: test all, the cleanup's switch, the refresh rate, and set up from a phone. */
     const float by = kListY + pane.h + 30;
     const int nb = button_count();
     if (m_button >= nb)
         m_button = nb - 1;
-    const std::string labels[3] = {i18n::tr(i18n::ButtonTestAll),
+    const app_settings::Refresh refresh = m_ctx.settings.refresh;
+    const std::string labels[4] = {i18n::tr(i18n::ButtonTestAll),
                                    i18n::tr(m_ctx.settings.cleanup_enabled ? i18n::CleanupOn : i18n::CleanupOff),
+                                   i18n::tr(refresh == app_settings::Refresh::Hz60    ? i18n::Refresh60
+                                            : refresh == app_settings::Refresh::Hz120 ? i18n::Refresh120
+                                                                                      : i18n::RefreshAuto),
                                    i18n::tr(i18n::ButtonFromPhone)};
-    gfx::Rect buttons[3];
+    gfx::Rect buttons[4];
     float bx = x0;
     for (int i = 0; i < nb; i++) {
         const float bw = gfx::text_width(labels[i], kButtonText) + 80;
@@ -431,9 +441,20 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
                   on ? gfx::TextStyle{gfx::Bold, 28} : kButtonText, on ? kText : kText2, 1);
     }
 
-    /* The app. */
+    /* The app, and the picture it sends out. */
     const float iy = by + kButtonH + 2 * kBarPad + 46;
     gfx::text(x0, iy, std::string(i18n::tr(i18n::Version)) + " " + m_ctx.version, {gfx::Medium, 24}, kText2);
+    const platform::DisplayMode dm = platform::display_mode();
+    if (dm.hz > 0) {
+        std::string line = fmt::f(i18n::tr(i18n::DisplayInfo), dm.width, dm.height, dm.hz);
+        if (dm.asked_hz == 0)
+            line += std::string(" — ") + i18n::tr(i18n::DisplayDesktop);
+        else if (dm.asked_hz > dm.hz)
+            line += std::string(" — ") + i18n::tr(i18n::DisplayNoTv120);
+        if (dm.asked_hz != 0 && app_settings::refresh_asked(refresh) != dm.asked_hz)
+            line += std::string(" — ") + i18n::tr(i18n::DisplayNextStart);
+        gfx::text(x0 + kListW, iy, line, {gfx::Medium, 24, kListW * 0.6f}, kText2, 2);
+    }
     /* In --mock no file is read: its path would only show the user's home in screenshots. */
     gfx::text(x0, iy + 34,
               m_ctx.mock ? std::string(i18n::tr(i18n::ConfigUnusedMock))

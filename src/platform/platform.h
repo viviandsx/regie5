@@ -27,6 +27,16 @@ std::string default_config_path();
 /* The system's language code ("fr_FR", "en-US" ...), empty when unknown. */
 std::string system_lang();
 
+/* The picture as it goes out: its size and refresh rate. asked_hz: what the
+ * app asked for at start (0: it cannot choose, as on the desktop, where the
+ * monitor decides). hz is what the display accepted (a TV without 120 Hz
+ * stays at 60). */
+struct DisplayMode {
+    int width = 0, height = 0;
+    int hz = 0, asked_hz = 0;
+};
+DisplayMode display_mode();
+
 /* Starting another app (Jelly5 on a title's page): its Title ID, its
  * arguments, and a file left for it first where both apps can read it
  * (handoff_path empty: none). */

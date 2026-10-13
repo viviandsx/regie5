@@ -28,6 +28,10 @@ struct Frame {
     int draws = 0;          /* draw calls (a batch ends at each change of texture) */
     /* On the GPU, known a few frames later (filled in then): < 0 until then. */
     double gpu_ms = -1, blur_gpu_ms = -1;
+    /* The bench (gfx_gl::set_bench): the scene sent and finished by the GPU,
+     * waited for before the copy to the screen (so no wait for the display
+     * is in it). < 0 when not measured. */
+    double scene_ms = -1;
 };
 
 void enable(bool on);

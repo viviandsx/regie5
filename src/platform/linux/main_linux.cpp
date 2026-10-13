@@ -64,6 +64,19 @@ void fit_drawable()
 
 } // namespace
 
+/* The monitor decides the rate on the desktop: Régie5 only reads it. */
+platform::DisplayMode platform::display_mode()
+{
+    DisplayMode m;
+    if (!s_window)
+        return m;
+    SDL_GL_GetDrawableSize(s_window, &m.width, &m.height);
+    SDL_DisplayMode dm;
+    if (SDL_GetWindowDisplayMode(s_window, &dm) == 0 && dm.refresh_rate > 0)
+        m.hz = dm.refresh_rate;
+    return m;
+}
+
 int main(int argc, char **argv)
 {
     options::Options opt;
@@ -221,6 +234,12 @@ int main(int argc, char **argv)
 
     bool quit = false, animating = true, drew_last = false;
     int idle_frames = 0;
+    /* After a pause, the first frame steps one frame of the monitor's, not the wait. */
+    const int frame_hz = platform::display_mode().hz > 0 ? platform::display_mode().hz : 60;
+    report.set_hz(frame_hz);
+    if (show_fps)
+        std::fprintf(stderr, "display: %dx%d at %d Hz\n", platform::display_mode().width,
+                     platform::display_mode().height, frame_hz);
     double last = platform::now();
     time_t last_minute = time(nullptr) / 60;
     uint64_t frames = 0;
@@ -272,7 +291,7 @@ int main(int argc, char **argv)
         if (dirty || animating || idle_frames < 2) {
             /* After a pause, the first frame steps one frame's worth, not the wait. */
             const double gap = now - last;
-            const float dt = drew_last ? (float)std::min(0.1, gap) : 1.f / 60.f;
+            const float dt = drew_last ? (float)std::min(0.1, gap) : 1.f / (float)frame_hz;
             last = now;
             gfx::begin_frame();
             animating = shell.draw(now, dt);

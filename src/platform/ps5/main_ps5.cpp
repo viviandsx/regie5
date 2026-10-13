@@ -100,6 +100,7 @@ bool s_resolve_names = true;
 constexpr double kSafeModeStay = 300;
 #ifdef REGIE5_PROBE
 constexpr double kStayAfterTour = 240;   /* seconds the probe stays up after its tour */
+#endif
 
 /* Every screen in turn, the sheets and menus opened and closed with Circle
  * (nothing is ever confirmed; it is demo data anyway), a fast scroll through
@@ -115,7 +116,16 @@ constexpr const char *kTour =
     "r1 3 down cross 2 circle 1 right right 3 "
     "r1 3 cross 3 circle 1 "
     "r1 4";
-#endif
+
+/* The 120 Hz bench (a file named bench in the title's folder): the tour above
+ * runs by itself, and each frame is timed in parts: the drawing (the
+ * screens, on the CPU), then the scene sent and finished by the GPU, waited
+ * for before the copy to the screen (gfx_gl::set_bench), then that copy with
+ * the wait for a free screen buffer, then the swap. A frame's cost is the
+ * first two. Every sheet the tour opens is closed with Circle: nothing is
+ * ever confirmed. */
+constexpr const char *kBenchFile = "/app0/bench";
+bool s_bench = false;
 
 ps5::Display *s_display = nullptr;
 
@@ -349,7 +359,56 @@ struct TourStats {
     }
 };
 
+/* The bench's frames, in parts (ms), against the period of the display. */
+struct BenchStats {
+    std::vector<float> draw, scene, copy, swap, cost;
+    void add(double d, double sc, double cp, double sw)
+    {
+        draw.push_back((float)d), scene.push_back((float)sc), copy.push_back((float)cp), swap.push_back((float)sw);
+        cost.push_back((float)(d + sc));
+    }
+    static std::string summary(std::vector<float> v)
+    {
+        std::sort(v.begin(), v.end());
+        double sum = 0;
+        for (float x : v)
+            sum += x;
+        char buf[96];
+        std::snprintf(buf, sizeof buf, "avg %.2f p95 %.2f worst %.2f", sum / v.size(),
+                      v[std::min(v.size() - 1, (size_t)(0.95 * (double)v.size()))], v.back());
+        return buf;
+    }
+    void log(const char *what, int width, int height, int hz)
+    {
+        if (cost.empty())
+            return;
+        long over60 = 0, over120 = 0;
+        for (float c : cost)
+            over60 += c > 1000.0 / 60, over120 += c > 1000.0 / 120;
+        ps5::log("[regie5] bench %s: %dx%d at %d Hz, %zu frames | cost (drawing + scene) %s ms | over 16.67 ms: "
+                 "%.1f %%, over 8.33 ms: %.1f %% | drawing %s | scene on the GPU %s | copy + wait for the screen %s | "
+                 "swap %s",
+                 what, width, height, hz, cost.size(), summary(cost).c_str(), 100.0 * over60 / cost.size(),
+                 100.0 * over120 / cost.size(), summary(draw).c_str(), summary(scene).c_str(), summary(copy).c_str(),
+                 summary(swap).c_str());
+        *this = BenchStats{};
+    }
+};
+
 } // namespace
+
+/* What the display took: the size, and the rate the TV accepted. */
+platform::DisplayMode platform::display_mode()
+{
+    DisplayMode m;
+    if (!s_display)
+        return m;
+    m.width = s_display->width();
+    m.height = s_display->height();
+    m.hz = s_display->refresh();
+    m.asked_hz = s_display->asked_hz();
+    return m;
+}
 
 int main()
 {
@@ -417,11 +476,21 @@ int main()
     step("display (EGL, OpenGL 4.6)");
     ps5::Display display;
     s_display = &display;
-    /* 4K, unless a file named output-1080p is in the title's folder
-     * (/data/homebrew/PPSA99521/output-1080p): to compare the two. */
-    const bool want_1080p = file_exists("/app0/output-1080p");
-    ps5::log("[regie5] output asked: %s", want_1080p ? "1080p (/app0/output-1080p)" : "4K");
-    if (!(want_1080p ? display.open(1920, 1080) : display.open(3840, 2160) || display.open(1920, 1080)))
+    /* The refresh rate the user chose (Réglages, settings.json): read before
+     * the display opens, the mode being fixed while it runs. */
+    app_settings::Settings early;
+#ifndef REGIE5_PROBE
+    app_settings::load(kSettings, &early);
+#endif
+    const int asked_hz = app_settings::refresh_asked(early.refresh);
+    /* 4K, unless a file named output-1080p or output-1440p is in the title's
+     * folder (/data/homebrew/PPSA99520/output-1440p): to compare. */
+    const bool want_1080p = file_exists("/app0/output-1080p"), want_1440p = file_exists("/app0/output-1440p");
+    const int ow = want_1080p ? 1920 : want_1440p ? 2560 : 3840, oh = want_1080p ? 1080 : want_1440p ? 1440 : 2160;
+    ps5::log("[regie5] output asked: %dx%d%s, %d Hz (setting: %s)", ow, oh,
+             want_1080p ? " (/app0/output-1080p)" : want_1440p ? " (/app0/output-1440p)" : "", asked_hz,
+             app_settings::refresh_key(early.refresh));
+    if (!(display.open(ow, oh, asked_hz) || (ow != 1920 && display.open(1920, 1080, asked_hz))))
         stay_then_quit(kSafeModeStay, "the display did not open");
     step("renderer (shaders)");
     if (!gfx_gl::init(false))
@@ -551,8 +620,13 @@ int main()
 #ifdef REGIE5_PROBE
     ui::Script tour(kTour);
 #else
-    ui::Script tour(nullptr);
+    s_bench = file_exists(kBenchFile);
+    gfx_gl::set_bench(s_bench);
+    ui::Script tour(s_bench ? kTour : nullptr);
 #endif
+    BenchStats bench, bench_second;
+    double bench_since = platform::now();
+    bool bench_tour_logged = false;
     /* Frame timings once a second: development builds only (they send their
      * log to a laptop); a release would fill its log file with them. */
     perf::enable(*REGIE5_LOG_HOST != '\0');
@@ -619,15 +693,44 @@ int main()
 
         if (dirty || animating || idle_frames < 2) {
             const double gap = now - last;
-            const float dt = drew_last ? (float)std::min(0.1, gap) : 1.f / 60.f;
+            /* After a pause, the first frame steps one period of the display, not the wait. */
+            const float dt = drew_last ? (float)std::min(0.1, gap) : 1.f / (float)display.refresh();
             last = now;
             gfx::begin_frame();
+            const double draw_t0 = perf::now_ms();
             animating = shell.draw(now, dt);
+            const double draw_ms = perf::now_ms() - draw_t0;
             gfx::end_frame();   /* submit and present (vsync) */
             if (!splash_hidden) {
                 splash_hidden = true;
                 ps5::log("%s; splash %s", kFirstFrame, ps5::hide_splash_screen() ? "hidden" : "hide refused");
                 ps5::log_heap("after the first frame");
+                const int hz = display.refresh();
+                ps5::log("[regie5] display: %dx%d at %d Hz (setting %s, %d Hz asked%s)", display.width(),
+                         display.height(), hz, app_settings::refresh_key(early.refresh), display.asked_hz(),
+                         display.asked_hz() > hz ? ": refused by the display (the driver's [ps5-output-mode] line has the code), 60 Hz kept"
+                                                 : hz == 120 ? ", accepted" : "");
+                report.set_hz(hz);
+                if (s_bench)
+                    ps5::log("[regie5] bench: on (%s), the tour runs by itself; each frame is timed in parts "
+                             "(the GPU is waited for after the scene)",
+                             kBenchFile);
+            }
+            if (s_bench && drew_last && perf::cur().scene_ms >= 0) {   /* after a pause: not part of a movement */
+                const perf::Frame &pf = perf::cur();
+                const double copy = pf.phase_ms[perf::Submit] - pf.scene_ms;
+                if (!bench_tour_logged)
+                    bench.add(draw_ms, pf.scene_ms, copy, pf.phase_ms[perf::Present]);
+                bench_second.add(draw_ms, pf.scene_ms, copy, pf.phase_ms[perf::Present]);
+            }
+            if (s_bench && now - bench_since >= 5.0) {
+                bench_second.log("5 s", display.width(), display.height(), display.refresh());
+                bench_since = now;
+            }
+            if (s_bench && !tour.active() && !bench_tour_logged) {
+                bench_tour_logged = true;
+                bench.log("tour", display.width(), display.height(), display.refresh());
+                ps5::log("[regie5] bench: tour over; the controller is yours (measures go on every 5 s)");
             }
             idle_frames = (dirty || animating) ? 0 : idle_frames + 1;
             if ((++frames % 120) == 0)

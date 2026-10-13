@@ -468,6 +468,13 @@ enum S {
     UserDisabled,
     UserSeen,
     UserNever,
+    RefreshAuto,
+    Refresh60,
+    Refresh120,
+    DisplayInfo,
+    DisplayNoTv120,
+    DisplayNextStart,
+    DisplayDesktop,
     Count
 };
 

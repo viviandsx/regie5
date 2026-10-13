@@ -467,6 +467,13 @@ const Text kTexts[] = {
     {UserDisabled, "Disabled"},
     {UserSeen, "Active %s"},
     {UserNever, "Never signed in"},
+    {RefreshAuto, "Display refresh: Auto"},
+    {Refresh60, "Display refresh: 60 Hz"},
+    {Refresh120, "Display refresh: 120 Hz"},
+    {DisplayInfo, "Display: %d × %d, %d Hz"},
+    {DisplayNoTv120, "120 Hz refused by the display (see the PS5's video output)"},
+    {DisplayNextStart, "the new setting applies at the next start"},
+    {DisplayDesktop, "here the monitor decides (a setting for the PS5)"},
 };
 
 } // namespace
