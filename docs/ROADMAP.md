@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 13 octobre 2026 : phase 6 validée (recette express sur console) ; publication sur homebrew.page en préparation (§ 2 quinquies).**
+**Dernière mise à jour : 13 octobre 2026 : phase 7 en cours : dépôt public, release `v0.2.0` publiée, PR #244 au catalogue en attente de relecture (§ 2 quinquies). Marche à suivre désormais : `docs/RELEASING.md`.**
 
 ---
 
@@ -22,7 +22,7 @@ pour ce qui a été fait après la phase 0).
 | 4 ter. Multi-instances dans les écrans | Accueil, Bibliothèque, Activité › File d'attente sur toutes les instances Radarr/Sonarr | ✅ fait (`fd10118`) |
 | 5. Recette V1 sous Linux | Checklist complète contre le vrai serveur | ✅ passe automatique faite et commitée (`e65bea1`). La **recette express** (15 points) est **reportée sur PS5**, en fin de phase 6 (décision de Vivian) |
 | **6. Portage PS5** | Feu vert donné le 11 octobre 2026 | ✅ validée le 13 octobre 2026 (6.4 par le repli « Chercher dans Jelly5 ») |
-| **7. Publication** | homebrew.page, version 0.2.0 | 🔶 tout est prêt (§ 2 quinquies) : reste à Vivian dépôt public, release, PR au catalogue |
+| **7. Publication** | homebrew.page, version 0.2.0 | 🔶 en cours : dépôt public, release `v0.2.0` et PR #244 faits ; contrôles du catalogue verts, **relecture du mainteneur en attente** (§ 2 quinquies) |
 
 Tests : **51** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -307,13 +307,25 @@ Règles lues : `docs/submitting.md`, `docs/review-policy.md`, `artifact-formats.
       adresse du réseau de Vivian, fixtures anonymisées, `CLAUDE.md`, `.claude/`, `_ref/`
       exclus. Mentions retirées de la doc. **L'historique** garde 4 mentions dans d'anciens
       diffs : publication conseillée en **historique neuf** (un seul commit).
-- [ ] **Vivian** : dépôt public `viviandsx/regie5`, push, release `v0.2.0` avec le zip, PR au
-      catalogue, puis fermeture de la règle ufw du port 5555.
+- [x] **Vivian, 13 octobre 2026** : dépôt public https://github.com/viviandsx/regie5, poussé en
+      **historique neuf** (branche locale `public` → `main` du dépôt, un commit « Régie5 0.2.0 ») ;
+      tag `v0.2.0` et release GitHub « Régie5 0.2.0 » avec `PPSA99520.zip` ; PR #244 sur
+      `blackbearreloaded/ps5-homebrew-catalog` (fichier `apps/PPSA99520.json`, branche
+      `viviandsx-patch-1` du fork de Vivian). Contrôles « Scan the release » et « Validate
+      submission » verts.
+- [ ] **Relecture de la PR #244** par le mainteneur, puis fusion : Régie5 apparaît sur
+      homebrew.page. D'ici là, rien ne bouge dans la release `v0.2.0` (`docs/RELEASING.md` §2).
+- [ ] Règle ufw du port 5555 : **gardée ouverte** par Vivian pour continuer les tests ; à
+      fermer quand ils seront finis.
+- [ ] Branches locales : la `main` locale porte l'**ancien historique** (avec les mentions
+      retirées) et ne doit **jamais** être poussée ; renommage proposé dans `docs/RELEASING.md` §1.
 
 ## 3. En attente
 
 | Sujet | Qui | Détail |
 |---|---|---|
+| PR #244 au catalogue | mainteneur | Contrôles verts, relecture en attente. Répondre aux demandes en modifiant seulement `apps/PPSA99520.json` sur `viviandsx-patch-1` (`docs/RELEASING.md` §2). |
+| Port 5555 (ufw) | Vivian | Ouvert pour les tests, à refermer à la fin. |
 | Hannibal dans Seerr | après le 14 oct. 05:00 | Statut 7 (`DELETED`) attendu après « Media Availability Sync » ; vérifier en GET (`/api/v1/tv/40008`). |
 | PR Jelly5 | Vivian | Sans lanceur depuis une app, Régie5 ne s'en sert pas sur PS5 : la proposer ou non est une décision à part (`docs/JELLY5-PR.md`). |
 | Taille du tas sur PS5 | 6.2 | 256 Mio accordé et l'affichage démarre (probe-5) : on garde 256 ; l'usage mesuré est ~20 Mio. En 6.2 : message visible à l'écran (ou notification système) si la mémoire est refusée, au lieu du seul journal. |
@@ -348,7 +360,7 @@ il touche ce qui est codé, sinon il est planifié ici.
 | Fonctions destructives désactivées par défaut | — | 4 bis (B) : Ménage activé seulement dans Réglages, après un avertissement |
 | Configuration sans FTP | Étudiée dans `FEATURES.md` (annexe) : clavier système, QR + page locale, Quick Connect Jellyfin | Décision en phase 6 |
 | Ajouter une langue | Aujourd'hui : FR et EN dans `core/i18n.cpp`, une colonne par langue | Après la 4 bis : une langue = un fichier de table, plus `docs/TRANSLATING.md` |
-| Publication | — | Juste avant publication : README avec captures, guide d'installation, services et versions pris en charge, modèles d'issues (`.github/ISSUE_TEMPLATE/`) |
+| Publication | README (captures du mode démo), INSTALL, modèles d'issues : faits pour 0.2.0. Liste des versions prises en charge : avec l'étape « versions » | 0.2.0 publiée ; affiches libres de droits pour les captures : à décider |
 
 ---
 
@@ -465,3 +477,4 @@ la Bibliothèque).
 | 13 oct. 2026 | app-8 validée : logo B sur la tuile (icône, `pic0`, `pic1`), Glances désactivé depuis le téléphone, « Chercher dans Jelly5 » ; `sceKernelDlsym` → `0x80020003` pour les deux fonctions : pas de lancement depuis une app, repli gardé (6.4 close). Recette express prête. |
 | 13 oct. 2026 | Recette express (réduite) validée sur console : arrêt de lecture, refus, suppression réelle de « Hannibal » (Sonarr) ; POST Seerr `…/deleted` inopérant retiré. **Phase 6 validée.** Publication préparée. |
 | 13 oct. 2026 | Publication préparée : version 0.2.0, zip au format du catalogue, README, INSTALL, modèles d'issues, fiche `PPSA99520.json`, audit du dépôt. |
+| 13 oct. 2026 | **Phase 7** : dépôt public (historique neuf), release `v0.2.0` avec `PPSA99520.zip`, PR #244 au catalogue (contrôles verts, relecture en attente). `docs/RELEASING.md` : branches, ce qui est gelé, sortie d'une version. |
