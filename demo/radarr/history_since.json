@@ -1,0 +1,852 @@
+[
+ {
+  "id": 1621,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-27T17:16:48Z",
+  "movieId": 442,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 442,
+   "title": "Hidden Compass",
+   "year": 2008
+  }
+ },
+ {
+  "id": 1624,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-27T19:08:12Z",
+  "movieId": 140,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 140,
+   "title": "Hollis: Shifting Echo",
+   "year": 2014
+  }
+ },
+ {
+  "id": 1627,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T01:46:33Z",
+  "movieId": 28,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 28,
+   "title": "Theo's Harvest",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1630,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T02:47:36Z",
+  "movieId": 28,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 28,
+   "title": "Theo's Harvest",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1633,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T08:53:33Z",
+  "movieId": 124,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 124,
+   "title": "Léa and the Golden Summit",
+   "year": 1990
+  }
+ },
+ {
+  "id": 1635,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T12:26:16Z",
+  "movieId": 447,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 447,
+   "title": "Amber Harbor",
+   "year": 2007
+  }
+ },
+ {
+  "id": 1638,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T12:58:42Z",
+  "movieId": 190,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 190,
+   "title": "Harbor of Glenrock",
+   "year": 2015
+  }
+ },
+ {
+  "id": 1641,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T18:29:44Z",
+  "movieId": 124,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 124,
+   "title": "Léa and the Golden Summit",
+   "year": 1990
+  }
+ },
+ {
+  "id": 1643,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T19:25:23Z",
+  "movieId": 446,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 446,
+   "title": "Camille's Compass",
+   "year": 2009
+  }
+ },
+ {
+  "id": 1646,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-28T19:36:37Z",
+  "movieId": 368,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 368,
+   "title": "Ezra's Station",
+   "year": 2012
+  }
+ },
+ {
+  "id": 1648,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T08:56:12Z",
+  "movieId": 449,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 449,
+   "title": "The Paper Tower",
+   "year": 2012
+  }
+ },
+ {
+  "id": 1651,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T10:19:16Z",
+  "movieId": 30,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 30,
+   "title": "Léa and the Frozen Pilot",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1654,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T10:46:38Z",
+  "movieId": 56,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 56,
+   "title": "Charge",
+   "year": 2022
+  }
+ },
+ {
+  "id": 1657,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T18:46:43Z",
+  "movieId": 187,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 187,
+   "title": "Inès's Horizon",
+   "year": 2018
+  }
+ },
+ {
+  "id": 1663,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T19:11:45Z",
+  "movieId": 56,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 56,
+   "title": "Charge",
+   "year": 2022
+  }
+ },
+ {
+  "id": 1664,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T19:16:38Z",
+  "movieId": 30,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 30,
+   "title": "Léa and the Frozen Pilot",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1665,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T19:18:42Z",
+  "movieId": 236,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 236,
+   "title": "The Last Mirror",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1667,
+  "eventType": "downloadFolderImported",
+  "date": "2026-09-29T22:29:56Z",
+  "movieId": 353,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 353,
+   "title": "Northern Echo",
+   "year": 2021
+  }
+ },
+ {
+  "id": 1672,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-01T17:17:03Z",
+  "movieId": 20,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 20,
+   "title": "Broken Engine",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1673,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-01T17:20:23Z",
+  "movieId": 452,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 452,
+   "title": "Northgate: Crimson Archive",
+   "year": 2006
+  }
+ },
+ {
+  "id": 1674,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-01T17:24:01Z",
+  "movieId": 451,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 451,
+   "title": "Inès and the Secret Pilot",
+   "year": 1995
+  }
+ },
+ {
+  "id": 1676,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-01T17:28:49Z",
+  "movieId": 279,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 279,
+   "title": "Mara's Archive",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1678,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T10:47:25Z",
+  "movieId": 450,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 450,
+   "title": "Archive of Brightwater",
+   "year": 2024
+  }
+ },
+ {
+  "id": 1681,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T10:52:24Z",
+  "movieId": 110,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 110,
+   "title": "The Salt Pilot",
+   "year": 2000
+  }
+ },
+ {
+  "id": 1683,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:23:59Z",
+  "movieId": 453,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 453,
+   "title": "The Amber Island",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1685,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T16:46:26Z",
+  "movieId": 454,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 454,
+   "title": "Iris and the Quiet Kingdom",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1688,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T20:12:30Z",
+  "movieId": 455,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 455,
+   "title": "The Wild Tide II",
+   "year": 2016
+  }
+ },
+ {
+  "id": 1691,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-04T02:42:11Z",
+  "movieId": 235,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 235,
+   "title": "Maud's Circuit",
+   "year": 2004
+  }
+ },
+ {
+  "id": 1694,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-05T18:22:35Z",
+  "movieId": 220,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 220,
+   "title": "Oakridge: Sleeping Compass",
+   "year": 2019
+  }
+ },
+ {
+  "id": 1699,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-06T08:05:00Z",
+  "movieId": 60,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 60,
+   "title": "Theo and the Electric Voyage",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1704,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:28:51Z",
+  "movieId": 60,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 60,
+   "title": "Theo and the Electric Voyage",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1705,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:30:45Z",
+  "movieId": 414,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 414,
+   "title": "Silent Satellite",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1708,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-08T16:53:10Z",
+  "movieId": 395,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 395,
+   "title": "Kestrel: Painted Tide",
+   "year": 2013
+  }
+ },
+ {
+  "id": 1710,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-08T17:04:53Z",
+  "movieId": 459,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 459,
+   "title": "Glenrock: Falling Archive",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1713,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-08T17:48:59Z",
+  "movieId": 395,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 395,
+   "title": "Kestrel: Painted Tide",
+   "year": 2013
+  }
+ },
+ {
+  "id": 1715,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-08T18:57:44Z",
+  "movieId": 460,
+  "quality": {
+   "quality": {
+    "id": 14,
+    "name": "WEBRip-720p"
+   }
+  },
+  "movie": {
+   "id": 460,
+   "title": "The Shifting Horizon",
+   "year": 2023
+  }
+ },
+ {
+  "id": 1719,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-09T14:26:00Z",
+  "movieId": 461,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 461,
+   "title": "Hero",
+   "year": 2018
+  }
+ },
+ {
+  "id": 1720,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-09T15:00:39Z",
+  "movieId": 462,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 462,
+   "title": "The Lonely Valley",
+   "year": 1987
+  }
+ },
+ {
+  "id": 1722,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-09T20:21:38Z",
+  "movieId": 463,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 463,
+   "title": "Coffee Run",
+   "year": 2020
+  }
+ },
+ {
+  "id": 1725,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T08:16:09Z",
+  "movieId": 103,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 103,
+   "title": "Cosmos Laundromat",
+   "year": 2015
+  }
+ },
+ {
+  "id": 1728,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T09:22:50Z",
+  "movieId": 103,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 103,
+   "title": "Cosmos Laundromat",
+   "year": 2015
+  }
+ },
+ {
+  "id": 1732,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T11:59:44Z",
+  "movieId": 345,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "movie": {
+   "id": 345,
+   "title": "Valemont: Painted Orchard",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1735,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T14:47:55Z",
+  "movieId": 459,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 459,
+   "title": "Glenrock: Falling Archive",
+   "year": 2026
+  }
+ },
+ {
+  "id": 1739,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T21:18:26Z",
+  "movieId": 464,
+  "quality": {
+   "quality": {
+    "id": 19,
+    "name": "Bluray-2160p"
+   }
+  },
+  "movie": {
+   "id": 464,
+   "title": "Elephants Dream",
+   "year": 2006
+  }
+ },
+ {
+  "id": 1742,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T21:31:30Z",
+  "movieId": 465,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 465,
+   "title": "Maud and the Hidden Atlas",
+   "year": 1997
+  }
+ },
+ {
+  "id": 1743,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-10T21:36:42Z",
+  "movieId": 466,
+  "quality": {
+   "quality": {
+    "id": 17,
+    "name": "WEBRip-2160p"
+   }
+  },
+  "movie": {
+   "id": 466,
+   "title": "Distant Voyage",
+   "year": 2025
+  }
+ },
+ {
+  "id": 1746,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-11T02:37:29Z",
+  "movieId": 254,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 254,
+   "title": "Sacha and the Lost Summit",
+   "year": 2016
+  }
+ },
+ {
+  "id": 1750,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-11T08:32:03Z",
+  "movieId": 254,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 254,
+   "title": "Sacha and the Lost Summit",
+   "year": 2016
+  }
+ },
+ {
+  "id": 1756,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-11T08:40:47Z",
+  "movieId": 337,
+  "quality": {
+   "quality": {
+    "id": 7,
+    "name": "Bluray-1080p"
+   }
+  },
+  "movie": {
+   "id": 337,
+   "title": "Oskar's Voyage",
+   "year": 2013
+  }
+ },
+ {
+  "id": 1759,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-11T15:32:29Z",
+  "movieId": 459,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "movie": {
+   "id": 459,
+   "title": "Glenrock: Falling Archive",
+   "year": 2026
+  }
+ }
+]

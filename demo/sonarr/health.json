@@ -1,0 +1,8 @@
+[
+ {
+  "source": "DownloadClientRemovesCompletedDownloadsCheck",
+  "type": "warning",
+  "message": "[withheld: names a download client or an indexer]",
+  "wikiUrl": "https://wiki.servarr.com/sonarr/system#download-client-removes-completed-downloads"
+ }
+]

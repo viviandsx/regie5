@@ -46,6 +46,8 @@ bool parse(int argc, char **argv, Options *out, std::string *error)
             out->width = w, out->height = h;
         } else if (!std::strcmp(a, "--mock")) {
             out->mock = true;
+        } else if (!std::strcmp(a, "--demo")) {
+            out->mock = out->demo = true;
         } else if (!std::strcmp(a, "--fullscreen")) {
             out->fullscreen = true;
         } else if (!std::strcmp(a, "--help") || !std::strcmp(a, "-h")) {
@@ -66,6 +68,7 @@ const char *usage()
            "  --config <path>   configuration file (default: ~/.config/regie5/config.json)\n"
            "  --lang fr|en      interface language (default: the system's)\n"
            "  --mock            run on fixtures/, without any server\n"
+           "  --demo            run on demo/: free films with their posters, no server\n"
            "  --size WxH        window size (default 1280x720)\n"
            "  --fullscreen      fullscreen window\n"
            "  --version         print the version\n"

@@ -1,0 +1,858 @@
+[
+ {
+  "id": 9,
+  "title": "Nadia and the Silent Mirror",
+  "sortTitle": "nadia and the silent mirror",
+  "year": 2015,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-05-24T17:44:59Z",
+  "previousAiring": "2019-11-15T05:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Streamline",
+  "overview": "Oskar tries to protect a ten-year-old promise at the end of the world.",
+  "runtime": 55,
+  "tvdbId": 9544202,
+  "tmdbId": 9429910,
+  "imdbId": "tt99560138",
+  "statistics": {
+   "seasonCount": 4,
+   "episodeFileCount": 10,
+   "episodeCount": 40,
+   "totalEpisodeCount": 84,
+   "sizeOnDisk": 10235966977,
+   "percentOfEpisodes": 25.0
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 44,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 10,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 10235966977,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2015-11-20T05:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 2,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0,
+     "previousAiring": "2016-12-16T05:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 3,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0,
+     "previousAiring": "2018-10-05T04:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 4,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0,
+     "previousAiring": "2019-11-15T05:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 10,
+  "title": "Hollis: Open Ledger",
+  "sortTitle": "hollis: open ledger",
+  "year": 2015,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-05-24T17:53:30Z",
+  "previousAiring": "2019-12-23T03:50:00Z",
+  "qualityProfileId": 4,
+  "network": "Streamline",
+  "overview": "Yuki must find a family secret against all odds.",
+  "runtime": 50,
+  "tvdbId": 9842589,
+  "tmdbId": 9364738,
+  "imdbId": "tt91564153",
+  "statistics": {
+   "seasonCount": 4,
+   "episodeFileCount": 45,
+   "episodeCount": 45,
+   "totalEpisodeCount": 48,
+   "sizeOnDisk": 27344405056,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 3,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 10,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 6507076213,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2015-09-03T02:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 2,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 12,
+     "episodeCount": 12,
+     "totalEpisodeCount": 12,
+     "sizeOnDisk": 6772351370,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2016-09-22T02:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 3,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 10,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 5382985503,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2017-12-14T03:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 4,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 13,
+     "episodeCount": 13,
+     "totalEpisodeCount": 13,
+     "sizeOnDisk": 8681991970,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2019-12-23T03:50:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 11,
+  "title": "Meridian of Glenrock II",
+  "sortTitle": "meridian of glenrock ii",
+  "year": 2001,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-05-25T10:18:08Z",
+  "previousAiring": "2001-11-04T05:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Orbit+",
+  "overview": "Nadia goes looking for a ten-year-old promise in a single night.",
+  "runtime": 63,
+  "tvdbId": 9057608,
+  "tmdbId": 9244227,
+  "imdbId": "tt92988552",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 10,
+   "episodeCount": 10,
+   "totalEpisodeCount": 15,
+   "sizeOnDisk": 13159071722,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 5,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 10,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 13159071722,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2001-11-04T05:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 12,
+  "title": "Glass Ember",
+  "sortTitle": "glass ember",
+  "year": 2019,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-05-25T10:21:27Z",
+  "previousAiring": "2019-06-04T01:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Orbit+",
+  "overview": "Nadia must find a ten-year-old promise before winter.",
+  "runtime": 65,
+  "tvdbId": 9073260,
+  "tmdbId": 9685938,
+  "imdbId": "tt94720020",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 5,
+   "episodeCount": 5,
+   "totalEpisodeCount": 17,
+   "sizeOnDisk": 5853983668,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 12,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 5,
+     "episodeCount": 5,
+     "totalEpisodeCount": 5,
+     "sizeOnDisk": 5853983668,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2019-06-04T01:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 14,
+  "title": "Elias's Machine II",
+  "sortTitle": "elias's machine ii",
+  "year": 2022,
+  "status": "continuing",
+  "ended": false,
+  "monitored": true,
+  "added": "2026-05-26T17:35:28Z",
+  "nextAiring": "2026-10-20T20:00:00Z",
+  "previousAiring": "2022-09-13T20:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Atlas One",
+  "overview": "Oskar goes looking for a family secret at the end of the world.",
+  "runtime": 26,
+  "tvdbId": 9529096,
+  "tmdbId": 9048141,
+  "imdbId": "tt91790276",
+  "statistics": {
+   "seasonCount": 2,
+   "episodeFileCount": 10,
+   "episodeCount": 10,
+   "totalEpisodeCount": 21,
+   "sizeOnDisk": 3972584757,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 1,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 10,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 3972584757,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2022-09-13T20:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 2,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0,
+     "nextAiring": "2026-10-20T20:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 15,
+  "title": "The Sleeping Station",
+  "sortTitle": "sleeping station",
+  "year": 2014,
+  "status": "continuing",
+  "ended": false,
+  "monitored": true,
+  "added": "2026-06-15T14:36:09Z",
+  "previousAiring": "2024-02-19T02:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Orbit+",
+  "overview": "Ines tries to protect a letter never sent at the end of the world.",
+  "runtime": 61,
+  "tvdbId": 9478850,
+  "tmdbId": 9082412,
+  "imdbId": "tt92770425",
+  "statistics": {
+   "seasonCount": 4,
+   "episodeFileCount": 30,
+   "episodeCount": 30,
+   "totalEpisodeCount": 55,
+   "sizeOnDisk": 29686109168,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 25,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 8,
+     "episodeCount": 8,
+     "totalEpisodeCount": 8,
+     "sizeOnDisk": 6786035663,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2014-03-10T01:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 2,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 8,
+     "episodeCount": 8,
+     "totalEpisodeCount": 8,
+     "sizeOnDisk": 7445104097,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2015-08-10T01:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 3,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 8,
+     "episodeCount": 8,
+     "totalEpisodeCount": 8,
+     "sizeOnDisk": 7230954172,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2019-02-25T02:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 4,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 6,
+     "episodeCount": 6,
+     "totalEpisodeCount": 6,
+     "sizeOnDisk": 8224015236,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2024-02-19T02:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 17,
+  "title": "Oskar's Winter",
+  "sortTitle": "oskar's winter",
+  "year": 2024,
+  "status": "continuing",
+  "ended": false,
+  "monitored": true,
+  "added": "2026-06-15T14:57:41Z",
+  "previousAiring": "2024-12-12T02:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Orbit+",
+  "overview": "Jonah goes looking for a forgotten map in a single night.",
+  "runtime": 51,
+  "tvdbId": 9754445,
+  "tmdbId": 9188167,
+  "imdbId": "tt92669715",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 10,
+   "episodeCount": 10,
+   "totalEpisodeCount": 10,
+   "sizeOnDisk": 13973546796,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 10,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 13973546796,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2024-12-12T02:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 18,
+  "title": "Nadia and the Hollow Tide",
+  "sortTitle": "nadia and the hollow tide",
+  "year": 2022,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-06-16T19:12:23Z",
+  "previousAiring": "2022-01-28T22:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Atlas One",
+  "overview": "Nadia goes looking for a ten-year-old promise in a single night.",
+  "runtime": 61,
+  "tvdbId": 9123614,
+  "tmdbId": 9293383,
+  "imdbId": "tt97804941",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 12,
+   "episodeCount": 12,
+   "totalEpisodeCount": 12,
+   "sizeOnDisk": 12689855498,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 12,
+     "episodeCount": 12,
+     "totalEpisodeCount": 12,
+     "sizeOnDisk": 12689855498,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2022-01-28T22:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 20,
+  "title": "Pilot of Avalon",
+  "sortTitle": "pilot of avalon",
+  "year": 2021,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-06-19T18:23:19Z",
+  "previousAiring": "2024-11-23T09:22:00Z",
+  "qualityProfileId": 4,
+  "network": "Atlas One",
+  "overview": "Elias discovers a letter never sent without telling anyone.",
+  "runtime": 41,
+  "tvdbId": 9863814,
+  "tmdbId": 9818144,
+  "imdbId": "tt95123449",
+  "statistics": {
+   "seasonCount": 2,
+   "episodeFileCount": 18,
+   "episodeCount": 18,
+   "totalEpisodeCount": 42,
+   "sizeOnDisk": 9297410450,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 24,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 9,
+     "episodeCount": 9,
+     "totalEpisodeCount": 9,
+     "sizeOnDisk": 4085471200,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2021-11-20T09:22:00Z"
+    }
+   },
+   {
+    "seasonNumber": 2,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 9,
+     "episodeCount": 9,
+     "totalEpisodeCount": 9,
+     "sizeOnDisk": 5211939250,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2024-11-23T09:22:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 29,
+  "title": "Valemont: Quiet Signal",
+  "sortTitle": "valemont: quiet signal",
+  "year": 2026,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-07-17T17:23:47Z",
+  "previousAiring": "2026-04-13T00:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Orbit+",
+  "overview": "Lea tries to protect a forgotten map against all odds.",
+  "runtime": 50,
+  "tvdbId": 9171033,
+  "tmdbId": 9897548,
+  "imdbId": "tt95955798",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 7,
+   "episodeCount": 7,
+   "totalEpisodeCount": 7,
+   "sizeOnDisk": 6137389117,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 7,
+     "episodeCount": 7,
+     "totalEpisodeCount": 7,
+     "sizeOnDisk": 6137389117,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2026-04-13T00:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 32,
+  "title": "Jonah and the Second Kingdom",
+  "sortTitle": "jonah and the second kingdom",
+  "year": 2026,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-07-23T17:52:21Z",
+  "previousAiring": "2026-07-22T04:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Atlas One",
+  "overview": "Elias discovers a family secret without telling anyone.",
+  "runtime": 49,
+  "tvdbId": 9613995,
+  "tmdbId": 9792588,
+  "imdbId": "tt96405724",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 6,
+   "episodeCount": 6,
+   "totalEpisodeCount": 6,
+   "sizeOnDisk": 10280883761,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 6,
+     "episodeCount": 6,
+     "totalEpisodeCount": 6,
+     "sizeOnDisk": 10280883761,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2026-07-22T04:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 41,
+  "title": "Wild Kingdom",
+  "sortTitle": "wild kingdom",
+  "year": 2021,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-08-29T09:00:18Z",
+  "previousAiring": "2022-01-10T02:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Studio Ouest",
+  "overview": "Sacha tries to protect a signal from far away against all odds.",
+  "runtime": 50,
+  "tvdbId": 9674857,
+  "tmdbId": 9897765,
+  "imdbId": "tt93024834",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 10,
+   "episodeCount": 10,
+   "totalEpisodeCount": 15,
+   "sizeOnDisk": 9650655205,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 5,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 10,
+     "episodeCount": 10,
+     "totalEpisodeCount": 10,
+     "sizeOnDisk": 9650655205,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2022-01-10T02:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 43,
+  "title": "Iris's Meridian",
+  "sortTitle": "iris's meridian",
+  "year": 2013,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-08-29T17:20:48Z",
+  "previousAiring": "2015-08-30T02:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Lumen TV",
+  "overview": "Sacha comes face to face with a signal from far away before winter.",
+  "runtime": 45,
+  "tvdbId": 9642843,
+  "tmdbId": 9149225,
+  "imdbId": "tt99877525",
+  "statistics": {
+   "seasonCount": 3,
+   "episodeFileCount": 39,
+   "episodeCount": 39,
+   "totalEpisodeCount": 64,
+   "sizeOnDisk": 24816617114,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 0,
+    "monitored": false,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 25,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0
+    }
+   },
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 13,
+     "episodeCount": 13,
+     "totalEpisodeCount": 13,
+     "sizeOnDisk": 8570321844,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2013-06-21T02:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 2,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 13,
+     "episodeCount": 13,
+     "totalEpisodeCount": 13,
+     "sizeOnDisk": 9921998065,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2014-05-24T02:00:00Z"
+    }
+   },
+   {
+    "seasonNumber": 3,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 13,
+     "episodeCount": 13,
+     "totalEpisodeCount": 13,
+     "sizeOnDisk": 6324297205,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2015-08-30T02:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 66,
+  "title": "Yuki's Lighthouse II",
+  "sortTitle": "yuki's lighthouse ii",
+  "year": 2026,
+  "status": "upcoming",
+  "ended": false,
+  "monitored": true,
+  "added": "2026-10-03T22:13:55Z",
+  "nextAiring": "2026-10-15T09:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Channel Nine North",
+  "overview": "Rafael comes face to face with a forgotten map in a single night.",
+  "runtime": 50,
+  "tvdbId": 9603413,
+  "tmdbId": 9364504,
+  "imdbId": "tt90273810",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 0,
+   "episodeCount": 0,
+   "totalEpisodeCount": 8,
+   "sizeOnDisk": 0,
+   "percentOfEpisodes": 0
+  },
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 0,
+     "episodeCount": 0,
+     "totalEpisodeCount": 8,
+     "sizeOnDisk": 0,
+     "percentOfEpisodes": 0,
+     "nextAiring": "2026-10-15T09:00:00Z"
+    }
+   }
+  ]
+ },
+ {
+  "id": 67,
+  "title": "Caminandes",
+  "sortTitle": "caminandes",
+  "year": 2013,
+  "status": "ended",
+  "ended": true,
+  "monitored": true,
+  "added": "2026-10-06T06:05:46Z",
+  "previousAiring": "2016-04-15T12:00:00Z",
+  "qualityProfileId": 4,
+  "network": "Blender Studio",
+  "overview": "Koro the llama keeps finding new ways to get to the other side of the fence, in Patagonia.",
+  "runtime": 3,
+  "tvdbId": 9536129,
+  "tmdbId": 9687774,
+  "imdbId": "tt90398503",
+  "statistics": {
+   "seasonCount": 1,
+   "episodeFileCount": 3,
+   "episodeCount": 3,
+   "totalEpisodeCount": 3,
+   "sizeOnDisk": 1200000000,
+   "percentOfEpisodes": 100
+  },
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "monitored": true,
+    "statistics": {
+     "episodeFileCount": 3,
+     "episodeCount": 3,
+     "totalEpisodeCount": 3,
+     "sizeOnDisk": 1200000000,
+     "percentOfEpisodes": 100,
+     "previousAiring": "2016-04-15T12:00:00Z"
+    }
+   }
+  ]
+ }
+]

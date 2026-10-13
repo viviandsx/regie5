@@ -333,6 +333,17 @@ pré-release tant que la PR #244 n'est pas fusionnée.**
       inventés). `make-fixtures.py` l'appelle et refuse d'écrire si un titre d'origine
       reste. Tests inchangés (titres attendus renommés). Vérifié sur tout l'arbre : aucun
       titre ni identifiant d'origine. Le tag `v0.2.0` et l'ancien historique les gardent.
+- [x] **Jeu de démo et captures** : `regie5 --demo` (= `--mock` sur `demo/`). `demo/` est
+      construit depuis les fixtures par `scripts/make-demo.py` : les titres les plus visibles
+      deviennent les films libres de la Blender Foundation (Big Buck Bunny, Elephants Dream,
+      Sintel, Tears of Steel, Cosmos Laundromat, Spring, Coffee Run, Sprite Fright, Charge ;
+      Hero et Glass Half sans image) et la série Caminandes, métadonnées en anglais. 20
+      images de Wikimedia Commons (CC BY 3.0 / 4.0, une CC0) redimensionnées en JPEG
+      (`demo/images/`, 1,6 Mo ; Caminandes ép. 3 recadré pour l'affiche), crédits fichier par
+      fichier dans `demo/CREDITS.md`, résumés dans le README et `THIRD_PARTY_NOTICES.md`.
+      Le transport de démo sert les images listées dans `demo/images.json` (mediacover,
+      images Jellyfin, proxy Seerr) ; `fixtures/` n'en a toujours aucune. Hors du zip PS5.
+      Captures du README refaites par `scripts/capture-readme.sh` (anglais, 1920 × 1080).
 
 ## 3. En attente
 
@@ -445,6 +456,7 @@ il touche ce qui est codé, sinon il est planifié ici.
 ## 5. Commandes utiles
 
 ```bash
+scripts/run-linux.sh --demo                # sans serveur, films libres avec affiches (captures)
 scripts/run-linux.sh --mock                # sans serveur, sur fixtures/
 scripts/run-linux.sh                       # avec ~/.config/regie5/config.json
 scripts/run-linux.sh --lang en --mock      # en anglais
@@ -493,3 +505,4 @@ la Bibliothèque).
 | 13 oct. 2026 | Publication préparée : version 0.2.0, zip au format du catalogue, README, INSTALL, modèles d'issues, fiche `PPSA99520.json`, audit du dépôt. |
 | 13 oct. 2026 | **Phase 7** : dépôt public (historique neuf), release `v0.2.0` avec `PPSA99520.zip`, PR #244 au catalogue (contrôles verts, relecture en attente). `docs/RELEASING.md` : branches, ce qui est gelé, sortie d'une version. |
 | 13 oct. 2026 | 0.3.0 : fixtures anonymes (titres et identifiants inventés, `anonymize_titles.py`). |
+| 13 oct. 2026 | 0.3.0 : jeu de démo (`--demo`, films Blender sous CC BY), captures du README refaites. |

@@ -1,0 +1,101 @@
+[
+ {
+  "Id": "b8fd473b3ac193997e6a57da283ba7cf",
+  "Name": "Alice",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-10-11T17:26:48.7025998Z"
+ },
+ {
+  "Id": "99af51b1dca4d4c4a13663673f8411ac",
+  "Name": "Bruno",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-10-11T12:56:45.6880176Z"
+ },
+ {
+  "Id": "073f412cf0d691172d6369d0ec8f5503",
+  "Name": "Chloé",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-08-24T18:46:51.9306667Z"
+ },
+ {
+  "Id": "7e69a767f386f568be8e79b590ae9517",
+  "Name": "David",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-10-09T16:55:32.3521079Z"
+ },
+ {
+  "Id": "824cffe518867503fd5aff4fc1796993",
+  "Name": "Emma",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-10-08T17:05:13.8457414Z"
+ },
+ {
+  "Id": "71f69b94d11ef41925fa1b1cd0fabaff",
+  "Name": "Farid",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-10-11T17:30:28.4475825Z"
+ },
+ {
+  "Id": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+  "Name": "Gaëlle",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-10-11T13:59:02.7428844Z"
+ },
+ {
+  "Id": "cb2bc992e05ebd15064bb49c6dea3e82",
+  "Name": "Hugo",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-10-09T16:28:44.8343902Z"
+ },
+ {
+  "Id": "78c29f6bc194e203cf3682ce67e5ce60",
+  "Name": "Alice",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-09-02T06:31:44.708402Z"
+ },
+ {
+  "Id": "8e04f6455baf8132994562ad84928b54",
+  "Name": "Bruno",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": false
+  },
+  "LastActivityDate": "2026-05-21T15:40:53.1500866Z"
+ },
+ {
+  "Id": "876476501bb5d500c82453f3322c63bb",
+  "Name": "Chloé",
+  "Policy": {
+   "IsDisabled": false,
+   "IsAdministrator": true
+  },
+  "LastActivityDate": "2026-10-11T15:36:32.9757143Z"
+ }
+]

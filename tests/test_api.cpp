@@ -437,17 +437,57 @@ TEST(fixtures_hold_no_forbidden_field)
                                              "\"relativePath\"", "\"originalFilePath\"", "\"downloadClient\"",
                                              "\"indexer\"", "\"outputPath\"", "\"downloadId\"",
                                              "\"statusMessages\"", "\"sourceTitle\"", "\"ShortOverview\""};
-    int files = 0;
-    for (const auto &e : std::filesystem::recursive_directory_iterator(REGIE5_FIXTURES)) {
-        if (!e.is_regular_file() || e.path().extension() != ".json")
-            continue;
-        files++;
-        const std::string text = check::fixture(std::filesystem::relative(e.path(), REGIE5_FIXTURES).string());
-        for (const char *k : kForbidden)
-            if (text.find(k) != std::string::npos)
-                check::fail(__FILE__, __LINE__, e.path().string() + " holds " + k);
+    for (const char *root : {REGIE5_FIXTURES, REGIE5_DEMO}) {
+        int files = 0;
+        for (const auto &e : std::filesystem::recursive_directory_iterator(root)) {
+            if (!e.is_regular_file() || e.path().extension() != ".json")
+                continue;
+            files++;
+            const std::string text = check::fixture(std::filesystem::relative(e.path(), root).string(), root);
+            for (const char *k : kForbidden)
+                if (text.find(k) != std::string::npos)
+                    check::fail(__FILE__, __LINE__, e.path().string() + " holds " + k);
+        }
+        CHECK(files > 100);
     }
-    CHECK(files > 100);
+}
+
+TEST(mock_pictures)
+{
+    using M = api::MockTransport;
+    CHECK_EQ(M::picture_for("http://radarr.mock/api/v3/mediacover/12/poster-500.jpg"),
+             std::string("radarr/mediacover/12/poster"));
+    CHECK_EQ(M::picture_for("http://radarr.mock/radarr4k/api/v3/mediacover/3/fanart-360.jpg"),
+             std::string("radarr/mediacover/3/fanart"));
+    CHECK_EQ(M::picture_for("http://jellyfin.mock/Items/ab12/Images/Primary?fillWidth=400&tag=x"),
+             std::string("jellyfin/items/ab12/primary"));
+    CHECK_EQ(M::picture_for("http://seerr.mock/imageproxy/tmdb/t/p/w185/r5abc.jpg"), std::string("seerr/r5abc.jpg"));
+    CHECK_EQ(M::picture_for("http://sonarr.mock/api/v3/series"), std::string());
+
+    /* fixtures/ has no pictures: every card is a generated one. */
+    M fixtures(REGIE5_FIXTURES, 0, "");
+    http::Request req;
+    req.url = "http://radarr.mock/api/v3/mediacover/1/poster-500.jpg";
+    CHECK_EQ(fixtures.perform(req, nullptr).status, 404);
+
+    /* demo/: every picture images.json names is there, served as JPEG. */
+    M demo(REGIE5_DEMO, 0, "");
+    const std::string index = check::fixture("images.json", REGIE5_DEMO);
+    int served = 0;
+    for (size_t p = index.find("\"radarr/mediacover/"); p != std::string::npos;
+         p = index.find("\"radarr/mediacover/", p + 1)) {
+        const std::string key = index.substr(p + 1, index.find('"', p + 1) - p - 1);
+        const std::string id = key.substr(18, key.find('/', 18) - 18), kind = key.substr(key.rfind('/') + 1);
+        req.url = "http://radarr.mock/api/v3/mediacover/" + id + "/" + kind + "-500.jpg";
+        http::Response r = demo.perform(req, nullptr);
+        CHECK_EQ(r.status, 200);
+        CHECK_EQ(r.content_type, std::string("image/jpeg"));
+        CHECK(r.body.size() > 1000 && (unsigned char)r.body[0] == 0xFF && (unsigned char)r.body[1] == 0xD8);
+        served++;
+    }
+    CHECK(served >= 10);
+    req.url = "http://radarr.mock/api/v3/mediacover/999999/poster-500.jpg";   /* a made-up title: no picture */
+    CHECK_EQ(demo.perform(req, nullptr).status, 404);
 }
 
 TEST(library_series)

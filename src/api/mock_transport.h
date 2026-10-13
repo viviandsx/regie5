@@ -9,6 +9,10 @@
  * Seerr's request list adds its filter (request_pending.json). Actions (POST)
  * are only logged and answered 204: nothing anywhere changes.
  *
+ * Pictures: none in fixtures/ (every card is a generated one). A root with an
+ * images.json (demo/) maps picture_for()'s keys to files in its images/
+ * folder: Sonarr/Radarr mediacover, Jellyfin item images, Seerr's proxy.
+ *
  * For trying the interface's states:
  *   REGIE5_MOCK_DELAY_MS=800              every answer that late (default 250)
  *   REGIE5_MOCK_FAIL=radarr:unreachable,seerr:unauthorized
@@ -43,12 +47,17 @@ public:
     /* A fixture's body with its lists emptied (arrays [], counts 0); the
      * connection tests' answers and Seerr's media details are kept. */
     static std::string emptied(const std::string &rel, const std::string &body);
+    /* The key of a picture's URL in images.json ("" when the URL is not a
+     * picture): radarr/mediacover/12/poster (any size), jellyfin/items/<id>/primary,
+     * seerr/<file> (any size). Public for the tests. */
+    static std::string picture_for(const std::string &url);
 
 private:
     std::string m_root;
     int m_delay_ms;
     std::map<std::string, std::string> m_fail;   /* service -> failure */
     std::map<std::string, bool> m_empty;         /* services whose lists are empty */
+    std::map<std::string, std::string> m_pictures;   /* images.json: key -> file in images/ */
 };
 
 } // namespace api

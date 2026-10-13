@@ -1,0 +1,18 @@
+{
+ "OperatingSystemDisplayName": "",
+ "HasPendingRestart": false,
+ "IsShuttingDown": false,
+ "SupportsLibraryMonitor": true,
+ "WebSocketPortNumber": 8096,
+ "CompletedInstallations": [],
+ "CanSelfRestart": true,
+ "CanLaunchWebBrowser": false,
+ "HasUpdateAvailable": false,
+ "SystemArchitecture": "X64",
+ "ServerName": "Jellyfin",
+ "Version": "12.2.0",
+ "ProductName": "Jellyfin Server",
+ "OperatingSystem": "",
+ "Id": "569da4ff011395f795055bca167a49d1",
+ "StartupWizardCompleted": true
+}

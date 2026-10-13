@@ -1,0 +1,2247 @@
+{
+ "Items": [
+  {
+   "Id": 13631,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T17:09:23.5048814Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13630,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T17:09:19.5714143Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13629,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T17:08:45.7110427Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13628,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T17:08:39.4422878Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13627,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T17:08:11.6384977Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13626,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T17:08:04.3865312Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13625,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:37:01.0160856Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13624,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T15:35:49.6973418Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13623,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T15:35:48.5311875Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13622,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T15:35:38.3992403Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13621,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:35:25.6845819Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13620,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:35:24.9641002Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13619,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:34:56.7664269Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13618,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:34:54.8845486Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13617,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:34:01.0037074Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13616,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:34:00.4388277Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13615,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:33:43.4518032Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13614,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:33:42.753597Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13613,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:33:33.1293683Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13612,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:33:31.1346397Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13611,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:33:30.4621494Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13610,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:33:30.3025537Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13609,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:33:19.9376979Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13608,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:33:19.324859Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13607,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T15:30:50.2809117Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13606,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:30:47.1367952Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13605,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T15:30:46.1858493Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13604,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T15:30:43.553194Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13603,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T15:30:43.5333262Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13602,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:30:42.3348703Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13601,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T15:30:42.187093Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13600,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:29:19.5596308Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13599,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T15:27:42.470514Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13598,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T15:27:06.372708Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13597,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T15:27:05.3871434Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13596,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T15:26:55.2390054Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13595,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:22:30.8595855Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13594,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T15:09:22.7945308Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13593,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T15:09:17.1484169Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13592,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T14:02:06.4459609Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13591,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T13:59:02.7429309Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13590,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T13:58:09.8709618Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13589,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T13:58:09.6681203Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13588,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T12:57:17.3787405Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13587,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:57:17.1078359Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "7637cdf1e5fc7c12fef341da98af36d4"
+  },
+  {
+   "Id": 13586,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T12:29:35.6901895Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13585,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:29:33.5635687Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "eeab24e680580019fdae791987ce6953"
+  },
+  {
+   "Id": 13584,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T12:29:29.0648436Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "eeab24e680580019fdae791987ce6953"
+  },
+  {
+   "Id": 13583,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:29:25.6435377Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13582,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:29:25.6313342Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13581,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T12:29:15.2811389Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13580,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T12:28:51.2904446Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13579,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T12:26:51.6915885Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13578,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:26:49.2178344Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "068b2bee93158a84011f98fd2dba57ca"
+  },
+  {
+   "Id": 13577,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T12:26:43.939284Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "068b2bee93158a84011f98fd2dba57ca"
+  },
+  {
+   "Id": 13576,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T12:23:00.1109576Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13575,
+   "Type": "AuthenticationSucceeded",
+   "Date": "2026-10-11T12:18:21.6987101Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13574,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T12:18:21.6469808Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13573,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T12:14:39.6598444Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13572,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T12:09:48.0677216Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13571,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T12:09:15.5200103Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13570,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:06:47.4967369Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13569,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T12:06:42.576831Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13568,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:05:35.8498628Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "af28dcd3f3f692ef6a5d50e2efe86dd9"
+  },
+  {
+   "Id": 13567,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:05:35.4256531Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13566,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:05:35.3967281Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13565,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T12:05:20.5621512Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13564,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:04:52.7436283Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13563,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T12:04:45.7268315Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13562,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T12:04:36.8161759Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "a44b1fa2cdffe9495a443912ca70a1f3"
+  },
+  {
+   "Id": 13561,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T12:04:32.9800921Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "a44b1fa2cdffe9495a443912ca70a1f3"
+  },
+  {
+   "Id": 13560,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T12:03:45.3300394Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13559,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T12:02:16.7545436Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13558,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T11:35:08.4594496Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13557,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T11:21:47.9470712Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13556,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T11:19:31.735409Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13555,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T11:04:53.9611672Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13554,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T11:04:09.9720643Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "7230e7a3144c11af25df1f1c20940d79"
+  },
+  {
+   "Id": 13553,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T10:29:08.9692844Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13551,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T10:27:51.0313826Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13550,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T10:23:07.3218406Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13549,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T10:22:48.2406405Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13548,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T10:22:09.9451312Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "7230e7a3144c11af25df1f1c20940d79"
+  },
+  {
+   "Id": 13547,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T10:22:09.0456219Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13546,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T10:21:58.9539109Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13545,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T10:21:43.8013238Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13544,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T10:11:23.3216551Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13543,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T10:10:37.5965019Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13542,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T10:10:29.2223523Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13541,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T10:10:21.4061146Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13540,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T10:05:39.8405908Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13539,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T10:05:39.6974049Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13538,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T10:05:38.3706764Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13537,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T10:05:25.4521551Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13536,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T09:40:31.2612145Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13535,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T09:33:43.7509828Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13534,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T09:32:54.9527614Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13533,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T08:53:41.3911392Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13532,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T08:53:35.5020265Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13531,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T08:53:30.0708027Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13530,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T08:52:52.5027065Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13529,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T08:52:50.9982802Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13528,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T08:51:56.7175834Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13527,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T06:35:49.6772658Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13526,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T05:20:22.8979085Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "7637cdf1e5fc7c12fef341da98af36d4"
+  },
+  {
+   "Id": 13525,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T05:20:22.5501506Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "dbd75bfe480029f78ce049119992d7e4"
+  },
+  {
+   "Id": 13524,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T03:57:51.220488Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "dbd75bfe480029f78ce049119992d7e4"
+  },
+  {
+   "Id": 13523,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T03:57:50.0429752Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "1f02a71ba4772b26ad05233961d1ccc9"
+  },
+  {
+   "Id": 13522,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T03:47:37.7940032Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "1f02a71ba4772b26ad05233961d1ccc9"
+  },
+  {
+   "Id": 13521,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T03:47:37.2695703Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13520,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T03:47:34.5544799Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13519,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T03:47:18.4367092Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13518,
+   "Type": "SessionEnded",
+   "Date": "2026-10-11T03:46:30.2274247Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13517,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-11T03:27:40.6895475Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13516,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T03:27:40.2612361Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "1f02a71ba4772b26ad05233961d1ccc9"
+  },
+  {
+   "Id": 13515,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-11T03:25:52.3027921Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13514,
+   "Type": "SessionStarted",
+   "Date": "2026-10-11T03:25:45.0281854Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13513,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T21:39:53.3843527Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13512,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T21:38:35.2984731Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13511,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T21:38:33.9621611Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13510,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T21:35:40.514712Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13509,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T21:35:38.4003704Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13508,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T21:13:13.6995148Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13507,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:59:19.1709228Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13506,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:58:52.3719961Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13505,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:58:14.2479645Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13504,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:58:13.2181906Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13503,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:58:11.8067123Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13502,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:58:11.7597607Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13501,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:58:01.2757808Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13500,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:57:55.1289402Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13499,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:56:33.4353444Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13498,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:56:26.154538Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "06048749db654723d414b620b0ad594e"
+  },
+  {
+   "Id": 13497,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:56:24.8582985Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13496,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:56:24.8314977Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13495,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:56:09.4949943Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13494,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:56:01.4619372Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13493,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:55:14.8988127Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13492,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:55:13.125307Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13491,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:54:59.8140443Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13490,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:54:59.4291369Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13489,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:54:57.8288933Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "b26fcbd105230422d8238063b09a944e"
+  },
+  {
+   "Id": 13488,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:54:56.2245409Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13487,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:54:56.196906Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13486,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:54:41.1849596Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13485,
+   "Type": "AuthenticationSucceeded",
+   "Date": "2026-10-10T20:54:28.076883Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13484,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:54:28.0293666Z",
+   "Severity": "Information",
+   "UserId": "42b6593eb8f9d59f9ab10dcf1d4db2c0"
+  },
+  {
+   "Id": 13483,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:52:32.0618095Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13482,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:51:39.6382743Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "c7b489c79362625e8929d532cef80919"
+  },
+  {
+   "Id": 13481,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:51:29.8298618Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "c7b489c79362625e8929d532cef80919"
+  },
+  {
+   "Id": 13480,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:51:27.9116517Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13479,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:51:27.8950965Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13478,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:51:12.6841431Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13477,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:50:59.3619592Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13476,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:50:40.500526Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13475,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:50:36.7799386Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13474,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:28:50.0045086Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13473,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:18:16.2544911Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13472,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:18:01.9833896Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13471,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:12:46.9687403Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "671cae1ac08546ba8e85479f68a86736"
+  },
+  {
+   "Id": 13470,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:12:38.5952085Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13469,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:12:36.0296309Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13468,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:12:29.4528394Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13467,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:12:06.921712Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "9d6bff765c2e4d3d2a57589e72affbc9"
+  },
+  {
+   "Id": 13466,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:12:04.4750094Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "9d6bff765c2e4d3d2a57589e72affbc9"
+  },
+  {
+   "Id": 13465,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:12:02.9099725Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13464,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:11:47.7685628Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13463,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:11:44.6414846Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "9d6bff765c2e4d3d2a57589e72affbc9"
+  },
+  {
+   "Id": 13462,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:11:43.1040451Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13461,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:11:32.2189398Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13460,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:11:29.4066386Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "9d6bff765c2e4d3d2a57589e72affbc9"
+  },
+  {
+   "Id": 13459,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:11:26.709685Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "9d6bff765c2e4d3d2a57589e72affbc9"
+  },
+  {
+   "Id": 13458,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:11:23.2694065Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13457,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:11:08.1140584Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13456,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:10:59.7110192Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13455,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:10:49.4844315Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "671cae1ac08546ba8e85479f68a86736"
+  },
+  {
+   "Id": 13453,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:10:47.4584742Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13454,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T20:10:47.4558231Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13452,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T20:10:32.4452075Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb",
+   "ItemId": "caa67ee2203b7fead7d63e732cdc1443"
+  },
+  {
+   "Id": 13451,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:08:12.5656295Z",
+   "Severity": "Information",
+   "UserId": "71f69b94d11ef41925fa1b1cd0fabaff"
+  },
+  {
+   "Id": 13450,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:06:07.0945918Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13449,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T20:06:06.4082008Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13448,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:05:57.6572662Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13447,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:05:56.7467192Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13445,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:05:04.4900722Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13444,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T20:04:31.8563613Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13443,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T19:54:54.6884347Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13442,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T19:44:33.8414115Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "2aac08363eeb03ccb2f2dc4e700169d2"
+  },
+  {
+   "Id": 13441,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T19:25:26.549418Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13440,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T19:01:20.3773892Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "2aac08363eeb03ccb2f2dc4e700169d2"
+  },
+  {
+   "Id": 13439,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T19:01:10.7024578Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13438,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T18:47:55.7530996Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13437,
+   "Type": "AuthenticationSucceeded",
+   "Date": "2026-10-10T18:47:22.9234908Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13436,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T18:47:22.8017048Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13435,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T18:38:44.2236929Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13434,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T18:38:36.9618403Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13432,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T17:34:33.6769521Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13431,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T17:34:19.872072Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13430,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T14:57:59.9937046Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13429,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T14:56:35.2817741Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13428,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T13:21:57.1716563Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13427,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T13:21:37.3019392Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13426,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T13:20:03.7232524Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13425,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T13:20:02.7151978Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13424,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T13:20:02.4824784Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13423,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T13:18:42.9441351Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13422,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T12:38:21.8967511Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13421,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T12:38:21.4991472Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13420,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T12:27:14.753329Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13419,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T12:27:02.250526Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13418,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T12:27:01.0151519Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13416,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T12:26:53.4835002Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13415,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T12:26:49.7898347Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13414,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T12:26:29.9460181Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13413,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T12:03:40.9510925Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13412,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T12:01:43.729854Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13411,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T12:01:43.2093023Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13410,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T12:01:05.12844Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13409,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T12:01:02.974431Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13408,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T12:00:02.7369134Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13407,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T11:55:13.2407943Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13406,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T11:54:55.7805879Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13405,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T09:24:50.0832468Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13404,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T09:24:40.7619848Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13403,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T08:12:55.4610144Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13402,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T08:12:46.2325656Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13401,
+   "Type": "SessionEnded",
+   "Date": "2026-10-10T08:11:20.6721757Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13400,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T08:00:29.6721717Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13399,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T08:00:28.7724323Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "1f02a71ba4772b26ad05233961d1ccc9"
+  },
+  {
+   "Id": 13398,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T08:00:28.420231Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "1f02a71ba4772b26ad05233961d1ccc9"
+  },
+  {
+   "Id": 13397,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T08:00:27.2026167Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13396,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T07:41:48.5909449Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "0e83d035e5857c53f3a9cb03c2caf158"
+  },
+  {
+   "Id": 13395,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T07:41:47.5635819Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "caf4d451e15e8bafc5e52caa5773cf48"
+  },
+  {
+   "Id": 13394,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T07:06:23.732436Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "caf4d451e15e8bafc5e52caa5773cf48"
+  },
+  {
+   "Id": 13393,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T07:06:22.6059887Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "6d4a51ce211ae82020c342f5a5d6938f"
+  },
+  {
+   "Id": 13392,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T06:35:20.262733Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "6d4a51ce211ae82020c342f5a5d6938f"
+  },
+  {
+   "Id": 13391,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T06:35:19.0968949Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "4ba4de101f4ff414e323860864e25e0d"
+  },
+  {
+   "Id": 13390,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T05:58:39.7358692Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "4ba4de101f4ff414e323860864e25e0d"
+  },
+  {
+   "Id": 13389,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T05:58:39.3594473Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "34137ef33e1470011a6de5ab6e1d11c9"
+  },
+  {
+   "Id": 13388,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T05:35:46.5419835Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "34137ef33e1470011a6de5ab6e1d11c9"
+  },
+  {
+   "Id": 13387,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T05:35:45.4431392Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "cbe2ba0c7eeb3aecad1d9fa9553a001d"
+  },
+  {
+   "Id": 13386,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T05:15:00.3718611Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "cbe2ba0c7eeb3aecad1d9fa9553a001d"
+  },
+  {
+   "Id": 13385,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T05:15:00.0593433Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "95fa35681e1a51eac5efb3950d22e5a7"
+  },
+  {
+   "Id": 13384,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T05:14:46.7692007Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "95fa35681e1a51eac5efb3950d22e5a7"
+  },
+  {
+   "Id": 13383,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T05:14:46.2791025Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "99217cc6ad69cb00b4a2dd40a82dd8e1"
+  },
+  {
+   "Id": 13382,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T05:14:44.4955391Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "99217cc6ad69cb00b4a2dd40a82dd8e1"
+  },
+  {
+   "Id": 13381,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T05:14:43.6332448Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "95fa35681e1a51eac5efb3950d22e5a7"
+  },
+  {
+   "Id": 13380,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T05:14:39.2278731Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "95fa35681e1a51eac5efb3950d22e5a7"
+  },
+  {
+   "Id": 13379,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T05:14:38.5345328Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "cbe2ba0c7eeb3aecad1d9fa9553a001d"
+  },
+  {
+   "Id": 13378,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T05:14:37.9134656Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "cbe2ba0c7eeb3aecad1d9fa9553a001d"
+  },
+  {
+   "Id": 13377,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T05:14:37.4357054Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "95fa35681e1a51eac5efb3950d22e5a7"
+  },
+  {
+   "Id": 13376,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T04:50:30.2037907Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "95fa35681e1a51eac5efb3950d22e5a7"
+  },
+  {
+   "Id": 13375,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T04:50:29.1376632Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "99217cc6ad69cb00b4a2dd40a82dd8e1"
+  },
+  {
+   "Id": 13374,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T04:20:31.6653259Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "99217cc6ad69cb00b4a2dd40a82dd8e1"
+  },
+  {
+   "Id": 13373,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-10T04:20:31.2986676Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "8865cce01a0e130782766f9fd51c452d"
+  },
+  {
+   "Id": 13372,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-10T04:09:05.4799842Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "8865cce01a0e130782766f9fd51c452d"
+  },
+  {
+   "Id": 13371,
+   "Type": "SessionStarted",
+   "Date": "2026-10-10T03:54:47.8656629Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13370,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T21:48:41.0573461Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13369,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T21:47:18.9078Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13368,
+   "Type": "AuthenticationSucceeded",
+   "Date": "2026-10-09T21:47:18.7753165Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13367,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T21:47:18.6784298Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13366,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T21:47:18.676542Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13365,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T21:38:42.7068146Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13364,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T21:24:33.4306949Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "8865cce01a0e130782766f9fd51c452d"
+  },
+  {
+   "Id": 13363,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-09T21:24:33.0708478Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "d02e279405dac4d61dcb306bb38c9ef6"
+  },
+  {
+   "Id": 13362,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T21:05:31.728011Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "d02e279405dac4d61dcb306bb38c9ef6"
+  },
+  {
+   "Id": 13361,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-09T21:04:52.9448208Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "d02e279405dac4d61dcb306bb38c9ef6"
+  },
+  {
+   "Id": 13360,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T21:02:20.9991614Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "d02e279405dac4d61dcb306bb38c9ef6"
+  },
+  {
+   "Id": 13359,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T21:02:11.6211511Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13358,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T20:26:53.2353489Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13357,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T20:22:54.169771Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13356,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T20:08:14.6851523Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13355,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T20:08:06.5057494Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13354,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T19:39:53.4674361Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13353,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-09T19:39:31.8406245Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "391d3e353ddb9c63903b3e685ee9975d"
+  },
+  {
+   "Id": 13352,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T19:24:37.776522Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13351,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T19:23:50.594014Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13350,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T18:51:16.3351015Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "391d3e353ddb9c63903b3e685ee9975d"
+  },
+  {
+   "Id": 13349,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T18:51:10.9317122Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13348,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T17:52:36.5883049Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13347,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-09T17:51:48.4260288Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "845f37d79ff732e1aa9eb37317f0d6aa"
+  },
+  {
+   "Id": 13346,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T17:51:47.9307902Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "d02e279405dac4d61dcb306bb38c9ef6"
+  },
+  {
+   "Id": 13345,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T17:41:14.8682907Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13344,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-09T17:41:05.4063659Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "4ed4554ae6d54c8576a8568e91e3613f"
+  },
+  {
+   "Id": 13343,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-09T17:30:23.9975518Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "485b7c76aff430ecf1d0afdab92470a9"
+  },
+  {
+   "Id": 13342,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T17:30:23.4144828Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "845f37d79ff732e1aa9eb37317f0d6aa"
+  },
+  {
+   "Id": 13341,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T17:11:33.8570678Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac",
+   "ItemId": "485b7c76aff430ecf1d0afdab92470a9"
+  },
+  {
+   "Id": 13340,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T17:11:21.5558235Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13339,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T16:54:42.6271428Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+   "ItemId": "4ed4554ae6d54c8576a8568e91e3613f"
+  },
+  {
+   "Id": 13338,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T16:51:43.5333175Z",
+   "Severity": "Information",
+   "UserId": "b8fd473b3ac193997e6a57da283ba7cf"
+  },
+  {
+   "Id": 13337,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T16:41:21.1327738Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13336,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T16:40:08.3650334Z",
+   "Severity": "Information",
+   "UserId": "876476501bb5d500c82453f3322c63bb"
+  },
+  {
+   "Id": 13335,
+   "Type": "VideoPlaybackStopped",
+   "Date": "2026-10-09T16:29:31.2537695Z",
+   "Severity": "Information",
+   "UserId": "cb2bc992e05ebd15064bb49c6dea3e82",
+   "ItemId": "334af84b30bfb9f0628d130646e1c678"
+  },
+  {
+   "Id": 13334,
+   "Type": "VideoPlayback",
+   "Date": "2026-10-09T16:11:14.6515264Z",
+   "Severity": "Information",
+   "UserId": "cb2bc992e05ebd15064bb49c6dea3e82",
+   "ItemId": "334af84b30bfb9f0628d130646e1c678"
+  },
+  {
+   "Id": 13333,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T16:11:14.4769654Z",
+   "Severity": "Information",
+   "UserId": "cb2bc992e05ebd15064bb49c6dea3e82"
+  },
+  {
+   "Id": 13332,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T16:09:55.111301Z",
+   "Severity": "Information",
+   "UserId": "cb2bc992e05ebd15064bb49c6dea3e82"
+  },
+  {
+   "Id": 13331,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T16:09:54.9278803Z",
+   "Severity": "Information",
+   "UserId": "cb2bc992e05ebd15064bb49c6dea3e82"
+  },
+  {
+   "Id": 13330,
+   "Type": "SessionStarted",
+   "Date": "2026-10-09T16:09:53.1528534Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13329,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T16:09:45.2656164Z",
+   "Severity": "Information",
+   "UserId": "99af51b1dca4d4c4a13663673f8411ac"
+  },
+  {
+   "Id": 13328,
+   "Type": "SessionEnded",
+   "Date": "2026-10-09T16:09:44.936607Z",
+   "Severity": "Information",
+   "UserId": "cb2bc992e05ebd15064bb49c6dea3e82"
+  }
+ ],
+ "TotalRecordCount": 300
+}

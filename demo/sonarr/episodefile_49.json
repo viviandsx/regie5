@@ -1,0 +1,262 @@
+[
+ {
+  "id": 1190,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 524334865,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1191,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 450938187,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1192,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 492485398,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1193,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 451482702,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1195,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 503789860,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1197,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 432261269,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1199,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 491818093,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1244,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 461018525,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1245,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 483470425,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1246,
+  "seriesId": 49,
+  "seasonNumber": 1,
+  "size": 490069876,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1398,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 430909795,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1399,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 500142463,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1400,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 472385825,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1401,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 470225695,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1402,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 458966480,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1403,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 465690014,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1404,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 478538155,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1405,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 382120616,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1406,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 463900692,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1407,
+  "seriesId": 49,
+  "seasonNumber": 2,
+  "size": 513714283,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ }
+]

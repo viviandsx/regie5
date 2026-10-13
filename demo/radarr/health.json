@@ -1,0 +1,22 @@
+[
+ {
+  "source": "DownloadClientRemovesCompletedDownloadsCheck",
+  "type": "warning",
+  "message": "[withheld: names a download client or an indexer]",
+  "wikiUrl": "https://wiki.servarr.com/radarr/system#download-client-removes-completed-downloads"
+ },
+ {
+  "source": "IndexerLongTermStatusCheck",
+  "type": "warning",
+  "message": "[synthetic: names an indexer]",
+  "wikiUrl": "https://wiki.servarr.com/radarr/system#indexers-are-unavailable-due-to-failures",
+  "_regie5_synthetic": true
+ },
+ {
+  "source": "RootFolderCheck",
+  "type": "error",
+  "message": "[synthetic: names a path]",
+  "wikiUrl": "https://wiki.servarr.com/radarr/system#missing-root-folder",
+  "_regie5_synthetic": true
+ }
+]

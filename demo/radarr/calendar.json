@@ -1,0 +1,726 @@
+[
+ {
+  "title": "Theo's Harvest",
+  "originalTitle": "Sacha and the Salt Compass",
+  "originalLanguage": {
+   "id": 21,
+   "name": "Korean"
+  },
+  "sortTitle": "theo's harvest",
+  "sizeOnDisk": 3389479777,
+  "status": "released",
+  "overview": "Sacha comes face to face with the last night train against all odds.",
+  "inCinemas": "2026-05-21T00:00:00Z",
+  "physicalRelease": "2026-09-28T00:00:00Z",
+  "digitalRelease": "2026-07-23T00:00:00Z",
+  "releaseDate": "2026-07-23T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Ninefold Films",
+  "qualityProfileId": 4,
+  "hasFile": true,
+  "movieFileId": 730,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": true,
+  "runtime": 123,
+  "cleanTitle": "theosharvest",
+  "imdbId": "tt93851637",
+  "tmdbId": 9812461,
+  "titleSlug": "9812461",
+  "certification": "12",
+  "genres": [
+   "Horror",
+   "Action",
+   "Science Fiction"
+  ],
+  "tags": [],
+  "added": "2026-05-27T11:56:54Z",
+  "ratings": {
+   "metacritic": {
+    "votes": 0,
+    "value": 57,
+    "type": "user"
+   },
+   "rottenTomatoes": {
+    "votes": 0,
+    "value": 82,
+    "type": "user"
+   },
+   "trakt": {
+    "votes": 262,
+    "value": 7.68702,
+    "type": "user"
+   }
+  },
+  "popularity": 116.7254,
+  "lastSearchTime": "2026-07-29T13:07:45Z",
+  "statistics": {
+   "movieFileCount": 1,
+   "sizeOnDisk": 3389479777,
+   "movieFileQualities": [
+    {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "source": "webrip",
+     "resolution": 1080,
+     "modifier": "none"
+    }
+   ]
+  },
+  "id": 28
+ },
+ {
+  "title": "Charge",
+  "originalTitle": "Charge",
+  "originalLanguage": {
+   "id": 1,
+   "name": "English"
+  },
+  "sortTitle": "charge",
+  "sizeOnDisk": 2102369579,
+  "status": "released",
+  "overview": "In a frozen world, an old man breaks into a factory guarded by a robot to steal energy.",
+  "inCinemas": "2026-05-27T00:00:00Z",
+  "physicalRelease": "2026-10-23T00:00:00Z",
+  "digitalRelease": "2026-07-14T00:00:00Z",
+  "releaseDate": "2022-07-14T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2022,
+  "studio": "Blender Studio",
+  "qualityProfileId": 4,
+  "hasFile": true,
+  "movieFileId": 741,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": true,
+  "runtime": 4,
+  "cleanTitle": "charge",
+  "imdbId": "tt95590587",
+  "tmdbId": 9147906,
+  "titleSlug": "9147906",
+  "certification": "12",
+  "genres": [
+   "Horror",
+   "Mystery",
+   "Science Fiction"
+  ],
+  "tags": [],
+  "added": "2026-06-19T10:55:47Z",
+  "ratings": {
+   "metacritic": {
+    "votes": 0,
+    "value": 76,
+    "type": "user"
+   },
+   "rottenTomatoes": {
+    "votes": 0,
+    "value": 86,
+    "type": "user"
+   },
+   "trakt": {
+    "votes": 6121,
+    "value": 6.98873,
+    "type": "user"
+   }
+  },
+  "popularity": 82.0181,
+  "lastSearchTime": "2026-09-29T19:04:32Z",
+  "statistics": {
+   "movieFileCount": 1,
+   "sizeOnDisk": 2102369579,
+   "movieFileQualities": [
+    {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "source": "webrip",
+     "resolution": 1080,
+     "modifier": "none"
+    }
+   ]
+  },
+  "id": 56
+ },
+ {
+  "title": "Ember of Ironvale",
+  "originalTitle": "Ledger of Yarrow",
+  "originalLanguage": {
+   "id": 1,
+   "name": "English"
+  },
+  "sortTitle": "ember of ironvale",
+  "sizeOnDisk": 2030801377,
+  "status": "released",
+  "overview": "Sacha tries to protect a signal from far away at the end of the world.",
+  "inCinemas": "2026-06-25T00:00:00Z",
+  "physicalRelease": "2026-10-05T00:00:00Z",
+  "digitalRelease": "2026-08-11T00:00:00Z",
+  "releaseDate": "2026-08-11T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Blue Orchard Films",
+  "qualityProfileId": 4,
+  "hasFile": true,
+  "movieFileId": 469,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": true,
+  "runtime": 107,
+  "cleanTitle": "emberofironvale",
+  "imdbId": "tt90562761",
+  "tmdbId": 9835059,
+  "titleSlug": "9835059",
+  "genres": [
+   "Comedy",
+   "Drama",
+   "Romance"
+  ],
+  "tags": [],
+  "added": "2026-08-29T09:15:42Z",
+  "ratings": {
+   "metacritic": {
+    "votes": 0,
+    "value": 82,
+    "type": "user"
+   },
+   "rottenTomatoes": {
+    "votes": 0,
+    "value": 96,
+    "type": "user"
+   },
+   "trakt": {
+    "votes": 323,
+    "value": 8.08359,
+    "type": "user"
+   }
+  },
+  "popularity": 36.1684,
+  "lastSearchTime": "2026-08-29T09:16:05Z",
+  "statistics": {
+   "movieFileCount": 1,
+   "sizeOnDisk": 2030801377,
+   "movieFileQualities": [
+    {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "source": "webrip",
+     "resolution": 1080,
+     "modifier": "none"
+    }
+   ]
+  },
+  "id": 324
+ },
+ {
+  "title": "Citadel of Valemont",
+  "originalTitle": "Theo and the Electric Voyage",
+  "originalLanguage": {
+   "id": 1,
+   "name": "English"
+  },
+  "sortTitle": "citadel of valemont",
+  "sizeOnDisk": 2276922103,
+  "status": "released",
+  "overview": "Theo comes face to face with the last night train at the end of the world.",
+  "inCinemas": "2026-07-29T00:00:00Z",
+  "physicalRelease": "2026-12-02T00:00:00Z",
+  "digitalRelease": "2026-10-06T00:00:00Z",
+  "releaseDate": "2026-10-06T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Lantern House",
+  "qualityProfileId": 4,
+  "hasFile": true,
+  "movieFileId": 757,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": true,
+  "runtime": 145,
+  "cleanTitle": "citadelofvalemont",
+  "imdbId": "tt94891157",
+  "tmdbId": 9347506,
+  "titleSlug": "9347506",
+  "certification": "TP",
+  "genres": [
+   "Science Fiction",
+   "Action",
+   "Adventure"
+  ],
+  "tags": [],
+  "added": "2026-06-20T15:48:27Z",
+  "ratings": {
+   "metacritic": {
+    "votes": 0,
+    "value": 66,
+    "type": "user"
+   },
+   "rottenTomatoes": {
+    "votes": 0,
+    "value": 90,
+    "type": "user"
+   }
+  },
+  "collection": {
+   "title": "Signal of Westmere",
+   "tmdbId": 9645722
+  },
+  "popularity": 942.3201,
+  "lastSearchTime": "2026-10-07T10:29:25Z",
+  "statistics": {
+   "movieFileCount": 1,
+   "sizeOnDisk": 2276922103,
+   "movieFileQualities": [
+    {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "source": "webrip",
+     "resolution": 1080,
+     "modifier": "none"
+    }
+   ]
+  },
+  "id": 60
+ },
+ {
+  "title": "Sprite Fright",
+  "originalTitle": "Oskar and the Sunken Forest",
+  "originalLanguage": {
+   "id": 1,
+   "name": "English"
+  },
+  "sortTitle": "sprite fright",
+  "sizeOnDisk": 2131894591,
+  "status": "released",
+  "overview": "A group of teenagers on a forest trip upsets the wrong mushroom people.",
+  "inCinemas": "2026-08-06T00:00:00Z",
+  "physicalRelease": "2026-10-20T00:00:00Z",
+  "digitalRelease": "2026-09-08T00:00:00Z",
+  "releaseDate": "2021-09-08T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2021,
+  "studio": "Blender Studio",
+  "qualityProfileId": 4,
+  "hasFile": true,
+  "movieFileId": 631,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": true,
+  "runtime": 10,
+  "cleanTitle": "spritefright",
+  "imdbId": "tt95454804",
+  "tmdbId": 9828733,
+  "titleSlug": "9828733",
+  "genres": [
+   "Romance",
+   "Comedy"
+  ],
+  "tags": [],
+  "added": "2026-09-11T07:21:01Z",
+  "ratings": {
+   "metacritic": {
+    "votes": 0,
+    "value": 42,
+    "type": "user"
+   },
+   "rottenTomatoes": {
+    "votes": 0,
+    "value": 44,
+    "type": "user"
+   }
+  },
+  "popularity": 22.6834,
+  "lastSearchTime": "2026-09-11T07:25:55Z",
+  "statistics": {
+   "movieFileCount": 1,
+   "sizeOnDisk": 2131894591,
+   "movieFileQualities": [
+    {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "source": "webrip",
+     "resolution": 1080,
+     "modifier": "none"
+    }
+   ]
+  },
+  "id": 373
+ },
+ {
+  "title": "The Last Mirror",
+  "originalTitle": "The Last Mirror",
+  "originalLanguage": {
+   "id": 1,
+   "name": "English"
+  },
+  "sortTitle": "last mirror",
+  "sizeOnDisk": 3470763205,
+  "status": "released",
+  "overview": "Rafael goes looking for a sunken town at the end of the world.",
+  "inCinemas": "2026-09-10T00:00:00Z",
+  "physicalRelease": "2026-11-03T00:00:00Z",
+  "digitalRelease": "2026-09-29T00:00:00Z",
+  "releaseDate": "2026-09-29T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Lantern House",
+  "qualityProfileId": 4,
+  "hasFile": true,
+  "movieFileId": 743,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": true,
+  "runtime": 128,
+  "cleanTitle": "thelastmirror",
+  "imdbId": "tt98055722",
+  "tmdbId": 9263892,
+  "titleSlug": "9263892",
+  "genres": [
+   "History",
+   "Drama",
+   "Action"
+  ],
+  "tags": [],
+  "added": "2026-07-28T13:49:25Z",
+  "ratings": {
+   "metacritic": {
+    "votes": 0,
+    "value": 53,
+    "type": "user"
+   },
+   "rottenTomatoes": {
+    "votes": 0,
+    "value": 55,
+    "type": "user"
+   }
+  },
+  "popularity": 119.8056,
+  "lastSearchTime": "2026-09-29T22:08:50Z",
+  "statistics": {
+   "movieFileCount": 1,
+   "sizeOnDisk": 3470763205,
+   "movieFileQualities": [
+    {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "source": "webrip",
+     "resolution": 1080,
+     "modifier": "none"
+    }
+   ]
+  },
+  "id": 236
+ },
+ {
+  "title": "Nadia and the Copper Archive",
+  "originalTitle": "Nadia and the Copper Archive",
+  "originalLanguage": {
+   "id": 2,
+   "name": "French"
+  },
+  "sortTitle": "nadia and the copper archive",
+  "sizeOnDisk": 3143842623,
+  "status": "inCinemas",
+  "overview": "Theo goes looking for a ten-year-old promise without telling anyone.",
+  "inCinemas": "2026-09-30T00:00:00Z",
+  "releaseDate": "2026-12-29T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Quiet Fox Media",
+  "qualityProfileId": 4,
+  "hasFile": true,
+  "movieFileId": 640,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": false,
+  "runtime": 95,
+  "cleanTitle": "nadiaandthecopperarchive",
+  "imdbId": "tt96880997",
+  "tmdbId": 9433558,
+  "titleSlug": "9433558",
+  "certification": "16",
+  "genres": [
+   "Horror"
+  ],
+  "tags": [],
+  "added": "2026-09-07T04:24:28Z",
+  "ratings": {},
+  "popularity": 3.3129,
+  "lastSearchTime": "2026-09-14T16:39:43Z",
+  "statistics": {
+   "movieFileCount": 1,
+   "sizeOnDisk": 3143842623,
+   "movieFileQualities": [
+    {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "source": "webdl",
+     "resolution": 1080,
+     "modifier": "none"
+    }
+   ]
+  },
+  "id": 364
+ },
+ {
+  "title": "Maud's Engine",
+  "originalTitle": "Maud's Engine",
+  "originalLanguage": {
+   "id": 1,
+   "name": "English"
+  },
+  "sortTitle": "maud's engine",
+  "sizeOnDisk": 0,
+  "status": "inCinemas",
+  "overview": "Elias discovers a sunken town at the end of the world.",
+  "inCinemas": "2026-09-30T00:00:00Z",
+  "releaseDate": "2026-12-29T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Quiet Fox Media",
+  "qualityProfileId": 4,
+  "hasFile": false,
+  "movieFileId": 0,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": false,
+  "runtime": 129,
+  "cleanTitle": "maudsengine",
+  "imdbId": "tt96027919",
+  "tmdbId": 9108727,
+  "titleSlug": "9108727",
+  "certification": "12",
+  "genres": [
+   "Comedy",
+   "Drama"
+  ],
+  "tags": [],
+  "added": "2026-09-28T19:37:18Z",
+  "ratings": {
+   "rottenTomatoes": {
+    "votes": 0,
+    "value": 52,
+    "type": "user"
+   }
+  },
+  "popularity": 148.5371,
+  "lastSearchTime": "2026-10-08T17:49:20Z",
+  "statistics": {
+   "movieFileCount": 0,
+   "sizeOnDisk": 0,
+   "movieFileQualities": []
+  },
+  "id": 448
+ },
+ {
+  "title": "Mara's Lantern",
+  "originalTitle": "Mara's Lantern",
+  "originalLanguage": {
+   "id": 2,
+   "name": "French"
+  },
+  "sortTitle": "mara's lantern",
+  "sizeOnDisk": 0,
+  "status": "inCinemas",
+  "overview": "Theo inherits a letter never sent without telling anyone.",
+  "inCinemas": "2026-09-30T00:00:00Z",
+  "releaseDate": "2026-12-29T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Quiet Fox Media",
+  "qualityProfileId": 4,
+  "hasFile": false,
+  "movieFileId": 0,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": false,
+  "runtime": 155,
+  "cleanTitle": "maraslantern",
+  "imdbId": "tt97426784",
+  "tmdbId": 9424613,
+  "titleSlug": "9424613",
+  "genres": [
+   "History",
+   "Comedy",
+   "Drama"
+  ],
+  "tags": [],
+  "added": "2026-10-04T09:22:36Z",
+  "ratings": {
+   "rottenTomatoes": {
+    "votes": 0,
+    "value": 78,
+    "type": "user"
+   }
+  },
+  "popularity": 4.2295,
+  "lastSearchTime": "2026-10-04T10:18:08Z",
+  "statistics": {
+   "movieFileCount": 0,
+   "sizeOnDisk": 0,
+   "movieFileQualities": []
+  },
+  "id": 457
+ },
+ {
+  "title": "Lost Citadel",
+  "originalTitle": "Tide of Valemont",
+  "originalLanguage": {
+   "id": 1,
+   "name": "English"
+  },
+  "sortTitle": "lost citadel",
+  "sizeOnDisk": 0,
+  "status": "inCinemas",
+  "overview": "Lea discovers a signal from far away before winter.",
+  "inCinemas": "2026-10-07T00:00:00Z",
+  "releaseDate": "2027-01-05T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Lantern House",
+  "qualityProfileId": 4,
+  "hasFile": false,
+  "movieFileId": 0,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": false,
+  "runtime": 93,
+  "cleanTitle": "lostcitadel",
+  "imdbId": "tt92779017",
+  "tmdbId": 9259852,
+  "titleSlug": "9259852",
+  "certification": "12",
+  "genres": [
+   "Horror"
+  ],
+  "tags": [],
+  "added": "2026-09-20T22:41:45Z",
+  "ratings": {},
+  "popularity": 117.2211,
+  "lastSearchTime": "2026-10-11T09:29:55Z",
+  "statistics": {
+   "movieFileCount": 0,
+   "sizeOnDisk": 0,
+   "movieFileQualities": []
+  },
+  "id": 411
+ },
+ {
+  "title": "Second Valley",
+  "originalTitle": "Second Valley",
+  "originalLanguage": {
+   "id": 2,
+   "name": "French"
+  },
+  "sortTitle": "second valley",
+  "sizeOnDisk": 0,
+  "status": "announced",
+  "overview": "Ines goes looking for a sunken town at the end of the world.",
+  "inCinemas": "2026-10-21T00:00:00Z",
+  "releaseDate": "2027-01-19T00:00:00Z",
+  "images": [
+   {
+    "coverType": "poster"
+   },
+   {
+    "coverType": "fanart"
+   }
+  ],
+  "year": 2026,
+  "studio": "Quiet Fox Media",
+  "qualityProfileId": 4,
+  "hasFile": false,
+  "movieFileId": 0,
+  "monitored": true,
+  "minimumAvailability": "released",
+  "isAvailable": false,
+  "runtime": 88,
+  "cleanTitle": "secondvalley",
+  "imdbId": "tt90659373",
+  "tmdbId": 9147789,
+  "titleSlug": "9147789",
+  "certification": "TP",
+  "genres": [
+   "Comedy"
+  ],
+  "tags": [],
+  "added": "2026-09-25T16:42:12Z",
+  "ratings": {},
+  "popularity": 2.4689,
+  "statistics": {
+   "movieFileCount": 0,
+   "sizeOnDisk": 0,
+   "movieFileQualities": []
+  },
+  "id": 437
+ }
+]

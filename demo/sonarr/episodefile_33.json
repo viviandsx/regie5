@@ -1,0 +1,106 @@
+[
+ {
+  "id": 894,
+  "seriesId": 33,
+  "seasonNumber": 1,
+  "size": 1078802478,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 895,
+  "seriesId": 33,
+  "seasonNumber": 1,
+  "size": 1152795604,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 898,
+  "seriesId": 33,
+  "seasonNumber": 1,
+  "size": 994763901,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 899,
+  "seriesId": 33,
+  "seasonNumber": 1,
+  "size": 892072559,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 900,
+  "seriesId": 33,
+  "seasonNumber": 1,
+  "size": 1276486078,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1284,
+  "seriesId": 33,
+  "seasonNumber": 1,
+  "size": 1427050083,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1285,
+  "seriesId": 33,
+  "seasonNumber": 1,
+  "size": 894677720,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1286,
+  "seriesId": 33,
+  "seasonNumber": 1,
+  "size": 1211946783,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ }
+]

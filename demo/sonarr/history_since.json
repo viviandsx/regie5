@@ -1,0 +1,2882 @@
+[
+ {
+  "id": 3121,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:50:58Z",
+  "seriesId": 63,
+  "episodeId": 3990,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3990,
+   "seasonNumber": 1,
+   "episodeNumber": 1,
+   "title": "Lou and the Shifting Archive"
+  }
+ },
+ {
+  "id": 3122,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:02Z",
+  "seriesId": 63,
+  "episodeId": 3991,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3991,
+   "seasonNumber": 1,
+   "episodeNumber": 2,
+   "title": "Amber Kingdom"
+  }
+ },
+ {
+  "id": 3123,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:05Z",
+  "seriesId": 63,
+  "episodeId": 3992,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3992,
+   "seasonNumber": 1,
+   "episodeNumber": 3,
+   "title": "Quillon: Glass Garden"
+  }
+ },
+ {
+  "id": 3124,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:08Z",
+  "seriesId": 63,
+  "episodeId": 3993,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3993,
+   "seasonNumber": 1,
+   "episodeNumber": 4,
+   "title": "Sacha and the Last Voyage"
+  }
+ },
+ {
+  "id": 3125,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:11Z",
+  "seriesId": 63,
+  "episodeId": 3994,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3994,
+   "seasonNumber": 1,
+   "episodeNumber": 5,
+   "title": "Mara's Citadel"
+  }
+ },
+ {
+  "id": 3126,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:14Z",
+  "seriesId": 63,
+  "episodeId": 3995,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3995,
+   "seasonNumber": 1,
+   "episodeNumber": 6,
+   "title": "Brightwater: Amber Bridge"
+  }
+ },
+ {
+  "id": 3127,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:17Z",
+  "seriesId": 63,
+  "episodeId": 3996,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3996,
+   "seasonNumber": 1,
+   "episodeNumber": 7,
+   "title": "Jonah's Ember"
+  }
+ },
+ {
+  "id": 3128,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:20Z",
+  "seriesId": 63,
+  "episodeId": 3997,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3997,
+   "seasonNumber": 1,
+   "episodeNumber": 8,
+   "title": "Pale Garden"
+  }
+ },
+ {
+  "id": 3129,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:23Z",
+  "seriesId": 63,
+  "episodeId": 3998,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3998,
+   "seasonNumber": 1,
+   "episodeNumber": 9,
+   "title": "Crimson Frontier"
+  }
+ },
+ {
+  "id": 3130,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:27Z",
+  "seriesId": 63,
+  "episodeId": 3999,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 3999,
+   "seasonNumber": 1,
+   "episodeNumber": 10,
+   "title": "Sacha and the Lost Ember"
+  }
+ },
+ {
+  "id": 3131,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:29Z",
+  "seriesId": 63,
+  "episodeId": 4000,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4000,
+   "seasonNumber": 1,
+   "episodeNumber": 11,
+   "title": "Stonebridge: Golden Horizon"
+  }
+ },
+ {
+  "id": 3132,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:32Z",
+  "seriesId": 63,
+  "episodeId": 4001,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4001,
+   "seasonNumber": 1,
+   "episodeNumber": 12,
+   "title": "Station of Kestrel"
+  }
+ },
+ {
+  "id": 3133,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:35Z",
+  "seriesId": 63,
+  "episodeId": 4002,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4002,
+   "seasonNumber": 1,
+   "episodeNumber": 13,
+   "title": "Ezra and the Restless Machine"
+  }
+ },
+ {
+  "id": 3134,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:38Z",
+  "seriesId": 63,
+  "episodeId": 4003,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4003,
+   "seasonNumber": 1,
+   "episodeNumber": 14,
+   "title": "The Painted Ocean"
+  }
+ },
+ {
+  "id": 3135,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:40Z",
+  "seriesId": 63,
+  "episodeId": 4004,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4004,
+   "seasonNumber": 1,
+   "episodeNumber": 15,
+   "title": "Garden of Calder"
+  }
+ },
+ {
+  "id": 3136,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:43Z",
+  "seriesId": 63,
+  "episodeId": 4005,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4005,
+   "seasonNumber": 1,
+   "episodeNumber": 16,
+   "title": "The Burning Lighthouse"
+  }
+ },
+ {
+  "id": 3137,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:45Z",
+  "seriesId": 63,
+  "episodeId": 4006,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4006,
+   "seasonNumber": 1,
+   "episodeNumber": 17,
+   "title": "The Endless Ember"
+  }
+ },
+ {
+  "id": 3138,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:48Z",
+  "seriesId": 63,
+  "episodeId": 4007,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4007,
+   "seasonNumber": 1,
+   "episodeNumber": 18,
+   "title": "Stonebridge: Lost Archive"
+  }
+ },
+ {
+  "id": 3139,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:52Z",
+  "seriesId": 63,
+  "episodeId": 4008,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4008,
+   "seasonNumber": 1,
+   "episodeNumber": 19,
+   "title": "Maud's Valley"
+  }
+ },
+ {
+  "id": 3140,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:55Z",
+  "seriesId": 63,
+  "episodeId": 4009,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4009,
+   "seasonNumber": 1,
+   "episodeNumber": 20,
+   "title": "Camille and the Sunken Summit"
+  }
+ },
+ {
+  "id": 3141,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:51:59Z",
+  "seriesId": 63,
+  "episodeId": 4010,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4010,
+   "seasonNumber": 1,
+   "episodeNumber": 21,
+   "title": "Open Ledger"
+  }
+ },
+ {
+  "id": 3142,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:52:02Z",
+  "seriesId": 63,
+  "episodeId": 4011,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4011,
+   "seasonNumber": 1,
+   "episodeNumber": 22,
+   "title": "Kingdom of Zephyr Point"
+  }
+ },
+ {
+  "id": 3143,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:52:08Z",
+  "seriesId": 63,
+  "episodeId": 4012,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4012,
+   "seasonNumber": 1,
+   "episodeNumber": 23,
+   "title": "Glass Winter"
+  }
+ },
+ {
+  "id": 3144,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T13:52:11Z",
+  "seriesId": 63,
+  "episodeId": 4013,
+  "quality": {
+   "quality": {
+    "id": 3,
+    "name": "WEBDL-1080p"
+   }
+  },
+  "series": {
+   "id": 63,
+   "title": "Tower of Yarrow II",
+   "year": 2009
+  },
+  "episode": {
+   "id": 4013,
+   "seasonNumber": 1,
+   "episodeNumber": 24,
+   "title": "Ironvale: Copper Meridian"
+  }
+ },
+ {
+  "id": 3165,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:05:05Z",
+  "seriesId": 65,
+  "episodeId": 4252,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4252,
+   "seasonNumber": 1,
+   "episodeNumber": 1,
+   "title": "Dunmore: Quiet Atlas"
+  }
+ },
+ {
+  "id": 3166,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:05:17Z",
+  "seriesId": 65,
+  "episodeId": 4253,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4253,
+   "seasonNumber": 1,
+   "episodeNumber": 2,
+   "title": "River of Calder"
+  }
+ },
+ {
+  "id": 3167,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:05:23Z",
+  "seriesId": 65,
+  "episodeId": 4254,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4254,
+   "seasonNumber": 1,
+   "episodeNumber": 3,
+   "title": "Maud's Signal"
+  }
+ },
+ {
+  "id": 3168,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:05:32Z",
+  "seriesId": 65,
+  "episodeId": 4255,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4255,
+   "seasonNumber": 1,
+   "episodeNumber": 4,
+   "title": "Rafael's Lighthouse"
+  }
+ },
+ {
+  "id": 3169,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:05:39Z",
+  "seriesId": 65,
+  "episodeId": 4256,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4256,
+   "seasonNumber": 1,
+   "episodeNumber": 5,
+   "title": "Oskar's Harvest"
+  }
+ },
+ {
+  "id": 3170,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:05:52Z",
+  "seriesId": 65,
+  "episodeId": 4257,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4257,
+   "seasonNumber": 1,
+   "episodeNumber": 6,
+   "title": "Zephyr Point: Silent Harbor"
+  }
+ },
+ {
+  "id": 3171,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:06:00Z",
+  "seriesId": 65,
+  "episodeId": 4258,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4258,
+   "seasonNumber": 1,
+   "episodeNumber": 7,
+   "title": "Lou's Station"
+  }
+ },
+ {
+  "id": 3172,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:06:12Z",
+  "seriesId": 65,
+  "episodeId": 4259,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4259,
+   "seasonNumber": 1,
+   "episodeNumber": 8,
+   "title": "Ember of Elmstead"
+  }
+ },
+ {
+  "id": 3173,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:06:21Z",
+  "seriesId": 65,
+  "episodeId": 4260,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4260,
+   "seasonNumber": 1,
+   "episodeNumber": 9,
+   "title": "The Sleeping Ocean"
+  }
+ },
+ {
+  "id": 3174,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-03T19:06:32Z",
+  "seriesId": 65,
+  "episodeId": 4261,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 65,
+   "title": "Lou's Station",
+   "year": 2023
+  },
+  "episode": {
+   "id": 4261,
+   "seasonNumber": 1,
+   "episodeNumber": 10,
+   "title": "Garden of Marlow"
+  }
+ },
+ {
+  "id": 3175,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:05Z",
+  "seriesId": 67,
+  "episodeId": 4270,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4270,
+   "seasonNumber": 1,
+   "episodeNumber": 1,
+   "title": "Harbor of Juniper"
+  }
+ },
+ {
+  "id": 3176,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:09Z",
+  "seriesId": 67,
+  "episodeId": 4271,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4271,
+   "seasonNumber": 1,
+   "episodeNumber": 2,
+   "title": "Maud's Lantern"
+  }
+ },
+ {
+  "id": 3177,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:13Z",
+  "seriesId": 67,
+  "episodeId": 4272,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4272,
+   "seasonNumber": 1,
+   "episodeNumber": 3,
+   "title": "The Copper Bridge"
+  }
+ },
+ {
+  "id": 3178,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:17Z",
+  "seriesId": 67,
+  "episodeId": 4273,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4273,
+   "seasonNumber": 1,
+   "episodeNumber": 4,
+   "title": "Sacha and the Copper Station"
+  }
+ },
+ {
+  "id": 3179,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:20Z",
+  "seriesId": 67,
+  "episodeId": 4274,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4274,
+   "seasonNumber": 1,
+   "episodeNumber": 5,
+   "title": "Velvet Satellite"
+  }
+ },
+ {
+  "id": 3180,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:24Z",
+  "seriesId": 67,
+  "episodeId": 4275,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4275,
+   "seasonNumber": 1,
+   "episodeNumber": 6,
+   "title": "Inès and the Electric Orchard"
+  }
+ },
+ {
+  "id": 3181,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:27Z",
+  "seriesId": 67,
+  "episodeId": 4276,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4276,
+   "seasonNumber": 1,
+   "episodeNumber": 7,
+   "title": "Shifting Paradox II"
+  }
+ },
+ {
+  "id": 3182,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:30Z",
+  "seriesId": 67,
+  "episodeId": 4277,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4277,
+   "seasonNumber": 1,
+   "episodeNumber": 8,
+   "title": "Quillon: Borrowed Station"
+  }
+ },
+ {
+  "id": 3183,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:33Z",
+  "seriesId": 67,
+  "episodeId": 4278,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4278,
+   "seasonNumber": 1,
+   "episodeNumber": 9,
+   "title": "Léa's Lantern"
+  }
+ },
+ {
+  "id": 3184,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:37Z",
+  "seriesId": 67,
+  "episodeId": 4279,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4279,
+   "seasonNumber": 1,
+   "episodeNumber": 10,
+   "title": "The Wandering Orchard II"
+  }
+ },
+ {
+  "id": 3185,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:40Z",
+  "seriesId": 67,
+  "episodeId": 4280,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4280,
+   "seasonNumber": 1,
+   "episodeNumber": 11,
+   "title": "Harbor of Brightwater"
+  }
+ },
+ {
+  "id": 3186,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:44Z",
+  "seriesId": 67,
+  "episodeId": 4281,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4281,
+   "seasonNumber": 1,
+   "episodeNumber": 12,
+   "title": "Léa's Lighthouse"
+  }
+ },
+ {
+  "id": 3187,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:47Z",
+  "seriesId": 67,
+  "episodeId": 4282,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4282,
+   "seasonNumber": 1,
+   "episodeNumber": 13,
+   "title": "Kestrel: Distant Voyage"
+  }
+ },
+ {
+  "id": 3188,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:50Z",
+  "seriesId": 67,
+  "episodeId": 4283,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4283,
+   "seasonNumber": 1,
+   "episodeNumber": 14,
+   "title": "Sacha's Bridge"
+  }
+ },
+ {
+  "id": 3189,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:53Z",
+  "seriesId": 67,
+  "episodeId": 4284,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4284,
+   "seasonNumber": 1,
+   "episodeNumber": 15,
+   "title": "Nadia's Island"
+  }
+ },
+ {
+  "id": 3190,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:56:57Z",
+  "seriesId": 67,
+  "episodeId": 4285,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4285,
+   "seasonNumber": 1,
+   "episodeNumber": 16,
+   "title": "Horizon of Juniper"
+  }
+ },
+ {
+  "id": 3191,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:00Z",
+  "seriesId": 67,
+  "episodeId": 4286,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4286,
+   "seasonNumber": 1,
+   "episodeNumber": 17,
+   "title": "Jonah's Voyage III"
+  }
+ },
+ {
+  "id": 3192,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:04Z",
+  "seriesId": 67,
+  "episodeId": 4287,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4287,
+   "seasonNumber": 1,
+   "episodeNumber": 18,
+   "title": "The Sunken Ember"
+  }
+ },
+ {
+  "id": 3193,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:07Z",
+  "seriesId": 67,
+  "episodeId": 4288,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4288,
+   "seasonNumber": 1,
+   "episodeNumber": 19,
+   "title": "Yarrow: Falling Atlas"
+  }
+ },
+ {
+  "id": 3194,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:10Z",
+  "seriesId": 67,
+  "episodeId": 4289,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4289,
+   "seasonNumber": 1,
+   "episodeNumber": 20,
+   "title": "Lou and the Copper Ocean"
+  }
+ },
+ {
+  "id": 3195,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:14Z",
+  "seriesId": 67,
+  "episodeId": 4290,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4290,
+   "seasonNumber": 1,
+   "episodeNumber": 21,
+   "title": "Larkspur: Bright Frontier"
+  }
+ },
+ {
+  "id": 3196,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:17Z",
+  "seriesId": 67,
+  "episodeId": 4291,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4291,
+   "seasonNumber": 1,
+   "episodeNumber": 22,
+   "title": "Elmstead: Frozen Garden"
+  }
+ },
+ {
+  "id": 3197,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:21Z",
+  "seriesId": 67,
+  "episodeId": 4292,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4292,
+   "seasonNumber": 1,
+   "episodeNumber": 23,
+   "title": "Maud and the Restless Winter"
+  }
+ },
+ {
+  "id": 3198,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:27Z",
+  "seriesId": 67,
+  "episodeId": 4293,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4293,
+   "seasonNumber": 1,
+   "episodeNumber": 24,
+   "title": "Bright Comet"
+  }
+ },
+ {
+  "id": 3199,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T10:57:30Z",
+  "seriesId": 67,
+  "episodeId": 4294,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4294,
+   "seasonNumber": 1,
+   "episodeNumber": 25,
+   "title": "Léa's Signal II"
+  }
+ },
+ {
+  "id": 3207,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T20:50:43Z",
+  "seriesId": 68,
+  "episodeId": 4395,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 68,
+   "title": "Shifting Meridian",
+   "year": 2024
+  },
+  "episode": {
+   "id": 4395,
+   "seasonNumber": 1,
+   "episodeNumber": 1,
+   "title": "Oskar and the Lost Island"
+  }
+ },
+ {
+  "id": 3208,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T20:50:48Z",
+  "seriesId": 68,
+  "episodeId": 4396,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 68,
+   "title": "Shifting Meridian",
+   "year": 2024
+  },
+  "episode": {
+   "id": 4396,
+   "seasonNumber": 1,
+   "episodeNumber": 2,
+   "title": "The Wild Paradox"
+  }
+ },
+ {
+  "id": 3209,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T20:50:57Z",
+  "seriesId": 68,
+  "episodeId": 4397,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 68,
+   "title": "Shifting Meridian",
+   "year": 2024
+  },
+  "episode": {
+   "id": 4397,
+   "seasonNumber": 1,
+   "episodeNumber": 3,
+   "title": "Horizon of Glenrock"
+  }
+ },
+ {
+  "id": 3210,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T20:51:05Z",
+  "seriesId": 68,
+  "episodeId": 4398,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 68,
+   "title": "Shifting Meridian",
+   "year": 2024
+  },
+  "episode": {
+   "id": 4398,
+   "seasonNumber": 1,
+   "episodeNumber": 4,
+   "title": "Tower of Kestrel"
+  }
+ },
+ {
+  "id": 3211,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T20:51:10Z",
+  "seriesId": 68,
+  "episodeId": 4399,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 68,
+   "title": "Shifting Meridian",
+   "year": 2024
+  },
+  "episode": {
+   "id": 4399,
+   "seasonNumber": 1,
+   "episodeNumber": 5,
+   "title": "Summit of Dunmore II"
+  }
+ },
+ {
+  "id": 3212,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T20:51:17Z",
+  "seriesId": 68,
+  "episodeId": 4400,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 68,
+   "title": "Shifting Meridian",
+   "year": 2024
+  },
+  "episode": {
+   "id": 4400,
+   "seasonNumber": 1,
+   "episodeNumber": 6,
+   "title": "Secret Harbor"
+  }
+ },
+ {
+  "id": 3213,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T20:51:23Z",
+  "seriesId": 68,
+  "episodeId": 4401,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p"
+   }
+  },
+  "series": {
+   "id": 68,
+   "title": "Shifting Meridian",
+   "year": 2024
+  },
+  "episode": {
+   "id": 4401,
+   "seasonNumber": 1,
+   "episodeNumber": 7,
+   "title": "Voyage of Marlow"
+  }
+ },
+ {
+  "id": 3285,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:34:21Z",
+  "seriesId": 67,
+  "episodeId": 4320,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4320,
+   "seasonNumber": 3,
+   "episodeNumber": 1,
+   "title": "Mara and the Frozen Atlas"
+  }
+ },
+ {
+  "id": 3286,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:34:27Z",
+  "seriesId": 67,
+  "episodeId": 4321,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4321,
+   "seasonNumber": 3,
+   "episodeNumber": 2,
+   "title": "Lighthouse of Thornfield"
+  }
+ },
+ {
+  "id": 3287,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:34:36Z",
+  "seriesId": 67,
+  "episodeId": 4322,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4322,
+   "seasonNumber": 3,
+   "episodeNumber": 3,
+   "title": "Burning Station"
+  }
+ },
+ {
+  "id": 3288,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:34:40Z",
+  "seriesId": 67,
+  "episodeId": 4323,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4323,
+   "seasonNumber": 3,
+   "episodeNumber": 4,
+   "title": "Elias's Signal"
+  }
+ },
+ {
+  "id": 3289,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:34:48Z",
+  "seriesId": 67,
+  "episodeId": 4324,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4324,
+   "seasonNumber": 3,
+   "episodeNumber": 5,
+   "title": "Voyage of Dunmore"
+  }
+ },
+ {
+  "id": 3290,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:34:54Z",
+  "seriesId": 67,
+  "episodeId": 4325,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4325,
+   "seasonNumber": 3,
+   "episodeNumber": 6,
+   "title": "The Midnight Garden"
+  }
+ },
+ {
+  "id": 3291,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:00Z",
+  "seriesId": 67,
+  "episodeId": 4326,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4326,
+   "seasonNumber": 3,
+   "episodeNumber": 7,
+   "title": "The Copper Citadel"
+  }
+ },
+ {
+  "id": 3292,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:06Z",
+  "seriesId": 67,
+  "episodeId": 4327,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4327,
+   "seasonNumber": 3,
+   "episodeNumber": 8,
+   "title": "Oskar's Ledger III"
+  }
+ },
+ {
+  "id": 3293,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:15Z",
+  "seriesId": 67,
+  "episodeId": 4328,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4328,
+   "seasonNumber": 3,
+   "episodeNumber": 9,
+   "title": "Quarry of Yarrow"
+  }
+ },
+ {
+  "id": 3294,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:19Z",
+  "seriesId": 67,
+  "episodeId": 4329,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4329,
+   "seasonNumber": 3,
+   "episodeNumber": 10,
+   "title": "Rafael and the Crimson Ocean"
+  }
+ },
+ {
+  "id": 3295,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:27Z",
+  "seriesId": 67,
+  "episodeId": 4330,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4330,
+   "seasonNumber": 3,
+   "episodeNumber": 11,
+   "title": "The Borrowed Ledger"
+  }
+ },
+ {
+  "id": 3296,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:32Z",
+  "seriesId": 67,
+  "episodeId": 4331,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4331,
+   "seasonNumber": 3,
+   "episodeNumber": 12,
+   "title": "Nadia's Archive"
+  }
+ },
+ {
+  "id": 3297,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:39Z",
+  "seriesId": 67,
+  "episodeId": 4332,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4332,
+   "seasonNumber": 3,
+   "episodeNumber": 13,
+   "title": "The Midnight Horizon"
+  }
+ },
+ {
+  "id": 3298,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:45Z",
+  "seriesId": 67,
+  "episodeId": 4333,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4333,
+   "seasonNumber": 3,
+   "episodeNumber": 14,
+   "title": "Open Canyon"
+  }
+ },
+ {
+  "id": 3299,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:53Z",
+  "seriesId": 67,
+  "episodeId": 4334,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4334,
+   "seasonNumber": 3,
+   "episodeNumber": 15,
+   "title": "Yuki and the Golden Signal"
+  }
+ },
+ {
+  "id": 3300,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:35:58Z",
+  "seriesId": 67,
+  "episodeId": 4335,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4335,
+   "seasonNumber": 3,
+   "episodeNumber": 16,
+   "title": "Camille and the Northern Citadel"
+  }
+ },
+ {
+  "id": 3301,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:36:05Z",
+  "seriesId": 67,
+  "episodeId": 4336,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4336,
+   "seasonNumber": 3,
+   "episodeNumber": 17,
+   "title": "Umber: Sunken Canyon"
+  }
+ },
+ {
+  "id": 3302,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:36:10Z",
+  "seriesId": 67,
+  "episodeId": 4337,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4337,
+   "seasonNumber": 3,
+   "episodeNumber": 18,
+   "title": "The Frozen Orchard"
+  }
+ },
+ {
+  "id": 3303,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:36:17Z",
+  "seriesId": 67,
+  "episodeId": 4338,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4338,
+   "seasonNumber": 3,
+   "episodeNumber": 19,
+   "title": "Nadia's Tide II"
+  }
+ },
+ {
+  "id": 3304,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:36:22Z",
+  "seriesId": 67,
+  "episodeId": 4339,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4339,
+   "seasonNumber": 3,
+   "episodeNumber": 20,
+   "title": "Crimson Orchard"
+  }
+ },
+ {
+  "id": 3305,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:36:27Z",
+  "seriesId": 67,
+  "episodeId": 4340,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4340,
+   "seasonNumber": 3,
+   "episodeNumber": 21,
+   "title": "Rafael's Ocean II"
+  }
+ },
+ {
+  "id": 3306,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:36:33Z",
+  "seriesId": 67,
+  "episodeId": 4341,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4341,
+   "seasonNumber": 3,
+   "episodeNumber": 22,
+   "title": "The Glass Pilot"
+  }
+ },
+ {
+  "id": 3307,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:36:40Z",
+  "seriesId": 67,
+  "episodeId": 4342,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4342,
+   "seasonNumber": 3,
+   "episodeNumber": 23,
+   "title": "Mara's Mirror"
+  }
+ },
+ {
+  "id": 3308,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:36:46Z",
+  "seriesId": 67,
+  "episodeId": 4343,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4343,
+   "seasonNumber": 3,
+   "episodeNumber": 24,
+   "title": "Ironvale: Hidden Lighthouse"
+  }
+ },
+ {
+  "id": 3309,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:42:45Z",
+  "seriesId": 67,
+  "episodeId": 4344,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4344,
+   "seasonNumber": 4,
+   "episodeNumber": 1,
+   "title": "Mara and the Crimson Canyon"
+  }
+ },
+ {
+  "id": 3310,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:42:50Z",
+  "seriesId": 67,
+  "episodeId": 4345,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4345,
+   "seasonNumber": 4,
+   "episodeNumber": 2,
+   "title": "Ezra and the Silent Station"
+  }
+ },
+ {
+  "id": 3311,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:42:54Z",
+  "seriesId": 67,
+  "episodeId": 4346,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4346,
+   "seasonNumber": 4,
+   "episodeNumber": 3,
+   "title": "Mirror of Fairhaven"
+  }
+ },
+ {
+  "id": 3312,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:42:58Z",
+  "seriesId": 67,
+  "episodeId": 4347,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4347,
+   "seasonNumber": 4,
+   "episodeNumber": 4,
+   "title": "Copper Pilot"
+  }
+ },
+ {
+  "id": 3313,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:02Z",
+  "seriesId": 67,
+  "episodeId": 4348,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4348,
+   "seasonNumber": 4,
+   "episodeNumber": 5,
+   "title": "Rafael's Atlas II"
+  }
+ },
+ {
+  "id": 3314,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:07Z",
+  "seriesId": 67,
+  "episodeId": 4349,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4349,
+   "seasonNumber": 4,
+   "episodeNumber": 6,
+   "title": "The Amber Orchard"
+  }
+ },
+ {
+  "id": 3315,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:11Z",
+  "seriesId": 67,
+  "episodeId": 4350,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4350,
+   "seasonNumber": 4,
+   "episodeNumber": 7,
+   "title": "Quiet Valley"
+  }
+ },
+ {
+  "id": 3316,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:15Z",
+  "seriesId": 67,
+  "episodeId": 4351,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4351,
+   "seasonNumber": 4,
+   "episodeNumber": 8,
+   "title": "Mara and the Crimson Circuit"
+  }
+ },
+ {
+  "id": 3317,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:22Z",
+  "seriesId": 67,
+  "episodeId": 4352,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4352,
+   "seasonNumber": 4,
+   "episodeNumber": 9,
+   "title": "Ironvale: Second Voyage"
+  }
+ },
+ {
+  "id": 3318,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:28Z",
+  "seriesId": 67,
+  "episodeId": 4353,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4353,
+   "seasonNumber": 4,
+   "episodeNumber": 10,
+   "title": "Iris and the Salt Mirror"
+  }
+ },
+ {
+  "id": 3319,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:32Z",
+  "seriesId": 67,
+  "episodeId": 4354,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4354,
+   "seasonNumber": 4,
+   "episodeNumber": 11,
+   "title": "Léa and the Frozen Lighthouse"
+  }
+ },
+ {
+  "id": 3320,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:39Z",
+  "seriesId": 67,
+  "episodeId": 4355,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4355,
+   "seasonNumber": 4,
+   "episodeNumber": 12,
+   "title": "The Endless Satellite"
+  }
+ },
+ {
+  "id": 3321,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:44Z",
+  "seriesId": 67,
+  "episodeId": 4356,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4356,
+   "seasonNumber": 4,
+   "episodeNumber": 13,
+   "title": "Elias and the Midnight Harbor"
+  }
+ },
+ {
+  "id": 3322,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:52Z",
+  "seriesId": 67,
+  "episodeId": 4357,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4357,
+   "seasonNumber": 4,
+   "episodeNumber": 14,
+   "title": "Elias and the Northern Winter"
+  }
+ },
+ {
+  "id": 3323,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:43:55Z",
+  "seriesId": 67,
+  "episodeId": 4358,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4358,
+   "seasonNumber": 4,
+   "episodeNumber": 15,
+   "title": "Canyon of Oakridge"
+  }
+ },
+ {
+  "id": 3324,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:44:01Z",
+  "seriesId": 67,
+  "episodeId": 4359,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4359,
+   "seasonNumber": 4,
+   "episodeNumber": 16,
+   "title": "Lost Harbor"
+  }
+ },
+ {
+  "id": 3325,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:44:05Z",
+  "seriesId": 67,
+  "episodeId": 4360,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4360,
+   "seasonNumber": 4,
+   "episodeNumber": 17,
+   "title": "Calder: Frozen Satellite"
+  }
+ },
+ {
+  "id": 3326,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:44:12Z",
+  "seriesId": 67,
+  "episodeId": 4361,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4361,
+   "seasonNumber": 4,
+   "episodeNumber": 18,
+   "title": "Mara and the Pale Ember"
+  }
+ },
+ {
+  "id": 3327,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:44:18Z",
+  "seriesId": 67,
+  "episodeId": 4362,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4362,
+   "seasonNumber": 4,
+   "episodeNumber": 19,
+   "title": "Hollis: Lost Orchard"
+  }
+ },
+ {
+  "id": 3328,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:44:22Z",
+  "seriesId": 67,
+  "episodeId": 4363,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4363,
+   "seasonNumber": 4,
+   "episodeNumber": 20,
+   "title": "Lighthouse of Larkspur"
+  }
+ },
+ {
+  "id": 3329,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:44:29Z",
+  "seriesId": 67,
+  "episodeId": 4364,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4364,
+   "seasonNumber": 4,
+   "episodeNumber": 21,
+   "title": "Stonebridge: Restless Harvest"
+  }
+ },
+ {
+  "id": 3330,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:44:33Z",
+  "seriesId": 67,
+  "episodeId": 4365,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4365,
+   "seasonNumber": 4,
+   "episodeNumber": 22,
+   "title": "The Open Frontier"
+  }
+ },
+ {
+  "id": 3331,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:44:38Z",
+  "seriesId": 67,
+  "episodeId": 4366,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4366,
+   "seasonNumber": 4,
+   "episodeNumber": 23,
+   "title": "Hidden Archive"
+  }
+ },
+ {
+  "id": 3332,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:47:45Z",
+  "seriesId": 67,
+  "episodeId": 4295,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4295,
+   "seasonNumber": 2,
+   "episodeNumber": 1,
+   "title": "Northgate: Frozen Signal"
+  }
+ },
+ {
+  "id": 3333,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:47:48Z",
+  "seriesId": 67,
+  "episodeId": 4296,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4296,
+   "seasonNumber": 2,
+   "episodeNumber": 2,
+   "title": "Glenrock: Pale Orchard"
+  }
+ },
+ {
+  "id": 3334,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:47:52Z",
+  "seriesId": 67,
+  "episodeId": 4297,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4297,
+   "seasonNumber": 2,
+   "episodeNumber": 3,
+   "title": "Umber: Sunken River"
+  }
+ },
+ {
+  "id": 3335,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:47:55Z",
+  "seriesId": 67,
+  "episodeId": 4298,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4298,
+   "seasonNumber": 2,
+   "episodeNumber": 4,
+   "title": "Oskar and the Midnight River"
+  }
+ },
+ {
+  "id": 3336,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:48:01Z",
+  "seriesId": 67,
+  "episodeId": 4299,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4299,
+   "seasonNumber": 2,
+   "episodeNumber": 5,
+   "title": "The Bright Archive"
+  }
+ },
+ {
+  "id": 3337,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:48:11Z",
+  "seriesId": 67,
+  "episodeId": 4300,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4300,
+   "seasonNumber": 2,
+   "episodeNumber": 6,
+   "title": "Camille's Canyon"
+  }
+ },
+ {
+  "id": 3338,
+  "eventType": "downloadFolderImported",
+  "date": "2026-10-07T22:48:21Z",
+  "seriesId": 67,
+  "episodeId": 4301,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p"
+   }
+  },
+  "series": {
+   "id": 67,
+   "title": "Caminandes",
+   "year": 2012
+  },
+  "episode": {
+   "id": 4301,
+   "seasonNumber": 2,
+   "episodeNumber": 7,
+   "title": "Jonah's Bridge II"
+  }
+ }
+]

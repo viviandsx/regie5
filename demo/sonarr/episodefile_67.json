@@ -1,0 +1,41 @@
+[
+ {
+  "id": 1598,
+  "seriesId": 67,
+  "seasonNumber": 1,
+  "size": 400000000,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1599,
+  "seriesId": 67,
+  "seasonNumber": 1,
+  "size": 400000000,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1600,
+  "seriesId": 67,
+  "seasonNumber": 1,
+  "size": 400000000,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ }
+]

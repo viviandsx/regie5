@@ -1,0 +1,333 @@
+{
+ "page": 1,
+ "pageSize": 50,
+ "sortKey": "timeleft",
+ "sortDirection": "ascending",
+ "totalRecords": 3,
+ "records": [
+  {
+   "id": 9000,
+   "seriesId": 66,
+   "episodeId": 4262,
+   "seasonNumber": 1,
+   "series": {
+    "title": "Yuki's Lighthouse II",
+    "sortTitle": "yuki's lighthouse ii",
+    "status": "upcoming",
+    "ended": false,
+    "overview": "Rafael comes face to face with a forgotten map in a single night.",
+    "network": "Channel Nine North",
+    "airTime": "05:00",
+    "images": [
+     {
+      "coverType": "banner"
+     },
+     {
+      "coverType": "poster"
+     },
+     {
+      "coverType": "fanart"
+     },
+     {
+      "coverType": "clearlogo"
+     }
+    ],
+    "originalLanguage": {
+     "id": 1,
+     "name": "English"
+    },
+    "seasons": [
+     {
+      "seasonNumber": 1,
+      "monitored": true
+     }
+    ],
+    "year": 2026,
+    "qualityProfileId": 4,
+    "seasonFolder": true,
+    "monitored": true,
+    "monitorNewItems": "all",
+    "useSceneNumbering": false,
+    "runtime": 50,
+    "tvdbId": 9603413,
+    "tvRageId": 0,
+    "tvMazeId": 9255395,
+    "tmdbId": 9364504,
+    "firstAired": "2026-10-15T00:00:00Z",
+    "lastAired": "2026-10-15T00:00:00Z",
+    "seriesType": "standard",
+    "cleanTitle": "yukislighthouseii",
+    "imdbId": "tt90273810",
+    "titleSlug": "yuki-s-lighthouse-ii",
+    "genres": [
+     "Drama"
+    ],
+    "tags": [],
+    "added": "2026-10-03T22:13:55Z",
+    "ratings": {
+     "votes": 237,
+     "value": 7.8
+    },
+    "languageProfileId": 1,
+    "id": 66
+   },
+   "episode": {
+    "seriesId": 66,
+    "tvdbId": 9419857,
+    "episodeFileId": 0,
+    "seasonNumber": 1,
+    "episodeNumber": 1,
+    "title": "Machine of Calder",
+    "airDate": "2026-10-15",
+    "airDateUtc": "2026-10-15T09:00:00Z",
+    "lastSearchTime": "2026-10-03T22:14:39Z",
+    "runtime": 0,
+    "overview": "Sacha goes looking for a signal from far away against all odds.",
+    "hasFile": false,
+    "monitored": true,
+    "unverifiedSceneNumbering": false,
+    "id": 4262
+   },
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "source": "web",
+     "resolution": 1080
+    },
+    "revision": {
+     "version": 1,
+     "real": 0,
+     "isRepack": false
+    }
+   },
+   "size": 2400000000.0,
+   "sizeleft": 912000000.0,
+   "estimatedCompletionTime": "2026-10-11T12:07:45Z",
+   "timeleft": "00:21:00",
+   "added": "2026-10-11T10:46:45Z",
+   "status": "downloading",
+   "trackedDownloadStatus": "ok",
+   "trackedDownloadState": "downloading",
+   "protocol": "usenet",
+   "episodeHasFile": false,
+   "_regie5_synthetic": true
+  },
+  {
+   "id": 9001,
+   "seriesId": 66,
+   "episodeId": 4263,
+   "seasonNumber": 1,
+   "series": {
+    "title": "Yuki's Lighthouse II",
+    "sortTitle": "yuki's lighthouse ii",
+    "status": "upcoming",
+    "ended": false,
+    "overview": "Rafael comes face to face with a forgotten map in a single night.",
+    "network": "Channel Nine North",
+    "airTime": "05:00",
+    "images": [
+     {
+      "coverType": "banner"
+     },
+     {
+      "coverType": "poster"
+     },
+     {
+      "coverType": "fanart"
+     },
+     {
+      "coverType": "clearlogo"
+     }
+    ],
+    "originalLanguage": {
+     "id": 1,
+     "name": "English"
+    },
+    "seasons": [
+     {
+      "seasonNumber": 1,
+      "monitored": true
+     }
+    ],
+    "year": 2026,
+    "qualityProfileId": 4,
+    "seasonFolder": true,
+    "monitored": true,
+    "monitorNewItems": "all",
+    "useSceneNumbering": false,
+    "runtime": 50,
+    "tvdbId": 9603413,
+    "tvRageId": 0,
+    "tvMazeId": 9255395,
+    "tmdbId": 9364504,
+    "firstAired": "2026-10-15T00:00:00Z",
+    "lastAired": "2026-10-15T00:00:00Z",
+    "seriesType": "standard",
+    "cleanTitle": "yukislighthouseii",
+    "imdbId": "tt90273810",
+    "titleSlug": "yuki-s-lighthouse-ii",
+    "genres": [
+     "Drama"
+    ],
+    "tags": [],
+    "added": "2026-10-03T22:13:55Z",
+    "ratings": {
+     "votes": 237,
+     "value": 7.8
+    },
+    "languageProfileId": 1,
+    "id": 66
+   },
+   "episode": {
+    "seriesId": 66,
+    "tvdbId": 9650153,
+    "episodeFileId": 0,
+    "seasonNumber": 1,
+    "episodeNumber": 2,
+    "title": "Dunmore: Secret Paradox",
+    "airDate": "2026-10-15",
+    "airDateUtc": "2026-10-15T09:00:00Z",
+    "lastSearchTime": "2026-10-03T22:14:39Z",
+    "runtime": 0,
+    "overview": "Theo discovers the last night train against all odds.",
+    "hasFile": false,
+    "monitored": true,
+    "unverifiedSceneNumbering": false,
+    "id": 4263
+   },
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "source": "web",
+     "resolution": 1080
+    },
+    "revision": {
+     "version": 1,
+     "real": 0,
+     "isRepack": false
+    }
+   },
+   "size": 2400000000.0,
+   "sizeleft": 2400000000.0,
+   "estimatedCompletionTime": null,
+   "timeleft": null,
+   "added": "2026-10-11T10:46:45Z",
+   "status": "queued",
+   "trackedDownloadStatus": "ok",
+   "trackedDownloadState": "downloading",
+   "protocol": "usenet",
+   "episodeHasFile": false,
+   "_regie5_synthetic": true
+  },
+  {
+   "id": 9002,
+   "seriesId": 66,
+   "episodeId": 4264,
+   "seasonNumber": 1,
+   "series": {
+    "title": "Yuki's Lighthouse II",
+    "sortTitle": "yuki's lighthouse ii",
+    "status": "upcoming",
+    "ended": false,
+    "overview": "Rafael comes face to face with a forgotten map in a single night.",
+    "network": "Channel Nine North",
+    "airTime": "05:00",
+    "images": [
+     {
+      "coverType": "banner"
+     },
+     {
+      "coverType": "poster"
+     },
+     {
+      "coverType": "fanart"
+     },
+     {
+      "coverType": "clearlogo"
+     }
+    ],
+    "originalLanguage": {
+     "id": 1,
+     "name": "English"
+    },
+    "seasons": [
+     {
+      "seasonNumber": 1,
+      "monitored": true
+     }
+    ],
+    "year": 2026,
+    "qualityProfileId": 4,
+    "seasonFolder": true,
+    "monitored": true,
+    "monitorNewItems": "all",
+    "useSceneNumbering": false,
+    "runtime": 50,
+    "tvdbId": 9603413,
+    "tvRageId": 0,
+    "tvMazeId": 9255395,
+    "tmdbId": 9364504,
+    "firstAired": "2026-10-15T00:00:00Z",
+    "lastAired": "2026-10-15T00:00:00Z",
+    "seriesType": "standard",
+    "cleanTitle": "yukislighthouseii",
+    "imdbId": "tt90273810",
+    "titleSlug": "yuki-s-lighthouse-ii",
+    "genres": [
+     "Drama"
+    ],
+    "tags": [],
+    "added": "2026-10-03T22:13:55Z",
+    "ratings": {
+     "votes": 237,
+     "value": 7.8
+    },
+    "languageProfileId": 1,
+    "id": 66
+   },
+   "episode": {
+    "seriesId": 66,
+    "tvdbId": 9029114,
+    "episodeFileId": 0,
+    "seasonNumber": 1,
+    "episodeNumber": 3,
+    "title": "The Silent Lighthouse",
+    "airDate": "2026-10-15",
+    "airDateUtc": "2026-10-15T09:00:00Z",
+    "lastSearchTime": "2026-10-03T22:14:39Z",
+    "runtime": 0,
+    "overview": "Jonah goes looking for a ten-year-old promise at the end of the world.",
+    "hasFile": false,
+    "monitored": true,
+    "unverifiedSceneNumbering": false,
+    "id": 4264
+   },
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "source": "web",
+     "resolution": 1080
+    },
+    "revision": {
+     "version": 1,
+     "real": 0,
+     "isRepack": false
+    }
+   },
+   "size": 2400000000.0,
+   "sizeleft": 0.0,
+   "estimatedCompletionTime": null,
+   "timeleft": null,
+   "added": "2026-10-11T10:46:45Z",
+   "status": "warning",
+   "trackedDownloadStatus": "warning",
+   "trackedDownloadState": "importBlocked",
+   "protocol": "usenet",
+   "episodeHasFile": false,
+   "_regie5_synthetic": true
+  }
+ ]
+}

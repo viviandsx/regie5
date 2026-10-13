@@ -15,6 +15,7 @@ struct Options {
     std::string config_path;   /* --config; empty: the platform's default */
     std::string lang;          /* --lang fr|en; empty: the system's */
     bool mock = false;         /* --mock: data from fixtures/, no server */
+    bool demo = false;         /* --demo: --mock on demo/ (free films and pictures, for screenshots) */
     bool fullscreen = false;   /* --fullscreen (desktop) */
     int width = 1280, height = 720;   /* --size WxH (desktop window) */
     bool help = false, version = false;

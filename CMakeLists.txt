@@ -116,7 +116,8 @@ add_executable(regie5
 target_link_libraries(regie5 PRIVATE regie5_ui SDL2::SDL2 OpenGL::GL CURL::libcurl ${REGIE5_TLS_LIB})
 target_compile_definitions(regie5 PRIVATE
     REGIE5_SOURCE_ASSETS="${CMAKE_SOURCE_DIR}/assets"
-    REGIE5_SOURCE_FIXTURES="${CMAKE_SOURCE_DIR}/fixtures")
+    REGIE5_SOURCE_FIXTURES="${CMAKE_SOURCE_DIR}/fixtures"
+    REGIE5_SOURCE_DEMO="${CMAKE_SOURCE_DIR}/demo")
 target_compile_options(regie5 PRIVATE -Wall -Wextra -Wno-unused-parameter)
 
 # Unit tests: the parsers on fixtures/, no network.
@@ -134,6 +135,7 @@ add_executable(regie5_tests
 target_link_libraries(regie5_tests PRIVATE regie5_data ${REGIE5_TLS_LIB})
 target_compile_definitions(regie5_tests PRIVATE
     REGIE5_FIXTURES="${CMAKE_SOURCE_DIR}/fixtures"
+    REGIE5_DEMO="${CMAKE_SOURCE_DIR}/demo"
     REGIE5_SOURCE="${CMAKE_SOURCE_DIR}")
 target_compile_options(regie5_tests PRIVATE -Wall -Wextra -Wno-unused-parameter)
 add_test(NAME regie5_tests COMMAND regie5_tests)

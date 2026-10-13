@@ -1,0 +1,26 @@
+[
+ {
+  "path": "/mnt/disk1",
+  "label": "",
+  "freeSpace": 36692189184,
+  "totalSpace": 124313583616
+ },
+ {
+  "path": "/mnt/disk2",
+  "label": "",
+  "freeSpace": 36692189184,
+  "totalSpace": 124313583616
+ },
+ {
+  "path": "/mnt/disk3",
+  "label": "",
+  "freeSpace": 5589929066496,
+  "totalSpace": 7873637613568
+ },
+ {
+  "path": "/mnt/disk4",
+  "label": "",
+  "freeSpace": 5589929066496,
+  "totalSpace": 7873637613568
+ }
+]

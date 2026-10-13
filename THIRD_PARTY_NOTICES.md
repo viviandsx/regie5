@@ -22,6 +22,17 @@ GPL-3.0-or-later, under which the combined program is distributed.
 | [ps5-homebrew-ui](https://github.com/blackbearreloaded/ps5-homebrew-ui) - Copyright (C) 2026 BlackBearReloaded: the process heap and runtime shims (adapted: Régie5's log folder, a heap of 256, 192 or 128 MiB, reports of failed allocations), the EGL display bring-up and the DualSense reading (rewritten after it) | `src/platform/ps5/runtime/`, `src/platform/ps5/display_egl.*`, `src/platform/ps5/pad_ps5.*`, `src/platform/ps5/system_ps5.*` | GPL-3.0-or-later |
 | [ps5-homebrew-ui](https://github.com/blackbearreloaded/ps5-homebrew-ui) build tooling, from [ps5-native-app-boilerplate](https://github.com/blackbearreloaded/ps5-native-app-boilerplate) (compile, link, FSELF signing, packaging, and the clean-room `libc.prx` runtime shim shipped in `sce_module/`) - Copyright (C) 2026 BlackBearReloaded | fetched at a pinned commit by `scripts/build-ps5.sh`, not stored here | GPL-3.0-or-later |
 
+## Demo pictures (not part of the app)
+
+`demo/images/` holds posters and stills of the Blender Foundation's open movies, from
+Wikimedia Commons, used only by `regie5 --demo` for the README screenshots; they are not
+in the PS5 release. Big Buck Bunny, Elephants Dream, Sintel, Tears of Steel, Cosmos
+Laundromat, Spring, Coffee Run, Sprite Fright, Charge and Caminandes, © Blender Foundation |
+studio.blender.org, under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) or
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (one still under CC0), resized,
+and one cropped. The file-by-file list, with authors, licences and sources, is in
+[demo/CREDITS.md](demo/CREDITS.md).
+
 ## Fonts (bundled)
 
 | Font | Licence |

@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Regie5 — the README screenshots, in English, from the demo data (--demo:
+# the Blender Foundation's open films, see demo/CREDITS.md). No server is
+# contacted, no action is carried out.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+#   scripts/capture-readme.sh                  -> docs/images/*.jpg (1920x1080)
+#   OUT=/tmp/shots scripts/capture-readme.sh   elsewhere
+#
+# Needs ImageMagick (convert).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BUILD="${ROOT}/build/linux"
+OUT="${OUT:-${ROOT}/docs/images}"
+command -v convert >/dev/null || { echo "ImageMagick (convert) is needed" >&2; exit 2; }
+if [[ ! -f "${BUILD}/build.ninja" ]]; then
+    "${ROOT}/scripts/run-linux.sh" --version >/dev/null
+fi
+cmake --build "${BUILD}" >/dev/null
+mkdir -p "${OUT}"
+TMP="$(mktemp -d)"
+trap 'rm -rf "${TMP:?}"' EXIT
+
+# Home (focus on the recently added row), the Library (a series' page, the
+# films, the guide, the cleanup), the queue, the requests, Jellyfin and a
+# playback diagnosis, Settings.
+s="4 down 2.5 shot:${TMP}/home.ppm up "
+s+="r1 2.5 down cross 2 shot:${TMP}/series-detail.ppm circle 0.6 up "
+s+="right cross 2.5 shot:${TMP}/movies.ppm "
+s+="right cross 1.5 down 2 shot:${TMP}/guide.ppm up "
+s+="right cross 1 right cross 3 right cross 1 right cross 3 shot:${TMP}/cleanup.ppm "
+s+="r1 3 shot:${TMP}/queue.ppm "
+s+="r1 2.5 shot:${TMP}/requests.ppm "
+s+="r1 2.5 shot:${TMP}/jellyfin.ppm cross 1.5 shot:${TMP}/diagnosis.ppm circle 0.6 "
+s+="r1 3 shot:${TMP}/settings.ppm quit"
+
+REGIE5_MOCK_DELAY_MS=0 REGIE5_MOCK_CLEANUP=1 REGIE5_RES=1920x1080 REGIE5_SCRIPT="${s}" \
+    "${BUILD}/regie5" --demo --lang en >/dev/null 2>&1
+for f in "${TMP}"/*.ppm; do
+    n="$(basename "${f}" .ppm)"
+    convert "${f}" -strip -quality 84 "${OUT}/${n}.jpg"
+done
+echo "-> ${OUT}"

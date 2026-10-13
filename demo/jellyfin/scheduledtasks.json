@@ -1,0 +1,752 @@
+[
+ {
+  "Name": "Actualiser les acteurs",
+  "State": "Running",
+  "Id": "1f45c231889ff1195a417c132546feff",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-09-28T11:53:53.8861396Z",
+   "EndTimeUtc": "2026-09-28T11:57:15.4877022Z",
+   "Status": "Completed",
+   "Name": "Actualiser les acteurs",
+   "Key": "RefreshPeople",
+   "Id": "1f45c231889ff1195a417c132546feff"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 6048000000000
+   }
+  ],
+  "Description": "Met à jour les métadonnées pour les acteurs et réalisateurs dans votre médiathèque.",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "RefreshPeople",
+  "CurrentProgressPercentage": 42.5,
+  "_regie5_synthetic": true
+ },
+ {
+  "Name": "Analyse des segments de média",
+  "State": "Idle",
+  "Id": "7175010de19c481fc1fdb24bf167cf41",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T08:06:56.6006739Z",
+   "EndTimeUtc": "2026-10-11T08:07:00.3421704Z",
+   "Status": "Completed",
+   "Name": "Analyse des segments de média",
+   "Key": "TaskExtractMediaSegments",
+   "Id": "7175010de19c481fc1fdb24bf167cf41"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 432000000000
+   }
+  ],
+  "Description": "Extrait ou obtient des segments de média à partir des plugins compatibles avec MediaSegment.",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "TaskExtractMediaSegments"
+ },
+ {
+  "Name": "Analyser la médiathèque",
+  "State": "Idle",
+  "Id": "b5c7f833fe60132996634679cd7b958a",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T08:06:56.6014734Z",
+   "EndTimeUtc": "2026-10-11T08:07:24.4288255Z",
+   "Status": "Completed",
+   "Name": "Analyser la médiathèque",
+   "Key": "RefreshLibrary",
+   "Id": "b5c7f833fe60132996634679cd7b958a"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 432000000000
+   }
+  ],
+  "Description": "Analyse votre médiathèque pour trouver de nouveaux fichiers et actualise les métadonnées.",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "RefreshLibrary"
+ },
+ {
+  "Name": "Changer l'emplacement des images Trickplay",
+  "State": "Idle",
+  "Id": "edecea9446c0e90d2da3244f47f1fe00",
+  "Triggers": [],
+  "Description": "Déplace les fichiers trickplay existants en fonction des paramètres de la bibliothèque.",
+  "Category": "Maintenance",
+  "IsHidden": false,
+  "Key": "MoveTrickplayImages"
+ },
+ {
+  "Name": "Clean Intro Skipper Cache",
+  "State": "Idle",
+  "Id": "b4f113dd38c1f8b8788841151eb2637a",
+  "Triggers": [],
+  "Description": "Clear Intro Skipper cache of unused rows.",
+  "Category": "Intro Skipper",
+  "IsHidden": false,
+  "Key": "CPBIntroSkipperCleanCache"
+ },
+ {
+  "Name": "Custom Tabs Startup",
+  "State": "Idle",
+  "Id": "5cf90151e190604db58d471d95b4cef7",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.5945746Z",
+   "EndTimeUtc": "2026-10-10T20:05:59.887826Z",
+   "Status": "Completed",
+   "Name": "Custom Tabs Startup",
+   "Key": "Jellyfin.Plugin.CustomTabs.Startup",
+   "Id": "5cf90151e190604db58d471d95b4cef7"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   }
+  ],
+  "Description": "Startup Service for Custom Tabs",
+  "Category": "Startup Services",
+  "IsHidden": false,
+  "Key": "Jellyfin.Plugin.CustomTabs.Startup"
+ },
+ {
+  "Name": "Detect and Analyze Media Segments",
+  "State": "Idle",
+  "Id": "5aeb0d4886a25c5437d6b90921a15c43",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T00:45:00.0091938Z",
+   "EndTimeUtc": "2026-10-11T00:45:05.4290844Z",
+   "Status": "Completed",
+   "Name": "Detect and Analyze Media Segments",
+   "Key": "IntroSkipperDetectSegmentsTask",
+   "Id": "5aeb0d4886a25c5437d6b90921a15c43"
+  },
+  "Triggers": [
+   {
+    "Type": "DailyTrigger",
+    "TimeOfDayTicks": 99000000000
+   }
+  ],
+  "Description": "Analyzes media to determine the timestamp and length of intros and credits.",
+  "Category": "Intro Skipper",
+  "IsHidden": false,
+  "Key": "IntroSkipperDetectSegmentsTask"
+ },
+ {
+  "Name": "Extracteur d'images clés",
+  "State": "Idle",
+  "Id": "f2cc56295b28d80db114de02f6cc4779",
+  "Triggers": [],
+  "Description": "Extrait les images clés des fichiers vidéo pour créer des listes de lecture HLS plus précises. Cette tâche peut durer très longtemps.",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "KeyframeExtraction"
+ },
+ {
+  "Name": "Extraire les images de chapitre",
+  "State": "Idle",
+  "Id": "e87118c5ecb90415a3bc78d1992aeab3",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T00:45:00.0094701Z",
+   "EndTimeUtc": "2026-10-11T00:45:00.7516054Z",
+   "Status": "Completed",
+   "Name": "Extraire les images de chapitre",
+   "Key": "RefreshChapterImages",
+   "Id": "e87118c5ecb90415a3bc78d1992aeab3"
+  },
+  "Triggers": [
+   {
+    "Type": "DailyTrigger",
+    "TimeOfDayTicks": 99000000000,
+    "MaxRuntimeTicks": 36000000000
+   }
+  ],
+  "Description": "Crée des vignettes pour les vidéos ayant des chapitres.",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "RefreshChapterImages"
+ },
+ {
+  "Name": "Fetch Ratings from MDBList",
+  "State": "Idle",
+  "Id": "468233363c25b0b8e12290b83e5841ed",
+  "Triggers": [],
+  "Description": "Keeps MDBList ratings data fresh in the background for the item-details row and the sync task below.\n\n• Looks up any movie/series whose cached MDBList data is missing or stale, and saves it; doesn't touch Jellyfin's own Community/Critic Rating fields.\n• A found title stays cached for 7 days before being refetched (3 days for a confirmed \"no match\"); already-fresh titles are skipped entirely, so re-running this often, even daily, mostly costs nothing once the library's cache is warm.\n• Stops once today's live remaining quota drops to the Fetch Task Reserve (config page), leaving that much for people browsing.\n• Configure the trigger below to run this periodically so newly added items get picked up automatically.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedMdblistRatingsFetch"
+ },
+ {
+  "Name": "Générer des images Trickplay",
+  "State": "Idle",
+  "Id": "4edbe68d1d1fac652c344b4edab20a19",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T00:59:59.9996263Z",
+   "EndTimeUtc": "2026-10-11T01:00:03.5304083Z",
+   "Status": "Completed",
+   "Name": "Générer des images Trickplay",
+   "Key": "RefreshTrickplayImages",
+   "Id": "4edbe68d1d1fac652c344b4edab20a19"
+  },
+  "Triggers": [
+   {
+    "Type": "DailyTrigger",
+    "TimeOfDayTicks": 108000000000
+   }
+  ],
+  "Description": "Crée des aperçus Trickplay pour les vidéos dans les médiathèques activées.",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "RefreshTrickplayImages"
+ },
+ {
+  "Name": "Import Jellyfin Users to Seerr",
+  "State": "Idle",
+  "Id": "c16f11b9329701af10f0d089a8214a84",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T08:07:57.5984249Z",
+   "EndTimeUtc": "2026-10-11T08:07:57.5990326Z",
+   "Status": "Completed",
+   "Name": "Import Jellyfin Users to Seerr",
+   "Key": "JellyfinEnhancedJellyseerrUserImport",
+   "Id": "c16f11b9329701af10f0d089a8214a84"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 216000000000
+   }
+  ],
+  "Description": "Imports all Jellyfin users into Seerr so they can use Seerr Search without needing to visit the Seerr UI.\n\nAlready imported users are automatically skipped. Configure the task triggers to run this task periodically.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedJellyseerrUserImport"
+ },
+ {
+  "Name": "JavaScript Injector Startup",
+  "State": "Idle",
+  "Id": "630eb1707f0cc1c628741c44d941d87a",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.5909815Z",
+   "EndTimeUtc": "2026-10-10T20:06:00.0661546Z",
+   "Status": "Completed",
+   "Name": "JavaScript Injector Startup",
+   "Key": "JavaScriptInjectorStartup",
+   "Id": "630eb1707f0cc1c628741c44d941d87a"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   }
+  ],
+  "Description": "Cleans up legacy on-disk script injection and, if the request-time middleware is disabled, falls back to File Transformation / direct index.html injection.",
+  "Category": "Startup Services",
+  "IsHidden": false,
+  "Key": "JavaScriptInjectorStartup"
+ },
+ {
+  "Name": "Jellyfin Enhanced Startup",
+  "State": "Idle",
+  "Id": "57620c4f781542da0eebb073f14d6c6f",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.5884976Z",
+   "EndTimeUtc": "2026-10-10T20:06:00.2557936Z",
+   "Status": "Completed",
+   "Name": "Jellyfin Enhanced Startup",
+   "Key": "JellyfinEnhancedStartup",
+   "Id": "57620c4f781542da0eebb073f14d6c6f"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   }
+  ],
+  "Description": "Initializes Jellyfin Enhanced background services and performs necessary cleanups. The client script is injected at request time by the injection middleware.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedStartup"
+ },
+ {
+  "Name": "MediaBar Startup",
+  "State": "Idle",
+  "Id": "109a39041a21478d5b9c69fbc77a3979",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.6056027Z",
+   "EndTimeUtc": "2026-10-10T20:05:59.8068741Z",
+   "Status": "Completed",
+   "Name": "MediaBar Startup",
+   "Key": "Jellyfin.Plugin.MediaBar.Startup",
+   "Id": "109a39041a21478d5b9c69fbc77a3979"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   }
+  ],
+  "Description": "Startup Service for MediaBar",
+  "Category": "Startup Services",
+  "IsHidden": false,
+  "Key": "Jellyfin.Plugin.MediaBar.Startup"
+ },
+ {
+  "Name": "Mettre à jour les extensions",
+  "State": "Idle",
+  "Id": "e10c380e801af138d699ad435f9d395e",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.6882128Z",
+   "EndTimeUtc": "2026-10-10T20:06:01.3062076Z",
+   "Status": "Completed",
+   "Name": "Mettre à jour les extensions",
+   "Key": "PluginUpdates",
+   "Id": "e10c380e801af138d699ad435f9d395e"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   },
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Télécharge et installe les mises à jours des extensions configurées pour être mises à jour automatiquement.",
+  "Category": "Application",
+  "IsHidden": false,
+  "Key": "PluginUpdates"
+ },
+ {
+  "Name": "Nettoyer le dossier des transcodages",
+  "State": "Idle",
+  "Id": "d3f400a3ad3f7f0255f3584973e4df56",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.6941718Z",
+   "EndTimeUtc": "2026-10-10T20:05:59.6945915Z",
+   "Status": "Completed",
+   "Name": "Nettoyer le dossier des transcodages",
+   "Key": "DeleteTranscodeFiles",
+   "Id": "d3f400a3ad3f7f0255f3584973e4df56"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   },
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Supprime les fichiers transcodés de plus d'un jour.",
+  "Category": "Maintenance",
+  "IsHidden": false,
+  "Key": "DeleteTranscodeFiles"
+ },
+ {
+  "Name": "Nettoyer le journal d'activité",
+  "State": "Idle",
+  "Id": "670fd8f7cc68dbe78a1df94de6acc7bb",
+  "Triggers": [],
+  "Description": "Supprime les entrées du journal d'activité antérieures à l'âge configuré.",
+  "Category": "Maintenance",
+  "IsHidden": false,
+  "Key": "CleanActivityLog"
+ },
+ {
+  "Name": "Nettoyer le répertoire des journaux",
+  "State": "Idle",
+  "Id": "ae6615a874fc13daed4f0bf5d64fd718",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-09T14:59:29.1938485Z",
+   "EndTimeUtc": "2026-10-09T14:59:29.3925272Z",
+   "Status": "Completed",
+   "Name": "Nettoyer le répertoire des journaux",
+   "Key": "CleanLogFiles",
+   "Id": "ae6615a874fc13daed4f0bf5d64fd718"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Supprime les journaux de plus de 3 jours.",
+  "Category": "Maintenance",
+  "IsHidden": false,
+  "Key": "CleanLogFiles"
+ },
+ {
+  "Name": "Normalisation audio",
+  "State": "Idle",
+  "Id": "705e6820d57a76c198a6ecfd64488cba",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-09T14:59:28.9886491Z",
+   "EndTimeUtc": "2026-10-09T14:59:29.002935Z",
+   "Status": "Completed",
+   "Name": "Normalisation audio",
+   "Key": "AudioNormalization",
+   "Id": "705e6820d57a76c198a6ecfd64488cba"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Analyse les fichiers à la recherche de données de normalisation audio.",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "AudioNormalization"
+ },
+ {
+  "Name": "Optimiser la base de données",
+  "State": "Idle",
+  "Id": "3f56f9b4c39233e4acf3b9d44727ab5a",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T08:07:57.7147305Z",
+   "EndTimeUtc": "2026-10-11T08:07:58.9824463Z",
+   "Status": "Completed",
+   "Name": "Optimiser la base de données",
+   "Key": "OptimizeDatabaseTask",
+   "Id": "3f56f9b4c39233e4acf3b9d44727ab5a"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 216000000000
+   }
+  ],
+  "Description": "Réduit les espaces vides ou inutiles et compacte la base de données. Utiliser cette fonction après une mise à jour de la médiathèque ou toute autre modification de la base de données peut améliorer les performances du serveur.",
+  "Category": "Maintenance",
+  "IsHidden": false,
+  "Key": "OptimizeDatabaseTask"
+ },
+ {
+  "Name": "PluginPages Startup",
+  "State": "Idle",
+  "Id": "057f7194fa4020d3d1fd0eb9eb743a7c",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.6885518Z",
+   "EndTimeUtc": "2026-10-10T20:05:59.8878642Z",
+   "Status": "Completed",
+   "Name": "PluginPages Startup",
+   "Key": "Jellyfin.Plugin.PluginPages.Startup",
+   "Id": "057f7194fa4020d3d1fd0eb9eb743a7c"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   }
+  ],
+  "Description": "Startup Service for PluginPages",
+  "Category": "Startup Services",
+  "IsHidden": false,
+  "Key": "Jellyfin.Plugin.PluginPages.Startup"
+ },
+ {
+  "Name": "Refresh CDN Assets",
+  "State": "Idle",
+  "Id": "f351d10b7a4a3a739fc9ebb142757afe",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.6029489Z",
+   "EndTimeUtc": "2026-10-10T20:06:24.5366903Z",
+   "Status": "Completed",
+   "Name": "Refresh CDN Assets",
+   "Key": "JellyfinEnhancedRefreshCdnAssets",
+   "Id": "f351d10b7a4a3a739fc9ebb142757afe"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   },
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Downloads and refreshes the local copies of external CDN assets (icons, fonts, theme colours, logos) so clients are served them from the plugin instead of third-party CDNs. Runs on startup and every 24 hours.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedRefreshCdnAssets"
+ },
+ {
+  "Name": "Refresh Tag Cache",
+  "State": "Idle",
+  "Id": "eccfb96441a7e5b96e03eced431bc692",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T00:59:59.9998353Z",
+   "EndTimeUtc": "2026-10-11T01:00:01.3569303Z",
+   "Status": "Completed",
+   "Name": "Refresh Tag Cache",
+   "Key": "JellyfinEnhancedBuildTagCache",
+   "Id": "eccfb96441a7e5b96e03eced431bc692"
+  },
+  "Triggers": [
+   {
+    "Type": "DailyTrigger",
+    "TimeOfDayTicks": 108000000000
+   }
+  ],
+  "Description": "Builds the tag cache when needed, otherwise refreshes only entries for added, changed, and removed library items.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedBuildTagCache"
+ },
+ {
+  "Name": "Refresh Translation Cache",
+  "State": "Idle",
+  "Id": "50ea3f5fb880316a4fdefd0abe2d8d4f",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-10T20:05:59.5945746Z",
+   "EndTimeUtc": "2026-10-10T20:05:59.6086252Z",
+   "Status": "Completed",
+   "Name": "Refresh Translation Cache",
+   "Key": "JellyfinEnhancedClearTranslationCache",
+   "Id": "50ea3f5fb880316a4fdefd0abe2d8d4f"
+  },
+  "Triggers": [
+   {
+    "Type": "StartupTrigger"
+   }
+  ],
+  "Description": "Signals all clients to refresh cached translations on next page load. Runs on startup to ensure fresh translations after plugin updates.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedClearTranslationCache"
+ },
+ {
+  "Name": "Refresh upcoming and missing episodes (TheMovieDb)",
+  "State": "Idle",
+  "Id": "574c1d454793b7bcc6b3a9170caa63a9",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-09-28T11:53:53.8711573Z",
+   "EndTimeUtc": "2026-09-28T11:53:54.08793Z",
+   "Status": "Completed",
+   "Name": "Refresh upcoming and missing episodes (TheMovieDb)",
+   "Key": "TmdbRefreshUpcomingEpisodes",
+   "Id": "574c1d454793b7bcc6b3a9170caa63a9"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 6048000000000
+   }
+  ],
+  "Description": "Checks TheMovieDb for newly announced episodes and creates virtual entries for unaired and missing episodes, according to the TMDb plugin settings. When both options are disabled, removes any virtual entries previously created.",
+  "Category": "Library",
+  "IsHidden": false,
+  "Key": "TmdbRefreshUpcomingEpisodes"
+ },
+ {
+  "Name": "Scan library for new box sets",
+  "State": "Idle",
+  "Id": "42526b68bddc53ed0157f56afdb30b60",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-09T14:59:28.9958465Z",
+   "EndTimeUtc": "2026-10-09T14:59:30.2266759Z",
+   "Status": "Completed",
+   "Name": "Scan library for new box sets",
+   "Key": "TMDbBoxSetsRefreshLibraryTask",
+   "Id": "42526b68bddc53ed0157f56afdb30b60"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Scans all libraries for movies and adds them to box sets if the conditions are met",
+  "Category": "TMDb",
+  "IsHidden": false,
+  "Key": "TMDbBoxSetsRefreshLibraryTask"
+ },
+ {
+  "Name": "Send Anonymous Usage Report",
+  "State": "Idle",
+  "Id": "77d6c2350f0c83317498d50fa66d2991",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-09T14:59:28.7403296Z",
+   "EndTimeUtc": "2026-10-09T14:59:28.7472469Z",
+   "Status": "Completed",
+   "Name": "Send Anonymous Usage Report",
+   "Key": "JellyfinEnhancedAnalyticsReport",
+   "Id": "77d6c2350f0c83317498d50fa66d2991"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Sends the opt-in anonymous usage report configured in the Jellyfin Enhanced Usage Statistics section. No-ops entirely unless enabled there, and skips silently until the configured reporting interval has elapsed.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedAnalyticsReport"
+ },
+ {
+  "Name": "Spoiler Guard: apply to existing titles",
+  "State": "Idle",
+  "Id": "28b0445c350c1b013d95c8f02db67e48",
+  "Triggers": [],
+  "Description": "Turns Spoiler Guard on for every show and movie already in the library that is inside the auto-enable scope (content types and libraries), for every user who can see it. Titles a user already has, or has fully watched, are skipped. Run it by hand; rescans never do this.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedSpoilerApplyExistingTitles"
+ },
+ {
+  "Name": "Sync Audio Language Tags to Jellyfin",
+  "State": "Idle",
+  "Id": "883c104a8b19d223495349d101099dfa",
+  "Triggers": [],
+  "Description": "Adds each movie's and series' audio languages to Jellyfin items as metadata tags.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedAudioLanguageTagsSync"
+ },
+ {
+  "Name": "Sync Ratings from MDBList to Jellyfin",
+  "State": "Idle",
+  "Id": "f1c1dff888ff695c28e1c09427f4552a",
+  "Triggers": [],
+  "Description": "Sets Community/Critic Ratings on movies and series from already-cached MDBList data (see the Fetch task above).\n\n• Fills empty ratings only, by default; turn on \"Overwrite Existing Ratings\" (config page) to always match MDBList's current cached value instead.\n• An item whose MDBList data hasn't been fetched yet (or lacks that specific source) is skipped, not treated as an error.\n• Configure the trigger below to run this periodically so newly fetched items get synced automatically.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedMdblistRatingsSync"
+ },
+ {
+  "Name": "Sync Tags from *arr to Jellyfin",
+  "State": "Idle",
+  "Id": "1b259c3942c5b501e1d5141e6396cd34",
+  "Triggers": [],
+  "Description": "Fetches tags from Radarr and Sonarr and adds them to Jellyfin items as metadata tags. \n\n Configure the task triggers to run this task periodically for new items to be synced automatically.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedArrTagsSync"
+ },
+ {
+  "Name": "Sync Watchlist from Jellyfin to Seerr",
+  "State": "Idle",
+  "Id": "08a10f2c8bc457bfbf8890253a1bbf55",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T01:30:00.0007073Z",
+   "EndTimeUtc": "2026-10-11T01:30:00.023206Z",
+   "Status": "Completed",
+   "Name": "Sync Watchlist from Jellyfin to Seerr",
+   "Key": "JellyfinEnhancedJellyfinToSeerrWatchlistSync",
+   "Id": "08a10f2c8bc457bfbf8890253a1bbf55"
+  },
+  "Triggers": [
+   {
+    "Type": "DailyTrigger",
+    "TimeOfDayTicks": 126000000000
+   }
+  ],
+  "Description": "Syncs items from each user's Jellyfin watchlist to their Seerr watchlist.\n\nConfigure the task triggers to run this task periodically for automatic syncing.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedJellyfinToSeerrWatchlistSync"
+ },
+ {
+  "Name": "Sync Watchlist from Seerr to Jellyfin",
+  "State": "Idle",
+  "Id": "974e28c28f98aaa0ba8ad2ff08793586",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-11T01:00:00.0022443Z",
+   "EndTimeUtc": "2026-10-11T01:00:00.0749852Z",
+   "Status": "Completed",
+   "Name": "Sync Watchlist from Seerr to Jellyfin",
+   "Key": "JellyfinEnhancedJellyseerrWatchlistSync",
+   "Id": "974e28c28f98aaa0ba8ad2ff08793586"
+  },
+  "Triggers": [
+   {
+    "Type": "DailyTrigger",
+    "TimeOfDayTicks": 108000000000
+   }
+  ],
+  "Description": "Syncs items from each user's Jellyseerr watchlist to their Jellyfin watchlist.\n\nConfigure the task triggers to run this task periodically for automatic syncing.",
+  "Category": "Jellyfin Enhanced",
+  "IsHidden": false,
+  "Key": "JellyfinEnhancedJellyseerrWatchlistSync"
+ },
+ {
+  "Name": "Tâche de nettoyage des données utilisateur",
+  "State": "Idle",
+  "Id": "1dbbd908f6652238116e77cd236670b7",
+  "Triggers": [],
+  "Description": "Nettoie toutes les données utilisateur (état de la montre, statut favori, etc.) des supports qui ne sont plus présents depuis au moins 90 jours.",
+  "Category": "Maintenance",
+  "IsHidden": false,
+  "Key": "CleanupUserDataTask"
+ },
+ {
+  "Name": "Télécharger les paroles des chansons manquantes",
+  "State": "Idle",
+  "Id": "bb4117bddfb4805c96575ab244b90757",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-09T14:59:28.9888157Z",
+   "EndTimeUtc": "2026-10-09T14:59:29.1033223Z",
+   "Status": "Completed",
+   "Name": "Télécharger les paroles des chansons manquantes",
+   "Key": "DownloadLyrics",
+   "Id": "bb4117bddfb4805c96575ab244b90757"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Téléchargement des paroles des chansons",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "DownloadLyrics"
+ },
+ {
+  "Name": "Télécharger les sous-titres manquants",
+  "State": "Idle",
+  "Id": "7fd5d2ee6fc2e852f1927733b3a9bb78",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-09T14:59:29.1940151Z",
+   "EndTimeUtc": "2026-10-09T14:59:29.1958001Z",
+   "Status": "Completed",
+   "Name": "Télécharger les sous-titres manquants",
+   "Key": "DownloadSubtitles",
+   "Id": "7fd5d2ee6fc2e852f1927733b3a9bb78"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Recherche les sous-titres manquants sur Internet en se basant sur la configuration des métadonnées.",
+  "Category": "Médiathèque",
+  "IsHidden": false,
+  "Key": "DownloadSubtitles"
+ },
+ {
+  "Name": "Vider le répertoire cache",
+  "State": "Idle",
+  "Id": "3f731983a220e49c6653aaad2d6c5942",
+  "LastExecutionResult": {
+   "StartTimeUtc": "2026-10-09T14:59:29.3736057Z",
+   "EndTimeUtc": "2026-10-09T14:59:30.0548369Z",
+   "Status": "Completed",
+   "Name": "Vider le répertoire cache",
+   "Key": "DeleteCacheFiles",
+   "Id": "3f731983a220e49c6653aaad2d6c5942"
+  },
+  "Triggers": [
+   {
+    "Type": "IntervalTrigger",
+    "IntervalTicks": 864000000000
+   }
+  ],
+  "Description": "Supprime les fichiers de cache dont le système n'a plus besoin.",
+  "Category": "Maintenance",
+  "IsHidden": false,
+  "Key": "DeleteCacheFiles"
+ }
+]

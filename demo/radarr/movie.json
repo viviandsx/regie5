@@ -1,0 +1,567 @@
+[
+ {
+  "id": 28,
+  "title": "Theo's Harvest",
+  "sortTitle": "theo's harvest",
+  "year": 2026,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-05-27T11:56:54Z",
+  "inCinemas": "2026-05-21T00:00:00Z",
+  "digitalRelease": "2026-07-23T00:00:00Z",
+  "physicalRelease": "2026-09-28T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 3389479777,
+  "studio": "Ninefold Films",
+  "overview": "Sacha comes face to face with the last night train against all odds.",
+  "runtime": 123,
+  "tmdbId": 9812461,
+  "imdbId": "tt93851637",
+  "movieFile": {
+   "size": 3389479777,
+   "quality": {
+    "quality": {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 56,
+  "title": "Charge",
+  "sortTitle": "charge",
+  "year": 2022,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-06-19T10:55:47Z",
+  "inCinemas": "2026-05-27T00:00:00Z",
+  "digitalRelease": "2026-07-14T00:00:00Z",
+  "physicalRelease": "2026-10-23T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 2102369579,
+  "studio": "Blender Studio",
+  "overview": "In a frozen world, an old man breaks into a factory guarded by a robot to steal energy.",
+  "runtime": 4,
+  "tmdbId": 9147906,
+  "imdbId": "tt95590587",
+  "movieFile": {
+   "size": 2102369579,
+   "quality": {
+    "quality": {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 60,
+  "title": "Citadel of Valemont",
+  "sortTitle": "citadel of valemont",
+  "year": 2026,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-06-20T15:48:27Z",
+  "inCinemas": "2026-07-29T00:00:00Z",
+  "digitalRelease": "2026-10-06T00:00:00Z",
+  "physicalRelease": "2026-12-02T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 2276922103,
+  "studio": "Lantern House",
+  "overview": "Theo comes face to face with the last night train at the end of the world.",
+  "runtime": 145,
+  "tmdbId": 9347506,
+  "imdbId": "tt94891157",
+  "movieFile": {
+   "size": 2276922103,
+   "quality": {
+    "quality": {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 103,
+  "title": "Cosmos Laundromat",
+  "sortTitle": "cosmos laundromat",
+  "year": 2015,
+  "status": "released",
+  "monitored": false,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-07-06T09:35:14Z",
+  "inCinemas": "1997-12-18T00:00:00Z",
+  "digitalRelease": "2000-10-24T00:00:00Z",
+  "physicalRelease": "1998-09-01T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 2884178270,
+  "studio": "Blender Studio",
+  "overview": "A suicidal sheep is offered a strange deal: a new life, again and again.",
+  "runtime": 12,
+  "tmdbId": 9085723,
+  "imdbId": "tt93435120",
+  "movieFile": {
+   "size": 2884178270,
+   "quality": {
+    "quality": {
+     "id": 7,
+     "name": "Bluray-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 236,
+  "title": "The Last Mirror",
+  "sortTitle": "last mirror",
+  "year": 2026,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-07-28T13:49:25Z",
+  "inCinemas": "2026-09-10T00:00:00Z",
+  "digitalRelease": "2026-09-29T00:00:00Z",
+  "physicalRelease": "2026-11-03T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 3470763205,
+  "studio": "Lantern House",
+  "overview": "Rafael goes looking for a sunken town at the end of the world.",
+  "runtime": 128,
+  "tmdbId": 9263892,
+  "imdbId": "tt98055722",
+  "movieFile": {
+   "size": 3470763205,
+   "quality": {
+    "quality": {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 324,
+  "title": "Ember of Ironvale",
+  "sortTitle": "ember of ironvale",
+  "year": 2026,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-08-29T09:15:42Z",
+  "inCinemas": "2026-06-25T00:00:00Z",
+  "digitalRelease": "2026-08-11T00:00:00Z",
+  "physicalRelease": "2026-10-05T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 2030801377,
+  "studio": "Blue Orchard Films",
+  "overview": "Sacha tries to protect a signal from far away at the end of the world.",
+  "runtime": 107,
+  "tmdbId": 9835059,
+  "imdbId": "tt90562761",
+  "movieFile": {
+   "size": 2030801377,
+   "quality": {
+    "quality": {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 345,
+  "title": "Tears of Steel",
+  "sortTitle": "tears of steel",
+  "year": 2012,
+  "status": "released",
+  "monitored": false,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-08-30T21:40:37Z",
+  "inCinemas": "2026-05-20T00:00:00Z",
+  "digitalRelease": "2026-05-20T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 1497596737,
+  "studio": "Blender Studio",
+  "overview": "In a future Amsterdam, a group of scientists stages a last stand against the robots.",
+  "runtime": 12,
+  "tmdbId": 9144341,
+  "imdbId": "tt99289436",
+  "movieFile": {
+   "size": 1497596737,
+   "quality": {
+    "quality": {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 364,
+  "title": "Nadia and the Copper Archive",
+  "sortTitle": "nadia and the copper archive",
+  "year": 2026,
+  "status": "inCinemas",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": false,
+  "added": "2026-09-07T04:24:28Z",
+  "inCinemas": "2026-09-30T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 3143842623,
+  "studio": "Quiet Fox Media",
+  "overview": "Theo goes looking for a ten-year-old promise without telling anyone.",
+  "runtime": 95,
+  "tmdbId": 9433558,
+  "imdbId": "tt96880997",
+  "movieFile": {
+   "size": 3143842623,
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 373,
+  "title": "Sprite Fright",
+  "sortTitle": "sprite fright",
+  "year": 2021,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-09-11T07:21:01Z",
+  "inCinemas": "2026-08-06T00:00:00Z",
+  "digitalRelease": "2026-09-08T00:00:00Z",
+  "physicalRelease": "2026-10-20T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 2131894591,
+  "studio": "Blender Studio",
+  "overview": "A group of teenagers on a forest trip upsets the wrong mushroom people.",
+  "runtime": 10,
+  "tmdbId": 9828733,
+  "imdbId": "tt95454804",
+  "movieFile": {
+   "size": 2131894591,
+   "quality": {
+    "quality": {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 411,
+  "title": "Lost Citadel",
+  "sortTitle": "lost citadel",
+  "year": 2026,
+  "status": "inCinemas",
+  "monitored": true,
+  "hasFile": false,
+  "isAvailable": false,
+  "added": "2026-09-20T22:41:45Z",
+  "inCinemas": "2026-10-07T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 0,
+  "studio": "Lantern House",
+  "overview": "Lea discovers a signal from far away before winter.",
+  "runtime": 93,
+  "tmdbId": 9259852,
+  "imdbId": "tt92779017"
+ },
+ {
+  "id": 437,
+  "title": "Second Valley",
+  "sortTitle": "second valley",
+  "year": 2026,
+  "status": "announced",
+  "monitored": true,
+  "hasFile": false,
+  "isAvailable": false,
+  "added": "2026-09-25T16:42:12Z",
+  "inCinemas": "2026-10-21T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 0,
+  "studio": "Quiet Fox Media",
+  "overview": "Ines goes looking for a sunken town at the end of the world.",
+  "runtime": 88,
+  "tmdbId": 9147789,
+  "imdbId": "tt90659373"
+ },
+ {
+  "id": 448,
+  "title": "Maud's Engine",
+  "sortTitle": "maud's engine",
+  "year": 2026,
+  "status": "inCinemas",
+  "monitored": true,
+  "hasFile": false,
+  "isAvailable": false,
+  "added": "2026-09-28T19:37:18Z",
+  "inCinemas": "2026-09-30T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 0,
+  "studio": "Quiet Fox Media",
+  "overview": "Elias discovers a sunken town at the end of the world.",
+  "runtime": 129,
+  "tmdbId": 9108727,
+  "imdbId": "tt96027919"
+ },
+ {
+  "id": 457,
+  "title": "Mara's Lantern",
+  "sortTitle": "mara's lantern",
+  "year": 2026,
+  "status": "inCinemas",
+  "monitored": true,
+  "hasFile": false,
+  "isAvailable": false,
+  "added": "2026-10-04T09:22:36Z",
+  "inCinemas": "2026-09-30T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 0,
+  "studio": "Quiet Fox Media",
+  "overview": "Theo inherits a letter never sent without telling anyone.",
+  "runtime": 155,
+  "tmdbId": 9424613,
+  "imdbId": "tt97426784"
+ },
+ {
+  "id": 459,
+  "title": "Sintel",
+  "sortTitle": "sintel",
+  "year": 2010,
+  "status": "released",
+  "monitored": false,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-10-06T18:27:45Z",
+  "inCinemas": "2026-03-05T00:00:00Z",
+  "digitalRelease": "2026-03-06T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 1670014384,
+  "studio": "Blender Studio",
+  "overview": "A lonely young woman crosses a hostile land to find the baby dragon she once rescued.",
+  "runtime": 15,
+  "tmdbId": 9175210,
+  "imdbId": "tt98328429",
+  "movieFile": {
+   "size": 1670014384,
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 461,
+  "title": "Hero",
+  "sortTitle": "hero",
+  "year": 2018,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-10-09T14:22:26Z",
+  "digitalRelease": "2026-06-25T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 1868813880,
+  "studio": "Blender Studio",
+  "overview": "A young hero fights her way through a world that keeps changing around her.",
+  "runtime": 4,
+  "tmdbId": 9602138,
+  "imdbId": "tt98276641",
+  "movieFile": {
+   "size": 1868813880,
+   "quality": {
+    "quality": {
+     "id": 15,
+     "name": "WEBRip-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 462,
+  "title": "Glass Half",
+  "sortTitle": "glass half",
+  "year": 2015,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-10-09T14:25:33Z",
+  "inCinemas": "1987-07-31T00:00:00Z",
+  "digitalRelease": "2002-05-19T00:00:00Z",
+  "physicalRelease": "1987-07-31T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 1767796229,
+  "studio": "Blender Studio",
+  "overview": "Two art critics in a gallery cannot agree on anything.",
+  "runtime": 3,
+  "tmdbId": 9466517,
+  "imdbId": "tt98600483",
+  "movieFile": {
+   "size": 1767796229,
+   "quality": {
+    "quality": {
+     "id": 7,
+     "name": "Bluray-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 463,
+  "title": "Coffee Run",
+  "sortTitle": "coffee run",
+  "year": 2020,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-10-09T20:16:56Z",
+  "inCinemas": "2014-03-14T00:00:00Z",
+  "digitalRelease": "2014-07-25T00:00:00Z",
+  "physicalRelease": "2014-07-09T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 1139989965,
+  "studio": "Blender Studio",
+  "overview": "A young woman runs for her coffee, and through the memories of a whole life.",
+  "runtime": 3,
+  "tmdbId": 9068481,
+  "imdbId": "tt99119635",
+  "movieFile": {
+   "size": 1139989965,
+   "quality": {
+    "quality": {
+     "id": 3,
+     "name": "WEBDL-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 464,
+  "title": "Elephants Dream",
+  "sortTitle": "elephants dream",
+  "year": 2006,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-10-10T21:10:31Z",
+  "inCinemas": "2016-07-01T00:00:00Z",
+  "digitalRelease": "2017-08-26T00:00:00Z",
+  "physicalRelease": "2017-07-26T00:00:00Z",
+  "qualityProfileId": 7,
+  "sizeOnDisk": 3832409867,
+  "studio": "Blender Studio",
+  "overview": "Two men wander through an endless machine that only one of them believes in.",
+  "runtime": 11,
+  "tmdbId": 9569894,
+  "imdbId": "tt99186757",
+  "movieFile": {
+   "size": 3832409867,
+   "quality": {
+    "quality": {
+     "id": 19,
+     "name": "Bluray-2160p",
+     "resolution": 2160
+    }
+   }
+  }
+ },
+ {
+  "id": 465,
+  "title": "Big Buck Bunny",
+  "sortTitle": "big buck bunny",
+  "year": 2008,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-10-10T21:17:55Z",
+  "inCinemas": "1997-07-12T00:00:00Z",
+  "digitalRelease": "2000-03-16T00:00:00Z",
+  "physicalRelease": "2000-12-19T00:00:00Z",
+  "qualityProfileId": 4,
+  "sizeOnDisk": 2130846670,
+  "studio": "Blender Studio",
+  "overview": "A gentle giant rabbit has had enough of three bullying rodents, and plans a sweet revenge.",
+  "runtime": 10,
+  "tmdbId": 9549532,
+  "imdbId": "tt98307788",
+  "movieFile": {
+   "size": 2130846670,
+   "quality": {
+    "quality": {
+     "id": 7,
+     "name": "Bluray-1080p",
+     "resolution": 1080
+    }
+   }
+  }
+ },
+ {
+  "id": 466,
+  "title": "Spring",
+  "sortTitle": "spring",
+  "year": 2019,
+  "status": "released",
+  "monitored": true,
+  "hasFile": true,
+  "isAvailable": true,
+  "added": "2026-10-10T21:30:12Z",
+  "inCinemas": "2025-09-19T00:00:00Z",
+  "digitalRelease": "2025-12-09T00:00:00Z",
+  "qualityProfileId": 7,
+  "sizeOnDisk": 3196383677,
+  "studio": "Blender Studio",
+  "overview": "A shepherd girl and her dog face ancient spirits to keep the cycle of life going.",
+  "runtime": 8,
+  "tmdbId": 9184411,
+  "imdbId": "tt92448581",
+  "movieFile": {
+   "size": 3196383677,
+   "quality": {
+    "quality": {
+     "id": 17,
+     "name": "WEBRip-2160p",
+     "resolution": 2160
+    }
+   }
+  }
+ }
+]

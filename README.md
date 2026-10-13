@@ -52,7 +52,12 @@ Also:
   <img src="docs/images/cleanup.jpg" width="400" alt="Library: Cleanup candidates">
 </p>
 
-<sub>Screenshots: the desktop build in demo mode (sample data, generated covers).</sub>
+<sub>Screenshots: the desktop build in demo mode (`--demo`), no server involved. The films and
+the series shown are the Blender Foundation's open movies (Big Buck Bunny, Elephants Dream,
+Sintel, Tears of Steel, Cosmos Laundromat, Spring, Coffee Run, Sprite Fright, Charge,
+Caminandes), with their posters and stills from Wikimedia Commons under CC BY 3.0 / 4.0
+(© Blender Foundation | studio.blender.org), resized or cropped; every other title is made
+up and gets Régie5's generated cover. Full credits: [demo/CREDITS.md](demo/CREDITS.md).</sub>
 
 ### What Régie5 changes on your servers
 
@@ -177,7 +182,8 @@ DualSense through SDL), and can run on sample data with no server at all.
 # Debian / Ubuntu
 sudo apt install build-essential clang cmake ninja-build libsdl2-dev libfreetype-dev libcurl4-openssl-dev libgl-dev
 
-scripts/run-linux.sh --mock              # demo mode: sample data, no server contacted
+scripts/run-linux.sh --demo              # demo mode: open films with their posters, no server contacted
+scripts/run-linux.sh --mock              # test data (made-up titles), no server contacted
 scripts/run-linux.sh                     # with ~/.config/regie5/config.json
 cmake --build build/linux && ctest --test-dir build/linux
 ```

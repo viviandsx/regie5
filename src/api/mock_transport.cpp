@@ -103,6 +103,15 @@ void empty_lists(cJSON *o)
 MockTransport::MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty)
     : m_root(std::move(root)), m_delay_ms(delay_ms)
 {
+    std::string index;
+    if (read_file(m_root + "/images.json", &index)) {
+        if (cJSON *o = cJSON_ParseWithLength(index.data(), index.size())) {
+            for (cJSON *it = o->child; it; it = it->next)
+                if (it->string && cJSON_IsString(it))
+                    m_pictures[it->string] = it->valuestring;
+            cJSON_Delete(o);
+        }
+    }
     for (const std::string &name : split_at(empty, ','))
         if (!name.empty())
             m_empty[name] = true;
@@ -150,6 +159,30 @@ std::string MockTransport::file_for(const std::string &url)
     if (name.empty())
         return {};
     return service + "/" + name + ".json";
+}
+
+std::string MockTransport::picture_for(const std::string &url)
+{
+    std::string service, path, query;
+    if (!split(url, &service, &path, &query))
+        return {};
+    auto lower = [](std::string s) {
+        for (char &c : s)
+            c = (char)std::tolower((unsigned char)c);
+        return s;
+    };
+    const std::vector<std::string> parts = split_at(path, '/');
+    for (size_t i = 0; i + 2 < parts.size(); i++) {
+        if (parts[i] == "mediacover") {   /* .../mediacover/12/poster-500.jpg */
+            const std::string &file = parts[i + 2];
+            return service + "/mediacover/" + parts[i + 1] + "/" + file.substr(0, file.find_first_of("-."));
+        }
+        if (lower(parts[i]) == "items" && parts.size() > i + 3 && lower(parts[i + 2]) == "images")
+            return service + "/items/" + parts[i + 1] + "/" + lower(parts[i + 3]);
+    }
+    if (path.find("/imageproxy/") != std::string::npos && !parts.empty())
+        return service + "/" + parts.back();
+    return {};
 }
 
 std::string MockTransport::emptied(const std::string &rel, const std::string &body)
@@ -205,6 +238,19 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
         std::fprintf(stderr, "mock: %s %s (nothing done)\n", req.method.c_str(), path.c_str());
         r.status = 204;
         return r;
+    }
+    if (!m_pictures.empty()) {
+        const std::string key = picture_for(req.url);
+        if (!key.empty()) {
+            auto p = m_pictures.find(key);
+            if (p == m_pictures.end() || !read_file(m_root + "/images/" + p->second, &r.body)) {
+                r.status = 404;
+                return r;
+            }
+            r.status = 200;
+            r.content_type = "image/jpeg";
+            return r;
+        }
     }
     const std::string rel = file_for(req.url);
     std::string body;

@@ -1,0 +1,5 @@
+{
+ "HardwareAccelerationType": "vaapi",
+ "EnableThrottling": true,
+ "ThrottleDelaySeconds": 180
+}

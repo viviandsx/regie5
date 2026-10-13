@@ -1,0 +1,617 @@
+[
+ {
+  "PlayState": {
+   "PositionTicks": 8154041672,
+   "CanSeek": true,
+   "IsPaused": false,
+   "IsMuted": false,
+   "AudioStreamIndex": 1,
+   "SubtitleStreamIndex": 2,
+   "MediaSourceId": "06048749db654723d414b620b0ad594e",
+   "PlayMethod": "DirectPlay",
+   "RepeatMode": "RepeatNone",
+   "PlaybackOrder": "Default"
+  },
+  "AdditionalUsers": [],
+  "Capabilities": {
+   "PlayableMediaTypes": [
+    "Video"
+   ],
+   "SupportedCommands": [
+    "DisplayMessage",
+    "SendString"
+   ],
+   "SupportsMediaControl": true,
+   "SupportsPersistentIdentifier": true
+  },
+  "PlayableMediaTypes": [
+   "Video"
+  ],
+  "Id": "97b27827e0359672bbc36634f41c06a6",
+  "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+  "UserName": "Alice",
+  "Client": "Wholphin",
+  "LastActivityDate": "2026-10-11T17:21:24.6897171Z",
+  "LastPlaybackCheckIn": "2026-10-11T17:21:23.6828576Z",
+  "DeviceName": "Salon TV",
+  "NowPlayingItem": {
+   "Name": "Sintel",
+   "OriginalTitle": "Glenrock: Falling Archive",
+   "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
+   "Id": "06048749db654723d414b620b0ad594e",
+   "DateCreated": "2026-10-11T15:31:37.107694Z",
+   "HasSubtitles": true,
+   "Container": "mkv",
+   "PremiereDate": "2010-03-04T23:00:00.0000000Z",
+   "CriticRating": 90,
+   "EnableMediaSourceDisplay": true,
+   "OfficialRating": "R",
+   "ChannelId": null,
+   "Overview": "A lonely young woman crosses a hostile land to find the baby dragon she once rescued.",
+   "Genres": [
+    "Thriller",
+    "Drame",
+    "Mystère",
+    "Horreur"
+   ],
+   "CommunityRating": 7.272,
+   "RunTimeTicks": 9000000000,
+   "ProductionYear": 2010,
+   "ProviderIds": {
+    "Imdb": "tt98328429",
+    "Tmdb": "9175210"
+   },
+   "IsHD": true,
+   "IsFolder": false,
+   "ParentId": "6356882b5eb9d2d7b92067919225269d",
+   "Type": "Movie",
+   "Studios": [
+    {
+     "Name": "Ninefold Films",
+     "Id": "eb90ae51ff86ab7ca1a19e289c6e2971"
+    },
+    {
+     "Name": "Paper Moon Pictures",
+     "Id": "9a7d212521cdd66ef5d84974ab669eb8"
+    },
+    {
+     "Name": "Paper Moon Pictures",
+     "Id": "4ff84fea4fe0a5a3c43f35fd2ce000ae"
+    },
+    {
+     "Name": "Harbor Lane Studios",
+     "Id": "b4737b2d4ecebfc59bb9e4d92e82b392"
+    },
+    {
+     "Name": "Ninefold Films",
+     "Id": "15c8467691b2de4b7b0738a530c7466c"
+    },
+    {
+     "Name": "Lantern House",
+     "Id": "ff93139ddf0ca138cd37c9b2d804b5af"
+    }
+   ],
+   "GenreItems": [
+    {
+     "Name": "Thriller",
+     "Id": "ccf396e5c5c4f947489dff0e88f82d83"
+    },
+    {
+     "Name": "Drame",
+     "Id": "a3d78bf37860a1c43cb414de2ba1970f"
+    },
+    {
+     "Name": "Mystère",
+     "Id": "a2cb73fa0286c1a6633df0f920b2efbf"
+    },
+    {
+     "Name": "Horreur",
+     "Id": "b6e3eb13562b11e3bd1fd0fe7609ec47"
+    }
+   ],
+   "LocalTrailerCount": 0,
+   "SpecialFeatureCount": 0,
+   "PrimaryImageAspectRatio": 0.6663333333333333,
+   "MediaStreams": [
+    {
+     "Codec": "hevc",
+     "Language": "eng",
+     "ColorSpace": "bt709",
+     "ColorTransfer": "bt709",
+     "ColorPrimaries": "bt709",
+     "TimeBase": "1/1000",
+     "VideoRange": "SDR",
+     "VideoRangeType": "SDR",
+     "AudioSpatialFormat": "None",
+     "DisplayTitle": "1080p HEVC SDR",
+     "IsInterlaced": false,
+     "BitRate": 1699726,
+     "BitDepth": 8,
+     "RefFrames": 1,
+     "IsDefault": true,
+     "IsForced": false,
+     "IsHearingImpaired": false,
+     "IsOriginal": false,
+     "Height": 800,
+     "Width": 1920,
+     "AverageFrameRate": 23.976025,
+     "RealFrameRate": 23.976025,
+     "ReferenceFrameRate": 23.976025,
+     "Profile": "Main",
+     "Type": "Video",
+     "AspectRatio": "2.40:1",
+     "Index": 0,
+     "IsExternal": false,
+     "IsTextSubtitleStream": false,
+     "SupportsExternalStream": false,
+     "PixelFormat": "yuv420p",
+     "Level": 120,
+     "IsAnamorphic": false
+    },
+    {
+     "Codec": "aac",
+     "Language": "eng",
+     "TimeBase": "1/1000",
+     "VideoRange": "Unknown",
+     "VideoRangeType": "Unknown",
+     "AudioSpatialFormat": "None",
+     "LocalizedDefault": "Par défaut",
+     "LocalizedExternal": "Externe",
+     "LocalizedLanguage": "English",
+     "LocalizedOriginal": "Original",
+     "DisplayTitle": "English - AAC - 5.1 - Par défaut",
+     "IsInterlaced": false,
+     "ChannelLayout": "5.1",
+     "BitRate": 317668,
+     "Channels": 6,
+     "SampleRate": 48000,
+     "IsDefault": true,
+     "IsForced": false,
+     "IsHearingImpaired": false,
+     "IsOriginal": false,
+     "Profile": "LC",
+     "Type": "Audio",
+     "Index": 1,
+     "IsExternal": false,
+     "IsTextSubtitleStream": false,
+     "SupportsExternalStream": false
+    },
+    {
+     "Codec": "subrip",
+     "Language": "fra",
+     "TimeBase": "1/1000",
+     "VideoRange": "Unknown",
+     "VideoRangeType": "Unknown",
+     "AudioSpatialFormat": "None",
+     "LocalizedUndefined": "Non défini",
+     "LocalizedDefault": "Par défaut",
+     "LocalizedForced": "Forcé",
+     "LocalizedExternal": "Externe",
+     "LocalizedHearingImpaired": "Malentendants",
+     "LocalizedLanguage": "French",
+     "DisplayTitle": "French - Par défaut - SUBRIP",
+     "IsInterlaced": false,
+     "IsDefault": true,
+     "IsForced": false,
+     "IsHearingImpaired": false,
+     "IsOriginal": false,
+     "Type": "Subtitle",
+     "Index": 2,
+     "IsExternal": false,
+     "IsTextSubtitleStream": true,
+     "SupportsExternalStream": true
+    }
+   ],
+   "VideoType": "VideoFile",
+   "ImageTags": {
+    "Primary": "03f1406f766f40ede9f1e3013169faf9",
+    "Thumb": "69bb0306c1296c575dceae1a43103639",
+    "Logo": "e5cdcfe127eda9c478a65c3df6d0864f"
+   },
+   "BackdropImageTags": [
+    "c2be3ef7c72a490cefc19a463a63009b"
+   ],
+   "Chapters": [],
+   "Trickplay": {},
+   "LocationType": "FileSystem",
+   "MediaType": "Video",
+   "Width": 1920,
+   "Height": 800,
+   "OriginalLanguage": "en"
+  },
+  "DeviceId": "ad108bcf2949b9370370c2f2abb1b28f",
+  "ApplicationVersion": "1.0.3-0-gf2287a85",
+  "IsActive": true,
+  "SupportsMediaControl": false,
+  "SupportsRemoteControl": false,
+  "HasCustomDeviceName": false,
+  "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
+  "UserPrimaryImageTag": "b2e813fe7376af84953fbd6911512dd2",
+  "SupportedCommands": [
+   "DisplayMessage",
+   "SendString"
+  ]
+ },
+ {
+  "PlayState": {
+   "PositionTicks": 3024000000,
+   "CanSeek": true,
+   "IsPaused": false,
+   "IsMuted": false,
+   "AudioStreamIndex": 1,
+   "SubtitleStreamIndex": 2,
+   "MediaSourceId": "671cae1ac08546ba8e85479f68a86736",
+   "PlayMethod": "Transcode",
+   "RepeatMode": "RepeatNone",
+   "PlaybackOrder": "Default"
+  },
+  "AdditionalUsers": [],
+  "Capabilities": {
+   "PlayableMediaTypes": [
+    "Video"
+   ],
+   "SupportedCommands": [
+    "DisplayMessage",
+    "SendString"
+   ],
+   "SupportsMediaControl": true,
+   "SupportsPersistentIdentifier": true
+  },
+  "PlayableMediaTypes": [
+   "Video"
+  ],
+  "Id": "0b161bd8c22e6bc41a512b61eb755ec2",
+  "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+  "UserName": "Hugo",
+  "Client": "Jellyfin Web",
+  "LastActivityDate": "2026-10-11T17:21:24.6897171Z",
+  "LastPlaybackCheckIn": "2026-10-11T17:21:23.6828576Z",
+  "DeviceName": "Cuisine",
+  "NowPlayingItem": {
+   "Name": "Tears of Steel",
+   "OriginalTitle": "Tears of Steel",
+   "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
+   "Id": "671cae1ac08546ba8e85479f68a86736",
+   "DateCreated": "2026-10-11T15:31:37.107694Z",
+   "HasSubtitles": true,
+   "Container": "mkv",
+   "PremiereDate": "2010-03-04T23:00:00.0000000Z",
+   "CriticRating": 90,
+   "EnableMediaSourceDisplay": true,
+   "OfficialRating": "R",
+   "ChannelId": null,
+   "Overview": "In a future Amsterdam, a group of scientists stages a last stand against the robots.",
+   "Genres": [
+    "Thriller",
+    "Drame",
+    "Mystère",
+    "Horreur"
+   ],
+   "CommunityRating": 7.272,
+   "RunTimeTicks": 7200000000,
+   "ProductionYear": 2012,
+   "ProviderIds": {
+    "Imdb": "tt98328429",
+    "Tmdb": "9175210"
+   },
+   "IsHD": true,
+   "IsFolder": false,
+   "ParentId": "6356882b5eb9d2d7b92067919225269d",
+   "Type": "Movie",
+   "Studios": [
+    {
+     "Name": "Ninefold Films",
+     "Id": "eb90ae51ff86ab7ca1a19e289c6e2971"
+    },
+    {
+     "Name": "Paper Moon Pictures",
+     "Id": "9a7d212521cdd66ef5d84974ab669eb8"
+    },
+    {
+     "Name": "Paper Moon Pictures",
+     "Id": "4ff84fea4fe0a5a3c43f35fd2ce000ae"
+    },
+    {
+     "Name": "Harbor Lane Studios",
+     "Id": "b4737b2d4ecebfc59bb9e4d92e82b392"
+    },
+    {
+     "Name": "Ninefold Films",
+     "Id": "15c8467691b2de4b7b0738a530c7466c"
+    },
+    {
+     "Name": "Lantern House",
+     "Id": "ff93139ddf0ca138cd37c9b2d804b5af"
+    }
+   ],
+   "GenreItems": [
+    {
+     "Name": "Thriller",
+     "Id": "ccf396e5c5c4f947489dff0e88f82d83"
+    },
+    {
+     "Name": "Drame",
+     "Id": "a3d78bf37860a1c43cb414de2ba1970f"
+    },
+    {
+     "Name": "Mystère",
+     "Id": "a2cb73fa0286c1a6633df0f920b2efbf"
+    },
+    {
+     "Name": "Horreur",
+     "Id": "b6e3eb13562b11e3bd1fd0fe7609ec47"
+    }
+   ],
+   "LocalTrailerCount": 0,
+   "SpecialFeatureCount": 0,
+   "PrimaryImageAspectRatio": 0.6663333333333333,
+   "MediaStreams": [
+    {
+     "Type": "Video",
+     "Index": 0,
+     "Codec": "hevc",
+     "Profile": "Main 10",
+     "VideoRangeType": "HDR10",
+     "VideoRange": "HDR",
+     "BitDepth": 10,
+     "Width": 3840,
+     "Height": 2160,
+     "BitRate": 58000000
+    },
+    {
+     "Type": "Audio",
+     "Index": 1,
+     "Codec": "truehd",
+     "Channels": 8,
+     "Language": "eng",
+     "BitRate": 4500000
+    },
+    {
+     "Type": "Subtitle",
+     "Index": 2,
+     "Codec": "PGSSUB",
+     "Language": "fre",
+     "IsTextSubtitleStream": false
+    }
+   ],
+   "VideoType": "VideoFile",
+   "ImageTags": {
+    "Primary": "03f1406f766f40ede9f1e3013169faf9",
+    "Thumb": "69bb0306c1296c575dceae1a43103639",
+    "Logo": "e5cdcfe127eda9c478a65c3df6d0864f"
+   },
+   "BackdropImageTags": [
+    "c2be3ef7c72a490cefc19a463a63009b"
+   ],
+   "Chapters": [],
+   "Trickplay": {},
+   "LocationType": "FileSystem",
+   "MediaType": "Video",
+   "Width": 1920,
+   "Height": 800,
+   "OriginalLanguage": "en"
+  },
+  "DeviceId": "ad108bcf2949b9370370c2f2abb1b28f",
+  "ApplicationVersion": "1.0.3-0-gf2287a85",
+  "IsActive": true,
+  "SupportsMediaControl": false,
+  "SupportsRemoteControl": false,
+  "HasCustomDeviceName": false,
+  "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
+  "UserPrimaryImageTag": "b2e813fe7376af84953fbd6911512dd2",
+  "SupportedCommands": [
+   "DisplayMessage",
+   "SendString"
+  ],
+  "TranscodingInfo": {
+   "VideoCodec": "h264",
+   "AudioCodec": "aac",
+   "Container": "ts",
+   "IsVideoDirect": false,
+   "IsAudioDirect": false,
+   "Bitrate": 12000000,
+   "Width": 1920,
+   "Height": 1080,
+   "AudioChannels": 2,
+   "Framerate": 23.976,
+   "HardwareAccelerationType": "none",
+   "TranscodeReasons": [
+    "SubtitleCodecNotSupported",
+    "VideoRangeTypeNotSupported",
+    "AudioCodecNotSupported"
+   ],
+   "CompletionPercentage": 42.14
+  },
+  "_regie5_synthetic": true
+ },
+ {
+  "PlayState": {
+   "PositionTicks": 1296000000,
+   "CanSeek": true,
+   "IsPaused": false,
+   "IsMuted": false,
+   "AudioStreamIndex": 1,
+   "SubtitleStreamIndex": -1,
+   "MediaSourceId": "c7b489c79362625e8929d532cef80919",
+   "PlayMethod": "Transcode",
+   "RepeatMode": "RepeatNone",
+   "PlaybackOrder": "Default"
+  },
+  "AdditionalUsers": [],
+  "Capabilities": {
+   "PlayableMediaTypes": [
+    "Video"
+   ],
+   "SupportedCommands": [
+    "DisplayMessage",
+    "SendString"
+   ],
+   "SupportsMediaControl": true,
+   "SupportsPersistentIdentifier": true
+  },
+  "PlayableMediaTypes": [
+   "Video"
+  ],
+  "Id": "08b2ad0685351b476da4681a1e2aca74",
+  "UserId": "b8fd473b3ac193997e6a57da283ba7cf",
+  "UserName": "Gaëlle",
+  "Client": "Jellyfin Web",
+  "LastActivityDate": "2026-10-11T17:21:24.6897171Z",
+  "LastPlaybackCheckIn": "2026-10-11T17:21:23.6828576Z",
+  "DeviceName": "Bureau",
+  "NowPlayingItem": {
+   "Name": "Cosmos Laundromat",
+   "OriginalTitle": "Cosmos Laundromat",
+   "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
+   "Id": "c7b489c79362625e8929d532cef80919",
+   "DateCreated": "2026-10-11T15:31:37.107694Z",
+   "HasSubtitles": true,
+   "Container": "mkv",
+   "PremiereDate": "2010-03-04T23:00:00.0000000Z",
+   "CriticRating": 90,
+   "EnableMediaSourceDisplay": true,
+   "OfficialRating": "R",
+   "ChannelId": null,
+   "Overview": "A suicidal sheep is offered a strange deal: a new life, again and again.",
+   "Genres": [
+    "Thriller",
+    "Drame",
+    "Mystère",
+    "Horreur"
+   ],
+   "CommunityRating": 7.272,
+   "RunTimeTicks": 7200000000,
+   "ProductionYear": 2015,
+   "ProviderIds": {
+    "Imdb": "tt98328429",
+    "Tmdb": "9175210"
+   },
+   "IsHD": true,
+   "IsFolder": false,
+   "ParentId": "6356882b5eb9d2d7b92067919225269d",
+   "Type": "Movie",
+   "Studios": [
+    {
+     "Name": "Ninefold Films",
+     "Id": "eb90ae51ff86ab7ca1a19e289c6e2971"
+    },
+    {
+     "Name": "Paper Moon Pictures",
+     "Id": "9a7d212521cdd66ef5d84974ab669eb8"
+    },
+    {
+     "Name": "Paper Moon Pictures",
+     "Id": "4ff84fea4fe0a5a3c43f35fd2ce000ae"
+    },
+    {
+     "Name": "Harbor Lane Studios",
+     "Id": "b4737b2d4ecebfc59bb9e4d92e82b392"
+    },
+    {
+     "Name": "Ninefold Films",
+     "Id": "15c8467691b2de4b7b0738a530c7466c"
+    },
+    {
+     "Name": "Lantern House",
+     "Id": "ff93139ddf0ca138cd37c9b2d804b5af"
+    }
+   ],
+   "GenreItems": [
+    {
+     "Name": "Thriller",
+     "Id": "ccf396e5c5c4f947489dff0e88f82d83"
+    },
+    {
+     "Name": "Drame",
+     "Id": "a3d78bf37860a1c43cb414de2ba1970f"
+    },
+    {
+     "Name": "Mystère",
+     "Id": "a2cb73fa0286c1a6633df0f920b2efbf"
+    },
+    {
+     "Name": "Horreur",
+     "Id": "b6e3eb13562b11e3bd1fd0fe7609ec47"
+    }
+   ],
+   "LocalTrailerCount": 0,
+   "SpecialFeatureCount": 0,
+   "PrimaryImageAspectRatio": 0.6663333333333333,
+   "MediaStreams": [
+    {
+     "Type": "Video",
+     "Index": 0,
+     "Codec": "h264",
+     "Profile": "High",
+     "VideoRangeType": "SDR",
+     "VideoRange": "SDR",
+     "BitDepth": 8,
+     "Width": 1920,
+     "Height": 1080,
+     "BitRate": 22000000
+    },
+    {
+     "Type": "Audio",
+     "Index": 1,
+     "Codec": "ac3",
+     "Channels": 6,
+     "Language": "fre",
+     "BitRate": 640000
+    },
+    {
+     "Type": "Subtitle",
+     "Index": 2,
+     "Codec": "subrip",
+     "Language": "fre",
+     "IsTextSubtitleStream": true
+    }
+   ],
+   "VideoType": "VideoFile",
+   "ImageTags": {
+    "Primary": "03f1406f766f40ede9f1e3013169faf9",
+    "Thumb": "69bb0306c1296c575dceae1a43103639",
+    "Logo": "e5cdcfe127eda9c478a65c3df6d0864f"
+   },
+   "BackdropImageTags": [
+    "c2be3ef7c72a490cefc19a463a63009b"
+   ],
+   "Chapters": [],
+   "Trickplay": {},
+   "LocationType": "FileSystem",
+   "MediaType": "Video",
+   "Width": 1920,
+   "Height": 800,
+   "OriginalLanguage": "en"
+  },
+  "DeviceId": "ad108bcf2949b9370370c2f2abb1b28f",
+  "ApplicationVersion": "1.0.3-0-gf2287a85",
+  "IsActive": true,
+  "SupportsMediaControl": false,
+  "SupportsRemoteControl": false,
+  "HasCustomDeviceName": false,
+  "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
+  "UserPrimaryImageTag": "b2e813fe7376af84953fbd6911512dd2",
+  "SupportedCommands": [
+   "DisplayMessage",
+   "SendString"
+  ],
+  "TranscodingInfo": {
+   "VideoCodec": "h264",
+   "AudioCodec": "ac3",
+   "Container": "ts",
+   "IsVideoDirect": false,
+   "IsAudioDirect": true,
+   "Bitrate": 6000000,
+   "Width": 1920,
+   "Height": 1080,
+   "AudioChannels": 6,
+   "Framerate": 23.976,
+   "HardwareAccelerationType": "vaapi",
+   "TranscodeReasons": [
+    "ContainerBitrateExceedsLimit"
+   ],
+   "CompletionPercentage": 24.2
+  },
+  "_regie5_synthetic": true
+ }
+]

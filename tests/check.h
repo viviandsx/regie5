@@ -49,10 +49,10 @@ template <typename T> std::string show(const T &v)
     return s.str();
 }
 
-/* A fixture's text (REGIE5_FIXTURES is the fixtures directory). */
-inline std::string fixture(const std::string &rel)
+/* A fixture's text (REGIE5_FIXTURES is the fixtures directory, or root). */
+inline std::string fixture(const std::string &rel, const std::string &root = REGIE5_FIXTURES)
 {
-    std::ifstream in(std::string(REGIE5_FIXTURES) + "/" + rel, std::ios::binary);
+    std::ifstream in(root + "/" + rel, std::ios::binary);
     if (!in) {
         fail(__FILE__, __LINE__, "missing fixture " + rel);
         return {};

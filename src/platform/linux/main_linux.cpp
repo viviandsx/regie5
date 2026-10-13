@@ -145,10 +145,10 @@ int main(int argc, char **argv)
     const Uint32 wake_event = SDL_RegisterEvents(1);
     std::unique_ptr<http::Transport> transport;
     if (opt.mock) {
-        std::string fixtures = REGIE5_SOURCE_FIXTURES;
+        std::string fixtures = opt.demo ? REGIE5_SOURCE_DEMO : REGIE5_SOURCE_FIXTURES;
         if (char *base = SDL_GetBasePath()) {   /* beside the binary when installed */
             struct stat st;
-            const std::string beside = std::string(base) + "fixtures";
+            const std::string beside = std::string(base) + (opt.demo ? "demo" : "fixtures");
             if (stat(beside.c_str(), &st) == 0)
                 fixtures = beside;
             SDL_free(base);

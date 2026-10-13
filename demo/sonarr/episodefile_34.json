@@ -1,0 +1,158 @@
+[
+ {
+  "id": 901,
+  "seriesId": 34,
+  "seasonNumber": 1,
+  "size": 945765535,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 903,
+  "seriesId": 34,
+  "seasonNumber": 1,
+  "size": 845377068,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 905,
+  "seriesId": 34,
+  "seasonNumber": 1,
+  "size": 993056301,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 913,
+  "seriesId": 34,
+  "seasonNumber": 2,
+  "size": 598781354,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 914,
+  "seriesId": 34,
+  "seasonNumber": 2,
+  "size": 639539996,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 915,
+  "seriesId": 34,
+  "seasonNumber": 2,
+  "size": 632189316,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 917,
+  "seriesId": 34,
+  "seasonNumber": 2,
+  "size": 584985828,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 918,
+  "seriesId": 34,
+  "seasonNumber": 2,
+  "size": 751436854,
+  "quality": {
+   "quality": {
+    "id": 15,
+    "name": "WEBRip-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1290,
+  "seriesId": 34,
+  "seasonNumber": 1,
+  "size": 978575033,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1291,
+  "seriesId": 34,
+  "seasonNumber": 1,
+  "size": 807355667,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1292,
+  "seriesId": 34,
+  "seasonNumber": 2,
+  "size": 657981797,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ },
+ {
+  "id": 1293,
+  "seriesId": 34,
+  "seasonNumber": 1,
+  "size": 817036582,
+  "quality": {
+   "quality": {
+    "id": 9,
+    "name": "HDTV-1080p",
+    "resolution": 1080
+   }
+  }
+ }
+]
