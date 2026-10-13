@@ -28,33 +28,17 @@ constexpr float kListW = gfx::W - 2 * kPad;
 constexpr float kButtonH = 64, kBarPad = 6;
 const gfx::TextStyle kButtonText{gfx::SemiBold, 28};
 
-/* "192.168.1.10:8989" from "http://192.168.1.10:8989/base". */
-std::string host_of(const std::string &url)
+/* "192.168.1.10:8989/sonarr" from "http://192.168.1.10:8989/sonarr": the path is kept,
+   behind a reverse proxy it is what tells the services apart. */
+std::string address_of(const std::string &url)
 {
     const size_t s = url.find("//");
-    const std::string h = url.substr(s == std::string::npos ? 0 : s + 2);
-    return h.substr(0, h.find('/'));
+    return url.substr(s == std::string::npos ? 0 : s + 2);
 }
 
 std::string error_text(const model::ServiceStatus &st)
 {
-    switch ((api::Error)st.error) {
-    case api::Error::Unreachable: return i18n::tr(i18n::ErrUnreachable);
-    case api::Error::Timeout: return i18n::tr(i18n::ErrTimeout);
-    case api::Error::Unsupported: return i18n::tr(i18n::ErrUnsupported);
-    case api::Error::Certificate: return i18n::tr(i18n::ErrCertificate);
-    case api::Error::Unauthorized: return i18n::tr(i18n::ErrUnauthorized);
-    case api::Error::NotFound: return i18n::tr(i18n::ErrNotFound);
-    case api::Error::BadResponse: return i18n::tr(i18n::ErrBadResponse);
-    case api::Error::Http: {
-        char buf[128];
-        std::snprintf(buf, sizeof buf, i18n::tr(i18n::ErrHttp), st.http_status);
-        return buf;
-    }
-    case api::Error::Disabled: return i18n::tr(i18n::StatusDisabled);
-    case api::Error::None: break;
-    }
-    return {};
+    return fmt::error((api::Error)st.error, st.http_status);
 }
 
 const char *config_error_text(config::LoadError e)
@@ -431,7 +415,7 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
         const bool show_url = !c.url.empty() && !m_ctx.mock && !compact;
         gfx::text(x0 + 86, ry + (show_url ? 40 : row_h / 2 + 11), name, {gfx::SemiBold, compact ? 28.f : 32.f}, kText);
         if (show_url)
-            gfx::text(x0 + 86, ry + 70, host_of(c.url), {gfx::Regular, 22}, kText3);
+            gfx::text(x0 + 86, ry + 70, address_of(c.url), {gfx::Regular, 22, kListW * 0.4f}, kText3);
         const uint32_t ink = st.state == model::ServiceStatus::Failed ? 0xffff8a80u
                              : st.state == model::ServiceStatus::Ok && !versions::supported(row.service, st.version)
                                  ? 0xffffd60au

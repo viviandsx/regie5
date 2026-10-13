@@ -25,7 +25,7 @@ pour ce qui a été fait après la phase 0).
 | **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | 🔶 en cours (§ 2 sexies) |
 
-Tests : **51** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **54** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -367,10 +367,22 @@ publie seul toute release du dépôt.
       `ConfigMissing` et `ConfigFromBackup` étaient inversés dans l'ancienne table par
       position (« absent : la copie gardée par l'app est utilisée » affiché quand
       `config.json` manque).
-- [ ] **c) Reverse proxy** (prochaine étape) : nginx temporaire en Docker (`nginx:1.27-alpine`)
-      sur `127.0.0.1:8443`, HTTPS auto-signé, sous-chemins `/sonarr/`… vers les serveurs de
-      Vivian sans rien y changer ; Régie5 sous Linux en lecture seule, config temporaire
-      (`insecure: true`), puis arrêt du conteneur. Rien n'a encore été lancé.
+- [x] **c) Reverse proxy** — testé le 13 octobre 2026 : nginx 1.27 en Docker sur
+      `127.0.0.1:8443`, HTTPS auto-signé, chemins `/sonarr`, `/radarr/` (avec `/` final),
+      `/requests` (Seerr), `/media/jellyfin` (deux niveaux), retirés par le proxy, vers les
+      serveurs de Vivian sans rien y changer. **Lecture seule garantie par nginx**
+      (`limit_except GET`) : 215 GET, aucune écriture. Tous les onglets et les jaquettes
+      (mediacover, images Jellyfin, proxy d'images Seerr) marchent. Trouvé et corrigé :
+      sous Linux, un certificat refusé s'affichait « Injoignable » (libcurl : erreurs 60 et
+      83 jamais traduites) ; Réglages ne montrait que l'hôte (`127.0.0.1:8443` quatre fois),
+      il montre l'adresse avec son chemin ; une redirection (portail de connexion devant le
+      proxy, mauvais service) donnait « Erreur du serveur (HTTP 302) », maintenant
+      « Redirigé (HTTP 302) — page de connexion du proxy, ou mauvaise adresse ? » (jamais
+      suivie : la clé partirait avec). Test `services_behind_a_reverse_proxy`.
+      `docs/CONFIG.md` : section « Derrière un reverse proxy » ; section `is4k` remise à
+      jour (Régie5 n'écrit plus dans Seerr depuis le 13 octobre). Conteneur arrêté.
+      Non testé : chemin gardé par le proxy + `URL Base` réglée dans le service (demande de
+      changer le serveur de Vivian).
 - [ ] **d) Pastilles de compteur** sur les onglets.
 - [ ] **e) Signalements Seerr** (lecture, puis résoudre / commenter ; à ajouter aux écritures
       autorisées de CLAUDE.md §3 ; `--mock` seulement).
@@ -408,8 +420,8 @@ il touche ce qui est codé, sinon il est planifié ici.
 
 | Point | Où on en est | Quand |
 |---|---|---|
-| HTTPS | Fonctionne sous Linux (libcurl, `http` et `https`). Il manque une option pour les certificats auto-signés (`"insecure": true` par service). Sur PS5 : TLS à porter | Option : étape « adresses » après la 4 bis ; PS5 : phase 6 |
-| Sous-chemins de reverse proxy, `urlBase` des *arr | L'`url` de config peut contenir un chemin (`https://domaine/sonarr`) : toutes les URL passent par `Services::url`. Pas encore testé avec un vrai reverse proxy | Fixture + test « url avec chemin » dans l'étape « adresses » |
+| HTTPS | Linux (libcurl) et PS5 (mbedTLS), `"insecure": true` pour un certificat auto-signé, « Certificat refusé » sinon | Fait (6.2 bis ; Linux corrigé en 0.3.0 c) |
+| Sous-chemins de reverse proxy, `urlBase` des *arr | Testé derrière nginx (chemins retirés, HTTPS auto-signé), redirections signalées, `docs/CONFIG.md` | Fait (0.3.0 c) |
 | Versions plus anciennes | Minimums vérifiés au test de connexion, message clair dans Réglages, tableau dans le README | Fait (0.3.0, a) |
 | Plusieurs instances (Radarr 1080p + 4K…) | Config : objet **ou** liste nommée, `is4k` par instance ; tous les écrans parcourent toutes les instances | Fait (4 ter) |
 | Fonctions destructives désactivées par défaut | — | 4 bis (B) : Ménage activé seulement dans Réglages, après un avertissement |
@@ -540,3 +552,4 @@ la Bibliothèque).
 | 13 oct. 2026 | 0.3.0 a) : versions minimales par service, message dans Réglages, tableau du README. |
 | 13 oct. 2026 | 0.3.0 b) : une langue = un fichier, `TRANSLATING.md` ; textes ConfigMissing / ConfigFromBackup remis à l'endroit. |
 | 13 oct. 2026 | **Phase 7 terminée** : PR #244 fusionnée, Régie5 0.2.0 sur homebrew.page. `RELEASING.md` : le catalogue suit chaque release, aucune avant la 0.3.0 testée sur console. |
+| 13 oct. 2026 | 0.3.0 c) : reverse proxy nginx (sous-chemins, HTTPS auto-signé, lecture seule) ; certificat refusé sous Linux, adresse avec chemin et redirections dans Réglages. |

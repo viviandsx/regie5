@@ -28,6 +28,8 @@ Error classify(const http::Response &r, bool parsed)
         return Error::Unauthorized;
     if (r.status == 404)
         return Error::NotFound;
+    if (r.status >= 300 && r.status < 400)
+        return Error::Redirected;
     if (r.status < 200 || r.status >= 300)
         return Error::Http;
     return parsed ? Error::None : Error::BadResponse;

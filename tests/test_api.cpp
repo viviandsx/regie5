@@ -353,6 +353,8 @@ TEST(errors_are_classified)
     CHECK(api::classify(r, false) == api::Error::Unauthorized);
     r.status = 404;
     CHECK(api::classify(r, false) == api::Error::NotFound);
+    r.status = 302;   /* a reverse proxy's login page: shown, never followed */
+    CHECK(api::classify(r, false) == api::Error::Redirected);
     r.status = 502;
     CHECK(api::classify(r, false) == api::Error::Http);
     r.status = 200;
@@ -411,6 +413,27 @@ TEST(services_on_mock)
     drain(pool);
     CHECK(q.ok());
     CHECK_EQ(q.value.size(), (size_t)3);
+}
+
+TEST(services_behind_a_reverse_proxy)
+{
+    /* Sub-paths, with or without a final slash, one or two levels deep (tested against nginx). */
+    config::Config cfg;
+    CHECK(config::parse(R"({
+        "sonarr": {"url": "https://proxy.example/sonarr", "apiKey": "a"},
+        "radarr": {"url": "https://proxy.example/radarr/", "apiKey": "b"},
+        "seerr": {"url": "https://proxy.example/requests", "apiKey": "c"},
+        "jellyfin": {"url": "https://proxy.example:8443/media/jellyfin/", "apiKey": "d"}
+    })", &cfg));
+    api::MockTransport mock(REGIE5_FIXTURES, 0, "");
+    http::Pool pool(mock, 1, nullptr);
+    api::Services s(cfg, pool, "en");
+    CHECK_EQ(s.url(config::Sonarr, "/api/v3/calendar"), std::string("https://proxy.example/sonarr/api/v3/calendar"));
+    CHECK_EQ(s.url(config::Radarr, arr::mediacover_path(7, "poster-250.jpg")),
+             std::string("https://proxy.example/radarr/api/v3/mediacover/7/poster-250.jpg"));
+    CHECK_EQ(s.url(config::Seerr, seerr::image_path("/abc.jpg", "w300")),
+             std::string("https://proxy.example/requests/imageproxy/tmdb/t/p/w300/abc.jpg"));
+    CHECK_EQ(s.url(config::Jellyfin, "/System/Info"), std::string("https://proxy.example:8443/media/jellyfin/System/Info"));
 }
 
 TEST(mock_actions_do_nothing_but_answer)

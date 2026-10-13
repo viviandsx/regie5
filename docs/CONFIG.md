@@ -25,10 +25,34 @@ sont jamais renvoyées au téléphone : un champ laissé vide garde la clé.
 
 ### À quoi sert `is4k`
 
-Seerr suit séparément l'état « normal » et l'état 4K d'un titre. Quand le Ménage supprime
-un titre d'une instance marquée `is4k`, Régie5 marque **l'état 4K** du titre comme
-« supprimé » dans Seerr ; sinon, l'état normal. Une instance 4K non marquée ferait donc
-repasser le mauvais état.
+Il dit quelle instance Seerr utilise comme serveur 4K. Régie5 n'écrit rien dans Seerr : après
+une suppression par le Ménage, c'est la tâche « Media Availability Sync » de Seerr qui
+marque le titre (état normal ou 4K, selon l'instance). Le champ est lu et gardé pour les
+écrans qui distingueront les deux côtés ; il n'est jamais déduit du nom.
+
+## Derrière un reverse proxy
+
+L'`url` peut contenir un chemin, d'un ou plusieurs niveaux, avec ou sans `/` final :
+
+```json
+"sonarr":   { "url": "https://media.lan/sonarr",         "apiKey": "…" },
+"jellyfin": { "url": "https://media.lan/media/jellyfin", "apiKey": "…", "insecure": true }
+```
+
+Deux montages marchent :
+
+- le proxy **retire** le chemin (`location /sonarr/ { proxy_pass http://serveur:8989/; }`) :
+  rien à régler sur le service ;
+- le proxy **garde** le chemin : il faut alors le même chemin dans le service (`URL Base` de
+  Sonarr / Radarr, « URL de base » de Jellyfin). Seerr n'a pas ce réglage : pour lui, seul
+  le premier montage marche.
+
+Régie5 ne suit pas les redirections (la clé d'API partirait avec). Une redirection s'affiche
+dans Réglages : « Redirigé (HTTP 302) — page de connexion du proxy, ou mauvaise adresse ? ».
+Causes habituelles : une page de connexion (Authelia, Authentik…) devant le service, à
+contourner pour les chemins `/api` ; ou `http://` alors que le proxy force `https://`.
+Testé avec nginx (chemins retirés, HTTPS auto-signé avec `insecure`, refus du certificat
+sans).
 
 ## Plusieurs instances
 

@@ -36,6 +36,7 @@ const Text kTexts[] = {
     {ErrUnauthorized, "API key refused"},
     {ErrNotFound, "Nothing at this address — is it the right service?"},
     {ErrHttp, "Server error (HTTP %d)"},
+    {ErrRedirected, "Redirected (HTTP %d) — a proxy login page, or the wrong address?"},
     {ErrBadResponse, "Unexpected answer — is it the right service?"},
     {ButtonTestAll, "Test all"},
     {ButtonFromPhone, "From a phone"},

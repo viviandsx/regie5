@@ -26,6 +26,7 @@ enum class Error {
     Timeout,        /* connected, no answer in time */
     Unauthorized,   /* 401/403: the key */
     NotFound,       /* 404: the address points somewhere else */
+    Redirected,     /* 3xx: a proxy's login page, or http:// sent to https:// (never followed: the key would go along) */
     Http,           /* another HTTP status */
     BadResponse,    /* answered, but not what this service says */
     Unsupported,    /* an address this platform cannot reach yet (https on the PS5) */

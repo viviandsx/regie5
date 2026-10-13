@@ -104,6 +104,8 @@ http::Response CurlTransport::perform(const http::Request &req, const std::atomi
                  : (rc == CURLE_COULDNT_CONNECT || rc == CURLE_COULDNT_RESOLVE_HOST ||
                     rc == CURLE_COULDNT_RESOLVE_PROXY)
                      ? http::Response::Connect
+                 : (rc == CURLE_PEER_FAILED_VERIFICATION || rc == CURLE_SSL_ISSUER_ERROR)
+                     ? http::Response::Certificate
                      : http::Response::Other;
     }
     if (m_log) {

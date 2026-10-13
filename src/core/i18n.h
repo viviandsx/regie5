@@ -37,6 +37,7 @@ enum S {
     ErrUnauthorized,
     ErrNotFound,
     ErrHttp,
+    ErrRedirected,
     ErrBadResponse,
     ButtonTestAll,
     ButtonFromPhone,

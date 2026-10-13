@@ -35,6 +35,7 @@ const Text kTexts[] = {
     {ErrUnauthorized, "Clé d'API refusée"},
     {ErrNotFound, "Rien à cette adresse — est-ce le bon service ?"},
     {ErrHttp, "Erreur du serveur (HTTP %d)"},
+    {ErrRedirected, "Redirigé (HTTP %d) — page de connexion du proxy, ou mauvaise adresse ?"},
     {ErrBadResponse, "Réponse inattendue — est-ce le bon service ?"},
     {ButtonTestAll, "Tout tester"},
     {ButtonFromPhone, "Depuis le téléphone"},

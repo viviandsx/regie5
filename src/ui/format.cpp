@@ -177,6 +177,7 @@ std::string error(api::Error e, int http_status)
     case api::Error::Unauthorized: return i18n::tr(i18n::ErrUnauthorized);
     case api::Error::NotFound: return i18n::tr(i18n::ErrNotFound);
     case api::Error::BadResponse: return i18n::tr(i18n::ErrBadResponse);
+    case api::Error::Redirected: return f(i18n::tr(i18n::ErrRedirected), http_status);
     case api::Error::Http: return f(i18n::tr(i18n::ErrHttp), http_status);
     case api::Error::Disabled: return i18n::tr(i18n::StatusDisabled);
     case api::Error::None: break;
