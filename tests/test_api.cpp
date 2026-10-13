@@ -259,6 +259,43 @@ TEST(seerr_requests)
     CHECK(seerr::parse_about(fixture("seerr/settings_about.json"), &v));
 }
 
+TEST(seerr_issues)
+{
+    CHECK_EQ(seerr::issue_resolve_path(7), std::string("/api/v1/issue/7/resolved"));
+    CHECK_EQ(seerr::issue_comment_path(7), std::string("/api/v1/issue/7/comment"));
+    CHECK(seerr::issues_path(seerr::IssueFilter::Open).find("filter=open") != std::string::npos);
+    /* The message as JSON, quotes and accents included. */
+    CHECK_EQ(seerr::comment_body("C'est \"réglé\""), std::string("{\"message\":\"C'est \\\"réglé\\\"\"}"));
+
+    model::IssuePage p;
+    CHECK(seerr::parse_issues(fixture("seerr/issue_open.json"), &p));
+    CHECK_EQ(p.issues.size(), (size_t)4);
+    CHECK_EQ(p.total, 4);
+    const model::Issue &sub = p.issues[0];   /* the last changed first */
+    CHECK_EQ(sub.id, 41);
+    CHECK(sub.type == model::Issue::Subtitles);
+    CHECK(sub.tv && !sub.resolved);
+    CHECK_EQ(sub.season, 1);
+    CHECK_EQ(sub.episode, 3);
+    CHECK_EQ(sub.reported_by, std::string("Alice"));
+    CHECK_EQ(sub.comments.size(), (size_t)1);
+    CHECK(sub.comments[0].author.empty());   /* the list has no comment authors */
+
+    model::Issue one;
+    CHECK(seerr::parse_issue(fixture("seerr/issue_37.json"), &one));
+    CHECK(one.resolved);
+    CHECK_EQ(one.modified_by, std::string("Admin"));
+    CHECK_EQ(one.comments.size(), (size_t)3);
+    CHECK_EQ(one.comments[0].author, std::string("Emma"));   /* the report first */
+    CHECK_EQ(one.comments[1].author, std::string("Admin"));
+    CHECK(one.comments[0].created < one.comments[2].created);
+    CHECK(!seerr::parse_issue("[]", &one));
+
+    CHECK_EQ(api::MockTransport::file_for("http://seerr.mock/api/v1/issue?take=50&skip=0&sort=modified&filter=resolved"),
+             std::string("seerr/issue_resolved.json"));
+    CHECK_EQ(api::MockTransport::file_for("http://seerr.mock/api/v1/issue/37"), std::string("seerr/issue_37.json"));
+}
+
 TEST(seerr_details)
 {
     model::MediaDetail d;

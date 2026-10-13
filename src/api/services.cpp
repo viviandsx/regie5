@@ -368,6 +368,27 @@ void Services::decline(int request_id, std::function<void(Result<bool>)> done)
     call<bool>(config::Seerr, "POST", seerr::decline_path(request_id), accept_any, std::move(done));
 }
 
+void Services::issues(seerr::IssueFilter f, std::function<void(Result<model::IssuePage>)> done)
+{
+    call<model::IssuePage>(config::Seerr, "GET", seerr::issues_path(f), seerr::parse_issues, std::move(done));
+}
+
+void Services::issue(int issue_id, std::function<void(Result<model::Issue>)> done)
+{
+    call<model::Issue>(config::Seerr, "GET", seerr::issue_path(issue_id), seerr::parse_issue, std::move(done));
+}
+
+void Services::resolve_issue(int issue_id, std::function<void(Result<bool>)> done)
+{
+    call<bool>(config::Seerr, "POST", seerr::issue_resolve_path(issue_id), accept_any, std::move(done));
+}
+
+void Services::comment_issue(int issue_id, const std::string &message, std::function<void(Result<bool>)> done)
+{
+    call<bool>(config::Seerr, "POST", seerr::issue_comment_path(issue_id), accept_any, std::move(done), 0,
+               seerr::comment_body(message));
+}
+
 void Services::sessions(std::function<void(Result<std::vector<model::Session>>)> done)
 {
     call<std::vector<model::Session>>(config::Jellyfin, "GET", jellyfin::sessions_path(), jellyfin::parse_sessions,

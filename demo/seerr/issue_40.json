@@ -1,0 +1,56 @@
+{
+ "id": 40,
+ "issueType": 1,
+ "status": 1,
+ "problemSeason": 0,
+ "problemEpisode": 0,
+ "createdAt": "2026-10-11T21:40:00.000Z",
+ "updatedAt": "2026-10-12T08:15:00.000Z",
+ "media": {
+  "id": 940,
+  "mediaType": "movie",
+  "tmdbId": 9083184,
+  "tvdbId": null,
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "983309941e1bf2c0f082a30a2b220c23",
+  "jellyfinMediaId4k": null
+ },
+ "createdBy": {
+  "id": 3,
+  "displayName": "Bruno",
+  "email": "bruno@example.invalid",
+  "userType": 3,
+  "jellyfinUsername": "Bruno"
+ },
+ "modifiedBy": null,
+ "comments": [
+  {
+   "id": 400,
+   "message": "The picture freezes around 1:12:00, every time.",
+   "createdAt": "2026-10-11T21:40:00.000Z",
+   "updatedAt": "2026-10-11T21:40:00.000Z",
+   "user": {
+    "id": 3,
+    "displayName": "Bruno",
+    "email": "bruno@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Bruno"
+   }
+  },
+  {
+   "id": 401,
+   "message": "I'm looking into it.",
+   "createdAt": "2026-10-12T08:15:00.000Z",
+   "updatedAt": "2026-10-12T08:15:00.000Z",
+   "user": {
+    "id": 1,
+    "displayName": "Admin",
+    "email": "admin@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Admin"
+   }
+  }
+ ],
+ "_regie5_synthetic": true
+}

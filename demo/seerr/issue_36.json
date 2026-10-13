@@ -1,0 +1,62 @@
+{
+ "id": 36,
+ "issueType": 2,
+ "status": 2,
+ "problemSeason": 1,
+ "problemEpisode": 1,
+ "createdAt": "2026-10-08T21:05:00.000Z",
+ "updatedAt": "2026-10-09T10:40:00.000Z",
+ "media": {
+  "id": 936,
+  "mediaType": "tv",
+  "tmdbId": 9364504,
+  "tvdbId": null,
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "d7ab5d8c7ba10b573bb4621059a3e1a0",
+  "jellyfinMediaId4k": null
+ },
+ "createdBy": {
+  "id": 2,
+  "displayName": "Alice",
+  "email": "alice@example.invalid",
+  "userType": 3,
+  "jellyfinUsername": "Alice"
+ },
+ "modifiedBy": {
+  "id": 1,
+  "displayName": "Admin",
+  "email": "admin@example.invalid",
+  "userType": 3,
+  "jellyfinUsername": "Admin"
+ },
+ "comments": [
+  {
+   "id": 360,
+   "message": "The sound and the picture drift apart after ten minutes.",
+   "createdAt": "2026-10-08T21:05:00.000Z",
+   "updatedAt": "2026-10-08T21:05:00.000Z",
+   "user": {
+    "id": 2,
+    "displayName": "Alice",
+    "email": "alice@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Alice"
+   }
+  },
+  {
+   "id": 361,
+   "message": "The file has been replaced.",
+   "createdAt": "2026-10-09T10:40:00.000Z",
+   "updatedAt": "2026-10-09T10:40:00.000Z",
+   "user": {
+    "id": 1,
+    "displayName": "Admin",
+    "email": "admin@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Admin"
+   }
+  }
+ ],
+ "_regie5_synthetic": true
+}

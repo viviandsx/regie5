@@ -156,6 +156,10 @@ std::string MockTransport::file_for(const std::string &url)
         name = "items_user_" + query_value(query, "userId");   /* one user's, for the cleanup */
     else if (service == "jellyfin" && name == "items" && query_value(query, "IncludeItemTypes") == "Movie,Series")
         name = "items_index";   /* every film and series (Jelly5's links) */
+    if (service == "seerr" && name == "issue") {   /* Seerr's default filter is "open" */
+        const std::string f = query_value(query, "filter");
+        name += "_" + (f.empty() ? std::string("open") : f);
+    }
     if (service == "seerr" && name == "request") {
         const std::string f = query_value(query, "filter");
         name += "_" + (f.empty() ? std::string("all") : f);

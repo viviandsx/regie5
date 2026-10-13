@@ -1,0 +1,112 @@
+{
+ "pageInfo": {
+  "pages": 1,
+  "pageSize": 50,
+  "results": 2,
+  "page": 1
+ },
+ "results": [
+  {
+   "id": 37,
+   "issueType": 1,
+   "status": 2,
+   "problemSeason": 0,
+   "problemEpisode": 0,
+   "createdAt": "2026-10-09T17:30:00.000Z",
+   "updatedAt": "2026-10-10T20:11:00.000Z",
+   "media": {
+    "id": 937,
+    "mediaType": "movie",
+    "tmdbId": 9068481,
+    "tvdbId": null,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "b2500fc2d0e6ffcc61b398078a8f8fa5",
+    "jellyfinMediaId4k": null
+   },
+   "createdBy": {
+    "id": 6,
+    "displayName": "Emma",
+    "email": "emma@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Emma"
+   },
+   "modifiedBy": {
+    "id": 1,
+    "displayName": "Admin",
+    "email": "admin@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Admin"
+   },
+   "comments": [
+    {
+     "id": 370,
+     "message": "Green blocks all over the picture in the last scene.",
+     "createdAt": "2026-10-09T17:30:00.000Z",
+     "updatedAt": "2026-10-09T17:30:00.000Z"
+    },
+    {
+     "id": 371,
+     "message": "Thanks, it's fixed: please try again.",
+     "createdAt": "2026-10-10T09:02:00.000Z",
+     "updatedAt": "2026-10-10T09:02:00.000Z"
+    },
+    {
+     "id": 372,
+     "message": "Works now, thank you!",
+     "createdAt": "2026-10-10T20:11:00.000Z",
+     "updatedAt": "2026-10-10T20:11:00.000Z"
+    }
+   ],
+   "_regie5_synthetic": true
+  },
+  {
+   "id": 36,
+   "issueType": 2,
+   "status": 2,
+   "problemSeason": 1,
+   "problemEpisode": 1,
+   "createdAt": "2026-10-08T21:05:00.000Z",
+   "updatedAt": "2026-10-09T10:40:00.000Z",
+   "media": {
+    "id": 936,
+    "mediaType": "tv",
+    "tmdbId": 9364504,
+    "tvdbId": null,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "d7ab5d8c7ba10b573bb4621059a3e1a0",
+    "jellyfinMediaId4k": null
+   },
+   "createdBy": {
+    "id": 2,
+    "displayName": "Alice",
+    "email": "alice@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Alice"
+   },
+   "modifiedBy": {
+    "id": 1,
+    "displayName": "Admin",
+    "email": "admin@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Admin"
+   },
+   "comments": [
+    {
+     "id": 360,
+     "message": "The sound and the picture drift apart after ten minutes.",
+     "createdAt": "2026-10-08T21:05:00.000Z",
+     "updatedAt": "2026-10-08T21:05:00.000Z"
+    },
+    {
+     "id": 361,
+     "message": "The file has been replaced.",
+     "createdAt": "2026-10-09T10:40:00.000Z",
+     "updatedAt": "2026-10-09T10:40:00.000Z"
+    }
+   ],
+   "_regie5_synthetic": true
+  }
+ ]
+}

@@ -68,14 +68,18 @@ private:
 
 /* A sheet that lists things (the servers' alerts): each row with chips (a
  * label and the colour of its dot), a sentence and a quieter line under it.
- * ↑/↓ move through them; ○ or ✕ closes it. */
+ * ↑/↓ move through them; ○ or ✕ closes it. With chosen, it is a choice: ✕
+ * closes it and gives the row (○ gives nothing). */
 class ListSheet {
 public:
     struct Item {
         std::vector<std::pair<std::string, uint32_t>> chips;
         std::string text, detail;
     };
-    void open(std::string title, std::vector<Item> items, std::string empty_text);
+    void open(std::string title, std::vector<Item> items, std::string empty_text,
+              std::function<void(int)> chosen = {});
+    /* New rows while it is open (what was asked arrived); the focus stays. */
+    void update(std::vector<Item> items);
     bool is_open() const { return m_open; }
     void input(const input::State &in);
     void draw(float dt, bool *animating);
@@ -84,6 +88,7 @@ private:
     bool m_open = false;
     std::string m_title, m_empty;
     std::vector<Item> m_items;
+    std::function<void(int)> m_chosen;
     int m_focus = 0;
     Anim m_show, m_scroll;
     Drop m_drop;

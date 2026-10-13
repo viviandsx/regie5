@@ -29,8 +29,21 @@ std::string decline_path(int request_id);
 /* A TMDB picture through Seerr: size "w342", "w780" ...; empty without a path. */
 std::string image_path(const std::string &tmdb_path, const char *size);
 
+/* Issues (Seerr's "Problèmes"). GET: one page, the last changed first. */
+enum class IssueFilter { Open, Resolved, All };
+std::string issues_path(IssueFilter f, int take = 50, int skip = 0);
+/* GET: one issue with its comments' authors (the list leaves them out). */
+std::string issue_path(int issue_id);
+/* POST, body comment_body(): adds a comment. */
+std::string issue_comment_path(int issue_id);
+std::string comment_body(const std::string &message);
+/* POST, no body: marks the issue resolved. */
+std::string issue_resolve_path(int issue_id);
+
 bool parse_about(const std::string &body, std::string *version);
 bool parse_requests(const std::string &body, model::RequestPage *out);
 bool parse_detail(const std::string &body, bool tv, model::MediaDetail *out);
+bool parse_issues(const std::string &body, model::IssuePage *out);
+bool parse_issue(const std::string &body, model::Issue *out);
 
 } // namespace seerr

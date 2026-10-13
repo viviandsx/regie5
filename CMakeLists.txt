@@ -71,6 +71,7 @@ add_library(regie5_ui STATIC
     src/ui/jelly5_link.cpp
     src/ui/poster.cpp
     src/ui/script.cpp
+    src/ui/seerr_titles.cpp
     src/ui/shell.cpp
     src/ui/style.cpp
     src/ui/tabbar.cpp
@@ -79,6 +80,7 @@ add_library(regie5_ui STATIC
     src/ui/screens/downloads.cpp
     src/ui/screens/guide.cpp
     src/ui/screens/home.cpp
+    src/ui/screens/issues.cpp
     src/ui/screens/jellyfin_screen.cpp
     src/ui/screens/journal.cpp
     src/ui/screens/library.cpp

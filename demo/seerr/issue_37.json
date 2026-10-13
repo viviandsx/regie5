@@ -1,0 +1,75 @@
+{
+ "id": 37,
+ "issueType": 1,
+ "status": 2,
+ "problemSeason": 0,
+ "problemEpisode": 0,
+ "createdAt": "2026-10-09T17:30:00.000Z",
+ "updatedAt": "2026-10-10T20:11:00.000Z",
+ "media": {
+  "id": 937,
+  "mediaType": "movie",
+  "tmdbId": 9068481,
+  "tvdbId": null,
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "b2500fc2d0e6ffcc61b398078a8f8fa5",
+  "jellyfinMediaId4k": null
+ },
+ "createdBy": {
+  "id": 6,
+  "displayName": "Emma",
+  "email": "emma@example.invalid",
+  "userType": 3,
+  "jellyfinUsername": "Emma"
+ },
+ "modifiedBy": {
+  "id": 1,
+  "displayName": "Admin",
+  "email": "admin@example.invalid",
+  "userType": 3,
+  "jellyfinUsername": "Admin"
+ },
+ "comments": [
+  {
+   "id": 370,
+   "message": "Green blocks all over the picture in the last scene.",
+   "createdAt": "2026-10-09T17:30:00.000Z",
+   "updatedAt": "2026-10-09T17:30:00.000Z",
+   "user": {
+    "id": 6,
+    "displayName": "Emma",
+    "email": "emma@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Emma"
+   }
+  },
+  {
+   "id": 371,
+   "message": "Thanks, it's fixed: please try again.",
+   "createdAt": "2026-10-10T09:02:00.000Z",
+   "updatedAt": "2026-10-10T09:02:00.000Z",
+   "user": {
+    "id": 1,
+    "displayName": "Admin",
+    "email": "admin@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Admin"
+   }
+  },
+  {
+   "id": 372,
+   "message": "Works now, thank you!",
+   "createdAt": "2026-10-10T20:11:00.000Z",
+   "updatedAt": "2026-10-10T20:11:00.000Z",
+   "user": {
+    "id": 6,
+    "displayName": "Emma",
+    "email": "emma@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Emma"
+   }
+  }
+ ],
+ "_regie5_synthetic": true
+}

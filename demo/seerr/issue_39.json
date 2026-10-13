@@ -1,0 +1,43 @@
+{
+ "id": 39,
+ "issueType": 2,
+ "status": 1,
+ "problemSeason": 0,
+ "problemEpisode": 0,
+ "createdAt": "2026-10-11T18:22:00.000Z",
+ "updatedAt": "2026-10-11T18:22:00.000Z",
+ "media": {
+  "id": 939,
+  "mediaType": "movie",
+  "tmdbId": 9108727,
+  "tvdbId": null,
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "93e7fe0e59980b676fbbb7dd00ea8dbe",
+  "jellyfinMediaId4k": null
+ },
+ "createdBy": {
+  "id": 4,
+  "displayName": "Chloé",
+  "email": "chloe@example.invalid",
+  "userType": 3,
+  "jellyfinUsername": "Chloé"
+ },
+ "modifiedBy": null,
+ "comments": [
+  {
+   "id": 390,
+   "message": "No sound on the French track; the English one is fine.",
+   "createdAt": "2026-10-11T18:22:00.000Z",
+   "updatedAt": "2026-10-11T18:22:00.000Z",
+   "user": {
+    "id": 4,
+    "displayName": "Chloé",
+    "email": "chloe@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Chloé"
+   }
+  }
+ ],
+ "_regie5_synthetic": true
+}

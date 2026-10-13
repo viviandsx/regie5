@@ -223,9 +223,11 @@ void Sheet::draw(float dt, bool *animating)
     }
 }
 
-void ListSheet::open(std::string title, std::vector<Item> items, std::string empty_text)
+void ListSheet::open(std::string title, std::vector<Item> items, std::string empty_text,
+                     std::function<void(int)> chosen)
 {
     m_open = true;
+    m_chosen = std::move(chosen);
     m_title = std::move(title);
     m_items = std::move(items);
     m_empty = std::move(empty_text);
@@ -236,11 +238,21 @@ void ListSheet::open(std::string title, std::vector<Item> items, std::string emp
     m_drop.hide();
 }
 
+void ListSheet::update(std::vector<Item> items)
+{
+    m_items = std::move(items);
+    m_focus = std::min(m_focus, std::max(0, (int)m_items.size() - 1));
+}
+
 void ListSheet::input(const input::State &in)
 {
     const uint32_t p = in.pressed;
     if (p & (input::Circle | input::Cross)) {
         m_open = false;
+        if ((p & input::Cross) && m_chosen && m_focus < (int)m_items.size()) {
+            std::function<void(int)> chosen = std::move(m_chosen);
+            chosen(m_focus);   /* may open another sheet */
+        }
         return;
     }
     if (p & input::Up)
@@ -291,7 +303,12 @@ void ListSheet::draw(float dt, bool *animating)
         }
         gfx::pop_scissor();
     }
-    draw_pad_hints(r.x + kW / 2, r.y + h - 42, {{PadButton::Circle, i18n::tr(i18n::Close)}}, 1, 28.f, a);
+    if (m_chosen)
+        draw_pad_hints(r.x + kW / 2, r.y + h - 42,
+                       {{PadButton::Cross, i18n::tr(i18n::HintSelect)}, {PadButton::Circle, i18n::tr(i18n::Cancel)}}, 1,
+                       28.f, a);
+    else
+        draw_pad_hints(r.x + kW / 2, r.y + h - 42, {{PadButton::Circle, i18n::tr(i18n::Close)}}, 1, 28.f, a);
 }
 
 float list_scroll(Anim &a, float focus_y, float focus_h, float view_h, float list_h, float dt, bool *animating)

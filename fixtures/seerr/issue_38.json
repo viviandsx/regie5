@@ -1,0 +1,43 @@
+{
+ "id": 38,
+ "issueType": 4,
+ "status": 1,
+ "problemSeason": 1,
+ "problemEpisode": 0,
+ "createdAt": "2026-10-10T20:51:00.000Z",
+ "updatedAt": "2026-10-10T20:51:00.000Z",
+ "media": {
+  "id": 938,
+  "mediaType": "tv",
+  "tmdbId": 9303458,
+  "tvdbId": null,
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "4f1f01be914aa20952cd48e129370dd7",
+  "jellyfinMediaId4k": null
+ },
+ "createdBy": {
+  "id": 5,
+  "displayName": "David",
+  "email": "david@example.invalid",
+  "userType": 3,
+  "jellyfinUsername": "David"
+ },
+ "modifiedBy": null,
+ "comments": [
+  {
+   "id": 380,
+   "message": "Episode 4 is missing from season 1.",
+   "createdAt": "2026-10-10T20:51:00.000Z",
+   "updatedAt": "2026-10-10T20:51:00.000Z",
+   "user": {
+    "id": 5,
+    "displayName": "David",
+    "email": "david@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "David"
+   }
+  }
+ ],
+ "_regie5_synthetic": true
+}

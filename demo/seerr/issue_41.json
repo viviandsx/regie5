@@ -1,0 +1,43 @@
+{
+ "id": 41,
+ "issueType": 3,
+ "status": 1,
+ "problemSeason": 1,
+ "problemEpisode": 3,
+ "createdAt": "2026-10-12T19:04:00.000Z",
+ "updatedAt": "2026-10-12T19:04:00.000Z",
+ "media": {
+  "id": 941,
+  "mediaType": "tv",
+  "tmdbId": 9248046,
+  "tvdbId": null,
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "6afe0cbfe22ace413696247762ca7d64",
+  "jellyfinMediaId4k": null
+ },
+ "createdBy": {
+  "id": 2,
+  "displayName": "Alice",
+  "email": "alice@example.invalid",
+  "userType": 3,
+  "jellyfinUsername": "Alice"
+ },
+ "modifiedBy": null,
+ "comments": [
+  {
+   "id": 410,
+   "message": "The French subtitles are about two seconds late.",
+   "createdAt": "2026-10-12T19:04:00.000Z",
+   "updatedAt": "2026-10-12T19:04:00.000Z",
+   "user": {
+    "id": 2,
+    "displayName": "Alice",
+    "email": "alice@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Alice"
+   }
+  }
+ ],
+ "_regie5_synthetic": true
+}

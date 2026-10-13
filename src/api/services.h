@@ -9,6 +9,7 @@
 #pragma once
 
 #include "api/http.h"
+#include "api/seerr.h"
 #include "core/config.h"
 #include "core/model.h"
 
@@ -113,6 +114,12 @@ public:
     /* Actions: POST. They change things on the server. */
     void approve(int request_id, std::function<void(Result<bool>)> done);
     void decline(int request_id, std::function<void(Result<bool>)> done);
+    /* Issues: the list (comments without their authors), one with them. */
+    void issues(seerr::IssueFilter f, std::function<void(Result<model::IssuePage>)> done);
+    void issue(int issue_id, std::function<void(Result<model::Issue>)> done);
+    /* Actions: POST. They change things on the server. */
+    void resolve_issue(int issue_id, std::function<void(Result<bool>)> done);
+    void comment_issue(int issue_id, const std::string &message, std::function<void(Result<bool>)> done);
 
     /* Jellyfin. */
     void sessions(std::function<void(Result<std::vector<model::Session>>)> done);

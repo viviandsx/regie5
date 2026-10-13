@@ -25,7 +25,7 @@ pour ce qui a été fait après la phase 0).
 | **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | 🔶 en cours (§ 2 sexies) |
 
-Tests : **55** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **56** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -393,9 +393,26 @@ publie seul toute release du dépôt.
       avec un petit rebond, disparition en fondu, en fonction du temps écoulé ; texte à taille
       fixe (l'atlas ne rastérise rien de plus). Logique dans `core/badges` (testée). Les
       captures du README les montreront à la prochaine série (0.3.0).
-- [ ] **e) Signalements Seerr** (lecture, puis résoudre / commenter ; à ajouter aux écritures
-      autorisées de CLAUDE.md §3 ; `--mock` seulement).
+- [x] **e) Signalements Seerr** — onglet Demandes en deux vues (pilules **Demandes ·
+      Signalements**, filtres de la vue à droite, ✕ pour choisir, comme Activité) ; filtres
+      Ouverts · Résolus · Tous. Ligne : jaquette, titre, type (vidéo / audio / sous-titres /
+      autre), épisode ou saison, qui l'a signalé, quand, nombre de réponses, dernier message.
+      ✕ : le fil des commentaires (les auteurs arrivent avec `GET /issue/{id}` : la liste ne
+      les joint pas, vérifié dans le code de Seerr). Options : **Résoudre…**
+      (`POST /api/v1/issue/{id}/resolved`) et **Commenter…** (`POST …/comment`, quatre phrases
+      toutes faites FR/EN : taper à la manette est inutilisable), chacun reconfirmé, Annuler
+      par défaut. Seuls les noms affichés des utilisateurs sont lus (jamais l'e-mail). Cache
+      de titres Seerr partagé avec les demandes (`ui/SeerrTitles`), `ListSheet` peut servir
+      de choix. Fixtures inventées (`scripts/make-issue-fixtures.py`, 6 signalements),
+      `demo/` régénéré, `capture-states.sh` (liste, fil, menu). Endpoints vérifiés contre
+      `seerr-api.yml` et `server/routes/issue.ts` (branche develop). **Testé en `--mock`
+      seulement** (les deux POST journalisés, rien envoyé) ; aucun test réel sans accord de
+      Vivian. Ajouté aux écritures autorisées de CLAUDE.md §3.
 - [ ] **f) Jellyfin** : bibliothèques (nombre, taille) et utilisateurs (dernière activité).
+
+À la sortie de la 0.3.0 : README (fonctions : pastilles, signalements, bibliothèques et
+utilisateurs Jellyfin, 120 Hz ; ligne Seerr du tableau des versions ; captures refaites avec
+`capture-readme.sh`), notes de version.
 
 ## 3. En attente
 
@@ -563,3 +580,4 @@ la Bibliothèque).
 | 13 oct. 2026 | **Phase 7 terminée** : PR #244 fusionnée, Régie5 0.2.0 sur homebrew.page. `RELEASING.md` : le catalogue suit chaque release, aucune avant la 0.3.0 testée sur console. |
 | 13 oct. 2026 | 0.3.0 c) : reverse proxy nginx (sous-chemins, HTTPS auto-signé, lecture seule) ; certificat refusé sous Linux, adresse avec chemin et redirections dans Réglages. |
 | 13 oct. 2026 | 0.3.0 d) : pastilles de compteur sur Activité, Demandes, Jellyfin. |
+| 13 oct. 2026 | 0.3.0 e) : signalements Seerr (lecture, résoudre, commenter ; `--mock` seulement). |

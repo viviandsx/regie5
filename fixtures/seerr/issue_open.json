@@ -1,0 +1,160 @@
+{
+ "pageInfo": {
+  "pages": 1,
+  "pageSize": 50,
+  "results": 4,
+  "page": 1
+ },
+ "results": [
+  {
+   "id": 41,
+   "issueType": 3,
+   "status": 1,
+   "problemSeason": 1,
+   "problemEpisode": 3,
+   "createdAt": "2026-10-12T19:04:00.000Z",
+   "updatedAt": "2026-10-12T19:04:00.000Z",
+   "media": {
+    "id": 941,
+    "mediaType": "tv",
+    "tmdbId": 9248046,
+    "tvdbId": null,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "6afe0cbfe22ace413696247762ca7d64",
+    "jellyfinMediaId4k": null
+   },
+   "createdBy": {
+    "id": 2,
+    "displayName": "Alice",
+    "email": "alice@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Alice"
+   },
+   "modifiedBy": null,
+   "comments": [
+    {
+     "id": 410,
+     "message": "The French subtitles are about two seconds late.",
+     "createdAt": "2026-10-12T19:04:00.000Z",
+     "updatedAt": "2026-10-12T19:04:00.000Z"
+    }
+   ],
+   "_regie5_synthetic": true
+  },
+  {
+   "id": 40,
+   "issueType": 1,
+   "status": 1,
+   "problemSeason": 0,
+   "problemEpisode": 0,
+   "createdAt": "2026-10-11T21:40:00.000Z",
+   "updatedAt": "2026-10-12T08:15:00.000Z",
+   "media": {
+    "id": 940,
+    "mediaType": "movie",
+    "tmdbId": 9083184,
+    "tvdbId": null,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "983309941e1bf2c0f082a30a2b220c23",
+    "jellyfinMediaId4k": null
+   },
+   "createdBy": {
+    "id": 3,
+    "displayName": "Bruno",
+    "email": "bruno@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Bruno"
+   },
+   "modifiedBy": null,
+   "comments": [
+    {
+     "id": 400,
+     "message": "The picture freezes around 1:12:00, every time.",
+     "createdAt": "2026-10-11T21:40:00.000Z",
+     "updatedAt": "2026-10-11T21:40:00.000Z"
+    },
+    {
+     "id": 401,
+     "message": "I'm looking into it.",
+     "createdAt": "2026-10-12T08:15:00.000Z",
+     "updatedAt": "2026-10-12T08:15:00.000Z"
+    }
+   ],
+   "_regie5_synthetic": true
+  },
+  {
+   "id": 39,
+   "issueType": 2,
+   "status": 1,
+   "problemSeason": 0,
+   "problemEpisode": 0,
+   "createdAt": "2026-10-11T18:22:00.000Z",
+   "updatedAt": "2026-10-11T18:22:00.000Z",
+   "media": {
+    "id": 939,
+    "mediaType": "movie",
+    "tmdbId": 9108727,
+    "tvdbId": null,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "93e7fe0e59980b676fbbb7dd00ea8dbe",
+    "jellyfinMediaId4k": null
+   },
+   "createdBy": {
+    "id": 4,
+    "displayName": "Chloé",
+    "email": "chloe@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "Chloé"
+   },
+   "modifiedBy": null,
+   "comments": [
+    {
+     "id": 390,
+     "message": "No sound on the French track; the English one is fine.",
+     "createdAt": "2026-10-11T18:22:00.000Z",
+     "updatedAt": "2026-10-11T18:22:00.000Z"
+    }
+   ],
+   "_regie5_synthetic": true
+  },
+  {
+   "id": 38,
+   "issueType": 4,
+   "status": 1,
+   "problemSeason": 1,
+   "problemEpisode": 0,
+   "createdAt": "2026-10-10T20:51:00.000Z",
+   "updatedAt": "2026-10-10T20:51:00.000Z",
+   "media": {
+    "id": 938,
+    "mediaType": "tv",
+    "tmdbId": 9303458,
+    "tvdbId": null,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "4f1f01be914aa20952cd48e129370dd7",
+    "jellyfinMediaId4k": null
+   },
+   "createdBy": {
+    "id": 5,
+    "displayName": "David",
+    "email": "david@example.invalid",
+    "userType": 3,
+    "jellyfinUsername": "David"
+   },
+   "modifiedBy": null,
+   "comments": [
+    {
+     "id": 380,
+     "message": "Episode 4 is missing from season 1.",
+     "createdAt": "2026-10-10T20:51:00.000Z",
+     "updatedAt": "2026-10-10T20:51:00.000Z"
+    }
+   ],
+   "_regie5_synthetic": true
+  }
+ ]
+}

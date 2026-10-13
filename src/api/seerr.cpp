@@ -6,6 +6,7 @@
 
 #include "api/json.h"
 
+#include <algorithm>
 #include <cstdlib>
 
 namespace seerr {
@@ -38,6 +39,28 @@ std::string image_path(const std::string &tmdb_path, const char *size)
     if (tmdb_path.empty() || tmdb_path[0] != '/')
         return {};
     return std::string("/imageproxy/tmdb/t/p/") + size + tmdb_path;
+}
+
+std::string issues_path(IssueFilter f, int take, int skip)
+{
+    const char *filter = f == IssueFilter::Open ? "open" : f == IssueFilter::Resolved ? "resolved" : "all";
+    return "/api/v1/issue?take=" + std::to_string(take) + "&skip=" + std::to_string(skip) + "&sort=modified&filter=" +
+           filter;
+}
+
+std::string issue_path(int issue_id) { return "/api/v1/issue/" + std::to_string(issue_id); }
+std::string issue_comment_path(int issue_id) { return issue_path(issue_id) + "/comment"; }
+std::string issue_resolve_path(int issue_id) { return issue_path(issue_id) + "/resolved"; }
+
+std::string comment_body(const std::string &message)
+{
+    cJSON *o = cJSON_CreateObject();
+    cJSON_AddStringToObject(o, "message", message.c_str());
+    char *text = cJSON_PrintUnformatted(o);
+    std::string out = text ? text : "{}";
+    cJSON_free(text);
+    cJSON_Delete(o);
+    return out;
 }
 
 bool parse_about(const std::string &body, std::string *version)
@@ -93,6 +116,79 @@ bool parse_requests(const std::string &body, model::RequestPage *out)
         cJSON_ArrayForEach(s, seasons) r.seasons.push_back(json::integer(s, "seasonNumber"));
         out->requests.push_back(r);
     }
+    return true;
+}
+
+namespace {
+
+/* A user as the app shows them: the display name, else the Jellyfin or local
+ * name. Nothing else of the user is read (no e-mail address). */
+std::string user_name(const cJSON *u)
+{
+    std::string n = json::str(u, "displayName");
+    if (n.empty())
+        n = json::str(u, "jellyfinUsername", json::str(u, "username"));
+    return n;
+}
+
+void read_issue(const cJSON *it, model::Issue *out)
+{
+    model::Issue &i = *out;
+    i = {};
+    i.id = json::integer(it, "id");
+    const int type = json::integer(it, "issueType", 4);
+    i.type = type >= 1 && type <= 4 ? (model::Issue::Type)type : model::Issue::Other;
+    i.resolved = json::integer(it, "status", 1) == 2;
+    i.season = json::integer(it, "problemSeason");
+    i.episode = json::integer(it, "problemEpisode");
+    i.created = json::parse_time(json::str(it, "createdAt"));
+    i.updated = json::parse_time(json::str(it, "updatedAt"));
+    i.reported_by = user_name(json::get(it, "createdBy"));
+    i.modified_by = user_name(json::get(it, "modifiedBy"));
+    const cJSON *media = json::get(it, "media");
+    i.tv = json::str(media, "mediaType") == "tv";
+    i.tmdb_id = json::integer(media, "tmdbId");
+    i.jellyfin_id = json::str(media, "jellyfinMediaId");
+    const cJSON *c;
+    cJSON_ArrayForEach(c, json::get(it, "comments"))
+    {
+        model::IssueComment ic;
+        ic.author = user_name(json::get(c, "user"));
+        ic.message = json::str(c, "message");
+        ic.created = json::parse_time(json::str(c, "createdAt"));
+        i.comments.push_back(ic);
+    }
+    /* Seerr does not promise their order: the oldest (the report) first. */
+    std::stable_sort(i.comments.begin(), i.comments.end(),
+                     [](const model::IssueComment &a, const model::IssueComment &b) { return a.created < b.created; });
+}
+
+} // namespace
+
+bool parse_issues(const std::string &body, model::IssuePage *out)
+{
+    json::Doc d(body);
+    const cJSON *results = json::get(d.root(), "results");
+    if (!cJSON_IsArray(results))
+        return false;
+    *out = {};
+    out->total = json::integer(json::get(d.root(), "pageInfo"), "results");
+    const cJSON *it;
+    cJSON_ArrayForEach(it, results)
+    {
+        model::Issue i;
+        read_issue(it, &i);
+        out->issues.push_back(std::move(i));
+    }
+    return true;
+}
+
+bool parse_issue(const std::string &body, model::Issue *out)
+{
+    json::Doc d(body);
+    if (!cJSON_IsObject(d.root()) || !json::get(d.root(), "id"))
+        return false;
+    read_issue(d.root(), out);
     return true;
 }
 

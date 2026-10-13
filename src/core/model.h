@@ -182,6 +182,33 @@ struct Request {
     std::vector<int> seasons;
 };
 
+/* A problem someone reported on a title in Seerr (video, audio, subtitles),
+ * and what was said about it. The users' display names only. */
+struct IssueComment {
+    std::string author;   /* display name; empty in a list (Seerr sends it with the issue alone) */
+    std::string message;
+    time_t created = 0;
+};
+
+struct Issue {
+    int id = 0;
+    enum Type { Video = 1, Audio, Subtitles, Other } type = Other;
+    bool resolved = false;
+    bool tv = false;
+    int tmdb_id = 0;
+    int season = 0, episode = 0;   /* 0: the whole title, or the whole season */
+    std::string reported_by;       /* display name */
+    std::string modified_by;       /* who last changed its status */
+    time_t created = 0, updated = 0;
+    std::string jellyfin_id;
+    std::vector<IssueComment> comments;   /* the first one is the report itself */
+};
+
+struct IssuePage {
+    std::vector<Issue> issues;
+    int total = 0;
+};
+
 /* An import into the library (Sonarr/Radarr history). Only what the app
  * shows: the release it came from is never read. */
 struct ImportEvent {
