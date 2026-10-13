@@ -8,14 +8,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 1,
-   "title": "Hexagram 64",
+   "title": "Satellite of Yarrow",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -24,14 +24,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 2,
-   "title": "Every Door Out...",
+   "title": "Station of Marlow",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -40,14 +40,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 3,
-   "title": "The Box",
+   "title": "Pemberly: Hidden Circuit",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -56,14 +56,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 4,
-   "title": "Happy Trails",
+   "title": "Léa's Archive",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -72,14 +72,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 5,
-   "title": "Mauvaise Foi",
+   "title": "Inès and the Iron Ocean",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -88,14 +88,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 6,
-   "title": "All Serious Daring",
+   "title": "Quiet Canyon II",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -104,14 +104,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 7,
-   "title": "No Masters But Ourselves",
+   "title": "The Golden Paradox",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -120,14 +120,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 8,
-   "title": "Hitler Has Only Got One Ball",
+   "title": "Mara and the Shifting Valley",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -136,14 +136,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 9,
-   "title": "For Want of a Nail",
+   "title": "The Frozen Tide",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -152,14 +152,14 @@
    "seriesId": 9,
    "seasonNumber": 4,
    "episodeNumber": 10,
-   "title": "Fire From the Gods",
+   "title": "Echo of Yarrow",
    "airDateUtc": "2019-11-15T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -168,14 +168,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 1,
-   "title": "Now More Than Ever, We Care About You",
+   "title": "Paradox of Dunmore",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -184,14 +184,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 2,
-   "title": "Imagine Manchuria",
+   "title": "The Lonely Harbor",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -200,14 +200,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 3,
-   "title": "Sensō Kōi",
+   "title": "Marlow: Glass Mirror",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -216,14 +216,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 4,
-   "title": "Sabra",
+   "title": "Yuki and the Painted Engine",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -232,14 +232,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 5,
-   "title": "The New Colossus",
+   "title": "Theo's Summit",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -248,14 +248,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 6,
-   "title": "History Ends",
+   "title": "Silver Forest",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -264,14 +264,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 7,
-   "title": "Excess Animus",
+   "title": "Marlow: Pale Island",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -280,14 +280,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 8,
-   "title": "Kasumi (Through the Mists)",
+   "title": "Camille and the Northern Satellite",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -296,14 +296,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 9,
-   "title": "Baku",
+   "title": "Tower of Northgate",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -312,14 +312,14 @@
    "seriesId": 9,
    "seasonNumber": 3,
    "episodeNumber": 10,
-   "title": "Jahr Null",
+   "title": "Camille and the Paper Ember",
    "airDateUtc": "2018-10-05T04:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -328,14 +328,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 1,
-   "title": "The Tiger's Cave",
+   "title": "Hollis: Velvet Harvest",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -344,14 +344,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 2,
-   "title": "The Road Less Traveled",
+   "title": "Yuki and the Wandering Forest",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -360,14 +360,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 3,
-   "title": "Travelers",
+   "title": "The Golden Tide",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -376,14 +376,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 4,
-   "title": "Escalation",
+   "title": "Iris's Signal",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -392,14 +392,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 5,
-   "title": "Duck and Cover",
+   "title": "Avalon: Distant Satellite",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -408,14 +408,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 6,
-   "title": "Kintsugi",
+   "title": "Oakridge: Midnight Orchard",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -424,14 +424,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 7,
-   "title": "Land O' Smiles",
+   "title": "Northgate: Golden Circuit",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -440,14 +440,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 8,
-   "title": "Loose Lips",
+   "title": "Wild Lighthouse",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -456,14 +456,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 9,
-   "title": "Detonation",
+   "title": "Sacha's Circuit",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -472,14 +472,14 @@
    "seriesId": 9,
    "seasonNumber": 2,
    "episodeNumber": 10,
-   "title": "Fallout",
+   "title": "Camille's Forest",
    "airDateUtc": "2016-12-16T05:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 9,
-    "title": "The Man in the High Castle",
-    "sortTitle": "man in the high castle",
+    "title": "Nadia and the Silent Mirror",
+    "sortTitle": "nadia and the silent mirror",
     "year": 2015
    }
   },
@@ -488,14 +488,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 13,
-   "title": "White Orchids",
+   "title": "Shifting Satellite",
    "airDateUtc": "2015-02-19T01:43:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -504,14 +504,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 12,
-   "title": "Brown Shag Carpet",
+   "title": "Winter of Umber",
    "airDateUtc": "2015-02-19T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -520,14 +520,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 11,
-   "title": "Byzantium",
+   "title": "The Silver Circuit II",
    "airDateUtc": "2015-02-12T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -536,14 +536,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 10,
-   "title": "Nothing Gold Can Stay",
+   "title": "Iron Kingdom",
    "airDateUtc": "2015-02-05T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -552,14 +552,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 9,
-   "title": "Copper Bullet",
+   "title": "Theo and the Second Kingdom",
    "airDateUtc": "2015-01-29T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -568,14 +568,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 8,
-   "title": "The Whites of His Eyes",
+   "title": "Forest of Juniper",
    "airDateUtc": "2015-01-22T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -584,14 +584,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 7,
-   "title": "Little Yellow House",
+   "title": "Lonely Tide",
    "airDateUtc": "2015-01-15T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -600,14 +600,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 6,
-   "title": "Green Light",
+   "title": "Inès and the Northern Satellite",
    "airDateUtc": "2015-01-08T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -616,14 +616,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 5,
-   "title": "The Silver Briefcase",
+   "title": "The Paper Citadel",
    "airDateUtc": "2014-12-29T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -632,14 +632,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 4,
-   "title": "Black Market",
+   "title": "Ravensby: Falling Signal",
    "airDateUtc": "2014-12-22T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -648,14 +648,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 3,
-   "title": "Orange Blossom Ice Cream",
+   "title": "Yuki and the Hollow Bridge",
    "airDateUtc": "2014-12-15T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -664,14 +664,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 2,
-   "title": "The Greybar Hotel",
+   "title": "Maud's Bridge",
    "airDateUtc": "2014-12-08T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -680,14 +680,14 @@
    "seriesId": 22,
    "seasonNumber": 7,
    "episodeNumber": 1,
-   "title": "Nothing But Blue Skies",
+   "title": "The Velvet Machine",
    "airDateUtc": "2014-12-01T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -696,14 +696,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 22,
-   "title": "Blue Bird",
+   "title": "Mara and the Amber Circuit",
    "airDateUtc": "2014-05-19T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -712,14 +712,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 21,
-   "title": "Black Hearts",
+   "title": "Yuki's Winter",
    "airDateUtc": "2014-05-12T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -728,14 +728,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 20,
-   "title": "Il Tavolo Bianco",
+   "title": "Winter of Brightwater",
    "airDateUtc": "2014-05-05T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -744,14 +744,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 19,
-   "title": "Brown Eyed Girls",
+   "title": "Inès's Island II",
    "airDateUtc": "2014-04-28T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -760,14 +760,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 18,
-   "title": "Forest Green",
+   "title": "Iris's Comet",
    "airDateUtc": "2014-04-21T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -776,14 +776,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 17,
-   "title": "Silver Wings of Time",
+   "title": "The Iron Bridge",
    "airDateUtc": "2014-04-14T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -792,14 +792,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 16,
-   "title": "Violets",
+   "title": "Echo of Quillon",
    "airDateUtc": "2014-03-31T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -808,14 +808,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 15,
-   "title": "White as the Driven Snow",
+   "title": "Elias's Comet",
    "airDateUtc": "2014-03-24T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -824,14 +824,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 14,
-   "title": "Grey Water",
+   "title": "The Bright Mirror",
    "airDateUtc": "2014-03-17T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -840,14 +840,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 13,
-   "title": "Black Helicopters",
+   "title": "Lonely Mirror",
    "airDateUtc": "2014-03-10T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -856,14 +856,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 12,
-   "title": "The Golden Hammer",
+   "title": "Ezra's Paradox",
    "airDateUtc": "2014-01-13T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -872,14 +872,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 11,
-   "title": "White Lines",
+   "title": "The Northern Tide",
    "airDateUtc": "2014-01-06T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -888,14 +888,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 10,
-   "title": "Green Thumb",
+   "title": "Sacha and the Frozen Kingdom",
    "airDateUtc": "2013-12-09T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -904,14 +904,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 9,
-   "title": "My Blue Heaven",
+   "title": "Ezra and the Wild Comet",
    "airDateUtc": "2013-12-02T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -920,14 +920,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 8,
-   "title": "Red John",
+   "title": "The Distant Satellite",
    "airDateUtc": "2013-11-25T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -936,14 +936,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 7,
-   "title": "The Great Red Dragon",
+   "title": "Hollis: Broken Archive",
    "airDateUtc": "2013-11-18T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -952,14 +952,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 6,
-   "title": "Fire and Brimstone",
+   "title": "The Hollow Signal",
    "airDateUtc": "2013-11-11T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -968,14 +968,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 5,
-   "title": "The Red Tattoo",
+   "title": "Restless Winter",
    "airDateUtc": "2013-10-28T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -984,14 +984,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 4,
-   "title": "Red Listed",
+   "title": "Broken Citadel",
    "airDateUtc": "2013-10-21T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1000,14 +1000,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 3,
-   "title": "Wedding in Red",
+   "title": "Winter of Valemont",
    "airDateUtc": "2013-10-14T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1016,14 +1016,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 2,
-   "title": "Black-Winged Redbird",
+   "title": "Nadia and the Last Ember",
    "airDateUtc": "2013-10-07T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1032,14 +1032,14 @@
    "seriesId": 22,
    "seasonNumber": 6,
    "episodeNumber": 1,
-   "title": "The Desert Rose",
+   "title": "Juniper: Falling Pilot",
    "airDateUtc": "2013-09-30T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1048,14 +1048,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 22,
-   "title": "Red John's Rules",
+   "title": "The Distant Frontier",
    "airDateUtc": "2013-05-06T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1064,14 +1064,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 21,
-   "title": "Red and Itchy",
+   "title": "Oakridge: Iron Summit",
    "airDateUtc": "2013-04-29T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1080,14 +1080,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 20,
-   "title": "Red Velvet Cupcakes",
+   "title": "Rafael and the Second Voyage",
    "airDateUtc": "2013-04-22T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1096,14 +1096,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 19,
-   "title": "Red Letter Day",
+   "title": "Mara and the Iron Ember",
    "airDateUtc": "2013-04-15T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1112,14 +1112,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 18,
-   "title": "Behind the Red Curtain",
+   "title": "Theo and the Northern Bridge",
    "airDateUtc": "2013-03-25T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1128,14 +1128,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 17,
-   "title": "Red, White and Blue",
+   "title": "The Lost Winter",
    "airDateUtc": "2013-03-18T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1144,14 +1144,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 16,
-   "title": "There Will Be Blood",
+   "title": "Léa and the Northern Island",
    "airDateUtc": "2013-03-11T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1160,14 +1160,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 15,
-   "title": "Red Lacquer Nail Polish",
+   "title": "Léa's Comet",
    "airDateUtc": "2013-03-04T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1176,14 +1176,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 14,
-   "title": "Red in Tooth and Claw",
+   "title": "Inès's Lantern",
    "airDateUtc": "2013-02-18T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1192,14 +1192,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 13,
-   "title": "The Red Barn",
+   "title": "Oskar and the Frozen Canyon",
    "airDateUtc": "2013-01-28T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1208,14 +1208,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 12,
-   "title": "Little Red Corvette",
+   "title": "Inès and the Restless Engine",
    "airDateUtc": "2013-01-14T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1224,14 +1224,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 11,
-   "title": "Days of Wine and Roses",
+   "title": "Station of Brightwater",
    "airDateUtc": "2013-01-07T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1240,14 +1240,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 10,
-   "title": "Panama Red",
+   "title": "Iris and the Copper Satellite",
    "airDateUtc": "2012-12-10T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1256,14 +1256,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 9,
-   "title": "Black Cherry",
+   "title": "The Second Ember",
    "airDateUtc": "2012-11-26T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1272,14 +1272,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 8,
-   "title": "Red Sails in the Sunset",
+   "title": "Satellite of Glenrock",
    "airDateUtc": "2012-11-19T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1288,14 +1288,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 7,
-   "title": "If It Bleeds, It Leads",
+   "title": "The Painted Tide",
    "airDateUtc": "2012-11-12T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1304,14 +1304,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 6,
-   "title": "Cherry Picked",
+   "title": "Kestrel: Lonely Winter",
    "airDateUtc": "2012-11-05T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1320,14 +1320,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 5,
-   "title": "Red Dawn",
+   "title": "Ezra and the Restless Circuit",
    "airDateUtc": "2012-10-29T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1336,14 +1336,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 4,
-   "title": "Blood Feud",
+   "title": "Valemont: Bright Bridge",
    "airDateUtc": "2012-10-22T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1352,14 +1352,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 3,
-   "title": "Not One Red Cent",
+   "title": "Iris's Island",
    "airDateUtc": "2012-10-15T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1368,14 +1368,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 2,
-   "title": "Devil's Cherry",
+   "title": "Borrowed Comet",
    "airDateUtc": "2012-10-08T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1384,14 +1384,14 @@
    "seriesId": 22,
    "seasonNumber": 5,
    "episodeNumber": 1,
-   "title": "The Crimson Ticket",
+   "title": "Ezra's Engine III",
    "airDateUtc": "2012-10-01T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1400,14 +1400,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 24,
-   "title": "The Crimson Hat",
+   "title": "Rafael and the Bright Orchard",
    "airDateUtc": "2012-05-18T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1416,14 +1416,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 23,
-   "title": "Red Rover, Red Rover",
+   "title": "Sacha's Ember",
    "airDateUtc": "2012-05-11T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1432,14 +1432,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 22,
-   "title": "So Long, and Thanks for All the Red Snapper",
+   "title": "The Silent Canyon",
    "airDateUtc": "2012-05-04T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1448,14 +1448,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 21,
-   "title": "Ruby Slippers",
+   "title": "Jonah and the Burning Horizon",
    "airDateUtc": "2012-04-27T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1464,14 +1464,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 20,
-   "title": "Something's Rotten in Redmund",
+   "title": "The Falling Compass II",
    "airDateUtc": "2012-04-06T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1480,14 +1480,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 19,
-   "title": "Pink Champagne on Ice",
+   "title": "Forest of Oakridge",
    "airDateUtc": "2012-03-30T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1496,14 +1496,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 18,
-   "title": "Ruddy Cheeks",
+   "title": "Yarrow: Wandering Engine",
    "airDateUtc": "2012-03-10T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1512,14 +1512,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 17,
-   "title": "Cheap Burgundy",
+   "title": "Camille's Winter",
    "airDateUtc": "2012-03-09T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1528,14 +1528,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 16,
-   "title": "His Thoughts Were Red Thoughts",
+   "title": "The Restless Forest",
    "airDateUtc": "2012-02-24T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1544,14 +1544,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 15,
-   "title": "War of the Roses",
+   "title": "Silent Tide",
    "airDateUtc": "2012-02-17T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1560,14 +1560,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 14,
-   "title": "At First Blush",
+   "title": "Valemont: Silent Pilot",
    "airDateUtc": "2012-02-10T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1576,14 +1576,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 13,
-   "title": "Red Is the New Black",
+   "title": "Electric Compass",
    "airDateUtc": "2012-02-03T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1592,14 +1592,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 12,
-   "title": "My Bloody Valentine",
+   "title": "Distant Echo",
    "airDateUtc": "2012-01-20T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1608,14 +1608,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 11,
-   "title": "Always Bet on Red",
+   "title": "Forest of Northgate II",
    "airDateUtc": "2012-01-13T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1624,14 +1624,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 10,
-   "title": "Fugue in Red",
+   "title": "Lost Atlas",
    "airDateUtc": "2011-12-16T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1640,14 +1640,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 9,
-   "title": "The Redshirt",
+   "title": "Oskar and the Burning Station",
    "airDateUtc": "2011-12-09T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1656,14 +1656,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 8,
-   "title": "Pink Tops",
+   "title": "Lou's Horizon",
    "airDateUtc": "2011-11-18T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1672,14 +1672,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 7,
-   "title": "Blinking Red Light",
+   "title": "Inès and the Broken Machine",
    "airDateUtc": "2011-11-04T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1688,14 +1688,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 6,
-   "title": "Where in the World Is Carmine O'Brien?",
+   "title": "Zephyr Point: Pale Pilot",
    "airDateUtc": "2011-10-28T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1704,14 +1704,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 5,
-   "title": "Blood and Sand",
+   "title": "Second Paradox",
    "airDateUtc": "2011-10-21T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1720,14 +1720,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 4,
-   "title": "Ring Around the Rosie",
+   "title": "Pale Harvest",
    "airDateUtc": "2011-10-14T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1736,14 +1736,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 3,
-   "title": "Pretty Red Balloon",
+   "title": "Maud and the Hidden Station",
    "airDateUtc": "2011-10-07T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1752,14 +1752,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 2,
-   "title": "Little Red Book",
+   "title": "Ember of Westmere",
    "airDateUtc": "2011-09-30T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1768,14 +1768,14 @@
    "seriesId": 22,
    "seasonNumber": 4,
    "episodeNumber": 1,
-   "title": "Scarlet Ribbons",
+   "title": "Silver Comet",
    "airDateUtc": "2011-09-23T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1784,14 +1784,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 24,
-   "title": "Strawberries and Cream (2)",
+   "title": "The Broken Horizon II",
    "airDateUtc": "2011-05-20T00:43:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1800,14 +1800,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 23,
-   "title": "Strawberries and Cream (1)",
+   "title": "Station of Northgate",
    "airDateUtc": "2011-05-20T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1816,14 +1816,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 22,
-   "title": "Rhapsody in Red",
+   "title": "Larkspur: Wild Engine",
    "airDateUtc": "2011-05-13T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1832,14 +1832,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 21,
-   "title": "Like a Redheaded Stepchild",
+   "title": "Elias and the Restless Summit",
    "airDateUtc": "2011-05-06T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1848,14 +1848,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 20,
-   "title": "Redacted",
+   "title": "Sacha's Kingdom",
    "airDateUtc": "2011-04-29T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1864,14 +1864,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 19,
-   "title": "Every Rose Has Its Thorn",
+   "title": "Oskar's Tide",
    "airDateUtc": "2011-04-08T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1880,14 +1880,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 18,
-   "title": "The Red Mile",
+   "title": "Borrowed Bridge",
    "airDateUtc": "2011-04-01T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1896,14 +1896,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 17,
-   "title": "Bloodstream",
+   "title": "Ironvale: Painted Citadel",
    "airDateUtc": "2011-03-11T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1912,14 +1912,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 16,
-   "title": "Red Queen",
+   "title": "Citadel of Yarrow",
    "airDateUtc": "2011-02-25T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1928,14 +1928,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 15,
-   "title": "Red Gold",
+   "title": "Brightwater: Wild Comet",
    "airDateUtc": "2011-02-18T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1944,14 +1944,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 14,
-   "title": "Blood for Blood",
+   "title": "Engine of Northgate II",
    "airDateUtc": "2011-02-11T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1960,14 +1960,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 13,
-   "title": "Red Alert",
+   "title": "Oskar and the Burning Lantern",
    "airDateUtc": "2011-02-04T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1976,14 +1976,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 12,
-   "title": "Bloodhounds",
+   "title": "Hollis: Endless Canyon",
    "airDateUtc": "2011-01-21T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -1992,14 +1992,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 11,
-   "title": "Bloodsport",
+   "title": "Fairhaven: Silver Garden",
    "airDateUtc": "2011-01-07T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2008,14 +2008,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 10,
-   "title": "Jolly Red Elf",
+   "title": "Oskar and the Golden River",
    "airDateUtc": "2010-12-10T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2024,14 +2024,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 9,
-   "title": "Red Moon",
+   "title": "Jonah's Citadel",
    "airDateUtc": "2010-11-19T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2040,14 +2040,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 8,
-   "title": "Ball of Fire",
+   "title": "The Second River",
    "airDateUtc": "2010-11-12T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2056,14 +2056,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 7,
-   "title": "Red Hot",
+   "title": "Lou's River",
    "airDateUtc": "2010-11-05T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2072,14 +2072,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 6,
-   "title": "Pink Chanel Suit",
+   "title": "Pemberly: Last Quarry",
    "airDateUtc": "2010-10-29T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2088,14 +2088,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 5,
-   "title": "The Red Ponies",
+   "title": "Burning Ember",
    "airDateUtc": "2010-10-22T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2104,14 +2104,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 4,
-   "title": "Red Carpet Treatment",
+   "title": "Shifting Citadel",
    "airDateUtc": "2010-10-15T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2120,14 +2120,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 3,
-   "title": "The Blood on His Hands",
+   "title": "Mara's Forest",
    "airDateUtc": "2010-10-08T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2136,14 +2136,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 2,
-   "title": "Cackle-Bladder Blood",
+   "title": "Pemberly: Iron Compass",
    "airDateUtc": "2010-10-01T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2152,14 +2152,14 @@
    "seriesId": 22,
    "seasonNumber": 3,
    "episodeNumber": 1,
-   "title": "Red Sky at Night",
+   "title": "Elmstead: Copper Engine",
    "airDateUtc": "2010-09-24T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2168,14 +2168,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 23,
-   "title": "Red Sky in the Morning",
+   "title": "Pale Frontier",
    "airDateUtc": "2010-05-21T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2184,14 +2184,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 22,
-   "title": "Red Letter",
+   "title": "Satellite of Fairhaven",
    "airDateUtc": "2010-05-14T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2200,14 +2200,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 21,
-   "title": "18-5-4",
+   "title": "Northgate: Sleeping Compass",
    "airDateUtc": "2010-05-07T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2216,14 +2216,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 20,
-   "title": "Red All Over",
+   "title": "Inès's Machine",
    "airDateUtc": "2010-04-30T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2232,14 +2232,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 19,
-   "title": "Blood Money",
+   "title": "Camille's Citadel II",
    "airDateUtc": "2010-04-23T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2248,14 +2248,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 18,
-   "title": "Aingavite Baa",
+   "title": "Frontier of Ravensby",
    "airDateUtc": "2010-04-09T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2264,14 +2264,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 17,
-   "title": "The Red Box",
+   "title": "Yuki and the Falling Station",
    "airDateUtc": "2010-04-02T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2280,14 +2280,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 16,
-   "title": "Code Red",
+   "title": "Rafael and the Bright Summit",
    "airDateUtc": "2010-03-12T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2296,14 +2296,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 15,
-   "title": "Red Herring",
+   "title": "Léa's Signal",
    "airDateUtc": "2010-03-05T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2312,14 +2312,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 14,
-   "title": "Blood In, Blood Out",
+   "title": "The Glass Archive II",
    "airDateUtc": "2010-02-12T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2328,14 +2328,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 13,
-   "title": "Redline",
+   "title": "Rafael's Voyage II",
    "airDateUtc": "2010-02-05T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2344,14 +2344,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 12,
-   "title": "Bleeding Heart",
+   "title": "Larkspur: Lonely Machine",
    "airDateUtc": "2010-01-22T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2360,14 +2360,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 11,
-   "title": "Rose-Colored Glasses",
+   "title": "Camille and the Last Frontier",
    "airDateUtc": "2010-01-15T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2376,14 +2376,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 10,
-   "title": "Throwing Fire",
+   "title": "Oskar's Voyage II",
    "airDateUtc": "2009-12-18T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2392,14 +2392,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 9,
-   "title": "A Price Above Rubies",
+   "title": "Ezra and the Open Frontier",
    "airDateUtc": "2009-12-11T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2408,14 +2408,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 8,
-   "title": "His Red Right Hand",
+   "title": "Juniper: Wild Lantern",
    "airDateUtc": "2009-11-20T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2424,14 +2424,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 7,
-   "title": "Red Bulls",
+   "title": "Léa's Horizon",
    "airDateUtc": "2009-11-13T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2440,14 +2440,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 6,
-   "title": "Black Gold and Red Blood",
+   "title": "The Secret Ocean",
    "airDateUtc": "2009-11-06T01:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2456,14 +2456,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 5,
-   "title": "Red Scare",
+   "title": "Brightwater: Amber Lighthouse",
    "airDateUtc": "2009-10-30T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2472,14 +2472,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 4,
-   "title": "Red Menace",
+   "title": "Nadia's Circuit",
    "airDateUtc": "2009-10-16T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2488,14 +2488,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 3,
-   "title": "Red Badge",
+   "title": "The Lonely Lighthouse II",
    "airDateUtc": "2009-10-09T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2504,14 +2504,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 2,
-   "title": "The Scarlet Letter",
+   "title": "Second Harbor",
    "airDateUtc": "2009-10-02T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   },
@@ -2520,14 +2520,14 @@
    "seriesId": 22,
    "seasonNumber": 2,
    "episodeNumber": 1,
-   "title": "Redemption",
+   "title": "Frontier of Yarrow",
    "airDateUtc": "2009-09-25T00:00:00Z",
    "hasFile": false,
    "monitored": true,
    "series": {
     "id": 22,
-    "title": "The Mentalist",
-    "sortTitle": "mentalist",
+    "title": "Elias and the Velvet Lantern",
+    "sortTitle": "elias and the velvet lantern",
     "year": 2008
    }
   }

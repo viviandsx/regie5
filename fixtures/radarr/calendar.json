@@ -1,90 +1,15 @@
 [
  {
-  "title": "Colony",
-  "originalTitle": "군체",
+  "title": "Theo's Harvest",
+  "originalTitle": "Sacha and the Salt Compass",
   "originalLanguage": {
    "id": 21,
    "name": "Korean"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "Gunche",
-    "id": 374
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "Grove",
-    "id": 375
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "ยึดร่างคลั่ง",
-    "id": 376
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "ZONA CERO",
-    "id": 377
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "Zona Zero (Colony)",
-    "id": 378
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "屍殺禁區",
-    "id": 379
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "群体",
-    "id": 383
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "مستعمرة",
-    "id": 393
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "ໂຄໂລນີ",
-    "id": 2716
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "The Colony",
-    "id": 2717
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "Colony: Zona Cero",
-    "id": 3841
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 32,
-    "title": "コロニー／群体",
-    "id": 5564
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "colony",
+  "sortTitle": "theo's harvest",
   "sizeOnDisk": 3389479777,
   "status": "released",
-  "overview": "Se-jeong, professeure de biotechnologie, assiste à une conférence sur le sujet, mais la situation dégénère rapidement lorsqu'un virus à mutation fulgurante se propage. Alors que l'épidémie s'étend et que les personnes infectées commencent à se transformer, les autorités bouclent l'ensemble du complexe, piégeant les survivants face à une menace grandissante…",
+  "overview": "Mara cherche un ancien ami avant l'hiver.",
   "inCinemas": "2026-05-21T00:00:00Z",
   "physicalRelease": "2026-09-28T00:00:00Z",
   "digitalRelease": "2026-07-23T00:00:00Z",
@@ -97,10 +22,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "https://wellgousa.com/films/colony",
   "year": 2026,
-  "youTubeTrailerId": "LW6dpj1uCK8",
-  "studio": "Wow Point",
+  "studio": "Ninefold Films",
   "qualityProfileId": 4,
   "hasFile": true,
   "movieFileId": 730,
@@ -108,34 +31,19 @@
   "minimumAvailability": "released",
   "isAvailable": true,
   "runtime": 123,
-  "cleanTitle": "colony",
-  "imdbId": "tt34385135",
-  "tmdbId": 1375646,
-  "titleSlug": "1375646",
+  "cleanTitle": "theosharvest",
+  "imdbId": "tt93851637",
+  "tmdbId": 9812461,
+  "titleSlug": "9812461",
   "certification": "12",
   "genres": [
    "Horror",
    "Action",
    "Science Fiction"
   ],
-  "keywords": [
-   "ambivalent",
-   "vaccine",
-   "zombie"
-  ],
   "tags": [],
   "added": "2026-05-27T11:56:54Z",
   "ratings": {
-   "imdb": {
-    "votes": 17923,
-    "value": 6.5,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 1094,
-    "value": 8.082,
-    "type": "user"
-   },
    "metacritic": {
     "votes": 0,
     "value": 57,
@@ -170,211 +78,16 @@
   "id": 28
  },
  {
-  "title": "Backrooms",
-  "originalTitle": "Backrooms",
+  "title": "Iris and the Quiet Frontier",
+  "originalTitle": "Iris and the Quiet Frontier",
   "originalLanguage": {
    "id": 1,
    "name": "English"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Задните стаи",
-    "id": 726
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Бекрумс",
-    "id": 727
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Бекрумсите",
-    "id": 728
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Tagaruumid",
-    "id": 729
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: Bez izlaza.",
-    "id": 730
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Arka Odalar",
-    "id": 731
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: Za stenou",
-    "id": 732
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "นรกห้องลับ",
-    "id": 733
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: Brez izhoda",
-    "id": 734
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "الباكرومز",
-    "id": 735
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: Thực Thể Quỷ Quyệt",
-    "id": 736
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "الغرف الخلفية",
-    "id": 738
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "באקרומס",
-    "id": 739
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: Um Não-Lugar",
-    "id": 740
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: O Labirinto",
-    "id": 741
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Закулисье",
-    "id": 742
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Бэкрумс",
-    "id": 743
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "แบ็กรูมส์",
-    "id": 744
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms - Za tebou",
-    "id": 827
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Закулисье реальности",
-    "id": 1125
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "嚇房：Everything Must Go",
-    "id": 1598
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "The Backrooms",
-    "id": 1826
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms:Liquidación total",
-    "id": 1852
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Бакоўкі",
-    "id": 1951
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "بک رومز",
-    "id": 2161
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "اتاق های پشتی",
-    "id": 2162
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: Um Não-Lugar (versão estendida)",
-    "id": 2815
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Effigy",
-    "id": 3542
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "חדרים אחוריים",
-    "id": 3551
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "백룸: 익스텐디드 컷",
-    "id": 3594
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: Everything Must Go",
-    "id": 3600
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 86,
-    "title": "Backrooms: Everything Must Go Edition",
-    "id": 3601
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "backrooms",
+  "sortTitle": "iris and the quiet frontier",
   "sizeOnDisk": 2102369579,
   "status": "released",
-  "overview": "Une étrange porte apparaît dans le sous-sol d'un magasin de meubles.",
+  "overview": "Inès se retrouve face à une lettre jamais envoyée avant l'hiver.",
   "inCinemas": "2026-05-27T00:00:00Z",
   "physicalRelease": "2026-10-23T00:00:00Z",
   "digitalRelease": "2026-07-14T00:00:00Z",
@@ -387,10 +100,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "https://app.a24films.com/release/backrooms/522",
   "year": 2026,
-  "youTubeTrailerId": "0HjdiohVOik",
-  "studio": "Atomic Monster",
+  "studio": "Blue Orchard Films",
   "qualityProfileId": 4,
   "hasFile": true,
   "movieFileId": 741,
@@ -398,51 +109,19 @@
   "minimumAvailability": "released",
   "isAvailable": true,
   "runtime": 111,
-  "cleanTitle": "backrooms",
-  "imdbId": "tt26657236",
-  "tmdbId": 1083381,
-  "titleSlug": "1083381",
+  "cleanTitle": "irisandthequietfrontier",
+  "imdbId": "tt95590587",
+  "tmdbId": 9147906,
+  "titleSlug": "9147906",
   "certification": "12",
   "genres": [
    "Horror",
    "Mystery",
    "Science Fiction"
   ],
-  "keywords": [
-   "1990s",
-   "alcoholism",
-   "analog horror",
-   "based on web series",
-   "bewildered",
-   "body horror",
-   "california",
-   "childhood trauma",
-   "foreboding",
-   "found footage",
-   "liminal",
-   "liminal horror",
-   "liminal space",
-   "monster",
-   "other dimension",
-   "psychological",
-   "psychological horror",
-   "sci-fi horror",
-   "surrealism",
-   "therapist"
-  ],
   "tags": [],
   "added": "2026-06-19T10:55:47Z",
   "ratings": {
-   "imdb": {
-    "votes": 219136,
-    "value": 6.7,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 3672,
-    "value": 7,
-    "type": "user"
-   },
    "metacritic": {
     "votes": 0,
     "value": 76,
@@ -477,49 +156,16 @@
   "id": 56
  },
  {
-  "title": "L'Invitation",
-  "originalTitle": "The Invite",
+  "title": "Ember of Ironvale",
+  "originalTitle": "Ledger of Yarrow",
   "originalLanguage": {
    "id": 1,
    "name": "English"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 437,
-    "title": "Запрошення",
-    "id": 4118
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 437,
-    "title": "Ha'Hazmana",
-    "id": 4119
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 437,
-    "title": "開放性邀請",
-    "id": 4120
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 437,
-    "title": "誘人飯聚",
-    "id": 4121
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 437,
-    "title": "Pozvání.",
-    "id": 4775
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "linvitation",
+  "sortTitle": "ember of ironvale",
   "sizeOnDisk": 2030801377,
   "status": "released",
-  "overview": "Le mariage de Joe et Angela ne tient plus qu’à un fil. Lorsqu’ils invitent leurs énigmatiques voisins à souper, la soirée prend une tournure inattendue. Est-ce que ce sera l’étincelle qui ravivera la flamme de leur couple, ou le feu qui le réduira en cendres?",
+  "overview": "Ezra tente de protéger un signal venu de loin avant qu'il ne soit trop tard.",
   "inCinemas": "2026-06-25T00:00:00Z",
   "physicalRelease": "2026-10-05T00:00:00Z",
   "digitalRelease": "2026-08-11T00:00:00Z",
@@ -532,10 +178,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "https://a24films.com/films/the-invite",
   "year": 2026,
-  "youTubeTrailerId": "nelkiuezJxg",
-  "studio": "Annapurna Pictures",
+  "studio": "Blue Orchard Films",
   "qualityProfileId": 4,
   "hasFile": true,
   "movieFileId": 469,
@@ -543,40 +187,18 @@
   "minimumAvailability": "released",
   "isAvailable": true,
   "runtime": 107,
-  "cleanTitle": "theinvite",
-  "imdbId": "tt14173636",
-  "tmdbId": 950028,
-  "titleSlug": "950028",
+  "cleanTitle": "emberofironvale",
+  "imdbId": "tt90562761",
+  "tmdbId": 9835059,
+  "titleSlug": "9835059",
   "genres": [
    "Comedy",
    "Drama",
    "Romance"
   ],
-  "keywords": [
-   "anxious",
-   "candid",
-   "dark comedy",
-   "exuberant",
-   "firefighter",
-   "husband wife relationship",
-   "neighbors",
-   "remake",
-   "san francisco, california",
-   "sexologist"
-  ],
   "tags": [],
   "added": "2026-08-29T09:15:42Z",
   "ratings": {
-   "imdb": {
-    "votes": 80270,
-    "value": 7.4,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 753,
-    "value": 7.2,
-    "type": "user"
-   },
    "metacritic": {
     "votes": 0,
     "value": 82,
@@ -611,115 +233,16 @@
   "id": 324
  },
  {
-  "title": "Spider-Man : Brand New Day",
-  "originalTitle": "Spider-Man: Brand New Day",
+  "title": "Citadel of Valemont",
+  "originalTitle": "Theo and the Electric Voyage",
   "originalLanguage": {
    "id": 1,
    "name": "English"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "Spider-Man 4",
-    "id": 769
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "스파이더맨 4",
-    "id": 770
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "Homem-Aranha 4",
-    "id": 771
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "ספיידרמן 4",
-    "id": 772
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "Человек-паук 4",
-    "id": 773
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "មនុស្សពីងពាង: ថ្ងៃថ្មីសន្លាង",
-    "id": 774
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "Marvel Studios' Spider-Man: Brand New Day",
-    "id": 775
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "蜘蛛侠4",
-    "id": 2817
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "ສະໄປເດີ-ແມນ: ແບນ ນິວ ເດ",
-    "id": 3043
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "Hörümçək Adam: Tamamilə Yeni Gün",
-    "id": 3528
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "স্পাইডার-ম্যান: ব্র্যান্ড নিউ ডে",
-    "id": 3532
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "ספיידרמן:יום חדש דנדש",
-    "id": 3593
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "Человек-паук КВМ 4",
-    "id": 3625
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "مرد عنکبوتی : روز کاملاً جدید",
-    "id": 3811
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "اسپایدر من : روز کاملاً جدید",
-    "id": 3812
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 91,
-    "title": "Spider-Man: un nuevo día",
-    "id": 5056
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "spiderman brand new day",
+  "sortTitle": "citadel of valemont",
   "sizeOnDisk": 2276922103,
   "status": "released",
-  "overview": "Quatre ans se sont écoulés, Peter, désormais adulte, vit seul, s'est volontairement effacé de la vie et des souvenirs de ses proches. Luttant contre le crime dans un New York qui ne le reconnaît plus, il se consacre entièrement à la protection de la ville - un Spider-Man à plein temps - mais à mesure que les responsabilités s'intensifient, la pression provoque une transformation physique surprenante qui menace son existence, tandis qu'une étrange nouvelle vague de crimes donne naissance à l'une des menaces les plus redoutables qu'il ait jamais affrontées.",
+  "overview": "Léa accepte de garder une promesse faite il y a dix ans au bout du monde.",
   "inCinemas": "2026-07-29T00:00:00Z",
   "physicalRelease": "2026-12-02T00:00:00Z",
   "digitalRelease": "2026-10-06T00:00:00Z",
@@ -732,10 +255,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "https://spidermanbrandnewday.movie",
   "year": 2026,
-  "youTubeTrailerId": "P3uI5sLosKU",
-  "studio": "Marvel Studios",
+  "studio": "Lantern House",
   "qualityProfileId": 4,
   "hasFile": true,
   "movieFileId": 757,
@@ -743,50 +264,19 @@
   "minimumAvailability": "released",
   "isAvailable": true,
   "runtime": 145,
-  "cleanTitle": "spidermanbrandnewday",
-  "imdbId": "tt22084616",
-  "tmdbId": 969681,
-  "titleSlug": "969681",
+  "cleanTitle": "citadelofvalemont",
+  "imdbId": "tt94891157",
+  "tmdbId": 9347506,
+  "titleSlug": "9347506",
   "certification": "TP",
   "genres": [
    "Science Fiction",
    "Action",
    "Adventure"
   ],
-  "keywords": [
-   "aftercreditsstinger",
-   "based on comic",
-   "fight for justice",
-   "genetic mutation",
-   "hero",
-   "marvel cinematic universe (mcu)",
-   "masked superhero",
-   "masked vigilante",
-   "mind control",
-   "mutation",
-   "new york city",
-   "secret identity",
-   "sequel",
-   "spider",
-   "spider web",
-   "super power",
-   "superhero",
-   "transhumanism",
-   "villain"
-  ],
   "tags": [],
   "added": "2026-06-20T15:48:27Z",
   "ratings": {
-   "imdb": {
-    "votes": 319199,
-    "value": 8,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 4717,
-    "value": 8.374,
-    "type": "user"
-   },
    "metacritic": {
     "votes": 0,
     "value": 66,
@@ -799,8 +289,8 @@
    }
   },
   "collection": {
-   "title": "Spider-Man (MCU) Collection",
-   "tmdbId": 531241
+   "title": "Signal of Westmere",
+   "tmdbId": 9645722
   },
   "popularity": 942.3201,
   "lastSearchTime": "2026-10-07T10:29:25Z",
@@ -820,67 +310,16 @@
   "id": 60
  },
  {
-  "title": "Juste pour une Nuit",
-  "originalTitle": "One Night Only",
+  "title": "Camille's Satellite",
+  "originalTitle": "Oskar and the Sunken Forest",
   "originalLanguage": {
    "id": 1,
    "name": "English"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 499,
-    "title": "Na jednu noc",
-    "id": 4742
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 499,
-    "title": "Solo por una noche",
-    "id": 4743
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 499,
-    "title": "Sadece Bir Gece",
-    "id": 4744
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 499,
-    "title": "คืนเดียวเสียวรัก",
-    "id": 4745
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 499,
-    "title": "只有一晚",
-    "id": 4746
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 499,
-    "title": "Yalnız Bir Gecə",
-    "id": 4747
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 499,
-    "title": "Una noche al año",
-    "id": 4748
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 499,
-    "title": "فقط یک شب",
-    "id": 5484
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "juste pour une nuit",
+  "sortTitle": "camille's satellite",
   "sizeOnDisk": 2131894591,
   "status": "released",
-  "overview": "Quand Owen, qui vient de se faire larguer, rencontre Allie, qui croit encore au grand amour, l'étincelle est immédiate. Cependant, une série de maladresses et de mésaventures séparent les deux seuls célibataires de la ville qui espèrent plus qu'une aventure. À force de courir et se croiser sans jamais se trouver, ils pourraient bien réaliser que ce qu'ils cherchent est plus près qu'ils ne l'imaginaient.",
+  "overview": "Léa cherche une promesse faite il y a dix ans malgré tout.",
   "inCinemas": "2026-08-06T00:00:00Z",
   "physicalRelease": "2026-10-20T00:00:00Z",
   "digitalRelease": "2026-09-08T00:00:00Z",
@@ -893,10 +332,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "https://www.universalpictures.com/movies/one-night-only",
   "year": 2026,
-  "youTubeTrailerId": "AvKoSR3O4NQ",
-  "studio": "Universal Pictures",
+  "studio": "Northlight Pictures",
   "qualityProfileId": 4,
   "hasFile": true,
   "movieFileId": 631,
@@ -904,40 +341,17 @@
   "minimumAvailability": "released",
   "isAvailable": true,
   "runtime": 103,
-  "cleanTitle": "onenightonly",
-  "imdbId": "tt37853455",
-  "tmdbId": 1433367,
-  "titleSlug": "1433367",
+  "cleanTitle": "camillessatellite",
+  "imdbId": "tt95454804",
+  "tmdbId": 9828733,
+  "titleSlug": "9828733",
   "genres": [
    "Romance",
    "Comedy"
   ],
-  "keywords": [
-   "enthusiastic",
-   "lighthearted",
-   "lyrical",
-   "meet cute",
-   "new york city",
-   "romantic",
-   "romcom",
-   "searching for love",
-   "single man",
-   "single woman",
-   "strangers"
-  ],
   "tags": [],
   "added": "2026-09-11T07:21:01Z",
   "ratings": {
-   "imdb": {
-    "votes": 15054,
-    "value": 6,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 189,
-    "value": 6.4,
-    "type": "user"
-   },
    "metacritic": {
     "votes": 0,
     "value": 42,
@@ -967,61 +381,16 @@
   "id": 373
  },
  {
-  "title": "The Uprising",
-  "originalTitle": "The Uprising",
+  "title": "The Last Mirror",
+  "originalTitle": "The Last Mirror",
   "originalLanguage": {
    "id": 1,
    "name": "English"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 318,
-    "title": "The Rage",
-    "id": 2842
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 318,
-    "title": "The Hood",
-    "id": 2843
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 318,
-    "title": "The Uprising: The Rise of Robin Hood",
-    "id": 3787
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 318,
-    "title": "O Rebelde",
-    "id": 5473
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 318,
-    "title": "قیام",
-    "id": 5474
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 318,
-    "title": "Pemberontakan",
-    "id": 5475
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 318,
-    "title": "La révolte",
-    "id": 5524
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "uprising",
+  "sortTitle": "last mirror",
   "sizeOnDisk": 3470763205,
   "status": "released",
-  "overview": "Lors de la révolte des paysans anglais de 1381, l'humble Wat Tyler s'élève à la tête de la résistance contre le jeune roi Richard II. À la tête d'une armée de citoyens ordinaires, il affronte les troupes de la Couronne dans une lutte pour la justice et la survie. Ses actions font de lui un symbole légendaire de la résistance.",
+  "overview": "Iris doit retrouver un secret de famille en une seule nuit.",
   "inCinemas": "2026-09-10T00:00:00Z",
   "physicalRelease": "2026-11-03T00:00:00Z",
   "digitalRelease": "2026-09-29T00:00:00Z",
@@ -1034,10 +403,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "https://www.focusfeatures.com/the-uprising",
   "year": 2026,
-  "youTubeTrailerId": "lyhCxZN4Ro8",
-  "studio": "Blumhouse Productions",
+  "studio": "Lantern House",
   "qualityProfileId": 4,
   "hasFile": true,
   "movieFileId": 743,
@@ -1045,40 +412,18 @@
   "minimumAvailability": "released",
   "isAvailable": true,
   "runtime": 128,
-  "cleanTitle": "theuprising",
-  "imdbId": "tt36983905",
-  "tmdbId": 977942,
-  "titleSlug": "977942",
+  "cleanTitle": "thelastmirror",
+  "imdbId": "tt98055722",
+  "tmdbId": 9263892,
+  "titleSlug": "9263892",
   "genres": [
    "History",
    "Drama",
    "Action"
   ],
-  "keywords": [
-   "1300s",
-   "14th century",
-   "based on true story",
-   "farmer",
-   "medieval",
-   "medieval england",
-   "peasant",
-   "plague",
-   "rebellion",
-   "revolt"
-  ],
   "tags": [],
   "added": "2026-07-28T13:49:25Z",
   "ratings": {
-   "imdb": {
-    "votes": 6622,
-    "value": 6.2,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 264,
-    "value": 7.956,
-    "type": "user"
-   },
    "metacritic": {
     "votes": 0,
     "value": 53,
@@ -1108,25 +453,16 @@
   "id": 236
  },
  {
-  "title": "Kraken",
-  "originalTitle": "Kraken",
+  "title": "Nadia and the Copper Archive",
+  "originalTitle": "Nadia and the Copper Archive",
   "originalLanguage": {
    "id": 2,
    "name": "French"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 484,
-    "title": "No Way Down",
-    "id": 5162
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "kraken",
+  "sortTitle": "nadia and the copper archive",
   "sizeOnDisk": 3143842623,
   "status": "inCinemas",
-  "overview": "Dans une cité, une tour abandonnée alimente les rumeurs. Alors que des disparitions étranges s'enchaînent, 5 jeunes n’ont plus le choix : y entrer à nouveau. Pris dans un piège mortel, ils vont bientôt comprendre que s'échapper leur sera impossible…",
+  "overview": "Lou essaie d'oublier une lettre jamais envoyée avant l'hiver.",
   "inCinemas": "2026-09-30T00:00:00Z",
   "releaseDate": "2026-12-29T00:00:00Z",
   "images": [
@@ -1137,10 +473,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "",
   "year": 2026,
-  "youTubeTrailerId": "",
-  "studio": "Marvelous Productions",
+  "studio": "Quiet Fox Media",
   "qualityProfileId": 4,
   "hasFile": true,
   "movieFileId": 640,
@@ -1148,29 +482,17 @@
   "minimumAvailability": "released",
   "isAvailable": false,
   "runtime": 95,
-  "cleanTitle": "kraken",
-  "imdbId": "tt43720986",
-  "tmdbId": 1571766,
-  "titleSlug": "1571766",
+  "cleanTitle": "nadiaandthecopperarchive",
+  "imdbId": "tt96880997",
+  "tmdbId": 9433558,
+  "titleSlug": "9433558",
   "certification": "16",
   "genres": [
    "Horror"
   ],
-  "keywords": [],
   "tags": [],
   "added": "2026-09-07T04:24:28Z",
-  "ratings": {
-   "imdb": {
-    "votes": 83,
-    "value": 6.1,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 7,
-    "value": 6,
-    "type": "user"
-   }
-  },
+  "ratings": {},
   "popularity": 3.3129,
   "lastSearchTime": "2026-09-14T16:39:43Z",
   "statistics": {
@@ -1189,49 +511,16 @@
   "id": 364
  },
  {
-  "title": "Digger",
-  "originalTitle": "Digger",
+  "title": "Maud's Engine",
+  "originalTitle": "Maud's Engine",
   "originalLanguage": {
    "id": 1,
    "name": "English"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 585,
-    "title": "डिगर",
-    "id": 5422
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 585,
-    "title": "Judy",
-    "id": 5423
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 585,
-    "title": "ดิกเกอร์",
-    "id": 5424
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 585,
-    "title": "Blah, Blah, Blah",
-    "id": 5476
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 585,
-    "title": "Digeris",
-    "id": 5600
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "digger",
+  "sortTitle": "maud's engine",
   "sizeOnDisk": 0,
   "status": "inCinemas",
-  "overview": "L’homme le plus puissant du monde se lance dans une mission frénétique pour prouver qu’il est le sauveur de l’humanité avant que le désastre qu’il a déclenché ne détruise tout.",
+  "overview": "Rafael hérite de une carte oubliée avant qu'il ne soit trop tard.",
   "inCinemas": "2026-09-30T00:00:00Z",
   "releaseDate": "2026-12-29T00:00:00Z",
   "images": [
@@ -1242,10 +531,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "https://www.diggermovie.com",
   "year": 2026,
-  "youTubeTrailerId": "job8V254NAE",
-  "studio": "Warner Bros. Pictures",
+  "studio": "Quiet Fox Media",
   "qualityProfileId": 4,
   "hasFile": false,
   "movieFileId": 0,
@@ -1253,49 +540,18 @@
   "minimumAvailability": "released",
   "isAvailable": false,
   "runtime": 129,
-  "cleanTitle": "digger",
-  "imdbId": "tt31450459",
-  "tmdbId": 1248832,
-  "titleSlug": "1248832",
+  "cleanTitle": "maudsengine",
+  "imdbId": "tt96027919",
+  "tmdbId": 9108727,
+  "titleSlug": "9108727",
   "certification": "12",
   "genres": [
    "Comedy",
    "Drama"
   ],
-  "keywords": [
-   "billionaire",
-   "capitalism",
-   "climate change",
-   "commanding",
-   "corporate power",
-   "dark comedy",
-   "disturbed",
-   "ego",
-   "environmental disaster",
-   "farcical",
-   "greed",
-   "oil industry",
-   "political",
-   "political satire",
-   "power",
-   "redemption",
-   "satire",
-   "serious",
-   "thoughtful"
-  ],
   "tags": [],
   "added": "2026-09-28T19:37:18Z",
   "ratings": {
-   "imdb": {
-    "votes": 14238,
-    "value": 7.3,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 272,
-    "value": 7.489,
-    "type": "user"
-   },
    "rottenTomatoes": {
     "votes": 0,
     "value": 52,
@@ -1312,25 +568,16 @@
   "id": 448
  },
  {
-  "title": "Notre salut",
-  "originalTitle": "Notre salut",
+  "title": "Mara's Lantern",
+  "originalTitle": "Mara's Lantern",
   "originalLanguage": {
    "id": 2,
    "name": "French"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 596,
-    "title": "Our Salvation",
-    "id": 5529
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "notre salut",
+  "sortTitle": "mara's lantern",
   "sizeOnDisk": 0,
   "status": "inCinemas",
-  "overview": "Septembre 1940, le régime de Pétain se met en place. Henri Marre, 49 ans, débarque à Vichy sans le sou, sans contact, loin de sa femme et ses enfants. Il voit dans la nouvelle administration l’opportunité de trouver enfin la place qu’il mérite. Dans sa valise, son traité politique édité à compte d’auteur, Notre Salut, où il défend ses convictions patriotiques et ses méthodes d'ingénieur. Son credo: « gagner en efficacité » pour relever la France de la débâcle. Mais peut-être qu’Henri cherche avant tout à fuir sa propre débâcle…",
+  "overview": "Camille accepte de garder une promesse faite il y a dix ans malgré tout.",
   "inCinemas": "2026-09-30T00:00:00Z",
   "releaseDate": "2026-12-29T00:00:00Z",
   "images": [
@@ -1341,10 +588,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "",
   "year": 2026,
-  "youTubeTrailerId": "",
-  "studio": "Kidam",
+  "studio": "Quiet Fox Media",
   "qualityProfileId": 4,
   "hasFile": false,
   "movieFileId": 0,
@@ -1352,31 +597,18 @@
   "minimumAvailability": "released",
   "isAvailable": false,
   "runtime": 155,
-  "cleanTitle": "amanhistime",
-  "imdbId": "tt41593304",
-  "tmdbId": 1318864,
-  "titleSlug": "1318864",
+  "cleanTitle": "maraslantern",
+  "imdbId": "tt97426784",
+  "tmdbId": 9424613,
+  "titleSlug": "9424613",
   "genres": [
    "History",
    "Comedy",
    "Drama"
   ],
-  "keywords": [
-   "paris, france"
-  ],
   "tags": [],
   "added": "2026-10-04T09:22:36Z",
   "ratings": {
-   "imdb": {
-    "votes": 339,
-    "value": 6.9,
-    "type": "user"
-   },
-   "tmdb": {
-    "votes": 24,
-    "value": 6.813,
-    "type": "user"
-   },
    "rottenTomatoes": {
     "votes": 0,
     "value": 78,
@@ -1393,91 +625,16 @@
   "id": 457
  },
  {
-  "title": "Malfaisante",
-  "originalTitle": "Other Mommy",
+  "title": "Lost Citadel",
+  "originalTitle": "Tide of Valemont",
   "originalLanguage": {
    "id": 1,
    "name": "English"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "Grandma's House",
-    "id": 5140
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "Incidents Around the House",
-    "id": 5141
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "Outra Mamãe",
-    "id": 5142
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "Malfaisante",
-    "id": 5143
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "Madre Siniestra",
-    "id": 5144
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "La Otra Madre",
-    "id": 5145
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "Mammina",
-    "id": 5146
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "아더 마미",
-    "id": 5147
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "แม่...หลอน",
-    "id": 5148
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "სხვა დედიკო",
-    "id": 5149
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "Autre maman",
-    "id": 5150
-   },
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 539,
-    "title": "Digər Ana",
-    "id": 5341
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "malfaisante",
+  "sortTitle": "lost citadel",
   "sizeOnDisk": 0,
   "status": "inCinemas",
-  "overview": "Une famille est la cible d'une entité qu'elle appelle « l'autre maman ».",
+  "overview": "Maud doit retrouver une lettre jamais envoyée au bout du monde.",
   "inCinemas": "2026-10-07T00:00:00Z",
   "releaseDate": "2027-01-05T00:00:00Z",
   "images": [
@@ -1488,10 +645,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "http://www.universalpictures.com/movies/other-mommy/",
   "year": 2026,
-  "youTubeTrailerId": "-mnTITqqiT0",
-  "studio": "Blumhouse Productions",
+  "studio": "Lantern House",
   "qualityProfileId": 4,
   "hasFile": false,
   "movieFileId": 0,
@@ -1499,37 +654,17 @@
   "minimumAvailability": "released",
   "isAvailable": false,
   "runtime": 93,
-  "cleanTitle": "othermommy",
-  "imdbId": "tt36586020",
-  "tmdbId": 1400837,
-  "titleSlug": "1400837",
+  "cleanTitle": "lostcitadel",
+  "imdbId": "tt92779017",
+  "tmdbId": 9259852,
+  "titleSlug": "9259852",
   "certification": "12",
   "genres": [
    "Horror"
   ],
-  "keywords": [
-   "based on novel or book",
-   "entity",
-   "evil spirit",
-   "exorcism",
-   "family",
-   "haunted house",
-   "mother daughter estrangement",
-   "mother daughter relationship",
-   "psychological",
-   "psychological horror",
-   "supernatural",
-   "supernatural horror"
-  ],
   "tags": [],
   "added": "2026-09-20T22:41:45Z",
-  "ratings": {
-   "tmdb": {
-    "votes": 38,
-    "value": 6.211,
-    "type": "user"
-   }
-  },
+  "ratings": {},
   "popularity": 117.2211,
   "lastSearchTime": "2026-10-11T09:29:55Z",
   "statistics": {
@@ -1540,25 +675,16 @@
   "id": 411
  },
  {
-  "title": "Le Roi du Game",
-  "originalTitle": "Le Roi du Game",
+  "title": "Second Valley",
+  "originalTitle": "Second Valley",
   "originalLanguage": {
    "id": 2,
    "name": "French"
   },
-  "alternateTitles": [
-   {
-    "sourceType": "tmdb",
-    "movieMetadataId": 572,
-    "title": "Le puy des oufs",
-    "id": 5339
-   }
-  ],
-  "secondaryYearSourceId": 0,
-  "sortTitle": "le roi du game",
+  "sortTitle": "second valley",
   "sizeOnDisk": 0,
   "status": "announced",
-  "overview": "Alexandre est prêt à tout pour renouer avec sa fille. Quitte à infiltrer une équipe de bras cassés dans un univers de jeu médiéval-fantastique. Cette quête improbable pourrait bien le ramener à ses propres rêves oubliés...",
+  "overview": "Sacha découvre une promesse faite il y a dix ans avant qu'il ne soit trop tard.",
   "inCinemas": "2026-10-21T00:00:00Z",
   "releaseDate": "2027-01-19T00:00:00Z",
   "images": [
@@ -1569,10 +695,8 @@
     "coverType": "fanart"
    }
   ],
-  "website": "",
   "year": 2026,
-  "youTubeTrailerId": "",
-  "studio": "4 Mecs en Baskets",
+  "studio": "Quiet Fox Media",
   "qualityProfileId": 4,
   "hasFile": false,
   "movieFileId": 0,
@@ -1580,24 +704,17 @@
   "minimumAvailability": "released",
   "isAvailable": false,
   "runtime": 88,
-  "cleanTitle": "leroidugame",
-  "imdbId": "tt44842464",
-  "tmdbId": 1505487,
-  "titleSlug": "1505487",
+  "cleanTitle": "secondvalley",
+  "imdbId": "tt90659373",
+  "tmdbId": 9147789,
+  "titleSlug": "9147789",
   "certification": "TP",
   "genres": [
    "Comedy"
   ],
-  "keywords": [],
   "tags": [],
   "added": "2026-09-25T16:42:12Z",
-  "ratings": {
-   "tmdb": {
-    "votes": 0,
-    "value": 0,
-    "type": "user"
-   }
-  },
+  "ratings": {},
   "popularity": 2.4689,
   "statistics": {
    "movieFileCount": 0,

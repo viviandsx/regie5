@@ -163,7 +163,7 @@ TEST(app_settings_round_trip)
     s.cleanup_enabled = true;
     s.cleanup_everyone = false;
     s.cleanup_months = 12;
-    s.kept.push_back({config::Radarr, "Radarr 4K", 42, "Dune"});
+    s.kept.push_back({config::Radarr, "Radarr 4K", 42, "The Glass Comet"});
     app_settings::Settings t;
     CHECK(app_settings::from_json(app_settings::to_json(s), &t));
     CHECK(t.cleanup_enabled && !t.cleanup_everyone && t.cleanup_months == 12);

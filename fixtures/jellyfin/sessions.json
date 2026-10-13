@@ -35,30 +35,19 @@
   "LastPlaybackCheckIn": "2026-10-11T17:21:23.6828576Z",
   "DeviceName": "Salon TV",
   "NowPlayingItem": {
-   "Name": "The Good Boy",
-   "OriginalTitle": "Good Boy",
+   "Name": "Iris and the Paper Winter",
+   "OriginalTitle": "Glenrock: Falling Archive",
    "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
    "Id": "06048749db654723d414b620b0ad594e",
    "DateCreated": "2026-10-11T15:31:37.107694Z",
    "HasSubtitles": true,
    "Container": "mkv",
    "PremiereDate": "2026-03-04T23:00:00.0000000Z",
-   "ExternalUrls": [
-    {
-     "Name": "IMDb",
-     "Url": "https://www.imdb.com/title/tt34381258"
-    },
-    {
-     "Name": "TMDB",
-     "Url": "https://www.themoviedb.org/movie/1381027"
-    }
-   ],
    "CriticRating": 90,
    "EnableMediaSourceDisplay": true,
    "OfficialRating": "R",
    "ChannelId": null,
-   "Overview": "Tommy, jeune délinquant insouciant et impulsif naviguant entre fêtes alcoolisées et violences incontrôlables, se réveille un matin enchaîné dans la cave d’une maison. Il est à la merci de ses occupants, une étrange famille qui s’est donnée pour mission de le remettre dans le droit chemin. Quelqu’en soit le prix.",
-   "Taglines": [],
+   "Overview": "Yuki cherche une lettre jamais envoyée avant qu'il ne soit trop tard.",
    "Genres": [
     "Thriller",
     "Drame",
@@ -69,8 +58,8 @@
    "RunTimeTicks": 66147620000,
    "ProductionYear": 2026,
    "ProviderIds": {
-    "Imdb": "tt34381258",
-    "Tmdb": "1381027"
+    "Imdb": "tt98328429",
+    "Tmdb": "9175210"
    },
    "IsHD": true,
    "IsFolder": false,
@@ -78,27 +67,27 @@
    "Type": "Movie",
    "Studios": [
     {
-     "Name": "Recorded Picture Company",
+     "Name": "Ninefold Films",
      "Id": "eb90ae51ff86ab7ca1a19e289c6e2971"
     },
     {
-     "Name": "Skopia Film",
+     "Name": "Paper Moon Pictures",
      "Id": "9a7d212521cdd66ef5d84974ab669eb8"
     },
     {
-     "Name": "Wytwórnia Filmów Dokumentalnych i Fabularnych",
+     "Name": "Paper Moon Pictures",
      "Id": "4ff84fea4fe0a5a3c43f35fd2ce000ae"
     },
     {
-     "Name": "Venatu Capital",
+     "Name": "Harbor Lane Studios",
      "Id": "b4737b2d4ecebfc59bb9e4d92e82b392"
     },
     {
-     "Name": "CANAL+ Polska",
+     "Name": "Ninefold Films",
      "Id": "15c8467691b2de4b7b0738a530c7466c"
     },
     {
-     "Name": "TVN Warner Bros. Discovery",
+     "Name": "Lantern House",
      "Id": "ff93139ddf0ca138cd37c9b2d804b5af"
     }
    ],
@@ -222,20 +211,6 @@
    "BackdropImageTags": [
     "c2be3ef7c72a490cefc19a463a63009b"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "c2be3ef7c72a490cefc19a463a63009b": "WQ4{-$o~R%jujEbbyZo#WBj[aebbt.ogaKayaxj]tnogaKWVayoK"
-    },
-    "Primary": {
-     "03f1406f766f40ede9f1e3013169faf9": "d88D-5?aELoLHXIUOray=|f,JUX9KOtQ#,i_5QMx#mt7"
-    },
-    "Thumb": {
-     "69bb0306c1296c575dceae1a43103639": "WI9QgZITRiofNG%gxuaej[a|WCa}00-;xuWBj@D%IUxuf6ayWVRj"
-    },
-    "Logo": {
-     "e5cdcfe127eda9c478a65c3df6d0864f": "OgLB,~snozoLbvwxt7xaWpjZa|jtfQjt?^j[aybHjZbHWV"
-    }
-   },
    "Chapters": [],
    "Trickplay": {},
    "LocationType": "FileSystem",
@@ -293,30 +268,19 @@
   "LastPlaybackCheckIn": "2026-10-11T17:21:23.6828576Z",
   "DeviceName": "Cuisine",
   "NowPlayingItem": {
-   "Name": "The Good Boy",
-   "OriginalTitle": "Good Boy",
+   "Name": "Iris and the Paper Winter",
+   "OriginalTitle": "Glenrock: Falling Archive",
    "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
    "Id": "06048749db654723d414b620b0ad594e",
    "DateCreated": "2026-10-11T15:31:37.107694Z",
    "HasSubtitles": true,
    "Container": "mkv",
    "PremiereDate": "2026-03-04T23:00:00.0000000Z",
-   "ExternalUrls": [
-    {
-     "Name": "IMDb",
-     "Url": "https://www.imdb.com/title/tt34381258"
-    },
-    {
-     "Name": "TMDB",
-     "Url": "https://www.themoviedb.org/movie/1381027"
-    }
-   ],
    "CriticRating": 90,
    "EnableMediaSourceDisplay": true,
    "OfficialRating": "R",
    "ChannelId": null,
-   "Overview": "Tommy, jeune délinquant insouciant et impulsif naviguant entre fêtes alcoolisées et violences incontrôlables, se réveille un matin enchaîné dans la cave d’une maison. Il est à la merci de ses occupants, une étrange famille qui s’est donnée pour mission de le remettre dans le droit chemin. Quelqu’en soit le prix.",
-   "Taglines": [],
+   "Overview": "Yuki cherche une lettre jamais envoyée avant qu'il ne soit trop tard.",
    "Genres": [
     "Thriller",
     "Drame",
@@ -327,8 +291,8 @@
    "RunTimeTicks": 66147620000,
    "ProductionYear": 2026,
    "ProviderIds": {
-    "Imdb": "tt34381258",
-    "Tmdb": "1381027"
+    "Imdb": "tt98328429",
+    "Tmdb": "9175210"
    },
    "IsHD": true,
    "IsFolder": false,
@@ -336,27 +300,27 @@
    "Type": "Movie",
    "Studios": [
     {
-     "Name": "Recorded Picture Company",
+     "Name": "Ninefold Films",
      "Id": "eb90ae51ff86ab7ca1a19e289c6e2971"
     },
     {
-     "Name": "Skopia Film",
+     "Name": "Paper Moon Pictures",
      "Id": "9a7d212521cdd66ef5d84974ab669eb8"
     },
     {
-     "Name": "Wytwórnia Filmów Dokumentalnych i Fabularnych",
+     "Name": "Paper Moon Pictures",
      "Id": "4ff84fea4fe0a5a3c43f35fd2ce000ae"
     },
     {
-     "Name": "Venatu Capital",
+     "Name": "Harbor Lane Studios",
      "Id": "b4737b2d4ecebfc59bb9e4d92e82b392"
     },
     {
-     "Name": "CANAL+ Polska",
+     "Name": "Ninefold Films",
      "Id": "15c8467691b2de4b7b0738a530c7466c"
     },
     {
-     "Name": "TVN Warner Bros. Discovery",
+     "Name": "Lantern House",
      "Id": "ff93139ddf0ca138cd37c9b2d804b5af"
     }
    ],
@@ -419,20 +383,6 @@
    "BackdropImageTags": [
     "c2be3ef7c72a490cefc19a463a63009b"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "c2be3ef7c72a490cefc19a463a63009b": "WQ4{-$o~R%jujEbbyZo#WBj[aebbt.ogaKayaxj]tnogaKWVayoK"
-    },
-    "Primary": {
-     "03f1406f766f40ede9f1e3013169faf9": "d88D-5?aELoLHXIUOray=|f,JUX9KOtQ#,i_5QMx#mt7"
-    },
-    "Thumb": {
-     "69bb0306c1296c575dceae1a43103639": "WI9QgZITRiofNG%gxuaej[a|WCa}00-;xuWBj@D%IUxuf6ayWVRj"
-    },
-    "Logo": {
-     "e5cdcfe127eda9c478a65c3df6d0864f": "OgLB,~snozoLbvwxt7xaWpjZa|jtfQjt?^j[aybHjZbHWV"
-    }
-   },
    "Chapters": [],
    "Trickplay": {},
    "LocationType": "FileSystem",
@@ -510,30 +460,19 @@
   "LastPlaybackCheckIn": "2026-10-11T17:21:23.6828576Z",
   "DeviceName": "Bureau",
   "NowPlayingItem": {
-   "Name": "The Good Boy",
-   "OriginalTitle": "Good Boy",
+   "Name": "Iris and the Paper Winter",
+   "OriginalTitle": "Glenrock: Falling Archive",
    "ServerId": "96b9dd55903a73978bf4f2c53a3dac2a",
    "Id": "06048749db654723d414b620b0ad594e",
    "DateCreated": "2026-10-11T15:31:37.107694Z",
    "HasSubtitles": true,
    "Container": "mkv",
    "PremiereDate": "2026-03-04T23:00:00.0000000Z",
-   "ExternalUrls": [
-    {
-     "Name": "IMDb",
-     "Url": "https://www.imdb.com/title/tt34381258"
-    },
-    {
-     "Name": "TMDB",
-     "Url": "https://www.themoviedb.org/movie/1381027"
-    }
-   ],
    "CriticRating": 90,
    "EnableMediaSourceDisplay": true,
    "OfficialRating": "R",
    "ChannelId": null,
-   "Overview": "Tommy, jeune délinquant insouciant et impulsif naviguant entre fêtes alcoolisées et violences incontrôlables, se réveille un matin enchaîné dans la cave d’une maison. Il est à la merci de ses occupants, une étrange famille qui s’est donnée pour mission de le remettre dans le droit chemin. Quelqu’en soit le prix.",
-   "Taglines": [],
+   "Overview": "Yuki cherche une lettre jamais envoyée avant qu'il ne soit trop tard.",
    "Genres": [
     "Thriller",
     "Drame",
@@ -544,8 +483,8 @@
    "RunTimeTicks": 66147620000,
    "ProductionYear": 2026,
    "ProviderIds": {
-    "Imdb": "tt34381258",
-    "Tmdb": "1381027"
+    "Imdb": "tt98328429",
+    "Tmdb": "9175210"
    },
    "IsHD": true,
    "IsFolder": false,
@@ -553,27 +492,27 @@
    "Type": "Movie",
    "Studios": [
     {
-     "Name": "Recorded Picture Company",
+     "Name": "Ninefold Films",
      "Id": "eb90ae51ff86ab7ca1a19e289c6e2971"
     },
     {
-     "Name": "Skopia Film",
+     "Name": "Paper Moon Pictures",
      "Id": "9a7d212521cdd66ef5d84974ab669eb8"
     },
     {
-     "Name": "Wytwórnia Filmów Dokumentalnych i Fabularnych",
+     "Name": "Paper Moon Pictures",
      "Id": "4ff84fea4fe0a5a3c43f35fd2ce000ae"
     },
     {
-     "Name": "Venatu Capital",
+     "Name": "Harbor Lane Studios",
      "Id": "b4737b2d4ecebfc59bb9e4d92e82b392"
     },
     {
-     "Name": "CANAL+ Polska",
+     "Name": "Ninefold Films",
      "Id": "15c8467691b2de4b7b0738a530c7466c"
     },
     {
-     "Name": "TVN Warner Bros. Discovery",
+     "Name": "Lantern House",
      "Id": "ff93139ddf0ca138cd37c9b2d804b5af"
     }
    ],
@@ -636,20 +575,6 @@
    "BackdropImageTags": [
     "c2be3ef7c72a490cefc19a463a63009b"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "c2be3ef7c72a490cefc19a463a63009b": "WQ4{-$o~R%jujEbbyZo#WBj[aebbt.ogaKayaxj]tnogaKWVayoK"
-    },
-    "Primary": {
-     "03f1406f766f40ede9f1e3013169faf9": "d88D-5?aELoLHXIUOray=|f,JUX9KOtQ#,i_5QMx#mt7"
-    },
-    "Thumb": {
-     "69bb0306c1296c575dceae1a43103639": "WI9QgZITRiofNG%gxuaej[a|WCa}00-;xuWBj@D%IUxuf6ayWVRj"
-    },
-    "Logo": {
-     "e5cdcfe127eda9c478a65c3df6d0864f": "OgLB,~snozoLbvwxt7xaWpjZa|jtfQjt?^j[aybHjZbHWV"
-    }
-   },
    "Chapters": [],
    "Trickplay": {},
    "LocationType": "FileSystem",

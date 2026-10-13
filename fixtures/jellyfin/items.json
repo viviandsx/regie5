@@ -1,7 +1,7 @@
 {
  "Items": [
   {
-   "Name": "Chainsaw Man – Le Film : L'arc de Reze",
+   "Name": "The Quiet Tower",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "078dfb1250ba8ed4a9176f320c5a9f01",
    "DateCreated": "2026-10-10T21:36:17.9286393Z",
@@ -24,23 +24,12 @@
    "BackdropImageTags": [
     "ee4a643c9bf17c103a7b24ef81ba639c"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "ee4a643c9bf17c103a7b24ef81ba639c": "WaJPxrE9%M-Ct7%1~AIpt6sot6ofxtWDozoLs:j[-Vj]xas:s:ja"
-    },
-    "Thumb": {
-     "108a87df20f5fa7f9a8f8bfaafd2d3ac": "WFAJsO4-I-r_RQ%1NFxbaMt6IUxu0Jxb%MX5xaRks;M{kVa$-;D%"
-    },
-    "Primary": {
-     "bcf319cf8baf1a4e6c97ff1853613606": "dHK@bb+~@Z]j{L,G#-xE:5,:3BE*-qr?K4Jn9anlXmN@"
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Princesse Mononoké",
+   "Name": "Iris's Mirror",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "8fac0ffdb13a235f3cd949f066b05170",
    "DateCreated": "2026-10-10T21:31:02.0101432Z",
@@ -63,23 +52,12 @@
    "BackdropImageTags": [
     "a3e4f1a8d6604a2e8f82e1da9184cdaa"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "a3e4f1a8d6604a2e8f82e1da9184cdaa": "WHCQrW?c8{t,xunMXKtQWGkDoyjY4TIox[MxRjtSM}RkxZM_RPt8"
-    },
-    "Primary": {
-     "17d505af44c284464fbc2cb54863bcfe": "dHGlVK$+9wb_~pIAI:x]9xpJr;%29ZRi%1jGQ,R5RkIo"
-    },
-    "Thumb": {
-     "2bbbdcfd95cc191a6b8659c4b7af24a4": "NIEfpN4.9u$fxDOG?wo~Io-pWAWo0L%MVro~tRxF"
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Your Name.",
+   "Name": "Léa and the Secret Station",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "1e42763f9b4f09affb6d9b4a230ecc9f",
    "DateCreated": "2026-10-10T21:17:38.5078339Z",
@@ -102,23 +80,12 @@
    "BackdropImageTags": [
     "9ae27f0d7f61504143a31ae151e90b3f"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "9ae27f0d7f61504143a31ae151e90b3f": "WSIX,V~pRN,;%3?H-s9ciu-5s,xtpwNFv|a~ESR*x^wa-P-pS%tQ"
-    },
-    "Primary": {
-     "e2c7ed03773ed6df437bc2f6a1f5221a": "deD_Ek-=R*pJOwR+WBf,8wNKR,n#-pxZt7bcIraxxtX9"
-    },
-    "Thumb": {
-     "c9a4830c9d6e0a7a5f5c5f7ccabadb2e": "NxI$HW%2xWtRg5xv.As+xZbIbct7M|oLf8jYRjR-"
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "The Good Boy",
+   "Name": "Iris and the Paper Winter",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "12e219cc7f5191ac42f04b0670bfda60",
    "DateCreated": "2026-10-10T14:46:40.2169674Z",
@@ -141,23 +108,12 @@
    "BackdropImageTags": [
     "99ed5ba349d8604e22907f24806566fe"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "99ed5ba349d8604e22907f24806566fe": "W12$1|s:0LNG~U%1E3az-ooKE2R-EMay-Uj[IpWV~BoL0gR+~AxF"
-    },
-    "Primary": {
-     "20d03ec0db4dbce5458b55fe7d2d9596": "d98|3Bi_0}%1LJR*#Txa+HnjK4buE2S4sVjZK5SgwJni"
-    },
-    "Thumb": {
-     "46e36a701b5c45db18f4961dffbc290a": "NF8{B?KOK4wdRjnO,@bbbHWVWCni1w$P$PNuWpN["
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "en"
   },
   {
-   "Name": "Jack Ryan de Tom Clancy : Guerre Fantôme",
+   "Name": "Léa's Tower",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "6e6e42dab74c59841776a0f74dbb91d4",
    "DateCreated": "2026-10-10T11:58:45.4852913Z",
@@ -180,23 +136,12 @@
    "BackdropImageTags": [
     "711760e97bdf17f93a4dfd741a52816b"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "711760e97bdf17f93a4dfd741a52816b": "WbLN*:Dj?bRo00oe~qRjRj%2NGM|ofRkRjt6tRWB?bjYWBRjaeog"
-    },
-    "Primary": {
-     "f3711eee048369887274a79c22badeda": "dFBWG8iJM|%g~VIBNbtR4.EMbwRPD%Nbt7rq?Ibbj?xG"
-    },
-    "Thumb": {
-     "401247d3486ea48a5317c83a810f0118": "WECF^oQmKRVrxZx]~UNGI[M|$%t700XTnNNLoMnhIUix%0oeIqn$"
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "en"
   },
   {
-   "Name": "Titanic",
+   "Name": "Ocean of Ravensby",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "0a251a4a44083bf5428cef681a02a5d6",
    "DateCreated": "2026-10-10T08:14:13.0000000Z",
@@ -219,23 +164,12 @@
    "BackdropImageTags": [
     "f7513b08418402aab295a8ad8b3a3dba"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "f7513b08418402aab295a8ad8b3a3dba": "WOIV_G^P].-R-T$k}uog9{NaEhoMIosltPe:NHS2NxNGeoxaw|j@"
-    },
-    "Thumb": {
-     "11ca64493c221e49f4f69947425e6275": "NbFF$^Ne?cNGt6s,_NtSkXozt7e.%gS4M|t8ogj["
-    },
-    "Primary": {
-     "382321f37ae0a9b2572275f9b5d08cac": "dpI}CQxZtQ%1$gofW;s:02RkazayNIj[WBaxtRofRjkC"
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "en"
   },
   {
-   "Name": "Enemy",
+   "Name": "Léa and the Endless Tower",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "797cd5db7b70a89fe27f9cac4a3bc513",
    "DateCreated": "2026-10-09T20:20:28.1388803Z",
@@ -258,23 +192,12 @@
    "BackdropImageTags": [
     "a3d11ea1fe71cb7d0f3966b395315079"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "a3d11ea1fe71cb7d0f3966b395315079": "WDCiW^={IWNGR+?F~TxtayoeayWCaeRk-o%KM}NH%0WCbHoys:ae"
-    },
-    "Primary": {
-     "67e03ac1f261d4fd55e5e448ec1f8a5a": "dpL4sfxu_3?b~qM{IUxu%gt7M{f6-;xua}Rjxvt7f6WB"
-    },
-    "Thumb": {
-     "bab7e69bd22b691dda56ea608e753721": "NFDu}9-oIoWXWX-:~UxtWBt6WXa}DiRj-.s,RkM|"
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "en"
   },
   {
-   "Name": "Génération perdue",
+   "Name": "Winter of Stonebridge",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "e33ced11a133f3e1987db56862a0bbdf",
    "DateCreated": "2026-10-09T14:59:37.4640843Z",
@@ -297,23 +220,12 @@
    "BackdropImageTags": [
     "9eb889bab49bfa5b94550ae225e32459"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "9eb889bab49bfa5b94550ae225e32459": "WKD[@ITdE1?H-;WY+HK5bwr?RkWBD4ELbcRPMxV@-VbabFWos:xu"
-    },
-    "Thumb": {
-     "02cd008f4d3c9874aaf26a97f7dc10bc": "NGEB:HPn9Z^k_3M|@tBTXmw0RjWVL$57S5aKIARj"
-    },
-    "Primary": {
-     "72318847fad3b94b6f4bcb1f0fd82866": "dxF|AKS#NGxG|_OCSgw{;3SMS3ni#9aykCn%#Snjs:j["
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "en"
   },
   {
-   "Name": "Little Brother",
+   "Name": "The Glass Machine",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "ffaeaea68a972cc325b9d98f34e7bf30",
    "DateCreated": "2026-10-09T14:25:33.2417766Z",
@@ -336,23 +248,12 @@
    "BackdropImageTags": [
     "37457445287039e09dcbd4f9758128d1"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "37457445287039e09dcbd4f9758128d1": "WqN,l1xu~p-;M{x[~Vj[Ipt6WBWBx[ofRjRkR*ay%Mj[s:j[oyt7"
-    },
-    "Primary": {
-     "f7ff677c1469a1a80e5b7587951e245f": "d+MjK+t6o}%M~pt7tRt7X8ofM{R*%LWBRjoeo|WVt6t7"
-    },
-    "Thumb": {
-     "13a41a1bac7dbcff2254e6754d716e25": "NjOD2m~o-:IVkV?a~VR+WBs.kCs:yDW;R*ofoeR+"
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "en"
   },
   {
-   "Name": "Supernova: The Music Festival Massacre",
+   "Name": "The Shifting Horizon",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "d543908c19e9957b984bda3f8d07235a",
    "DateCreated": "2026-10-08T18:57:20.0000000Z",
@@ -372,23 +273,12 @@
    "BackdropImageTags": [
     "b437a3814c617d133f194b20cf4326e6"
    ],
-   "ImageBlurHashes": {
-    "Backdrop": {
-     "b437a3814c617d133f194b20cf4326e6": "WmHn]Nt79ZjbRjtR~qt6RjxuRPRP_3ofM{a#R*ae-;WVM{sokCbb"
-    },
-    "Primary": {
-     "5b51083800b9fa424862263e5ccf2a04": "dREM2k-p9ZNG_4bIM{xuS%WVs.xuNGozjGM{D%RkjZRP"
-    },
-    "Thumb": {
-     "5966aba8fd94b84901cf13a01100464f": "WPF5:L0K9F?GNGM{_NITR%Rjj]%M.8DiRjoz%Mx]_N9FM{%MofkC"
-    }
-   },
    "LocationType": "FileSystem",
    "MediaType": "Video",
    "OriginalLanguage": "he"
   },
   {
-   "Name": "Épée Absolue",
+   "Name": "Yuki and the Electric Garden",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "a8dcd339cc68d141b658811d6316deee",
    "DateCreated": "2026-10-07T22:46:34.4775726Z",
@@ -407,7 +297,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -417,19 +307,6 @@
     "Primary": "c568ceb4d68f7cabbbfd6ecf0ca8b68b"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "c568ceb4d68f7cabbbfd6ecf0ca8b68b": "WhEWg]yEOYrqRPXT.TbIR*i^jFo#yDtSxuWEW=t6%MtSoeWFa~t6",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -439,7 +316,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Excalibur",
+   "Name": "The Falling Kingdom",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "5f2643f55c98c932fec29ce83a00a702",
    "DateCreated": "2026-10-07T22:46:34.2685783Z",
@@ -458,7 +335,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -468,19 +345,6 @@
     "Primary": "2fd94817e8453535cb4ab89b29c19d35"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "2fd94817e8453535cb4ab89b29c19d35": "WNG9KqD#4T?bOrX9.7xaaKWUS4WU4-n+%MInaLjYt8IUbcxuaJog",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -490,7 +354,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Le Sniper de glace",
+   "Name": "Léa and the Crimson Echo",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "dd78ebc7a38c7b4c4fbcafd0f74831bb",
    "DateCreated": "2026-10-07T22:46:34.0875832Z",
@@ -509,7 +373,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -519,19 +383,6 @@
     "Primary": "8734610a1360de2c3e9b6a79ec73e8ab"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "8734610a1360de2c3e9b6a79ec73e8ab": "WTDlQB0MIp^%9HtR=_NKRks,ogM|tQRjofW;Rjt7ozjFR+ofV[bI",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -541,7 +392,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Mother's Rosario",
+   "Name": "Mirror of Marlow",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "beb0686930bb4169670a27b95f7e3f86",
    "DateCreated": "2026-10-07T22:46:33.7035936Z",
@@ -560,7 +411,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -570,19 +421,6 @@
     "Primary": "128263f317b7c5e8d4f0ea1d95b011df"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "128263f317b7c5e8d4f0ea1d95b011df": "WKI}FAD+tH?aIu$e~T%enhW=NexVyA%1RRf$M~WA%LVtRjX4s,xZ",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -592,7 +430,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Le Souvenir du sang frais",
+   "Name": "Sacha and the Painted Machine",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "102b9d4d556d088d4bbb6fde3f69d4aa",
    "DateCreated": "2026-10-07T22:46:33.5975965Z",
@@ -611,7 +449,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -621,19 +459,6 @@
     "Primary": "450368e952f3864a2a877ebf4330532e"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "450368e952f3864a2a877ebf4330532e": "WPDvfur?j=R*D%x]~qRPoft7M{t7RkM{oM%Mt7RjxubbV@oLofV[",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -643,7 +468,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Le Roi des géants",
+   "Name": "Stonebridge: Borrowed Tower",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "f47653ca59d67b688c7b575fd1eb16cb",
    "DateCreated": "2026-10-07T22:46:33.5615975Z",
@@ -662,7 +487,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -672,19 +497,6 @@
     "Primary": "2885546fdcc64cb4e2580685c8193b60"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "2885546fdcc64cb4e2580685c8193b60": "W$E}4NtlE3a~xCof*0f,a#ogaefkSiWBs.oMRka#tlWVRPadoLfl",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -694,7 +506,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Le Début du rêve",
+   "Name": "Kingdom of Umber",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "e90f5cc31b1a3da035760e838c2a727c",
    "DateCreated": "2026-10-07T22:46:33.4246012Z",
@@ -713,7 +525,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -723,19 +535,6 @@
     "Primary": "b51103c2c4d2571b3b384cf402ed9779"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "b51103c2c4d2571b3b384cf402ed9779": "WSFG,n%iIW_2MyD*?]OGRl?akDNGIoRQMyI.s:xug2n*aKn~V@RQ",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -745,7 +544,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Death Gun",
+   "Name": "Mara's Meridian",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "a74f2fcf91f877a1f1692ed3560a8578",
    "DateCreated": "2026-10-07T22:46:33.3636029Z",
@@ -764,7 +563,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -774,19 +573,6 @@
     "Primary": "a0963cb8b312564a55ffa2dcca90abb2"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "a0963cb8b312564a55ffa2dcca90abb2": "WGC?r:ESD$RN4U~pxVWrtRx[Roay0KxZxbx]t7IoIoV@xbo#t6k9",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -796,7 +582,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Le Pistolet et l'épée",
+   "Name": "The Silent Winter",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "96c4a7557a4129f2be9f8186d6be7e0a",
    "DateCreated": "2026-10-07T22:46:33.1976074Z",
@@ -815,7 +601,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -825,19 +611,6 @@
     "Primary": "fb7a08cbc868f3318891fcdaf87fde49"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "fb7a08cbc868f3318891fcdaf87fde49": "WVFEMn~9xsI?j[=_^h=_%0oeNIt6jGM}o0jZR+oLnkM}RkR+WCoe",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -847,7 +620,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Duel dans le désert",
+   "Name": "Engine of Ravensby II",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "9259a12e6fa71c813f7446884eaeb16c",
    "DateCreated": "2026-10-07T22:46:33.0136124Z",
@@ -866,7 +639,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -876,19 +649,6 @@
     "Primary": "fd50faa805af9aca4211067670cda7e7"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "fd50faa805af9aca4211067670cda7e7": "WCDIg%}@4n?8^*$m~V%KbDt7ogV[Edoa=|t9IVNExTs.xvs:M_k8",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -898,7 +658,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Un Monde de pistolets",
+   "Name": "Mara and the Wandering Horizon",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "4d2f0673a4c6cd7e3482e7f8ab1973bb",
    "DateCreated": "2026-10-07T22:46:33.0056126Z",
@@ -917,7 +677,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -927,19 +687,6 @@
     "Primary": "b195f74d4a939da84f13ead1fb0f45e9"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "b195f74d4a939da84f13ead1fb0f45e9": "WRGb9k0eRj?G0fxW?GozkCV?W;bItSM{jYxu-UNHtSM{jaofxZs:",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -949,7 +696,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Le Monument des épéistes",
+   "Name": "Camille and the Velvet Harbor",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "ebc7b1046b51d04a120b9f9a8e9e2f53",
    "DateCreated": "2026-10-07T22:46:32.4356281Z",
@@ -968,7 +715,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -978,19 +725,6 @@
     "Primary": "c62e1a57d0bd182d5ef18203bb5e0b61"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "c62e1a57d0bd182d5ef18203bb5e0b61": "W38y|+%EE0^Q9wD+57r_I;JQ={OS57ENS6NHobxb%1w{NK$}jE%1",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1000,7 +734,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Phantom Bullet",
+   "Name": "Elias and the Hidden Harvest",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "dc34e2104941d1d31d9254ae7f77f437",
    "DateCreated": "2026-10-07T22:46:32.4206285Z",
@@ -1019,7 +753,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1029,19 +763,6 @@
     "Primary": "63eb7bbfbb36857eb57e4c8490daac1d"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "63eb7bbfbb36857eb57e4c8490daac1d": "W55E{nS#DhkD%OWE.AxwI9e-%Oo#bwoNV=t7tSo#W;ohoeWAj[oz",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1051,7 +772,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "La Reine du Lac",
+   "Name": "Theo's Citadel",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "4a93c933016cbea4978ebba55b6d0929",
    "DateCreated": "2026-10-07T22:46:32.2336336Z",
@@ -1070,7 +791,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1080,19 +801,6 @@
     "Primary": "ee3afa826217169d8bebc20a71aa8757"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "ee3afa826217169d8bebc20a71aa8757": "WMFZA:x[0MS%-p-p.7o#9HWC-:s;DjkDt6oexsob-:jsRlj[tRoz",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1102,7 +810,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "La Maison dans la forêt",
+   "Name": "Juniper: Little Forest",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "1aaadf70c28425c45f5fee14844c1695",
    "DateCreated": "2026-10-07T22:46:31.8266447Z",
@@ -1121,7 +829,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1131,19 +839,6 @@
     "Primary": "98c59038621fbfe36496bb59ed2256c6"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "98c59038621fbfe36496bb59ed2256c6": "WVEV=?xV8^cEtRiwyCoMMxozx]RPIrNGs9%1ozRkX8WBs8S2bbs:",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1153,7 +848,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Sleeping Knights",
+   "Name": "Ocean of Yarrow",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "af7f1fdc872d3f1c9e42949c447e1b58",
    "DateCreated": "2026-10-07T22:46:31.6446496Z",
@@ -1172,7 +867,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1182,19 +877,6 @@
     "Primary": "2412d1abb746652696d493c401bab76d"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "2412d1abb746652696d493c401bab76d": "WXOCNy-oS,xHRP%N}:btS%i_SiR.M_M_W-tkR*V@^kaJNHg3WAof",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1204,7 +886,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Poursuivant mortel",
+   "Name": "Pale Comet",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "53b83627275af4abd9d60a57947e4676",
    "DateCreated": "2026-10-07T22:46:31.6226502Z",
@@ -1223,7 +905,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1233,19 +915,6 @@
     "Primary": "7ebb68f9da3292dad20797abc30a8314"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "7ebb68f9da3292dad20797abc30a8314": "WDDR[_5SE2-nEN%K-BNa-oWXNGM}RRIqofa#ayjY~ARl9bs,Rkxa",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1255,7 +924,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Un petit pas",
+   "Name": "Meridian of Northgate",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "d162161c2af7b135a2cf807b1f88decd",
    "DateCreated": "2026-10-07T22:46:31.3326581Z",
@@ -1274,7 +943,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1284,19 +953,6 @@
     "Primary": "76fc99ce57315d122581133430ef2b7e"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "76fc99ce57315d122581133430ef2b7e": "WNEy6,~Vbv_2%MNG$%?H%LM|NGRjoy%2%2WXRkjZ^+ozWXxtkCbI",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1306,7 +962,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Ce qu'est la force",
+   "Name": "Dunmore: Restless Engine",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "5202d2c3d75c40fc07010bdea35600a4",
    "DateCreated": "2026-10-07T22:46:28.0547477Z",
@@ -1325,7 +981,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1335,19 +991,6 @@
     "Primary": "e9839c15d73fa265ecb8d9c012f514ee"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "e9839c15d73fa265ecb8d9c012f514ee": "W%HUtORkM~t7$%t7~URRM}oes,of-.aLi{oeWBof%LafjGt6WBkC",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1357,7 +1000,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "La Fin du voyage",
+   "Name": "Thornfield: Copper Circuit",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "25fc931755cb9dc9d4d0a85d224cd990",
    "DateCreated": "2026-10-07T22:46:27.4767635Z",
@@ -1376,7 +1019,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1386,19 +1029,6 @@
     "Primary": "ecb084084c1478681f39918e9a1a7141"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "ecb084084c1478681f39918e9a1a7141": "W%Ke+Et7batRofxu_Moft7t7ayt7%MoLaejuWBWB-;j[Rja|oMof",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1408,7 +1038,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Bullet of Bullets",
+   "Name": "Crimson River",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "bb27f23fcb3418c54b530481310a82c5",
    "DateCreated": "2026-10-07T22:46:27.3997657Z",
@@ -1427,7 +1057,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1437,19 +1067,6 @@
     "Primary": "f1a7876d7d27897686ea31b0b0da9170"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "f1a7876d7d27897686ea31b0b0da9170": "W58gEG}?S5kq4oX40~9u$%%1IokCIUWUIpRk-:$*};-oNbRjxunh",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1459,7 +1076,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Gun Gale Online",
+   "Name": "Fairhaven: Little Comet",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "d6fdeb06b9caa956aecdf6ad56e30317",
    "DateCreated": "2026-10-07T22:46:26.694785Z",
@@ -1478,7 +1095,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1488,19 +1105,6 @@
     "Primary": "a7e3ff55b6bb7f48c89410d1d58ac70a"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "a7e3ff55b6bb7f48c89410d1d58ac70a": "WHC~q_-V01IUbIxuE1Rj-p%1adNG9Zs,%LR.xtxZ?Hs:RPn$NeNI",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1510,7 +1114,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Balle Légendaire",
+   "Name": "Sacha's Meridian",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "a2debb6634a701c7dde75b434c422b36",
    "DateCreated": "2026-10-07T22:46:26.1468Z",
@@ -1529,7 +1133,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1539,19 +1143,6 @@
     "Primary": "5a502f3be308148d7a67c56ec2553068"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "5a502f3be308148d7a67c56ec2553068": "W63v2OVqMut9j^aw%jadRhoha|V?x_ogV?kDbEV?x_j]V?j]f5W9",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1561,7 +1152,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "Souvenirs écarlates",
+   "Name": "Iris and the Hollow Garden",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "1e1c48f18034886ab0a95f9ce9e3f738",
    "DateCreated": "2026-10-07T22:46:25.6288143Z",
@@ -1580,7 +1171,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "b57a51c80bc31fc7bca0117311ac3bc1",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1590,19 +1181,6 @@
     "Primary": "da54655e563de901ad144f98596519cc"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "da54655e563de901ad144f98596519cc": "WCD+-z-pIp%49GNG?wN1xut6InNGE9D*t6tO%1-;?Gs,M|oNn,xa",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "831c45f782272b11221f471af5d7bfa0": "dAE^mO_4D*T0?c}tixI:vMVrq]9ZZ~RiROMxK6tRX,%2"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "b57a51c80bc31fc7bca0117311ac3bc1",
@@ -1612,7 +1190,7 @@
    "OriginalLanguage": "ja"
   },
   {
-   "Name": "New World",
+   "Name": "Hidden Archive",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "d53596160c46abdbbf8239e5497b0fde",
    "DateCreated": "2026-10-07T22:42:01.272782Z",
@@ -1631,7 +1209,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "82038ac500fffe5fa8bff4e19bb8bc8f",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1641,19 +1219,6 @@
     "Primary": "5e455c250fea5575ec9c208c769e82e8"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "5e455c250fea5575ec9c208c769e82e8": "WcF=m$?HM}ogIpMy~BxCMxXSNdWB$$NHIpS4JAbIxuOYNfRjNdkD",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "3098290f4e2c5011573cc7d21215d58b": "dUH^edVt9G-:}u$QVsxa0f={$$RPW,xZt7RjW9IqbwR%"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "82038ac500fffe5fa8bff4e19bb8bc8f",
@@ -1662,7 +1227,7 @@
    "MediaType": "Video"
   },
   {
-   "Name": "Alice",
+   "Name": "The Open Frontier",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "b79c50ab360c49c0026b7a90c7e444cf",
    "DateCreated": "2026-10-07T22:41:07.1661344Z",
@@ -1681,7 +1246,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "82038ac500fffe5fa8bff4e19bb8bc8f",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1691,19 +1256,6 @@
     "Primary": "2e658725b1a1e0339df795af94646a70"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "2e658725b1a1e0339df795af94646a70": "W%I$1nR:9t.6R*I:_Mt6WBozj]S4XTw^xaWFRkWYbdspoJs:a$WE",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "3098290f4e2c5011573cc7d21215d58b": "dUH^edVt9G-:}u$QVsxa0f={$$RPW,xZt7RjW9IqbwR%"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "82038ac500fffe5fa8bff4e19bb8bc8f",
@@ -1712,7 +1264,7 @@
    "MediaType": "Video"
   },
   {
-   "Name": "Par-delà le temps",
+   "Name": "The Silver Tower",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "8a4357f8ec81e72da8d92690b5459dc2",
    "DateCreated": "2026-10-07T22:39:09.6760411Z",
@@ -1731,7 +1283,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "82038ac500fffe5fa8bff4e19bb8bc8f",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1741,19 +1293,6 @@
     "Primary": "d2669c3792f30f2d460c774050ef7665"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "d2669c3792f30f2d460c774050ef7665": "WWBMlqRj4,xvt8Rit7WURjoMofWBR%juaeayxvju%3afM_t7t8Rj",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "3098290f4e2c5011573cc7d21215d58b": "dUH^edVt9G-:}u$QVsxa0f={$$RPW,xZt7RjW9IqbwR%"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "82038ac500fffe5fa8bff4e19bb8bc8f",
@@ -1762,7 +1301,7 @@
    "MediaType": "Video"
   },
   {
-   "Name": "L'Épée du ciel nocturne",
+   "Name": "Lou and the Secret Engine",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "27a42cf42a941cb170e8f6e57dac816e",
    "DateCreated": "2026-10-07T22:37:27.8782168Z",
@@ -1781,7 +1320,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "82038ac500fffe5fa8bff4e19bb8bc8f",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1791,19 +1330,6 @@
     "Primary": "c94491e8e4a1c4907844b2778f1f1826"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "c94491e8e4a1c4907844b2778f1f1826": "WWDcK}~px]t8RgV=?b-:%2xujEV@S1oJ%1x[R:WFtSt6xZt7Rkf5",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "3098290f4e2c5011573cc7d21215d58b": "dUH^edVt9G-:}u$QVsxa0f={$$RPW,xZt7RjW9IqbwR%"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "82038ac500fffe5fa8bff4e19bb8bc8f",
@@ -1812,7 +1338,7 @@
    "MediaType": "Video"
   },
   {
-   "Name": "L'Éveil",
+   "Name": "Rafael's Winter",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "93a090431c370cf95ecf20a0975a169f",
    "DateCreated": "2026-10-07T22:35:58.7976053Z",
@@ -1831,7 +1357,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "82038ac500fffe5fa8bff4e19bb8bc8f",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1841,19 +1367,6 @@
     "Primary": "ebd78f6f5c4d42a5a0821382983d827c"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "ebd78f6f5c4d42a5a0821382983d827c": "WTHTggNG4U-V%0t6E1bbOWa0X8f+4;xu-:RPjJkDsrM{xCo}M|V[",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "3098290f4e2c5011573cc7d21215d58b": "dUH^edVt9G-:}u$QVsxa0f={$$RPW,xZt7RjW9IqbwR%"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "82038ac500fffe5fa8bff4e19bb8bc8f",
@@ -1862,7 +1375,7 @@
    "MediaType": "Video"
   },
   {
-   "Name": "Souvenirs",
+   "Name": "Velvet Meridian",
    "ServerId": "569da4ff011395f795055bca167a49d1",
    "Id": "0627bedda17dc64fbe37b381ba4da905",
    "DateCreated": "2026-10-07T22:34:39.3744789Z",
@@ -1881,7 +1394,7 @@
    "ParentBackdropImageTags": [
     "321314aa682f1526f16bc1fd4ccc5e79"
    ],
-   "SeriesName": "Sword Art Online",
+   "SeriesName": "Kingdom of Calder",
    "SeriesId": "2040f35f55ba9219b8162fa06a8734bc",
    "SeasonId": "82038ac500fffe5fa8bff4e19bb8bc8f",
    "SeriesPrimaryImageTag": "2bde5f759b5bb364b8ef2b90495f5054",
@@ -1891,19 +1404,6 @@
     "Primary": "2e598737f2095ced84deb64e54054246"
    },
    "BackdropImageTags": [],
-   "ImageBlurHashes": {
-    "Primary": {
-     "2e598737f2095ced84deb64e54054246": "WMBDc;XTXT~qtSNe_3X8W=?bozWYITadRPs+RiWBM|WBMxIoM{M{",
-     "2bde5f759b5bb364b8ef2b90495f5054": "dPH_44-OD%~D?Zn5M{bER$oMX8IU=|s,xYxuIoRpxBxu",
-     "3098290f4e2c5011573cc7d21215d58b": "dUH^edVt9G-:}u$QVsxa0f={$$RPW,xZt7RjW9IqbwR%"
-    },
-    "Thumb": {
-     "807eca83d6e4a3e4d1eb20f124171b11": "WIAwk~2cRn=E8^rsXSoJkCoKIAs-Di$gkDS$xvR+bdkWt8M{xaWC"
-    },
-    "Backdrop": {
-     "321314aa682f1526f16bc1fd4ccc5e79": "WkJ]GSxG*0%hRjj^.8%1I=M~t7R+yDWBNIS4M|Ne_3oz%gxaa#S~"
-    }
-   },
    "ParentThumbItemId": "2040f35f55ba9219b8162fa06a8734bc",
    "ParentThumbImageTag": "807eca83d6e4a3e4d1eb20f124171b11",
    "ParentPrimaryImageItemId": "82038ac500fffe5fa8bff4e19bb8bc8f",

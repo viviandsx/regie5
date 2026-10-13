@@ -10,7 +10,10 @@
 #   - drops what must never be shown or kept: release and file names, paths,
 #     download clients, indexers, e-mail addresses, server addresses;
 #   - replaces user names, device names and ids by made-up ones;
-#   - withholds health messages about download clients and indexers.
+#   - withholds health messages about download clients and indexers;
+#   - replaces every title, overview and TMDB / TVDB / IMDb id by made-up ones
+#     (scripts/anonymize_titles.py), so the fixtures never show whose library
+#     they come from.
 # Cases the servers may not have right now (a queue, pending requests, a
 # transcoding session, a running task) are derived from the real answers and
 # marked "_regie5_synthetic". Finally every output file is checked for the API
@@ -537,6 +540,20 @@ def main():
         with open(p, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=1)
             f.write("\n")
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import anonymize_titles
+    titles = anonymize_titles.run(tmp)
+    names = sorted(os.path.relpath(os.path.join(b, n), tmp) for b, _, ns in os.walk(tmp) for n in ns)
+    left = set()
+    for name in names:
+        with open(os.path.join(tmp, name), encoding="utf-8") as f:
+            text = f.read()
+        left |= {name for o in titles.made if len(o) >= 6 and json.dumps(o, ensure_ascii=False) in text}
+    if left:
+        print("Nothing written: an original title is still in " + ", ".join(sorted(left)))
+        shutil.rmtree(tmp, ignore_errors=True)
+        return 1
+    files = dict.fromkeys(names)   # the Seerr details are renamed after their made-up ids
     if args.only:   # these files only, over the old ones
         for name in files:
             os.makedirs(os.path.dirname(os.path.join(OUT, name)), exist_ok=True)

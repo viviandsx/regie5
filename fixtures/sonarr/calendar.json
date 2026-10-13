@@ -10,7 +10,7 @@
   "monitored": true,
   "series": {
    "id": 10,
-   "title": "Mr. Robot",
+   "title": "Hollis: Open Ledger",
    "year": 2015
   },
   "_regie5_synthetic": true
@@ -26,7 +26,7 @@
   "monitored": true,
   "series": {
    "id": 14,
-   "title": "Cyberpunk: Edgerunners",
+   "title": "Elias's Machine II",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -42,7 +42,7 @@
   "monitored": true,
   "series": {
    "id": 18,
-   "title": "All of Us Are Dead",
+   "title": "Nadia and the Hollow Tide",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -58,7 +58,7 @@
   "monitored": true,
   "series": {
    "id": 17,
-   "title": "The Day of the Jackal",
+   "title": "Oskar's Winter",
    "year": 2024
   },
   "_regie5_synthetic": true
@@ -74,7 +74,7 @@
   "monitored": true,
   "series": {
    "id": 11,
-   "title": "Band of Brothers",
+   "title": "Meridian of Glenrock II",
    "year": 2001
   },
   "_regie5_synthetic": true
@@ -90,7 +90,7 @@
   "monitored": true,
   "series": {
    "id": 15,
-   "title": "True Detective",
+   "title": "The Sleeping Station",
    "year": 2014
   },
   "_regie5_synthetic": true
@@ -106,7 +106,7 @@
   "monitored": true,
   "series": {
    "id": 18,
-   "title": "All of Us Are Dead",
+   "title": "Nadia and the Hollow Tide",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -122,7 +122,7 @@
   "monitored": true,
   "series": {
    "id": 10,
-   "title": "Mr. Robot",
+   "title": "Hollis: Open Ledger",
    "year": 2015
   },
   "_regie5_synthetic": true
@@ -138,7 +138,7 @@
   "monitored": true,
   "series": {
    "id": 14,
-   "title": "Cyberpunk: Edgerunners",
+   "title": "Elias's Machine II",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -154,7 +154,7 @@
   "monitored": true,
   "series": {
    "id": 12,
-   "title": "Chernobyl",
+   "title": "Glass Ember",
    "year": 2019
   },
   "_regie5_synthetic": true
@@ -170,7 +170,7 @@
   "monitored": true,
   "series": {
    "id": 20,
-   "title": "Arcane",
+   "title": "Pilot of Avalon",
    "year": 2021
   },
   "_regie5_synthetic": true
@@ -186,7 +186,7 @@
   "monitored": true,
   "series": {
    "id": 11,
-   "title": "Band of Brothers",
+   "title": "Meridian of Glenrock II",
    "year": 2001
   },
   "_regie5_synthetic": true
@@ -202,7 +202,7 @@
   "monitored": true,
   "series": {
    "id": 14,
-   "title": "Cyberpunk: Edgerunners",
+   "title": "Elias's Machine II",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -218,7 +218,7 @@
   "monitored": true,
   "series": {
    "id": 18,
-   "title": "All of Us Are Dead",
+   "title": "Nadia and the Hollow Tide",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -234,7 +234,7 @@
   "monitored": true,
   "series": {
    "id": 10,
-   "title": "Mr. Robot",
+   "title": "Hollis: Open Ledger",
    "year": 2015
   },
   "_regie5_synthetic": true
@@ -250,7 +250,7 @@
   "monitored": true,
   "series": {
    "id": 9,
-   "title": "The Man in the High Castle",
+   "title": "Nadia and the Silent Mirror",
    "year": 2015
   },
   "_regie5_synthetic": true
@@ -266,7 +266,7 @@
   "monitored": true,
   "series": {
    "id": 15,
-   "title": "True Detective",
+   "title": "The Sleeping Station",
    "year": 2014
   },
   "_regie5_synthetic": true
@@ -282,7 +282,7 @@
   "monitored": true,
   "series": {
    "id": 20,
-   "title": "Arcane",
+   "title": "Pilot of Avalon",
    "year": 2021
   },
   "_regie5_synthetic": true
@@ -298,7 +298,7 @@
   "monitored": true,
   "series": {
    "id": 10,
-   "title": "Mr. Robot",
+   "title": "Hollis: Open Ledger",
    "year": 2015
   },
   "_regie5_synthetic": true
@@ -314,7 +314,7 @@
   "monitored": true,
   "series": {
    "id": 14,
-   "title": "Cyberpunk: Edgerunners",
+   "title": "Elias's Machine II",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -330,7 +330,7 @@
   "monitored": true,
   "series": {
    "id": 18,
-   "title": "All of Us Are Dead",
+   "title": "Nadia and the Hollow Tide",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -346,7 +346,7 @@
   "monitored": true,
   "series": {
    "id": 17,
-   "title": "The Day of the Jackal",
+   "title": "Oskar's Winter",
    "year": 2024
   },
   "_regie5_synthetic": true
@@ -362,7 +362,7 @@
   "monitored": true,
   "series": {
    "id": 11,
-   "title": "Band of Brothers",
+   "title": "Meridian of Glenrock II",
    "year": 2001
   },
   "_regie5_synthetic": true
@@ -378,7 +378,7 @@
   "monitored": true,
   "series": {
    "id": 15,
-   "title": "True Detective",
+   "title": "The Sleeping Station",
    "year": 2014
   },
   "_regie5_synthetic": true
@@ -394,7 +394,7 @@
   "monitored": true,
   "series": {
    "id": 18,
-   "title": "All of Us Are Dead",
+   "title": "Nadia and the Hollow Tide",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -410,7 +410,7 @@
   "monitored": true,
   "series": {
    "id": 10,
-   "title": "Mr. Robot",
+   "title": "Hollis: Open Ledger",
    "year": 2015
   },
   "_regie5_synthetic": true
@@ -426,7 +426,7 @@
   "monitored": true,
   "series": {
    "id": 14,
-   "title": "Cyberpunk: Edgerunners",
+   "title": "Elias's Machine II",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -442,7 +442,7 @@
   "monitored": true,
   "series": {
    "id": 12,
-   "title": "Chernobyl",
+   "title": "Glass Ember",
    "year": 2019
   },
   "_regie5_synthetic": true
@@ -458,7 +458,7 @@
   "monitored": true,
   "series": {
    "id": 20,
-   "title": "Arcane",
+   "title": "Pilot of Avalon",
    "year": 2021
   },
   "_regie5_synthetic": true
@@ -474,7 +474,7 @@
   "monitored": true,
   "series": {
    "id": 11,
-   "title": "Band of Brothers",
+   "title": "Meridian of Glenrock II",
    "year": 2001
   },
   "_regie5_synthetic": true
@@ -490,7 +490,7 @@
   "monitored": true,
   "series": {
    "id": 14,
-   "title": "Cyberpunk: Edgerunners",
+   "title": "Elias's Machine II",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -506,7 +506,7 @@
   "monitored": true,
   "series": {
    "id": 18,
-   "title": "All of Us Are Dead",
+   "title": "Nadia and the Hollow Tide",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -522,7 +522,7 @@
   "monitored": true,
   "series": {
    "id": 10,
-   "title": "Mr. Robot",
+   "title": "Hollis: Open Ledger",
    "year": 2015
   },
   "_regie5_synthetic": true
@@ -538,33 +538,33 @@
   "monitored": true,
   "series": {
    "id": 9,
-   "title": "The Man in the High Castle",
+   "title": "Nadia and the Silent Mirror",
    "year": 2015
   },
   "_regie5_synthetic": true
  },
  {
   "seriesId": 66,
-  "tvdbId": 9431113,
+  "tvdbId": 9419857,
   "episodeFileId": 0,
   "seasonNumber": 1,
   "episodeNumber": 1,
-  "title": "Camp Crystal",
+  "title": "Machine of Calder",
   "airDate": "2026-10-15",
   "airDateUtc": "2026-10-15T09:00:00Z",
   "lastSearchTime": "2026-10-03T22:14:39Z",
   "runtime": 0,
-  "overview": "Camp Crystal Lake's idyllic summer is cut short by Jason's death; as the town moves on, Pam continues looking for him; Levon invites her to Founder's Day, but it only triggers Pam's pain; as she runs from her present, Pam is soon met with her past.",
+  "overview": "Iris accepte de garder une ville engloutie sans rien dire à personne.",
   "hasFile": false,
   "monitored": true,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Crystal Lake",
-   "sortTitle": "crystal lake",
+   "title": "Yuki's Lighthouse II",
+   "sortTitle": "yuki's lighthouse ii",
    "status": "upcoming",
    "ended": false,
-   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-   "network": "Peacock",
+   "overview": "Rafael cherche un secret de famille au bout du monde.",
+   "network": "Channel Nine North",
    "airTime": "05:00",
    "images": [
     {
@@ -597,16 +597,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 50,
-   "tvdbId": 426669,
+   "tvdbId": 9603413,
    "tvRageId": 0,
-   "tvMazeId": 64960,
-   "tmdbId": 213562,
+   "tvMazeId": 9255395,
+   "tmdbId": 9364504,
    "firstAired": "2026-10-15T00:00:00Z",
    "lastAired": "2026-10-15T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "crystallake",
-   "imdbId": "tt23148340",
-   "titleSlug": "crystal-lake",
+   "cleanTitle": "yukislighthouseii",
+   "imdbId": "tt90273810",
+   "titleSlug": "yuki-s-lighthouse-ii",
    "genres": [
     "Drama"
    ],
@@ -623,26 +623,26 @@
  },
  {
   "seriesId": 66,
-  "tvdbId": 11252252,
+  "tvdbId": 9650153,
   "episodeFileId": 0,
   "seasonNumber": 1,
   "episodeNumber": 2,
-  "title": "Part 2",
+  "title": "Dunmore: Secret Paradox",
   "airDate": "2026-10-15",
   "airDateUtc": "2026-10-15T09:00:00Z",
   "lastSearchTime": "2026-10-03T22:14:39Z",
   "runtime": 0,
-  "overview": "While on a date with Levon, Pam bumps into Rita and is invited to a weekend seminar with a self-help guru; Grace goes to a high school party only to be sent away by Claudette; something sinister takes revenge for Grace.",
+  "overview": "Mara se retrouve face à le dernier train de la nuit avant l'hiver.",
   "hasFile": false,
   "monitored": true,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Crystal Lake",
-   "sortTitle": "crystal lake",
+   "title": "Yuki's Lighthouse II",
+   "sortTitle": "yuki's lighthouse ii",
    "status": "upcoming",
    "ended": false,
-   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-   "network": "Peacock",
+   "overview": "Rafael cherche un secret de famille au bout du monde.",
+   "network": "Channel Nine North",
    "airTime": "05:00",
    "images": [
     {
@@ -675,16 +675,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 50,
-   "tvdbId": 426669,
+   "tvdbId": 9603413,
    "tvRageId": 0,
-   "tvMazeId": 64960,
-   "tmdbId": 213562,
+   "tvMazeId": 9255395,
+   "tmdbId": 9364504,
    "firstAired": "2026-10-15T00:00:00Z",
    "lastAired": "2026-10-15T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "crystallake",
-   "imdbId": "tt23148340",
-   "titleSlug": "crystal-lake",
+   "cleanTitle": "yukislighthouseii",
+   "imdbId": "tt90273810",
+   "titleSlug": "yuki-s-lighthouse-ii",
    "genres": [
     "Drama"
    ],
@@ -701,26 +701,26 @@
  },
  {
   "seriesId": 66,
-  "tvdbId": 11252253,
+  "tvdbId": 9029114,
   "episodeFileId": 0,
   "seasonNumber": 1,
   "episodeNumber": 3,
-  "title": "Part III",
+  "title": "The Silent Lighthouse",
   "airDate": "2026-10-15",
   "airDateUtc": "2026-10-15T09:00:00Z",
   "lastSearchTime": "2026-10-03T22:14:39Z",
   "runtime": 0,
-  "overview": "The townspeople go bear hunting against Levon's orders; Pam and Levon bond over the loss of their loved ones; Pam visits Grace at her apartment and suspects she is being abused, leading to a confrontation with her mother, Valerie.",
+  "overview": "Maud découvre une carte oubliée sans rien dire à personne.",
   "hasFile": false,
   "monitored": true,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Crystal Lake",
-   "sortTitle": "crystal lake",
+   "title": "Yuki's Lighthouse II",
+   "sortTitle": "yuki's lighthouse ii",
    "status": "upcoming",
    "ended": false,
-   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-   "network": "Peacock",
+   "overview": "Rafael cherche un secret de famille au bout du monde.",
+   "network": "Channel Nine North",
    "airTime": "05:00",
    "images": [
     {
@@ -753,16 +753,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 50,
-   "tvdbId": 426669,
+   "tvdbId": 9603413,
    "tvRageId": 0,
-   "tvMazeId": 64960,
-   "tmdbId": 213562,
+   "tvMazeId": 9255395,
+   "tmdbId": 9364504,
    "firstAired": "2026-10-15T00:00:00Z",
    "lastAired": "2026-10-15T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "crystallake",
-   "imdbId": "tt23148340",
-   "titleSlug": "crystal-lake",
+   "cleanTitle": "yukislighthouseii",
+   "imdbId": "tt90273810",
+   "titleSlug": "yuki-s-lighthouse-ii",
    "genres": [
     "Drama"
    ],
@@ -779,26 +779,26 @@
  },
  {
   "seriesId": 66,
-  "tvdbId": 11252254,
+  "tvdbId": 9355096,
   "episodeFileId": 0,
   "seasonNumber": 1,
   "episodeNumber": 4,
-  "title": "A New Beginning",
+  "title": "The Endless Quarry",
   "airDate": "2026-10-15",
   "airDateUtc": "2026-10-15T09:00:00Z",
   "lastSearchTime": "2026-10-03T22:14:39Z",
   "runtime": 0,
-  "overview": "Willow looks for her friends; Pam returns to work at the camp alongside a group of new counselors.",
+  "overview": "Maud se retrouve face à un signal venu de loin sans rien dire à personne.",
   "hasFile": false,
   "monitored": true,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Crystal Lake",
-   "sortTitle": "crystal lake",
+   "title": "Yuki's Lighthouse II",
+   "sortTitle": "yuki's lighthouse ii",
    "status": "upcoming",
    "ended": false,
-   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-   "network": "Peacock",
+   "overview": "Rafael cherche un secret de famille au bout du monde.",
+   "network": "Channel Nine North",
    "airTime": "05:00",
    "images": [
     {
@@ -831,16 +831,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 50,
-   "tvdbId": 426669,
+   "tvdbId": 9603413,
    "tvRageId": 0,
-   "tvMazeId": 64960,
-   "tmdbId": 213562,
+   "tvMazeId": 9255395,
+   "tmdbId": 9364504,
    "firstAired": "2026-10-15T00:00:00Z",
    "lastAired": "2026-10-15T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "crystallake",
-   "imdbId": "tt23148340",
-   "titleSlug": "crystal-lake",
+   "cleanTitle": "yukislighthouseii",
+   "imdbId": "tt90273810",
+   "titleSlug": "yuki-s-lighthouse-ii",
    "genres": [
     "Drama"
    ],
@@ -857,26 +857,26 @@
  },
  {
   "seriesId": 66,
-  "tvdbId": 11252255,
+  "tvdbId": 9386816,
   "episodeFileId": 0,
   "seasonNumber": 1,
   "episodeNumber": 5,
-  "title": "The New Blood",
+  "title": "Oskar and the Painted Engine",
   "airDate": "2026-10-15",
   "airDateUtc": "2026-10-15T09:00:00Z",
   "lastSearchTime": "2026-10-03T22:14:39Z",
   "runtime": 0,
-  "overview": "Camp Crystal Lake reopens despite the mounting death toll; Pam discovers life-changing news.",
+  "overview": "Camille tente de protéger un signal venu de loin en une seule nuit.",
   "hasFile": false,
   "monitored": true,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Crystal Lake",
-   "sortTitle": "crystal lake",
+   "title": "Yuki's Lighthouse II",
+   "sortTitle": "yuki's lighthouse ii",
    "status": "upcoming",
    "ended": false,
-   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-   "network": "Peacock",
+   "overview": "Rafael cherche un secret de famille au bout du monde.",
+   "network": "Channel Nine North",
    "airTime": "05:00",
    "images": [
     {
@@ -909,16 +909,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 50,
-   "tvdbId": 426669,
+   "tvdbId": 9603413,
    "tvRageId": 0,
-   "tvMazeId": 64960,
-   "tmdbId": 213562,
+   "tvMazeId": 9255395,
+   "tmdbId": 9364504,
    "firstAired": "2026-10-15T00:00:00Z",
    "lastAired": "2026-10-15T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "crystallake",
-   "imdbId": "tt23148340",
-   "titleSlug": "crystal-lake",
+   "cleanTitle": "yukislighthouseii",
+   "imdbId": "tt90273810",
+   "titleSlug": "yuki-s-lighthouse-ii",
    "genres": [
     "Drama"
    ],
@@ -935,26 +935,26 @@
  },
  {
   "seriesId": 66,
-  "tvdbId": 11252256,
+  "tvdbId": 9792425,
   "episodeFileId": 0,
   "seasonNumber": 1,
   "episodeNumber": 6,
-  "title": "Kill Them, Mommy",
+  "title": "Rafael's Harvest",
   "airDate": "2026-10-15",
   "airDateUtc": "2026-10-15T09:00:00Z",
   "lastSearchTime": "2026-10-03T22:14:39Z",
   "runtime": 0,
-  "overview": "The counselors' drug trip takes a chilling turn; Briana receives a mysterious envelope.",
+  "overview": "Léa tente de protéger une ville engloutie malgré tout.",
   "hasFile": false,
   "monitored": true,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Crystal Lake",
-   "sortTitle": "crystal lake",
+   "title": "Yuki's Lighthouse II",
+   "sortTitle": "yuki's lighthouse ii",
    "status": "upcoming",
    "ended": false,
-   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-   "network": "Peacock",
+   "overview": "Rafael cherche un secret de famille au bout du monde.",
+   "network": "Channel Nine North",
    "airTime": "05:00",
    "images": [
     {
@@ -987,16 +987,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 50,
-   "tvdbId": 426669,
+   "tvdbId": 9603413,
    "tvRageId": 0,
-   "tvMazeId": 64960,
-   "tmdbId": 213562,
+   "tvMazeId": 9255395,
+   "tmdbId": 9364504,
    "firstAired": "2026-10-15T00:00:00Z",
    "lastAired": "2026-10-15T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "crystallake",
-   "imdbId": "tt23148340",
-   "titleSlug": "crystal-lake",
+   "cleanTitle": "yukislighthouseii",
+   "imdbId": "tt90273810",
+   "titleSlug": "yuki-s-lighthouse-ii",
    "genres": [
     "Drama"
    ],
@@ -1013,26 +1013,26 @@
  },
  {
   "seriesId": 66,
-  "tvdbId": 11252257,
+  "tvdbId": 9703366,
   "episodeFileId": 0,
   "seasonNumber": 1,
   "episodeNumber": 7,
-  "title": "Friday...",
+  "title": "Theo and the Quiet Garden",
   "airDate": "2026-10-15",
   "airDateUtc": "2026-10-15T09:00:00Z",
   "lastSearchTime": "2026-10-03T22:14:39Z",
   "runtime": 0,
-  "overview": "In the past, a young Jason shows alarming symptoms that lead Pam to question life as she knows it.",
+  "overview": "Sacha essaie d'oublier une carte oubliée avant l'hiver.",
   "hasFile": false,
   "monitored": true,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Crystal Lake",
-   "sortTitle": "crystal lake",
+   "title": "Yuki's Lighthouse II",
+   "sortTitle": "yuki's lighthouse ii",
    "status": "upcoming",
    "ended": false,
-   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-   "network": "Peacock",
+   "overview": "Rafael cherche un secret de famille au bout du monde.",
+   "network": "Channel Nine North",
    "airTime": "05:00",
    "images": [
     {
@@ -1065,16 +1065,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 50,
-   "tvdbId": 426669,
+   "tvdbId": 9603413,
    "tvRageId": 0,
-   "tvMazeId": 64960,
-   "tmdbId": 213562,
+   "tvMazeId": 9255395,
+   "tmdbId": 9364504,
    "firstAired": "2026-10-15T00:00:00Z",
    "lastAired": "2026-10-15T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "crystallake",
-   "imdbId": "tt23148340",
-   "titleSlug": "crystal-lake",
+   "cleanTitle": "yukislighthouseii",
+   "imdbId": "tt90273810",
+   "titleSlug": "yuki-s-lighthouse-ii",
    "genres": [
     "Drama"
    ],
@@ -1091,27 +1091,27 @@
  },
  {
   "seriesId": 66,
-  "tvdbId": 11252258,
+  "tvdbId": 9649242,
   "episodeFileId": 0,
   "seasonNumber": 1,
   "episodeNumber": 8,
-  "title": "The Final Chapter",
+  "title": "Maud and the Hidden Winter",
   "airDate": "2026-10-15",
   "airDateUtc": "2026-10-15T09:00:00Z",
   "lastSearchTime": "2026-10-03T22:14:39Z",
   "runtime": 0,
   "finaleType": "season",
-  "overview": "Elias arrives in Crystal Lake determined to find his family; Levon and Elias have a heated clash.",
+  "overview": "Inès accepte de garder un secret de famille sans rien dire à personne.",
   "hasFile": false,
   "monitored": true,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Crystal Lake",
-   "sortTitle": "crystal lake",
+   "title": "Yuki's Lighthouse II",
+   "sortTitle": "yuki's lighthouse ii",
    "status": "upcoming",
    "ended": false,
-   "overview": "Single mother Pam Voorhees has been unable to shake her grief after her young, sickly son Jason tragically drowned in the town lake almost a year before. When two strangers arrive at Pam's door digging into her past, a disturbing chain of events is set into motion, leaving the townspeople of Crystal Lake wondering: just who is Pam Voorhees?",
-   "network": "Peacock",
+   "overview": "Rafael cherche un secret de famille au bout du monde.",
+   "network": "Channel Nine North",
    "airTime": "05:00",
    "images": [
     {
@@ -1144,16 +1144,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 50,
-   "tvdbId": 426669,
+   "tvdbId": 9603413,
    "tvRageId": 0,
-   "tvMazeId": 64960,
-   "tmdbId": 213562,
+   "tvMazeId": 9255395,
+   "tmdbId": 9364504,
    "firstAired": "2026-10-15T00:00:00Z",
    "lastAired": "2026-10-15T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "crystallake",
-   "imdbId": "tt23148340",
-   "titleSlug": "crystal-lake",
+   "cleanTitle": "yukislighthouseii",
+   "imdbId": "tt90273810",
+   "titleSlug": "yuki-s-lighthouse-ii",
    "genres": [
     "Drama"
    ],
@@ -1179,7 +1179,7 @@
   "monitored": true,
   "series": {
    "id": 15,
-   "title": "True Detective",
+   "title": "The Sleeping Station",
    "year": 2014
   },
   "_regie5_synthetic": true
@@ -1195,7 +1195,7 @@
   "monitored": true,
   "series": {
    "id": 20,
-   "title": "Arcane",
+   "title": "Pilot of Avalon",
    "year": 2021
   },
   "_regie5_synthetic": true
@@ -1211,7 +1211,7 @@
   "monitored": true,
   "series": {
    "id": 10,
-   "title": "Mr. Robot",
+   "title": "Hollis: Open Ledger",
    "year": 2015
   },
   "_regie5_synthetic": true
@@ -1227,7 +1227,7 @@
   "monitored": true,
   "series": {
    "id": 14,
-   "title": "Cyberpunk: Edgerunners",
+   "title": "Elias's Machine II",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -1243,7 +1243,7 @@
   "monitored": true,
   "series": {
    "id": 18,
-   "title": "All of Us Are Dead",
+   "title": "Nadia and the Hollow Tide",
    "year": 2022
   },
   "_regie5_synthetic": true
@@ -1259,7 +1259,7 @@
   "monitored": true,
   "series": {
    "id": 17,
-   "title": "The Day of the Jackal",
+   "title": "Oskar's Winter",
    "year": 2024
   },
   "_regie5_synthetic": true
@@ -1275,7 +1275,7 @@
   "monitored": true,
   "series": {
    "id": 11,
-   "title": "Band of Brothers",
+   "title": "Meridian of Glenrock II",
    "year": 2001
   },
   "_regie5_synthetic": true
@@ -1291,18 +1291,18 @@
   "monitored": true,
   "series": {
    "id": 15,
-   "title": "True Detective",
+   "title": "The Sleeping Station",
    "year": 2014
   },
   "_regie5_synthetic": true
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229710,
+  "tvdbId": 9897714,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 1,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -1312,12 +1312,12 @@
   "absoluteEpisodeNumber": 11,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -1358,16 +1358,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -1391,11 +1391,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229818,
+  "tvdbId": 9161341,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 2,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -1405,12 +1405,12 @@
   "absoluteEpisodeNumber": 12,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -1451,16 +1451,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -1484,11 +1484,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229819,
+  "tvdbId": 9534068,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 3,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -1498,12 +1498,12 @@
   "absoluteEpisodeNumber": 13,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -1544,16 +1544,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -1577,11 +1577,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229820,
+  "tvdbId": 9334141,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 4,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -1591,12 +1591,12 @@
   "absoluteEpisodeNumber": 14,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -1637,16 +1637,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -1670,11 +1670,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229821,
+  "tvdbId": 9316703,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 5,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -1684,12 +1684,12 @@
   "absoluteEpisodeNumber": 15,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -1730,16 +1730,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -1763,11 +1763,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229822,
+  "tvdbId": 9702978,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 6,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -1777,12 +1777,12 @@
   "absoluteEpisodeNumber": 16,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -1823,16 +1823,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -1856,11 +1856,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229823,
+  "tvdbId": 9696842,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 7,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -1870,12 +1870,12 @@
   "absoluteEpisodeNumber": 17,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -1916,16 +1916,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -1949,11 +1949,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229824,
+  "tvdbId": 9263111,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 8,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -1963,12 +1963,12 @@
   "absoluteEpisodeNumber": 18,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -2009,16 +2009,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -2042,11 +2042,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229825,
+  "tvdbId": 9273499,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 9,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -2056,12 +2056,12 @@
   "absoluteEpisodeNumber": 19,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -2102,16 +2102,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",
@@ -2135,11 +2135,11 @@
  },
  {
   "seriesId": 14,
-  "tvdbId": 11229826,
+  "tvdbId": 9250592,
   "episodeFileId": 0,
   "seasonNumber": 2,
   "episodeNumber": 10,
-  "title": "TBA",
+  "title": "Nadia and the Endless Satellite",
   "airDate": "2026-10-20",
   "airDateUtc": "2026-10-20T20:00:00Z",
   "lastSearchTime": "2026-05-26T17:35:36Z",
@@ -2150,12 +2150,12 @@
   "absoluteEpisodeNumber": 20,
   "unverifiedSceneNumbering": false,
   "series": {
-   "title": "Cyberpunk: Edgerunners",
-   "sortTitle": "cyberpunk edgerunners",
+   "title": "Elias's Machine II",
+   "sortTitle": "elias's machine ii",
    "status": "continuing",
    "ended": false,
-   "overview": "In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.",
-   "network": "Netflix",
+   "overview": "Inès cherche le dernier train de la nuit en une seule nuit.",
+   "network": "Atlas One",
    "airTime": "16:00",
    "images": [
     {
@@ -2196,16 +2196,16 @@
    "monitorNewItems": "all",
    "useSceneNumbering": false,
    "runtime": 26,
-   "tvdbId": 384541,
+   "tvdbId": 9529096,
    "tvRageId": 0,
-   "tvMazeId": 48945,
-   "tmdbId": 105248,
+   "tvMazeId": 9182422,
+   "tmdbId": 9048141,
    "firstAired": "2022-09-13T00:00:00Z",
    "lastAired": "2026-10-20T00:00:00Z",
    "seriesType": "standard",
-   "cleanTitle": "cyberpunkedgerunners",
-   "imdbId": "tt12590266",
-   "titleSlug": "cyberpunk-edgerunners",
+   "cleanTitle": "eliassmachineii",
+   "imdbId": "tt91790276",
+   "titleSlug": "elias-s-machine-ii",
    "certification": "TV-MA",
    "genres": [
     "Action",

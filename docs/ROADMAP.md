@@ -218,7 +218,7 @@ LLVM 21 du laptop suffit (même méthode que `setup-toolchain.sh` de Jelly5-Seer
 - [x] **6.4 Ouvrir dans Jelly5** — **close le 13 octobre 2026 avec le repli** : app-8 a
       obtenu la poignée du module, mais `sceKernelDlsym` répond `0x80020003` (introuvable)
       pour les deux fonctions : **pas de lancement d'app depuis une app** sur 13.60. Options
-      › « Chercher dans Jelly5 » validé sur console (note « Ouvrez Jelly5 et cherchez 1917 »).
+      › « Chercher dans Jelly5 » validé sur console (note « Ouvrez Jelly5 et cherchez « titre » »).
       Décision de Vivian : on garde ce repli (`docs/JELLY5-PR.md`). Historique : app-7c : **aucune** des deux fonctions liée, entrée
       masquée, donc menu Options vide et indication « Options » absente (comportement
       voulu : l'indication ne s'affiche que si le menu a une entrée, sur tous les écrans).
@@ -266,10 +266,10 @@ LLVM 21 du laptop suffit (même méthode que `setup-toolchain.sh` de Jelly5-Seer
       précédents (tuile, horloge, navigation, 60 images/s, Bibliothèque ; scan réel en
       phase 4). Faites en vrai : **arrêt d'une lecture** (`POST …/Playing/Stop` → 204, arrêtée
       sur le téléphone), **refus** d'une demande de l'utilisateur de test (`…/decline` → 200),
-      **Ménage** activé puis **suppression réelle de la série « Hannibal »** (chemin Sonarr :
+      **Ménage** activé puis **suppression réelle d'une série terminée** (chemin Sonarr :
       un seul `DELETE /api/v3/series/43` → 200). Approbation non testée volontairement
-      (même mécanisme que le refus, pas de téléchargement voulu). Vérifié en GET : Hannibal
-      absent de Sonarr, présent dans ses exclusions d'import (tvdb 259063), absent de
+      (même mécanisme que le refus, pas de téléchargement voulu). Vérifié en GET : la série
+      absente de Sonarr, présente dans ses exclusions d'import, absente de
       Jellyfin. Images : 60/s en régime normal, `cpu worst` 14,8 ms, 4 « slow frame » (dont
       la première image et un pic isolé de 119 ms).
       **Défaut trouvé et corrigé** : le `POST /api/v1/media/{id}/deleted` envoyé à Seerr
@@ -279,7 +279,7 @@ LLVM 21 du laptop suffit (même méthode que `setup-toolchain.sh` de Jelly5-Seer
       (demandes gardées, redemandable) dans sa tâche « Media Availability Sync » (05:00
       chez Vivian) : Régie5 n'écrit plus rien dans Seerr, la note dit « Seerr le saura à sa
       prochaine synchronisation » (une écriture de moins ; `FEATURES.md` le prévoyait déjà).
-      **À vérifier après le 14 octobre 05:00** (GET) : Hannibal en statut 7 (`DELETED`) dans
+      **À vérifier après le 14 octobre 05:00** (GET) : la série en statut 7 (`DELETED`) dans
       Seerr, sa demande gardée.
 
 ## 2 quinquies. Publication sur homebrew.page (13 octobre 2026)
@@ -320,13 +320,27 @@ Règles lues : `docs/submitting.md`, `docs/review-policy.md`, `artifact-formats.
 - [ ] Branches locales : la `main` locale porte l'**ancien historique** (avec les mentions
       retirées) et ne doit **jamais** être poussée ; renommage proposé dans `docs/RELEASING.md` §1.
 
+## 2 sexies. Version 0.3.0 (en préparation)
+
+Demandé par Vivian le 13 octobre 2026. Une étape = un commit. **Aucune release ni
+pré-release tant que la PR #244 n'est pas fusionnée.**
+
+- [x] **Fixtures anonymes** : les fixtures publiées montraient les vrais titres de la
+      bibliothèque de Vivian. `scripts/anonymize_titles.py` remplace titres, titres
+      d'épisodes, résumés, studios, chaînes, chemins d'images TMDB et identifiants TMDB /
+      TVDB / IMDb par des valeurs inventées, de façon déterministe (le même titre donne le
+      même titre inventé dans tous les services ; Seerr renommé d'après les identifiants
+      inventés). `make-fixtures.py` l'appelle et refuse d'écrire si un titre d'origine
+      reste. Tests inchangés (titres attendus renommés). Vérifié sur tout l'arbre : aucun
+      titre ni identifiant d'origine. Le tag `v0.2.0` et l'ancien historique les gardent.
+
 ## 3. En attente
 
 | Sujet | Qui | Détail |
 |---|---|---|
 | PR #244 au catalogue | mainteneur | Contrôles verts, relecture en attente. Répondre aux demandes en modifiant seulement `apps/PPSA99520.json` sur `viviandsx-patch-1` (`docs/RELEASING.md` §2). |
 | Port 5555 (ufw) | Vivian | Ouvert pour les tests, à refermer à la fin. |
-| Hannibal dans Seerr | après le 14 oct. 05:00 | Statut 7 (`DELETED`) attendu après « Media Availability Sync » ; vérifier en GET (`/api/v1/tv/40008`). |
+| Série supprimée, dans Seerr | après le 14 oct. 05:00 | Statut 7 (`DELETED`) attendu après « Media Availability Sync » ; vérifier en GET (`/api/v1/tv/{id}`). |
 | PR Jelly5 | Vivian | Sans lanceur depuis une app, Régie5 ne s'en sert pas sur PS5 : la proposer ou non est une décision à part (`docs/JELLY5-PR.md`). |
 | Taille du tas sur PS5 | 6.2 | 256 Mio accordé et l'affichage démarre (probe-5) : on garde 256 ; l'usage mesuré est ~20 Mio. En 6.2 : message visible à l'écran (ou notification système) si la mémoire est refusée, au lieu du seul journal. |
 
@@ -340,7 +354,7 @@ Aucune action réelle sans accord explicite de Vivian.
 2. [x] **Arrêter une lecture** — 13 octobre 2026, sur console (recette 6.7).
 3. [x] **Refuser** (Seerr) — 13 octobre 2026, utilisateur de test. **Approuver** : non testé
    volontairement (même appel, autre chemin).
-4. [x] **Supprimer** (Ménage, Sonarr) — 13 octobre 2026, série « Hannibal ». Radarr : non
+4. [x] **Supprimer** (Ménage, Sonarr) — 13 octobre 2026, une série terminée. Radarr : non
    testé en vrai (même code, autre chemin).
 
 ---
@@ -475,6 +489,7 @@ la Bibliothèque).
 | 12 oct. 2026 | Retour d'app-6 : heure OK, icône OK, redémarrage OK, zip par-dessus OK ; horloge ~1 min en avance, « Ouvrir dans Jelly5 » absent. app-7c : dérive de l'horloge recalée à la seconde, deux fonctions de lancement essayées ; 6.5 (QR code + page locale) ; HTTPS par Mbed TLS (`insecure` par service) ; 3 propositions de logo (`scripts/make-logos.py`). 51 tests. |
 | 13 oct. 2026 | Retour d'app-7c : horloge, 6.5 et HTTPS validés ; Jelly5 : aucune fonction liée (cause : nom de bibliothèque des imports). app-8 : lancement par `sceKernelDlsym`, repli « Chercher dans Jelly5 », `TCP_NODELAY` et temps TLS dans le journal ; logo B (icône, `pic0`/`pic1` en BC7 par `scripts/bc7.py`) ; recette express réécrite pour la console. |
 | 13 oct. 2026 | app-8 validée : logo B sur la tuile (icône, `pic0`, `pic1`), Glances désactivé depuis le téléphone, « Chercher dans Jelly5 » ; `sceKernelDlsym` → `0x80020003` pour les deux fonctions : pas de lancement depuis une app, repli gardé (6.4 close). Recette express prête. |
-| 13 oct. 2026 | Recette express (réduite) validée sur console : arrêt de lecture, refus, suppression réelle de « Hannibal » (Sonarr) ; POST Seerr `…/deleted` inopérant retiré. **Phase 6 validée.** Publication préparée. |
+| 13 oct. 2026 | Recette express (réduite) validée sur console : arrêt de lecture, refus, suppression réelle d'une série (Sonarr) ; POST Seerr `…/deleted` inopérant retiré. **Phase 6 validée.** Publication préparée. |
 | 13 oct. 2026 | Publication préparée : version 0.2.0, zip au format du catalogue, README, INSTALL, modèles d'issues, fiche `PPSA99520.json`, audit du dépôt. |
 | 13 oct. 2026 | **Phase 7** : dépôt public (historique neuf), release `v0.2.0` avec `PPSA99520.zip`, PR #244 au catalogue (contrôles verts, relecture en attente). `docs/RELEASING.md` : branches, ce qui est gelé, sortie d'une version. |
+| 13 oct. 2026 | 0.3.0 : fixtures anonymes (titres et identifiants inventés, `anonymize_titles.py`). |

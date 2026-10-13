@@ -122,7 +122,7 @@ TEST(sonarr_calendar)
     CHECK_EQ(c.size(), (size_t)60);   /* three weeks, for the guide */
     const model::CalendarItem *first = nullptr;   /* a real one (the others are synthetic) */
     for (const auto &e : c)
-        if (e.title == "Crystal Lake" && e.season == 1 && e.episode == 1)
+        if (e.title == "Yuki's Lighthouse II" && e.season == 1 && e.episode == 1)
             first = &e;
     CHECK(first != nullptr);
     if (first)
@@ -159,7 +159,7 @@ TEST(radarr_calendar_keeps_dates_in_window)
     std::vector<model::CalendarItem> c;
     const time_t start = json::parse_time("2026-10-10T00:00:00Z"), end = json::parse_time("2026-10-25T00:00:00Z");
     CHECK(arr::parse_radarr_calendar(fixture("radarr/calendar.json"), start, end, &c));
-    /* Backrooms (physical 23rd), Juste pour une Nuit (physical 20th), Le Roi du Game (cinema 21st). */
+    /* Iris and the Quiet Frontier (physical 23rd), Camille's Satellite (physical 20th), Second Valley (cinema 21st). */
     CHECK_EQ(c.size(), (size_t)3);
     for (const auto &it : c)
         CHECK(it.when >= start && it.when <= end);
@@ -197,7 +197,7 @@ TEST(radarr_queue)
     CHECK(q[0].status == model::QueueItem::Downloading);
     CHECK(q[1].status == model::QueueItem::Importing);
     CHECK(q[2].status == model::QueueItem::Error);
-    CHECK_EQ(q[0].title, std::string("Backrooms"));
+    CHECK_EQ(q[0].title, std::string("Iris and the Quiet Frontier"));
     CHECK(q[0].media_id > 0);
 }
 
@@ -262,12 +262,12 @@ TEST(seerr_requests)
 TEST(seerr_details)
 {
     model::MediaDetail d;
-    CHECK(seerr::parse_detail(fixture("seerr/movie_1218925.json"), false, &d));
+    CHECK(seerr::parse_detail(fixture("seerr/movie_9184411.json"), false, &d));
     CHECK(!d.title.empty());
     CHECK(d.year >= 2020);
     CHECK(!d.poster_path.empty() && d.poster_path[0] == '/');
-    CHECK(seerr::parse_detail(fixture("seerr/tv_171802.json"), true, &d));
-    CHECK_EQ(d.title, std::string("Blade Runner 2099"));
+    CHECK(seerr::parse_detail(fixture("seerr/tv_9394299.json"), true, &d));
+    CHECK_EQ(d.title, std::string("Iris's Voyage"));
 }
 
 /* ---- Jellyfin ---- */
@@ -368,7 +368,7 @@ TEST(mock_maps_urls_to_fixtures)
              std::string("sonarr/queue.json"));
     CHECK_EQ(M::file_for("http://seerr.mock/api/v1/request?take=50&filter=pending"),
              std::string("seerr/request_pending.json"));
-    CHECK_EQ(M::file_for("http://seerr.mock/api/v1/movie/128?language=fr"), std::string("seerr/movie_128.json"));
+    CHECK_EQ(M::file_for("http://seerr.mock/api/v1/movie/9000128?language=fr"), std::string("seerr/movie_9000128.json"));
     CHECK_EQ(M::file_for("http://jellyfin.mock/ScheduledTasks?isHidden=false"),
              std::string("jellyfin/scheduledtasks.json"));
     CHECK_EQ(M::file_for("http://192.168.1.10:8989/api/v3/queue"), std::string());   /* never a real server */
@@ -710,7 +710,7 @@ TEST(instances_tag_answers_and_calendar_keeps_one_copy)
 
     /* The same release seen by both: kept once, the copy with its file. */
     model::CalendarItem a;
-    a.from = config::Radarr, a.title = "Dune", a.release = model::CalendarItem::Digital, a.when = 1000;
+    a.from = config::Radarr, a.title = "The Glass Comet", a.release = model::CalendarItem::Digital, a.when = 1000;
     model::CalendarItem b = a;
     b.instance = 1, b.has_file = true;
     model::CalendarItem other = a;
