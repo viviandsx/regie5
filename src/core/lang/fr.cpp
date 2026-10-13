@@ -466,7 +466,7 @@ const Text kTexts[] = {
     {UserDisabled, "Désactivé"},
     {UserSeen, "Actif %s"},
     {UserNever, "Jamais connecté"},
-    {RefreshAuto, "Fréquence d'affichage : Auto"},
+    {RefreshAuto, "Fréquence d'affichage : Auto (60 Hz)"},
     {Refresh60, "Fréquence d'affichage : 60 Hz"},
     {Refresh120, "Fréquence d'affichage : 120 Hz"},
     {DisplayInfo, "Affichage : %d × %d, %d Hz"},

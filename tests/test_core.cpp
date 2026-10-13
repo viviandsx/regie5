@@ -262,7 +262,8 @@ TEST(app_settings_round_trip)
     s.refresh = app_settings::Refresh::Hz60;
     CHECK(app_settings::from_json(app_settings::to_json(s), &t));
     CHECK(t.refresh == app_settings::Refresh::Hz60);
-    CHECK_EQ(app_settings::refresh_asked(app_settings::Refresh::Auto), 120);   /* the TV falls back to 60 */
+    CHECK_EQ(app_settings::refresh_asked(app_settings::Refresh::Auto), 60);    /* 120 Hz by hand only, for now */
+    CHECK_EQ(app_settings::refresh_asked(app_settings::Refresh::Hz120), 120);
     CHECK_EQ(app_settings::refresh_asked(app_settings::Refresh::Hz60), 60);
     CHECK(app_settings::from_json(R"({"display": {"refresh": "75"}})", &t));   /* unknown: Auto */
     CHECK(t.refresh == app_settings::Refresh::Auto);

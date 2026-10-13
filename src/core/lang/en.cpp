@@ -467,7 +467,7 @@ const Text kTexts[] = {
     {UserDisabled, "Disabled"},
     {UserSeen, "Active %s"},
     {UserNever, "Never signed in"},
-    {RefreshAuto, "Display refresh: Auto"},
+    {RefreshAuto, "Display refresh: Auto (60 Hz)"},
     {Refresh60, "Display refresh: 60 Hz"},
     {Refresh120, "Display refresh: 120 Hz"},
     {DisplayInfo, "Display: %d × %d, %d Hz"},

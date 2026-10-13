@@ -27,7 +27,7 @@ std::string path_beside(const std::string &config_path)
 
 const char *refresh_key(Refresh r) { return r == Refresh::Hz60 ? "60" : r == Refresh::Hz120 ? "120" : "auto"; }
 
-int refresh_asked(Refresh r) { return r == Refresh::Hz60 ? 60 : 120; }
+int refresh_asked(Refresh r) { return r == Refresh::Hz120 ? 120 : 60; }
 
 std::string to_json(const Settings &s)
 {
