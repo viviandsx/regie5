@@ -474,6 +474,9 @@ const Text kTexts[] = {
     {DisplayNoTv120, "120 Hz refused by the display (see the PS5's video output)"},
     {DisplayNextStart, "the new setting applies at the next start"},
     {DisplayDesktop, "here the monitor decides (a setting for the PS5)"},
+    {LibKindCollections, "Collections"},
+    {LibCollections, "%d collections"},
+    {LibCollectionsOne, "%d collection"},
 };
 
 } // namespace

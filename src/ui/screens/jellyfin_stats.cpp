@@ -62,7 +62,9 @@ void JellyfinStats::ask_library(size_t k)
     std::weak_ptr<bool> alive = m_alive;
     api::Services &svc = *m_ctx.services;
     const size_t n = m_data.size();
-    if (lib.kind != model::JellyfinLibrary::Other) {
+    /* Films and series are matched for the size; collections hold films
+     * already counted in their own library, so only the collections are counted. */
+    if (lib.kind == model::JellyfinLibrary::Movies || lib.kind == model::JellyfinLibrary::Shows) {
         m_data[k].items.state = load::Loading;
         svc.library_items(lib.id, [this, alive, k, n](api::Result<std::vector<model::UserItem>> r) {
             if (alive.expired() || m_data.size() != n)   /* the list was read again meanwhile */
@@ -73,7 +75,10 @@ void JellyfinStats::ask_library(size_t k)
     }
     if (lib.kind != model::JellyfinLibrary::Movies) {
         m_data[k].extra.state = load::Loading;
-        svc.library_count(lib.id, lib.kind == model::JellyfinLibrary::Shows ? "Episode" : "",
+        svc.library_count(lib.id,
+                          lib.kind == model::JellyfinLibrary::Shows         ? "Episode"
+                          : lib.kind == model::JellyfinLibrary::Collections ? "BoxSet"
+                                                                            : "",
                           [this, alive, k, n](api::Result<int> r) {
                               if (!alive.expired() && m_data.size() == n)
                                   m_data[k].extra.take(std::move(r), platform::now());
@@ -161,9 +166,10 @@ std::vector<JellyfinStats::LibraryLine> JellyfinStats::library_lines() const
         const Data *d = k < m_data.size() ? &m_data[k] : nullptr;
         LibraryLine line;
         line.name = lib.name;
-        line.kind = i18n::tr(lib.kind == model::JellyfinLibrary::Movies  ? i18n::ViewMovies
-                             : lib.kind == model::JellyfinLibrary::Shows ? i18n::ViewSeries
-                                                                         : i18n::LibKindOther);
+        line.kind = i18n::tr(lib.kind == model::JellyfinLibrary::Movies        ? i18n::ViewMovies
+                             : lib.kind == model::JellyfinLibrary::Shows       ? i18n::ViewSeries
+                             : lib.kind == model::JellyfinLibrary::Collections ? i18n::LibKindCollections
+                                                                               : i18n::LibKindOther);
         if (d) {
             const int titles = d->items.ready() ? (int)d->items.value.size() : -1;
             const int extra = d->extra.ready() ? d->extra.value : -1;
@@ -172,6 +178,8 @@ std::vector<JellyfinStats::LibraryLine> JellyfinStats::library_lines() const
             else if (lib.kind == model::JellyfinLibrary::Shows && titles >= 0)
                 line.counts = fmt::count(i18n::CountSeriesOne, i18n::CountSeries, titles) +
                               (extra >= 0 ? " · " + fmt::count(i18n::LibEpisodesOne, i18n::LibEpisodes, extra) : "");
+            else if (lib.kind == model::JellyfinLibrary::Collections && extra >= 0)
+                line.counts = fmt::count(i18n::LibCollectionsOne, i18n::LibCollections, extra);
             else if (lib.kind == model::JellyfinLibrary::Other && extra >= 0)
                 line.counts = fmt::count(i18n::LibItemsOne, i18n::LibItems, extra);
             if (d->measured && d->size.measured > 0) {

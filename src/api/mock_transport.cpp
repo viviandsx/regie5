@@ -158,7 +158,10 @@ std::string MockTransport::file_for(const std::string &url)
         /* a library's titles, or a count (Limit=0) of its episodes or files */
         const std::string types = query_value(query, "IncludeItemTypes");
         name = "items_parent_" + query_value(query, "ParentId") +
-               (types == "Episode" ? "_episode" : !query_value(query, "IsFolder").empty() ? "_files" : "");
+               (types == "Episode"  ? "_episode"
+                : types == "BoxSet" ? "_boxset"
+                : !query_value(query, "IsFolder").empty() ? "_files"
+                                                          : "");
     } else if (service == "jellyfin" && name == "items" && query_value(query, "IncludeItemTypes") == "Movie,Series")
         name = "items_index";   /* every film and series (Jelly5's links) */
     if (service == "seerr" && name == "issue") {   /* Seerr's default filter is "open" */

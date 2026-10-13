@@ -249,7 +249,7 @@ struct UserItem {
  * tell which Radarr / Sonarr feeds it; the paths are never shown). */
 struct JellyfinLibrary {
     std::string id, name;
-    enum Kind { Movies, Shows, Other } kind = Other;
+    enum Kind { Movies, Shows, Collections, Other } kind = Other;
     std::vector<std::string> folders;
 };
 

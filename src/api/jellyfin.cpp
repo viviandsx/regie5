@@ -81,8 +81,9 @@ bool parse_libraries(const std::string &body, std::vector<model::JellyfinLibrary
         l.id = json::str(it, "ItemId");
         l.name = json::str(it, "Name");
         const std::string type = json::str(it, "CollectionType");
-        l.kind = type == "movies" ? model::JellyfinLibrary::Movies
+        l.kind = type == "movies"    ? model::JellyfinLibrary::Movies
                  : type == "tvshows" ? model::JellyfinLibrary::Shows
+                 : type == "boxsets" ? model::JellyfinLibrary::Collections
                                      : model::JellyfinLibrary::Other;
         const cJSON *loc;
         cJSON_ArrayForEach(loc, json::get(it, "Locations"))

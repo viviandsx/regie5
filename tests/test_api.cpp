@@ -309,6 +309,8 @@ TEST(jellyfin_libraries)
     CHECK(jellyfin::library_items_path("ab").find("ParentId=ab") != std::string::npos);
     CHECK(jellyfin::library_count_path("ab", "Episode").find("Limit=0") != std::string::npos);
     CHECK(jellyfin::library_count_path("ab", "").find("IsFolder=false") != std::string::npos);
+    CHECK(jellyfin::parse_libraries(R"([{"Name": "C", "CollectionType": "boxsets", "ItemId": "x", "Locations": []}])", &libs));
+    CHECK(libs[0].kind == model::JellyfinLibrary::Collections);
 
     int n = -1;
     CHECK(jellyfin::parse_count(R"({"Items": [], "TotalRecordCount": 814})", &n));
