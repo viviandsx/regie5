@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 13 octobre 2026 (nuit) : 0.3.0 prête à sortir (c à h faits, Multimédia avec le `param.json` de Jelly5 ; Auto à 60 Hz, 120 Hz à la main). 0.3.1 : Auto à 120 Hz avec un rendu 1440p. Phase 7 terminée, Régie5 0.2.0 est sur homebrew.page (PR #244 fusionnée). 0.3.0 en préparation (§ 2 sexies) ; aucune release ni pré-release avant qu'elle soit finie et testée sur la console. Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 14 octobre 2026 : 0.3.0 publiée (release `v0.3.0`, catalogue mis à jour par la PR automatique #251, fusionnée le 14 octobre à 00:01 UTC). Défaut : « Depuis le téléphone » cassé (`listen : permission denied`) par le `param.json` de Jelly5 ; avertissement « Known issue » ajouté par Vivian à la release. **0.3.1 de correction en préparation (§ 2 septies)** : build de test `app-12` pour trouver le champ en cause et reproduire un plantage possible en 120 Hz. Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -23,7 +23,8 @@ pour ce qui a été fait après la phase 0).
 | 5. Recette V1 sous Linux | Checklist complète contre le vrai serveur | ✅ passe automatique faite et commitée (`e65bea1`). La **recette express** (15 points) est **reportée sur PS5**, en fin de phase 6 (décision de Vivian) |
 | **6. Portage PS5** | Feu vert donné le 11 octobre 2026 | ✅ validée le 13 octobre 2026 (6.4 par le repli « Chercher dans Jelly5 ») |
 | **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
-| 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | 🔶 en cours (§ 2 sexies) |
+| 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | ✅ publiée le 13 octobre 2026 (§ 2 sexies) ; page du téléphone cassée |
+| 9. Version 0.3.1 | correctif : page du téléphone, 120 Hz | 🔶 en cours (§ 2 septies) |
 
 Tests : **58** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -496,12 +497,65 @@ publie seul toute release du dépôt.
       `docs/images/`), commits, puis `release-ps5.sh`, recette, tag, release
       (`docs/RELEASING.md` §3).
 
+## 2 septies. Version 0.3.1 (correctif, ouvert le 14 octobre 2026)
+
+**Défaut de la 0.3.0** : Réglages › Depuis le téléphone affiche « La page n'a pas pu être
+ouverte », « listen : permission denied ». La sonde du démarrage le disait déjà dans le
+journal d'app-10d (13 octobre, 22:05 : `listening port 8085: refused: Permission denied`),
+passé inaperçu, et la recette 0.3.0 ne passait pas par la page. Seul changement côté
+console entre la 0.2.0 (écoute OK) et la 0.3.0 : le `param.json`.
+
+Ce qui est établi (docs de ps5-opengl et de ps5-native-app-boilerplate, essais) :
+
+- le 120 Hz ne dépend que de `attribute3 & 0x80040` (`0x40` : 120 Hz permis ; `0x80000` : VRR
+  à 120 Hz) ; l'outil de ps5-opengl garde les autres bits ;
+- `attribute 0x62000000` = sortie HDR gardée (pas d'écran noir au lancement),
+  `attribute3 0x100000` = VRR coupé pour le titre : rien sur le réseau d'après ces docs ;
+- restent suspects : la **catégorie Multimédia** (65536) elle-même, les blocs `amm` / `kernel`,
+  et ces deux attributs. app-10e (Jeux avec les valeurs de Jelly5) n'a jamais été lancé.
+
+- [x] **Diagnostic et garde-fous** : la sonde du démarrage journalise `bind` et `listen`
+      séparément (port 8085 et port choisi par le système) et le profil du `param.json`
+      installé ; l'erreur de la page dit « bind : … » ou « listen : … ».
+      `ps5/app/param-profiles.json` garde ce que chaque profil a fait sur la console
+      (rangée, démarrage, écoute, 120 Hz) ; `scripts/check-param.py` avertit dans
+      `build-ps5.sh` et **refuse** dans `release-ps5.sh` un profil jamais vu démarrer **et**
+      écouter. `RELEASING.md` : trois points à vérifier à chaque version (rangée et démarrage,
+      page du téléphone, fréquence obtenue).
+- [x] **Mode stress 120 Hz** (fichier `stress` dans le dossier du titre, minutes dedans,
+      10 par défaut) : 120 Hz forcé, tour en boucle, mémoire toutes les 10 s, une ligne par
+      tour (écarts entre images), seules les requêtes GET partent (transport `GetOnly`).
+- [x] **Build de test `app-12`** (journal UDP vers le laptop, à la maison) et `params/` : un champ changé
+      à la fois par rapport à la 0.3.0 (p1 catégorie Jeux, p2 `kernel`, p3 `amm`,
+      p4 `attribute`, p5 `attribute3` + `0x100000`), p0 contrôle, p6 la 0.2.0 entière.
+      Marche à suivre : `build/ps5/app-12/ESSAIS.txt` (série A : 7 lancements ; série B :
+      stress 4K puis 1440p, 10 min chacun). `app-11` : même build, journal vers une mauvaise
+      adresse (laptop hors de la maison), à jeter.
+- [x] **120 Hz « expérimental »** dans Réglages (ligne « Affichage », quand 120 Hz est choisi),
+      en attendant le résultat du stress.
+- [ ] Vivian : essais d'`app-12` (séries A et B), tableau des résultats.
+- [ ] Choisir le profil de la 0.3.1 et l'ajouter à `param-profiles.json` ; 0.3.1
+      (`00.003.001`), recette avec la page du téléphone, release. Repli le plus sûr si
+      aucun profil Multimédia n'écoute : le profil Jeux qui écoute (p1 s'il démarre et
+      obtient le 120 Hz, sinon la 0.2.0 entière, 60 Hz seulement).
+- [ ] 120 Hz : selon le stress, correction, ou mention « expérimental » gardée.
+
+**Hypothèses pour le plantage en 120 Hz** (aucun rapport dans les journaux ; aucune session
+ne finit par une ligne de fermeture, car l'app est quittée par le bouton PS) : à 120 Hz en 4K
+le GPU met 9 à 17 ms par image (pire 39 ms) pour 8,33 ms disponibles ; ps5-opengl s'arrête
+par `_Exit` quand une image n'est pas confirmée dans son délai (« fail-stop »), ce qui ne
+laisse pas de signal (le build de développement le journalise, pas la release). Autres
+pistes : relance rapprochée après une session à 120 Hz (ps5-opengl impose 5 s entre deux
+présentateurs 120 Hz, dans un même processus seulement) ; mémoire (rien vu : tas stable à
+~20 Mio sur les sessions courtes). Après un plantage de la release : relancer Régie5 une fois
+et copier `app.prev.log` (`scripts/ps5-fetch-log.py <console> 2121 PPSA99520`).
+
 ## 3. En attente
 
 | Sujet | Qui | Détail |
 |---|---|---|
 | Port 5555 (ufw) | Vivian | Ouvert pour les tests, à refermer à la fin. |
-| Série supprimée, dans Seerr | après le 14 oct. 05:00 | Statut 7 (`DELETED`) attendu après « Media Availability Sync » ; vérifier en GET (`/api/v1/tv/{id}`). |
+| Série supprimée, dans Seerr | Vivian | Statut 7 (`DELETED`) attendu après « Media Availability Sync » ; GET (`/api/v1/tv/{id}`) à lancer depuis le réseau de la maison (le 14 octobre, le laptop était ailleurs). |
 | PR Jelly5 | Vivian | Sans lanceur depuis une app, Régie5 ne s'en sert pas sur PS5 : la proposer ou non est une décision à part (`docs/JELLY5-PR.md`). |
 | Taille du tas sur PS5 | 6.2 | 256 Mio accordé et l'affichage démarre (probe-5) : on garde 256 ; l'usage mesuré est ~20 Mio. En 6.2 : message visible à l'écran (ou notification système) si la mémoire est refusée, au lieu du seul journal. |
 
@@ -670,3 +724,5 @@ la Bibliothèque).
 | 13 oct. 2026 | 120 Hz : Jelly5 refusé aussi sur cet écran ; banc par phases ; app-10c refusé, app-10d (profil Jelly5 entier) ; 0.3.0 préparée (version, README, notes, recette). |
 | 13 oct. 2026 | app-10d démarre en Multimédia (profil Jelly5 entier) et obtient le 120 Hz ; 4K à 120 Hz : 90 images/s ; dépôt en Multimédia, 0.3.0 prête. |
 | 13 oct. 2026 | Option A : Auto à 60 Hz en 0.3.0, 120 Hz à la main ; 0.3.1 : Auto à 120 Hz en rendu 1440p. Patches finaux dans `build/patches-5/`. |
+| 13 oct. 2026 | **0.3.0 publiée** (tag, release, zip `77cc9963…`) ; catalogue mis à jour par la PR automatique #251 (14 oct., 00:01 UTC). |
+| 14 oct. 2026 | 0.3.1 ouverte : page du téléphone cassée par le `param.json` de Jelly5. Sonde `bind`/`listen`, profils vérifiés (`param-profiles.json`, `check-param.py`), mode stress 120 Hz, 120 Hz « expérimental » ; build `app-12` et 7 variantes de `param.json`. |

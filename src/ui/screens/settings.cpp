@@ -460,6 +460,9 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
             line += std::string(" — ") + i18n::tr(i18n::DisplayNoTv120);
         if (dm.asked_hz != 0 && app_settings::refresh_asked(refresh) != dm.asked_hz)
             line += std::string(" — ") + i18n::tr(i18n::DisplayNextStart);
+        /* 0.3.0: Régie5 may close by itself at 120 Hz, not reproduced yet. */
+        if (refresh == app_settings::Refresh::Hz120)
+            line += std::string(" — ") + i18n::tr(i18n::Display120Experimental);
         const bool warn = dm.asked_hz > dm.hz;
         gfx::text(x0, iy + 68, line, {gfx::Medium, 24, kListW * 0.55f, 2, 32}, warn ? 0xffffd60au : kText2);
     }
