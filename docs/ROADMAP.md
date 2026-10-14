@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 14 octobre 2026 : 0.3.0 publiée (release `v0.3.0`, catalogue mis à jour par la PR automatique #251, fusionnée le 14 octobre à 00:01 UTC). Défaut : « Depuis le téléphone » cassé (`listen : permission denied`) par le `param.json` de Jelly5 ; avertissement « Known issue » ajouté par Vivian à la release. **0.3.1 de correction rapide prête (§ 2 septies)** : `param.json` de la 0.2.0 (rangée Jeux, écoute OK, pas de 120 Hz), zip et build de test construits, recette `docs/RECETTE-0.3.1.md` ; sortie par Vivian le 14 octobre au soir. **0.3.2** : retrouver Multimédia + écoute + 120 Hz (séries A et B d'`app-12`, rendu 1440p). Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 14 octobre 2026 (nuit) : 0.3.0 publiée (release `v0.3.0`, catalogue mis à jour par la PR automatique #251, fusionnée le 14 octobre à 00:01 UTC). Défaut : « Depuis le téléphone » cassé (`listen : permission denied`) par le `param.json` de Jelly5 ; avertissement « Known issue » ajouté par Vivian à la release. **0.3.1 publiée le 14 octobre au soir** (rangée Jeux, page du téléphone réparée, 120 Hz « expérimental » ; profil `games-hz120-0.3.1` vérifié sur la console). Ménage validé de bout en bout (Seerr a marqué la série supprimée). **0.3.2** : Multimédia + écoute, stress et rendu 1440p à 120 Hz (§ 2 septies). **Emby** demandé dans la première issue : étude faite, version à part. Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -24,8 +24,9 @@ pour ce qui a été fait après la phase 0).
 | **6. Portage PS5** | Feu vert donné le 11 octobre 2026 | ✅ validée le 13 octobre 2026 (6.4 par le repli « Chercher dans Jelly5 ») |
 | **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | ✅ publiée le 13 octobre 2026 (§ 2 sexies) ; page du téléphone cassée |
-| 9. Version 0.3.1 | correctif : page du téléphone (rangée Jeux, sans 120 Hz) | 🔶 prête, recette console le 14 octobre au soir (§ 2 septies) |
-| 10. Version 0.3.2 | Multimédia + page du téléphone + 120 Hz (1440p) | ⏸ plus tard (§ 2 septies, « 0.3.2 ») |
+| 9. Version 0.3.1 | correctif : page du téléphone (rangée Jeux), 120 Hz expérimental | ✅ publiée le 14 octobre 2026 (§ 2 septies) |
+| 10. Version 0.3.2 | Multimédia + page du téléphone, 120 Hz stable (1440p si besoin) | ⏸ plus tard (§ 2 septies, « 0.3.2 ») |
+| 11. Emby | demandé dans la première issue | 📝 étude faite, version à part (0.4.0) |
 
 Tests : **58** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -282,8 +283,9 @@ LLVM 21 du laptop suffit (même méthode que `setup-toolchain.sh` de Jelly5-Seer
       (demandes gardées, redemandable) dans sa tâche « Media Availability Sync » (05:00
       chez Vivian) : Régie5 n'écrit plus rien dans Seerr, la note dit « Seerr le saura à sa
       prochaine synchronisation » (une écriture de moins ; `FEATURES.md` le prévoyait déjà).
-      **À vérifier après le 14 octobre 05:00** (GET) : la série en statut 7 (`DELETED`) dans
-      Seerr, sa demande gardée.
+      **Vérifié le 14 octobre 2026** (GET) : après la synchronisation de 05:00, la série est en
+      statut 7 (`DELETED`) dans Seerr, toutes ses saisons aussi, et sa demande est gardée.
+      Ménage validé de bout en bout.
 
 ## 2 quinquies. Publication sur homebrew.page (13 octobre 2026)
 
@@ -550,27 +552,50 @@ Ce qui est établi (docs de ps5-opengl et de ps5-native-app-boilerplate, essais)
       du téléphone et 120 Hz vérifiés sur la console (profil `games-hz120-0.3.1`). Le 120 Hz
       reste « expérimental » dans Réglages, Auto à 60 Hz. `release-ps5.sh` accepte
       `REGIE5_RELEASE_NAME` (deux candidats d'une même version).
-- [ ] Vivian : commit, tag `v0.3.1`, release avant minuit UTC.
+- [x] **0.3.1 publiée** par Vivian le 14 octobre 2026 (release `v0.3.1` à 17:34 UTC, tag sur
+      `abc31b2`, zip `14101f04…48e7`, le digest de GitHub est identique ; la release 0.3.0 dit
+      « Fixed in 0.3.1 » sous son avertissement). Profil **`games-hz120-0.3.1` vérifié sur la
+      console** (app-14 puis le zip : démarre dans Jeux, écoute, page du téléphone ouverte et
+      enregistrement fait, 120 Hz obtenu). Catalogue : PR automatique attendue vers 00:00 UTC
+      le 15 octobre.
+- [x] **Journal du 14 octobre (app-14)** : `param.json` relu par l'app (`attribute3 0x180040`),
+      écoute possible sur 8085 et sur un port choisi par le système ; à 120 Hz,
+      `[ps5-output-mode] … result=00000000`, « 3840x2160 at 120 Hz, accepted ». **120 images/s
+      tenues en 4K** pendant les ~17 s mesurées (écrans légers : GPU ~8,1 ms par image, pire
+      33,7 ms à l'ouverture d'un écran, 5 « slow frame » en tout), alors qu'app-10d faisait
+      90 images/s sur l'Accueil (GPU 11 ms) : la charge dépend de l'écran (flou, jaquettes
+      envoyées). Mémoire stable (21,8 Mio, pic 31,7). Aucun plantage, aucune erreur du pilote.
+      Séance trop courte pour conclure sur la tenue ou le plantage : c'est la série B.
 
-### 0.3.2 — Multimédia, page du téléphone et 120 Hz ensemble (plus tard)
+### 0.3.2 — Multimédia, écoute et 120 Hz stable (plan du 14 octobre)
 
-Prêt, à faire un jour où Vivian a le temps (environ 50 minutes de console) :
+Ce qu'on sait : le 120 Hz ne demande que `attribute3 0x80040`, aussi en catégorie Jeux
+(app-14). Le profil de Jelly5 (Multimédia) démarre mais n'écoute pas ; Multimédia avec nos
+anciens `attribute` / `amm` / `kernel` (app-10c) ne démarre pas.
 
-- [ ] **Série A** d'`app-12` (`build/ps5/app-12/ESSAIS.txt`) : 7 `param.json`, un champ
-      changé à la fois par rapport à la 0.3.0 (p0 contrôle, p1 catégorie Jeux, p2 `kernel`,
-      p3 `amm`, p4 `attribute`, p5 `attribute3` + `0x100000`, p6 la 0.2.0 entière). Pour
-      chacun : rangée de la tuile, démarrage, page du téléphone ; le journal dit si `bind`
-      ou `listen` refuse. Si une variante Multimédia écoute → profil de la 0.3.2. Sinon,
-      p1 (Jeux avec `attribute3 0x80040`) pour au moins rendre le 120 Hz.
-      Vérifier avant que le laptop est bien à 192.168.1.15 (sinon refaire le build).
-- [ ] **Série B** d'`app-12` : stress 10 min à 120 Hz en 4K (reproduire le plantage), puis
-      10 min en 1440p (`output-1440p`) pour la mesure du point suivant.
-- [ ] **Rendu 1440p à 120 Hz** (plan du 13 octobre) : quand le 120 Hz est demandé, rendre en
-      2560 × 1440 (`eglSetDisplayModePS5`) ; si la série B tient 120 images/s, Auto demande
-      120 Hz (repli 60 Hz si l'écran refuse), la 4K reste pour 60 Hz, libellé « Auto (60 Hz) »
-      revu ; sinon le 120 Hz garde la mention « expérimental ».
-- [ ] Nouveau profil ajouté à `param-profiles.json` **après** l'essai console (rangée,
-      démarrage, page du téléphone), recette avec la page du téléphone.
+- [ ] **Série A' (rangée Multimédia)**, nouveau build sur le code 0.3.1 : partir du profil de
+      Jelly5 (Multimédia, qui démarre) et ajouter **un** élément de la 0.3.1 à la fois :
+      bloc `kernel`, bloc `amm`, `attribute 0x62000000`, bit `0x100000` d'`attribute3`, plus
+      la 0.3.1 elle-même en contrôle. 5 lancements de ~3 min : rangée, démarrage, page du
+      téléphone, 120 Hz (le journal dit `bind` / `listen`). Si une variante écoute en
+      Multimédia : profil de la 0.3.2. Sinon : on reste dans Jeux (rien ne presse).
+- [ ] **Série B (stress 120 Hz)** : 10 min en 4K avec le fichier `stress` (tour en boucle,
+      mémoire, GET seulement), puis 10 min en 1440p (`output-1440p`).
+- [ ] **Rendu 1440p à 120 Hz** si la série B montre des chutes sous 120 images/s en 4K :
+      `eglSetDisplayModePS5` en 2560 × 1440 quand le 120 Hz est demandé ; puis **Auto à
+      120 Hz** (repli 60 Hz si l'écran refuse) et fin de la mention « expérimental » si le
+      stress est propre.
+- [ ] README : retirer la ligne « Known issue in 0.3.0 ».
+- [ ] Nouveau profil dans `param-profiles.json` **après** l'essai console ; recette avec la
+      page du téléphone (`RELEASING.md`).
+
+### Emby (issue GitHub reçue le 14 octobre 2026) — étude, pas encore codé
+
+Première issue du dépôt : une demande d'Emby à côté de Jellyfin. Étude de faisabilité dans la
+réponse du 14 octobre ; proposition : une version à part (0.4.0), après la 0.3.2, avec un
+serveur Emby de test en Docker sur le laptop (jamais le serveur de Vivian) et une version de
+test pour l'auteur de l'issue (zip joint à un commentaire, **jamais** en release : le catalogue
+publie toute release).
 
 **Hypothèses pour le plantage en 120 Hz** (aucun rapport dans les journaux ; aucune session
 ne finit par une ligne de fermeture, car l'app est quittée par le bouton PS) : à 120 Hz en 4K
@@ -587,7 +612,6 @@ et copier `app.prev.log` (`scripts/ps5-fetch-log.py <console> 2121 PPSA99520`).
 | Sujet | Qui | Détail |
 |---|---|---|
 | Port 5555 (ufw) | Vivian | Ouvert pour les tests, à refermer à la fin. |
-| Série supprimée, dans Seerr | Vivian | Statut 7 (`DELETED`) attendu après « Media Availability Sync » ; GET (`/api/v1/tv/{id}`) à lancer depuis le réseau de la maison (le 14 octobre, le laptop était ailleurs). |
 | PR Jelly5 | Vivian | Sans lanceur depuis une app, Régie5 ne s'en sert pas sur PS5 : la proposer ou non est une décision à part (`docs/JELLY5-PR.md`). |
 | Taille du tas sur PS5 | 6.2 | 256 Mio accordé et l'affichage démarre (probe-5) : on garde 256 ; l'usage mesuré est ~20 Mio. En 6.2 : message visible à l'écran (ou notification système) si la mémoire est refusée, au lieu du seul journal. |
 
@@ -759,3 +783,4 @@ la Bibliothèque).
 | 13 oct. 2026 | **0.3.0 publiée** (tag, release, zip `77cc9963…`) ; catalogue mis à jour par la PR automatique #251 (14 oct., 00:01 UTC). |
 | 14 oct. 2026 | 0.3.1 ouverte : page du téléphone cassée par le `param.json` de Jelly5. Sonde `bind`/`listen`, profils vérifiés (`param-profiles.json`, `check-param.py`), mode stress 120 Hz, 120 Hz « expérimental » ; build `app-12` et 7 variantes de `param.json`. |
 | 14 oct. 2026 | 0.3.1 rapide préparée : `param.json` de la 0.2.0 (Jeux, sans 120 Hz), 120 Hz retiré de Réglages et signalé s'il était gardé, README / INSTALL / notes / recette, zip et build `app-13`. Séries A et B d'`app-12` reportées en 0.3.2. |
+| 14 oct. 2026 | app-14 validé (Jeux, écoute, 120 Hz) ; **0.3.1 publiée** avec le 120 Hz expérimental. Seerr : série supprimée en statut 7 (`DELETED`), demande gardée : Ménage validé. Première issue : Emby (étude). Plan de la 0.3.2. |
