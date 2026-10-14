@@ -14,7 +14,7 @@
         "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
       },
       "console": {
-        "seen": "0.2.0 and app-7c, firmware 13.60, 13 October 2026",
+        "seen": "0.2.0, app-7c, and app-10b with the 0.3.0 code, firmware 13.60, 13 October 2026",
         "area": "Games",
         "starts": true,
         "listens": true,

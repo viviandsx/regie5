@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 14 octobre 2026 : 0.3.0 publiée (release `v0.3.0`, catalogue mis à jour par la PR automatique #251, fusionnée le 14 octobre à 00:01 UTC). Défaut : « Depuis le téléphone » cassé (`listen : permission denied`) par le `param.json` de Jelly5 ; avertissement « Known issue » ajouté par Vivian à la release. **0.3.1 de correction en préparation (§ 2 septies)** : build de test `app-12` pour trouver le champ en cause et reproduire un plantage possible en 120 Hz. Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 14 octobre 2026 : 0.3.0 publiée (release `v0.3.0`, catalogue mis à jour par la PR automatique #251, fusionnée le 14 octobre à 00:01 UTC). Défaut : « Depuis le téléphone » cassé (`listen : permission denied`) par le `param.json` de Jelly5 ; avertissement « Known issue » ajouté par Vivian à la release. **0.3.1 de correction rapide prête (§ 2 septies)** : `param.json` de la 0.2.0 (rangée Jeux, écoute OK, pas de 120 Hz), zip et build de test construits, recette `docs/RECETTE-0.3.1.md` ; sortie par Vivian le 14 octobre au soir. **0.3.2** : retrouver Multimédia + écoute + 120 Hz (séries A et B d'`app-12`, rendu 1440p). Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -24,7 +24,8 @@ pour ce qui a été fait après la phase 0).
 | **6. Portage PS5** | Feu vert donné le 11 octobre 2026 | ✅ validée le 13 octobre 2026 (6.4 par le repli « Chercher dans Jelly5 ») |
 | **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | ✅ publiée le 13 octobre 2026 (§ 2 sexies) ; page du téléphone cassée |
-| 9. Version 0.3.1 | correctif : page du téléphone, 120 Hz | 🔶 en cours (§ 2 septies) |
+| 9. Version 0.3.1 | correctif : page du téléphone (rangée Jeux, sans 120 Hz) | 🔶 prête, recette console le 14 octobre au soir (§ 2 septies) |
+| 10. Version 0.3.2 | Multimédia + page du téléphone + 120 Hz (1440p) | ⏸ plus tard (§ 2 septies, « 0.3.2 ») |
 
 Tests : **58** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -533,12 +534,38 @@ Ce qui est établi (docs de ps5-opengl et de ps5-native-app-boilerplate, essais)
       adresse (laptop hors de la maison), à jeter.
 - [x] **120 Hz « expérimental »** dans Réglages (ligne « Affichage », quand 120 Hz est choisi),
       en attendant le résultat du stress.
-- [ ] Vivian : essais d'`app-12` (séries A et B), tableau des résultats.
-- [ ] Choisir le profil de la 0.3.1 et l'ajouter à `param-profiles.json` ; 0.3.1
-      (`00.003.001`), recette avec la page du téléphone, release. Repli le plus sûr si
-      aucun profil Multimédia n'écoute : le profil Jeux qui écoute (p1 s'il démarre et
-      obtient le 120 Hz, sinon la 0.2.0 entière, 60 Hz seulement).
-- [ ] 120 Hz : selon le stress, correction, ou mention « expérimental » gardée.
+- [x] **0.3.1 rapide** (décision de Vivian, 14 octobre 2026) : le code actuel avec le
+      `param.json` de la 0.2.0 (profil `games-0.2.0`, vu démarrer et écouter : 0.2.0, app-7c,
+      app-10b avec le code 0.3.0), `contentVersion` `00.003.001`, `project(VERSION 0.3.1)`.
+      Tuile dans Jeux, **pas de 120 Hz** : `build-ps5.sh` écrit `REGIE5_HZ120` (bit `0x40` de
+      `attribute3`) ; sans lui l'app ne demande jamais 120 Hz, Réglages ne le propose plus
+      (Auto ↔ 60 Hz) et un « 120 Hz » gardé de la 0.3.0 s'affiche « 120 Hz indisponible dans
+      cette version » en jaune (`DisplayMode::can_120`, `REGIE5_NO_120=1` pour le voir sous
+      Linux). README (avertissement « Known issue in 0.3.0 … Fixed in 0.3.1 », Jeux, 120 Hz),
+      `INSTALL.txt`, notes `build/publish/release-notes-v0.3.1.md`, recette
+      `docs/RECETTE-0.3.1.md`. Zip `build/ps5/release-0.3.1/upload/PPSA99520.zip` (accepté par
+      `check-param.py --release`) et build de test `app-13` (même `param.json`, journal UDP).
+- [ ] Vivian : recette 0.3.1 sur console, puis commit, tag `v0.3.1`, release avant minuit UTC.
+
+### 0.3.2 — Multimédia, page du téléphone et 120 Hz ensemble (plus tard)
+
+Prêt, à faire un jour où Vivian a le temps (environ 50 minutes de console) :
+
+- [ ] **Série A** d'`app-12` (`build/ps5/app-12/ESSAIS.txt`) : 7 `param.json`, un champ
+      changé à la fois par rapport à la 0.3.0 (p0 contrôle, p1 catégorie Jeux, p2 `kernel`,
+      p3 `amm`, p4 `attribute`, p5 `attribute3` + `0x100000`, p6 la 0.2.0 entière). Pour
+      chacun : rangée de la tuile, démarrage, page du téléphone ; le journal dit si `bind`
+      ou `listen` refuse. Si une variante Multimédia écoute → profil de la 0.3.2. Sinon,
+      p1 (Jeux avec `attribute3 0x80040`) pour au moins rendre le 120 Hz.
+      Vérifier avant que le laptop est bien à 192.168.1.15 (sinon refaire le build).
+- [ ] **Série B** d'`app-12` : stress 10 min à 120 Hz en 4K (reproduire le plantage), puis
+      10 min en 1440p (`output-1440p`) pour la mesure du point suivant.
+- [ ] **Rendu 1440p à 120 Hz** (plan du 13 octobre) : quand le 120 Hz est demandé, rendre en
+      2560 × 1440 (`eglSetDisplayModePS5`) ; si la série B tient 120 images/s, Auto demande
+      120 Hz (repli 60 Hz si l'écran refuse), la 4K reste pour 60 Hz, libellé « Auto (60 Hz) »
+      revu ; sinon le 120 Hz garde la mention « expérimental ».
+- [ ] Nouveau profil ajouté à `param-profiles.json` **après** l'essai console (rangée,
+      démarrage, page du téléphone), recette avec la page du téléphone.
 
 **Hypothèses pour le plantage en 120 Hz** (aucun rapport dans les journaux ; aucune session
 ne finit par une ligne de fermeture, car l'app est quittée par le bouton PS) : à 120 Hz en 4K
@@ -726,3 +753,4 @@ la Bibliothèque).
 | 13 oct. 2026 | Option A : Auto à 60 Hz en 0.3.0, 120 Hz à la main ; 0.3.1 : Auto à 120 Hz en rendu 1440p. Patches finaux dans `build/patches-5/`. |
 | 13 oct. 2026 | **0.3.0 publiée** (tag, release, zip `77cc9963…`) ; catalogue mis à jour par la PR automatique #251 (14 oct., 00:01 UTC). |
 | 14 oct. 2026 | 0.3.1 ouverte : page du téléphone cassée par le `param.json` de Jelly5. Sonde `bind`/`listen`, profils vérifiés (`param-profiles.json`, `check-param.py`), mode stress 120 Hz, 120 Hz « expérimental » ; build `app-12` et 7 variantes de `param.json`. |
+| 14 oct. 2026 | 0.3.1 rapide préparée : `param.json` de la 0.2.0 (Jeux, sans 120 Hz), 120 Hz retiré de Réglages et signalé s'il était gardé, README / INSTALL / notes / recette, zip et build `app-13`. Séries A et B d'`app-12` reportées en 0.3.2. |
