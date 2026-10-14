@@ -313,7 +313,9 @@ void ListSheet::draw(float dt, bool *animating)
 
 float list_scroll(Anim &a, float focus_y, float focus_h, float view_h, float list_h, float dt, bool *animating)
 {
-    const float margin = 120;
+    /* A low view (a series' seasons under a long sheet) gets a smaller
+     * margin: 120 on both sides pushed the focused row out of it. */
+    const float margin = std::clamp((view_h - focus_h) / 2, 0.f, 120.f);
     float t = a.target;
     if (focus_y - t < margin)
         t = focus_y - margin;

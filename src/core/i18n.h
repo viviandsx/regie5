@@ -377,7 +377,6 @@ enum S {
     InfoAdded,
     InfoProfile,
     InfoFile,
-    InfoReleases,
     Minutes,
     SeasonsTitle,
     MissingEpisodesCount,

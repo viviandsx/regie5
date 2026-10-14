@@ -375,7 +375,6 @@ const Text kTexts[] = {
     {InfoAdded, "Ajouté"},
     {InfoProfile, "Profil de qualité"},
     {InfoFile, "Fichier"},
-    {InfoReleases, "Sorties"},
     {Minutes, "%d min"},
     {SeasonsTitle, "Saisons"},
     {MissingEpisodesCount, "%d épisodes manquants"},

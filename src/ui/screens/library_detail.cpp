@@ -49,12 +49,13 @@ std::string date(time_t t)
     return fmt::date_full(tm);
 }
 
-/* A line of the information block: a quiet label, then the value. */
-float info(float x, float y, const char *label, const std::string &value, float w)
+/* A line of the information block: a quiet label, then the value; a value
+ * too long for one line (a list of qualities) may wrap onto a second. */
+float info(float x, float y, const char *label, const std::string &value, float w, int lines = 1)
 {
     gfx::text(x, y, label, {gfx::Medium, 24, 330}, kText3);
-    gfx::text(x + 340, y, value, {gfx::Medium, 26, w - 340}, kText);
-    return y + 42;
+    gfx::text(x + 340, y, value, {gfx::Medium, 26, w - 340, lines, 34}, kText);
+    return y + 42 + (lines > 1 && gfx::text_width(value, {gfx::Medium, 26}) > w - 340 ? 34 : 0);
 }
 
 } // namespace
@@ -204,7 +205,7 @@ void LibraryDetail::draw(double now, float dt, float ox, bool focused, bool *ani
             std::string q;
             for (const auto &p : m_files.value.qualities)
                 q += (q.empty() ? "" : ", ") + p.first + " ×" + std::to_string(p.second);
-            y = info(x, y, i18n::tr(i18n::InfoFiles), q, kTextW);
+            y = info(x, y, i18n::tr(i18n::InfoFiles), q, kTextW, 2);
         }
         if (m_series.next_airing)
             y = info(x, y, i18n::tr(i18n::InfoNextAiring), when(m_series.next_airing, now_t), kTextW);
@@ -213,16 +214,13 @@ void LibraryDetail::draw(double now, float dt, float ox, bool focused, bool *ani
     } else {
         y = info(x, y, i18n::tr(i18n::InfoFile),
                  m_movie.has_file ? m_movie.file_quality : std::string(i18n::tr(i18n::NoFile)), kTextW);
-        std::string rel;
+        /* One line per release: the three on one line ran past the screen. */
         if (m_movie.in_cinemas)
-            rel += std::string(i18n::tr(i18n::ReleaseCinema)) + " " + date(m_movie.in_cinemas);
+            y = info(x, y, i18n::tr(i18n::ReleaseCinema), date(m_movie.in_cinemas), kTextW);
         if (m_movie.digital)
-            rel += (rel.empty() ? "" : " · ") + std::string(i18n::tr(i18n::ReleaseDigital)) + " " + date(m_movie.digital);
+            y = info(x, y, i18n::tr(i18n::ReleaseDigital), date(m_movie.digital), kTextW);
         if (m_movie.physical)
-            rel += (rel.empty() ? "" : " · ") + std::string(i18n::tr(i18n::ReleasePhysical)) + " " +
-                   date(m_movie.physical);
-        if (!rel.empty())
-            y = info(x, y, i18n::tr(i18n::InfoReleases), rel, kTextW);
+            y = info(x, y, i18n::tr(i18n::ReleasePhysical), date(m_movie.physical), kTextW);
     }
     const time_t added = m_tv ? m_series.added : m_movie.added;
     if (added)
