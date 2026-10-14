@@ -1,0 +1,190 @@
+{
+ "Items": [
+  {
+   "Id": 37,
+   "Type": "playback.start",
+   "ItemId": "14",
+   "Date": "2026-10-14T20:04:16.5510000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 36,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T20:04:16.5000000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 35,
+   "Type": "playback.stop",
+   "ItemId": "14",
+   "Date": "2026-10-14T20:04:03.4040000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 34,
+   "Type": "playback.start",
+   "ItemId": "14",
+   "Date": "2026-10-14T20:03:54.9410000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 33,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T20:03:54.8900000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 31,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T19:53:08.8080000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 30,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T19:53:08.7570000Z",
+   "UserId": "1",
+   "Severity": "Info"
+  },
+  {
+   "Id": 29,
+   "Type": "playback.stop",
+   "ItemId": "14",
+   "Date": "2026-10-14T19:52:15.3680000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 28,
+   "Type": "playback.start",
+   "ItemId": "14",
+   "Date": "2026-10-14T19:52:04.4040000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 27,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T19:52:04.3540000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 26,
+   "Type": "playback.stop",
+   "ItemId": "14",
+   "Date": "2026-10-14T19:51:51.1870000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 25,
+   "Type": "playback.start",
+   "ItemId": "14",
+   "Date": "2026-10-14T19:51:40.2130000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 24,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T19:51:40.1610000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 23,
+   "Type": "playback.stop",
+   "ItemId": "14",
+   "Date": "2026-10-14T19:51:20.2250000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 22,
+   "Type": "playback.start",
+   "ItemId": "14",
+   "Date": "2026-10-14T19:51:09.1600000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 21,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T19:51:09.1090000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 20,
+   "Type": "playback.start",
+   "ItemId": "14",
+   "Date": "2026-10-14T19:51:01.5690000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 19,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T19:51:01.3990000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 18,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T19:49:57.9670000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 17,
+   "Type": "user.policyupdated",
+   "Date": "2026-10-14T19:49:57.9160000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 16,
+   "Type": "user.passwordchanged",
+   "Date": "2026-10-14T19:49:57.8660000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 15,
+   "Type": "user.created",
+   "Date": "2026-10-14T19:49:57.8160000Z",
+   "UserId": "2",
+   "Severity": "Info"
+  },
+  {
+   "Id": 14,
+   "Type": "user.authenticated",
+   "Date": "2026-10-14T19:49:55.6400000Z",
+   "UserId": "1",
+   "Severity": "Info"
+  },
+  {
+   "Id": 13,
+   "Type": "user.policyupdated",
+   "Date": "2026-10-14T19:49:55.5900000Z",
+   "UserId": "1",
+   "Severity": "Info"
+  },
+  {
+   "Id": 12,
+   "Type": "user.passwordchanged",
+   "Date": "2026-10-14T19:49:55.5390000Z",
+   "UserId": "1",
+   "Severity": "Info"
+  }
+ ],
+ "TotalRecordCount": 25
+}

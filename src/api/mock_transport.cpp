@@ -150,11 +150,15 @@ std::string MockTransport::file_for(const std::string &url)
         if (!id.empty())
             name += "_" + id;
     }
-    if (service == "jellyfin" && name == "items" && !query_value(query, "ids").empty())
+    const bool media = service == "jellyfin" || service == "emby";   /* fixtures/emby/: Emby's own answers */
+    if (media && name == "items" && !query_value(query, "ids").empty())
         name = "items_ids";   /* names for the journal (the recent row has items.json) */
-    else if (service == "jellyfin" && name == "items" && !query_value(query, "userId").empty())
+    else if (media && name == "items" && !query_value(query, "userId").empty() &&
+             query_value(query, "IsPlayed") == "true")
+        name = "items_user_" + query_value(query, "userId") + "_played";   /* Emby: watched episodes, dated */
+    else if (media && name == "items" && !query_value(query, "userId").empty())
         name = "items_user_" + query_value(query, "userId");   /* one user's, for the cleanup */
-    else if (service == "jellyfin" && name == "items" && !query_value(query, "ParentId").empty()) {
+    else if (media && name == "items" && !query_value(query, "ParentId").empty()) {
         /* a library's titles, or a count (Limit=0) of its episodes or files */
         const std::string types = query_value(query, "IncludeItemTypes");
         name = "items_parent_" + query_value(query, "ParentId") +
@@ -162,7 +166,7 @@ std::string MockTransport::file_for(const std::string &url)
                 : types == "BoxSet" ? "_boxset"
                 : !query_value(query, "IsFolder").empty() ? "_files"
                                                           : "");
-    } else if (service == "jellyfin" && name == "items" && query_value(query, "IncludeItemTypes") == "Movie,Series")
+    } else if (media && name == "items" && query_value(query, "IncludeItemTypes") == "Movie,Series")
         name = "items_index";   /* every film and series (Jelly5's links) */
     if (service == "seerr" && name == "issue") {   /* Seerr's default filter is "open" */
         const std::string f = query_value(query, "filter");

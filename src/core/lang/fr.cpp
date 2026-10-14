@@ -345,6 +345,7 @@ const Text kTexts[] = {
     {AdvSubText, "Sous-titres (%s) convertis : une piste SRT est la plus sûre."},
     {AdvBitrate, "Débit au-dessus de la limite du client : baisse la qualité maximale dans le lecteur, ou relève la limite de l'utilisateur dans Jellyfin."},
     {AdvGeneric, "Jellyfin n'a pas pu lire le fichier directement : essaie un autre client, ou relance l'analyse du média."},
+    {AdvNoHardwareEmby, "Transcodage par le processeur : l'accélération matérielle d'Emby (Paramètres › Transcodage, avec Emby Premiere) soulagerait le serveur."},
     {AdvNoHardware, "Transcodage par le processeur : activer l'accélération matérielle dans Jellyfin (Lecture › Transcodage) soulagerait le serveur."},
     {AdvSlow, "Le serveur ne suit pas : baisse la qualité dans le lecteur, ou évite ce qui force le transcodage (voir ci-dessous)."},
     {RadarrOff, "Radarr est désactivé dans la configuration."},

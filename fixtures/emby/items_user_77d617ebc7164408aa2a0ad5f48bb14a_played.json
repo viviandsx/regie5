@@ -1,0 +1,74 @@
+{
+ "Items": [
+  {
+   "Name": "Episode 1",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "17",
+   "RunTimeTicks": 150230000,
+   "IndexNumber": 1,
+   "ParentIndexNumber": 1,
+   "IsFolder": false,
+   "Type": "Episode",
+   "UserData": {
+    "PlaybackPositionTicks": 0,
+    "PlayCount": 0,
+    "IsFavorite": false,
+    "LastPlayedDate": "2025-04-10T20:00:00.0000000Z",
+    "Played": true
+   },
+   "SeriesName": "Caminandes",
+   "SeriesId": "15",
+   "SeasonId": "16",
+   "SeriesPrimaryImageTag": "096d83299de99a3c368dcae9fdf946ec_639276043867703720",
+   "SeasonName": "Season 1",
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Episode 2",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "18",
+   "RunTimeTicks": 150230000,
+   "IndexNumber": 2,
+   "ParentIndexNumber": 1,
+   "IsFolder": false,
+   "Type": "Episode",
+   "UserData": {
+    "PlaybackPositionTicks": 0,
+    "PlayCount": 0,
+    "IsFavorite": false,
+    "LastPlayedDate": "2025-04-10T20:00:00.0000000Z",
+    "Played": true
+   },
+   "SeriesName": "Caminandes",
+   "SeriesId": "15",
+   "SeasonId": "16",
+   "SeriesPrimaryImageTag": "096d83299de99a3c368dcae9fdf946ec_639276043867703720",
+   "SeasonName": "Season 1",
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Episode 3",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "19",
+   "RunTimeTicks": 150230000,
+   "IndexNumber": 3,
+   "ParentIndexNumber": 1,
+   "IsFolder": false,
+   "Type": "Episode",
+   "UserData": {
+    "PlaybackPositionTicks": 0,
+    "PlayCount": 0,
+    "IsFavorite": false,
+    "LastPlayedDate": "2025-04-10T20:00:00.0000000Z",
+    "Played": true
+   },
+   "SeriesName": "Caminandes",
+   "SeriesId": "15",
+   "SeasonId": "16",
+   "SeriesPrimaryImageTag": "096d83299de99a3c368dcae9fdf946ec_639276043867703720",
+   "SeasonName": "Season 1",
+   "MediaType": "Video"
+  }
+ ],
+ "TotalRecordCount": 3
+}

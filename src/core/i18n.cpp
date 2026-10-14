@@ -89,6 +89,7 @@ void set_lang(const Language &l)
 }
 
 const char *media_server() { return s_emby ? "Emby" : "Jellyfin"; }
+bool emby() { return s_emby; }
 
 void set_emby(bool emby)
 {

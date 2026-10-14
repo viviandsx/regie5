@@ -22,6 +22,7 @@
 #include "ui/screen.h"
 
 #include <map>
+#include <set>
 #include <memory>
 #include <string>
 #include <vector>
@@ -58,6 +59,7 @@ private:
     void rebuild();
     std::string request_title(const model::Request &r);
     std::string user_name(const std::string &id) const;
+    void ask_users();
     void ask_items();
 
     Context &m_ctx;
@@ -71,6 +73,10 @@ private:
     Load<std::vector<model::ActivityEntry>> m_activity;
     Load<std::vector<model::JellyfinUser>> m_users;
     std::map<std::string, model::JellyfinItem> m_items;   /* named by the activity log */
+    /* Emby: users the log names by a number /Users does not give, asked one
+     * by one (each asked once), id -> name. */
+    std::map<std::string, std::string> m_user_names;
+    std::set<std::string> m_users_asked;
     bool m_items_asked = false;
     std::map<int, Load<model::MediaDetail>> m_details;   /* Seerr titles, by request */
     std::vector<Event> m_events;                          /* all, newest first */

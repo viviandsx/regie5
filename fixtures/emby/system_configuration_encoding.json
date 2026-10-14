@@ -1,0 +1,19 @@
+{
+ "EncodingThreadCount": -1,
+ "ExtractionThreadCount": 1,
+ "DownMixAudioBoost": 2,
+ "EnableThrottling": false,
+ "ThrottleBufferSize": 120,
+ "ThrottleHysteresis": 8,
+ "ThrottlingMethod": "ByStreamBufferSize",
+ "H264Crf": 23,
+ "EnableHardwareEncoding": true,
+ "EnableSubtitleExtraction": true,
+ "EnableOnTheFlyAttachmentExtraction": true,
+ "CodecConfigurations": [],
+ "HardwareAccelerationMode": 1,
+ "EnableHardwareToneMapping": false,
+ "EnableSoftwareToneMapping": false,
+ "TranscodingMaxWidth": 0,
+ "EnableHevcEncoding": false
+}

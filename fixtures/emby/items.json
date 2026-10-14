@@ -1,0 +1,138 @@
+{
+ "Items": [
+  {
+   "Name": "Episode 3",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "19",
+   "DateCreated": "2026-10-14T19:49:07.0000000Z",
+   "RunTimeTicks": 150230000,
+   "IndexNumber": 3,
+   "ParentIndexNumber": 1,
+   "IsFolder": false,
+   "Type": "Episode",
+   "ParentBackdropItemId": "15",
+   "ParentBackdropImageTags": [
+    "aa4bbe117a4f89c18545d3e203db60b2_639276043868273608"
+   ],
+   "SeriesName": "Caminandes",
+   "SeriesId": "15",
+   "SeasonId": "16",
+   "SeriesPrimaryImageTag": "096d83299de99a3c368dcae9fdf946ec_639276043867703720",
+   "SeasonName": "Season 1",
+   "ImageTags": {},
+   "BackdropImageTags": [],
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Episode 2",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "18",
+   "DateCreated": "2026-10-14T19:49:05.0000000Z",
+   "RunTimeTicks": 150230000,
+   "IndexNumber": 2,
+   "ParentIndexNumber": 1,
+   "IsFolder": false,
+   "Type": "Episode",
+   "ParentBackdropItemId": "15",
+   "ParentBackdropImageTags": [
+    "aa4bbe117a4f89c18545d3e203db60b2_639276043868273608"
+   ],
+   "SeriesName": "Caminandes",
+   "SeriesId": "15",
+   "SeasonId": "16",
+   "SeriesPrimaryImageTag": "096d83299de99a3c368dcae9fdf946ec_639276043867703720",
+   "SeasonName": "Season 1",
+   "ImageTags": {},
+   "BackdropImageTags": [],
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Episode 1",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "17",
+   "DateCreated": "2026-10-14T19:49:03.0000000Z",
+   "RunTimeTicks": 150230000,
+   "IndexNumber": 1,
+   "ParentIndexNumber": 1,
+   "IsFolder": false,
+   "Type": "Episode",
+   "ParentBackdropItemId": "15",
+   "ParentBackdropImageTags": [
+    "aa4bbe117a4f89c18545d3e203db60b2_639276043868273608"
+   ],
+   "SeriesName": "Caminandes",
+   "SeriesId": "15",
+   "SeasonId": "16",
+   "SeriesPrimaryImageTag": "096d83299de99a3c368dcae9fdf946ec_639276043867703720",
+   "SeasonName": "Season 1",
+   "ImageTags": {},
+   "BackdropImageTags": [],
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Tears of Steel",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "14",
+   "DateCreated": "2026-10-14T19:49:00.0000000Z",
+   "RunTimeTicks": 200230000,
+   "IsFolder": false,
+   "Type": "Movie",
+   "ImageTags": {
+    "Primary": "76de0fa5bc6e888d13f907ac5dd39ce6_639276043866550161"
+   },
+   "BackdropImageTags": [
+    "1a928cf8533ac885a441cde4cb532d13_639276043867116809"
+   ],
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Sintel",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "11",
+   "DateCreated": "2026-10-14T19:47:35.0000000Z",
+   "RunTimeTicks": 200230000,
+   "IsFolder": false,
+   "Type": "Movie",
+   "ImageTags": {
+    "Primary": "571fdab54a8436dc3f05158c5245ddef_639276043865450125"
+   },
+   "BackdropImageTags": [
+    "b698c8e69185713fcf6ec034853b1f3e_639276043866026182"
+   ],
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Elephants Dream",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "12",
+   "DateCreated": "2026-10-14T19:47:31.0000000Z",
+   "RunTimeTicks": 200230000,
+   "IsFolder": false,
+   "Type": "Movie",
+   "ImageTags": {
+    "Primary": "701c6ed99df4e943adb121696e089441_639276043864354769"
+   },
+   "BackdropImageTags": [
+    "1110514ebf45f03a0485ca9f6aa38bba_639276043864888667"
+   ],
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Big Buck Bunny",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "13",
+   "DateCreated": "2026-10-14T19:47:30.0000000Z",
+   "RunTimeTicks": 200230000,
+   "IsFolder": false,
+   "Type": "Movie",
+   "ImageTags": {
+    "Primary": "382be87e65bae479fdd26c445e549801_639276043863094679"
+   },
+   "BackdropImageTags": [
+    "bd389e90fd01df2add57990f01ea9f13_639276043863776943"
+   ],
+   "MediaType": "Video"
+  }
+ ],
+ "TotalRecordCount": 7
+}

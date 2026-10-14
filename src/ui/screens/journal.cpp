@@ -120,6 +120,7 @@ void JournalView::load(bool force)
             if (alive.expired())
                 return;
             m_users.take(std::move(r), platform::now());
+            ask_users();
             rebuild();
         });
     }
@@ -132,6 +133,7 @@ void JournalView::load(bool force)
             m_activity.take(std::move(r), platform::now());
             m_items_asked = false;
             ask_items();
+            ask_users();
             rebuild();
         });
     }
@@ -161,13 +163,39 @@ void JournalView::ask_items()
     });
 }
 
+/* Emby's log names users by an id of its own: those /Users did not give are
+ * asked for one by one, once. */
+void JournalView::ask_users()
+{
+    if (!m_activity.ready() || !m_users.ready() || !m_ctx.services)
+        return;
+    std::weak_ptr<bool> alive = m_alive;
+    for (const auto &e : m_activity.value) {
+        if (e.user_id.empty() || m_users_asked.size() >= (size_t)kMaxItemIds || !m_users_asked.insert(e.user_id).second)
+            continue;
+        bool known = false;
+        for (const auto &u : m_users.value)
+            known = known || u.id == e.user_id;
+        if (known)
+            continue;
+        const std::string id = e.user_id;
+        m_ctx.services->user(id, [this, alive, id](api::Result<model::JellyfinUser> r) {
+            if (alive.expired() || !r.ok())
+                return;
+            m_user_names[id] = r.value.name;
+            rebuild();
+        });
+    }
+}
+
 std::string JournalView::user_name(const std::string &id) const
 {
     if (m_users.ready())
         for (const auto &u : m_users.value)
             if (u.id == id)
                 return u.name;
-    return "?";
+    auto f = m_user_names.find(id);
+    return f != m_user_names.end() ? f->second : "?";
 }
 
 /* A request's title, from Seerr's details (asked for once per media). */

@@ -346,6 +346,7 @@ const Text kTexts[] = {
     {AdvSubText, "Subtitles (%s) converted: an SRT track is the safest."},
     {AdvBitrate, "Bitrate over the client's limit: lower the maximum quality in the player, or raise the user's limit in Jellyfin."},
     {AdvGeneric, "Jellyfin could not play the file directly: try another client, or analyse the media again."},
+    {AdvNoHardwareEmby, "Transcoding on the CPU: Emby's hardware acceleration (Settings › Transcoding, with Emby Premiere) would ease the server."},
     {AdvNoHardware, "Transcoding on the CPU: turning on hardware acceleration in Jellyfin (Playback › Transcoding) would ease the server."},
     {AdvSlow, "The server is falling behind: lower the quality in the player, or avoid what forces the transcode (below)."},
     {RadarrOff, "Radarr is turned off in the configuration."},

@@ -1,0 +1,26 @@
+[
+ {
+  "Name": "Films",
+  "Locations": [
+   "/media/movies"
+  ],
+  "CollectionType": "movies",
+  "ItemId": "3",
+  "Id": "3",
+  "Guid": "7226620988d24fc9af9f13909664f317",
+  "PrimaryImageItemId": "3",
+  "PrimaryImageTag": "42cfad4dc43a0b8603de4265532dff85_639276043887509758"
+ },
+ {
+  "Name": "Séries",
+  "Locations": [
+   "/media/shows"
+  ],
+  "CollectionType": "tvshows",
+  "ItemId": "5",
+  "Id": "5",
+  "Guid": "72e83ead23dc4641a304de9feab0ed4a",
+  "PrimaryImageItemId": "5",
+  "PrimaryImageTag": "42cfad4dc43a0b8603de4265532dff85_639276043887521132"
+ }
+]

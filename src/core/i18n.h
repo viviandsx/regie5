@@ -348,6 +348,7 @@ enum S {
     AdvBitrate,
     AdvGeneric,
     AdvNoHardware,
+    AdvNoHardwareEmby,
     AdvSlow,
     RadarrOff,
     SeContinuing,
@@ -507,5 +508,6 @@ const char *tr(S key);
 void set_emby(bool emby);
 /* "Jellyfin", or "Emby" after set_emby(true): the media server's name. */
 const char *media_server();
+bool emby();
 
 } // namespace i18n

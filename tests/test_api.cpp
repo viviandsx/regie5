@@ -476,6 +476,92 @@ TEST(services_on_mock)
     CHECK_EQ(q.value.size(), (size_t)3);
 }
 
+TEST(emby_on_its_fixtures)
+{
+    /* fixtures/emby/: a test Emby 4.10 (scripts/make-emby-fixtures.py), through
+     * the same calls as Jellyfin's. */
+    api::MockTransport mock(REGIE5_FIXTURES, 0, "");
+    http::Pool pool(mock, 2, nullptr);
+    const config::Config cfg = config::mock("", false, true);
+    CHECK(cfg.emby());
+    api::Services s(cfg, pool, "fr");
+    CHECK(s.auth_header(config::Jellyfin).find("X-Emby-Token") != std::string::npos);
+    CHECK(s.auth_header(config::Jellyfin).find("MediaBrowser") == std::string::npos);
+
+    api::Result<std::string> version;
+    s.test(config::Jellyfin, [&](api::Result<std::string> r) { version = r; });
+    api::Result<std::vector<model::Session>> sessions;
+    s.sessions([&](api::Result<std::vector<model::Session>> r) { sessions = r; });
+    api::Result<std::vector<model::ActivityEntry>> log;
+    s.activity(0, [&](api::Result<std::vector<model::ActivityEntry>> r) { log = r; });
+    api::Result<model::JellyfinUser> numbered;
+    s.user("2", [&](api::Result<model::JellyfinUser> r) { numbered = r; });
+    api::Result<std::vector<model::UserItem>> lea;
+    s.user_items("77d617ebc7164408aa2a0ad5f48bb14a", [&](api::Result<std::vector<model::UserItem>> r) { lea = r; });
+    api::Result<std::vector<model::RecentItem>> recent;
+    s.recent([&](api::Result<std::vector<model::RecentItem>> r) { recent = r; });
+    api::Result<model::EncodingInfo> enc;
+    s.encoding([&](api::Result<model::EncodingInfo> r) { enc = r; });
+    api::Result<std::vector<model::JellyfinLibrary>> libs;
+    s.libraries([&](api::Result<std::vector<model::JellyfinLibrary>> r) { libs = r; });
+    api::Result<std::vector<model::Task>> tasks;
+    s.tasks([&](api::Result<std::vector<model::Task>> r) { tasks = r; });
+    drain(pool);
+    drain(pool);   /* user_items asks twice on Emby: the items, then the watched episodes */
+
+    CHECK(version.ok());
+    CHECK_EQ(version.value, std::string("4.10.1.0"));
+    CHECK(sessions.ok());
+    CHECK_EQ(sessions.value.size(), (size_t)1);
+    if (!sessions.value.empty()) {
+        const model::Session &p = sessions.value[0];
+        CHECK_EQ(p.user, std::string("Lea"));
+        CHECK_EQ(p.item_name, std::string("Tears of Steel"));
+        CHECK(p.method == model::Session::Transcode);
+        CHECK(!p.video_direct);
+        CHECK_EQ(p.video_codec, std::string("h264"));
+        CHECK_EQ(p.hw_accel, std::string("none"));   /* every step of Emby's pipeline in software */
+        CHECK(p.completion > 0);
+    }
+    CHECK(log.ok());
+    bool played = false, signed_in = false;
+    for (const auto &e : log.value) {
+        played |= e.type == "VideoPlayback" && !e.item_id.empty();
+        signed_in |= e.type == "AuthenticationSucceeded";
+        CHECK(e.type.find('.') == std::string::npos || e.type == "user.passwordchanged" || e.type == "user.policyupdated");
+    }
+    CHECK(played && signed_in);
+    CHECK(numbered.ok());
+    CHECK_EQ(numbered.value.name, std::string("Lea"));
+    CHECK(lea.ok());
+    CHECK_EQ(lea.value.size(), (size_t)5);
+    CHECK(std::count_if(lea.value.begin(), lea.value.end(), [](const model::UserItem &i) { return i.series; }) == 1);
+    for (const auto &i : lea.value) {
+        if (i.series) {   /* dated from its latest watched episode (Emby dates no series) */
+            CHECK(i.unplayed == 0);
+            CHECK(i.last_played > 0);
+        }
+        if (i.tmdb_id == 45745)   /* Sintel, watched in March 2025 */
+            CHECK(i.played && i.last_played > 0 && i.last_played < 1745000000);
+    }
+    CHECK(recent.ok());
+    CHECK_EQ(recent.value.size(), (size_t)5);   /* four films, and the series' three episodes folded */
+    CHECK(enc.ok());
+    CHECK(enc.value.hw_accel.empty());   /* on (mode 1): which method, Emby does not say */
+    CHECK(libs.ok());
+    CHECK_EQ(libs.value.size(), (size_t)2);
+    CHECK(tasks.ok() && !tasks.value.empty());
+
+    /* Only Emby is asked for its users' last played dates. */
+    CHECK(jellyfin::user_items_path("u", true).find("UserDataLastPlayedDate") != std::string::npos);
+    CHECK(jellyfin::user_items_path("u").find("UserDataLastPlayedDate") == std::string::npos);
+    CHECK_EQ(api::MockTransport::file_for("http://emby.mock" + jellyfin::played_episodes_path("u7")),
+             std::string("emby/items_user_u7_played.json"));
+    model::EncodingInfo off;
+    CHECK(jellyfin::parse_encoding(R"({"HardwareAccelerationMode": 0})", &off));
+    CHECK_EQ(off.hw_accel, std::string("none"));
+}
+
 TEST(services_behind_a_reverse_proxy)
 {
     /* Sub-paths, with or without a final slash, one or two levels deep (tested against nginx). */

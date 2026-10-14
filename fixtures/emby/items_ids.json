@@ -1,0 +1,21 @@
+{
+ "Items": [
+  {
+   "Name": "Tears of Steel",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "14",
+   "RunTimeTicks": 200230000,
+   "ProductionYear": 2012,
+   "IsFolder": false,
+   "Type": "Movie",
+   "ImageTags": {
+    "Primary": "76de0fa5bc6e888d13f907ac5dd39ce6_639276043866550161"
+   },
+   "BackdropImageTags": [
+    "1a928cf8533ac885a441cde4cb532d13_639276043867116809"
+   ],
+   "MediaType": "Video"
+  }
+ ],
+ "TotalRecordCount": 1
+}

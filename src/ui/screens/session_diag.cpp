@@ -63,7 +63,7 @@ std::string advice_text(diagnosis::Advice a, const model::Session &s)
     case diagnosis::SubText: return fmt::f(i18n::tr(i18n::AdvSubText), sub ? fmt::codec(sub->codec).c_str() : "?");
     case diagnosis::Bitrate: return i18n::tr(i18n::AdvBitrate);
     case diagnosis::Generic: return i18n::tr(i18n::AdvGeneric);
-    case diagnosis::NoHardware: return i18n::tr(i18n::AdvNoHardware);
+    case diagnosis::NoHardware: return i18n::tr(i18n::emby() ? i18n::AdvNoHardwareEmby : i18n::AdvNoHardware);
     case diagnosis::Slow: return i18n::tr(i18n::AdvSlow);
     }
     return {};

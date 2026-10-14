@@ -7,6 +7,7 @@
 #include "api/json.h"
 #include "core/libraries.h"
 
+#include <algorithm>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
@@ -41,10 +42,37 @@ std::string activity_path(time_t since, int limit)
 std::string users_path() { return "/Users"; }
 std::string encoding_path() { return "/System/Configuration/encoding"; }
 
-std::string user_items_path(const std::string &user_id)
+std::string user_items_path(const std::string &user_id, bool emby)
+{
+    return "/Items?userId=" + user_id + "&Recursive=true&IncludeItemTypes=Movie,Series&Fields=ProviderIds" +
+           (emby ? ",UserDataLastPlayedDate" : "") + "&EnableUserData=true&EnableImages=false";
+}
+
+std::string user_path(const std::string &user_id) { return "/Users/" + user_id; }
+
+std::string played_episodes_path(const std::string &user_id)
 {
     return "/Items?userId=" + user_id +
-           "&Recursive=true&IncludeItemTypes=Movie,Series&Fields=ProviderIds&EnableUserData=true&EnableImages=false";
+           "&Recursive=true&IncludeItemTypes=Episode&IsPlayed=true&Fields=UserDataLastPlayedDate&EnableUserData=true"
+           "&EnableImages=false";
+}
+
+bool parse_played_episodes(const std::string &body, std::map<std::string, time_t> *latest)
+{
+    json::Doc d(body);
+    const cJSON *items = json::get(d.root(), "Items");
+    if (!cJSON_IsArray(items))
+        return false;
+    latest->clear();
+    const cJSON *it;
+    cJSON_ArrayForEach(it, items)
+    {
+        const std::string series = json::str(it, "SeriesId");
+        const time_t when = json::parse_time(json::str(json::get(it, "UserData"), "LastPlayedDate"));
+        if (!series.empty() && when > 0)
+            (*latest)[series] = std::max((*latest)[series], when);
+    }
+    return true;
 }
 
 std::string index_path()
@@ -139,6 +167,9 @@ bool parse_encoding(const std::string &body, model::EncodingInfo *out)
     if (!cJSON_IsObject(d.root()))
         return false;
     out->hw_accel = json::str(d.root(), "HardwareAccelerationType");
+    const cJSON *emby_mode = json::get(d.root(), "HardwareAccelerationMode");   /* Emby: 0 off, else on */
+    if (out->hw_accel.empty() && cJSON_IsNumber(emby_mode) && emby_mode->valueint == 0)
+        out->hw_accel = "none";
     out->throttling = json::boolean(d.root(), "EnableThrottling");
     out->throttle_delay = json::integer(d.root(), "ThrottleDelaySeconds");
     return true;
@@ -253,6 +284,14 @@ bool parse_sessions(const std::string &body, std::vector<model::Session> *out)
             s.audio_channels = json::integer(ti, "AudioChannels");
             s.framerate = json::num(ti, "Framerate");
             s.hw_accel = json::str(ti, "HardwareAccelerationType");
+            const cJSON *pipeline = json::get(ti, "VideoPipelineInfo");   /* Emby */
+            if (s.hw_accel.empty() && cJSON_IsArray(pipeline)) {
+                const cJSON *step;
+                cJSON_ArrayForEach(step, pipeline) if (json::boolean(step, "IsHardwareContext") && s.hw_accel.empty())
+                    s.hw_accel = json::str(step, "HardwareContextName", "hardware");
+                if (s.hw_accel.empty() && !s.video_direct)
+                    s.hw_accel = "none";
+            }
             const cJSON *done = json::get(ti, "CompletionPercentage");
             s.completion = cJSON_IsNumber(done) ? done->valuedouble : -1;
             const cJSON *reasons = json::get(ti, "TranscodeReasons");
@@ -378,6 +417,15 @@ bool parse_activity(const std::string &body, std::vector<model::ActivityEntry> *
         model::ActivityEntry e;
         e.when = json::parse_time(json::str(it, "Date"));
         e.type = json::str(it, "Type");
+        static const struct {
+            const char *emby, *jellyfin;
+        } kEmby[] = {{"playback.start", "VideoPlayback"},
+                     {"playback.stop", "VideoPlaybackStopped"},
+                     {"user.authenticated", "AuthenticationSucceeded"},
+                     {"user.created", "UserCreated"}};
+        for (const auto &k : kEmby)
+            if (e.type == k.emby)
+                e.type = k.jellyfin;
         e.user_id = json::str(it, "UserId");
         e.item_id = json::str(it, "ItemId");
         if (e.when > 0 && !e.type.empty())
@@ -385,6 +433,22 @@ bool parse_activity(const std::string &body, std::vector<model::ActivityEntry> *
     }
     return true;
 }
+
+namespace {
+
+model::JellyfinUser user_of(const cJSON *it)
+{
+    model::JellyfinUser u;
+    u.id = json::str(it, "Id");
+    u.name = json::str(it, "Name");
+    const cJSON *policy = json::get(it, "Policy");
+    u.disabled = json::boolean(policy, "IsDisabled");
+    u.admin = json::boolean(policy, "IsAdministrator");
+    u.last_activity = json::parse_time(json::str(it, "LastActivityDate"));
+    return u;
+}
+
+} // namespace
 
 bool parse_users(const std::string &body, std::vector<model::JellyfinUser> *out)
 {
@@ -395,17 +459,20 @@ bool parse_users(const std::string &body, std::vector<model::JellyfinUser> *out)
     const cJSON *it;
     cJSON_ArrayForEach(it, d.root())
     {
-        model::JellyfinUser u;
-        u.id = json::str(it, "Id");
-        u.name = json::str(it, "Name");
-        const cJSON *policy = json::get(it, "Policy");
-        u.disabled = json::boolean(policy, "IsDisabled");
-        u.admin = json::boolean(policy, "IsAdministrator");
-        u.last_activity = json::parse_time(json::str(it, "LastActivityDate"));
+        model::JellyfinUser u = user_of(it);
         if (!u.id.empty())
             out->push_back(std::move(u));
     }
     return true;
+}
+
+bool parse_user(const std::string &body, model::JellyfinUser *out)
+{
+    json::Doc d(body);
+    if (!cJSON_IsObject(d.root()))
+        return false;
+    *out = user_of(d.root());
+    return !out->id.empty();
 }
 
 bool parse_items(const std::string &body, std::vector<model::JellyfinItem> *out)

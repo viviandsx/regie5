@@ -1,0 +1,16 @@
+{
+ "Items": [
+  {
+   "Name": "Caminandes",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "15",
+   "ProviderIds": {
+    "Tvdb": "276536"
+   },
+   "IsFolder": true,
+   "Type": "Series",
+   "AirDays": []
+  }
+ ],
+ "TotalRecordCount": 1
+}

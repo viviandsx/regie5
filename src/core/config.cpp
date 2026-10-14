@@ -155,7 +155,7 @@ Config mock(const std::string &off, bool multi, bool emby)
     for (int i = 0; i < ServiceCount; i++) {
         c.services[i].name = i == Jellyfin ? media_name(c.media) : service_name((Service)i);
         c.services[i].enabled = list.find(std::string(",") + service_key((Service)i) + ",") == std::string::npos;
-        c.services[i].url = std::string("http://") + service_key((Service)i) + ".mock";
+        c.services[i].url = std::string("http://") + (i == Jellyfin && emby ? "emby" : service_key((Service)i)) + ".mock";
         c.services[i].api_key = "mock";
     }
     if (multi) {

@@ -22,6 +22,8 @@
  *   REGIE5_MOCK_OLD=sonarr,jellyfin       their connection test answers a version
  *                                        older than Régie5's minimum (1.0.0)
  *   REGIE5_MOCK_OFF=jellyfin              off, as if "enabled": false
+ *   REGIE5_MOCK_EMBY=1                    Emby in Jellyfin's place: http://emby.mock,
+ *                                        answered from fixtures/emby/ (read by the shell)
  *   REGIE5_MOCK_MULTI=1                   a second Radarr, "Radarr 4K", under
  *                                        http://radarr.mock/radarr4k
  *                                        (both read by the shell, see config::mock)

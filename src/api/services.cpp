@@ -9,7 +9,9 @@
 #include "api/jellyfin.h"
 #include "api/seerr.h"
 
+#include <algorithm>
 #include <ctime>
+#include <map>
 #include <memory>
 
 namespace api {
@@ -226,8 +228,38 @@ void Services::movies(std::function<void(Result<std::vector<model::Movie>>)> don
 
 void Services::user_items(const std::string &user_id, std::function<void(Result<std::vector<model::UserItem>>)> done)
 {
-    call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::user_items_path(user_id),
-                                       jellyfin::parse_user_items, std::move(done));
+    using Items = Result<std::vector<model::UserItem>>;
+    if (!m_cfg.emby()) {
+        call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::user_items_path(user_id),
+                                           jellyfin::parse_user_items, std::move(done));
+        return;
+    }
+    /* Emby dates no series, even one watched to the end: its latest episode
+     * gives the date (else the cleanup would take it for long unwatched).
+     * Without that answer, nothing: no list on half the facts. */
+    call<std::vector<model::UserItem>>(
+        config::Jellyfin, "GET", jellyfin::user_items_path(user_id, true), jellyfin::parse_user_items,
+        [this, user_id, done](Items items) {
+            if (!items.ok())
+                return done(std::move(items));
+            auto shared = std::make_shared<Items>(std::move(items));
+            call<std::map<std::string, time_t>>(
+                config::Jellyfin, "GET", jellyfin::played_episodes_path(user_id), jellyfin::parse_played_episodes,
+                [shared, done](Result<std::map<std::string, time_t>> played) {
+                    if (!played.ok()) {
+                        Items failed;
+                        failed.error = played.error;
+                        failed.http_status = played.http_status;
+                        return done(std::move(failed));
+                    }
+                    for (auto &i : shared->value) {
+                        auto f = played.value.find(i.id);
+                        if (i.series && f != played.value.end())
+                            i.last_played = std::max(i.last_played, f->second);
+                    }
+                    done(std::move(*shared));
+                });
+        });
 }
 
 void Services::jellyfin_index(std::function<void(Result<std::vector<model::UserItem>>)> done)
@@ -319,6 +351,12 @@ void Services::library_count(const std::string &library_id, const std::string &t
 {
     call<int>(config::Jellyfin, "GET", jellyfin::library_count_path(library_id, type), jellyfin::parse_count,
               std::move(done));
+}
+
+void Services::user(const std::string &user_id, std::function<void(Result<model::JellyfinUser>)> done)
+{
+    call<model::JellyfinUser>(config::Jellyfin, "GET", jellyfin::user_path(user_id), jellyfin::parse_user,
+                              std::move(done));
 }
 
 void Services::users(std::function<void(Result<std::vector<model::JellyfinUser>>)> done)

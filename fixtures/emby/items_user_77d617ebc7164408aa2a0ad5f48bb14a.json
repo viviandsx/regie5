@@ -1,0 +1,102 @@
+{
+ "Items": [
+  {
+   "Name": "Big Buck Bunny",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "13",
+   "RunTimeTicks": 200230000,
+   "ProviderIds": {
+    "Tmdb": "10378",
+    "Imdb": "tt1254207"
+   },
+   "IsFolder": false,
+   "Type": "Movie",
+   "UserData": {
+    "PlaybackPositionTicks": 0,
+    "PlayCount": 0,
+    "IsFavorite": true,
+    "LastPlayedDate": "2026-10-14T19:49:57.0000000Z",
+    "Played": true
+   },
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Caminandes",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "15",
+   "ProviderIds": {
+    "Tvdb": "276536"
+   },
+   "IsFolder": true,
+   "Type": "Series",
+   "UserData": {
+    "UnplayedItemCount": 0,
+    "PlaybackPositionTicks": 0,
+    "PlayCount": 0,
+    "IsFavorite": false,
+    "Played": true
+   },
+   "AirDays": []
+  },
+  {
+   "Name": "Elephants Dream",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "12",
+   "RunTimeTicks": 200230000,
+   "ProviderIds": {
+    "Tmdb": "9761",
+    "Imdb": "tt0807840"
+   },
+   "IsFolder": false,
+   "Type": "Movie",
+   "UserData": {
+    "PlaybackPositionTicks": 0,
+    "PlayCount": 0,
+    "IsFavorite": false,
+    "Played": false
+   },
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Sintel",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "11",
+   "RunTimeTicks": 200230000,
+   "ProviderIds": {
+    "Tmdb": "45745",
+    "Imdb": "tt1727587"
+   },
+   "IsFolder": false,
+   "Type": "Movie",
+   "UserData": {
+    "PlaybackPositionTicks": 0,
+    "PlayCount": 0,
+    "IsFavorite": false,
+    "LastPlayedDate": "2025-03-01T12:00:00.0000000Z",
+    "Played": true
+   },
+   "MediaType": "Video"
+  },
+  {
+   "Name": "Tears of Steel",
+   "ServerId": "326653d918884deb9e93e168cda59656",
+   "Id": "14",
+   "RunTimeTicks": 200230000,
+   "ProviderIds": {
+    "Tmdb": "133701",
+    "Imdb": "tt2285752"
+   },
+   "IsFolder": false,
+   "Type": "Movie",
+   "UserData": {
+    "PlaybackPositionTicks": 0,
+    "PlayCount": 0,
+    "IsFavorite": false,
+    "LastPlayedDate": "2026-10-14T20:04:16.0000000Z",
+    "Played": true
+   },
+   "MediaType": "Video"
+  }
+ ],
+ "TotalRecordCount": 5
+}

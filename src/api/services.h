@@ -96,6 +96,8 @@ public:
     void recent_requests(std::function<void(Result<model::RequestPage>)> done);
     void activity(time_t since, std::function<void(Result<std::vector<model::ActivityEntry>>)> done);
     void users(std::function<void(Result<std::vector<model::JellyfinUser>>)> done);
+    /* One user by id: Emby's activity log names users by a number /Users lacks. */
+    void user(const std::string &user_id, std::function<void(Result<model::JellyfinUser>)> done);
     /* The cleanup. One user's films and series, with what they watched. */
     void user_items(const std::string &user_id, std::function<void(Result<std::vector<model::UserItem>>)> done);
     /* DELETE, files included, kept out of import lists. They change things on the server. */
