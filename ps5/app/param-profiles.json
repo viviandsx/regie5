@@ -1,5 +1,5 @@
 {
-  "about": "param.json profiles tried on a console (scripts/check-param.py). Only the fields under 'fields' are compared; the title's identity and version are not. A release is built only from a profile that starts, and lets the app listen (Settings > From your phone). Add a profile here only after a console test of all three: the tile's area, the start, the phone page.",
+  "about": "param.json profiles tried on a console (scripts/check-param.py). Only the fields under 'fields' are compared; the title's identity and version are not. A release is built only from a profile that starts, and lets the app listen (Settings > From your phone). Add a profile here only after a console test of all three: the tile's area, the start, the phone page. The Media area (65536) never let the app listen on port 8085 (app-10d, 0.3.0, app-15 a2-a4) and does not hold 120 Hz in 4K: releases stay in Games unless a later console test shows otherwise.",
   "profiles": [
     {
       "name": "games-0.2.0",
@@ -35,12 +35,12 @@
         "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
       },
       "console": {
-        "seen": "app-14, firmware 13.60, 14 October 2026",
+        "seen": "app-14, 0.3.1, app-15 (a0, stress B1 and B2), firmware 13.60, 14 October 2026",
         "area": "Games",
         "starts": true,
         "listens": true,
         "hz120": true,
-        "note": "0.2.0's profile with attribute3 0x80040 added (0x100000 kept)"
+        "note": "0.2.0's profile with attribute3 0x80040 added (0x100000 kept). 120 Hz held (app-15, 10 min in 4K, 10 min in 1440p): 120 frames a second while drawing, no gap over 17.5 ms after the first tour, heap flat"
       }
     },
     {
@@ -61,7 +61,7 @@
         "starts": true,
         "listens": false,
         "hz120": true,
-        "note": "listening refused (\"permission denied\"): the phone page does not open; released in 0.3.0 by mistake"
+        "note": "listening refused (\"permission denied\"): the phone page does not open; released in 0.3.0 by mistake. At 120 Hz in 4K, about 90 frames a second (app-10d): the Media area, see app-15 a2-a4"
       }
     },
     {
@@ -76,8 +76,14 @@
         "kernel": {"cpuPageTableSize": 268435456, "gpuPageTableSize": 268435456},
         "gameIntent": null
       },
-      "console": {"seen": "app-10, 13 October 2026", "area": "Media", "starts": false, "listens": null, "hz120": null,
-                  "note": "\"cannot start the application\""}
+      "console": {
+        "seen": "app-10, 13 October 2026",
+        "area": "Media",
+        "starts": false,
+        "listens": null,
+        "hz120": null,
+        "note": "\"cannot start the application\""
+      }
     },
     {
       "name": "media-old-attributes-app-10c",
@@ -91,8 +97,98 @@
         "kernel": {"cpuPageTableSize": 268435456, "gpuPageTableSize": 268435456},
         "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
       },
-      "console": {"seen": "app-10c, 13 October 2026", "area": "Media", "starts": false, "listens": null, "hz120": null,
-                  "note": "\"cannot start the application\""}
+      "console": {
+        "seen": "app-10c, 13 October 2026",
+        "area": "Media",
+        "starts": false,
+        "listens": null,
+        "hz120": null,
+        "note": "\"cannot start the application\""
+      }
+    },
+    {
+      "name": "media-kernel-app-15-a1",
+      "fields": {
+        "applicationCategoryType": 65536,
+        "contentBadgeType": 1,
+        "attribute": 0,
+        "attribute2": 0,
+        "attribute3": 524352,
+        "amm": null,
+        "kernel": {"cpuPageTableSize": 268435456, "gpuPageTableSize": 268435456},
+        "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
+      },
+      "console": {
+        "seen": "app-15 a1, firmware 13.60, 14 October 2026",
+        "area": "Media",
+        "starts": false,
+        "listens": null,
+        "hz120": null,
+        "note": "Jelly5's profile + the kernel block: does not start (no log line)"
+      }
+    },
+    {
+      "name": "media-amm-app-15-a2",
+      "fields": {
+        "applicationCategoryType": 65536,
+        "contentBadgeType": 1,
+        "attribute": 0,
+        "attribute2": 0,
+        "attribute3": 524352,
+        "amm": {"multimapVaRangeInGib": 512, "pagetableMemorySizeInMib": 256, "vaRangeInGib": 512},
+        "kernel": null,
+        "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
+      },
+      "console": {
+        "seen": "app-15 a2, firmware 13.60, 14 October 2026",
+        "area": "Media",
+        "starts": true,
+        "listens": false,
+        "hz120": true,
+        "note": "Jelly5's profile + the amm block. port 8085: bind refused (errno 13, permission denied), the phone page does not open; a port chosen by the system (bind on 0) was possible in the start-up probe. 120 Hz accepted but not held in 4K: 84 to 87 frames a second, over 1000 slow frames in half a minute"
+      }
+    },
+    {
+      "name": "media-attribute-app-15-a3",
+      "fields": {
+        "applicationCategoryType": 65536,
+        "contentBadgeType": 1,
+        "attribute": 1644167168,
+        "attribute2": 0,
+        "attribute3": 524352,
+        "amm": null,
+        "kernel": null,
+        "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
+      },
+      "console": {
+        "seen": "app-15 a3, firmware 13.60, 14 October 2026",
+        "area": "Media",
+        "starts": true,
+        "listens": false,
+        "hz120": true,
+        "note": "Jelly5's profile + attribute 0x62000000. port 8085: bind refused (errno 13, permission denied), the phone page does not open; a port chosen by the system (bind on 0) was possible in the start-up probe. 120 Hz accepted but not held in 4K: 84 to 87 frames a second, over 1000 slow frames in half a minute"
+      }
+    },
+    {
+      "name": "media-attribute3-app-15-a4",
+      "fields": {
+        "applicationCategoryType": 65536,
+        "contentBadgeType": 1,
+        "attribute": 0,
+        "attribute2": 0,
+        "attribute3": 1572928,
+        "amm": null,
+        "kernel": null,
+        "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
+      },
+      "console": {
+        "seen": "app-15 a4, firmware 13.60, 14 October 2026",
+        "area": "Media",
+        "starts": true,
+        "listens": false,
+        "hz120": true,
+        "note": "Jelly5's profile + bit 0x100000 in attribute3. port 8085: bind refused (errno 13, permission denied), the phone page does not open; a port chosen by the system (bind on 0) was possible in the start-up probe. 120 Hz accepted but not held in 4K: 84 to 87 frames a second, over 1000 slow frames in half a minute"
+      }
     }
   ]
 }
