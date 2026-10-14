@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 14 octobre 2026 (nuit) : 0.3.0 publiée (release `v0.3.0`, catalogue mis à jour par la PR automatique #251, fusionnée le 14 octobre à 00:01 UTC). Défaut : « Depuis le téléphone » cassé (`listen : permission denied`) par le `param.json` de Jelly5 ; avertissement « Known issue » ajouté par Vivian à la release. **0.3.1 publiée le 14 octobre au soir** (rangée Jeux, page du téléphone réparée, 120 Hz « expérimental » ; profil `games-hz120-0.3.1` vérifié sur la console). Ménage validé de bout en bout (Seerr a marqué la série supprimée). **0.3.2** : Multimédia + écoute, stress et rendu 1440p à 120 Hz (§ 2 septies). **Emby** demandé dans la première issue : étude faite, version à part. Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 14 octobre 2026 (nuit) : 0.3.0 publiée (release `v0.3.0`, catalogue mis à jour par la PR automatique #251, fusionnée le 14 octobre à 00:01 UTC). Défaut : « Depuis le téléphone » cassé (`listen : permission denied`) par le `param.json` de Jelly5 ; avertissement « Known issue » ajouté par Vivian à la release. **0.3.1 publiée le 14 octobre au soir** (rangée Jeux, page du téléphone réparée, 120 Hz « expérimental » ; profil `games-hz120-0.3.1` vérifié sur la console). Ménage validé de bout en bout (Seerr a marqué la série supprimée). **0.3.2 préparée le 14 octobre (nuit)** après les essais app-15 : Multimédia écarté (port 8085 refusé, 120 Hz non tenu), 120 Hz tenu en 4K pendant 10 min en Jeux → Auto à 120 Hz, fin de « expérimental », dates de sortie des films sur des lignes séparées ; zip `482f0a39…2504`, à tester sur la console puis à publier par Vivian (§ 2 septies). **Emby** (0.4.0) ensuite. Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -25,7 +25,7 @@ pour ce qui a été fait après la phase 0).
 | **7. Publication** | homebrew.page, version 0.2.0 | ✅ fait le 13 octobre 2026 : dépôt public, release `v0.2.0`, PR #244 fusionnée, Régie5 listé sur homebrew.page (§ 2 quinquies) |
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | ✅ publiée le 13 octobre 2026 (§ 2 sexies) ; page du téléphone cassée |
 | 9. Version 0.3.1 | correctif : page du téléphone (rangée Jeux), 120 Hz expérimental | ✅ publiée le 14 octobre 2026 (§ 2 septies) |
-| 10. Version 0.3.2 | Multimédia + page du téléphone, 120 Hz stable (1440p si besoin) | ⏸ plus tard (§ 2 septies, « 0.3.2 ») |
+| 10. Version 0.3.2 | 120 Hz par défaut (Auto), dates des films ; Multimédia écarté | 🧪 préparée le 14 octobre 2026, recette console et publication par Vivian (§ 2 septies, « 0.3.2 ») |
 | 11. Emby | demandé dans la première issue | 📝 étude faite, version à part (0.4.0) |
 
 Tests : **58** (`regie5_tests`, lancé par `ctest`), tous verts.
@@ -573,21 +573,62 @@ Ce qu'on sait : le 120 Hz ne demande que `attribute3 0x80040`, aussi en catégor
 (app-14). Le profil de Jelly5 (Multimédia) démarre mais n'écoute pas ; Multimédia avec nos
 anciens `attribute` / `amm` / `kernel` (app-10c) ne démarre pas.
 
-- [ ] **Série A' (rangée Multimédia)**, nouveau build sur le code 0.3.1 : partir du profil de
-      Jelly5 (Multimédia, qui démarre) et ajouter **un** élément de la 0.3.1 à la fois :
-      bloc `kernel`, bloc `amm`, `attribute 0x62000000`, bit `0x100000` d'`attribute3`, plus
-      la 0.3.1 elle-même en contrôle. 5 lancements de ~3 min : rangée, démarrage, page du
-      téléphone, 120 Hz (le journal dit `bind` / `listen`). Si une variante écoute en
-      Multimédia : profil de la 0.3.2. Sinon : on reste dans Jeux (rien ne presse).
-- [ ] **Série B (stress 120 Hz)** : 10 min en 4K avec le fichier `stress` (tour en boucle,
-      mémoire, GET seulement), puis 10 min en 1440p (`output-1440p`).
-- [ ] **Rendu 1440p à 120 Hz** si la série B montre des chutes sous 120 images/s en 4K :
-      `eglSetDisplayModePS5` en 2560 × 1440 quand le 120 Hz est demandé ; puis **Auto à
-      120 Hz** (repli 60 Hz si l'écran refuse) et fin de la mention « expérimental » si le
-      stress est propre.
-- [ ] README : retirer la ligne « Known issue in 0.3.0 ».
-- [ ] Nouveau profil dans `param-profiles.json` **après** l'essai console ; recette avec la
-      page du téléphone (`RELEASING.md`).
+- [x] **Série A' (rangée Multimédia)** — app-15, 14 octobre 2026 au soir (journal
+      `build/ps5/logs/console-20261014-203506.log`). Profil de Jelly5 + un élément de la 0.3.1 :
+
+      | essai | ajout | rangée | démarre | écoute (8085) | 120 Hz |
+      |---|---|---|---|---|---|
+      | a0 | (0.3.1 publiée, contrôle) | Jeux | oui | oui | accepté, **tenu** (120 images/s) |
+      | a1 | bloc `kernel` | Multimédia | **non** (aucune ligne de journal) | — | — |
+      | a2 | bloc `amm` | Multimédia | oui | **non** : `bind` refusé (errno 13) | accepté, **non tenu** (≈ 87 images/s) |
+      | a3 | `attribute 0x62000000` | Multimédia | oui | **non** : `bind` refusé | accepté, non tenu (≈ 86) |
+      | a4 | bit `0x100000` d'`attribute3` | Multimédia | oui | **non** : `bind` refusé | accepté, non tenu (≈ 84) |
+
+      Les cinq sont dans `ps5/app/param-profiles.json` (a1–a4 refusés par `check-param.py
+      --release`). **Rangée Multimédia : impossible avec la page du téléphone, sauf découverte
+      future.** Deux constats nouveaux : (1) en Multimédia, seul le **port 8085** est refusé ;
+      la sonde du démarrage a pu ouvrir **un port choisi par le système** (`bind` sur 0) dans
+      a2, a3 et a4 : une page du téléphone sur un port libre (le QR code porte déjà le port)
+      pourrait marcher en Multimédia, **jamais essayé** ; (2) en Multimédia, le 120 Hz est
+      accepté mais **pas tenu en 4K** (84 à 87 images/s, 1 200 à 1 900 « slow frames » en
+      25 à 36 s), alors que le même code tient 120 en Jeux : les 90 images/s d'app-10d
+      venaient de la rangée, pas de la 4K. Multimédia voudrait donc dire 60 Hz (ou 1440p à
+      essayer). Rien ne presse : on reste dans Jeux.
+- [x] **Série B (stress 120 Hz, rangée Jeux)** — 10 min chacun, sans toucher la manette, 8 tours
+      de tous les onglets, resté ouvert jusqu'au bout, aucune erreur du pilote, 0 échec
+      d'allocation.
+
+      | | B1 4K | B2 1440p |
+      |---|---|---|
+      | images/s quand l'app dessine | 120,3 | 120,2 |
+      | écart moyen entre images (tours 2 à 8) | 8,24 à 8,31 ms | 8,23 à 8,31 ms |
+      | pire écart (tours 2 à 8) | 15,3 ms | 14,7 ms |
+      | écarts > 17,5 ms (tours 2 à 8) | 0 | 0 |
+      | « gpu avg » (attente de l'écran comprise) | 8,1 ms | 8,2 ms |
+      | tas au début → à la fin | 19,9 → 22,8 Mio (plat dès 2 min, pic 32,6) | 16,4 → 19,9 Mio (plat dès 2 min, pic 29,8) |
+
+      Le 1er tour seul a des écarts (démarrage, jaquettes reçues). « gpu avg » ne sépare pas le
+      GPU de l'attente de l'image (ps5-opengl), donc on ne voit pas la marge gagnée en 1440p :
+      **la 4K tient, le rendu 1440p n'est pas utile** (on garde `output-1440p` pour mesurer).
+- [x] ~~Rendu 1440p à 120 Hz~~ : inutile (série B).
+- [x] **Décision 120 Hz** (proposée le 14 octobre, à confirmer par Vivian) : **Auto demande
+      120 Hz** (`refresh_asked(Auto)` = 120), repli 60 Hz si l'écran refuse ; libellé
+      « Auto » sans « (60 Hz) » ; mention « expérimental » retirée ; si l'écran refuse, la ligne
+      « Affichage » dit « Auto : l'écran reste à 60 Hz » en gris (en jaune seulement pour
+      120 Hz choisi à la main). README et notes : une TV qui ne prend le 120 Hz qu'en plus
+      basse définition peut recevoir cette définition : 60 Hz pour garder la 4K.
+- [x] **Fiche d'un film** (signalé par Vivian) : « Sorties : Au cinéma … · Sortie numérique … ·
+      Sortie physique … » coupé par « … » ; une ligne par date (« Au cinéma », « Sortie
+      numérique », « Sortie physique »), FR et EN. Fiches revues : la ligne « Qualité des
+      fichiers » d'une série passe sur deux lignes si besoin ; `list_scroll` réduit sa marge
+      quand la vue est basse (la saison sélectionnée sortait de la liste « Saisons »).
+- [x] README : ligne « Known issue in 0.3.0 » retirée, 120 Hz réécrit.
+- [x] Version `00.003.002` / `0.3.2`, profil `games-hz120-0.3.1` inchangé ; notes
+      `build/publish/release-notes-v0.3.2.md` ; recette `docs/RECETTE-0.3.2.md` (page du
+      téléphone, 120 Hz, fiches) ; zip `build/ps5/release-0.3.2/upload/PPSA99520.zip`
+      (`482f0a39c0547769fe778c6b139596c839949a0f0345cdf22e32b582d7b82504`) ; patches
+      `build/patches-10/`.
+- [ ] Vivian : patches, recette sur la console, commit, tag `v0.3.2`, release ; PR du catalogue.
 
 ### Emby (issue GitHub reçue le 14 octobre 2026) — étude, pas encore codé
 
@@ -597,7 +638,8 @@ serveur Emby de test en Docker sur le laptop (jamais le serveur de Vivian) et un
 test pour l'auteur de l'issue (zip joint à un commentaire, **jamais** en release : le catalogue
 publie toute release).
 
-**Hypothèses pour le plantage en 120 Hz** (aucun rapport dans les journaux ; aucune session
+**Hypothèses pour le plantage en 120 Hz** (**non reproduit** : 20 min de stress le 14 octobre
+au soir sans fermeture ; aucun rapport dans les journaux ; aucune session
 ne finit par une ligne de fermeture, car l'app est quittée par le bouton PS) : à 120 Hz en 4K
 le GPU met 9 à 17 ms par image (pire 39 ms) pour 8,33 ms disponibles ; ps5-opengl s'arrête
 par `_Exit` quand une image n'est pas confirmée dans son délai (« fail-stop »), ce qui ne
@@ -784,3 +826,4 @@ la Bibliothèque).
 | 14 oct. 2026 | 0.3.1 ouverte : page du téléphone cassée par le `param.json` de Jelly5. Sonde `bind`/`listen`, profils vérifiés (`param-profiles.json`, `check-param.py`), mode stress 120 Hz, 120 Hz « expérimental » ; build `app-12` et 7 variantes de `param.json`. |
 | 14 oct. 2026 | 0.3.1 rapide préparée : `param.json` de la 0.2.0 (Jeux, sans 120 Hz), 120 Hz retiré de Réglages et signalé s'il était gardé, README / INSTALL / notes / recette, zip et build `app-13`. Séries A et B d'`app-12` reportées en 0.3.2. |
 | 14 oct. 2026 | app-14 validé (Jeux, écoute, 120 Hz) ; **0.3.1 publiée** avec le 120 Hz expérimental. Seerr : série supprimée en statut 7 (`DELETED`), demande gardée : Ménage validé. Première issue : Emby (étude). Plan de la 0.3.2. |
+| 14 oct. 2026 | Essais app-15 : Multimédia sans écoute sur 8085 et sans 120 Hz tenu (5 profils dans `param-profiles.json`) ; stress 120 Hz propre en 4K et 1440p. 0.3.2 préparée : Auto à 120 Hz, dates des films, README, notes, recette, zip, `build/patches-10/`. |
