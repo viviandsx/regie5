@@ -478,6 +478,7 @@ enum S {
     DisplayNoTv120,
     DisplayNextStart,
     Display120Experimental,
+    Display120Unavailable,
     DisplayDesktop,
     Count
 };

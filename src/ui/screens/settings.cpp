@@ -308,10 +308,12 @@ Action SettingsScreen::input(const input::State &in)
         } else if (m_button == 1) {
             toggle_cleanup();
         } else if (m_button == 2) {   /* Auto → 60 Hz → 120 Hz → Auto; taken at the next start */
+            /* A build that cannot ask for 120 Hz (0.3.1) does not offer it. */
+            const bool can_120 = platform::display_mode().can_120;
             app_settings::Refresh &r = m_ctx.settings.refresh;
-            r = r == app_settings::Refresh::Auto  ? app_settings::Refresh::Hz60
-                : r == app_settings::Refresh::Hz60 ? app_settings::Refresh::Hz120
-                                                   : app_settings::Refresh::Auto;
+            r = r == app_settings::Refresh::Auto               ? app_settings::Refresh::Hz60
+                : r == app_settings::Refresh::Hz60 && can_120 ? app_settings::Refresh::Hz120
+                                                                : app_settings::Refresh::Auto;
             m_ctx.save_settings();
         } else {
             open_share();
@@ -458,12 +460,18 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
             line += std::string(" — ") + i18n::tr(i18n::DisplayDesktop);
         else if (dm.asked_hz > dm.hz)
             line += std::string(" — ") + i18n::tr(i18n::DisplayNoTv120);
-        if (dm.asked_hz != 0 && app_settings::refresh_asked(refresh) != dm.asked_hz)
-            line += std::string(" — ") + i18n::tr(i18n::DisplayNextStart);
-        /* 0.3.0: Régie5 may close by itself at 120 Hz, not reproduced yet. */
-        if (refresh == app_settings::Refresh::Hz120)
-            line += std::string(" — ") + i18n::tr(i18n::Display120Experimental);
-        const bool warn = dm.asked_hz > dm.hz;
+        /* 120 Hz chosen (kept from 0.3.0) in a build that cannot ask for it. */
+        const bool hz120_off = refresh == app_settings::Refresh::Hz120 && !dm.can_120;
+        if (hz120_off) {
+            line += std::string(" — ") + i18n::tr(i18n::Display120Unavailable);
+        } else {
+            if (dm.asked_hz != 0 && app_settings::refresh_asked(refresh) != dm.asked_hz)
+                line += std::string(" — ") + i18n::tr(i18n::DisplayNextStart);
+            /* 0.3.0: Régie5 may close by itself at 120 Hz, not reproduced yet. */
+            if (refresh == app_settings::Refresh::Hz120)
+                line += std::string(" — ") + i18n::tr(i18n::Display120Experimental);
+        }
+        const bool warn = dm.asked_hz > dm.hz || hz120_off;
         gfx::text(x0, iy + 68, line, {gfx::Medium, 24, kListW * 0.55f, 2, 32}, warn ? 0xffffd60au : kText2);
     }
 }

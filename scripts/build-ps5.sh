@@ -22,10 +22,11 @@
 # REGIE5_PARAM=<file>: another param.json for an app test build (to compare
 # categories), instead of ps5/app/sce_sys/param.json.
 #
-# Category: Jelly5's param.json profile starts in the Media area on firmware
-# 13.60 (category 65536, badge 1, the launchActivity intent, attribute 0,
-# attribute3 0x80040, no amm or kernel block) but the console then refuses to
-# let the app listen (0.3.0: the phone page fails). With ps5-homebrew-ui's
+# Category: 0.3.1 is back in the Games area with 0.2.0's param.json (it starts
+# and listens; no 120 Hz). Jelly5's param.json profile starts in the Media
+# area on firmware 13.60 (category 65536, badge 1, the launchActivity intent,
+# attribute 0, attribute3 0x80040, no amm or kernel block) but the console
+# then refuses to let the app listen (0.3.0: the phone page fails). With ps5-homebrew-ui's
 # Media profile (badge 2, no game intent: app-10) or with our former
 # attributes (app-10c) the console said "cannot start the application".
 # ps5/app/param-profiles.json keeps what each profile did on the console
@@ -82,6 +83,9 @@ fi
 TITLE_ID="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["titleId"])' "${PARAM}")"
 # contentVersion 00.001.000 is shown as 0.1.0
 VERSION="$(python3 -c 'import json,sys; print(".".join(str(int(p)) for p in json.load(open(sys.argv[1]))["contentVersion"].split(".")))' "${PARAM}")"
+# 120 Hz may be asked for only with attribute3's bit 0x40 (ps5-opengl's
+# display-modes.md, the boilerplate's DISPLAY_MODES.md).
+HZ120="$(python3 -c 'import json,sys; print(1 if json.load(open(sys.argv[1])).get("attribute3", 0) & 0x40 else 0)' "${PARAM}")"
 LOG_HOST="${REGIE5_LOG_HOST:-}"
 if [[ -z "${LOG_HOST}" ]]; then   # this machine's address on the local network
     LOG_HOST="$(ip route get 1.1.1.1 2>/dev/null |
@@ -153,9 +157,10 @@ done
     echo "#define REGIE5_LOG_HOST \"${LOG_HOST}\""
     echo "#define REGIE5_LOG_PORT 5555"
     echo "#define REGIE5_TITLE_ID \"${TITLE_ID}\""
+    echo "#define REGIE5_HZ120 ${HZ120}"
 } > "${T}/src/platform/ps5/build_info.h"
 
-echo "==> ${TITLE_ID} ${VERSION}, log -> ${LOG_HOST:-none}:5555, tree ${T}"
+echo "==> ${TITLE_ID} ${VERSION}, 120 Hz $([[ ${HZ120} == 1 ]] && echo possible || echo "not declared"), log -> ${LOG_HOST:-none}:5555, tree ${T}"
 DEFS="REGIE5_TLS=1 REGIE5_PROBE=1"
 [[ "${KIND}" == probe ]] || DEFS="REGIE5_TLS=1"
 (

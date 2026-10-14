@@ -66,10 +66,12 @@ void fit_drawable()
 
 /* The monitor decides the rate on the desktop: Régie5 only reads it.
  * REGIE5_DISPLAY=3840x2160@60/120 shows what a console would answer (size,
- * rate had, rate asked), to see Settings' line without one. */
+ * rate had, rate asked), to see Settings' line without one; REGIE5_NO_120=1,
+ * a console build whose param.json does not allow 120 Hz. */
 platform::DisplayMode platform::display_mode()
 {
     DisplayMode m;
+    m.can_120 = std::getenv("REGIE5_NO_120") == nullptr;
     if (const char *fake = std::getenv("REGIE5_DISPLAY"))
         if (std::sscanf(fake, "%dx%d@%d/%d", &m.width, &m.height, &m.hz, &m.asked_hz) == 4)
             return m;

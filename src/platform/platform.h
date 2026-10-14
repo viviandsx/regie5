@@ -34,6 +34,9 @@ std::string system_lang();
 struct DisplayMode {
     int width = 0, height = 0;
     int hz = 0, asked_hz = 0;
+    /* false: this build cannot ask for 120 Hz at all (on the PS5, its
+     * param.json does not declare it: 0.3.1 went back to 0.2.0's) */
+    bool can_120 = true;
 };
 DisplayMode display_mode();
 

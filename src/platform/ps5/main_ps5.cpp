@@ -69,6 +69,11 @@
 #ifndef REGIE5_VERSION
 #define REGIE5_VERSION "dev"
 #endif
+/* 1 when the title's param.json allows asking for 120 Hz (attribute3 bit
+ * 0x40, written by build-ps5.sh): without it the console refuses the mode. */
+#ifndef REGIE5_HZ120
+#define REGIE5_HZ120 1
+#endif
 #ifndef REGIE5_LOG_HOST
 #define REGIE5_LOG_HOST ""
 #endif
@@ -481,6 +486,7 @@ platform::DisplayMode platform::display_mode()
     m.height = s_display->height();
     m.hz = s_display->refresh();
     m.asked_hz = s_display->asked_hz();
+    m.can_120 = REGIE5_HZ120 != 0;
     return m;
 }
 
@@ -561,7 +567,12 @@ int main()
         s_stress_minutes = minutes > 0 ? minutes : 10;
     }
 #endif
-    const int asked_hz = s_stress_minutes > 0 ? 120 : app_settings::refresh_asked(early.refresh);
+    /* Never 120 Hz when the param.json does not declare it (0.3.1): the
+     * console would refuse it anyway, and a 120 Hz kept in settings.json from
+     * 0.3.0 is shown as unavailable in Settings. */
+    const int asked_hz = !REGIE5_HZ120         ? 60
+                         : s_stress_minutes > 0 ? 120
+                                                : app_settings::refresh_asked(early.refresh);
     /* 4K, unless a file named output-1080p or output-1440p is in the title's
      * folder (/data/homebrew/PPSA99520/output-1440p): to compare. */
     const bool want_1080p = file_exists("/app0/output-1080p"), want_1440p = file_exists("/app0/output-1440p");

@@ -474,6 +474,7 @@ const Text kTexts[] = {
     {DisplayNoTv120, "120 Hz refused by the display (Settings › Screen and Video › Video Output)"},
     {DisplayNextStart, "new setting at the next start"},
     {Display120Experimental, "experimental: if Régie5 closes by itself, go back to Auto"},
+    {Display120Unavailable, "120 Hz not available in this version"},
     {DisplayDesktop, "here the monitor decides (a setting for the PS5)"},
     {LibKindCollections, "Collections"},
     {LibCollections, "%d collections"},
