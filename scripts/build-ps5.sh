@@ -22,13 +22,15 @@
 # REGIE5_PARAM=<file>: another param.json for an app test build (to compare
 # categories), instead of ps5/app/sce_sys/param.json.
 #
-# Category: Régie5 is in the Media area with Jelly5's param.json profile, the
-# only one that starts there on firmware 13.60 (13 October 2026): category
-# 65536, badge 1, the launchActivity intent, attribute 0, attribute3 0x80040,
-# no amm or kernel block. With ps5-homebrew-ui's Media profile (badge 2, no
-# game intent: app-10) or with our former attributes (app-10c) the console
-# said "cannot start the application". ps5-homebrew-ui's check is widened, in
-# its temporary copy, to accept 65536 with badge 1 and launchActivity.
+# Category: Jelly5's param.json profile starts in the Media area on firmware
+# 13.60 (category 65536, badge 1, the launchActivity intent, attribute 0,
+# attribute3 0x80040, no amm or kernel block) but the console then refuses to
+# let the app listen (0.3.0: the phone page fails). With ps5-homebrew-ui's
+# Media profile (badge 2, no game intent: app-10) or with our former
+# attributes (app-10c) the console said "cannot start the application".
+# ps5/app/param-profiles.json keeps what each profile did on the console
+# (scripts/check-param.py). ps5-homebrew-ui's check is widened, in its
+# temporary copy, to accept 65536 with badge 1 and launchActivity.
 set -euo pipefail
 export LC_ALL=C
 
@@ -74,6 +76,9 @@ if [[ -n "${REGIE5_PARAM:-}" ]]; then
     [[ "${KIND}" == app && -f "${REGIE5_PARAM}" ]] || { echo "REGIE5_PARAM: an app build and an existing file" >&2; exit 2; }
     PARAM="${REGIE5_PARAM}"
 fi
+# The profile against those tried on a console (0.3.0's could not listen):
+# a warning here, a refusal in release-ps5.sh.
+[[ "${KIND}" == app ]] && python3 "${ROOT}/scripts/check-param.py" "${PARAM}"
 TITLE_ID="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["titleId"])' "${PARAM}")"
 # contentVersion 00.001.000 is shown as 0.1.0
 VERSION="$(python3 -c 'import json,sys; print(".".join(str(int(p)) for p in json.load(open(sys.argv[1]))["contentVersion"].split(".")))' "${PARAM}")"

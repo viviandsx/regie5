@@ -27,6 +27,8 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PARAM="${ROOT}/ps5/app/sce_sys/param.json"
 VERSION="$(python3 -c 'import json,sys; print(".".join(str(int(p)) for p in json.load(open(sys.argv[1]))["contentVersion"].split(".")))' "${PARAM}")"
 TITLE_ID="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["titleId"])' "${PARAM}")"
+# Only a profile seen on a console to start and to listen (0.3.0 could not).
+python3 "${ROOT}/scripts/check-param.py" "${PARAM}" --release
 NAME="release-${VERSION}"
 OUT="${ROOT}/build/ps5/${NAME}"
 REPACK=0

@@ -311,8 +311,11 @@ bool share_start(const std::string &config_path, const std::string &hint_host, s
         if (bind(fd, (const sockaddr *)&a, sizeof a) == 0)
             port = p;
     }
-    if (!port || listen(fd, 4) != 0) {
-        *error = std::string("listen: ") + std::strerror(errno);
+    /* Which call refused tells a port in use from a title the console does
+     * not let listen (0.3.0's param.json: "permission denied"). */
+    const bool bound = port != 0;
+    if (!bound || listen(fd, 4) != 0) {
+        *error = std::string(bound ? "listen: " : "bind: ") + std::strerror(errno);
         close(fd);
         return false;
     }

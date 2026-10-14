@@ -1,0 +1,77 @@
+{
+  "about": "param.json profiles tried on a console (scripts/check-param.py). Only the fields under 'fields' are compared; the title's identity and version are not. A release is built only from a profile that starts, and lets the app listen (Settings > From your phone). Add a profile here only after a console test of all three: the tile's area, the start, the phone page.",
+  "profiles": [
+    {
+      "name": "games-0.2.0",
+      "fields": {
+        "applicationCategoryType": 0,
+        "contentBadgeType": 1,
+        "attribute": 1644167168,
+        "attribute2": 0,
+        "attribute3": 1048576,
+        "amm": {"multimapVaRangeInGib": 512, "pagetableMemorySizeInMib": 256, "vaRangeInGib": 512},
+        "kernel": {"cpuPageTableSize": 268435456, "gpuPageTableSize": 268435456},
+        "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
+      },
+      "console": {
+        "seen": "0.2.0 and app-7c, firmware 13.60, 13 October 2026",
+        "area": "Games",
+        "starts": true,
+        "listens": true,
+        "hz120": false,
+        "note": "120 Hz refused (sceVideoOutConfigureOutput 0x80290016): attribute3 lacks 0x80040"
+      }
+    },
+    {
+      "name": "jelly5-media-0.3.0",
+      "fields": {
+        "applicationCategoryType": 65536,
+        "contentBadgeType": 1,
+        "attribute": 0,
+        "attribute2": 0,
+        "attribute3": 524352,
+        "amm": null,
+        "kernel": null,
+        "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
+      },
+      "console": {
+        "seen": "app-10d and 0.3.0, firmware 13.60, 13-14 October 2026",
+        "area": "Media",
+        "starts": true,
+        "listens": false,
+        "hz120": true,
+        "note": "listening refused (\"permission denied\"): the phone page does not open; released in 0.3.0 by mistake"
+      }
+    },
+    {
+      "name": "hui-media-app-10",
+      "fields": {
+        "applicationCategoryType": 65536,
+        "contentBadgeType": 2,
+        "attribute": 1644167168,
+        "attribute2": 0,
+        "attribute3": 1048576,
+        "amm": {"multimapVaRangeInGib": 512, "pagetableMemorySizeInMib": 256, "vaRangeInGib": 512},
+        "kernel": {"cpuPageTableSize": 268435456, "gpuPageTableSize": 268435456},
+        "gameIntent": null
+      },
+      "console": {"seen": "app-10, 13 October 2026", "area": "Media", "starts": false, "listens": null, "hz120": null,
+                  "note": "\"cannot start the application\""}
+    },
+    {
+      "name": "media-old-attributes-app-10c",
+      "fields": {
+        "applicationCategoryType": 65536,
+        "contentBadgeType": 1,
+        "attribute": 1644167168,
+        "attribute2": 0,
+        "attribute3": 1048576,
+        "amm": {"multimapVaRangeInGib": 512, "pagetableMemorySizeInMib": 256, "vaRangeInGib": 512},
+        "kernel": {"cpuPageTableSize": 268435456, "gpuPageTableSize": 268435456},
+        "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
+      },
+      "console": {"seen": "app-10c, 13 October 2026", "area": "Media", "starts": false, "listens": null, "hz120": null,
+                  "note": "\"cannot start the application\""}
+    }
+  ]
+}

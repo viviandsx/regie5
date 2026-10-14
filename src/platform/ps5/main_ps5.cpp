@@ -40,6 +40,8 @@
 #include "ui/shell.h"
 #include "ui/style.h"
 
+#include "cJSON.h"
+
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <netinet/in.h>
@@ -126,6 +128,39 @@ constexpr const char *kTour =
  * ever confirmed. */
 constexpr const char *kBenchFile = "/app0/bench";
 bool s_bench = false;
+
+/* The 120 Hz endurance test (a file named stress in the title's folder; a
+ * number of minutes in it, 10 if none): 120 Hz asked whatever Settings say,
+ * the tour above run again and again for that long, the heap logged every
+ * 10 s and a line per tour. Frames are not waited for (unlike the bench): the
+ * GPU queue behaves as in normal use. A crash, an abort or the GPU runtime's
+ * _Exit is reported as usual. Every sheet is closed with Circle: nothing is
+ * ever confirmed, only GET requests reach the servers. */
+constexpr const char *kStressFile = "/app0/stress";
+double s_stress_minutes = 0;   /* 0: off */
+/* Each tour after the first: back to Home first (the tour ends on Settings,
+ * and R1 / L1 do not wrap around). */
+constexpr const char *kStressAgain = "circle 1 circle 1 l1 0.5 l1 0.5 l1 0.5 l1 0.5 l1 0.5 l1 2 ";
+
+/* The endurance test reaches the real servers for a long time: anything but
+ * GET is refused before it leaves (the tour never confirms; this makes sure). */
+class GetOnly : public http::Transport {
+public:
+    explicit GetOnly(http::Transport &inner) : m_inner(inner) {}
+    http::Response perform(const http::Request &req, const std::atomic<bool> *cancel) override
+    {
+        if (req.method == "GET")
+            return m_inner.perform(req, cancel);
+        ps5::log("[regie5] stress: a %s request refused (GET only during the test)", req.method.c_str());
+        http::Response r;
+        r.fail = http::Response::Other;
+        r.error = "refused during the stress test";
+        return r;
+    }
+
+private:
+    http::Transport &m_inner;
+};
 
 ps5::Display *s_display = nullptr;
 
@@ -214,29 +249,68 @@ std::string read_all(const char *path, bool *ok)
 
 /* Phase 6.5 (configuring from a phone through a local page): can a title
  * open a listening TCP port? Opened and closed at once, nothing served.
- * bind and listen are weak: a console without them answers "no". */
+ * bind and listen are weak: a console without them answers "no".
+ * 0.3.0 (Jelly5's param.json) is refused: each call is reported on its own,
+ * for port 8085 and for a port the system picks, so the log says which one
+ * the console stops. */
 #pragma weak bind
 #pragma weak listen
+[[maybe_unused]] std::string try_listen(int port)
+{
+    const int fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (fd < 0)
+        return std::string("socket refused: ") + std::strerror(errno);
+    sockaddr_in a{};
+    a.sin_family = AF_INET;
+    a.sin_port = htons((uint16_t)port);
+    a.sin_addr.s_addr = htonl(INADDR_ANY);
+    const int one = 1;
+    setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof one);
+    std::string result;
+    if (bind(fd, (const sockaddr *)&a, sizeof a) != 0)
+        result = std::string("bind refused: ") + std::strerror(errno) + " (errno " + std::to_string(errno) + ")";
+    else if (listen(fd, 1) != 0)
+        result = std::string("bind OK, listen refused: ") + std::strerror(errno) + " (errno " + std::to_string(errno) + ")";
+    else
+        result = "POSSIBLE (opened and closed at once)";
+    close(fd);
+    return result;
+}
+
 [[maybe_unused]] void log_can_listen()
 {
     if (!&bind || !&listen) {
         ps5::log("[regie5] listening port: bind/listen not exported to titles");
         return;
     }
-    const int fd = socket(AF_INET, SOCK_STREAM, 0);
-    sockaddr_in a{};
-    a.sin_family = AF_INET;
-    a.sin_port = htons(8085);
-    a.sin_addr.s_addr = htonl(INADDR_ANY);
-    const int one = 1;
-    setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof one);
-    const int b = fd >= 0 ? bind(fd, (const sockaddr *)&a, sizeof a) : -1;
-    const int l = b == 0 ? listen(fd, 1) : -1;
-    const int err = errno;
-    if (fd >= 0)
-        close(fd);
-    ps5::log("[regie5] listening port 8085: %s", l == 0 ? "POSSIBLE (opened and closed at once)"
-                                                       : (std::string("refused: ") + std::strerror(err)).c_str());
+    ps5::log("[regie5] listening port 8085: %s", try_listen(8085).c_str());
+    ps5::log("[regie5] listening port chosen by the system: %s", try_listen(0).c_str());
+}
+
+/* The fields of the installed param.json that decide the tile's area, the
+ * start, 120 Hz and (0.3.0) listening: the log says which profile ran. */
+[[maybe_unused]] void log_param_profile()
+{
+    bool ok;
+    const std::string text = read_all("/app0/sce_sys/param.json", &ok);
+    cJSON *p = ok ? cJSON_Parse(text.c_str()) : nullptr;
+    if (!p) {
+        ps5::log("[regie5] param.json: unreadable");
+        return;
+    }
+    auto num = [p](const char *key) {
+        const cJSON *v = cJSON_GetObjectItemCaseSensitive(p, key);
+        return cJSON_IsNumber(v) ? (long long)v->valuedouble : -1LL;
+    };
+    ps5::log("[regie5] param.json: category %lld, badge %lld, attribute 0x%llx, attribute2 0x%llx, attribute3 0x%llx, "
+             "amm %s, kernel %s, gameIntent %s, contentVersion %s",
+             num("applicationCategoryType"), num("contentBadgeType"), num("attribute"), num("attribute2"),
+             num("attribute3"), cJSON_HasObjectItem(p, "amm") ? "yes" : "no",
+             cJSON_HasObjectItem(p, "kernel") ? "yes" : "no", cJSON_HasObjectItem(p, "gameIntent") ? "yes" : "no",
+             cJSON_IsString(cJSON_GetObjectItem(p, "contentVersion"))
+                 ? cJSON_GetObjectItem(p, "contentVersion")->valuestring
+                 : "?");
+    cJSON_Delete(p);
 }
 
 /* Whether the title's folder can be written by the app (for phase 6.5). */
@@ -481,15 +555,20 @@ int main()
     app_settings::Settings early;
 #ifndef REGIE5_PROBE
     app_settings::load(kSettings, &early);
+    if (file_exists(kStressFile)) {
+        bool ok;
+        const double minutes = std::atof(read_all(kStressFile, &ok).c_str());
+        s_stress_minutes = minutes > 0 ? minutes : 10;
+    }
 #endif
-    const int asked_hz = app_settings::refresh_asked(early.refresh);
+    const int asked_hz = s_stress_minutes > 0 ? 120 : app_settings::refresh_asked(early.refresh);
     /* 4K, unless a file named output-1080p or output-1440p is in the title's
      * folder (/data/homebrew/PPSA99520/output-1440p): to compare. */
     const bool want_1080p = file_exists("/app0/output-1080p"), want_1440p = file_exists("/app0/output-1440p");
     const int ow = want_1080p ? 1920 : want_1440p ? 2560 : 3840, oh = want_1080p ? 1080 : want_1440p ? 1440 : 2160;
-    ps5::log("[regie5] output asked: %dx%d%s, %d Hz (setting: %s)", ow, oh,
+    ps5::log("[regie5] output asked: %dx%d%s, %d Hz (setting: %s%s)", ow, oh,
              want_1080p ? " (/app0/output-1080p)" : want_1440p ? " (/app0/output-1440p)" : "", asked_hz,
-             app_settings::refresh_key(early.refresh));
+             app_settings::refresh_key(early.refresh), s_stress_minutes > 0 ? ", forced by /app0/stress" : "");
     if (!(display.open(ow, oh, asked_hz) || (ow != 1920 && display.open(1920, 1080, asked_hz))))
         stay_then_quit(kSafeModeStay, "the display did not open");
     step("renderer (shaders)");
@@ -529,6 +608,7 @@ int main()
     api::MockTransport transport("/app0/assets/fixtures", 0, "", "");
     const config::Config cfg = config::mock();
     [[maybe_unused]] const config::LoadError cfg_error = config::LoadError::None;
+    http::Transport *net = &transport;
 #else
     /* The real servers: config.json in the title's folder, HTTP over plain
      * sockets. Never logged: the file holds the keys. */
@@ -553,6 +633,7 @@ int main()
     }
     log_launches();
     log_title_folder_writable();
+    log_param_profile();
     log_can_listen();
     ps5::log_launch_support();
     step("network and threads");
@@ -583,9 +664,16 @@ int main()
                  (long long)(zone + drift), (long long)zone, (long long)drift, local.tm_hour, local.tm_min,
                  local.tm_sec, u.tm_hour, u.tm_min);
     });
+    GetOnly get_only(transport);
+    http::Transport *net = &transport;
+    if (s_stress_minutes > 0) {
+        net = &get_only;
+        ps5::log("[regie5] stress: on (%s), %.0f min at 120 Hz, the tour again and again; GET requests only",
+                 kStressFile, s_stress_minutes);
+    }
 #endif
-    http::Pool pool(transport, 4, nullptr);
-    http::Pool images(transport, 3, nullptr);
+    http::Pool pool(*net, 4, nullptr);
+    http::Pool images(*net, 3, nullptr);
     api::Services services(cfg, pool, i18n::code());
     art::init(&services, &images);
     step("screens");
@@ -622,8 +710,11 @@ int main()
 #else
     s_bench = file_exists(kBenchFile);
     gfx_gl::set_bench(s_bench);
-    ui::Script tour(s_bench ? kTour : nullptr);
+    ui::Script tour(s_bench || s_stress_minutes > 0 ? kTour : nullptr);
 #endif
+    const double stress_start = platform::now();
+    int stress_tours = 0;
+    bool stress_over = s_stress_minutes <= 0;
     BenchStats bench, bench_second;
     double bench_since = platform::now();
     bool bench_tour_logged = false;
@@ -655,7 +746,24 @@ int main()
             dirty = true;
         }
 
-        if (now - last_heap_log > (kProbe ? 10 : 60)) {   /* the heap, and the glyph atlas's fresh starts */
+        if (!stress_over && !tour.active()) {   /* one more tour, or the end of the test */
+            stress_tours++;
+            ps5::log("[regie5] stress: tour %d over at %.0f s of %.0f, %llu frames drawn at %d Hz | frame gaps: avg "
+                     "%.2f ms, worst %.1f ms, over 17.5 ms: %ld, over 25 ms: %ld, over 50 ms: %ld",
+                     stress_tours, now - stress_start, s_stress_minutes * 60, (unsigned long long)gfx::frame_index(),
+                     display.refresh(), stats.frames ? stats.sum / stats.frames : 0.0, stats.worst, stats.over_17,
+                     stats.over_25, stats.over_50);
+            ps5::log_heap("stress");
+            stats = TourStats{};
+            if (now - stress_start >= s_stress_minutes * 60) {
+                stress_over = true;
+                ps5::log("[regie5] stress: FINISHED, %d tours in %.1f min, still running; the controller is yours",
+                         stress_tours, (now - stress_start) / 60);
+            } else {
+                tour = ui::Script((std::string(kStressAgain) + kTour).c_str());
+            }
+        }
+        if (now - last_heap_log > (kProbe || !stress_over ? 10 : 60)) {   /* the heap, and the glyph atlas's fresh starts */
             last_heap_log = now;
             ps5::log_heap(!kProbe ? "running" : tour_over ? "running (controller)" : "running (tour)");
             if (gfx::atlas_resets() != last_resets) {

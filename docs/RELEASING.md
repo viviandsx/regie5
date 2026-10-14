@@ -108,6 +108,20 @@ affichée de `contentVersion` ; il refuse de reconstruire un dossier `release-<v
    Le zip sort dans `build/ps5/release-0.3.0/upload/PPSA99520.zip`. Vivian le copie sur la
    console par-dessus l'installation (le `config.json` est gardé) et fait la recette rapide
    (`docs/RECETTE-EXPRESS.md`, au moins Réglages, un écran par onglet, ce qui a changé).
+
+   **À chaque version, même si rien n'a changé à ces endroits** (la 0.3.0 a cassé la page du
+   téléphone par son seul `param.json`, et sa recette ne passait pas par là) :
+
+   - la tuile est dans la bonne rangée (Multimédia ou Jeux) et l'app démarre ;
+   - **Réglages › Depuis le téléphone** : le QR code s'affiche, la page s'ouvre sur le
+     téléphone (sans rien enregistrer, ○ pour fermer) ;
+   - Réglages › ligne « Affichage » : la fréquence obtenue est celle attendue.
+
+   `release-ps5.sh` refuse un `param.json` dont le profil (catégorie, insigne, `attribute`,
+   `attribute2`, `attribute3`, blocs `amm` / `kernel`, `gameIntent`) n'a pas été vu sur la
+   console démarrer **et** écouter : la liste est `ps5/app/param-profiles.json`
+   (`scripts/check-param.py`). Un nouveau profil y entre après un essai console des trois
+   points ci-dessus, jamais avant.
 3. **Commit et push** de la version (message proposé : « Régie5 0.3.0 »).
 4. **Tag** sur ce commit, puis push du tag seul :
 
