@@ -386,7 +386,7 @@ void JournalView::draw(double now, float x0, float top, float chips_x, bool focu
     if (m_requests.state == load::Failed)
         failed("Seerr", m_requests.error, m_requests.http_status);
     if (m_activity.state == load::Failed)
-        failed("Jellyfin", m_activity.error, m_activity.http_status);
+        failed(i18n::media_server(), m_activity.error, m_activity.http_status);
     if (!failures.empty())
         draw_chip(chips_x, 267, failures, kRed, 1.f, 22);
 

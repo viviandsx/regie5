@@ -26,8 +26,9 @@ public:
     /* The entry may be offered at all: Jellyfin is on. */
     bool available(const api::Services *services) const;
     /* Its words: « Ouvrir dans Jelly5 », or « Chercher dans Jelly5 » when no
-     * app can be started from here. */
-    const char *label() const;
+     * app can be started from here, and with Emby (« Chercher dans Emby5 »:
+     * Emby5 is never started, nothing is known of how it would be). */
+    const char *label(const api::Services *services) const;
     /* Reads the server's Id and the items' ids, unless done or on their way. */
     void prepare(api::Services *services);
     /* A library title: false once it is known that Jellyfin does not have it
@@ -45,6 +46,7 @@ public:
     void reset();
 
 private:
+    static bool can_open(const api::Services *services);
     void when_ready(api::Services *services, std::function<void()> then);
     void launch(const std::string &item_id, const std::string &title);
     static void look_for(const std::string &title);

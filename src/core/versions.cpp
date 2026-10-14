@@ -9,8 +9,12 @@
 
 namespace versions {
 
-const char *minimum(config::Service s)
+const char *minimum(config::Service s, bool emby)
 {
+    /* Emby: the 4.8 line (2023), whose items give each user's last played
+     * date on request (UserDataLastPlayedDate); tested with 4.10. */
+    if (s == config::Jellyfin && emby)
+        return "4.8";
     switch (s) {
     case config::Sonarr: return "4.0";     /* v3 is no longer maintained; its API differs in places */
     case config::Radarr: return "5.0";
@@ -41,10 +45,10 @@ bool compare(const std::string &a, const std::string &b, int *order)
     return true;
 }
 
-bool supported(config::Service s, const std::string &version)
+bool supported(config::Service s, const std::string &version, bool emby)
 {
     int order = 0;
-    return !compare(version, minimum(s), &order) || order >= 0;
+    return !compare(version, minimum(s, emby), &order) || order >= 0;
 }
 
 } // namespace versions

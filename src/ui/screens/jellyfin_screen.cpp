@@ -291,7 +291,7 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
     m_lib_lines = m_stats.library_lines();
     layout();
     const float x0 = kPad + ox;
-    gfx::text(x0, 214, "Jellyfin", {gfx::Bold, 60}, kText);
+    gfx::text(x0, 214, i18n::media_server(), {gfx::Bold, 60}, kText);
     /* The server's load, when Glances is set up (else nothing at all). */
     if (m_ctx.services && m_ctx.services->enabled(config::Glances)) {
         if (m_load.ready())
@@ -338,7 +338,7 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
     if (!m_sessions.ready() || m_sessions.value.empty()) {
         const gfx::Rect r{x0, kTop + 26 + dy, kListW, 120};
         if (m_sessions.state == load::Failed)
-            draw_empty(r, fmt::labelled("Jellyfin", fmt::error(m_sessions.error, m_sessions.http_status)),
+            draw_empty(r, fmt::labelled(i18n::media_server(), fmt::error(m_sessions.error, m_sessions.http_status)),
                        i18n::tr(i18n::Retry), true);
         else if (!m_sessions.ready())
             draw_skeleton(r, 24, now, animating);
@@ -413,7 +413,7 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
     if (!m_tasks.ready()) {
         const gfx::Rect r{x0, tasks_title + 26 + dy, kListW, 120};
         if (m_tasks.state == load::Failed)
-            draw_empty(r, fmt::labelled("Jellyfin", fmt::error(m_tasks.error, m_tasks.http_status)),
+            draw_empty(r, fmt::labelled(i18n::media_server(), fmt::error(m_tasks.error, m_tasks.http_status)),
                        i18n::tr(i18n::Retry), true);
         else
             draw_skeleton(r, 18, now, animating);
@@ -464,7 +464,7 @@ void JellyfinScreen::draw_libraries(float x0, float dy, const Slot &fs, double n
     if (m_lib_lines.empty()) {
         const gfx::Rect r{x0, m_libs_y + 26 + dy, kListW, 120};
         if (libs.state == load::Failed)
-            draw_empty(r, fmt::labelled("Jellyfin", fmt::error(libs.error, libs.http_status)), i18n::tr(i18n::Retry),
+            draw_empty(r, fmt::labelled(i18n::media_server(), fmt::error(libs.error, libs.http_status)), i18n::tr(i18n::Retry),
                        true);
         else if (!libs.ready())
             draw_skeleton(r, 18, now, animating);
@@ -507,7 +507,7 @@ void JellyfinScreen::draw_users(float x0, float dy, const Slot &fs, double now, 
     if (!users.ready() || users.value.empty()) {
         const gfx::Rect r{x0, m_users_y + 26 + dy, kListW, 120};
         if (users.state == load::Failed)
-            draw_empty(r, fmt::labelled("Jellyfin", fmt::error(users.error, users.http_status)), i18n::tr(i18n::Retry),
+            draw_empty(r, fmt::labelled(i18n::media_server(), fmt::error(users.error, users.http_status)), i18n::tr(i18n::Retry),
                        true);
         else if (!users.ready())
             draw_skeleton(r, 18, now, animating);

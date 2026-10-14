@@ -109,13 +109,15 @@ int main(int argc, char **argv)
     if (opt.mock) {
         const char *off = std::getenv("REGIE5_MOCK_OFF");
         const char *multi = std::getenv("REGIE5_MOCK_MULTI");
-        cfg = config::mock(off ? off : "", multi && *multi && *multi != '0');
+        const char *emby = std::getenv("REGIE5_MOCK_EMBY");
+        cfg = config::mock(off ? off : "", multi && *multi && *multi != '0', emby && *emby && *emby != '0');
     } else {
         cfg_error = config::load(config_path, &cfg);
         if (cfg_error != config::LoadError::None)
             std::fprintf(stderr, "regie5: %s: %s\n", config_path.c_str(),
                          cfg_error == config::LoadError::Missing ? "not found" : "cannot be read or is not JSON");
     }
+    i18n::set_emby(cfg.emby());
 
     SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_PS5, "1");
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER | SDL_INIT_EVENTS) != 0) {

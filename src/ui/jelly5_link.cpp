@@ -19,9 +19,14 @@ bool Jelly5Link::available(const api::Services *services) const
     return services && services->enabled(config::Jellyfin);
 }
 
-const char *Jelly5Link::label() const
+bool Jelly5Link::can_open(const api::Services *services)
 {
-    return i18n::tr(platform::can_launch_apps() ? i18n::OpenInJelly5 : i18n::FindInJelly5);
+    return platform::can_launch_apps() && services && !services->config().emby();
+}
+
+const char *Jelly5Link::label(const api::Services *services) const
+{
+    return i18n::tr(can_open(services) ? i18n::OpenInJelly5 : i18n::FindInJelly5);
 }
 
 /* The console starts no other app: the title to look for, long enough to read. */
@@ -87,14 +92,14 @@ void Jelly5Link::when_ready(api::Services *services, std::function<void()> then)
 
 void Jelly5Link::open(api::Services *services, const std::string &item_id, const std::string &title)
 {
-    if (!platform::can_launch_apps())
+    if (!can_open(services))
         return look_for(title);
     when_ready(services, [this, item_id, title] { launch(item_id, title); });
 }
 
 void Jelly5Link::open(api::Services *services, const model::Movie &m)
 {
-    if (!platform::can_launch_apps())
+    if (!can_open(services))
         return look_for(m.title);
     if (!m_index.ready())
         notify(fmt::f(i18n::tr(i18n::Jelly5Searching), m.title.c_str()), true, platform::now());
@@ -114,7 +119,7 @@ void Jelly5Link::open(api::Services *services, const model::Movie &m)
 
 void Jelly5Link::open(api::Services *services, const model::Series &s)
 {
-    if (!platform::can_launch_apps())
+    if (!can_open(services))
         return look_for(s.title);
     if (!m_index.ready())
         notify(fmt::f(i18n::tr(i18n::Jelly5Searching), s.title.c_str()), true, platform::now());

@@ -12,7 +12,7 @@ Les clés d'API ne sont jamais écrites dans un journal.
 |---|---|---|
 | `enabled` | tous | `false` pour couper le service sans effacer sa configuration. Vrai par défaut. |
 | `url` | tous | Adresse du service. Peut contenir un chemin (`https://exemple.lan/radarr`) derrière un reverse proxy ou avec l'`urlBase` des *arr. |
-| `apiKey` | Sonarr, Radarr, Seerr, Jellyfin | Clé d'API du service. Sans clé, le service est coupé. |
+| `apiKey` | Sonarr, Radarr, Seerr, Jellyfin, Emby | Clé d'API du service. Sans clé, le service est coupé. |
 | `name` | tous | Nom affiché de l'instance (« Radarr 4K »). Par défaut, le nom du service. |
 | `is4k` | Sonarr, Radarr | `true` pour l'instance que **Seerr** utilise comme serveur 4K. `false` par défaut. Jamais déduit du nom. |
 | `insecure` | tous | `true` pour une adresse `https://` dont le certificat est **auto-signé** (réseau local) : il n'est pas vérifié. `false` par défaut : le certificat doit être signé par une autorité reconnue (Let's Encrypt…). |
@@ -29,6 +29,23 @@ Il dit quelle instance Seerr utilise comme serveur 4K. Régie5 n'écrit rien dan
 une suppression par le Ménage, c'est la tâche « Media Availability Sync » de Seerr qui
 marque le titre (état normal ou 4K, selon l'instance). Le champ est lu et gardé pour les
 écrans qui distingueront les deux côtés ; il n'est jamais déduit du nom.
+
+## Jellyfin ou Emby
+
+Le serveur multimédia est **Jellyfin** (clé `"jellyfin"`) **ou Emby** (clé `"emby"`, mêmes
+champs), l'un ou l'autre :
+
+```json
+"emby": { "url": "http://192.168.1.10:8096", "apiKey": "…" }
+```
+
+Clé d'API Emby : tableau de bord d'Emby › Avancé › Clés API › Nouvelle clé. Avec Emby,
+l'onglet et les textes disent « Emby », et Options propose « Chercher dans Emby5 » (le titre à
+chercher dans Emby5 ; aucune app n'est lancée). Emby 4.8 ou plus récent (testé avec 4.10).
+
+Si `"jellyfin"` et `"emby"` sont tous deux actifs, seul Jellyfin est utilisé, et Réglages le
+signale sur sa ligne. Pour passer d'Emby à Jellyfin, mettez `"enabled": false` dans
+`"emby"` (ou retirez-le).
 
 ## Derrière un reverse proxy
 
@@ -75,5 +92,5 @@ Guide, le même épisode ou la même sortie n'apparaît qu'une fois.
 "cleanup": { "ignoreUsers": ["invité", "test"] }
 ```
 
-Comptes Jellyfin (noms, sans tenir compte de la casse) qui ne comptent pas dans « vu par
+Comptes Jellyfin ou Emby (noms, sans tenir compte de la casse) qui ne comptent pas dans « vu par
 tous les comptes actifs ». Le Ménage lui-même s'active dans Réglages, pas ici.

@@ -162,7 +162,7 @@ void RequestsScreen::open_menu(const model::Request &r)
     for (MenuItem m : items)
         labels.push_back(m == MenuItem::Approve   ? i18n::tr(i18n::Approve)
                          : m == MenuItem::Decline ? i18n::tr(i18n::Decline)
-                                                  : m_ctx.jelly5.label());
+                                                  : m_ctx.jelly5.label(m_ctx.services));
     labels.push_back(i18n::tr(i18n::Cancel));
     const model::Request req = r;
     const std::string title = title_of(r);

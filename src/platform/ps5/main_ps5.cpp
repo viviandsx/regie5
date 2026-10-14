@@ -642,6 +642,8 @@ int main()
         from_backup = true;
         ps5::log("[regie5] config: the app's copy is used (%s)", kConfigCopy);
     }
+    if (cfg.emby())
+        ps5::log("[regie5] config: the media server is Emby");
     log_launches();
     log_title_folder_writable();
     log_param_profile();
@@ -683,6 +685,7 @@ int main()
                  kStressFile, s_stress_minutes);
     }
 #endif
+    i18n::set_emby(cfg.emby());
     http::Pool pool(*net, 4, nullptr);
     http::Pool images(*net, 3, nullptr);
     api::Services services(cfg, pool, i18n::code());

@@ -46,8 +46,8 @@ button.small{padding:6px 10px;font-size:14px}
 <form id="f"></form>
 <script>
 const T = __T__;
-const SERVICES = [["sonarr","Sonarr",true],["radarr","Radarr",true],["seerr","Seerr",false],["jellyfin","Jellyfin",false],["glances","Glances",false]];
-const PORTS = {sonarr: 8989, radarr: 7878, seerr: 5055, jellyfin: 8096, glances: 61208};
+const SERVICES = [["sonarr","Sonarr",true],["radarr","Radarr",true],["seerr","Seerr",false],["jellyfin","Jellyfin",false],["emby","Emby",false],["glances","Glances",false]];
+const PORTS = {sonarr: 8989, radarr: 7878, seerr: 5055, jellyfin: 8096, emby: 8096, glances: 61208};
 const code = new URLSearchParams(location.search).get("c") || (prompt(T.askCode) || "").replace(/\D/g, "");
 const api = "/api/config?c=" + encodeURIComponent(code);
 document.getElementById("lead").textContent = T.lead;
@@ -103,7 +103,8 @@ function build(view){
       head.appendChild(add);
     }
     sec.appendChild(head);
-    (list.length ? list : [{enabled: key !== "glances"}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
+    if (key === "emby") sec.appendChild(el("p", {className: "lead", textContent: T.embyNote}));
+    (list.length ? list : [{enabled: key !== "glances" && key !== "emby"}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
     sec.appendChild(holder);
     form.appendChild(sec);
   }
@@ -202,6 +203,7 @@ std::string page_html()
         {"badcode", i18n::PhoneBadcode},
         {"optional", i18n::PhoneOptional},
         {"askCode", i18n::PhoneAskCode},
+        {"embyNote", i18n::PhoneEmbyNote},
     };
     std::string t = "{";
     for (const auto &x : kTexts)

@@ -102,6 +102,7 @@ void SettingsScreen::reload_config()
     if (!changed)
         return;
     m_ctx.services->reconfigure(next);
+    i18n::set_emby(next.emby());
     art::forget(changed);
     m_ctx.config_gen++;
     build_rows();
@@ -378,6 +379,8 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
     }
     m_drop.draw(dt, 1.f, animating, m_focus == n ? -1.f : 22.f);
 
+    const bool emby = m_ctx.services && m_ctx.services->config().emby();
+    const bool both_media = m_ctx.services && m_ctx.services->config().both_media;
     for (int i = 0; i < n; i++) {
         const Row &row = m_rows[i];
         const model::ServiceStatus &st = row.status;
@@ -393,10 +396,10 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
             status = i18n::tr(i18n::StatusOk);
             /* A version; Glances has none to give: its CPU's name. */
             detail = st.version.empty() ? "" : row.service == config::Glances ? st.version : "v" + st.version;
-            if (!versions::supported(row.service, st.version)) {   /* it answers, but too old to rely on */
+            if (!versions::supported(row.service, st.version, emby)) {   /* it answers, but too old to rely on */
                 dot = kOrange;
                 status = i18n::tr(i18n::VersionUnsupported);
-                detail = fmt::f(i18n::tr(i18n::VersionMinimum), st.version.c_str(), versions::minimum(row.service));
+                detail = fmt::f(i18n::tr(i18n::VersionMinimum), st.version.c_str(), versions::minimum(row.service, emby));
             }
             break;
         case model::ServiceStatus::Failed:
@@ -417,19 +420,24 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
             status = i18n::tr(row.service == config::Glances ? i18n::GlancesOptional : i18n::StatusNotConfigured);
             break;
         }
+        if (row.service == config::Jellyfin && both_media)   /* "jellyfin" and "emby" both on */
+            detail = i18n::tr(i18n::MediaBoth);
         const float cy = ry + row_h / 2;
         if (st.state == model::ServiceStatus::Ok || st.state == model::ServiceStatus::Failed)
             gfx::shadow({x0 + 44, cy - 9, 18, 18}, 9, 10, 0.6f, 0);
         gfx::fill({x0 + 44, cy - 9, 18, 18}, dot, 9);
         const config::ServiceConfig &c =
             m_ctx.services ? m_ctx.services->config().at(row.service, row.instance) : config::ServiceConfig{};
-        const std::string name = c.name.empty() ? config::service_name(row.service) : c.name;
+        const std::string name = !c.name.empty()                ? c.name
+                                 : row.service == config::Jellyfin ? config::media_name(m_ctx.services ? m_ctx.services->config().media
+                                                                                                       : config::MediaServer::Jellyfin)
+                                                                   : config::service_name(row.service);
         const bool show_url = !c.url.empty() && !m_ctx.mock && !compact;
         gfx::text(x0 + 86, ry + (show_url ? 40 : row_h / 2 + 11), name, {gfx::SemiBold, compact ? 28.f : 32.f}, kText);
         if (show_url)
             gfx::text(x0 + 86, ry + 70, address_of(c.url), {gfx::Regular, 22, kListW * 0.4f}, kText3);
         const uint32_t ink = st.state == model::ServiceStatus::Failed ? 0xffff8a80u
-                             : st.state == model::ServiceStatus::Ok && !versions::supported(row.service, st.version)
+                             : st.state == model::ServiceStatus::Ok && !versions::supported(row.service, st.version, emby)
                                  ? 0xffffd60au
                                  : kText;
         const bool two = !detail.empty() && !compact;

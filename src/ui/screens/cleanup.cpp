@@ -358,7 +358,7 @@ void CleanupView::draw(double now, float x0, bool focused, float dt, bool *anima
         } else if (m_users.state == load::Off) {
             draw_empty(area, m_ctx.off_text(i18n::JellyfinOff));
         } else if (m_users.state == load::Failed) {
-            draw_empty(area, fmt::labelled("Jellyfin", fmt::error(m_users.error, m_users.http_status)),
+            draw_empty(area, fmt::labelled(i18n::media_server(), fmt::error(m_users.error, m_users.http_status)),
                        i18n::tr(i18n::Retry), true);
         } else if (loading) {
             for (int i = 0; i < 4; i++)

@@ -17,7 +17,12 @@ namespace config {
  * and a password only if it asks for them. */
 enum Service { Sonarr = 0, Radarr, Seerr, Jellyfin, Glances, ServiceCount };
 
-const char *service_name(Service s);   /* "Sonarr" ... */
+/* The media server in the Jellyfin slot: Jellyfin, or Emby (config.json's
+ * "emby" key, in place of "jellyfin"). Both speak the same API, with a few
+ * differences that api/jellyfin handles; every screen is the same. */
+enum class MediaServer { Jellyfin, Emby };
+
+const char *service_name(Service s);   /* "Sonarr" ... (Jellyfin: "Jellyfin", see media_name) */
 const char *service_key(Service s);    /* "sonarr" ...: its key in config.json */
 
 struct ServiceConfig {
@@ -48,13 +53,21 @@ struct Config {
     /* Jellyfin accounts the cleanup does not count among "everyone" (names,
      * any case): test accounts, guests. "cleanup": {"ignoreUsers": [...]} */
     std::vector<std::string> ignore_users;
+    /* "emby" in place of "jellyfin". Both on: Jellyfin is used and both_media
+     * says so (Settings shows it). */
+    MediaServer media = MediaServer::Jellyfin;
+    bool both_media = false;
 
     const ServiceConfig &at(Service s, int instance = 0) const
     {
         return instance <= 0 || instance > (int)extra[s].size() ? services[s] : extra[s][instance - 1];
     }
     int count(Service s) const { return 1 + (int)extra[s].size(); }
+    bool emby() const { return media == MediaServer::Emby; }
 };
+
+/* "Jellyfin" or "Emby": the name the interface gives the media server. */
+const char *media_name(MediaServer m);
 
 enum class LoadError { None, Missing, Unreadable, BadJson };
 
@@ -70,7 +83,8 @@ unsigned changed(const Config &a, const Config &b);
 
 /* The configuration --mock runs on: every service on (but those named in off,
  * separated by commas), at addresses only the mock transport answers. multi:
- * a second Radarr ("Radarr 4K", under a path, as behind a reverse proxy). */
-Config mock(const std::string &off = {}, bool multi = false);
+ * a second Radarr ("Radarr 4K", under a path, as behind a reverse proxy).
+ * emby: Emby in the media server's place. */
+Config mock(const std::string &off = {}, bool multi = false, bool emby = false);
 
 } // namespace config

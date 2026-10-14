@@ -53,6 +53,14 @@ std::vector<const cJSON *> instances(const cJSON *root, const char *key)
 
 bool is_glances(int s) { return s == config::Glances; }
 
+/* The keys of config.json the page shows, in its order: "emby" stands in the
+ * media server's place when "jellyfin" is not on (config::parse). */
+const struct {
+    const char *key;
+    config::Service service;
+} kKeys[] = {{"sonarr", config::Sonarr}, {"radarr", config::Radarr},     {"seerr", config::Seerr},
+             {"jellyfin", config::Jellyfin}, {"emby", config::Jellyfin}, {"glances", config::Glances}};
+
 } // namespace
 
 std::string public_view(const std::string &config_text)
@@ -60,8 +68,9 @@ std::string public_view(const std::string &config_text)
     Json root(cJSON_ParseWithLength(config_text.data(), config_text.size()));
     Json view(cJSON_CreateObject());
     cJSON *services = cJSON_AddObjectToObject(view.get(), "services");
-    for (int s = 0; s < config::ServiceCount; s++) {
-        const char *key = config::service_key((config::Service)s);
+    for (const auto &k : kKeys) {
+        const char *key = k.key;
+        const int s = k.service;
         cJSON *list = cJSON_AddArrayToObject(services, key);
         if (!root || !cJSON_IsObject(root.get()))
             continue;
@@ -96,8 +105,9 @@ bool apply(const std::string &current_text, const std::string &posted, std::stri
         *error = "not a configuration";
         return false;
     }
-    for (int s = 0; s < config::ServiceCount; s++) {
-        const char *key = config::service_key((config::Service)s);
+    for (const auto &k : kKeys) {
+        const char *key = k.key;
+        const int s = k.service;
         const cJSON *list = cJSON_GetObjectItemCaseSensitive(services, key);
         if (!list)
             continue;   /* not sent: left as it is */

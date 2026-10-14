@@ -23,9 +23,12 @@ const char *service_key(Service s)
     return s >= 0 && s < ServiceCount ? kKeys[s] : "";
 }
 
+const char *media_name(MediaServer m) { return m == MediaServer::Emby ? "Emby" : "Jellyfin"; }
+
 namespace {
 
-ServiceConfig parse_one(const cJSON *o, Service svc, int n)
+/* label: the default name ("Emby" for an Emby server). */
+ServiceConfig parse_one(const cJSON *o, Service svc, int n, const char *label)
 {
     ServiceConfig s;
     const cJSON *name = cJSON_GetObjectItemCaseSensitive(o, "name");
@@ -36,8 +39,7 @@ ServiceConfig parse_one(const cJSON *o, Service svc, int n)
     const cJSON *pass = cJSON_GetObjectItemCaseSensitive(o, "password");
     const cJSON *is4k = cJSON_GetObjectItemCaseSensitive(o, "is4k");
     s.name = cJSON_IsString(name) && name->valuestring[0] ? name->valuestring
-                                                           : std::string(service_name(svc)) +
-                                                                 (n > 0 ? " " + std::to_string(n + 1) : "");
+                                                           : std::string(label) + (n > 0 ? " " + std::to_string(n + 1) : "");
     s.url = cJSON_IsString(url) ? url->valuestring : "";
     while (!s.url.empty() && s.url.back() == '/')
         s.url.pop_back();
@@ -52,6 +54,39 @@ ServiceConfig parse_one(const cJSON *o, Service svc, int n)
     return s;
 }
 
+/* A service's object, or its list of instances, under key. */
+void parse_service(const cJSON *root, const char *key, Service svc, const char *label, Config *out)
+{
+    out->services[svc] = ServiceConfig{};
+    out->services[svc].name = label;
+    out->extra[svc].clear();
+    const cJSON *o = cJSON_GetObjectItemCaseSensitive(root, key);
+    if (cJSON_IsObject(o)) {
+        out->services[svc] = parse_one(o, svc, 0, label);
+    } else if (cJSON_IsArray(o)) {   /* instances */
+        int n = 0;
+        const cJSON *it;
+        cJSON_ArrayForEach(it, o)
+        {
+            if (!cJSON_IsObject(it))
+                continue;
+            if (n == 0)
+                out->services[svc] = parse_one(it, svc, 0, label);
+            else
+                out->extra[svc].push_back(parse_one(it, svc, n, label));
+            n++;
+        }
+    }
+}
+
+bool any_on(const Config &c, Service s)
+{
+    for (int i = 0; i < c.count(s); i++)
+        if (c.at(s, i).enabled)
+            return true;
+    return false;
+}
+
 } // namespace
 
 bool parse(const std::string &text, Config *out)
@@ -62,24 +97,19 @@ bool parse(const std::string &text, Config *out)
         return false;
     }
     *out = Config{};
-    for (int i = 0; i < ServiceCount; i++) {
-        const Service svc = (Service)i;
-        out->services[i].name = service_name(svc);
-        const cJSON *o = cJSON_GetObjectItemCaseSensitive(root, service_key(svc));
-        if (cJSON_IsObject(o)) {
-            out->services[i] = parse_one(o, svc, 0);
-        } else if (cJSON_IsArray(o)) {   /* instances */
-            int n = 0;
-            const cJSON *it;
-            cJSON_ArrayForEach(it, o)
-            {
-                if (!cJSON_IsObject(it))
-                    continue;
-                if (n == 0)
-                    out->services[i] = parse_one(it, svc, 0);
-                else
-                    out->extra[i].push_back(parse_one(it, svc, n));
-                n++;
+    for (int i = 0; i < ServiceCount; i++)
+        parse_service(root, service_key((Service)i), (Service)i, service_name((Service)i), out);
+    /* "emby" fills the media server's place when Jellyfin is not on. */
+    if (cJSON_GetObjectItemCaseSensitive(root, "emby")) {
+        Config emby;
+        parse_service(root, "emby", Jellyfin, "Emby", &emby);
+        if (any_on(emby, Jellyfin)) {
+            if (any_on(*out, Jellyfin)) {
+                out->both_media = true;
+            } else {
+                out->services[Jellyfin] = emby.services[Jellyfin];
+                out->extra[Jellyfin] = emby.extra[Jellyfin];
+                out->media = MediaServer::Emby;
             }
         }
     }
@@ -110,17 +140,20 @@ unsigned changed(const Config &a, const Config &b)
 {
     unsigned mask = 0;
     for (int i = 0; i < ServiceCount; i++)
-        if (!(a.services[i] == b.services[i]) || a.extra[i] != b.extra[i])
+        if (!(a.services[i] == b.services[i]) || a.extra[i] != b.extra[i] ||
+            (i == Jellyfin && a.media != b.media))
             mask |= 1u << i;
     return mask;
 }
 
-Config mock(const std::string &off, bool multi)
+Config mock(const std::string &off, bool multi, bool emby)
 {
     Config c;
+    if (emby)
+        c.media = MediaServer::Emby;
     const std::string list = "," + off + ",";
     for (int i = 0; i < ServiceCount; i++) {
-        c.services[i].name = service_name((Service)i);
+        c.services[i].name = i == Jellyfin ? media_name(c.media) : service_name((Service)i);
         c.services[i].enabled = list.find(std::string(",") + service_key((Service)i) + ",") == std::string::npos;
         c.services[i].url = std::string("http://") + service_key((Service)i) + ".mock";
         c.services[i].api_key = "mock";

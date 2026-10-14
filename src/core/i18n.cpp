@@ -7,6 +7,9 @@
 #include "core/lang/language.h"
 
 #include <cctype>
+#include <map>
+#include <memory>
+#include <string>
 
 namespace i18n {
 
@@ -14,6 +17,29 @@ namespace {
 
 const Language *s_lang = nullptr;
 const char *s_texts[Count] = {};   /* the current language's, English where it has none */
+const char *s_plain[Count] = {};   /* the same, before the media server's name is put in */
+bool s_emby = false;
+
+/* A text with Emby's names in place of Jellyfin's, made once and kept for the
+ * whole run: a pointer handed out by tr() never goes stale. */
+const char *emby_text(const char *text)
+{
+    static std::map<const char *, std::unique_ptr<std::string>> made;
+    auto f = made.find(text);
+    if (f != made.end())
+        return f->second->c_str();
+    std::string s = text;
+    for (const auto &[from, to] : {std::pair<std::string, std::string>{"Jellyfin", "Emby"}, {"Jelly5", "Emby5"}})
+        for (size_t at = s.find(from); at != std::string::npos; at = s.find(from, at + to.size()))
+            s.replace(at, from.size(), to);
+    return made.emplace(text, std::make_unique<std::string>(std::move(s))).first->second->c_str();
+}
+
+void fill()
+{
+    for (int k = 0; k < Count; k++)
+        s_texts[k] = s_emby ? emby_text(s_plain[k]) : s_plain[k];
+}
 
 std::string lower(const std::string &s)
 {
@@ -53,12 +79,22 @@ void set_lang(const Language &l)
     int n = 0;
     const Language &en = *all_languages(&n)[0];
     for (int k = 0; k < Count; k++)
-        s_texts[k] = "";
+        s_plain[k] = "";
     for (const Language *src : {&en, &l})
         for (int i = 0; i < src->count; i++)
             if (src->texts[i].key >= 0 && src->texts[i].key < Count && src->texts[i].text)
-                s_texts[src->texts[i].key] = src->texts[i].text;
+                s_plain[src->texts[i].key] = src->texts[i].text;
     s_lang = &l;
+    fill();
+}
+
+const char *media_server() { return s_emby ? "Emby" : "Jellyfin"; }
+
+void set_emby(bool emby)
+{
+    language();
+    s_emby = emby;
+    fill();
 }
 
 const Language &language()

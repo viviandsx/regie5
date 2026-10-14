@@ -202,7 +202,7 @@ std::vector<std::string> LibraryScreen::detail_menu() const
     const Jelly5Link &j = m_ctx.jelly5;
     if (j.available(m_ctx.services) &&
         (m_detail.is_series() ? j.may_have(m_detail.series()) : j.may_have(m_detail.movie())))
-        items.push_back(j.label());
+        items.push_back(j.label(m_ctx.services));
     return items;
 }
 

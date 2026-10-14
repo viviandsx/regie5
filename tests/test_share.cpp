@@ -91,6 +91,23 @@ TEST(share_apply_keeps_what_it_is_not_told)
     CHECK(config_web::public_view(out).find("\"insecure\":true") != std::string::npos);
 }
 
+TEST(share_emby)
+{
+    /* The page has an Emby section; saved there, the file gets "emby". */
+    CHECK(config_web::public_view(kConfig).find("\"emby\":[]") != std::string::npos);
+    std::string out, error;
+    CHECK(config_web::apply("", R"({"services":{"jellyfin":[],"emby":[{"from":-1,"url":"http://10.0.0.2:8096","apiKey":"EMBY","enabled":true}]}})",
+                            &out, &error));
+    config::Config c;
+    CHECK(config::parse(out, &c));
+    CHECK(c.emby());
+    CHECK_EQ(c.services[config::Jellyfin].api_key, std::string("EMBY"));
+    CHECK(out.find("\"jellyfin\"") == std::string::npos);
+    const std::string v = config_web::public_view(out);
+    CHECK(v.find("EMBY") == std::string::npos);   /* the key never goes back to the phone */
+    CHECK(v.find("\"emby\":[{") != std::string::npos);
+}
+
 TEST(share_local_addresses_only)
 {
     for (const char *ip : {"127.0.0.1", "10.1.2.3", "172.16.0.1", "172.31.255.255", "192.168.1.20", "169.254.3.4",

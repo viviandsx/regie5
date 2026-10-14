@@ -474,6 +474,8 @@ const Text kTexts[] = {
     {DisplayNextStart, "new setting at the next start"},
     {DisplayAuto60, "Auto: the display stays at 60 Hz"},
     {Display120Unavailable, "120 Hz not available in this version"},
+    {PhoneEmbyNote, "Only if your media server is Emby (instead of the one above)."},
+    {MediaBoth, "\"jellyfin\" and \"emby\" in config.json: only Jellyfin is used"},
     {DisplayDesktop, "here the monitor decides (a setting for the PS5)"},
     {LibKindCollections, "Collections"},
     {LibCollections, "%d collections"},

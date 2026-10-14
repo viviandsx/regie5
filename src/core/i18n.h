@@ -478,6 +478,8 @@ enum S {
     DisplayNextStart,
     DisplayAuto60,
     Display120Unavailable,
+    MediaBoth,
+    PhoneEmbyNote,
     DisplayDesktop,
     Count
 };
@@ -498,5 +500,12 @@ const char *code();
 bool singular(long long n);
 
 const char *tr(S key);
+
+/* The media server is Emby: in every text, "Jellyfin" reads "Emby" and
+ * "Jelly5" (the PS5 client) "Emby5". Translations keep writing Jellyfin.
+ * Main thread, like set_lang. */
+void set_emby(bool emby);
+/* "Jellyfin", or "Emby" after set_emby(true): the media server's name. */
+const char *media_server();
 
 } // namespace i18n

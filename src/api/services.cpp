@@ -77,7 +77,8 @@ std::string Services::auth_header(config::Service s, int instance) const
     }
     const std::string &key = m_cfg.at(s, instance).api_key;
     if (s == config::Jellyfin)
-        return http::header("Authorization", jellyfin::auth_value(key));
+        return m_cfg.emby() ? http::header("X-Emby-Token", key)   /* Emby's documented header */
+                            : http::header("Authorization", jellyfin::auth_value(key));
     return http::header("X-Api-Key", key);
 }
 

@@ -265,7 +265,7 @@ void HomeScreen::open_menu()
     if (!c)
         return;
     const std::string id = c->jellyfin_id, title = c->title;
-    m_menu.open(title, "", {m_ctx.jelly5.label(), i18n::tr(i18n::Cancel)}, 1, [this, id, title](int choice) {
+    m_menu.open(title, "", {m_ctx.jelly5.label(m_ctx.services), i18n::tr(i18n::Cancel)}, 1, [this, id, title](int choice) {
         if (choice == 0)
             m_ctx.jelly5.open(m_ctx.services, id, title);
     });
@@ -454,7 +454,7 @@ void HomeScreen::draw_row(int index, Row &row, float x0, float y, double now, fl
         all_off = m_recent.state == load::Off;
         all_failed = m_recent.state == load::Failed;
         if (all_failed)
-            failures = fmt::labelled("Jellyfin", fmt::error(m_recent.error, m_recent.http_status));
+            failures = fmt::labelled(i18n::media_server(), fmt::error(m_recent.error, m_recent.http_status));
     }
 
     if (row.cards.empty()) {

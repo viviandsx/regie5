@@ -4,6 +4,8 @@
  *
  * Jellyfin 12 with an API key. The key goes only in
  * Authorization: MediaBrowser Token="..." (X-Emby-Token and ?api_key= are gone).
+ * Emby, from which Jellyfin was forked, answers the same paths: its key goes
+ * in X-Emby-Token, and the few places where it differs say so (emby).
  */
 #pragma once
 
