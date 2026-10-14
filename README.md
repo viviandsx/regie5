@@ -35,14 +35,15 @@ never to the internet.
 | **Activity** | The download queue of Sonarr and Radarr merged (title, progress, time left, status; refreshed every 5 s), and a 14-day **log**: imports, Seerr requests, Jellyfin playback and sign-ins, health alerts. |
 | **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**; Seerr **issues** (open / resolved / all) with their comments, **Resolve** and **Comment** (ready-made sentences). |
 | **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, and server load through [Glances](https://nicolargo.github.io/glances/) if you use it. |
-| **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto or 60 Hz; 120 Hz comes back in a later version), and **set-up from a phone** (QR code). |
+| **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which is 60 Hz for now / 60 Hz / 120 Hz, experimental), and **set-up from a phone** (QR code). |
 
 Also:
 
 - **Counters on the tabs**: downloads in the queue, requests waiting for an answer, people watching.
 - **Several instances** of a service (for example Radarr and Radarr 4K) are shown together, each named.
 - **HTTPS** and reverse-proxy sub-paths (`https://example.lan/sonarr`), self-signed certificates on request.
-- **Liquid-glass interface** made for a TV: large type readable from 3 m, a springy focus drop, 4K at 60 fps.
+- **Liquid-glass interface** made for a TV: large type readable from 3 m, a springy focus drop, 4K at 60 fps,
+  and 120 Hz on request (experimental) on a display that accepts it.
 - **English and French**, following the console's language; [more are welcome](docs/TRANSLATING.md).
 
 <p align="center">
@@ -185,10 +186,11 @@ two ways to set the proxy up, and for redirects such as a login page in front of
 - **HTTPS on the console** uses TLS 1.2 (ECDHE with AES-GCM, ChaCha20-Poly1305 or
   AES-CBC; RSA and ECDSA certificates). A server that only accepts TLS 1.3 cannot be
   reached from the console.
-- **120 Hz** is not available in 0.3.1: the console grants it only to titles set up
-  the way 0.3.0 was, and that set-up stopped the phone page. It comes back in a later
-  version, with the Media area. A 120 Hz setting kept from 0.3.0 is shown as not
-  available, and Régie5 runs at 60 Hz.
+- **120 Hz is experimental**: chosen by hand (Settings › Display refresh › 120 Hz; it
+  applies at the next start), it needs a display and a link that take it; Settings
+  says so when the display refuses, and Régie5 stays at 60 Hz. At 120 Hz the 4K
+  interface draws about 90 frames per second, so movement is not yet perfectly even,
+  and Régie5 may close by itself: go back to Auto if it does. Auto stays at 60 Hz.
 - **Library sizes** come from Radarr and Sonarr (Jellyfin gives none): a title they
   do not know is counted but not measured, and the Jellyfin tab says how many were.
 - `config.json` holds your API keys in plain text on the console.

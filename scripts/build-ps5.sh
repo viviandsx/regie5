@@ -22,8 +22,9 @@
 # REGIE5_PARAM=<file>: another param.json for an app test build (to compare
 # categories), instead of ps5/app/sce_sys/param.json.
 #
-# Category: 0.3.1 is back in the Games area with 0.2.0's param.json (it starts
-# and listens; no 120 Hz). Jelly5's param.json profile starts in the Media
+# Category: 0.3.1 is back in the Games area with 0.2.0's param.json and
+# attribute3's 120 Hz bits (0x80040) added: it starts, listens and gets 120 Hz
+# (app-14). Jelly5's param.json profile starts in the Media
 # area on firmware 13.60 (category 65536, badge 1, the launchActivity intent,
 # attribute 0, attribute3 0x80040, no amm or kernel block) but the console
 # then refuses to let the app listen (0.3.0: the phone page fails). With ps5-homebrew-ui's

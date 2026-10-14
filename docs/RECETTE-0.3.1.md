@@ -20,11 +20,11 @@ Une étape = une action. Après « → » : ce que tu dois voir. Si ce n'est pas
 ## B. Réglages
 
 7. Appuie sur R1 jusqu'à l'engrenage → tous les services au vert.
-8. Lis le bas de l'écran → « Version 0.3.1 », puis « Affichage : 3840 × 2160, 60 Hz ».
-   Si ton réglage était resté sur 120 Hz : la même ligne, en jaune, avec « 120 Hz
-   indisponible dans cette version ».
-9. Va sur « Fréquence d'affichage : … » et appuie sur ✕ plusieurs fois → seulement
-   « Auto (60 Hz) » et « 60 Hz », jamais « 120 Hz ». Laisse-le sur « Auto (60 Hz) ».
+8. Lis le bas de l'écran → « Version 0.3.1 », puis « Affichage : 3840 × 2160, … Hz ».
+9. Va sur « Fréquence d'affichage : … » et appuie sur ✕ jusqu'à « 120 Hz » → la ligne
+   « Affichage » dit « nouveau réglage au prochain lancement » et « expérimental : … ».
+   Ferme Régie5, relance-le → « Affichage : 3840 × 2160, 120 Hz », et le menu de l'écran
+   (OSD) annonce 120 Hz. Remets ensuite « Auto (60 Hz) » si tu préfères.
 
 ## C. Depuis le téléphone (le défaut de la 0.3.0)
 

@@ -29,7 +29,7 @@ VERSION="$(python3 -c 'import json,sys; print(".".join(str(int(p)) for p in json
 TITLE_ID="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["titleId"])' "${PARAM}")"
 # Only a profile seen on a console to start and to listen (0.3.0 could not).
 python3 "${ROOT}/scripts/check-param.py" "${PARAM}" --release
-NAME="release-${VERSION}"
+NAME="${REGIE5_RELEASE_NAME:-release-${VERSION}}"   # another name: a second candidate of one version
 OUT="${ROOT}/build/ps5/${NAME}"
 REPACK=0
 [[ "${1:-}" == --repack ]] && REPACK=1

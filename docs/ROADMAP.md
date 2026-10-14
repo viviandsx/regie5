@@ -545,7 +545,12 @@ Ce qui est établi (docs de ps5-opengl et de ps5-native-app-boilerplate, essais)
       `INSTALL.txt`, notes `build/publish/release-notes-v0.3.1.md`, recette
       `docs/RECETTE-0.3.1.md`. Zip `build/ps5/release-0.3.1/upload/PPSA99520.zip` (accepté par
       `check-param.py --release`) et build de test `app-13` (même `param.json`, journal UDP).
-- [ ] Vivian : recette 0.3.1 sur console, puis commit, tag `v0.3.1`, release avant minuit UTC.
+- [x] **Variante retenue : 120 Hz rendu** (app-14, 14 octobre 2026 au soir) : même profil
+      Jeux avec `attribute3 0x180040` (`0x80040` ajouté, `0x100000` gardé) ; démarrage, page
+      du téléphone et 120 Hz vérifiés sur la console (profil `games-hz120-0.3.1`). Le 120 Hz
+      reste « expérimental » dans Réglages, Auto à 60 Hz. `release-ps5.sh` accepte
+      `REGIE5_RELEASE_NAME` (deux candidats d'une même version).
+- [ ] Vivian : commit, tag `v0.3.1`, release avant minuit UTC.
 
 ### 0.3.2 — Multimédia, page du téléphone et 120 Hz ensemble (plus tard)
 

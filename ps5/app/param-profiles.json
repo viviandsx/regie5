@@ -23,6 +23,27 @@
       }
     },
     {
+      "name": "games-hz120-0.3.1",
+      "fields": {
+        "applicationCategoryType": 0,
+        "contentBadgeType": 1,
+        "attribute": 1644167168,
+        "attribute2": 0,
+        "attribute3": 1572928,
+        "amm": {"multimapVaRangeInGib": 512, "pagetableMemorySizeInMib": 256, "vaRangeInGib": 512},
+        "kernel": {"cpuPageTableSize": 268435456, "gpuPageTableSize": 268435456},
+        "gameIntent": {"permittedIntents": [{"intentType": "launchActivity"}]}
+      },
+      "console": {
+        "seen": "app-14, firmware 13.60, 14 October 2026",
+        "area": "Games",
+        "starts": true,
+        "listens": true,
+        "hz120": true,
+        "note": "0.2.0's profile with attribute3 0x80040 added (0x100000 kept)"
+      }
+    },
+    {
       "name": "jelly5-media-0.3.0",
       "fields": {
         "applicationCategoryType": 65536,
