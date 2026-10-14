@@ -24,9 +24,9 @@ struct Kept {
 };
 
 /* The display's refresh rate (PS5), taken at the next start (the mode is set
- * before the display opens). Auto asks for 60 Hz for now: at 120 Hz the 4K
- * interface draws about 90 frames a second (uneven). 120 Hz, chosen by hand,
- * is kept at 60 Hz by a display that refuses it. */
+ * before the display opens). Auto and 120 Hz both ask for 120 Hz (0.3.2: held
+ * in 4K for 10 minutes on the console); a display that refuses it stays at
+ * 60 Hz, which Settings only flags when 120 Hz was chosen by hand. */
 enum class Refresh { Auto, Hz60, Hz120 };
 const char *refresh_key(Refresh r);   /* "auto", "60", "120" */
 /* The rate asked of the display for a choice. */
