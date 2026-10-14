@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Regie5 — captures every screen in every state, in French and English, for
 # review: data, loading, empty, errors, services off, no configuration, two
-# Radarr instances, versions too old. The Ménage is turned on (REGIE5_MOCK_CLEANUP, in memory).
+# Radarr instances, versions too old, Emby in Jellyfin's place. The Ménage is turned on (REGIE5_MOCK_CLEANUP, in memory).
 # Runs on fixtures/ (--mock): no server is contacted, no action is carried out.
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
@@ -17,7 +17,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD="${ROOT}/build/linux"
 OUT="${OUT:-${ROOT}/build/states}"
-ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old)
+ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby)
 STATES=("$@")
 [[ ${#STATES[@]} -eq 0 ]] && STATES=("${ALL_STATES[@]}")
 
@@ -77,6 +77,7 @@ for state in "${STATES[@]}"; do
         noconfig) args=(--config "${OUT}/no-such-config.json" --lang "${lang}") cleanup=0 ;;
         multi) env+=(REGIE5_MOCK_MULTI=1) ;;
         old) env+=(REGIE5_MOCK_OLD="sonarr,jellyfin") ;;
+        emby) env+=(REGIE5_MOCK_EMBY=1) sheets=1 ;;
         *) echo "unknown state: ${state} (${ALL_STATES[*]})" >&2; exit 2 ;;
         esac
         echo "${state} (${lang})"

@@ -7,7 +7,8 @@
 #   scripts/emby-test-server.sh stop     stop the container (its data is kept)
 #   scripts/emby-test-server.sh status
 #
-# Emby listens on 127.0.0.1:18096 only. Everything it keeps is under
+# Emby listens on 127.0.0.1:18096 only (REGIE5_EMBY_ADDR=<this machine's LAN
+# address> to reach it from the console too, with that address in config.json). Everything it keeps is under
 # build/emby-test/ (never versioned): config/ (Emby's own), media/ (short
 # clips drawn by ffmpeg, named after the Blender Foundation's free films, with
 # .nfo files so that Emby needs nothing from the internet), credentials.json
@@ -21,6 +22,7 @@ DIR="${ROOT}/build/emby-test"
 IMAGE="${REGIE5_EMBY_IMAGE:-emby/embyserver:latest}"
 NAME=regie5-emby-test
 PORT=18096
+ADDR="${REGIE5_EMBY_ADDR:-127.0.0.1}"
 
 clip() {   # clip <file> <seconds> <size> <video codec> <colour source>
     local out="$1" secs="$2" size="$3" vcodec="$4" src="$5"
@@ -76,11 +78,13 @@ start)
     if docker ps -a --format '{{.Names}}' | grep -qx "${NAME}"; then
         docker start "${NAME}" >/dev/null
     else
-        docker run -d --name "${NAME}" -p "127.0.0.1:${PORT}:8096" \
+        docker run -d --name "${NAME}" -p "${ADDR}:${PORT}:8096" \
             -e UID="$(id -u)" -e GID="$(id -g)" -e GIDLIST="$(id -g)" \
             -v "${DIR}/config:/config" -v "${DIR}/media:/media:ro" "${IMAGE}" >/dev/null
     fi
-    echo "Emby: http://127.0.0.1:${PORT} (container ${NAME}, data in build/emby-test/)"
+    echo "Emby: http://${ADDR}:${PORT} (container ${NAME}, data in build/emby-test/)"
+    [[ "$(docker port "${NAME}" 8096/tcp)" == "${ADDR}:${PORT}" ]] ||
+        echo "note: the container was made for $(docker port "${NAME}" 8096/tcp); remove it (docker rm ${NAME}) to change the address" >&2
     ;;
 setup) exec python3 "${ROOT}/scripts/emby-test-setup.py" "http://127.0.0.1:${PORT}" "${DIR}" ;;
 stop) docker stop "${NAME}" >/dev/null && echo "stopped (data kept in build/emby-test/)" ;;

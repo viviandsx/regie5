@@ -97,6 +97,9 @@ PS5); there is nothing else to set.
 - Two plural forms only (singular and plural). A language with more forms
   (Polish, Russian, Czech…) can still be added with these two; say so in the
   pull request and the rule can be extended.
+- Write **Jellyfin** and **Jelly5** where the English text has them: with an Emby
+  server, Régie5 shows them as *Emby* and *Emby5* by itself (`i18n::set_emby`). Keep
+  the sentence right for both names (no article or agreement that only fits one).
 - Seerr's titles and overviews come in the language Régie5 asks for (its code);
   Sonarr, Radarr and Jellyfin give theirs in the language set on the server.
 
