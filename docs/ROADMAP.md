@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 15 octobre 2026. 0.3.2 publiée. 0.4.0 en cours : Emby (zip de test `emby-test-1` validé sur la console par Vivian, essai A ; posté sur l'issue, retour du testeur attendu) et **assistant de première configuration** (codé, build de test `app-16` à essayer sur la console, § 2 octies). Pas de release avant le retour du testeur Emby. Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 15 octobre 2026 (soir). 0.3.2 publiée, catalogue à jour (PR automatique #287, fusionnée le 15 octobre à 00:09 UTC, champs vérifiés). 0.4.0 prête côté code : Emby (zip de test sur l'issue ; le testeur a Emby 4.10.1.0 et Emby Premiere, pas encore testé) et assistant de première configuration (`app-16` validé sur la console). **Attente du vrai retour du testeur** avant la 0.4.0 ; recette `docs/RECETTE-0.4.0.md` et liste « Pour publier la 0.4.0 » (§ 2 octies) prêtes. Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -26,7 +26,7 @@ pour ce qui a été fait après la phase 0).
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | ✅ publiée le 13 octobre 2026 (§ 2 sexies) ; page du téléphone cassée |
 | 9. Version 0.3.1 | correctif : page du téléphone (rangée Jeux), 120 Hz expérimental | ✅ publiée le 14 octobre 2026 (§ 2 septies) |
 | 10. Version 0.3.2 | 120 Hz par défaut (Auto), dates des films ; Multimédia écarté | ✅ publiée le 14 octobre 2026 (§ 2 septies, « 0.3.2 ») |
-| 11. Version 0.4.0 : Emby | demandé dans la première issue | 🧪 codé sous Linux contre un Emby de test ; essai console du zip `emby-test-1` en attente (§ 2 octies) |
+| 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | 🧪 codée et vue sur la console (`emby-test-1`, `app-16`) ; attente du retour du testeur Emby (§ 2 octies) |
 
 Tests : **65** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -630,9 +630,10 @@ anciens `attribute` / `amm` / `kernel` (app-10c) ne démarre pas.
       `build/patches-10/`.
 - [x] Vivian, 14 octobre 2026 : recette console OK, patches commités, captures du README
       refaites, tag `v0.3.2`, release publiée (sha256 vérifié).
-- [ ] PR automatique du catalogue : vérification programmée le 15 octobre à 10:00 (tâche
-      `regie5-check-catalog-pr-0-3-2`, lecture seule) : `sha256`, `icon_url` en
-      `/v0.3.2/ps5/app/sce_sys/icon0.png`.
+- [x] Catalogue : PR automatique groupée #287 (« Update 6 apps… »), fusionnée le 15 octobre 2026
+      à 00:09 UTC ; `version`, `artifact_url`, `sha256` (`482f0a39…`) et `icon_url`
+      (`/v0.3.2/…/icon0.png`) justes, sur la PR et sur `main` (vérifié en lecture seule par la
+      tâche programmée). La fiche est passée de 0.3.0 à 0.3.2 directement.
 
 ## 2 octies. Version 0.4.0 — Emby (ouverte le 14 octobre 2026)
 
@@ -690,7 +691,10 @@ release (le catalogue publie toute release). Patches : `build/patches-11/`.
 - [x] **Essai console d'`emby-test-1`** (Vivian, 14 octobre 2026) : essai A (non-régression
       Jellyfin) OK ; essai B (Emby depuis la console) non fait. Patches 01 à 04 et 06 de
       `build/patches-11/` commités ; le 05 (README) attend la 0.4.0. Zip posté sur l'issue.
-- [ ] Retour du testeur Emby, puis 0.4.0 (numéros, notes, recette).
+- [x] Testeur de l'issue (15 octobre 2026, avant d'essayer) : **Emby 4.10.1.0** (la version de
+      l'Emby de test) et **Emby Premiere** (l'accélération matérielle d'Emby pourra être vue
+      dans le diagnostic de lecture, ce que l'Emby de test ne permet pas).
+- [ ] Son vrai retour (ce qui marche, captures), puis la 0.4.0.
 
 ### Assistant de première configuration (0.4.0, conception validée le 15 octobre 2026)
 
@@ -726,7 +730,49 @@ Patches : `build/patches-12/`. Captures FR/EN : `build/welcome-captures/` (mode 
       mode d'essai des builds de développement, **fichier `test-config` dans le dossier du
       titre** → l'app tourne sur `config-test.json` et `/download0/regie5/settings-test.json`,
       sans la copie de secours : le `config.json` de Vivian n'est pas touché.
-- [ ] Vivian : essai console d'`app-16`.
+- [x] **Essai console d'`app-16`** (Vivian, 15 octobre 2026) : tout OK (config remplie : pas
+      d'assistant ; config absente par `test-config` : « Plus tard », carte de l'Accueil,
+      parcours complet, vérification, « Corriger depuis le téléphone » ; retour à sa config).
+      Patches 01 à 04 de `build/patches-12/` commités et poussés.
+
+### Pour publier la 0.4.0 (préparé le 15 octobre 2026)
+
+Recette console : `docs/RECETTE-0.4.0.md` (mise à jour depuis la 0.3.2, Réglages à cinq
+boutons, page du téléphone avec sa section Emby, assistant rouvert depuis Réglages,
+non-régression Jellyfin ; Emby depuis la console en option). Une release n'a pas le mode
+`test-config` : le cas « config absente » reste celui d'`app-16`.
+
+1. [ ] **Retour du testeur Emby** ; corriger ce qu'il remonte (nouveau zip de test si le code
+       change, jamais une release).
+2. [ ] **README** : appliquer le patch 05 de `build/patches-11/` (Emby), en corrigeant le chemin
+       des clés d'API d'Emby, vérifié dans l'interface d'Emby 4.10 : réglages du serveur ›
+       **Advanced › Api Keys › New Api Key** (le patch dit « Settings › Advanced › API Keys ») ;
+       même correction dans `docs/CONFIG.md` (« Paramètres › Avancé › Clés API »).
+3. [ ] **README** : l'assistant (premier lancement, « Plus tard », bouton « Setup » de
+       Settings) dans « Install » ; une capture de l'assistant (`docs/images/`, par
+       `capture-readme.sh` avec `REGIE5_WELCOME=1`) si Vivian le veut.
+4. [ ] **`INSTALL.txt`** (FR/EN, dans le zip) : au premier lancement l'assistant s'ouvre ;
+       Emby à la place de Jellyfin (clé `"emby"`, chemin de sa clé d'API).
+5. [ ] **`config.example.json`** : une ligne de `_comment` sur `"emby"` (même forme que
+       `"jellyfin"`, l'un ou l'autre).
+6. [ ] **Numéros** : `contentVersion` `00.004.000`, `project(regie5 VERSION 0.4.0)` ; profil
+       `param.json` inchangé (`games-hz120-0.3.1`, accepté par `check-param.py --release`).
+7. [ ] **Notes de version** `build/publish/release-notes-v0.4.0.md` (anglais) : Emby (4.8 au
+       moins, testé 4.10 ; « Find in Emby5 » ; Ménage avec Emby couvert par les tests seulement,
+       sauf retour du testeur), assistant, page du téléphone (port choisi par le système,
+       `config.json.invalid`), limites connues.
+8. [ ] **`capture-states.sh`** : vérifier que le tour suit encore les écrans (Réglages a un
+       bouton de plus ; l'état `emby` dérivait déjà en fin de tour le 14 octobre).
+9. [ ] Tests (`ctest`), `scripts/release-ps5.sh` → `build/ps5/release-0.4.0/upload/PPSA99520.zip`,
+       empreinte, recette `RECETTE-0.4.0.md` sur la console.
+10. [ ] Vivian : commit « Régie5 0.4.0 », push, tag `v0.4.0`, release GitHub (pièce jointe
+        `PPSA99520.zip`, pas « pre-release »), empreinte vérifiée ; le patch 05 du README avec
+        la release, pas avant.
+11. [ ] Catalogue : la PR automatique du lendemain (`sha256`, `icon_url` en
+        `/v0.4.0/ps5/app/sce_sys/icon0.png`) ; une tâche programmée de vérification comme pour
+        la 0.3.2.
+12. [ ] Issue Emby : un commentaire qui annonce la 0.4.0 (texte à préparer, posté par Vivian),
+        puis la fermer si le testeur confirme.
 
 
 - Non vérifié : chemin du menu des clés d'API d'Emby cité dans le README et `CONFIG.md`
@@ -930,3 +976,4 @@ la Bibliothèque).
 | 14 oct. 2026 | Essais app-15 : Multimédia sans écoute sur 8085 et sans 120 Hz tenu (5 profils dans `param-profiles.json`) ; stress 120 Hz propre en 4K et 1440p. 0.3.2 préparée : Auto à 120 Hz, dates des films, README, notes, recette, zip, `build/patches-10/`. |
 | 14 oct. 2026 | 0.3.2 publiée. 0.4.0 (Emby) : serveur de test, clé `emby`, noms, écarts d'API (journal, dates du Ménage, accélération), fixtures et mock, README préparé, zip de test `emby-test-1`, `build/patches-11/`. |
 | 15 oct. 2026 | Assistant de première configuration : port choisi par le système, `config.json.invalid`, règle `core/welcome`, écrans, Réglages et Accueil ; build `app-16`, `build/patches-12/`. |
+| 15 oct. 2026 | `app-16` validé sur la console ; catalogue en 0.3.2 (PR #287) ; testeur Emby : 4.10.1.0 + Premiere. Recette 0.4.0 et liste « Pour publier la 0.4.0 ». |
