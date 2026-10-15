@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 15 octobre 2026 (soir). 0.3.2 publiée, catalogue à jour (PR automatique #287, fusionnée le 15 octobre à 00:09 UTC, champs vérifiés). 0.4.0 prête côté code : Emby (zip de test sur l'issue ; le testeur a Emby 4.10.1.0 et Emby Premiere, pas encore testé) et assistant de première configuration (`app-16` validé sur la console). **Attente du vrai retour du testeur** avant la 0.4.0 ; recette `docs/RECETTE-0.4.0.md` et liste « Pour publier la 0.4.0 » (§ 2 octies) prêtes. Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 15 octobre 2026 (soir). 0.3.2 publiée, catalogue à jour (PR automatique #287, fusionnée le 15 octobre à 00:09 UTC, champs vérifiés). 0.4.0 prête côté code : Emby (zip de test sur l'issue ; le testeur a Emby 4.10.1.0 et Emby Premiere, pas encore testé) et assistant de première configuration (`app-16` validé sur la console). **Attente du vrai retour du testeur** avant la 0.4.0 ; recette `docs/RECETTE-0.4.0.md` et liste « Pour publier la 0.4.0 » (§ 2 octies) prêtes ; ce qui ne dépend pas du testeur est préparé (`build/patches-14/` : docs, `INSTALL.txt`, `config.example.json`, captures, README ; notes de version en brouillon). Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -744,25 +744,35 @@ non-régression Jellyfin ; Emby depuis la console en option). Une release n'a pa
 
 1. [ ] **Retour du testeur Emby** ; corriger ce qu'il remonte (nouveau zip de test si le code
        change, jamais une release).
-2. [ ] **README** : appliquer le patch 05 de `build/patches-11/` (Emby), en corrigeant le chemin
-       des clés d'API d'Emby, vérifié dans l'interface d'Emby 4.10 : réglages du serveur ›
-       **Advanced › Api Keys › New Api Key** (le patch dit « Settings › Advanced › API Keys ») ;
-       même correction dans `docs/CONFIG.md` (« Paramètres › Avancé › Clés API »).
-3. [ ] **README** : l'assistant (premier lancement, « Plus tard », bouton « Setup » de
-       Settings) dans « Install » ; une capture de l'assistant (`docs/images/`, par
-       `capture-readme.sh` avec `REGIE5_WELCOME=1`) si Vivian le veut.
-4. [ ] **`INSTALL.txt`** (FR/EN, dans le zip) : au premier lancement l'assistant s'ouvre ;
-       Emby à la place de Jellyfin (clé `"emby"`, chemin de sa clé d'API).
-5. [ ] **`config.example.json`** : une ligne de `_comment` sur `"emby"` (même forme que
-       `"jellyfin"`, l'un ou l'autre).
+2. [x] **README** (15 octobre) : `build/patches-14/03` remplace le patch 05 de
+       `build/patches-11/` (Emby, chemin des clés d'API d'Emby corrigé : réglages du serveur ›
+       **Advanced › Api Keys › New Api Key**) ; `docs/CONFIG.md` corrigé de même
+       (`build/patches-14/01`). **À commiter avec la release.**
+3. [x] **README** : section « At the first start » (assistant, « Later », « Set up » de
+       l'Accueil, Settings › « Setup », `config.json.invalid`), Emby dans Features, capture
+       `docs/images/welcome.jpg` (choix du serveur, par `capture-readme.sh`, dans le patch 03).
+       Les autres captures refaites ne diffèrent que par l'heure, les « N d ago » et le bouton
+       « Setup » de `settings.jpg` (pas dans le README) : gardées telles quelles.
+4. [x] **`INSTALL.txt`** (FR/EN) : l'assistant au premier lancement, « Plus tard » et comment
+       le rouvrir, Emby (clé `"emby"`, chemin de sa clé d'API, « Find in Emby5 »)
+       (`build/patches-14/01`).
+5. [x] **`config.example.json`** : une ligne de `_comment` sur `"emby"` (`build/patches-14/01`).
 6. [ ] **Numéros** : `contentVersion` `00.004.000`, `project(regie5 VERSION 0.4.0)` ; profil
        `param.json` inchangé (`games-hz120-0.3.1`, accepté par `check-param.py --release`).
-7. [ ] **Notes de version** `build/publish/release-notes-v0.4.0.md` (anglais) : Emby (4.8 au
+7. [~] **Notes de version** `build/publish/release-notes-v0.4.0.md` (anglais), **brouillon**
+       du 15 octobre : `@TESTEUR` à remplacer par le pseudo GitHub du testeur, à compléter
+       avec son retour (ce qu'il a vu marcher : Ménage, accélération matérielle) : Emby (4.8 au
        moins, testé 4.10 ; « Find in Emby5 » ; Ménage avec Emby couvert par les tests seulement,
        sauf retour du testeur), assistant, page du téléphone (port choisi par le système,
        `config.json.invalid`), limites connues.
-8. [ ] **`capture-states.sh`** : vérifier que le tour suit encore les écrans (Réglages a un
-       bouton de plus ; l'état `emby` dérivait déjà en fin de tour le 14 octobre).
+8. [x] **`capture-states.sh`** (`build/patches-14/02`) : l'état `emby` dérivait dès la fiche
+       série (pas de menu Options avec Emby : un ○ de trop sortait de la Bibliothèque), il
+       suit maintenant le tour jusqu'à Réglages ; `noconfig` était recouvert par l'assistant
+       (il tourne désormais avec un `settings.json` « Plus tard » : carte « Configurer » de
+       l'Accueil) ; nouvel état `welcome` (les six écrans, Jellyfin puis Emby, mode démo) ;
+       capture des boutons de Réglages (« Assistant » sélectionné). Vu en FR/EN : `data`,
+       `emby`, `noconfig`, `welcome`. Remarqué en passant, inchangé : en `noconfig`,
+       Bibliothèque › Manquants reste sur ses squelettes au lieu de « Pas de configuration ».
 9. [ ] Tests (`ctest`), `scripts/release-ps5.sh` → `build/ps5/release-0.4.0/upload/PPSA99520.zip`,
        empreinte, recette `RECETTE-0.4.0.md` sur la console.
 10. [ ] Vivian : commit « Régie5 0.4.0 », push, tag `v0.4.0`, release GitHub (pièce jointe
@@ -977,3 +987,4 @@ la Bibliothèque).
 | 14 oct. 2026 | 0.3.2 publiée. 0.4.0 (Emby) : serveur de test, clé `emby`, noms, écarts d'API (journal, dates du Ménage, accélération), fixtures et mock, README préparé, zip de test `emby-test-1`, `build/patches-11/`. |
 | 15 oct. 2026 | Assistant de première configuration : port choisi par le système, `config.json.invalid`, règle `core/welcome`, écrans, Réglages et Accueil ; build `app-16`, `build/patches-12/`. |
 | 15 oct. 2026 | `app-16` validé sur la console ; catalogue en 0.3.2 (PR #287) ; testeur Emby : 4.10.1.0 + Premiere. Recette 0.4.0 et liste « Pour publier la 0.4.0 ». |
+| 15 oct. 2026 | En attendant le testeur Emby : README 0.4.0 (Emby, assistant, capture `welcome.jpg`), `CONFIG.md`, `INSTALL.txt`, `config.example.json`, `capture-states.sh` (états `emby` et `noconfig` réparés, état `welcome`), brouillon des notes de version ; `build/patches-14/`. |
