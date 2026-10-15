@@ -21,6 +21,8 @@
 # (REGIE5_LOG_HOST overrides the address; REGIE5_LOG_HOST=none: no UDP log).
 # REGIE5_PARAM=<file>: another param.json for an app test build (to compare
 # categories), instead of ps5/app/sce_sys/param.json.
+# REGIE5_DRY_REQUESTS=1: Seerr requests are logged, never sent (console tests).
+# REGIE5_SHOW_VERSION=<v>: the version a test build shows (contentVersion kept).
 #
 # Category: 0.3.1 is back in the Games area with 0.2.0's param.json and
 # attribute3's 120 Hz bits (0x80040) added: it starts, listens and gets 120 Hz
@@ -84,6 +86,10 @@ fi
 TITLE_ID="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["titleId"])' "${PARAM}")"
 # contentVersion 00.001.000 is shown as 0.1.0
 VERSION="$(python3 -c 'import json,sys; print(".".join(str(int(p)) for p in json.load(open(sys.argv[1]))["contentVersion"].split(".")))' "${PARAM}")"
+# REGIE5_SHOW_VERSION=0.5.0-test: a test build shown as the version it tries
+# out (Settings, What's new), its contentVersion unchanged.
+[[ -z "${REGIE5_SHOW_VERSION:-}" ]] || VERSION="${REGIE5_SHOW_VERSION}"
+[[ "${VERSION}" =~ ^[0-9A-Za-z.+-]{1,24}$ ]] || { echo "bad version: ${VERSION}" >&2; exit 2; }
 # 120 Hz may be asked for only with attribute3's bit 0x40 (ps5-opengl's
 # display-modes.md, the boilerplate's DISPLAY_MODES.md).
 HZ120="$(python3 -c 'import json,sys; print(1 if json.load(open(sys.argv[1])).get("attribute3", 0) & 0x40 else 0)' "${PARAM}")"
@@ -164,6 +170,8 @@ done
 echo "==> ${TITLE_ID} ${VERSION}, 120 Hz $([[ ${HZ120} == 1 ]] && echo possible || echo "not declared"), log -> ${LOG_HOST:-none}:5555, tree ${T}"
 DEFS="REGIE5_TLS=1 REGIE5_PROBE=1"
 [[ "${KIND}" == probe ]] || DEFS="REGIE5_TLS=1"
+# REGIE5_DRY_REQUESTS=1: a test build that never sends a Seerr request (logged instead).
+[[ "${REGIE5_DRY_REQUESTS:-0}" == 1 ]] && DEFS+=" REGIE5_DRY_REQUESTS=1"
 # The system keyboard (src/platform/ps5/text_ps5.cpp) needs
 # sceCommonDialogInitialize, which the SDK has no import stub for: a stub
 # library naming the module and that one symbol, as Jelly5 makes it.

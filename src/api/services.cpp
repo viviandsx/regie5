@@ -4,6 +4,8 @@
  */
 #include "api/services.h"
 
+#include <cstdio>
+
 #include "api/arr.h"
 #include "api/glances.h"
 #include "api/jellyfin.h"
@@ -499,6 +501,16 @@ void Services::seerr_server(bool tv, int server_id, std::function<void(Result<mo
 
 void Services::create_request(const seerr::NewRequest &r, std::function<void(Result<model::SeerrCreated>)> done)
 {
+#ifdef REGIE5_DRY_REQUESTS
+    /* A console test build (scripts/build-ps5.sh with REGIE5_DRY_REQUESTS=1):
+     * the request is logged, never sent; it answers as --mock does (204). */
+    std::fprintf(stderr, "[regie5] Seerr request NOT sent (test build): %s\n", seerr::request_body(r).c_str());
+    Result<model::SeerrCreated> res;
+    res.http_status = 204;
+    if (done)
+        done(std::move(res));
+    return;
+#endif
     call<model::SeerrCreated>(config::Seerr, "POST", seerr::create_request_path(), seerr::parse_created,
                               std::move(done), 0, seerr::request_body(r));
 }

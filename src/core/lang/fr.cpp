@@ -542,7 +542,7 @@ const Text kTexts[] = {
     {RequestNothing, "Rien à demander : tout est là ou déjà demandé"},
     {RequestDuplicate, "Déjà demandé"},
     {RequestRefused, "Seerr l'a refusée (droits ou quota)"},
-    {RequestMock, "Mode démo : aucune demande n'est faite"},
+    {RequestMock, "Rien n'est envoyé : mode démo, ou build de test"},
     {ErrRevoked, "Session Jellyfin terminée : reconnectez-vous avec Quick Connect"},
     {ErrNeedsAdmin, "Demande un compte administrateur Jellyfin"},
     {QcTitle, "Quick Connect"},

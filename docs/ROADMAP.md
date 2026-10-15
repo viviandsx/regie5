@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 16 octobre 2026. 0.4.0 publiée (Emby en beta, assistant). **0.5.0 en cours** (§ 2 decies) : chantiers 1 (écran « Nouveautés »), 2 (espagnol, allemand) et 5 (communauté) faits, patches `build/patches-16/` 01 à 03 ; chantiers 3 (demandes Seerr) et 4 (Quick Connect Jellyfin) : conceptions proposées, **attente de la validation de Vivian** avant de coder. Un seul build de test console à la fin. Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 16 octobre 2026 (soir). 0.4.0 publiée. **0.5.0 codée** (§ 2 decies) : les cinq chantiers faits (Nouveautés, espagnol et allemand, Découvrir et demandes Seerr, Quick Connect Jellyfin, communauté), patches `build/patches-17/`. **Essai console `app-18`** (`build/ps5/app-18/ESSAIS.txt`) à faire par Vivian, puis la release 0.5.0 (pas sans son accord). Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -27,7 +27,7 @@ pour ce qui a été fait après la phase 0).
 | 9. Version 0.3.1 | correctif : page du téléphone (rangée Jeux), 120 Hz expérimental | ✅ publiée le 14 octobre 2026 (§ 2 septies) |
 | 10. Version 0.3.2 | 120 Hz par défaut (Auto), dates des films ; Multimédia écarté | ✅ publiée le 14 octobre 2026 (§ 2 septies, « 0.3.2 ») |
 | 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
-| 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | 🚧 en cours (§ 2 decies) |
+| 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | 🧪 codée ; essai console `app-18` à faire (§ 2 decies) |
 
 Tests : **65** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -830,7 +830,7 @@ Rien qui touche au code Emby.
 ## 2 decies. Version 0.5.0 (ouverte le 16 octobre 2026)
 
 La 0.4.0 est publiée. Cinq chantiers, décidés par Vivian ; les chantiers 3 et 4 passent par
-une conception validée avant d'être codés. Patches : `build/patches-16/`, un par chantier.
+une conception validée avant d'être codés. Patches : `build/patches-16/` (chantiers 1, 2, 5) et `build/patches-17/` (3, 4, puis les lignes des Nouveautés et le build de test).
 Un seul build de test console à la fin, puis la release (pas sans l'accord de Vivian).
 Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
 
@@ -892,6 +892,12 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
       `jellyfin/quickconnect_*`, mock `forbidden`, tests, état `quickconnect` de
       `capture-states.sh`. À voir sur la console : contre le Jellyfin de Vivian (lecture seule ; la
       connexion ajoute Régie5 à ses appareils), avec `config-test.json`.
+- [ ] **Essai console `app-18`** (build de développement, journal UDP, `test-config`, version
+      affichée `0.5.0-test` par `REGIE5_SHOW_VERSION`, demandes Seerr **jamais envoyées** par
+      `REGIE5_DRY_REQUESTS=1` ; `release-ps5.sh` force les deux à vide / 0) : nouveautés, assistant,
+      Quick Connect sur le Jellyfin de Vivian, Découvrir sur son Seerr (lecture seule, arrêt sur
+      Annuler), espagnol puis allemand (langue de la console, puis retour au français), session
+      révoquée et compte non administrateur (facultatif). Étapes : `build/ps5/app-18/ESSAIS.txt`.
 - [x] **5. Communauté** — `docs/CONTRIBUTING.md` (anglais : bug, idée, traduction, code, règles
       du projet ; lié depuis le README) ; `docs/images/demo.gif` (600 px, ~3 Mo, 10 images/s :
       Accueil, Bibliothèque et fiche de Caminandes, Activité, Demandes, Jellyfin et diagnostic,
@@ -1097,3 +1103,4 @@ la Bibliothèque).
 | 16 oct. 2026 | Chantier 5 : `CONTRIBUTING.md`, GIF de démonstration (`capture-gif.sh`), brouillon Reddit. Conceptions des chantiers 3 et 4 proposées. |
 | 16 oct. 2026 | Chantier 3 : Demandes › Découvrir (recherche au clavier système, rangées, fiche, demande Seerr avec saisons / 4K / profil / dossier), fixtures et tests ; lien « Questions » (Discussions). |
 | 16 oct. 2026 | Chantier 4 : Quick Connect pour Jellyfin (assistant, Réglages, session dans `config.json`, compte non administrateur accepté avec des messages clairs), tests. |
+| 16 oct. 2026 | Lignes des Nouveautés relues ; build de test `app-18` (demandes jamais envoyées, version affichée 0.5.0-test) et ses étapes. |

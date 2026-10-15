@@ -543,7 +543,7 @@ const Text kTexts[] = {
     {RequestNothing, "Nothing to request: everything is there or asked for already"},
     {RequestDuplicate, "Already requested"},
     {RequestRefused, "Seerr refused it (permissions or quota)"},
-    {RequestMock, "Demo mode: no request is made"},
+    {RequestMock, "Nothing sent: demo mode, or a test build"},
     {ErrRevoked, "Jellyfin session ended: sign in again with Quick Connect"},
     {ErrNeedsAdmin, "Needs a Jellyfin administrator account"},
     {QcTitle, "Quick Connect"},

@@ -796,7 +796,7 @@ void DiscoverView::send_request()
         if (res.ok()) {
             m_requested = true;
             m_req_open = false;
-            const char *text = m_ctx.mock                  ? i18n::tr(i18n::RequestMock)
+            const char *text = m_ctx.mock || res.http_status == 204 ? i18n::tr(i18n::RequestMock)
                                : res.http_status == 202     ? i18n::tr(i18n::RequestNothing)
                                : res.value.status == 2      ? i18n::tr(i18n::RequestDoneApproved)
                                                             : i18n::tr(i18n::RequestDonePending);

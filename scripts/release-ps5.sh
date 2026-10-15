@@ -42,7 +42,7 @@ if [[ -n "$(git -C "${ROOT}" status --porcelain 2>/dev/null)" ]]; then
     echo "note: the working tree has changes not committed; the release is built from it as it is" >&2
 fi
 
-[[ ${REPACK} == 1 ]] || REGIE5_LOG_HOST=none "${ROOT}/scripts/build-ps5.sh" "${NAME}" app
+[[ ${REPACK} == 1 ]] || REGIE5_LOG_HOST=none REGIE5_DRY_REQUESTS=0 REGIE5_SHOW_VERSION= "${ROOT}/scripts/build-ps5.sh" "${NAME}" app
 
 # Not next to the folder: the build tools leave a <TITLE_ID>.zip of their own there.
 mkdir -p "${OUT}/upload"
