@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 14 octobre 2026 (nuit). 0.3.2 publiée par Vivian (release `v0.3.2`, zip `482f0a39…2504`) ; vérification de la PR automatique du catalogue programmée le 15 octobre à 10:00. 0.4.0 (Emby) commencée : serveur Emby de test en Docker, clé `emby`, écarts d'API, fixtures, mock ; zip de test `emby-test-1` prêt, **en attente de l'essai console de Vivian** (§ 2 octies). Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 15 octobre 2026. 0.3.2 publiée. 0.4.0 en cours : Emby (zip de test `emby-test-1` validé sur la console par Vivian, essai A ; posté sur l'issue, retour du testeur attendu) et **assistant de première configuration** (codé, build de test `app-16` à essayer sur la console, § 2 octies). Pas de release avant le retour du testeur Emby. Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -28,7 +28,7 @@ pour ce qui a été fait après la phase 0).
 | 10. Version 0.3.2 | 120 Hz par défaut (Auto), dates des films ; Multimédia écarté | ✅ publiée le 14 octobre 2026 (§ 2 septies, « 0.3.2 ») |
 | 11. Version 0.4.0 : Emby | demandé dans la première issue | 🧪 codé sous Linux contre un Emby de test ; essai console du zip `emby-test-1` en attente (§ 2 octies) |
 
-Tests : **62** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **65** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -687,8 +687,48 @@ release (le catalogue publie toute release). Patches : `build/patches-11/`.
       jamais publié, la vraie 0.4.0 passera au-dessus) ; `param.json` du dépôt inchangé.
       Essai : `build/ps5/emby-test-1/ESSAIS.txt` (A : non-régression Jellyfin ; B facultatif :
       l'Emby de test depuis la console).
-- [ ] **Vivian : essai console d'`emby-test-1`.** Ensuite : zip joint à l'issue (texte du
-      commentaire à préparer), retours de l'auteur, puis 0.4.0 (numéros, notes, recette).
+- [x] **Essai console d'`emby-test-1`** (Vivian, 14 octobre 2026) : essai A (non-régression
+      Jellyfin) OK ; essai B (Emby depuis la console) non fait. Patches 01 à 04 et 06 de
+      `build/patches-11/` commités ; le 05 (README) attend la 0.4.0. Zip posté sur l'issue.
+- [ ] Retour du testeur Emby, puis 0.4.0 (numéros, notes, recette).
+
+### Assistant de première configuration (0.4.0, conception validée le 15 octobre 2026)
+
+Patches : `build/patches-12/`. Captures FR/EN : `build/welcome-captures/` (mode démo).
+
+- [x] **Page du téléphone** : si les ports 8085 à 8090 sont refusés, **un port choisi par le
+      système** (le QR code le porte). **Note : ça pourrait rouvrir la piste Multimédia**
+      (app-15 : en Multimédia, seul le port 8085 était refusé, un port choisi par le système
+      passait la sonde) ; il resterait le 120 Hz non tenu en 4K dans cette rangée. Un
+      `config.json` illisible est gardé dans `config.json.invalid` au premier enregistrement
+      (jamais par-dessus une copie existante). `?m=jellyfin|emby|none` : la page ne montre
+      que le serveur multimédia choisi (Emby alors activé d'office). Testé : ports 8085 à 8090
+      occupés, fichier illisible (deux tests).
+- [x] **Quand l'afficher** (`core/welcome`, testé) : `config.json` absent, vide, invalide ou
+      sans aucun service principal actif (Glances seul ne compte pas) ; jamais si la copie de
+      l'app a servi (mise à jour 0.3.x), jamais en `--mock` (sauf `REGIE5_WELCOME=1`), jamais
+      après « Plus tard » (`settings.json` : `"welcome": "later"`, gardé quelle que soit la
+      sortie de l'assistant).
+- [x] **Écrans** (`ui/welcome_flow`) : Bienvenue → serveur multimédia (Jellyfin · Emby · Aucun ;
+      les textes passent en Emby/Emby5 aussitôt) → QR code et code à 6 chiffres (repli FTP si
+      la page ne s'ouvre pas, avec l'erreur) → vérification (mêmes lignes que Réglages :
+      `ui/service_rows`, extraites de Réglages) ; « Vérifier » relit `config.json` (cas FTP),
+      un enregistrement du téléphone y passe tout seul ; « Corriger depuis le téléphone »,
+      « Commencer » (Accueil, écrans refaits). « Plus tard » partout. Réglages : bouton
+      « Assistant » ; Accueil : carte « Configurer » tant que rien n'est configuré.
+      Code partagé avec Réglages : `ui/phone_share` (page et QR), `ui/config_reload`.
+- [x] Vu sous Linux : config absente (parcours complet, enregistrement simulé par `curl`
+      avec `REGIE5_SHARE_LOG_CODE=1`, Emby de test connecté, Accueil rempli), config remplie
+      (pas d'assistant), « Plus tard » (carte sur l'Accueil, pas d'assistant au lancement
+      suivant, la carte le rouvre), config illisible (`config.json.invalid`), page du téléphone
+      au format mobile avec `m=emby`, `--mock` FR/EN.
+- [x] **Build de test `app-16`** (journal UDP vers 192.168.1.15 ; version affichée 0.3.2) :
+      mode d'essai des builds de développement, **fichier `test-config` dans le dossier du
+      titre** → l'app tourne sur `config-test.json` et `/download0/regie5/settings-test.json`,
+      sans la copie de secours : le `config.json` de Vivian n'est pas touché.
+- [ ] Vivian : essai console d'`app-16`.
+
+
 - Non vérifié : chemin du menu des clés d'API d'Emby cité dans le README et `CONFIG.md`
   (« Paramètres › Avancé › Clés API ») ; Ménage avec Emby de bout en bout (sans Radarr /
   Sonarr de test : couvert par les tests seulement) ; Emby 4.8 et 4.9 (minimum supposé).
@@ -827,7 +867,10 @@ Variables de développement : `REGIE5_FPS=1` (temps d'image chaque seconde),
 `REGIE5_HTTP=socket` (le client HTTP de la PS5 au lieu de libcurl, avec Mbed TLS pour `https://`),
 `REGIE5_NO_LAUNCH=1` (une console qui ne lance pas d'app : « Chercher dans Jelly5 »),
 `REGIE5_MOCK_OLD=sonarr,jellyfin` (versions trop anciennes en `--mock`),
-`REGIE5_MOCK_EMBY=1` (Emby à la place de Jellyfin en `--mock`, `fixtures/emby/`).
+`REGIE5_MOCK_EMBY=1` (Emby à la place de Jellyfin en `--mock`, `fixtures/emby/`),
+`REGIE5_WELCOME=1` (l'assistant même avec une config ou en `--mock`),
+`REGIE5_SHARE_LOG_CODE=1` (le code de la page du téléphone dans le terminal, pour un essai
+par `curl`).
 Emby de test : `scripts/emby-test-server.sh start`, puis `setup`, puis
 `scripts/run-linux.sh --config build/emby-test/config.json`.
 `scripts/make-fixtures.py` régénère les fixtures en GET seulement (`--only library` pour
@@ -886,3 +929,4 @@ la Bibliothèque).
 | 14 oct. 2026 | app-14 validé (Jeux, écoute, 120 Hz) ; **0.3.1 publiée** avec le 120 Hz expérimental. Seerr : série supprimée en statut 7 (`DELETED`), demande gardée : Ménage validé. Première issue : Emby (étude). Plan de la 0.3.2. |
 | 14 oct. 2026 | Essais app-15 : Multimédia sans écoute sur 8085 et sans 120 Hz tenu (5 profils dans `param-profiles.json`) ; stress 120 Hz propre en 4K et 1440p. 0.3.2 préparée : Auto à 120 Hz, dates des films, README, notes, recette, zip, `build/patches-10/`. |
 | 14 oct. 2026 | 0.3.2 publiée. 0.4.0 (Emby) : serveur de test, clé `emby`, noms, écarts d'API (journal, dates du Ménage, accélération), fixtures et mock, README préparé, zip de test `emby-test-1`, `build/patches-11/`. |
+| 15 oct. 2026 | Assistant de première configuration : port choisi par le système, `config.json.invalid`, règle `core/welcome`, écrans, Réglages et Accueil ; build `app-16`, `build/patches-12/`. |
