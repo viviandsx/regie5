@@ -18,7 +18,7 @@
 
 namespace ui {
 
-Shell::Shell(Context &ctx) : m_ctx(ctx), m_config_gen(ctx.config_gen), m_watch(ctx)
+Shell::Shell(Context &ctx) : m_ctx(ctx), m_config_gen(ctx.config_gen), m_watch(ctx), m_welcome(ctx)
 {
     static const char *const kMade[TabCount] = {"screen made: Home",     "screen made: Library",
                                                 "screen made: Activity", "screen made: Requests",
@@ -48,6 +48,17 @@ std::unique_ptr<Screen> Shell::make_screen(int tab)
     }
 }
 
+void Shell::remake_screens(bool current_too)
+{
+    m_config_gen = m_ctx.config_gen;
+    m_ctx.jelly5.reset();
+    for (int t = 0; t < TabCount; t++)
+        if (current_too || t != m_tab)
+            m_screens[t] = make_screen(t);
+    if (current_too)
+        m_screens[m_tab]->activate();
+}
+
 void Shell::switch_tab(int tab, double now)
 {
     if (tab == m_tab || tab < 0 || tab >= TabCount)
@@ -67,6 +78,17 @@ bool Shell::input(const input::State &in, double now)
     const uint32_t p = in.pressed;
     if (!p)
         return false;
+    if (m_welcome.is_open()) {   /* the welcome screens have every press */
+        m_welcome.input(in);
+        if (!m_welcome.is_open()) {   /* left: Home, made afresh if config.json changed */
+            if (m_welcome.take_config_changed() || m_ctx.config_gen != m_config_gen)
+                remake_screens(true);
+            m_on_bar = false;
+            switch_tab(TabHome, now);
+            m_screens[m_tab]->enter_from_top();
+        }
+        return true;
+    }
     if (m_screens[m_tab]->modal()) {   /* a sheet has every press */
         m_screens[m_tab]->input(in);
         return true;
@@ -103,13 +125,8 @@ bool Shell::input(const input::State &in, double now)
     /* config.json changed a service: the other tabs start afresh (their data
      * came from the old addresses; answers still on their way are dropped
      * with the screens that asked). */
-    if (m_ctx.config_gen != m_config_gen) {
-        m_config_gen = m_ctx.config_gen;
-        m_ctx.jelly5.reset();
-        for (int t = 0; t < TabCount; t++)
-            if (t != m_tab)
-                m_screens[t] = make_screen(t);
-    }
+    if (m_ctx.config_gen != m_config_gen)
+        remake_screens(false);
     return true;
 }
 
@@ -117,6 +134,21 @@ bool Shell::draw(double now, float dt)
 {
     bool animating = false;
     art::frame();
+    if (m_ctx.welcome_request) {   /* at start (core/welcome), or Settings / Home asked */
+        m_ctx.welcome_request = false;
+        m_welcome.open();
+    }
+    if (m_welcome.is_open()) {   /* over everything: the backdrop, the screens, then the hints */
+        m_ambient.set("welcome", {}, 7, now);
+        m_ambient.draw(dt, 0.45f, &animating);
+        m_welcome.draw(now, dt, &animating);
+        draw_pad_hints(gfx::W - kPad, gfx::H - 52,
+                       {PadHint{PadButton::Cross, i18n::tr(i18n::HintSelect)},
+                        PadHint{PadButton::Circle, i18n::tr(i18n::HintBack)}},
+                       2, 28.f, 0.9f);
+        draw_notes(now, &animating);
+        return animating;
+    }
     Screen &scr = *m_screens[m_tab];
     scr.set_focused(!m_on_bar);
 

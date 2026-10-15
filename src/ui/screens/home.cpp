@@ -8,6 +8,7 @@
 #include "api/jellyfin.h"
 #include "core/jelly5.h"
 #include "core/schedule.h"
+#include "core/welcome.h"
 #include "core/i18n.h"
 #include "platform/platform.h"
 #include "ui/format.h"
@@ -291,6 +292,13 @@ Action HomeScreen::input(const input::State &in)
     const uint32_t p = in.pressed;
     if (p & input::Circle)
         return Action::ToTabs;
+    if (unconfigured()) {   /* one button: the welcome screens */
+        if (p & input::Up)
+            return Action::ToTabs;
+        if (p & input::Cross)
+            m_ctx.welcome_request = true;
+        return Action::None;
+    }
     if (p & input::Triangle) {
         reload();
         return Action::None;
@@ -499,8 +507,35 @@ void HomeScreen::draw_row(int index, Row &row, float x0, float y, double now, fl
     }
 }
 
+bool HomeScreen::unconfigured() const
+{
+    return !m_ctx.mock && m_ctx.services &&
+           (m_ctx.config_error != config::LoadError::None || !welcome::configured(m_ctx.services->config()));
+}
+
+void HomeScreen::draw_unconfigured(float x0, float dt, bool *animating)
+{
+    const float w = gfx::W - 2 * kPad;
+    const gfx::Rect card{x0, 200, w, 290};
+    glass_panel(card, 36, 1.f, true);
+    gfx::text(x0 + 64, card.y + 110, i18n::tr(i18n::HomeNotConfigured), {gfx::SemiBold, 40, w - 128}, kText);
+    const char *label = i18n::tr(i18n::HomeConfigure);
+    const gfx::TextStyle style{gfx::Bold, 30};
+    const float bw = gfx::text_width(label, style) + 96;
+    const gfx::Rect bar{x0 + 64, card.y + 160, bw + 12, 76};
+    glass_panel(bar, bar.h / 2, 1.f, false);
+    if (m_focused)
+        m_drop.to({bar.x + 6, bar.y + 6, bw, 64}, 99, 0, 0);
+    else
+        m_drop.hide();
+    m_drop.draw(dt, 1.f, animating);
+    gfx::text(bar.x + bar.w / 2, bar.y + 50, label, style, kText, 1);
+}
+
 void HomeScreen::draw(double now, float dt, float ox, bool *animating)
 {
+    if (unconfigured())
+        return draw_unconfigured(kPad + ox, dt, animating);
     if (!m_loaded)
         reload();
     /* The page slides up when the second row has the focus. */

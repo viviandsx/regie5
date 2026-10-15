@@ -23,6 +23,7 @@
 #include "api/services.h"
 #include "core/config.h"
 #include "core/i18n.h"
+#include "core/welcome.h"
 #include "core/input.h"
 #include "core/perf.h"
 #include "platform/gl/gfx_gl.h"
@@ -624,7 +625,14 @@ int main()
     /* The real servers: config.json in the title's folder, HTTP over plain
      * sockets. Never logged: the file holds the keys. */
     step("config");
-    const std::string config_path = platform::default_config_path();
+    /* Development builds only: a file named test-config in the title's
+     * folder runs on config-test.json and settings-test.json (absent at first:
+     * a first start, the welcome screens), never on the app's copy: the
+     * user's own config.json and settings stay as they are. */
+    const bool test_config = *REGIE5_LOG_HOST != '\0' && file_exists("/app0/test-config");
+    const std::string config_path = test_config ? "/app0/config-test.json" : platform::default_config_path();
+    if (test_config)
+        ps5::log("[regie5] config: TEST MODE (/app0/test-config): config-test.json, settings-test.json, no copy");
     config::Config cfg;
     config::LoadError cfg_error = config::load(config_path, &cfg);
     ps5::log("[regie5] config %s: %s", config_path.c_str(),
@@ -634,7 +642,9 @@ int main()
     /* The app keeps a copy of the last config.json it could read: an update
      * that replaced the title's folder whole does not lose the servers. */
     bool from_backup = false;
-    if (cfg_error == config::LoadError::None) {
+    if (test_config) {
+        /* neither the copy nor its update */
+    } else if (cfg_error == config::LoadError::None) {
         if (!same_file(config_path.c_str(), kConfigCopy))
             ps5::log("[regie5] config: the app's copy %s", copy_file(config_path.c_str(), kConfigCopy) ? "updated" : "NOT written");
     } else if (cfg_error == config::LoadError::Missing && config::load(kConfigCopy, &cfg) == config::LoadError::None) {
@@ -702,15 +712,26 @@ int main()
     ctx.settings.cleanup_enabled = true;   /* the Ménage too, in memory only */
 #else
     ctx.config_path = config_path;
-    ctx.config_shown = "/data/homebrew/" REGIE5_TITLE_ID "/config.json";
+    ctx.config_shown = std::string("/data/homebrew/" REGIE5_TITLE_ID "/") + (test_config ? "config-test.json" : "config.json");
     if (from_backup)
         ctx.config_shown += std::string(" (") + i18n::tr(i18n::ConfigFromBackup) + ")";
     ctx.config_error = cfg_error;
     /* settings.json: /app0 is the title's folder, written from a PC; the
      * app's own choices go to its data folder, which it can write. */
-    ctx.settings_path = kSettings;
+    ctx.settings_path = test_config ? "/download0/regie5/settings-test.json" : kSettings;
     if (!app_settings::load(ctx.settings_path, &ctx.settings))
-        ps5::log("[regie5] %s: unreadable, defaults used", kSettings);
+        ps5::log("[regie5] %s: unreadable, defaults used", ctx.settings_path.c_str());
+    {
+        welcome::Start ws;
+        ws.error = cfg_error;
+        ws.from_backup = from_backup;
+        ws.later = ctx.settings.welcome_later;
+        ctx.welcome_request = welcome::should_show(ws, cfg);
+        ps5::log("[regie5] welcome screens at start: %s (config %s, %s%s)", ctx.welcome_request ? "yes" : "no",
+                 cfg_error == config::LoadError::None ? "read" : "not usable",
+                 welcome::configured(cfg) ? "a service on" : "no service on",
+                 ctx.settings.welcome_later ? ", \"later\" chosen before" : "");
+    }
 #endif
     ui::Shell shell(ctx);
 

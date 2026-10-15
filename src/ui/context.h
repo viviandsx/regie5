@@ -45,6 +45,8 @@ struct Context {
         model::Health health;
     };
     std::vector<HealthEvent> health_log;
+    /* Settings or Home asks for the welcome screens: the shell opens them. */
+    bool welcome_request = false;
     /* A screen asks to send the user to another tab (one of its views, at a
      * time): the shell does it after the press. tab < 0: nothing asked. */
     struct Goto {

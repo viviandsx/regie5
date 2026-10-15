@@ -70,18 +70,22 @@ add_library(regie5_ui STATIC
     src/ui/ambient.cpp
     src/ui/art.cpp
     src/ui/badges.cpp
+    src/ui/config_reload.cpp
     src/ui/drop.cpp
     src/ui/font.cpp
     src/ui/format.cpp
     src/ui/gfx_text.cpp
     src/ui/hints.cpp
+    src/ui/phone_share.cpp
     src/ui/jelly5_link.cpp
     src/ui/poster.cpp
     src/ui/script.cpp
     src/ui/seerr_titles.cpp
+    src/ui/service_rows.cpp
     src/ui/shell.cpp
     src/ui/style.cpp
     src/ui/tabbar.cpp
+    src/ui/welcome_flow.cpp
     src/ui/widgets.cpp
     src/ui/screens/cleanup.cpp
     src/ui/screens/downloads.cpp

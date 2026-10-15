@@ -109,7 +109,7 @@ function build(view){
     }
     sec.appendChild(head);
     if (key === "emby" && !media) sec.appendChild(el("p", {className: "lead", textContent: T.embyNote}));
-    (list.length ? list : [{enabled: key !== "glances" && key !== "emby"}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
+    (list.length ? list : [{enabled: key !== "glances" && (key !== "emby" || media === "emby")}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
     sec.appendChild(holder);
     form.appendChild(sec);
   }

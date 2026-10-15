@@ -24,6 +24,7 @@
 #include "api/services.h"
 #include "core/config.h"
 #include "core/i18n.h"
+#include "core/welcome.h"
 #include "core/input.h"
 #include "core/options.h"
 #include "core/perf.h"
@@ -234,6 +235,15 @@ int main(int argc, char **argv)
             std::fprintf(stderr, "regie5: %s: unreadable, defaults used\n", ctx.settings_path.c_str());
     } else if (const char *c = std::getenv("REGIE5_MOCK_CLEANUP")) {
         ctx.settings.cleanup_enabled = *c && *c != '0';   /* for captures: the Ménage already on */
+    }
+    {   /* the welcome screens at a first start; REGIE5_WELCOME=1 opens them anyway */
+        welcome::Start ws;
+        ws.error = cfg_error;
+        ws.mock = opt.mock;
+        ws.later = ctx.settings.welcome_later;
+        const char *w = std::getenv("REGIE5_WELCOME");
+        ws.forced = w && *w && *w != '0';
+        ctx.welcome_request = welcome::should_show(ws, cfg);
     }
     ui::Shell shell(ctx);
     input::Repeater repeater;

@@ -12,7 +12,9 @@
 #include "ui/anim.h"
 #include "ui/context.h"
 #include "ui/drop.h"
+#include "ui/phone_share.h"
 #include "ui/screen.h"
+#include "ui/service_rows.h"
 #include "ui/widgets.h"
 
 #include <memory>
@@ -24,13 +26,13 @@ namespace ui {
 class SettingsScreen : public Screen {
 public:
     explicit SettingsScreen(Context &ctx);
-    ~SettingsScreen() override { close_share(); }
+    ~SettingsScreen() override = default;   /* m_share closes the page */
     void activate() override;
 
     Action input(const input::State &in) override;
     void draw(double now, float dt, float ox, bool *animating) override;
     void enter_from_top() override { m_focus = 0; }
-    bool modal() const override { return m_sheet.is_open() || m_share_open; }
+    bool modal() const override { return m_sheet.is_open() || m_share.is_open(); }
     void draw_overlay(float dt, bool *animating) override
     {
         m_sheet.draw(dt, animating);
@@ -49,28 +51,20 @@ private:
     void build_rows();
     void toggle_cleanup();
     /* Configuring from a phone: the QR code of a page on the local network,
-     * served while this panel is open (platform.h, share_*). */
+     * served while this panel is open (PhoneShare). */
     void open_share();
     void close_share();
     void draw_share(float dt, bool *animating);
+    enum class Button { TestAll, Cleanup, Refresh, Phone, Welcome };
+    std::vector<Button> buttons() const;
     int button_count() const;
 
-    struct Row {
-        config::Service service;
-        int instance;
-        model::ServiceStatus status;
-        unsigned gen = 0;   /* a newer test wins over an older answer */
-    };
     bool m_tested = false;   /* the tests ran once (on the first opening) */
     Context &m_ctx;
-    std::vector<Row> m_rows;
+    ServiceRows m_list;
     int m_focus = 0;     /* the rows, then the buttons' row */
-    int m_button = 0;    /* on the buttons' row: 0 test all, 1 cleanup, 2 from a phone */
-    bool m_share_open = false;
-    std::string m_share_error;
-    int m_share_saves = 0;            /* configurations the phone saved, seen */
-    std::vector<bool> m_qr;           /* the QR code's modules, row by row */
-    int m_qr_size = 0;
+    int m_button = 0;    /* on the buttons' row (buttons()) */
+    PhoneShare m_share;
     Anim m_share_show;
     Drop m_drop;
     Sheet m_sheet;

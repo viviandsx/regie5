@@ -50,6 +50,10 @@ public:
     };
 
 private:
+    /* Nothing set up yet (no usable config.json, or no service on): Home is
+     * a card that opens the welcome screens. Never in --mock. */
+    bool unconfigured() const;
+    void draw_unconfigured(float x0, float dt, bool *animating);
     struct Row {
         std::vector<Card> cards;
         int focus = 0;

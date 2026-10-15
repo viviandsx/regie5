@@ -14,6 +14,7 @@
 #include "ui/context.h"
 #include "ui/screen.h"
 #include "ui/tabbar.h"
+#include "ui/welcome_flow.h"
 
 #include <memory>
 #include <string>
@@ -33,6 +34,8 @@ public:
 private:
     void switch_tab(int tab, double now);
     std::unique_ptr<Screen> make_screen(int tab);
+    /* Every screen made again (config.json changed behind them). */
+    void remake_screens(bool current_too);
 
     Context &m_ctx;
     unsigned m_config_gen = 0;   /* the config the screens were made with */
@@ -45,6 +48,7 @@ private:
     bool m_on_bar = false;   /* the focus is in the tab bar */
     Anim m_enter;            /* 0..1: the open tab sliding in */
     float m_dir = 1.f;       /* the way it slides in from */
+    WelcomeFlow m_welcome;   /* the first set-up, over everything */
 };
 
 } // namespace ui
