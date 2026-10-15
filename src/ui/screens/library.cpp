@@ -760,25 +760,35 @@ void LibraryScreen::draw_header(float x0, float dt, bool *animating)
     std::vector<std::string> labels;
     for (View v : vs)
         labels.push_back(i18n::tr(kViewLabels[v]));
+    const std::vector<std::string> right = right_pills();
+    /* A longer language may not fit both groups on the line: every pill's
+     * text then gets smaller, alike (never below three quarters). */
+    float natural = kBarPad;
+    for (const auto &l : labels)
+        natural += pill_w(l) + kBarPad;
+    for (const auto &l : right)
+        natural += pill_w(l) + 2 * kBarPad + 16;
+    const float fit = std::clamp((kGridW - 24) / natural, 0.75f, 1.f);
+    const gfx::TextStyle pill_text{gfx::SemiBold, 26 * fit}, pill_lit{gfx::Bold, 26 * fit};
+    auto fit_w = [&](const std::string &l) { return gfx::text_width(l, pill_text) + 64 * fit; };
     float total = kBarPad;
     for (const auto &l : labels)
-        total += pill_w(l) + kBarPad;
+        total += fit_w(l) + kBarPad;
     const gfx::Rect pane{x0, kHeaderY, total, kPillH + 2 * kBarPad};
     glass_panel(pane, pane.h / 2, 1.f, false);
     std::vector<gfx::Rect> rects;
     float px = x0 + kBarPad;
     for (const auto &l : labels) {
-        const float w = pill_w(l);
+        const float w = fit_w(l);
         rects.push_back({px, kHeaderY + kBarPad, w, kPillH});
         px += w + kBarPad;
     }
-    const std::vector<std::string> right = right_pills();
     if (!right.empty()) {
         labels.insert(labels.end(), right.begin(), right.end());
         rects.resize(nv + right.size());
         float rx = x0 + kGridW;
         for (int i = (int)labels.size() - 1; i >= nv; i--) {
-            const float w = pill_w(labels[i]);
+            const float w = fit_w(labels[i]);
             rx -= w + 2 * kBarPad;
             const gfx::Rect r{rx, kHeaderY, w + 2 * kBarPad, kPillH + 2 * kBarPad};
             glass_panel(r, r.h / 2, 1.f, false);
@@ -795,7 +805,7 @@ void LibraryScreen::draw_header(float x0, float dt, bool *animating)
     for (int i = 0; i < (int)rects.size(); i++) {
         const bool lit = i == open || (here && i == m_header_focus);
         gfx::text(rects[i].x + rects[i].w / 2, rects[i].y + 40, labels[i],
-                  lit ? gfx::TextStyle{gfx::Bold, 26} : kPillText, lit ? kText : kText2, 1);
+                  lit ? pill_lit : pill_text, lit ? kText : kText2, 1);
     }
 }
 

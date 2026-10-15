@@ -43,7 +43,9 @@ Also:
 - **HTTPS** and reverse-proxy sub-paths (`https://example.lan/sonarr`), self-signed certificates on request.
 - **Liquid-glass interface** made for a TV: large type readable from 3 m, a springy focus drop, 4K at 60 fps,
   120 Hz on a display that accepts it, 60 Hz on the others.
-- **English and French**, following the console's language; [more are welcome](docs/TRANSLATING.md).
+- **English, French, Spanish and German**, following the console's language. The Spanish and German
+  translations were made with the help of AI: corrections by native speakers are welcome, and so are
+  [new languages](docs/TRANSLATING.md).
 
 <p align="center">
   <img src="docs/images/movies.jpg" width="400" alt="Library: films">

@@ -242,17 +242,8 @@ void SessionDiag::draw(const model::Session &s, const model::EncodingInfo &enc, 
         }
     }
 
-    /* The server, when Glances is there to say. */
+    /* Stop (it still asks) / Close, at the right. */
     const float by = y0 + kH - kButtonH - 40;
-    if (load && load->state != load::Off) {
-        gfx::text(x, by + 42, i18n::tr(i18n::DiagServer), head, kText);
-        if (load->ready())
-            draw_server_load(x + 420 + 3 * 190, by + 22, load->value);
-        else if (load->state == load::Failed)
-            gfx::text(x + 420, by + 42, i18n::tr(i18n::DiagLoadNA), {gfx::Regular, 24}, kText3);
-    }
-
-    /* Stop (it still asks) / Close. */
     const std::string labels[2] = {i18n::tr(i18n::DiagStop), i18n::tr(i18n::Close)};
     float bx = x + w;
     gfx::Rect rects[2];
@@ -261,6 +252,16 @@ void SessionDiag::draw(const model::Session &s, const model::EncodingInfo &enc, 
         bx -= bw;
         rects[i] = {bx, by, bw, kButtonH};
         bx -= 16;
+    }
+
+    /* The server, when Glances is there to say: its chips end before the
+     * buttons, however long the language makes them. */
+    if (load && load->state != load::Off) {
+        gfx::text(x, by + 42, i18n::tr(i18n::DiagServer), head, kText);
+        if (load->ready())
+            draw_server_load(std::min(x + 420 + 3 * 190, rects[0].x - 40), by + 22, load->value);
+        else if (load->state == load::Failed)
+            gfx::text(x + 420, by + 42, i18n::tr(i18n::DiagLoadNA), {gfx::Regular, 24, rects[0].x - 40 - x - 420}, kText3);
     }
     glass_panel({rects[0].x - 6, by - 6, rects[1].x + rects[1].w - rects[0].x + 12, kButtonH + 12}, (kButtonH + 12) / 2,
                 1.f, false);

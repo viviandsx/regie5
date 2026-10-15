@@ -1,25 +1,32 @@
 # Translating Régie5
 
-Régie5 ships in English and French. Each language is one file in
-[`src/core/lang/`](../src/core/lang/), so adding one (Spanish, German…) does not
-touch the rest of the code. This guide uses German (`de`) as the example.
+Régie5 ships in English, French, Spanish (`es`) and German (`de`). Each language
+is one file in [`src/core/lang/`](../src/core/lang/), so adding one (Italian,
+Portuguese…) does not touch the rest of the code. This guide uses Italian (`it`)
+as the example.
+
+**The Spanish and German translations were made with the help of AI.** If one of
+them is your language, corrections are very welcome: a pull request on
+`src/core/lang/es.cpp` or `de.cpp`, or an issue quoting the text and what it
+should say. Words that are too long for a button or a card are worth reporting
+too.
 
 ## 1. Copy the English file
 
 ```bash
-cp src/core/lang/en.cpp src/core/lang/de.cpp
+cp src/core/lang/en.cpp src/core/lang/it.cpp
 ```
 
-At the bottom of `de.cpp`, rename the language and give its rules:
+At the bottom of `it.cpp`, rename the language and give its rules:
 
 ```cpp
-extern const Language kGerman = {
-    "de", "Deutsch", Plural::One, ',',
-    {"So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."},                       // days, Sunday first
-    {"Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."},
+extern const Language kItalian = {
+    "it", "Italiano", Plural::One, ',',
+    {"dom", "lun", "mar", "mer", "gio", "ven", "sab"},                       // days, Sunday first
+    {"gen", "feb", "mar", "apr", "mag", "giu", "lug", "ago", "set", "ott", "nov", "dic"},
     {"B", "KB", "MB", "GB", "TB", "PB"},                                     // sizes, ×1000 each
-    "T",                                                                     // days in a duration: "2 T 4 h"
-    "{wd}, {d}. {mon}", "{d}. {mon} {y}", "{d1}.–{d2}. {mon2}", "{d1}. {mon1} – {d2}. {mon2}",
+    "g",                                                                     // days in a duration: "2 g 4 h"
+    "{wd} {d} {mon}", "{d} {mon} {y}", "{d1} – {d2} {mon2}", "{d1} {mon1} – {d2} {mon2}",
     kTexts, (int)(sizeof kTexts / sizeof kTexts[0]),
 };
 ```
@@ -53,7 +60,7 @@ Every line of `kTexts` is `{Key, "text"}`; translate the text, keep the key.
 - To see the English and your language side by side:
 
   ```bash
-  scripts/list-strings.py de > build/strings-de.md
+  scripts/list-strings.py it > build/strings-it.md
   ```
 
 ## 3. Add it to the list
@@ -62,10 +69,11 @@ In [`src/core/lang/languages.cpp`](../src/core/lang/languages.cpp), declare it a
 add it to the list (English stays first):
 
 ```cpp
-extern const Language kEnglish, kFrench, kGerman;
+extern const Language kEnglish, kFrench, kSpanish, kGerman, kItalian;
 ...
         &kFrench,
         &kGerman,
+        &kItalian,
 ```
 
 The build picks up every file of `src/core/lang/` by itself.
@@ -75,7 +83,7 @@ The build picks up every file of `src/core/lang/` by itself.
 On Linux, without any server:
 
 ```bash
-scripts/run-linux.sh --demo --lang de
+scripts/run-linux.sh --demo --lang it
 ```
 
 ```bash
@@ -83,7 +91,7 @@ cmake --build build/linux && ctest --test-dir build/linux --output-on-failure
 ```
 
 ```bash
-LANGS=de scripts/capture-states.sh
+LANGS=it scripts/capture-states.sh
 ```
 
 The last one captures every screen in every state (loading, empty, errors…)

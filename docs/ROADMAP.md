@@ -845,7 +845,16 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
       sixième bouton « Nouveautés » (les boutons rétrécissent ensemble s'ils ne tiennent pas en
       largeur). État `whatsnew` de `capture-states.sh`. **Lignes de la 0.5.0 à revoir** quand
       les chantiers 3 et 4 seront arrêtés.
-- [ ] **2. Espagnol et allemand.**
+- [x] **2. Espagnol et allemand** — `src/core/lang/es.cpp` et `de.cpp` : toutes les clés (page du
+      téléphone comprise), jours, mois, dates, décimale `,`, pluriel « 1 seul », unité de jour
+      (`d`, `T`). Faits avec l'aide de l'IA (dit dans le README et `TRANSLATING.md`, dont
+      l'exemple passe à l'italien). Langue système PS5 : `es_ES`, `es_419` → `es`, `de` → `de`
+      (testé). Vu en captures (`data`, `noconfig`, `welcome`, `whatsnew`) : deux débordements
+      corrigés dans le code, pour toute langue — les pilules de la Bibliothèque rétrécissent
+      ensemble si elles ne tiennent pas (Ménage en allemand), et les puces de charge du
+      diagnostic s'arrêtent avant ses boutons (« Wiedergabe beenden », « Detener la
+      reproducción »). Barre d'onglets, boutons de Réglages, fiches et assistant : rien ne
+      déborde. Dates, unités et mise en page aussi vues en espagnol et en allemand.
 - [ ] **3. Demandes Seerr depuis Régie5** — conception à valider.
 - [ ] **4. Quick Connect pour Jellyfin** — conception à valider.
 - [ ] **5. Communauté** — `docs/CONTRIBUTING.md`, GIF de démonstration, brouillon pour
@@ -1043,3 +1052,4 @@ la Bibliothèque).
 | 15 oct. 2026 | Décision : 0.4.0 avec Emby en beta si l'essai B passe. Build `app-17` et étapes de l'essai B (Emby de test depuis la console). |
 | 15 oct. 2026 | Essai B réussi (34 étapes). 0.4.0 préparée avec Emby en beta : pastille « bêta » dans Réglages, README (patch 03 + beta), notes, numéros, zip (`2c83be9b…`), recette courte, commentaire de l'issue #1 ; ordre de la suite (§ 2 nonies). `build/patches-15/`. |
 | 16 oct. 2026 | 0.4.0 publiée. 0.5.0 ouverte (cinq chantiers). Chantier 1 : écran « Nouveautés » (`core/whats_new`, `seenVersion`, bouton de Réglages). |
+| 16 oct. 2026 | Chantier 2 : espagnol et allemand (`es.cpp`, `de.cpp`), langue système PS5 testée, pilules et puces de charge qui s'adaptent à la longueur des textes. |

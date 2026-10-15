@@ -9,13 +9,15 @@
 
 namespace i18n {
 
-extern const Language kEnglish, kFrench;
+extern const Language kEnglish, kFrench, kSpanish, kGerman;
 
 const Language *const *all_languages(int *n)
 {
     static const Language *const kAll[] = {
         &kEnglish,   /* first: the fallback */
         &kFrench,
+        &kSpanish,
+        &kGerman,
     };
     *n = (int)(sizeof kAll / sizeof kAll[0]);
     return kAll;

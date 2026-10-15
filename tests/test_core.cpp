@@ -180,7 +180,7 @@ TEST(i18n_languages)
         CHECK(i18n::known(lang.code));
         CHECK(&i18n::find(lang.code) == &lang);
     }
-    for (const char *shipped : {"en", "fr"}) {
+    for (const char *shipped : {"en", "fr", "es", "de"}) {
         i18n::set_lang(i18n::find(shipped));
         for (int k = 0; k < i18n::Count; k++)
             CHECK(i18n::tr((i18n::S)k)[0] != '\0');
@@ -192,6 +192,14 @@ TEST(i18n_languages)
     CHECK_EQ(std::string(i18n::find("xx").code), std::string("en"));   /* unknown: English */
     CHECK(!i18n::known("xx"));
     CHECK(i18n::known("FR"));
+    /* The PS5's system languages (platform_ps5.cpp): Spain, Latin America, German. */
+    CHECK_EQ(std::string(i18n::find("es_ES").code), std::string("es"));
+    CHECK_EQ(std::string(i18n::find("es_419").code), std::string("es"));
+    CHECK_EQ(std::string(i18n::find("de").code), std::string("de"));
+    i18n::set_lang(i18n::find("de"));
+    CHECK(!i18n::singular(0) && i18n::singular(1) && i18n::language().decimal == ',');
+    i18n::set_lang(i18n::find("es"));
+    CHECK(!i18n::singular(0) && i18n::singular(1) && i18n::language().decimal == ',');
 
     i18n::set_lang(i18n::find("fr"));
     CHECK(i18n::singular(0) && i18n::singular(1) && !i18n::singular(2));
