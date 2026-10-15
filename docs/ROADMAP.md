@@ -844,8 +844,9 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
       au-dessus des écrans, 3 à 5 lignes (`WnItem1` à `WnItem5`, `-` = pas de ligne ; une ligne
       qui nomme Jellyfin est masquée pour Emby, `i18n::plain`), bouton OK (✕ ou ○). Réglages :
       sixième bouton « Nouveautés » (les boutons rétrécissent ensemble s'ils ne tiennent pas en
-      largeur). État `whatsnew` de `capture-states.sh`. **Lignes de la 0.5.0 à revoir** quand
-      les chantiers 3 et 4 seront arrêtés.
+      largeur). État `whatsnew` de `capture-states.sh`. Lignes de la 0.5.0 relues le 16 octobre
+      contre ce qui est livré (demandes Seerr avec la 4K, Quick Connect — masquée pour Emby —,
+      espagnol et allemand, cet écran dans Réglages).
 - [x] **2. Espagnol et allemand** — `src/core/lang/es.cpp` et `de.cpp` : toutes les clés (page du
       téléphone comprise), jours, mois, dates, décimale `,`, pluriel « 1 seul », unité de jour
       (`d`, `T`). Faits avec l'aide de l'IA (dit dans le README et `TRANSLATING.md`, dont

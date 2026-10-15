@@ -501,7 +501,7 @@ const Text kTexts[] = {
     {EmbyBeta, "Beta"},
     {ButtonWhatsNew, "Neuigkeiten"},
     {WnTitle, "Neu in Régie5 %s"},
-    {WnItem1, "Filme und Serien bei Seerr anfragen: Suche, Entdecken, die gewünschten Staffeln."},
+    {WnItem1, "Filme und Serien bei Seerr anfragen: Suche, Entdecken, die gewünschten Staffeln, 4K."},
     {WnItem2, "Quick Connect für Jellyfin: Anmeldung mit einem Code auf dem Handy, ohne API-Schlüssel zu kopieren."},
     {WnItem3, "Español und Deutsch: Régie5 folgt der Sprache der Konsole."},
     {WnItem4, "Diesen Bildschirm jederzeit wieder: Einstellungen › Neuigkeiten."},
