@@ -23,6 +23,16 @@ téléphone » affiche un QR code vers une page servie par la console sur le ré
 (code à 6 chiffres, active tant que la fenêtre est ouverte). Les clés déjà enregistrées ne
 sont jamais renvoyées au téléphone : un champ laissé vide garde la clé.
 
+Au **premier lancement** (`config.json` absent, illisible, ou sans aucun service principal
+actif : Glances seul ne compte pas), Régie5 ouvre son **assistant** : choix du serveur
+multimédia (Jellyfin, Emby ou aucun), la même page du téléphone (qui ne montre que le
+serveur choisi), puis le test de chaque service. « Plus tard » le ferme pour de bon
+(`settings.json` : `"welcome": "later"`) ; l'Accueil propose alors « Configurer », et
+Réglages › « Assistant » le rouvre à tout moment. Une mise à jour qui garde un `config.json`
+utilisable ne l'affiche jamais. Un `config.json` illisible est gardé à côté, sous le nom
+`config.json.invalid`, au premier enregistrement depuis le téléphone (jamais par-dessus une
+copie existante).
+
 ### À quoi sert `is4k`
 
 Il dit quelle instance Seerr utilise comme serveur 4K. Régie5 n'écrit rien dans Seerr : après
@@ -39,7 +49,8 @@ champs), l'un ou l'autre :
 "emby": { "url": "http://192.168.1.10:8096", "apiKey": "…" }
 ```
 
-Clé d'API Emby : tableau de bord d'Emby › Avancé › Clés API › Nouvelle clé. Avec Emby,
+Clé d'API Emby : dans les réglages du serveur Emby, *Advanced › Api Keys › New Api Key*
+(libellés de l'interface en anglais, vérifiés avec Emby 4.10). Avec Emby,
 l'onglet et les textes disent « Emby », et Options propose « Chercher dans Emby5 » (le titre à
 chercher dans Emby5 ; aucune app n'est lancée). Emby 4.8 ou plus récent (testé avec 4.10).
 

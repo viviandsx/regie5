@@ -8,7 +8,8 @@
     "  \"radarr\": [ {\"name\": \"Radarr\", \"url\": ..., \"apiKey\": ...},",
     "              {\"name\": \"Radarr 4K\", \"url\": ..., \"apiKey\": ..., \"is4k\": true} ]",
     "is4k (Radarr, Sonarr; false by default): true for the instance Seerr uses as its 4K server.",
-    "  It is never guessed from the name. See docs/CONFIG.md."
+    "  It is never guessed from the name. See docs/CONFIG.md.",
+    "Emby instead of Jellyfin: rename \"jellyfin\" to \"emby\" (same fields). One or the other."
   ],
   "sonarr": {
     "enabled": true,

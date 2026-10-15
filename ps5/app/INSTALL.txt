@@ -8,8 +8,8 @@ You need
 - A jailbroken PS5 running ShadowMount+ (it turns folders in /data/homebrew/
   into home-screen tiles). Tested on firmware 13.60.
 - A way to copy a folder to the console: ps5upload, or an FTP server payload.
-- Your Sonarr, Radarr, Seerr and/or Jellyfin, reachable from the console on
-  your local network, and their API keys.
+- Your Sonarr, Radarr, Seerr and/or Jellyfin (or Emby), reachable from the
+  console on your local network, and their API keys.
 
 First install
 1. Unzip this archive on your computer. It holds one folder: PPSA99520.
@@ -18,15 +18,20 @@ First install
 3. Wait about ten seconds: ShadowMount+ adds the "Régie5" tile to the home
    screen, under Games. (If it does not appear, restart ShadowMount+ or the
    console.)
-4. Open Régie5. Press R1 until the gear (Settings) is selected.
-5. Choose "From a phone". A QR code and a 6-digit code appear on the TV.
-6. Scan the QR code with your phone (same network as the console), or type the
+4. Open Régie5. At the first start, its set-up screens open: choose
+   "Get started", then your media server (Jellyfin, Emby or None). A QR code
+   and a 6-digit code appear on the TV.
+5. Scan the QR code with your phone (same network as the console), or type the
    address shown on the TV into the phone's browser.
-7. On the page, fill in each service: address (http:// or https://, with the
+6. On the page, fill in each service: address (http:// or https://, with the
    port, e.g. http://192.168.1.10:8989) and API key. Tick "Self-signed
    certificate" for an https:// address with a self-signed certificate.
-8. Tap "Save on the console". Régie5 tests every service: each one should get a
-   green dot in Settings.
+7. Tap "Save on the console". Régie5 tests every service: each one should get a
+   green dot. "Start" opens the Home screen.
+
+"Later" closes the set-up screens; they then stay closed. To open them again:
+"Set up" on the Home screen, or Settings (press R1 until the gear is selected)
+> "Setup". Settings > "From a phone" opens the same phone page directly.
 
 Without a phone: copy PPSA99520/config.example.json to config.json in the same
 folder, fill it in on your computer, copy it to /data/homebrew/PPSA99520/, then
@@ -36,10 +41,15 @@ Where to find the API keys
 - Sonarr, Radarr: Settings > General > Security > API Key.
 - Seerr: Settings > General > API Key.
 - Jellyfin: Dashboard > API Keys > "+".
+- Emby: the server's settings > Advanced > Api Keys > New Api Key.
+
+Emby instead of Jellyfin: in config.json, the key is "emby" instead of
+"jellyfin" (same fields). The tab and the texts then say Emby, and Options
+offers "Find in Emby5".
 
 Updating
 - Copy the new PPSA99520 folder OVER the old one. The zip never holds a
-  config.json: yours is kept.
+  config.json: yours is kept, and the set-up screens do not open.
 - Do not delete the old folder first. If that happens anyway, Régie5 uses the
   copy of config.json it keeps on its side, and Settings says so.
 
@@ -50,7 +60,8 @@ Good to know
 - Cleanup (deleting films and series with their files) is off by default; it is
   turned on in Settings, after a warning, and every deletion asks twice.
 - "Open in Jelly5" is not possible: the console does not let one app start
-  another. Options > "Find in Jelly5" tells you which title to look for there.
+  another. Options > "Find in Jelly5" (or "Find in Emby5") tells you which
+  title to look for there.
 - Uninstall: delete /data/homebrew/PPSA99520.
 
 FRANÇAIS
@@ -61,8 +72,8 @@ Il faut
   /data/homebrew/ en tuiles sur l'écran d'accueil). Testé en firmware 13.60.
 - Un moyen de copier un dossier sur la console : ps5upload, ou un payload
   serveur FTP.
-- Votre Sonarr, Radarr, Seerr et/ou Jellyfin, joignables depuis la console sur
-  votre réseau local, et leurs clés d'API.
+- Votre Sonarr, Radarr, Seerr et/ou Jellyfin (ou Emby), joignables depuis la
+  console sur votre réseau local, et leurs clés d'API.
 
 Première installation
 1. Décompressez cette archive sur votre ordinateur. Elle contient un seul
@@ -71,16 +82,21 @@ Première installation
    /data/homebrew/PPSA99520/eboot.bin doit exister.
 3. Attendez une dizaine de secondes : ShadowMount+ ajoute la tuile « Régie5 »
    sur l'écran d'accueil, dans Jeux. (Sinon, relancez ShadowMount+ ou la console.)
-4. Ouvrez Régie5. Appuyez sur R1 jusqu'à l'engrenage (Réglages).
-5. Choisissez « Depuis le téléphone ». Un QR code et un code à 6 chiffres
-   s'affichent sur la télé.
-6. Scannez le QR code avec votre téléphone (même réseau que la console), ou
+4. Ouvrez Régie5. Au premier lancement, son assistant s'ouvre : choisissez
+   « Commencer », puis votre serveur multimédia (Jellyfin, Emby ou Aucun). Un
+   QR code et un code à 6 chiffres s'affichent sur la télé.
+5. Scannez le QR code avec votre téléphone (même réseau que la console), ou
    tapez dans son navigateur l'adresse affichée sur la télé.
-7. Sur la page, remplissez chaque service : adresse (http:// ou https://, avec
+6. Sur la page, remplissez chaque service : adresse (http:// ou https://, avec
    le port, par exemple http://192.168.1.10:8989) et clé d'API. Cochez
    « Certificat auto-signé » pour une adresse https:// au certificat auto-signé.
-8. Touchez « Enregistrer sur la console ». Régie5 teste chaque service : chacun
-   doit avoir une pastille verte dans Réglages.
+7. Touchez « Enregistrer sur la console ». Régie5 teste chaque service : chacun
+   doit avoir une pastille verte. « Commencer » ouvre l'Accueil.
+
+« Plus tard » ferme l'assistant ; il ne s'ouvre plus tout seul. Pour le
+rouvrir : « Configurer » sur l'Accueil, ou Réglages (R1 jusqu'à l'engrenage)
+> « Assistant ». Réglages > « Depuis le téléphone » ouvre directement la même
+page du téléphone.
 
 Sans téléphone : copiez PPSA99520/config.example.json sous le nom config.json
 dans le même dossier, remplissez-le sur votre ordinateur, copiez-le dans
@@ -90,10 +106,17 @@ Où trouver les clés d'API
 - Sonarr, Radarr : Settings > General > Security > API Key.
 - Seerr : Settings > General > API Key.
 - Jellyfin : Tableau de bord > Clés API > « + ».
+- Emby : réglages du serveur > Advanced > Api Keys > New Api Key (interface
+  en anglais).
+
+Emby à la place de Jellyfin : dans config.json, la clé est "emby" au lieu de
+"jellyfin" (mêmes champs). L'onglet et les textes disent alors Emby, et
+Options propose « Chercher dans Emby5 ».
 
 Mise à jour
 - Copiez le nouveau dossier PPSA99520 PAR-DESSUS l'ancien. Le zip ne contient
-  jamais de config.json : le vôtre est conservé.
+  jamais de config.json : le vôtre est conservé, et l'assistant ne s'ouvre
+  pas.
 - Ne supprimez pas l'ancien dossier avant. Si cela arrive quand même, Régie5
   reprend la copie de config.json qu'il garde de son côté, et Réglages
   l'indique.
@@ -106,6 +129,6 @@ Mise à jour
   par défaut ; il s'active dans Réglages, après un avertissement, et chaque
   suppression demande deux confirmations.
 - « Ouvrir dans Jelly5 » n'est pas possible : la console ne laisse pas une app
-  en lancer une autre. Options > « Chercher dans Jelly5 » indique le titre à y
-  chercher.
+  en lancer une autre. Options > « Chercher dans Jelly5 » (ou « Chercher dans
+  Emby5 ») indique le titre à y chercher.
 - Désinstaller : supprimez /data/homebrew/PPSA99520.
