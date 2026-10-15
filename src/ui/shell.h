@@ -15,6 +15,7 @@
 #include "ui/screen.h"
 #include "ui/tabbar.h"
 #include "ui/welcome_flow.h"
+#include "ui/whats_new_sheet.h"
 
 #include <memory>
 #include <string>
@@ -49,6 +50,7 @@ private:
     Anim m_enter;            /* 0..1: the open tab sliding in */
     float m_dir = 1.f;       /* the way it slides in from */
     WelcomeFlow m_welcome;   /* the first set-up, over everything */
+    WhatsNewSheet m_whats_new;   /* over the screens, once per version */
 };
 
 } // namespace ui

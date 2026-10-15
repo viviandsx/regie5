@@ -45,6 +45,9 @@ Every line of `kTexts` is `{Key, "text"}`; translate the text, keep the key.
   fixed size. Prefer short words; check the screens (below).
 - `Phone…` keys are the page a phone opens to fill in the configuration
   (Settings › From a phone).
+- `WnItem1` to `WnItem5` are the "What's new" screen of the current version
+  (Settings › What's new): short lines, one new thing each. A key whose text is
+  `-` shows no line. A line that names Jellyfin is left out for Emby users.
 - A key you leave out shows in English: a partial translation works, and the
   tests print how far it is.
 - To see the English and your language side by side:

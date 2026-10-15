@@ -25,6 +25,7 @@
 #include "core/config.h"
 #include "core/i18n.h"
 #include "core/welcome.h"
+#include "core/whats_new.h"
 #include "core/input.h"
 #include "core/options.h"
 #include "core/perf.h"
@@ -244,6 +245,22 @@ int main(int argc, char **argv)
         const char *w = std::getenv("REGIE5_WELCOME");
         ws.forced = w && *w && *w != '0';
         ctx.welcome_request = welcome::should_show(ws, cfg);
+    }
+    {   /* "What's new", once per version; never on a first start (no settings.json yet) */
+        whats_new::Start wn;
+        wn.current = ctx.version;
+        wn.seen = ctx.settings.seen_version;
+        struct stat st;
+        wn.ran_before = !ctx.settings_path.empty() && stat(ctx.settings_path.c_str(), &st) == 0;
+        wn.welcome = ctx.welcome_request;
+        wn.mock = opt.mock;
+        const char *w = std::getenv("REGIE5_WHATSNEW");
+        wn.forced = w && *w && *w != '0';
+        ctx.whats_new_request = whats_new::should_show(wn);
+        if (!opt.mock && ctx.settings.seen_version != ctx.version) {
+            ctx.settings.seen_version = ctx.version;
+            ctx.save_settings();
+        }
     }
     ui::Shell shell(ctx);
     input::Repeater repeater;

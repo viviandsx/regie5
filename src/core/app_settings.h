@@ -41,6 +41,9 @@ struct Settings {
     /* The welcome screens were left with "Later": they no longer open by
      * themselves (Settings and Home still offer them). */
     bool welcome_later = false;
+    /* The version whose "What's new" was last seen (or skipped on a first
+     * start): it opens by itself when the series changes (core/whats_new). */
+    std::string seen_version;
 
     bool is_kept(config::Service s, const std::string &instance, int id) const;
 };

@@ -4,7 +4,8 @@
 # Radarr instances, versions too old, Emby in Jellyfin's place, the welcome
 # screens. The Ménage is turned on (REGIE5_MOCK_CLEANUP, in memory).
 # Runs on fixtures/ (--mock): no server is contacted, no action is carried out;
-# the welcome screens' phone step is the demo one (nothing listens).
+# the welcome screens' phone step is the demo one (nothing listens); "What's
+# new" (whatsnew).
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 #   scripts/capture-states.sh                 all states, both languages
@@ -19,7 +20,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD="${ROOT}/build/linux"
 OUT="${OUT:-${ROOT}/build/states}"
-ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby welcome)
+ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby welcome whatsnew)
 STATES=("$@")
 [[ ${#STATES[@]} -eq 0 ]] && STATES=("${ALL_STATES[@]}")
 
@@ -109,6 +110,7 @@ for state in "${STATES[@]}"; do
         old) env+=(REGIE5_MOCK_OLD="sonarr,jellyfin") ;;
         emby) env+=(REGIE5_MOCK_EMBY=1) sheets=1 detail_options=0 ;;
         welcome) env+=(REGIE5_WELCOME=1) script="$(welcome_tour "${p}")" ;;
+        whatsnew) env+=(REGIE5_WHATSNEW=1) script="3 shot:${p}-whatsnew.ppm quit" ;;
         *) echo "unknown state: ${state} (${ALL_STATES[*]})" >&2; exit 2 ;;
         esac
         echo "${state} (${lang})"

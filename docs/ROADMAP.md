@@ -826,6 +826,31 @@ Rien qui touche au code Emby.
 3. [ ] **Lidarr en lecture seule** : sorties d'albums dans « À venir » et le Guide, file
        d'attente dans Activité (titres, progression, jamais de noms de releases).
 
+## 2 decies. Version 0.5.0 (ouverte le 16 octobre 2026)
+
+La 0.4.0 est publiée. Cinq chantiers, décidés par Vivian ; les chantiers 3 et 4 passent par
+une conception validée avant d'être codés. Patches : `build/patches-16/`, un par chantier.
+Un seul build de test console à la fin, puis la release (pas sans l'accord de Vivian).
+Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
+
+- [x] **1. Écran « Nouveautés » après une mise à jour** — `core/whats_new` (testé) : s'ouvre
+      une fois au premier lancement d'une nouvelle **série** de versions (0.5 ; un correctif
+      0.5.1 ne le rouvre pas), `settings.json` : `"seenVersion"` ; jamais à une première
+      installation (PS5 : aucun lancement compté avant dans `/download0/regie5/launches` ;
+      Linux : pas encore de `settings.json`), jamais avec l'assistant, jamais en `--mock`
+      (sauf `REGIE5_WHATSNEW=1`). Une mise à jour depuis la 0.4.x (pas de `seenVersion`) le
+      voit. La version est notée à chaque lancement, montrée ou non. Écran : panneau de verre
+      au-dessus des écrans, 3 à 5 lignes (`WnItem1` à `WnItem5`, `-` = pas de ligne ; une ligne
+      qui nomme Jellyfin est masquée pour Emby, `i18n::plain`), bouton OK (✕ ou ○). Réglages :
+      sixième bouton « Nouveautés » (les boutons rétrécissent ensemble s'ils ne tiennent pas en
+      largeur). État `whatsnew` de `capture-states.sh`. **Lignes de la 0.5.0 à revoir** quand
+      les chantiers 3 et 4 seront arrêtés.
+- [ ] **2. Espagnol et allemand.**
+- [ ] **3. Demandes Seerr depuis Régie5** — conception à valider.
+- [ ] **4. Quick Connect pour Jellyfin** — conception à valider.
+- [ ] **5. Communauté** — `docs/CONTRIBUTING.md`, GIF de démonstration, brouillon pour
+      r/PS5_Jailbreak, GitHub Discussions.
+
 ## 3. En attente
 
 | Sujet | Qui | Détail |
@@ -951,6 +976,7 @@ Variables de développement : `REGIE5_FPS=1` (temps d'image chaque seconde),
 `REGIE5_MOCK_OLD=sonarr,jellyfin` (versions trop anciennes en `--mock`),
 `REGIE5_MOCK_EMBY=1` (Emby à la place de Jellyfin en `--mock`, `fixtures/emby/`),
 `REGIE5_WELCOME=1` (l'assistant même avec une config ou en `--mock`),
+`REGIE5_WHATSNEW=1` (l'écran « Nouveautés » au lancement, même en `--mock`),
 `REGIE5_SHARE_LOG_CODE=1` (le code de la page du téléphone dans le terminal, pour un essai
 par `curl`).
 Emby de test : `scripts/emby-test-server.sh start`, puis `setup`, puis
@@ -1016,3 +1042,4 @@ la Bibliothèque).
 | 15 oct. 2026 | En attendant le testeur Emby : README 0.4.0 (Emby, assistant, capture `welcome.jpg`), `CONFIG.md`, `INSTALL.txt`, `config.example.json`, `capture-states.sh` (états `emby` et `noconfig` réparés, état `welcome`), brouillon des notes de version ; `build/patches-14/`. |
 | 15 oct. 2026 | Décision : 0.4.0 avec Emby en beta si l'essai B passe. Build `app-17` et étapes de l'essai B (Emby de test depuis la console). |
 | 15 oct. 2026 | Essai B réussi (34 étapes). 0.4.0 préparée avec Emby en beta : pastille « bêta » dans Réglages, README (patch 03 + beta), notes, numéros, zip (`2c83be9b…`), recette courte, commentaire de l'issue #1 ; ordre de la suite (§ 2 nonies). `build/patches-15/`. |
+| 16 oct. 2026 | 0.4.0 publiée. 0.5.0 ouverte (cinq chantiers). Chantier 1 : écran « Nouveautés » (`core/whats_new`, `seenVersion`, bouton de Réglages). |

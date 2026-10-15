@@ -50,6 +50,7 @@ add_library(regie5_data STATIC
     src/core/schedule.cpp
     src/core/versions.cpp
     src/core/welcome.cpp
+    src/core/whats_new.cpp
     src/api/arr.cpp
     src/api/glances.cpp
     src/api/http.cpp
@@ -86,6 +87,7 @@ add_library(regie5_ui STATIC
     src/ui/style.cpp
     src/ui/tabbar.cpp
     src/ui/welcome_flow.cpp
+    src/ui/whats_new_sheet.cpp
     src/ui/widgets.cpp
     src/ui/screens/cleanup.cpp
     src/ui/screens/downloads.cpp

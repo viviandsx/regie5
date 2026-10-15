@@ -88,13 +88,15 @@ void SettingsScreen::toggle_cleanup()
 }
 
 /* Test all, the cleanup, the refresh rate, then from a phone (a real
- * configuration only: --mock reads no file) and the welcome screens. */
+ * configuration only: --mock reads no file), the welcome screens and
+ * "What's new". */
 std::vector<SettingsScreen::Button> SettingsScreen::buttons() const
 {
     std::vector<Button> b{Button::TestAll, Button::Cleanup, Button::Refresh};
     if (!m_ctx.mock && !m_ctx.config_path.empty() && platform::can_share_config())
         b.push_back(Button::Phone);
     b.push_back(Button::Welcome);
+    b.push_back(Button::WhatsNew);
     return b;
 }
 
@@ -207,6 +209,7 @@ Action SettingsScreen::input(const input::State &in)
             }
             case Button::Phone: open_share(); break;
             case Button::Welcome: m_ctx.welcome_request = true; break;   /* the shell opens them */
+            case Button::WhatsNew: m_ctx.whats_new_request = true; break;
             }
         }
     }
@@ -250,15 +253,23 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
                                                             : refresh == app_settings::Refresh::Hz120 ? i18n::Refresh120
                                                                                                       : i18n::RefreshAuto)
                                   : b == Button::Phone   ? i18n::ButtonFromPhone
-                                                         : i18n::ButtonWelcome));
-    gfx::Rect buttons[5];
+                                  : b == Button::Welcome ? i18n::ButtonWelcome
+                                                         : i18n::ButtonWhatsNew));
+    /* Six buttons: in a longer language they may not fit in the pane's
+     * width; then the text and the padding get smaller, all alike. */
+    float natural = 0;
+    for (int i = 0; i < nb; i++)
+        natural += gfx::text_width(labels[i], kButtonText) + 56 + 2 * kBarPad + (i > 0 ? 18 : 0);
+    const float fit = std::clamp(kListW / natural, 0.72f, 1.f);
+    const gfx::TextStyle button_text{gfx::SemiBold, 28 * fit}, button_on{gfx::Bold, 28 * fit};
+    gfx::Rect buttons[6];
     float bx = x0;
     for (int i = 0; i < nb; i++) {
-        const float bw = gfx::text_width(labels[i], kButtonText) + 56;   /* five fit in 1680 */
+        const float bw = gfx::text_width(labels[i], button_text) + 56 * fit;
         const gfx::Rect bar{bx, by, bw + 2 * kBarPad, kButtonH + 2 * kBarPad};
         glass_panel(bar, bar.h / 2, 1.f, false);
         buttons[i] = {bx + kBarPad, by + kBarPad, bw, kButtonH};
-        bx += bar.w + 18;
+        bx += bar.w + 18 * fit;
     }
     if (m_focused) {
         if (m_focus < n)
@@ -275,7 +286,7 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
     for (int i = 0; i < nb; i++) {
         const bool on = m_focused && m_focus == n && m_button == i;
         gfx::text(buttons[i].x + buttons[i].w / 2, by + kBarPad + 42, labels[i],
-                  on ? gfx::TextStyle{gfx::Bold, 28} : kButtonText, on ? kText : kText2, 1);
+                  on ? button_on : button_text, on ? kText : kText2, 1);
     }
 
     /* The app, and the picture it sends out. */

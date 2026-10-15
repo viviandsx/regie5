@@ -47,6 +47,8 @@ struct Context {
     std::vector<HealthEvent> health_log;
     /* Settings or Home asks for the welcome screens: the shell opens them. */
     bool welcome_request = false;
+    /* "What's new": at start (core/whats_new), or Settings asks. */
+    bool whats_new_request = false;
     /* A screen asks to send the user to another tab (one of its views, at a
      * time): the shell does it after the press. tab < 0: nothing asked. */
     struct Goto {

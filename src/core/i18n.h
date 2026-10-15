@@ -504,6 +504,14 @@ enum S {
     PhoneEmbyNote,
     DisplayDesktop,
     EmbyBeta,
+    ButtonWhatsNew,
+    WnTitle,
+    WnItem1,
+    WnItem2,
+    WnItem3,
+    WnItem4,
+    WnItem5,
+    WnOk,
     Count
 };
 
@@ -523,6 +531,8 @@ const char *code();
 bool singular(long long n);
 
 const char *tr(S key);
+/* The same text as the language file has it, "Jellyfin" kept even with Emby. */
+const char *plain(S key);
 
 /* The media server is Emby: in every text, "Jellyfin" reads "Emby" and
  * "Jelly5" (the PS5 client) "Emby5". Translations keep writing Jellyfin.

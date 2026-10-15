@@ -117,4 +117,12 @@ const char *tr(S key)
     return s_texts[key];
 }
 
+const char *plain(S key)
+{
+    language();
+    if (key < 0 || key >= Count)
+        return "";
+    return s_plain[key];
+}
+
 } // namespace i18n

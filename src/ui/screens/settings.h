@@ -55,7 +55,7 @@ private:
     void open_share();
     void close_share();
     void draw_share(float dt, bool *animating);
-    enum class Button { TestAll, Cleanup, Refresh, Phone, Welcome };
+    enum class Button { TestAll, Cleanup, Refresh, Phone, Welcome, WhatsNew };
     std::vector<Button> buttons() const;
     int button_count() const;
 

@@ -18,7 +18,7 @@
 
 namespace ui {
 
-Shell::Shell(Context &ctx) : m_ctx(ctx), m_config_gen(ctx.config_gen), m_watch(ctx), m_welcome(ctx)
+Shell::Shell(Context &ctx) : m_ctx(ctx), m_config_gen(ctx.config_gen), m_watch(ctx), m_welcome(ctx), m_whats_new(ctx)
 {
     static const char *const kMade[TabCount] = {"screen made: Home",     "screen made: Library",
                                                 "screen made: Activity", "screen made: Requests",
@@ -89,6 +89,10 @@ bool Shell::input(const input::State &in, double now)
         }
         return true;
     }
+    if (m_whats_new.is_open()) {
+        m_whats_new.input(in);
+        return true;
+    }
     if (m_screens[m_tab]->modal()) {   /* a sheet has every press */
         m_screens[m_tab]->input(in);
         return true;
@@ -149,6 +153,10 @@ bool Shell::draw(double now, float dt)
         draw_notes(now, &animating);
         return animating;
     }
+    if (m_ctx.whats_new_request) {   /* after the welcome screens, never under them */
+        m_ctx.whats_new_request = false;
+        m_whats_new.open();
+    }
     Screen &scr = *m_screens[m_tab];
     scr.set_focused(!m_on_bar);
 
@@ -184,6 +192,7 @@ bool Shell::draw(double now, float dt)
         hints.push_back(h);
     draw_pad_hints(gfx::W - kPad, gfx::H - 52, hints, 2, 28.f, 0.9f);
     scr.draw_overlay(dt, &animating);
+    m_whats_new.draw(dt, &animating);
     draw_notes(now, &animating);
     return animating;
 }

@@ -16,6 +16,7 @@
 #include "core/lang/language.h"
 #include "core/versions.h"
 #include "core/welcome.h"
+#include "core/whats_new.h"
 
 #include <cctype>
 #include <cstdio>
@@ -515,4 +516,48 @@ TEST(welcome_when_to_show)
     CHECK(app_settings::to_json(a).find("\"welcome\": \"later\"") != std::string::npos ||
           app_settings::to_json(a).find("\"welcome\":\t\"later\"") != std::string::npos);
     CHECK(app_settings::from_json(app_settings::to_json(a), &b) && b.welcome_later);
+}
+
+TEST(whats_new_when_to_show)
+{
+    CHECK(whats_new::series("0.5.0") == "0.5" && whats_new::series("0.5.2-dev") == "0.5");
+    CHECK(whats_new::series("12.10") == "12.10" && whats_new::series("1.0.3.4") == "1.0");
+    CHECK(whats_new::series("") == "" && whats_new::series("dev") == "" && whats_new::series("0.") == "");
+    CHECK(whats_new::series("0.5x") == "" && whats_new::series(".5.0") == "");
+
+    whats_new::Start s;
+    s.current = "0.5.0";
+    s.ran_before = true;
+    CHECK(whats_new::should_show(s));         /* an update from 0.4.x: nothing seen yet */
+    s.seen = "0.4.0";
+    CHECK(whats_new::should_show(s));         /* a new series */
+    s.seen = "0.5.0";
+    CHECK(!whats_new::should_show(s));        /* seen once: never again */
+    s.current = "0.5.1";
+    CHECK(!whats_new::should_show(s));        /* a fix in the same series */
+    s.current = "0.5.0-dev";
+    CHECK(!whats_new::should_show(s));        /* the same version, built for the desktop */
+    s.current = "0.6.0";
+    CHECK(whats_new::should_show(s));
+    s.seen = "0.7.0";
+    CHECK(whats_new::should_show(s));         /* back to an older version: its own news */
+    s.current = "dev";
+    CHECK(!whats_new::should_show(s));        /* a version it cannot read */
+
+    whats_new::Start first;
+    first.current = "0.5.0";
+    CHECK(!whats_new::should_show(first));    /* a first install: the welcome screens instead */
+    first.ran_before = true;
+    first.welcome = true;
+    CHECK(!whats_new::should_show(first));    /* the welcome screens open at this start */
+    first.welcome = false;
+    first.mock = true;
+    CHECK(!whats_new::should_show(first));    /* --mock, --demo */
+    first.forced = true;
+    CHECK(whats_new::should_show(first));     /* REGIE5_WHATSNEW=1, or Settings */
+
+    app_settings::Settings a, b;
+    CHECK(app_settings::to_json(a).find("seenVersion") == std::string::npos);
+    a.seen_version = "0.5.0";
+    CHECK(app_settings::from_json(app_settings::to_json(a), &b) && b.seen_version == "0.5.0");
 }

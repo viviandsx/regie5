@@ -24,6 +24,7 @@
 #include "core/config.h"
 #include "core/i18n.h"
 #include "core/welcome.h"
+#include "core/whats_new.h"
 #include "core/input.h"
 #include "core/perf.h"
 #include "platform/gl/gfx_gl.h"
@@ -239,8 +240,9 @@ std::string read_all(const char *path, bool *ok)
 }
 
 /* Risk R2: does the app's data folder keep its files across restarts and
- * updates? A counter there tells. */
-[[maybe_unused]] void log_launches()
+ * updates? A counter there tells. Returns the launches before this one (0: a
+ * first start, or the folder was emptied): "What's new" waits for an update. */
+[[maybe_unused]] long log_launches()
 {
     bool ok;
     const long before = std::atol(read_all(kLaunches, &ok).c_str());
@@ -251,6 +253,7 @@ std::string read_all(const char *path, bool *ok)
     }
     ps5::log("[regie5] launch #%ld of this app (counted in /download0/regie5: %s)", now,
              now == 1 ? "first launch, or the folder was emptied" : "kept since the last one");
+    return before;
 }
 
 /* Phase 6.5 (configuring from a phone through a local page): can a title
@@ -654,7 +657,7 @@ int main()
     }
     if (cfg.emby())
         ps5::log("[regie5] config: the media server is Emby");
-    log_launches();
+    const long launches_before = log_launches();
     log_title_folder_writable();
     log_param_profile();
     log_can_listen();
@@ -731,6 +734,21 @@ int main()
                  cfg_error == config::LoadError::None ? "read" : "not usable",
                  welcome::configured(cfg) ? "a service on" : "no service on",
                  ctx.settings.welcome_later ? ", \"later\" chosen before" : "");
+    }
+    {   /* "What's new", once per version; never on a first start */
+        whats_new::Start wn;
+        wn.current = ctx.version;
+        wn.seen = ctx.settings.seen_version;
+        wn.ran_before = launches_before > 0;
+        wn.welcome = ctx.welcome_request;
+        ctx.whats_new_request = whats_new::should_show(wn);
+        ps5::log("[regie5] what's new: %s (version %s, last seen %s, launches before %ld)",
+                 ctx.whats_new_request ? "yes" : "no", ctx.version.c_str(),
+                 wn.seen.empty() ? "none" : wn.seen.c_str(), launches_before);
+        if (ctx.settings.seen_version != ctx.version) {
+            ctx.settings.seen_version = ctx.version;
+            ctx.save_settings();
+        }
     }
 #endif
     ui::Shell shell(ctx);
