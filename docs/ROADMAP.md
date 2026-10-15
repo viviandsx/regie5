@@ -691,7 +691,7 @@ release (le catalogue publie toute release). Patches : `build/patches-11/`.
 - [x] **Essai console d'`emby-test-1`** (Vivian, 14 octobre 2026) : essai A (non-régression
       Jellyfin) OK ; essai B (Emby depuis la console) non fait. Patches 01 à 04 et 06 de
       `build/patches-11/` commités ; le 05 (README) attend la 0.4.0. Zip posté sur l'issue.
-- [x] Testeur de l'issue (15 octobre 2026, avant d'essayer) : **Emby 4.10.1.0** (la version de
+- [x] Testeur de l'issue, **@ihatefillingthisout** sur GitHub (15 octobre 2026, avant d'essayer) : **Emby 4.10.1.0** (la version de
       l'Emby de test) et **Emby Premiere** (l'accélération matérielle d'Emby pourra être vue
       dans le diagnostic de lecture, ce que l'Emby de test ne permet pas).
 - [ ] Son vrai retour (ce qui marche, captures), puis la 0.4.0.
@@ -760,7 +760,7 @@ non-régression Jellyfin ; Emby depuis la console en option). Une release n'a pa
 6. [ ] **Numéros** : `contentVersion` `00.004.000`, `project(regie5 VERSION 0.4.0)` ; profil
        `param.json` inchangé (`games-hz120-0.3.1`, accepté par `check-param.py --release`).
 7. [~] **Notes de version** `build/publish/release-notes-v0.4.0.md` (anglais), **brouillon**
-       du 15 octobre : `@TESTEUR` à remplacer par le pseudo GitHub du testeur, à compléter
+       du 15 octobre, remerciement à @ihatefillingthisout ; à compléter
        avec son retour (ce qu'il a vu marcher : Ménage, accélération matérielle) : Emby (4.8 au
        moins, testé 4.10 ; « Find in Emby5 » ; Ménage avec Emby couvert par les tests seulement,
        sauf retour du testeur), assistant, page du téléphone (port choisi par le système,
