@@ -48,7 +48,12 @@ button.small{padding:6px 10px;font-size:14px}
 const T = __T__;
 const SERVICES = [["sonarr","Sonarr",true],["radarr","Radarr",true],["seerr","Seerr",false],["jellyfin","Jellyfin",false],["emby","Emby",false],["glances","Glances",false]];
 const PORTS = {sonarr: 8989, radarr: 7878, seerr: 5055, jellyfin: 8096, emby: 8096, glances: 61208};
-const code = new URLSearchParams(location.search).get("c") || (prompt(T.askCode) || "").replace(/\D/g, "");
+const query = new URLSearchParams(location.search);
+const code = query.get("c") || (prompt(T.askCode) || "").replace(/\D/g, "");
+/* m: the media server chosen in the welcome screens (jellyfin, emby, none):
+ * the other one's section is not shown, and so not sent (left as it is). */
+const media = query.get("m");
+const shown = key => !media || (key !== "jellyfin" && key !== "emby") || key === media;
 const api = "/api/config?c=" + encodeURIComponent(code);
 document.getElementById("lead").textContent = T.lead;
 const form = document.getElementById("f");
@@ -91,7 +96,7 @@ function instance(key, multi, data, from){
 }
 function build(view){
   form.innerHTML = "";
-  for (const [key, title, multi] of SERVICES) {
+  for (const [key, title, multi] of SERVICES.filter(s => shown(s[0]))) {
     const list = (view.services && view.services[key]) || [];
     const sec = el("section", {});
     sec.dataset.key = key;
@@ -103,7 +108,7 @@ function build(view){
       head.appendChild(add);
     }
     sec.appendChild(head);
-    if (key === "emby") sec.appendChild(el("p", {className: "lead", textContent: T.embyNote}));
+    if (key === "emby" && !media) sec.appendChild(el("p", {className: "lead", textContent: T.embyNote}));
     (list.length ? list : [{enabled: key !== "glances" && key !== "emby"}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
     sec.appendChild(holder);
     form.appendChild(sec);

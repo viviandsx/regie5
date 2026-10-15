@@ -32,4 +32,8 @@ std::string page_html();
 /* Whether a peer address may use the page: loopback or a private network. */
 bool is_local_address(const std::string &ip);
 
+/* config.json's text holds something that is not a configuration Régie5 can
+ * read (empty or blank: false, nothing to keep). */
+bool unreadable(const std::string &config_text);
+
 } // namespace config_web

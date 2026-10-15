@@ -245,6 +245,16 @@ void serve(int fd, const std::string &peer)
     std::string next, error;
     if (!config_web::apply(current, body, &next, &error))
         return reply(fd, 400, "application/json", json_error(error));
+    /* A file Régie5 cannot read is not lost: the first save keeps it aside
+     * (never over an earlier copy), for whoever wants to mend it by hand. */
+    if (config_web::unreadable(current)) {
+        const std::string aside = path + ".invalid";
+        std::string earlier;
+        if (!read_text(aside, &earlier) && write_text(aside, current)) {
+            std::lock_guard<std::mutex> lock(s_lock);
+            s_info.kept_invalid = aside;
+        }
+    }
     if (!write_text(path, next))
         return reply(fd, 500, "application/json", json_error("the console could not write config.json"));
     {
@@ -310,6 +320,17 @@ bool share_start(const std::string &config_path, const std::string &hint_host, s
         a.sin_addr.s_addr = htonl(INADDR_ANY);
         if (bind(fd, (const sockaddr *)&a, sizeof a) == 0)
             port = p;
+    }
+    /* None of ours: a port the system picks (the QR code carries it). The
+     * Media area refused port 8085 but let the start-up probe have one so. */
+    if (!port) {
+        sockaddr_in a{};
+        a.sin_family = AF_INET;
+        a.sin_port = 0;
+        a.sin_addr.s_addr = htonl(INADDR_ANY);
+        socklen_t len = sizeof a;
+        if (bind(fd, (const sockaddr *)&a, sizeof a) == 0 && getsockname(fd, (sockaddr *)&a, &len) == 0)
+            port = ntohs(a.sin_port);
     }
     /* Which call refused tells a port in use from a title the console does
      * not let listen (0.3.0's param.json: "permission denied"). */

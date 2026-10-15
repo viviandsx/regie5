@@ -189,6 +189,16 @@ bool apply(const std::string &current_text, const std::string &posted, std::stri
     return true;
 }
 
+bool unreadable(const std::string &config_text)
+{
+    for (char c : config_text)
+        if (!std::isspace((unsigned char)c)) {
+            config::Config c2;
+            return !config::parse(config_text, &c2);
+        }
+    return false;   /* empty: nothing worth keeping */
+}
+
 bool is_local_address(const std::string &ip)
 {
     unsigned a = 0, b = 0, c = 0, d = 0;

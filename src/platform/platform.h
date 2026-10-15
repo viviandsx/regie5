@@ -68,6 +68,7 @@ struct ShareInfo {
     std::string error;     /* why it stopped or could not start (English, for the log) */
     int saves = 0;         /* configurations written since it started */
     bool phone_seen = false;
+    std::string kept_invalid;   /* where an unreadable config.json was kept before the first save */
 };
 /* Whether a page can be served here at all (else the button is hidden). */
 bool can_share_config();
