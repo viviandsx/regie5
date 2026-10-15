@@ -3,3 +3,6 @@ contact_links:
   - name: Install and set-up guide
     url: https://github.com/viviandsx/regie5#install
     about: Installing with ShadowMount+, and setting Régie5 up from your phone.
+  - name: Questions
+    url: https://github.com/viviandsx/regie5/discussions
+    about: 'Installing, setting up, "is this possible?": ask in Discussions.'
