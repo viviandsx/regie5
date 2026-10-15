@@ -695,6 +695,18 @@ release (le catalogue publie toute release). Patches : `build/patches-11/`.
       l'Emby de test) et **Emby Premiere** (l'accélération matérielle d'Emby pourra être vue
       dans le diagnostic de lecture, ce que l'Emby de test ne permet pas).
 - [ ] Son vrai retour (ce qui marche, captures), puis la 0.4.0.
+- **Décision de Vivian (15 octobre 2026)** : on n'attend plus le testeur. Emby est optionnel et
+  ne touche pas au chemin Jellyfin (validé sur la console) : si l'**essai B** passe, la 0.4.0
+  sort avec Emby marqué **beta** (notes de version, README, mention dans l'app si simple ;
+  commentaire à poster sur l'issue #1, remerciement à @ihatefillingthisout sans dire qu'il a
+  testé).
+- [ ] **Essai B sur la console** : build `app-17` (journal UDP, `test-config` et
+      `config-test.json` dans son dossier : Emby seul, l'Emby de test 4.10.1.0 du laptop sur
+      192.168.1.15:18096), étapes dans `build/ps5/app-17/ESSAIS.txt` : connexion, onglet Emby,
+      lecture transcodée depuis Firefox, diagnostic, journal, bibliothèques et utilisateurs,
+      « Chercher dans Emby5 », assistant avec le choix Emby ; port 18096 ouvert dans ufw
+      pendant l'essai, Emby remis en écoute locale à la fin. Vu avant sous Linux contre le même
+      serveur : Réglages (v4.10.1.0), Accueil, onglet Emby.
 
 ### Assistant de première configuration (0.4.0, conception validée le 15 octobre 2026)
 
@@ -988,3 +1000,4 @@ la Bibliothèque).
 | 15 oct. 2026 | Assistant de première configuration : port choisi par le système, `config.json.invalid`, règle `core/welcome`, écrans, Réglages et Accueil ; build `app-16`, `build/patches-12/`. |
 | 15 oct. 2026 | `app-16` validé sur la console ; catalogue en 0.3.2 (PR #287) ; testeur Emby : 4.10.1.0 + Premiere. Recette 0.4.0 et liste « Pour publier la 0.4.0 ». |
 | 15 oct. 2026 | En attendant le testeur Emby : README 0.4.0 (Emby, assistant, capture `welcome.jpg`), `CONFIG.md`, `INSTALL.txt`, `config.example.json`, `capture-states.sh` (états `emby` et `noconfig` réparés, état `welcome`), brouillon des notes de version ; `build/patches-14/`. |
+| 15 oct. 2026 | Décision : 0.4.0 avec Emby en beta si l'essai B passe. Build `app-17` et étapes de l'essai B (Emby de test depuis la console). |
