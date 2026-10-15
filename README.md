@@ -25,6 +25,10 @@ never to the internet.
 
 ## Features
 
+<p align="center">
+  <img src="docs/images/demo.gif" width="600" alt="Régie5 in motion: the Home screen, the Library and a series' page, Activity, Requests, Jellyfin and a playback diagnosis">
+</p>
+
 | | |
 |---|---|
 | **Home** | Upcoming episodes and films (14 days, Sonarr + Radarr calendars), recently added to Jellyfin, disk space and health alerts of every instance. |
@@ -61,7 +65,7 @@ Also:
   <img src="docs/images/welcome.jpg" width="400" alt="Set-up screens: choosing the media server">
 </p>
 
-<sub>Screenshots: the desktop build in demo mode (`--demo`), no server involved. The films and
+<sub>Screenshots and animation: the desktop build in demo mode (`--demo`), no server involved. The films and
 the series shown are the Blender Foundation's open movies (Big Buck Bunny, Elephants Dream,
 Sintel, Tears of Steel, Cosmos Laundromat, Spring, Coffee Run, Sprite Fright, Charge,
 Caminandes), with their posters and stills from Wikimedia Commons under CC BY 3.0 / 4.0
@@ -254,7 +258,8 @@ The design and the porting notes are in `docs/` (in French).
 
 Bug reports and ideas are welcome in the issues. Please read the scope above
 first: features around download clients, indexers or release searching will not
-be added.
+be added. [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) says how to report a bug,
+suggest an idea, translate or change the code, and the rules every change follows.
 
 **Translations** are welcome too: a language is a single file, and
 [docs/TRANSLATING.md](docs/TRANSLATING.md) explains how to add one.

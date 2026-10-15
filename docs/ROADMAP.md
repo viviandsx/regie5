@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 15 octobre 2026 (nuit). 0.3.2 publiée, catalogue à jour (PR #287). **0.4.0 prête à publier** : Emby en **beta** (essai B réussi sur la console contre l'Emby de test 4.10.1.0, `app-17`) et assistant de première configuration ; zip `build/ps5/release-0.4.0/upload/PPSA99520.zip` (sha256 `2c83be9b…7640`), patches `build/patches-15/`. Reste : recette courte `docs/RECETTE-0.4.0.md` sur la console, puis publication (§ 2 octies). Ensuite : petits correctifs, puis Bazarr et Lidarr en lecture seule (§ 2 nonies). Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 16 octobre 2026. 0.4.0 publiée (Emby en beta, assistant). **0.5.0 en cours** (§ 2 decies) : chantiers 1 (écran « Nouveautés »), 2 (espagnol, allemand) et 5 (communauté) faits, patches `build/patches-16/` 01 à 03 ; chantiers 3 (demandes Seerr) et 4 (Quick Connect Jellyfin) : conceptions proposées, **attente de la validation de Vivian** avant de coder. Un seul build de test console à la fin. Marche à suivre : `docs/RELEASING.md`.**
 
 ---
 
@@ -26,7 +26,8 @@ pour ce qui a été fait après la phase 0).
 | 8. Version 0.3.0 | reverse proxy, pastilles, signalements Seerr, bibliothèques et utilisateurs Jellyfin, 120 Hz | ✅ publiée le 13 octobre 2026 (§ 2 sexies) ; page du téléphone cassée |
 | 9. Version 0.3.1 | correctif : page du téléphone (rangée Jeux), 120 Hz expérimental | ✅ publiée le 14 octobre 2026 (§ 2 septies) |
 | 10. Version 0.3.2 | 120 Hz par défaut (Auto), dates des films ; Multimédia écarté | ✅ publiée le 14 octobre 2026 (§ 2 septies, « 0.3.2 ») |
-| 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | 🧪 prête à publier, Emby en beta : essai B réussi (`app-17`), zip 0.4.0 construit ; recette courte puis publication (§ 2 octies) |
+| 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
+| 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | 🚧 en cours (§ 2 decies) |
 
 Tests : **65** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -857,8 +858,14 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
       déborde. Dates, unités et mise en page aussi vues en espagnol et en allemand.
 - [ ] **3. Demandes Seerr depuis Régie5** — conception à valider.
 - [ ] **4. Quick Connect pour Jellyfin** — conception à valider.
-- [ ] **5. Communauté** — `docs/CONTRIBUTING.md`, GIF de démonstration, brouillon pour
-      r/PS5_Jailbreak, GitHub Discussions.
+- [x] **5. Communauté** — `docs/CONTRIBUTING.md` (anglais : bug, idée, traduction, code, règles
+      du projet ; lié depuis le README) ; `docs/images/demo.gif` (600 px, ~3 Mo, 10 images/s :
+      Accueil, Bibliothèque et fiche de Caminandes, Activité, Demandes, Jellyfin et diagnostic,
+      mode démo) en tête des fonctionnalités du README, refait par `scripts/capture-gif.sh` ;
+      brouillon `build/publish/reddit-r-ps5-jailbreak.md` (posté par Vivian ; à ajuster selon la
+      version au moment de poster). GitHub Discussions : conseillé, à activer par Vivian
+      (Settings › General › Features › Discussions). La mention de l'IA reste au README
+      (« How Régie5 was made », traductions) et à `TRANSLATING.md`.
 
 ## 3. En attente
 
@@ -1053,3 +1060,4 @@ la Bibliothèque).
 | 15 oct. 2026 | Essai B réussi (34 étapes). 0.4.0 préparée avec Emby en beta : pastille « bêta » dans Réglages, README (patch 03 + beta), notes, numéros, zip (`2c83be9b…`), recette courte, commentaire de l'issue #1 ; ordre de la suite (§ 2 nonies). `build/patches-15/`. |
 | 16 oct. 2026 | 0.4.0 publiée. 0.5.0 ouverte (cinq chantiers). Chantier 1 : écran « Nouveautés » (`core/whats_new`, `seenVersion`, bouton de Réglages). |
 | 16 oct. 2026 | Chantier 2 : espagnol et allemand (`es.cpp`, `de.cpp`), langue système PS5 testée, pilules et puces de charge qui s'adaptent à la longueur des textes. |
+| 16 oct. 2026 | Chantier 5 : `CONTRIBUTING.md`, GIF de démonstration (`capture-gif.sh`), brouillon Reddit. Conceptions des chantiers 3 et 4 proposées. |
