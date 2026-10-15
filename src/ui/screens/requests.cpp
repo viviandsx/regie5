@@ -64,6 +64,8 @@ void RequestsScreen::activate()
 {
     if (m_view == Issues)
         m_issues.load(false);
+    else if (m_view == Discover)
+        m_discover.load(false);
     else if (m_pages[m_filter].state == load::Idle)
         load(m_filter);
 }
@@ -181,6 +183,8 @@ std::vector<PadHint> RequestsScreen::hints() const
 {
     if (m_view == Issues)
         return m_issues.hints(m_focused && !m_bar);
+    if (m_view == Discover)
+        return m_discover.hints(m_focused && !m_bar);
     const model::Request *r = focused();
     if (!m_focused || !r || menu(*r).empty())
         return {};
@@ -197,6 +201,10 @@ Action RequestsScreen::input(const input::State &in)
         m_issues.input(in);
         return Action::None;
     }
+    if (m_discover.modal()) {
+        m_discover.input(in);
+        return Action::None;
+    }
     const uint32_t p = in.pressed;
     if (p & input::Circle)
         return Action::ToTabs;
@@ -204,12 +212,14 @@ Action RequestsScreen::input(const input::State &in)
         art::retry_failed();
         if (m_view == Issues)
             m_issues.load(true);
+        else if (m_view == Discover)
+            m_discover.load(true);
         else
             load(m_filter);
         return Action::None;
     }
     if (m_bar) {   /* the views, then the view's filters; ✕ chooses */
-        const int slots = ViewCount + kFilters;
+        const int slots = ViewCount + filter_count();
         if (p & input::Up)
             return Action::ToTabs;
         if (p & (input::Left | input::Right)) {
@@ -239,6 +249,8 @@ Action RequestsScreen::input(const input::State &in)
             m_bar = false;
             if (m_view == Issues)
                 m_issues.enter();
+            else if (m_view == Discover)
+                m_discover.enter();
             else
                 m_focus = 0;
         }
@@ -248,6 +260,12 @@ Action RequestsScreen::input(const input::State &in)
         if (m_issues.input(in) == Action::ToTabs)
             m_bar = true, m_bar_focus = ViewCount + m_issues.filter();
         return Action::None;
+    }
+    if (m_view == Discover) {
+        const Action a = m_discover.input(in);
+        if (a == Action::ToTabs)
+            m_bar = true, m_bar_focus = Discover;
+        return a == Action::Bump ? Action::Bump : Action::None;
     }
     const auto &reqs = m_pages[m_filter].value.requests;
     const int n = m_pages[m_filter].ready() ? (int)reqs.size() : 0;
@@ -275,6 +293,8 @@ bool RequestsScreen::backdrop(std::string *key, art::Ref *ref, int *seed) const
         return false;
     if (m_view == Issues)
         return m_issues.backdrop(key, ref, seed);
+    if (m_view == Discover)
+        return m_discover.backdrop(key, ref, seed);
     const model::Request *r = focused();
     return r && m_titles.backdrop(r->tv, r->tmdb_id, key, ref, seed);
 }
@@ -285,20 +305,32 @@ void RequestsScreen::draw(double now, float dt, float ox, bool *animating)
     gfx::text(x0, 214, tab_label(TabRequests), {gfx::Bold, 60}, kText);
 
     /* The views on the left, the view's filters on the right. */
-    const std::vector<std::string> views = {i18n::tr(i18n::ViewRequests), i18n::tr(i18n::ViewIssues)};
+    const std::vector<std::string> views = {i18n::tr(i18n::ViewRequests), i18n::tr(i18n::ViewIssues),
+                                            i18n::tr(i18n::ViewDiscover)};
+    if (m_discover.take_requested())   /* a new request: the lists are stale */
+        for (int f = 0; f < kFilters; f++)
+            if (m_pages[f].state != load::Idle)
+                load(f);
     const bool on_bar = m_focused && m_bar;
     draw_pills(x0, kBarY, views, m_view, on_bar && m_bar_focus < ViewCount ? m_bar_focus : m_view,
                on_bar && m_bar_focus < ViewCount, m_view_drop, dt, animating);
     std::vector<std::string> filters;
     if (m_view == Issues)
         filters = m_issues.filter_labels();
-    else
+    else if (m_view == Requests)
         for (i18n::S s : kFilterLabels)
             filters.push_back(i18n::tr(s));
     const int chosen = m_view == Issues ? m_issues.filter() : m_filter;
     const bool on_filters = on_bar && m_bar_focus >= ViewCount;
-    draw_pills(x0 + kListW, kBarY, filters, chosen, on_filters ? m_bar_focus - ViewCount : chosen, on_filters,
-               m_filter_drop, dt, animating, true);
+    if (!filters.empty())
+        draw_pills(x0 + kListW, kBarY, filters, chosen, on_filters ? m_bar_focus - ViewCount : chosen, on_filters,
+                   m_filter_drop, dt, animating, true);
+
+    if (m_view == Discover) {
+        m_drop.hide();
+        m_discover.draw(now, x0, kListTop, m_focused && !m_bar, dt, animating);
+        return;
+    }
 
     if (m_view == Issues) {
         m_drop.hide();

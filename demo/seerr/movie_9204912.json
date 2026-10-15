@@ -5,5 +5,22 @@
  "title": "The Glass Meridian",
  "backdropPath": "/r594abc7d12716.jpg",
  "overview": "Mara inherits a signal from far away without telling anyone.",
- "posterPath": "/r52d4154f19564.jpg"
+ "posterPath": "/r52d4154f19564.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 97,
+ "mediaInfo": {
+  "id": 900006,
+  "tmdbId": 9204912,
+  "mediaType": "movie",
+  "status": 1,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [],
+  "requests": []
+ }
 }

@@ -6,5 +6,58 @@
  "originalName": "Paradox of Elmstead",
  "overview": "Jonah goes looking for a sunken town before winter.",
  "backdropPath": "/r575e068d13a04.jpg",
- "posterPath": "/r58112f224e04f.jpg"
+ "posterPath": "/r58112f224e04f.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "episodeRunTime": [
+  41
+ ],
+ "externalIds": {
+  "tvdbId": 364936
+ },
+ "seasons": [
+  {
+   "seasonNumber": 0,
+   "name": "Specials",
+   "episodeCount": 2,
+   "airDate": null
+  },
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 8,
+   "airDate": "2025-03-01"
+  },
+  {
+   "seasonNumber": 2,
+   "name": "Season 2",
+   "episodeCount": 9,
+   "airDate": "2026-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900006,
+  "tmdbId": 9564936,
+  "mediaType": "tv",
+  "status": 1,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 1,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 2,
+    "status": 1,
+    "status4k": 1
+   }
+  ],
+  "requests": []
+ }
 }

@@ -5,5 +5,29 @@
  "title": "The Quiet Tower",
  "backdropPath": "/r5019917616186.jpg",
  "overview": "Elias découvre un ancien ami malgré tout.",
- "posterPath": "/r504bb5ed513b9.jpg"
+ "posterPath": "/r504bb5ed513b9.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 96,
+ "mediaInfo": {
+  "id": 900005,
+  "tmdbId": 9184411,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "078dfb1250ba8ed4a9176f320c5a9f01",
+  "seasons": [],
+  "requests": [
+   {
+    "id": 800005,
+    "status": 2,
+    "is4k": true,
+    "seasons": []
+   }
+  ]
+ }
 }

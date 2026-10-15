@@ -448,6 +448,48 @@ void Services::comment_issue(int issue_id, const std::string &message, std::func
                seerr::comment_body(message));
 }
 
+void Services::discover(seerr::Shelf shelf, std::function<void(Result<std::vector<model::SeerrTitle>>)> done)
+{
+    call<std::vector<model::SeerrTitle>>(config::Seerr, "GET", seerr::discover_path(shelf, m_lang), seerr::parse_titles,
+                                         std::move(done));
+}
+
+void Services::search(const std::string &query, std::function<void(Result<std::vector<model::SeerrTitle>>)> done)
+{
+    call<std::vector<model::SeerrTitle>>(config::Seerr, "GET", seerr::search_path(query, m_lang), seerr::parse_titles,
+                                         std::move(done));
+}
+
+void Services::title_detail(bool tv, int tmdb_id, std::function<void(Result<model::SeerrDetail>)> done)
+{
+    call<model::SeerrDetail>(config::Seerr, "GET", seerr::detail_path(tv, tmdb_id, m_lang),
+                             [tv](const std::string &b, model::SeerrDetail *o) { return seerr::parse_title_detail(b, tv, o); },
+                             std::move(done));
+}
+
+void Services::seerr_public(std::function<void(Result<model::SeerrPublic>)> done)
+{
+    call<model::SeerrPublic>(config::Seerr, "GET", seerr::public_settings_path(), seerr::parse_public, std::move(done));
+}
+
+void Services::seerr_servers(bool tv, std::function<void(Result<std::vector<model::SeerrServer>>)> done)
+{
+    call<std::vector<model::SeerrServer>>(config::Seerr, "GET", seerr::servers_path(tv), seerr::parse_servers,
+                                          std::move(done));
+}
+
+void Services::seerr_server(bool tv, int server_id, std::function<void(Result<model::SeerrServer>)> done)
+{
+    call<model::SeerrServer>(config::Seerr, "GET", seerr::server_path(tv, server_id), seerr::parse_server,
+                             std::move(done));
+}
+
+void Services::create_request(const seerr::NewRequest &r, std::function<void(Result<model::SeerrCreated>)> done)
+{
+    call<model::SeerrCreated>(config::Seerr, "POST", seerr::create_request_path(), seerr::parse_created,
+                              std::move(done), 0, seerr::request_body(r));
+}
+
 void Services::sessions(std::function<void(Result<std::vector<model::Session>>)> done)
 {
     call<std::vector<model::Session>>(config::Jellyfin, "GET", jellyfin::sessions_path(), jellyfin::parse_sessions,

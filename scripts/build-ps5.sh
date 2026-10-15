@@ -164,11 +164,19 @@ done
 echo "==> ${TITLE_ID} ${VERSION}, 120 Hz $([[ ${HZ120} == 1 ]] && echo possible || echo "not declared"), log -> ${LOG_HOST:-none}:5555, tree ${T}"
 DEFS="REGIE5_TLS=1 REGIE5_PROBE=1"
 [[ "${KIND}" == probe ]] || DEFS="REGIE5_TLS=1"
+# The system keyboard (src/platform/ps5/text_ps5.cpp) needs
+# sceCommonDialogInitialize, which the SDK has no import stub for: a stub
+# library naming the module and that one symbol, as Jelly5 makes it.
+mkdir -p "${T}/deps/stubs"
+echo 'void sceCommonDialogInitialize(void) {}' > "${T}/deps/stubs/libSceCommonDialog.c"
+"${HUI}/.deps/native/ps5-payload-sdk/bin/prospero-clang" -shared -nostdlib -nodefaultlibs -fPIC \
+    -Wl,-soname,libSceCommonDialog.sprx -o "${T}/deps/stubs/libSceCommonDialog.so" "${T}/deps/stubs/libSceCommonDialog.c"
 (
     cd "${T}"
     PS5_CLANG="${PS5_CLANG:-clang}" USE_CCACHE=0 BUILD_JOBS="${BUILD_JOBS:-4}" \
         PS5_OPENGL_PREFIX="${OGL}" \
         APP_DEFINITIONS="${DEFS}" \
+        APP_IMPORT_STUBS="deps/stubs/libSceCommonDialog.so" \
         APP_INCLUDE_PATHS="src/third_party/cjson src/third_party/stb src/third_party/qrcodegen src/third_party/mbedtls/include src/third_party/mbedtls/library deps/freetype2" \
         APP_STATIC_ARCHIVES="deps/lib/libfreetype.a deps/lib/libpng16.a deps/lib/libz.a deps/lib/libbz2.a" \
         make app

@@ -5,5 +5,22 @@
  "title": "The Secret Engine",
  "backdropPath": "/r559f36b1ace64.jpg",
  "overview": "",
- "posterPath": "/r5dd82274cf086.jpg"
+ "posterPath": "/r5dd82274cf086.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 111,
+ "mediaInfo": {
+  "id": 900013,
+  "tmdbId": 9527226,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "demo9527226",
+  "seasons": [],
+  "requests": []
+ }
 }

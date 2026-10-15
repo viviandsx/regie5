@@ -5,5 +5,22 @@
  "title": "Copper Lantern",
  "backdropPath": "/r5c98b69cdc3d1.jpg",
  "overview": "Oskar inherits a forgotten map at the end of the world.",
- "posterPath": "/r5cfa87d9356c8.jpg"
+ "posterPath": "/r5cfa87d9356c8.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 111,
+ "mediaInfo": {
+  "id": 900014,
+  "tmdbId": 9533226,
+  "mediaType": "movie",
+  "status": 1,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [],
+  "requests": []
+ }
 }

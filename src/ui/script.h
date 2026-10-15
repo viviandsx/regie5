@@ -5,7 +5,8 @@
  * Presses and captures played in order (REGIE5_SCRIPT on Linux, the probe's
  * tour on the PS5): button names (up down left right cross circle triangle
  * square l1 r1 l2 r2 options), a number (seconds to wait), shot:<file.ppm>
- * (the next frame, saved) and quit. "1 right right 0.8 shot:/tmp/a.ppm quit".
+ * (the next frame, saved), text:<words> (typed into the open text entry and
+ * confirmed, '_' for a space) and quit. "1 right right 0.8 shot:/tmp/a.ppm quit".
  */
 #pragma once
 
@@ -29,6 +30,13 @@ public:
     uint32_t step(double now, bool *quit);
     /* After a frame: saves it when a shot was asked for. */
     void after_frame();
+    /* A text:<words> step's words, once (empty: none due). */
+    std::string take_text()
+    {
+        std::string t;
+        t.swap(m_text);
+        return t;
+    }
 
 private:
     static uint32_t button(const std::string &s);
@@ -37,6 +45,7 @@ private:
     size_t m_next = 0;
     double m_wait_until = 0;
     std::string m_shot;
+    std::string m_text;
     Grab m_grab = nullptr;
 };
 

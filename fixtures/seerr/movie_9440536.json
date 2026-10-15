@@ -5,5 +5,22 @@
  "title": "The Shifting Horizon",
  "backdropPath": "/r5965381bb42ef.jpg",
  "overview": "Iris se retrouve face à une carte oubliée malgré tout.",
- "posterPath": "/r57c7095f13ad0.jpg"
+ "posterPath": "/r57c7095f13ad0.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 121,
+ "mediaInfo": {
+  "id": 900010,
+  "tmdbId": 9440536,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "d543908c19e9957b984bda3f8d07235a",
+  "seasons": [],
+  "requests": []
+ }
 }

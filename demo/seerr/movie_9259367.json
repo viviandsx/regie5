@@ -5,5 +5,22 @@
  "title": "Bridge of Northgate",
  "backdropPath": "/r56a4b6ace534d.jpg",
  "overview": "Lea comes face to face with the last night train at the end of the world.",
- "posterPath": "/r535a86cab97b2.jpg"
+ "posterPath": "/r535a86cab97b2.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 102,
+ "mediaInfo": {
+  "id": 900007,
+  "tmdbId": 9259367,
+  "mediaType": "movie",
+  "status": 4,
+  "status4k": 1,
+  "jellyfinMediaId": "demo9259367",
+  "seasons": [],
+  "requests": []
+ }
 }

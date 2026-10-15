@@ -5,5 +5,22 @@
  "title": "Harbor of Stonebridge",
  "backdropPath": "/r5cef097e73c27.jpg",
  "overview": "Rafael se retrouve face à un secret de famille au bout du monde.",
- "posterPath": "/r5a7c110578f26.jpg"
+ "posterPath": "/r5a7c110578f26.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 116,
+ "mediaInfo": {
+  "id": 900019,
+  "tmdbId": 9622931,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "ceeed3593c00f1216d25de8241f6d513",
+  "seasons": [],
+  "requests": []
+ }
 }

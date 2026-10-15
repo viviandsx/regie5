@@ -5,5 +5,29 @@
  "title": "Mara's Lantern",
  "backdropPath": "/r5d1f8faea2c22.jpg",
  "overview": "Theo inherits a letter never sent without telling anyone.",
- "posterPath": "/r53a6f9f22bd66.jpg"
+ "posterPath": "/r53a6f9f22bd66.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 98,
+ "mediaInfo": {
+  "id": 900009,
+  "tmdbId": 9424613,
+  "mediaType": "movie",
+  "status": 3,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [],
+  "requests": [
+   {
+    "id": 800009,
+    "status": 2,
+    "is4k": false,
+    "seasons": []
+   }
+  ]
+ }
 }

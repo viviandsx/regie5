@@ -98,6 +98,59 @@ void empty_lists(cJSON *o)
     }
 }
 
+/* "%C3%A9t%C3%A9" -> "été" (a query as the URL carries it). */
+std::string unescape(const std::string &s)
+{
+    std::string out;
+    for (size_t i = 0; i < s.size(); i++) {
+        if (s[i] == '%' && i + 2 < s.size() && std::isxdigit((unsigned char)s[i + 1]) &&
+            std::isxdigit((unsigned char)s[i + 2])) {
+            out += (char)std::stoi(s.substr(i + 1, 2), nullptr, 16);
+            i += 2;
+        } else {
+            out += s[i] == '+' ? ' ' : s[i];
+        }
+    }
+    return out;
+}
+
+std::string lowered(std::string s)
+{
+    for (char &c : s)
+        c = (char)std::tolower((unsigned char)c);
+    return s;
+}
+
+/* Seerr's search: only the titles whose name holds the query (any case). */
+std::string search_matches(const std::string &body, const std::string &query)
+{
+    cJSON *root = cJSON_ParseWithLength(body.data(), body.size());
+    cJSON *results = root ? cJSON_GetObjectItemCaseSensitive(root, "results") : nullptr;
+    if (!cJSON_IsArray(results)) {
+        cJSON_Delete(root);
+        return body;
+    }
+    const std::string q = lowered(query);
+    cJSON *kept = cJSON_CreateArray();
+    for (cJSON *it = results->child; it; it = it->next) {
+        std::string name;
+        for (const char *k : {"title", "name"})
+            if (const cJSON *v = cJSON_GetObjectItemCaseSensitive(it, k); cJSON_IsString(v))
+                name = v->valuestring;
+        if (lowered(name).find(q) != std::string::npos)
+            cJSON_AddItemToArray(kept, cJSON_Duplicate(it, true));
+    }
+    const int n = cJSON_GetArraySize(kept);
+    cJSON_ReplaceItemInObjectCaseSensitive(root, "results", kept);
+    if (cJSON *total = cJSON_GetObjectItemCaseSensitive(root, "totalResults"))
+        cJSON_SetNumberValue(total, n);
+    char *text = cJSON_PrintUnformatted(root);
+    std::string out = text ? text : body;
+    cJSON_free(text);
+    cJSON_Delete(root);
+    return out;
+}
+
 } // namespace
 
 MockTransport::MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty,
@@ -279,6 +332,8 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
         return r;
     }
     r.status = 200;
+    if (rel == "seerr/search.json")
+        body = search_matches(body, unescape(query_value(query, "query")));
     r.body = m_empty.count(service) ? emptied(rel, body) : body;
     if (m_old.count(service)) {   /* the connection test's answer: an old version */
         for (const char *key : {"version", "Version"}) {

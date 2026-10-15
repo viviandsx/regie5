@@ -5,7 +5,7 @@
 # screens. The Ménage is turned on (REGIE5_MOCK_CLEANUP, in memory).
 # Runs on fixtures/ (--mock): no server is contacted, no action is carried out;
 # the welcome screens' phone step is the demo one (nothing listens); "What's
-# new" (whatsnew).
+# new" (whatsnew); Demandes › Découvrir (discover).
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 #   scripts/capture-states.sh                 all states, both languages
@@ -20,7 +20,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD="${ROOT}/build/linux"
 OUT="${OUT:-${ROOT}/build/states}"
-ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby welcome whatsnew)
+ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby welcome whatsnew discover)
 STATES=("$@")
 [[ ${#STATES[@]} -eq 0 ]] && STATES=("${ALL_STATES[@]}")
 
@@ -70,6 +70,18 @@ tour() {
     echo "${s}"
 }
 
+# Demandes › Découvrir: the rows, a search, a series' page and its request
+# (the seasons; never sent: --mock), a film's page and its request (4K).
+discover_tour() {
+    local p="$1" s=""
+    s+="3 r1 r1 r1 2 right right cross 2.5 shot:${p}-1-rows.ppm "
+    s+="down 0.5 cross 0.5 text:yuki 2.5 shot:${p}-2-search.ppm "
+    s+="cross 2 shot:${p}-3-series.ppm cross 1.5 shot:${p}-4-request.ppm circle 0.6 circle 0.6 "
+    s+="up 0.3 cross 0.5 text:mirror 2.5 cross 2 shot:${p}-5-film.ppm cross 1.5 shot:${p}-6-request.ppm "
+    s+="down down 0.5 cross 1 shot:${p}-7-confirm.ppm quit"
+    echo "${s}"
+}
+
 # The welcome screens (REGIE5_WELCOME=1 over --mock): the first screen, the
 # media server, the phone (Jellyfin, then Emby: the texts follow the choice),
 # the check, then Start and the Home screen behind them.
@@ -111,6 +123,7 @@ for state in "${STATES[@]}"; do
         emby) env+=(REGIE5_MOCK_EMBY=1) sheets=1 detail_options=0 ;;
         welcome) env+=(REGIE5_WELCOME=1) script="$(welcome_tour "${p}")" ;;
         whatsnew) env+=(REGIE5_WHATSNEW=1) script="3 shot:${p}-whatsnew.ppm quit" ;;
+        discover) script="$(discover_tour "${p}")" ;;
         *) echo "unknown state: ${state} (${ALL_STATES[*]})" >&2; exit 2 ;;
         esac
         echo "${state} (${lang})"

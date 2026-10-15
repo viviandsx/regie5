@@ -90,6 +90,7 @@ add_library(regie5_ui STATIC
     src/ui/whats_new_sheet.cpp
     src/ui/widgets.cpp
     src/ui/screens/cleanup.cpp
+    src/ui/screens/discover.cpp
     src/ui/screens/downloads.cpp
     src/ui/screens/guide.cpp
     src/ui/screens/home.cpp
@@ -133,6 +134,7 @@ add_executable(regie5
     src/platform/linux/input_sdl.cpp
     src/platform/linux/launch_linux.cpp
     src/platform/linux/paths_linux.cpp
+    src/platform/linux/text_linux.cpp
     src/platform/posix/config_server.cpp
     src/platform/posix/socket_transport.cpp
     src/platform/posix/tls_glue.cpp

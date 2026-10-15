@@ -2,11 +2,12 @@
  * Regie5 — a TV front end for a self-hosted media stack
  * SPDX-License-Identifier: GPL-3.0-or-later
  *
- * Demandes (Seerr), two views in pills like Activité: the requests (pending,
+ * Demandes (Seerr), three views in pills like Activité: the requests (pending,
  * approved or all, with the title's poster through Seerr's image proxy, who
  * asked, when, film or series and which seasons; ✕ on a pending one offers
- * Approve or Decline, then asks again before doing it) and the issues
- * (IssuesView). Each view's filters on the right of the same row.
+ * Approve or Decline, then asks again before doing it), the issues
+ * (IssuesView) and Discover (DiscoverView: search, rows of titles, new
+ * requests). Each view's filters on the right of the same row.
  */
 #pragma once
 
@@ -15,6 +16,7 @@
 #include "ui/drop.h"
 #include "ui/load.h"
 #include "ui/screen.h"
+#include "ui/screens/discover.h"
 #include "ui/screens/issues.h"
 #include "ui/seerr_titles.h"
 #include "ui/widgets.h"
@@ -38,15 +40,16 @@ public:
         m_bar_focus = m_view;
     }
     bool backdrop(std::string *key, art::Ref *ref, int *seed) const override;
-    bool modal() const override { return m_sheet.is_open() || m_issues.modal(); }
+    bool modal() const override { return m_sheet.is_open() || m_issues.modal() || m_discover.modal(); }
     void draw_overlay(float dt, bool *animating) override
     {
         m_sheet.draw(dt, animating);
         m_issues.draw_overlay(dt, animating);
+        m_discover.draw_overlay(dt, animating);
     }
     std::vector<PadHint> hints() const override;
 
-    enum View { Requests = 0, Issues, ViewCount };
+    enum View { Requests = 0, Issues, Discover, ViewCount };
 
 private:
     void load(int filter);
@@ -65,6 +68,9 @@ private:
     Load<model::RequestPage> m_pages[kFilters];
     SeerrTitles m_titles{m_ctx};
     IssuesView m_issues{m_ctx, m_titles};
+    DiscoverView m_discover{m_ctx};
+    /* The pills' slots: the views, then the view's filters (Discover has none). */
+    int filter_count() const { return m_view == Discover ? 0 : kFilters; }
     int m_filter = 0;
     int m_focus = 0;
     View m_view = Requests;

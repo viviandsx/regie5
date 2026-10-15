@@ -856,7 +856,24 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
       diagnostic s'arrêtent avant ses boutons (« Wiedergabe beenden », « Detener la
       reproducción »). Barre d'onglets, boutons de Réglages, fiches et assistant : rien ne
       déborde. Dates, unités et mise en page aussi vues en espagnol et en allemand.
-- [ ] **3. Demandes Seerr depuis Régie5** — conception à valider.
+- [x] **3. Demandes Seerr depuis Régie5** (conception validée le 16 octobre 2026, option A) —
+      Demandes › pilule **Découvrir** (`ui/screens/discover`) : champ de recherche (clavier
+      système PS5 `sceImeDialog`, porté de Jelly5 : `platform/ps5/text_ps5.cpp`, stub
+      `libSceCommonDialog` fait par `build-ps5.sh` ; sous Linux, saisie SDL, étape de script
+      `text:`), rangées Tendances, Films / Séries populaires, Films / Séries à venir, résultats ;
+      fiche (état standard et 4K, saisons, « Demander… », « Chercher dans Jelly5 / Emby5 ») ;
+      feuille de demande (saisons à cocher, qualité 4K si Seerr a une instance 4K, serveur,
+      profil, dossier préréglés comme dans Seerr), puis confirmation Annuler d'abord ;
+      `POST /api/v1/request` au nom du compte de la clé d'API. Appels repris de Jelly5-Seerr
+      (`/search`, `/discover/*`, `/movie|tv/{id}`, `/service/radarr|sonarr[/{id}]`,
+      `/settings/public`), `is4k` ajouté. Fixtures inventées (`scripts/make-discover-fixtures.py`,
+      fixtures et démo), recherche filtrée par le transport `--mock`, tests (chemins, analyseurs,
+      corps de la demande, mock). □ (X sous Linux) efface la recherche. État `discover` de
+      `capture-states.sh`. Conformité au catalogue : aucune recherche de release, aucun
+      indexeur, aucun nom de release ; écriture ajoutée aux règles du projet. **Aucune vraie demande
+      faite** (mock seulement, accord de Vivian nécessaire).
+      Piste future (option B) : « Demander pour… » un utilisateur de Seerr (en-tête
+      `X-Api-User`, ses droits et quotas).
 - [ ] **4. Quick Connect pour Jellyfin** — conception à valider.
 - [x] **5. Communauté** — `docs/CONTRIBUTING.md` (anglais : bug, idée, traduction, code, règles
       du projet ; lié depuis le README) ; `docs/images/demo.gif` (600 px, ~3 Mo, 10 images/s :
@@ -1061,3 +1078,4 @@ la Bibliothèque).
 | 16 oct. 2026 | 0.4.0 publiée. 0.5.0 ouverte (cinq chantiers). Chantier 1 : écran « Nouveautés » (`core/whats_new`, `seenVersion`, bouton de Réglages). |
 | 16 oct. 2026 | Chantier 2 : espagnol et allemand (`es.cpp`, `de.cpp`), langue système PS5 testée, pilules et puces de charge qui s'adaptent à la longueur des textes. |
 | 16 oct. 2026 | Chantier 5 : `CONTRIBUTING.md`, GIF de démonstration (`capture-gif.sh`), brouillon Reddit. Conceptions des chantiers 3 et 4 proposées. |
+| 16 oct. 2026 | Chantier 3 : Demandes › Découvrir (recherche au clavier système, rangées, fiche, demande Seerr avec saisons / 4K / profil / dossier), fixtures et tests ; lien « Questions » (Discussions). |

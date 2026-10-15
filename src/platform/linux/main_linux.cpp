@@ -32,6 +32,7 @@
 #include "platform/linux/curl_transport.h"
 #include "platform/gl/gfx_gl.h"
 #include "platform/linux/input_sdl.h"
+#include "platform/linux/text_linux.h"
 #include "platform/posix/socket_transport.h"
 #include "platform/platform.h"
 #include "ui/art.h"
@@ -307,7 +308,8 @@ int main(int argc, char **argv)
                 fit_drawable();
                 dirty = true;
             }
-            input_sdl::handle_event(ev);
+            if (!text_linux::handle_event(ev))   /* an open text entry has the keyboard */
+                input_sdl::handle_event(ev);
         }
         phase_done(perf::Events);
         if (pool.pump() + images.pump() > 0)
@@ -317,7 +319,13 @@ int main(int argc, char **argv)
         const uint32_t scripted = script.step(now, &quit);
         if (script.wants_frame())
             dirty = true;
-        const input::State in = repeater.update(input_sdl::take_went_down() | scripted, input_sdl::held(), now);
+        const std::string typed = script.take_text();
+        if (!typed.empty())
+            text_linux::type(typed);
+        uint32_t went_down = input_sdl::take_went_down() | scripted;
+        if (platform::text_entry_active())
+            went_down = 0;   /* the keyboard is typing, not steering */
+        const input::State in = repeater.update(went_down, input_sdl::held(), now);
         if (shell.input(in, now))
             dirty = true;
         const time_t minute = time(nullptr) / 60;

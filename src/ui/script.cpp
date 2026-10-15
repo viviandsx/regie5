@@ -40,6 +40,13 @@ uint32_t Script::step(double now, bool *quit)
             m_wait_until = now + secs;
         } else if (s.rfind("shot:", 0) == 0) {
             m_shot = s.substr(5);
+        } else if (s.rfind("text:", 0) == 0) {
+            m_text = s.substr(5);
+            for (char &c : m_text)
+                if (c == '_')
+                    c = ' ';
+            m_wait_until = now + 0.05;
+            break;
         } else if (s == "quit") {
             *quit = true;
         } else if (const uint32_t b = button(s)) {

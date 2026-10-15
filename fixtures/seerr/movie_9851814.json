@@ -5,5 +5,22 @@
  "title": "Iris and the Quiet Kingdom",
  "backdropPath": "/r503b9925db7fe.jpg",
  "overview": "Theo cherche une carte oubliée sans rien dire à personne.",
- "posterPath": "/r5eaf363a274c6.jpg"
+ "posterPath": "/r5eaf363a274c6.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 99,
+ "mediaInfo": {
+  "id": 900021,
+  "tmdbId": 9851814,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "730cd15d21a046b86d33ee9844cf1ffe",
+  "seasons": [],
+  "requests": []
+ }
 }

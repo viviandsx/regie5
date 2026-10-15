@@ -6,5 +6,41 @@
  "originalName": "Secret Lighthouse",
  "overview": "Theo inherits a forgotten map without telling anyone.",
  "backdropPath": "/r555f7b0886d9d.jpg",
- "posterPath": "/r531ce0830681d.jpg"
+ "posterPath": "/r531ce0830681d.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "episodeRunTime": [
+  35
+ ],
+ "externalIds": {
+  "tvdbId": 379255
+ },
+ "seasons": [
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 7,
+   "airDate": "2019-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900010,
+  "tmdbId": 9879255,
+  "mediaType": "tv",
+  "status": 1,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 1,
+    "status4k": 1
+   }
+  ],
+  "requests": []
+ }
 }

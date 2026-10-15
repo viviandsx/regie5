@@ -34,7 +34,7 @@ never to the internet.
 | **Home** | Upcoming episodes and films (14 days, Sonarr + Radarr calendars), recently added to Jellyfin, disk space and health alerts of every instance. |
 | **Library** | Your series and films (read-only), a week-by-week **TV guide**, what is **missing**, and an optional **Cleanup** view. |
 | **Activity** | The download queue of Sonarr and Radarr merged (title, progress, time left, status; refreshed every 5 s), and a 14-day **log**: imports, Seerr requests, Jellyfin playback and sign-ins, health alerts. |
-| **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**; Seerr **issues** (open / resolved / all) with their comments, **Resolve** and **Comment** (ready-made sentences). |
+| **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**; Seerr **issues** (open / resolved / all) with their comments, **Resolve** and **Comment** (ready-made sentences); **Discover**: search Seerr with the console's keyboard, trending, popular and upcoming films and series, a title's page, and **request** it (the seasons, 4K, the quality profile and folder). |
 | **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, and server load through [Glances](https://nicolargo.github.io/glances/) if you use it. |
 | **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which asks for 120 Hz / 60 Hz / 120 Hz), **set-up from a phone** (QR code), and the **set-up screens** again. |
 
@@ -77,7 +77,8 @@ up and gets Régie5's generated cover. Full credits: [demo/CREDITS.md](demo/CRED
 Almost nothing, and never without asking. It is read-only, except for these
 actions, each behind a confirmation whose focus starts on **Cancel**:
 
-- approve or decline a Seerr request;
+- approve or decline a Seerr request; **request** a film or a series in Seerr (as the
+  account of the API key: Seerr's administrator, so the request is usually approved at once);
 - resolve a Seerr issue, or post one of a few ready-made comments on it;
 - stop a Jellyfin (or Emby) playback session; scan its libraries;
 - **Cleanup** (off by default): delete a film or a series **with its files** in
@@ -199,6 +200,7 @@ two ways to set the proxy up, and for redirects such as a login page in front of
 | L2 / R2 | previous / next letter (lists by title), week (guide) or page |
 | △ | refresh the screen |
 | Options | the selected item's menu (approve / decline, resolve / comment, keep / delete, find in Jelly5 or Emby5) |
+| □ | Discover: clear the search |
 
 ## Known limitations
 
@@ -241,7 +243,7 @@ scripts/run-linux.sh                     # with ~/.config/regie5/config.json
 cmake --build build/linux && ctest --test-dir build/linux
 ```
 
-On the keyboard: arrows, Enter (✕), Escape (○), Q/E (L1/R1), Z/C (L2/R2), R (△),
+On the keyboard: arrows, Enter (✕), Escape (○), Q/E (L1/R1), Z/C (L2/R2), R (△), X (□),
 M (Options).
 
 The PS5 build needs the [ps5-payload-sdk](https://github.com/ps5-payload-dev/sdk),

@@ -5,5 +5,22 @@
  "title": "Maud's Engine",
  "backdropPath": "/r5b3284783a67a.jpg",
  "overview": "Elias discovers a sunken town at the end of the world.",
- "posterPath": "/r569e4484126dd.jpg"
+ "posterPath": "/r569e4484126dd.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 112,
+ "mediaInfo": {
+  "id": 900002,
+  "tmdbId": 9108727,
+  "mediaType": "movie",
+  "status": 1,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [],
+  "requests": []
+ }
 }

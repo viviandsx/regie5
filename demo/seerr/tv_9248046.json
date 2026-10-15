@@ -6,5 +6,58 @@
  "originalName": "Rafael and the Restless Frontier",
  "overview": "Rafael tries to protect a signal from far away at the end of the world.",
  "backdropPath": "/r512b329671894.jpg",
- "posterPath": "/r5d53178550d67.jpg"
+ "posterPath": "/r5d53178550d67.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "episodeRunTime": [
+  51
+ ],
+ "externalIds": {
+  "tvdbId": 348046
+ },
+ "seasons": [
+  {
+   "seasonNumber": 0,
+   "name": "Specials",
+   "episodeCount": 2,
+   "airDate": null
+  },
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 8,
+   "airDate": "2027-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900000,
+  "tmdbId": 9248046,
+  "mediaType": "tv",
+  "status": 3,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 2,
+    "status4k": 1
+   }
+  ],
+  "requests": [
+   {
+    "id": 800000,
+    "status": 2,
+    "is4k": false,
+    "seasons": [
+     {
+      "seasonNumber": 1
+     }
+    ]
+   }
+  ]
+ }
 }

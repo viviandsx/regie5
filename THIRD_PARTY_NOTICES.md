@@ -10,6 +10,7 @@ GPL-3.0-or-later, under which the combined program is distributed.
 | Component | Where | Licence |
 | --- | --- | --- |
 | [Jelly5](https://github.com/02dnot/Jelly5): the renderer interface (`gfx.h`), the focus drop, the glass pane, the ambient background, the card lift and row scrolling, the controller hints, the easing (`anim.h`) and the liquid glass shader; adapted for Régie5 | `src/ui/gfx.h`, `src/ui/drop.*`, `src/ui/style.*`, `src/ui/ambient.*`, `src/ui/hints.*`, `src/ui/anim.h`, `src/platform/gl/gl_shaders.h` | GPL-3.0-or-later |
+| The PS5 system keyboard (`sceImeDialog`: the parameter layout, the UTF-8 / UTF-16 conversion and the status protocol), from [Jelly5](https://github.com/02dnot/Jelly5)'s `ime.cpp`, itself based on ProsperoTV's `iptv_ime.c` (BlackBearReloaded) | `src/platform/ps5/text_ps5.cpp` | GPL-3.0-or-later |
 | [cJSON](https://github.com/DaveGamble/cJSON) 1.7.18 - Copyright (c) 2009-2017 Dave Gamble and cJSON contributors | `third_party/cjson/` | MIT (`third_party/cjson/LICENSE`) |
 | [stb_image](https://github.com/nothings/stb) v2.30 (commit f58f558) - Sean Barrett | `third_party/stb/stb_image.h` | Public domain or MIT (at the end of the file) |
 | [QR Code generator library](https://www.nayuki.io/page/qr-code-generator-library) (C) - Copyright (c) Project Nayuki, by way of Jelly5 | `third_party/qrcodegen/` | MIT (in the file headers) |

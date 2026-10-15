@@ -5,5 +5,22 @@
  "title": "Iris's Mirror",
  "backdropPath": "/r5af7286595d64.jpg",
  "overview": "Rafael essaie d'oublier une promesse faite il y a dix ans en une seule nuit.",
- "posterPath": "/r598edc672273b.jpg"
+ "posterPath": "/r598edc672273b.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 117,
+ "mediaInfo": {
+  "id": 900016,
+  "tmdbId": 9549532,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "8fac0ffdb13a235f3cd949f066b05170",
+  "seasons": [],
+  "requests": []
+ }
 }

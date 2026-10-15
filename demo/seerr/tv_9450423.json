@@ -6,5 +6,52 @@
  "originalName": "Brightwater: Endless Summit",
  "overview": "Oskar discovers a signal from far away against all odds.",
  "backdropPath": "/r53fdc1ec44283.jpg",
- "posterPath": "/r5f83bd68c1bde.jpg"
+ "posterPath": "/r5f83bd68c1bde.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "episodeRunTime": [
+  53
+ ],
+ "externalIds": {
+  "tvdbId": 350423
+ },
+ "seasons": [
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 10,
+   "airDate": "2026-03-01"
+  },
+  {
+   "seasonNumber": 2,
+   "name": "Season 2",
+   "episodeCount": 6,
+   "airDate": "2027-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900004,
+  "tmdbId": 9450423,
+  "mediaType": "tv",
+  "status": 1,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 1,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 2,
+    "status": 1,
+    "status4k": 1
+   }
+  ],
+  "requests": []
+ }
 }

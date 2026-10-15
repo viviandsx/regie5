@@ -5,5 +5,22 @@
  "title": "Second Valley",
  "backdropPath": "/r5f04fa3e3db9d.jpg",
  "overview": "Ines goes looking for a sunken town at the end of the world.",
- "posterPath": "/r5ae00e492d4c1.jpg"
+ "posterPath": "/r5ae00e492d4c1.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 124,
+ "mediaInfo": {
+  "id": 900003,
+  "tmdbId": 9147789,
+  "mediaType": "movie",
+  "status": 4,
+  "status4k": 1,
+  "jellyfinMediaId": "demo9147789",
+  "seasons": [],
+  "requests": []
+ }
 }

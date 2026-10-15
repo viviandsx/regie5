@@ -5,5 +5,22 @@
  "title": "The Glass Machine",
  "backdropPath": "/r5212ddb054621.jpg",
  "overview": "Mara doit retrouver le dernier train de la nuit au bout du monde.",
- "posterPath": "/r599744eb24475.jpg"
+ "posterPath": "/r599744eb24475.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 123,
+ "mediaInfo": {
+  "id": 900018,
+  "tmdbId": 9602138,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "ffaeaea68a972cc325b9d98f34e7bf30",
+  "seasons": [],
+  "requests": []
+ }
 }

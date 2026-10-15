@@ -127,6 +127,17 @@ public:
     /* Actions: POST. They change things on the server. */
     void resolve_issue(int issue_id, std::function<void(Result<bool>)> done);
     void comment_issue(int issue_id, const std::string &message, std::function<void(Result<bool>)> done);
+    /* Discover and search (in the interface's language), a title's page,
+     * what a request depends on. */
+    void discover(seerr::Shelf shelf, std::function<void(Result<std::vector<model::SeerrTitle>>)> done);
+    void search(const std::string &query, std::function<void(Result<std::vector<model::SeerrTitle>>)> done);
+    void title_detail(bool tv, int tmdb_id, std::function<void(Result<model::SeerrDetail>)> done);
+    void seerr_public(std::function<void(Result<model::SeerrPublic>)> done);
+    void seerr_servers(bool tv, std::function<void(Result<std::vector<model::SeerrServer>>)> done);
+    void seerr_server(bool tv, int server_id, std::function<void(Result<model::SeerrServer>)> done);
+    /* Action: POST. It changes things in Seerr (a new request, as the API
+     * key's account). */
+    void create_request(const seerr::NewRequest &r, std::function<void(Result<model::SeerrCreated>)> done);
 
     /* Jellyfin. */
     void sessions(std::function<void(Result<std::vector<model::Session>>)> done);

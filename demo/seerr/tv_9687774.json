@@ -6,5 +6,74 @@
  "originalName": "Valemont: Frozen Quarry",
  "overview": "Nadia tries to protect a signal from far away at the end of the world.",
  "backdropPath": "/r53e1d2cdaccac.jpg",
- "posterPath": "/r5922fc304441b.jpg"
+ "posterPath": "/r5922fc304441b.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "episodeRunTime": [
+  54
+ ],
+ "externalIds": {
+  "tvdbId": 387774
+ },
+ "seasons": [
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 6,
+   "airDate": "2012-03-01"
+  },
+  {
+   "seasonNumber": 2,
+   "name": "Season 2",
+   "episodeCount": 7,
+   "airDate": "2013-03-01"
+  },
+  {
+   "seasonNumber": 3,
+   "name": "Season 3",
+   "episodeCount": 8,
+   "airDate": "2014-03-01"
+  },
+  {
+   "seasonNumber": 4,
+   "name": "Season 4",
+   "episodeCount": 9,
+   "airDate": "2015-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900008,
+  "tmdbId": 9687774,
+  "mediaType": "tv",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "2040f35f55ba9219b8162fa06a8734bc",
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 5,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 2,
+    "status": 5,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 3,
+    "status": 5,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 4,
+    "status": 5,
+    "status4k": 1
+   }
+  ],
+  "requests": []
+ }
 }

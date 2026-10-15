@@ -2,9 +2,67 @@
  "firstAirDate": "2026-10-15",
  "id": 9364504,
  "name": "Yuki's Lighthouse II",
- "numberOfSeasons": 1,
+ "numberOfSeasons": 2,
  "originalName": "Yuki's Lighthouse II",
  "overview": "",
  "backdropPath": "/r54fd7f1e2c285.jpg",
- "posterPath": "/r56bea47950180.jpg"
+ "posterPath": "/r56bea47950180.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "episodeRunTime": [
+  34
+ ],
+ "externalIds": {
+  "tvdbId": 364504
+ },
+ "seasons": [
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 6,
+   "airDate": "2026-03-01"
+  },
+  {
+   "seasonNumber": 2,
+   "name": "Season 2",
+   "episodeCount": 7,
+   "airDate": "2027-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900002,
+  "tmdbId": 9364504,
+  "mediaType": "tv",
+  "status": 3,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 2,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 2,
+    "status": 1,
+    "status4k": 1
+   }
+  ],
+  "requests": [
+   {
+    "id": 800002,
+    "status": 2,
+    "is4k": false,
+    "seasons": [
+     {
+      "seasonNumber": 1
+     }
+    ]
+   }
+  ]
+ }
 }

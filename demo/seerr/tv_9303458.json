@@ -2,9 +2,67 @@
  "firstAirDate": "2024-04-11",
  "id": 9303458,
  "name": "The Salt Summit",
- "numberOfSeasons": 1,
+ "numberOfSeasons": 3,
  "originalName": "Shifting Meridian",
  "overview": "Maud goes looking for a sunken town at the end of the world.",
  "backdropPath": "/r5dd22b18416a7.jpg",
- "posterPath": "/r59b13e6fa2293.jpg"
+ "posterPath": "/r59b13e6fa2293.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "episodeRunTime": [
+  38
+ ],
+ "externalIds": {
+  "tvdbId": 303458
+ },
+ "seasons": [
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 10,
+   "airDate": "2024-03-01"
+  },
+  {
+   "seasonNumber": 2,
+   "name": "Season 2",
+   "episodeCount": 6,
+   "airDate": "2025-03-01"
+  },
+  {
+   "seasonNumber": 3,
+   "name": "Season 3",
+   "episodeCount": 7,
+   "airDate": "2026-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900001,
+  "tmdbId": 9303458,
+  "mediaType": "tv",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "8f505f2a429e44f7a0c85fed4b42d0b0",
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 5,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 2,
+    "status": 5,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 3,
+    "status": 5,
+    "status4k": 1
+   }
+  ],
+  "requests": []
+ }
 }

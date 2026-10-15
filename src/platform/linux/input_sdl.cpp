@@ -33,6 +33,7 @@ uint32_t key_button(SDL_Keycode k)
     case SDLK_e: return input::R1;
     case SDLK_r: return input::Triangle;
     case SDLK_m: return input::Options;
+    case SDLK_x: return input::Square;
     case SDLK_z: return input::L2;
     case SDLK_c: return input::R2;
     default: return 0;

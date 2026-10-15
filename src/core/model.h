@@ -15,6 +15,7 @@
 #include <ctime>
 #include <string>
 #include <vector>
+#include <utility>
 
 namespace model {
 
@@ -281,6 +282,66 @@ struct MediaDetail {
     std::string poster_path, backdrop_path;   /* TMDB paths: through /imageproxy/tmdb */
     int media_id = 0;          /* Seerr's own record of it (mediaInfo), 0 when none */
     int media_status = 0, media_status4k = 0;
+};
+
+/* ---- Seerr: discover, search and new requests ---- */
+
+/* Where a title stands in Seerr (its MediaStatus): 1 unknown (never asked
+ * for), 2 pending, 3 processing, 4 partly available, 5 available,
+ * 6 blocklisted, 7 deleted (may be asked for again). 0: Seerr has no record. */
+enum SeerrStatus { SeerrNone = 0, SeerrUnknown = 1, SeerrPending, SeerrProcessing, SeerrPartial, SeerrAvailable,
+                   SeerrBlocklisted, SeerrDeleted };
+
+/* A film or a series as search and discover list them. */
+struct SeerrTitle {
+    int tmdb_id = 0;
+    bool tv = false;
+    std::string title, overview;
+    std::string poster_path, backdrop_path;   /* TMDB paths: through /imageproxy/tmdb */
+    int year = 0;
+    int status = SeerrNone, status4k = SeerrNone;
+    std::string jellyfin_id;                  /* the media server's item (Jellyfin or Emby) */
+};
+
+struct SeerrSeason {
+    int number = 0;
+    std::string name;
+    int episodes = 0;
+    int status = SeerrNone, status4k = SeerrNone;   /* on the media server */
+    bool requested = false, requested4k = false;    /* in a request still pending or approved */
+};
+
+/* A title's page: films and series. */
+struct SeerrDetail {
+    SeerrTitle title;
+    std::vector<std::string> genres;
+    int runtime = 0;   /* minutes: a film's, a series' episodes' */
+    int tvdb_id = 0;   /* series */
+    std::vector<SeerrSeason> seasons;   /* series, specials (0) included */
+};
+
+/* A Radarr or Sonarr server as Seerr has it set up, with its defaults; the
+ * profiles and folders come with its details. */
+struct SeerrServer {
+    int id = 0;
+    std::string name;
+    bool is4k = false, is_default = false;
+    int profile_id = 0;
+    std::string folder;
+    std::vector<std::pair<int, std::string>> profiles;   /* id, name */
+    std::vector<std::string> folders;
+};
+
+/* What Seerr lets everyone know that a request depends on. */
+struct SeerrPublic {
+    bool partial_requests = true;   /* a series' seasons may be asked for one by one */
+    bool special_episodes = false;  /* season 0 may be asked for */
+};
+
+/* What becomes of a new request. */
+struct SeerrCreated {
+    int id = 0;       /* 0: Seerr made none (nothing left to ask for) */
+    int status = 0;   /* the request's: 1 pending, 2 approved */
 };
 
 /* ---- Jellyfin ---- */

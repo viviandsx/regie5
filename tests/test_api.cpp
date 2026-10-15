@@ -331,6 +331,103 @@ TEST(seerr_details)
     CHECK_EQ(d.title, std::string("Iris's Voyage"));
 }
 
+namespace {
+
+/* Runs the pool until every request is done (or 5 s). */
+void drain(http::Pool &pool)
+{
+    for (int i = 0; i < 500 && (pool.busy() > 0 || pool.pump() > 0); i++)
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    pool.pump();
+}
+
+} // namespace
+
+TEST(seerr_discover_and_search)
+{
+    CHECK_EQ(seerr::discover_path(seerr::Shelf::Trending, "fr"), std::string("/api/v1/discover/trending?page=1&language=fr"));
+    CHECK_EQ(seerr::discover_path(seerr::Shelf::UpcomingTv, "en"),
+             std::string("/api/v1/discover/tv/upcoming?page=1&language=en"));
+    /* Spaces as %20, accents and '&' escaped: the query never breaks the URL. */
+    CHECK_EQ(seerr::search_path("l'été & co", "fr"),
+             std::string("/api/v1/search?query=l%27%C3%A9t%C3%A9%20%26%20co&page=1&language=fr"));
+
+    std::vector<model::SeerrTitle> titles;
+    CHECK(seerr::parse_titles(fixture("seerr/search.json"), &titles));
+    bool person = false, film = false, series = false;
+    for (const auto &t : titles) {
+        person |= t.title == "A Made-up Person";
+        film |= !t.tv;
+        series |= t.tv;
+        CHECK(t.tmdb_id > 0 && !t.title.empty());
+    }
+    CHECK(!person && film && series);   /* people are left out */
+    CHECK(seerr::parse_titles(fixture("seerr/discover_trending.json"), &titles) && !titles.empty());
+    CHECK(!titles[0].poster_path.empty() && titles[0].poster_path[0] == '/');
+    CHECK(!seerr::parse_titles("{}", &titles));
+}
+
+TEST(seerr_title_pages)
+{
+    model::SeerrDetail d;
+    CHECK(seerr::parse_title_detail(fixture("seerr/tv_9394299.json"), true, &d));
+    CHECK_EQ(d.title.title, std::string("Iris's Voyage"));
+    CHECK(d.title.tv && d.tvdb_id > 0 && d.runtime > 0 && !d.genres.empty());
+    CHECK(d.seasons.size() >= 2 && d.seasons[0].number == 0);   /* the specials first, as TMDB lists them */
+    const model::SeerrSeason &s1 = d.seasons[1];
+    CHECK(s1.number == 1 && s1.episodes > 0 && s1.requested && !s1.requested4k);
+
+    CHECK(seerr::parse_title_detail(fixture("seerr/movie_9068481.json"), false, &d));
+    CHECK(!d.title.tv && d.runtime > 0 && d.seasons.empty());
+    CHECK(d.title.status == model::SeerrAvailable && !d.title.jellyfin_id.empty());
+
+    model::SeerrPublic pub;
+    CHECK(seerr::parse_public(fixture("seerr/settings_public.json"), &pub) && pub.partial_requests && !pub.special_episodes);
+
+    std::vector<model::SeerrServer> servers;
+    CHECK(seerr::parse_servers(fixture("seerr/service_radarr.json"), &servers) && servers.size() == 2);
+    CHECK(!servers[0].is4k && servers[1].is4k && servers[0].is_default && servers[0].profile_id == 4);
+    model::SeerrServer one;
+    CHECK(seerr::parse_server(fixture("seerr/service_radarr_1.json"), &one));
+    CHECK(one.id == 1 && one.is4k && !one.profiles.empty() && one.folders.size() == 1);
+    CHECK_EQ(seerr::server_path(true, 0), std::string("/api/v1/service/sonarr/0"));
+}
+
+TEST(seerr_new_request)
+{
+    seerr::NewRequest r;
+    r.tmdb_id = 42;
+    CHECK_EQ(seerr::request_body(r), std::string("{\"mediaType\":\"movie\",\"mediaId\":42,\"is4k\":false}"));
+    r.tv = true;
+    r.tvdb_id = 7;
+    r.seasons = {1, 3};
+    r.is4k = true;
+    r.server_id = 1;
+    r.profile_id = 5;
+    r.root_folder = "/data/series";
+    CHECK_EQ(seerr::request_body(r),
+             std::string("{\"mediaType\":\"tv\",\"mediaId\":42,\"tvdbId\":7,\"seasons\":[1,3],\"is4k\":true,"
+                         "\"serverId\":1,\"profileId\":5,\"rootFolder\":\"/data/series\"}"));
+    model::SeerrCreated c;
+    CHECK(seerr::parse_created("{\"id\":12,\"status\":2}", &c) && c.id == 12 && c.status == 2);
+    CHECK(seerr::parse_created("", &c) && c.id == 0);   /* --mock's 204 */
+    CHECK(seerr::parse_created("{\"message\":\"No seasons available to request\"}", &c) && c.id == 0);   /* 202 */
+
+    /* --mock: the search keeps what matches; the request is never made. */
+    api::MockTransport mock(REGIE5_FIXTURES, 0, "");
+    http::Pool pool(mock, 1, nullptr);
+    api::Services s(config::mock(), pool, "fr");
+    api::Result<std::vector<model::SeerrTitle>> found;
+    api::Result<model::SeerrCreated> made;
+    s.search("iris's", [&](api::Result<std::vector<model::SeerrTitle>> res) { found = res; });
+    s.create_request(r, [&](api::Result<model::SeerrCreated> res) { made = res; });
+    drain(pool);
+    CHECK(found.ok() && !found.value.empty());
+    for (const auto &t : found.value)
+        CHECK(t.title.find("Iris's") != std::string::npos);
+    CHECK(made.ok() && made.http_status == 204 && made.value.id == 0);
+}
+
 /* ---- Jellyfin ---- */
 
 TEST(jellyfin_auth_and_paths)
@@ -436,18 +533,6 @@ TEST(mock_maps_urls_to_fixtures)
              std::string("jellyfin/scheduledtasks.json"));
     CHECK_EQ(M::file_for("http://192.168.1.10:8989/api/v3/queue"), std::string());   /* never a real server */
 }
-
-namespace {
-
-/* Runs the pool until every request is done (or 5 s). */
-void drain(http::Pool &pool)
-{
-    for (int i = 0; i < 500 && (pool.busy() > 0 || pool.pump() > 0); i++)
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    pool.pump();
-}
-
-} // namespace
 
 TEST(services_on_mock)
 {

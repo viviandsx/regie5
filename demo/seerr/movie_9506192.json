@@ -5,5 +5,22 @@
  "title": "The Secret Garden",
  "backdropPath": "/r542ba73454ea4.jpg",
  "overview": "Oskar tries to protect a sunken town against all odds.",
- "posterPath": "/r54ebb62fdcdbc.jpg"
+ "posterPath": "/r54ebb62fdcdbc.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 127,
+ "mediaInfo": {
+  "id": 900012,
+  "tmdbId": 9506192,
+  "mediaType": "movie",
+  "status": 1,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [],
+  "requests": []
+ }
 }

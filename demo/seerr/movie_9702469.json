@@ -5,5 +5,22 @@
  "title": "Juniper: Pale Bridge",
  "backdropPath": "/r55d5f61070b6b.jpg",
  "overview": "Nadia must find the last night train against all odds.",
- "posterPath": "/r540a5dd2d65a4.jpg"
+ "posterPath": "/r540a5dd2d65a4.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 104,
+ "mediaInfo": {
+  "id": 900020,
+  "tmdbId": 9702469,
+  "mediaType": "movie",
+  "status": 1,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [],
+  "requests": []
+ }
 }

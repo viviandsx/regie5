@@ -78,4 +78,19 @@ bool share_start(const std::string &config_path, const std::string &hint_host, s
 void share_stop();
 ShareInfo share_info();
 
+/* Typing a text (Seerr's search): the system keyboard on the PS5, the
+ * computer's keyboard on Linux (Enter confirms, Escape cancels). One entry at
+ * a time; while it is open the pad's presses do not reach the interface. */
+enum class TextKind { Search, Plain };
+bool text_entry_start(TextKind kind, const std::string &title, const std::string &initial);
+bool text_entry_active();
+/* What is typed so far: live on Linux; on the PS5, the initial text until the
+ * keyboard closes. */
+std::string text_entry_text();
+/* Once the entry is over (asked each frame): true, with *confirmed and the
+ * text; false while it is open or when none was started. */
+bool text_entry_finished(bool *confirmed, std::string *text);
+/* Closes it, nothing given back (its screen is going away). */
+void text_entry_cancel();
+
 } // namespace platform

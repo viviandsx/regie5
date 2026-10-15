@@ -1,0 +1,8 @@
+{
+ "applicationTitle": "Seerr",
+ "mediaServerType": 2,
+ "partialRequestsEnabled": true,
+ "enableSpecialEpisodes": false,
+ "localLogin": true,
+ "mediaServerLogin": true
+}

@@ -5,5 +5,22 @@
  "title": "Léa and the Endless Tower",
  "backdropPath": "/r55900f0480fe0.jpg",
  "overview": "Nadia cherche une carte oubliée avant l'hiver.",
- "posterPath": "/r5e6915146ef72.jpg"
+ "posterPath": "/r5e6915146ef72.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 116,
+ "mediaInfo": {
+  "id": 900000,
+  "tmdbId": 9068481,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "797cd5db7b70a89fe27f9cac4a3bc513",
+  "seasons": [],
+  "requests": []
+ }
 }

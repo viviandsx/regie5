@@ -11,6 +11,7 @@
 #include "core/model.h"
 
 #include <string>
+#include <vector>
 
 namespace seerr {
 
@@ -40,10 +41,43 @@ std::string comment_body(const std::string &message);
 /* POST, no body: marks the issue resolved. */
 std::string issue_resolve_path(int issue_id);
 
+/* Discover, search and new requests (0.5.0). lang: TMDB's language for the
+ * names and overviews ("fr", "en" ...). */
+enum class Shelf { Trending, PopularMovies, PopularTv, UpcomingMovies, UpcomingTv };
+constexpr int kShelves = 5;
+std::string discover_path(Shelf s, const std::string &lang, int page = 1);
+/* The query escaped for the URL (Seerr wants spaces as %20). */
+std::string search_path(const std::string &query, const std::string &lang, int page = 1);
+std::string public_settings_path();
+/* Radarr (films) or Sonarr (series) servers; one's profiles and folders. */
+std::string servers_path(bool tv);
+std::string server_path(bool tv, int server_id);
+/* POST, body request_body(): a new request (it changes things in Seerr). */
+std::string create_request_path();
+struct NewRequest {
+    int tmdb_id = 0;
+    bool tv = false;
+    int tvdb_id = 0;             /* series: sent when known */
+    std::vector<int> seasons;    /* series: these (never empty) */
+    bool is4k = false;
+    int server_id = -1, profile_id = -1;   /* -1: Seerr's defaults */
+    std::string root_folder;               /* empty: Seerr's default */
+};
+std::string request_body(const NewRequest &r);
+
 bool parse_about(const std::string &body, std::string *version);
 bool parse_requests(const std::string &body, model::RequestPage *out);
 bool parse_detail(const std::string &body, bool tv, model::MediaDetail *out);
 bool parse_issues(const std::string &body, model::IssuePage *out);
 bool parse_issue(const std::string &body, model::Issue *out);
+/* Search and discover pages: films and series (people and collections left out). */
+bool parse_titles(const std::string &body, std::vector<model::SeerrTitle> *out);
+bool parse_title_detail(const std::string &body, bool tv, model::SeerrDetail *out);
+bool parse_public(const std::string &body, model::SeerrPublic *out);
+bool parse_servers(const std::string &body, std::vector<model::SeerrServer> *out);
+bool parse_server(const std::string &body, model::SeerrServer *out);
+/* The new request (201), or nothing made (202: nothing left to ask for). An
+ * empty body (--mock's 204) reads as sent, with no id. */
+bool parse_created(const std::string &body, model::SeerrCreated *out);
 
 } // namespace seerr

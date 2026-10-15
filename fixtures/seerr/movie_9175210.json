@@ -5,5 +5,22 @@
  "title": "Iris and the Paper Winter",
  "backdropPath": "/r5b911f58de52d.jpg",
  "overview": "Yuki cherche une lettre jamais envoyée avant qu'il ne soit trop tard.",
- "posterPath": "/r54a5a1f2ba56e.jpg"
+ "posterPath": "/r54a5a1f2ba56e.jpg",
+ "genres": [
+  {
+   "id": 12,
+   "name": "Adventure"
+  }
+ ],
+ "runtime": 95,
+ "mediaInfo": {
+  "id": 900004,
+  "tmdbId": 9175210,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "12e219cc7f5191ac42f04b0670bfda60",
+  "seasons": [],
+  "requests": []
+ }
 }

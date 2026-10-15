@@ -5,5 +5,22 @@
  "title": "Léa and the Secret Station",
  "backdropPath": "/r5e4b9ace49b99.jpg",
  "overview": "Elias doit retrouver un secret de famille en une seule nuit.",
- "posterPath": "/r59ad211eebe34.jpg"
+ "posterPath": "/r59ad211eebe34.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 129,
+ "mediaInfo": {
+  "id": 900017,
+  "tmdbId": 9569894,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "1e42763f9b4f09affb6d9b4a230ecc9f",
+  "seasons": [],
+  "requests": []
+ }
 }

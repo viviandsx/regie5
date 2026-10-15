@@ -6,6 +6,7 @@
 
 #include "api/json.h"
 
+#include <cctype>
 #include <algorithm>
 #include <cstdlib>
 
@@ -210,6 +211,236 @@ bool parse_detail(const std::string &body, bool tv, model::MediaDetail *out)
     out->media_status = json::integer(info, "status");
     out->media_status4k = json::integer(info, "status4k");
     return !out->title.empty();
+}
+
+} // namespace seerr
+
+namespace seerr {
+
+namespace {
+
+/* Every byte but the unreserved ones as %XX: Seerr hands the query to TMDB as
+ * it comes, and refuses a '+' for a space. */
+std::string escape(const std::string &s)
+{
+    static const char *const kHex = "0123456789ABCDEF";
+    std::string out;
+    for (unsigned char c : s) {
+        if (std::isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~')
+            out += (char)c;
+        else
+            out += '%', out += kHex[c >> 4], out += kHex[c & 15];
+    }
+    return out;
+}
+
+int year_of(const std::string &date) { return date.size() >= 4 ? std::atoi(date.substr(0, 4).c_str()) : 0; }
+
+/* The fields a result and a page share (films and series name them apart). */
+void read_title(const cJSON *o, bool tv, model::SeerrTitle *t)
+{
+    t->tmdb_id = json::integer(o, "id");
+    t->tv = tv;
+    t->title = json::str(o, tv ? "name" : "title");
+    t->overview = json::str(o, "overview");
+    t->poster_path = json::str(o, "posterPath");
+    t->backdrop_path = json::str(o, "backdropPath");
+    t->year = year_of(json::str(o, tv ? "firstAirDate" : "releaseDate"));
+    const cJSON *media = json::get(o, "mediaInfo");
+    if (cJSON_IsObject(media)) {
+        t->status = json::integer(media, "status", model::SeerrUnknown);
+        t->status4k = json::integer(media, "status4k", model::SeerrUnknown);
+        t->jellyfin_id = json::str(media, "jellyfinMediaId");
+    }
+}
+
+void read_server(const cJSON *o, model::SeerrServer *s)
+{
+    s->id = json::integer(o, "id");
+    s->name = json::str(o, "name");
+    s->is4k = json::boolean(o, "is4k");
+    s->is_default = json::boolean(o, "isDefault");
+    s->profile_id = json::integer(o, "activeProfileId");
+    s->folder = json::str(o, "activeDirectory");
+}
+
+} // namespace
+
+std::string discover_path(Shelf s, const std::string &lang, int page)
+{
+    const char *path = s == Shelf::PopularMovies    ? "/api/v1/discover/movies"
+                       : s == Shelf::PopularTv      ? "/api/v1/discover/tv"
+                       : s == Shelf::UpcomingMovies ? "/api/v1/discover/movies/upcoming"
+                       : s == Shelf::UpcomingTv     ? "/api/v1/discover/tv/upcoming"
+                                                    : "/api/v1/discover/trending";
+    return std::string(path) + "?page=" + std::to_string(page) + "&language=" + escape(lang);
+}
+
+std::string search_path(const std::string &query, const std::string &lang, int page)
+{
+    return "/api/v1/search?query=" + escape(query) + "&page=" + std::to_string(page) + "&language=" + escape(lang);
+}
+
+std::string public_settings_path() { return "/api/v1/settings/public"; }
+std::string servers_path(bool tv) { return tv ? "/api/v1/service/sonarr" : "/api/v1/service/radarr"; }
+std::string server_path(bool tv, int server_id) { return servers_path(tv) + "/" + std::to_string(server_id); }
+std::string create_request_path() { return "/api/v1/request"; }
+
+std::string request_body(const NewRequest &r)
+{
+    cJSON *o = cJSON_CreateObject();
+    cJSON_AddStringToObject(o, "mediaType", r.tv ? "tv" : "movie");
+    cJSON_AddNumberToObject(o, "mediaId", r.tmdb_id);
+    if (r.tv) {
+        if (r.tvdb_id > 0)
+            cJSON_AddNumberToObject(o, "tvdbId", r.tvdb_id);
+        cJSON *seasons = cJSON_AddArrayToObject(o, "seasons");
+        for (int n : r.seasons)
+            cJSON_AddItemToArray(seasons, cJSON_CreateNumber(n));
+    }
+    cJSON_AddBoolToObject(o, "is4k", r.is4k);
+    if (r.server_id >= 0)
+        cJSON_AddNumberToObject(o, "serverId", r.server_id);
+    if (r.profile_id >= 0)
+        cJSON_AddNumberToObject(o, "profileId", r.profile_id);
+    if (!r.root_folder.empty())
+        cJSON_AddStringToObject(o, "rootFolder", r.root_folder.c_str());
+    char *text = cJSON_PrintUnformatted(o);
+    std::string out = text ? text : "{}";
+    cJSON_free(text);
+    cJSON_Delete(o);
+    return out;
+}
+
+bool parse_titles(const std::string &body, std::vector<model::SeerrTitle> *out)
+{
+    json::Doc d(body);
+    const cJSON *results = json::get(d.root(), "results");
+    if (!cJSON_IsArray(results))
+        return false;
+    out->clear();
+    const cJSON *it;
+    cJSON_ArrayForEach(it, results)
+    {
+        const std::string type = json::str(it, "mediaType");
+        if (type != "movie" && type != "tv")
+            continue;
+        model::SeerrTitle t;
+        read_title(it, type == "tv", &t);
+        if (t.tmdb_id > 0 && !t.title.empty())
+            out->push_back(std::move(t));
+    }
+    return true;
+}
+
+bool parse_title_detail(const std::string &body, bool tv, model::SeerrDetail *out)
+{
+    json::Doc d(body);
+    if (!cJSON_IsObject(d.root()))
+        return false;
+    *out = {};
+    read_title(d.root(), tv, &out->title);
+    const cJSON *v;
+    cJSON_ArrayForEach(v, json::get(d.root(), "genres")) out->genres.push_back(json::str(v, "name"));
+    if (tv) {
+        const cJSON *rt = cJSON_GetArrayItem(json::get(d.root(), "episodeRunTime"), 0);
+        out->runtime = cJSON_IsNumber(rt) ? rt->valueint : 0;
+        out->tvdb_id = json::integer(json::get(d.root(), "externalIds"), "tvdbId");
+        /* Where each season stands: on the media server, or in a request still
+         * pending or approved; the 4K side apart. */
+        const cJSON *media = json::get(d.root(), "mediaInfo");
+        std::vector<model::SeerrSeason> known;
+        const cJSON *s;
+        cJSON_ArrayForEach(s, json::get(media, "seasons"))
+        {
+            model::SeerrSeason k;
+            k.number = json::integer(s, "seasonNumber");
+            k.status = json::integer(s, "status", model::SeerrUnknown);
+            k.status4k = json::integer(s, "status4k", model::SeerrUnknown);
+            known.push_back(k);
+        }
+        std::vector<std::pair<int, bool>> asked;   /* season, 4K */
+        const cJSON *rq;
+        cJSON_ArrayForEach(rq, json::get(media, "requests"))
+        {
+            const int st = json::integer(rq, "status");
+            if (st != 1 && st != 2)
+                continue;
+            cJSON_ArrayForEach(s, json::get(rq, "seasons"))
+                asked.push_back({json::integer(s, "seasonNumber"), json::boolean(rq, "is4k")});
+        }
+        cJSON_ArrayForEach(s, json::get(d.root(), "seasons"))
+        {
+            model::SeerrSeason season;
+            season.number = json::integer(s, "seasonNumber");
+            season.name = json::str(s, "name");
+            season.episodes = json::integer(s, "episodeCount");
+            for (const auto &k : known)
+                if (k.number == season.number)
+                    season.status = k.status, season.status4k = k.status4k;
+            for (const auto &a : asked)
+                if (a.first == season.number)
+                    (a.second ? season.requested4k : season.requested) = true;
+            out->seasons.push_back(season);
+        }
+    } else {
+        out->runtime = json::integer(d.root(), "runtime");
+    }
+    return out->title.tmdb_id > 0 && !out->title.title.empty();
+}
+
+bool parse_public(const std::string &body, model::SeerrPublic *out)
+{
+    json::Doc d(body);
+    if (!cJSON_IsObject(d.root()))
+        return false;
+    out->partial_requests = json::boolean(d.root(), "partialRequestsEnabled", true);
+    out->special_episodes = json::boolean(d.root(), "enableSpecialEpisodes", false);
+    return true;
+}
+
+bool parse_servers(const std::string &body, std::vector<model::SeerrServer> *out)
+{
+    json::Doc d(body);
+    if (!cJSON_IsArray(d.root()))
+        return false;
+    out->clear();
+    const cJSON *it;
+    cJSON_ArrayForEach(it, d.root())
+    {
+        model::SeerrServer s;
+        read_server(it, &s);
+        out->push_back(s);
+    }
+    return true;
+}
+
+bool parse_server(const std::string &body, model::SeerrServer *out)
+{
+    json::Doc d(body);
+    const cJSON *server = json::get(d.root(), "server");
+    if (!cJSON_IsObject(server))
+        return false;
+    *out = {};
+    read_server(server, out);
+    const cJSON *v;
+    cJSON_ArrayForEach(v, json::get(d.root(), "profiles"))
+        out->profiles.push_back({json::integer(v, "id"), json::str(v, "name")});
+    cJSON_ArrayForEach(v, json::get(d.root(), "rootFolders")) out->folders.push_back(json::str(v, "path"));
+    return true;
+}
+
+bool parse_created(const std::string &body, model::SeerrCreated *out)
+{
+    *out = {};
+    if (body.find_first_not_of(" \r\n\t") == std::string::npos)
+        return true;
+    json::Doc d(body);
+    if (!cJSON_IsObject(d.root()))
+        return false;
+    out->id = json::integer(d.root(), "id");
+    out->status = json::integer(d.root(), "status");
+    return true;
 }
 
 } // namespace seerr

@@ -5,5 +5,22 @@
  "title": "Valemont: Little Circuit",
  "backdropPath": "/r5f145eed2f213.jpg",
  "overview": "Mara inherits a ten-year-old promise at the end of the world.",
- "posterPath": "/r513adc82fe763.jpg"
+ "posterPath": "/r513adc82fe763.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 92,
+ "mediaInfo": {
+  "id": 900015,
+  "tmdbId": 9546407,
+  "mediaType": "movie",
+  "status": 4,
+  "status4k": 1,
+  "jellyfinMediaId": "demo9546407",
+  "seasons": [],
+  "requests": []
+ }
 }

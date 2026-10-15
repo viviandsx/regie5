@@ -1,0 +1,266 @@
+{
+ "page": 1,
+ "totalPages": 1,
+ "totalResults": 14,
+ "results": [
+  {
+   "id": 9083184,
+   "mediaType": "movie",
+   "overview": "Nadia doit retrouver un signal venu de loin avant qu'il ne soit trop tard.",
+   "posterPath": "/r50daa94027102.jpg",
+   "backdropPath": null,
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 8.9,
+   "title": "The Hollow Engine",
+   "originalTitle": "Painted Tower",
+   "releaseDate": "2026-11-20",
+   "mediaInfo": {
+    "id": 900001,
+    "tmdbId": 9083184,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "demo9083184"
+   }
+  },
+  {
+   "id": 9108727,
+   "mediaType": "movie",
+   "overview": "Rafael hérite de une carte oubliée avant qu'il ne soit trop tard.",
+   "posterPath": "/r569e4484126dd.jpg",
+   "backdropPath": "/r5b3284783a67a.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 7.2,
+   "title": "Maud's Engine",
+   "originalTitle": "Maud's Engine",
+   "releaseDate": "2026-09-28"
+  },
+  {
+   "id": 9147789,
+   "mediaType": "movie",
+   "overview": "Sacha découvre une promesse faite il y a dix ans avant qu'il ne soit trop tard.",
+   "posterPath": "/r5ae00e492d4c1.jpg",
+   "backdropPath": "/r5f04fa3e3db9d.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 7.4,
+   "title": "Second Valley",
+   "originalTitle": "Second Valley",
+   "releaseDate": "2026-10-21",
+   "mediaInfo": {
+    "id": 900003,
+    "tmdbId": 9147789,
+    "status": 4,
+    "status4k": 1,
+    "jellyfinMediaId": "demo9147789"
+   }
+  },
+  {
+   "id": 9175210,
+   "mediaType": "movie",
+   "overview": "Yuki cherche une lettre jamais envoyée avant qu'il ne soit trop tard.",
+   "posterPath": "/r54a5a1f2ba56e.jpg",
+   "backdropPath": "/r5b911f58de52d.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 7.5,
+   "title": "Iris and the Paper Winter",
+   "originalTitle": "Glenrock: Falling Archive",
+   "releaseDate": "2026-03-05",
+   "mediaInfo": {
+    "id": 900004,
+    "tmdbId": 9175210,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "12e219cc7f5191ac42f04b0670bfda60"
+   }
+  },
+  {
+   "id": 9204912,
+   "mediaType": "movie",
+   "overview": "Iris hérite de le dernier train de la nuit avant l'hiver.",
+   "posterPath": "/r52d4154f19564.jpg",
+   "backdropPath": "/r594abc7d12716.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 7.7,
+   "title": "The Glass Meridian",
+   "originalTitle": "The Glass Meridian",
+   "releaseDate": "2026-09-23"
+  },
+  {
+   "id": 9259367,
+   "mediaType": "movie",
+   "overview": "Iris cherche un secret de famille au bout du monde.",
+   "posterPath": "/r535a86cab97b2.jpg",
+   "backdropPath": "/r56a4b6ace534d.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 8.2,
+   "title": "Bridge of Northgate",
+   "originalTitle": "Bridge of Northgate",
+   "releaseDate": "2026-09-23",
+   "mediaInfo": {
+    "id": 900007,
+    "tmdbId": 9259367,
+    "status": 4,
+    "status4k": 1,
+    "jellyfinMediaId": "demo9259367"
+   }
+  },
+  {
+   "id": 9259852,
+   "mediaType": "movie",
+   "overview": "Maud doit retrouver une lettre jamais envoyée au bout du monde.",
+   "posterPath": "/r5fa92690f3834.jpg",
+   "backdropPath": "/r510847f711f36.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 8.7,
+   "title": "Lost Citadel",
+   "originalTitle": "Tide of Valemont",
+   "releaseDate": "2026-10-07"
+  },
+  {
+   "id": 9424613,
+   "mediaType": "movie",
+   "overview": "Camille accepte de garder une promesse faite il y a dix ans malgré tout.",
+   "posterPath": "/r53a6f9f22bd66.jpg",
+   "backdropPath": "/r5d1f8faea2c22.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 8.8,
+   "title": "Mara's Lantern",
+   "originalTitle": "Mara's Lantern",
+   "releaseDate": "2026-09-30",
+   "mediaInfo": {
+    "id": 900009,
+    "tmdbId": 9424613,
+    "status": 3,
+    "status4k": 1,
+    "jellyfinMediaId": null
+   }
+  },
+  {
+   "id": 9506192,
+   "mediaType": "movie",
+   "overview": "Rafael doit retrouver un ancien ami en une seule nuit.",
+   "posterPath": "/r54ebb62fdcdbc.jpg",
+   "backdropPath": "/r542ba73454ea4.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 6.7,
+   "title": "The Secret Garden",
+   "originalTitle": "The Secret Garden",
+   "releaseDate": "2027-09-01"
+  },
+  {
+   "id": 9527226,
+   "mediaType": "movie",
+   "overview": "",
+   "posterPath": "/r5dd82274cf086.jpg",
+   "backdropPath": "/r559f36b1ace64.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 7.1,
+   "title": "The Secret Engine",
+   "originalTitle": "The Secret Engine",
+   "releaseDate": "2026-09-18",
+   "mediaInfo": {
+    "id": 900013,
+    "tmdbId": 9527226,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "demo9527226"
+   }
+  },
+  {
+   "id": 9546407,
+   "mediaType": "movie",
+   "overview": "Nadia doit retrouver une carte oubliée avant l'hiver.",
+   "posterPath": "/r513adc82fe763.jpg",
+   "backdropPath": "/r5f145eed2f213.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 8.2,
+   "title": "Valemont: Little Circuit",
+   "originalTitle": "Orchard of Yarrow",
+   "releaseDate": "2026-11-18",
+   "mediaInfo": {
+    "id": 900015,
+    "tmdbId": 9546407,
+    "status": 4,
+    "status4k": 1,
+    "jellyfinMediaId": "demo9546407"
+   }
+  },
+  {
+   "id": 9602138,
+   "mediaType": "movie",
+   "overview": "Mara doit retrouver le dernier train de la nuit au bout du monde.",
+   "posterPath": "/r599744eb24475.jpg",
+   "backdropPath": "/r5212ddb054621.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 7.3,
+   "title": "The Glass Machine",
+   "originalTitle": "The Glass Machine",
+   "releaseDate": "2026-06-18",
+   "mediaInfo": {
+    "id": 900018,
+    "tmdbId": 9602138,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "ffaeaea68a972cc325b9d98f34e7bf30"
+   }
+  },
+  {
+   "id": 9702469,
+   "mediaType": "movie",
+   "overview": "Iris tente de protéger un ancien ami avant l'hiver.",
+   "posterPath": "/r540a5dd2d65a4.jpg",
+   "backdropPath": "/r55d5f61070b6b.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 8.4,
+   "title": "Juniper: Pale Bridge",
+   "originalTitle": "Juniper: Pale Bridge",
+   "releaseDate": "2026-09-19"
+  },
+  {
+   "id": 9851814,
+   "mediaType": "movie",
+   "overview": "Theo cherche une carte oubliée sans rien dire à personne.",
+   "posterPath": "/r5eaf363a274c6.jpg",
+   "backdropPath": "/r503b9925db7fe.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 8.9,
+   "title": "Iris and the Quiet Kingdom",
+   "originalTitle": "Iris and the Quiet Kingdom",
+   "releaseDate": "2026-08-06",
+   "mediaInfo": {
+    "id": 900021,
+    "tmdbId": 9851814,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "730cd15d21a046b86d33ee9844cf1ffe"
+   }
+  }
+ ]
+}

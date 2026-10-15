@@ -1,0 +1,217 @@
+{
+ "page": 1,
+ "totalPages": 1,
+ "totalResults": 11,
+ "results": [
+  {
+   "id": 9879255,
+   "mediaType": "tv",
+   "overview": "Theo inherits a forgotten map without telling anyone.",
+   "posterPath": "/r531ce0830681d.jpg",
+   "backdropPath": "/r555f7b0886d9d.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 8.0,
+   "name": "Inès's Engine II",
+   "originalName": "Secret Lighthouse",
+   "firstAirDate": "2019-01-11"
+  },
+  {
+   "id": 9819790,
+   "mediaType": "tv",
+   "overview": "Theo inherits a ten-year-old promise before winter.",
+   "posterPath": "/r5877e0754fba9.jpg",
+   "backdropPath": "/r5391e7f1c445f.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 7.5,
+   "name": "Léa's Echo",
+   "originalName": "Lou's Station",
+   "firstAirDate": "2023-06-08",
+   "mediaInfo": {
+    "id": 900009,
+    "tmdbId": 9819790,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "c1e47a1b539f5b3ade51fbbdd70f1ddc"
+   }
+  },
+  {
+   "id": 9687774,
+   "mediaType": "tv",
+   "overview": "Nadia tries to protect a signal from far away at the end of the world.",
+   "posterPath": "/r5922fc304441b.jpg",
+   "backdropPath": "/r53e1d2cdaccac.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 8.9,
+   "name": "Caminandes",
+   "originalName": "Valemont: Frozen Quarry",
+   "firstAirDate": "2012-07-08",
+   "mediaInfo": {
+    "id": 900008,
+    "tmdbId": 9687774,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "2040f35f55ba9219b8162fa06a8734bc"
+   }
+  },
+  {
+   "id": 9654072,
+   "mediaType": "tv",
+   "overview": "Elias discovers a signal from far away against all odds.",
+   "posterPath": "/r5dcd13431c0da.jpg",
+   "backdropPath": "/r56946cac87bc5.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 7.7,
+   "name": "Tower of Yarrow II",
+   "originalName": "Tower of Yarrow II",
+   "firstAirDate": "2009-09-23",
+   "mediaInfo": {
+    "id": 900007,
+    "tmdbId": 9654072,
+    "status": 4,
+    "status4k": 1,
+    "jellyfinMediaId": "f2cae278f3db5449e303f4f492fe6e30"
+   }
+  },
+  {
+   "id": 9564936,
+   "mediaType": "tv",
+   "overview": "Jonah goes looking for a sunken town before winter.",
+   "posterPath": "/r58112f224e04f.jpg",
+   "backdropPath": "/r575e068d13a04.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 7.1,
+   "name": "Paradox of Elmstead",
+   "originalName": "Paradox of Elmstead",
+   "firstAirDate": "2025-07-13"
+  },
+  {
+   "id": 9544246,
+   "mediaType": "tv",
+   "overview": "Rafael goes looking for a forgotten map at the end of the world.",
+   "posterPath": "/r5cca47aa00965.jpg",
+   "backdropPath": "/r51f03792b1de9.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 8.1,
+   "name": "The Amber Lantern",
+   "originalName": "The Silent Kingdom",
+   "firstAirDate": "2026-09-10",
+   "mediaInfo": {
+    "id": 900005,
+    "tmdbId": 9544246,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "demo9544246"
+   }
+  },
+  {
+   "id": 9450423,
+   "mediaType": "tv",
+   "overview": "Oskar discovers a signal from far away against all odds.",
+   "posterPath": "/r5f83bd68c1bde.jpg",
+   "backdropPath": "/r53fdc1ec44283.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 6.8,
+   "name": "Brightwater: Endless Summit",
+   "originalName": "Brightwater: Endless Summit",
+   "firstAirDate": "2026-08-05"
+  },
+  {
+   "id": 9394299,
+   "mediaType": "tv",
+   "overview": "Sacha must find the last night train without telling anyone.",
+   "posterPath": "/r5317703051fd7.jpg",
+   "backdropPath": "/r5ac8279c0726e.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 7.4,
+   "name": "Iris's Voyage",
+   "originalName": "Iris's Voyage",
+   "firstAirDate": "2026-11-25",
+   "mediaInfo": {
+    "id": 900003,
+    "tmdbId": 9394299,
+    "status": 3,
+    "status4k": 1,
+    "jellyfinMediaId": null
+   }
+  },
+  {
+   "id": 9364504,
+   "mediaType": "tv",
+   "overview": "",
+   "posterPath": "/r56bea47950180.jpg",
+   "backdropPath": "/r54fd7f1e2c285.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 6.9,
+   "name": "Yuki's Lighthouse II",
+   "originalName": "Yuki's Lighthouse II",
+   "firstAirDate": "2026-10-15",
+   "mediaInfo": {
+    "id": 900002,
+    "tmdbId": 9364504,
+    "status": 3,
+    "status4k": 1,
+    "jellyfinMediaId": null
+   }
+  },
+  {
+   "id": 9303458,
+   "mediaType": "tv",
+   "overview": "Maud goes looking for a sunken town at the end of the world.",
+   "posterPath": "/r59b13e6fa2293.jpg",
+   "backdropPath": "/r5dd22b18416a7.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 7.3,
+   "name": "The Salt Summit",
+   "originalName": "Shifting Meridian",
+   "firstAirDate": "2024-04-11",
+   "mediaInfo": {
+    "id": 900001,
+    "tmdbId": 9303458,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "8f505f2a429e44f7a0c85fed4b42d0b0"
+   }
+  },
+  {
+   "id": 9248046,
+   "mediaType": "tv",
+   "overview": "Rafael tries to protect a signal from far away at the end of the world.",
+   "posterPath": "/r5d53178550d67.jpg",
+   "backdropPath": "/r512b329671894.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 7.1,
+   "name": "Frontier of Juniper II",
+   "originalName": "Rafael and the Restless Frontier",
+   "firstAirDate": "2027-01-21",
+   "mediaInfo": {
+    "id": 900000,
+    "tmdbId": 9248046,
+    "status": 3,
+    "status4k": 1,
+    "jellyfinMediaId": null
+   }
+  }
+ ]
+}

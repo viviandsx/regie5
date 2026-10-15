@@ -1,0 +1,105 @@
+{
+ "page": 1,
+ "totalPages": 1,
+ "totalResults": 5,
+ "results": [
+  {
+   "id": 9248046,
+   "mediaType": "tv",
+   "overview": "Rafael tries to protect a signal from far away at the end of the world.",
+   "posterPath": "/r5d53178550d67.jpg",
+   "backdropPath": "/r512b329671894.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 7.1,
+   "name": "Frontier of Juniper II",
+   "originalName": "Rafael and the Restless Frontier",
+   "firstAirDate": "2027-01-21",
+   "mediaInfo": {
+    "id": 900000,
+    "tmdbId": 9248046,
+    "status": 3,
+    "status4k": 1,
+    "jellyfinMediaId": null
+   }
+  },
+  {
+   "id": 9364504,
+   "mediaType": "tv",
+   "overview": "",
+   "posterPath": "/r56bea47950180.jpg",
+   "backdropPath": "/r54fd7f1e2c285.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 6.9,
+   "name": "Yuki's Lighthouse II",
+   "originalName": "Yuki's Lighthouse II",
+   "firstAirDate": "2026-10-15",
+   "mediaInfo": {
+    "id": 900002,
+    "tmdbId": 9364504,
+    "status": 3,
+    "status4k": 1,
+    "jellyfinMediaId": null
+   }
+  },
+  {
+   "id": 9394299,
+   "mediaType": "tv",
+   "overview": "Sacha must find the last night train without telling anyone.",
+   "posterPath": "/r5317703051fd7.jpg",
+   "backdropPath": "/r5ac8279c0726e.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 7.4,
+   "name": "Iris's Voyage",
+   "originalName": "Iris's Voyage",
+   "firstAirDate": "2026-11-25",
+   "mediaInfo": {
+    "id": 900003,
+    "tmdbId": 9394299,
+    "status": 3,
+    "status4k": 1,
+    "jellyfinMediaId": null
+   }
+  },
+  {
+   "id": 9450423,
+   "mediaType": "tv",
+   "overview": "Oskar discovers a signal from far away against all odds.",
+   "posterPath": "/r5f83bd68c1bde.jpg",
+   "backdropPath": "/r53fdc1ec44283.jpg",
+   "genreIds": [
+    12
+   ],
+   "voteAverage": 6.8,
+   "name": "Brightwater: Endless Summit",
+   "originalName": "Brightwater: Endless Summit",
+   "firstAirDate": "2026-08-05"
+  },
+  {
+   "id": 9544246,
+   "mediaType": "tv",
+   "overview": "Rafael goes looking for a forgotten map at the end of the world.",
+   "posterPath": "/r5cca47aa00965.jpg",
+   "backdropPath": "/r51f03792b1de9.jpg",
+   "genreIds": [
+    18
+   ],
+   "voteAverage": 8.1,
+   "name": "The Amber Lantern",
+   "originalName": "The Silent Kingdom",
+   "firstAirDate": "2026-09-10",
+   "mediaInfo": {
+    "id": 900005,
+    "tmdbId": 9544246,
+    "status": 5,
+    "status4k": 1,
+    "jellyfinMediaId": "demo9544246"
+   }
+  }
+ ]
+}

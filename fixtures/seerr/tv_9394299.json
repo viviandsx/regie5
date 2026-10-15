@@ -6,5 +6,58 @@
  "originalName": "Iris's Voyage",
  "overview": "Lou cherche une carte oubliée malgré tout.",
  "backdropPath": "/r5ac8279c0726e.jpg",
- "posterPath": "/r5317703051fd7.jpg"
+ "posterPath": "/r5317703051fd7.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "episodeRunTime": [
+  54
+ ],
+ "externalIds": {
+  "tvdbId": 394299
+ },
+ "seasons": [
+  {
+   "seasonNumber": 0,
+   "name": "Specials",
+   "episodeCount": 2,
+   "airDate": null
+  },
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 6,
+   "airDate": "2026-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900003,
+  "tmdbId": 9394299,
+  "mediaType": "tv",
+  "status": 3,
+  "status4k": 1,
+  "jellyfinMediaId": null,
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 2,
+    "status4k": 1
+   }
+  ],
+  "requests": [
+   {
+    "id": 800003,
+    "status": 2,
+    "is4k": false,
+    "seasons": [
+     {
+      "seasonNumber": 1
+     }
+    ]
+   }
+  ]
+ }
 }

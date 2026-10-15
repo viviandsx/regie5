@@ -1,0 +1,35 @@
+{
+ "server": {
+  "id": 1,
+  "name": "Radarr 4K",
+  "is4k": true,
+  "isDefault": true,
+  "activeProfileId": 5,
+  "activeDirectory": "/data/films-4k"
+ },
+ "profiles": [
+  {
+   "id": 1,
+   "name": "Any"
+  },
+  {
+   "id": 4,
+   "name": "HD-1080p"
+  },
+  {
+   "id": 5,
+   "name": "Ultra-HD"
+  },
+  {
+   "id": 6,
+   "name": "HD - 720p/1080p"
+  }
+ ],
+ "rootFolders": [
+  {
+   "id": 1,
+   "path": "/data/films-4k",
+   "freeSpace": 4200000000000
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "server": {
+  "id": 0,
+  "name": "Sonarr",
+  "is4k": false,
+  "isDefault": true,
+  "activeProfileId": 6,
+  "activeDirectory": "/data/series"
+ },
+ "profiles": [
+  {
+   "id": 1,
+   "name": "Any"
+  },
+  {
+   "id": 4,
+   "name": "HD-1080p"
+  },
+  {
+   "id": 5,
+   "name": "Ultra-HD"
+  },
+  {
+   "id": 6,
+   "name": "HD - 720p/1080p"
+  }
+ ],
+ "rootFolders": [
+  {
+   "id": 1,
+   "path": "/data/series",
+   "freeSpace": 4200000000000
+  },
+  {
+   "id": 2,
+   "path": "/data/anime",
+   "freeSpace": 3300000000000
+  }
+ ]
+}

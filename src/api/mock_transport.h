@@ -6,7 +6,8 @@
  * http://<service>.mock/<path> reads fixtures/<service>/<file>.json, the file
  * named from the path: the /api/vN/ prefix dropped, lower case, '/' as '_'
  * (/api/v3/system/status -> system_status.json, /Sessions -> sessions.json).
- * Seerr's request list adds its filter (request_pending.json). Actions (POST)
+ * Seerr's request list adds its filter (request_pending.json); its search
+ * keeps the titles of search.json that hold the query. Actions (POST)
  * are only logged and answered 204: nothing anywhere changes.
  *
  * Pictures: none in fixtures/ (every card is a generated one). A root with an

@@ -5,5 +5,22 @@
  "title": "The Hollow Engine",
  "backdropPath": null,
  "overview": "Nadia doit retrouver un signal venu de loin avant qu'il ne soit trop tard.",
- "posterPath": "/r50daa94027102.jpg"
+ "posterPath": "/r50daa94027102.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "runtime": 119,
+ "mediaInfo": {
+  "id": 900001,
+  "tmdbId": 9083184,
+  "mediaType": "movie",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "demo9083184",
+  "seasons": [],
+  "requests": []
+ }
 }

@@ -2,9 +2,62 @@
  "firstAirDate": "2023-06-08",
  "id": 9819790,
  "name": "Léa's Echo",
- "numberOfSeasons": 1,
+ "numberOfSeasons": 2,
  "originalName": "Lou's Station",
  "overview": "Ezra se retrouve face à une carte oubliée avant l'hiver.",
  "backdropPath": "/r5391e7f1c445f.jpg",
- "posterPath": "/r5877e0754fba9.jpg"
+ "posterPath": "/r5877e0754fba9.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "episodeRunTime": [
+  45
+ ],
+ "externalIds": {
+  "tvdbId": 319790
+ },
+ "seasons": [
+  {
+   "seasonNumber": 0,
+   "name": "Specials",
+   "episodeCount": 2,
+   "airDate": null
+  },
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 7,
+   "airDate": "2023-03-01"
+  },
+  {
+   "seasonNumber": 2,
+   "name": "Season 2",
+   "episodeCount": 8,
+   "airDate": "2024-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900009,
+  "tmdbId": 9819790,
+  "mediaType": "tv",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "c1e47a1b539f5b3ade51fbbdd70f1ddc",
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 5,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 2,
+    "status": 5,
+    "status4k": 1
+   }
+  ],
+  "requests": []
+ }
 }

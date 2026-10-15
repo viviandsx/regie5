@@ -790,6 +790,8 @@ int main()
         const double now = platform::now();
         uint32_t went_down = 0, held = 0;
         pad.read(&went_down, &held);
+        if (platform::text_entry_active())
+            went_down = held = 0;   /* the system keyboard has the controller */
         const uint32_t scripted = tour.step(now, &quit);
         const input::State in = repeater.update(went_down | scripted, held, now);
         if (shell.input(in, now))

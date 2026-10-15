@@ -6,5 +6,52 @@
  "originalName": "The Silent Kingdom",
  "overview": "Rafael goes looking for a forgotten map at the end of the world.",
  "backdropPath": "/r51f03792b1de9.jpg",
- "posterPath": "/r5cca47aa00965.jpg"
+ "posterPath": "/r5cca47aa00965.jpg",
+ "genres": [
+  {
+   "id": 18,
+   "name": "Drama"
+  }
+ ],
+ "episodeRunTime": [
+  51
+ ],
+ "externalIds": {
+  "tvdbId": 344246
+ },
+ "seasons": [
+  {
+   "seasonNumber": 1,
+   "name": "Season 1",
+   "episodeCount": 8,
+   "airDate": "2026-03-01"
+  },
+  {
+   "seasonNumber": 2,
+   "name": "Season 2",
+   "episodeCount": 9,
+   "airDate": "2027-03-01"
+  }
+ ],
+ "mediaInfo": {
+  "id": 900005,
+  "tmdbId": 9544246,
+  "mediaType": "tv",
+  "status": 5,
+  "status4k": 1,
+  "jellyfinMediaId": "demo9544246",
+  "seasons": [
+   {
+    "seasonNumber": 1,
+    "status": 5,
+    "status4k": 1
+   },
+   {
+    "seasonNumber": 2,
+    "status": 5,
+    "status4k": 1
+   }
+  ],
+  "requests": []
+ }
 }
