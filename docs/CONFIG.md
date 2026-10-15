@@ -52,7 +52,9 @@ champs), l'un ou l'autre :
 Clé d'API Emby : dans les réglages du serveur Emby, *Advanced › Api Keys › New Api Key*
 (libellés de l'interface en anglais, vérifiés avec Emby 4.10). Avec Emby,
 l'onglet et les textes disent « Emby », et Options propose « Chercher dans Emby5 » (le titre à
-chercher dans Emby5 ; aucune app n'est lancée). Emby 4.8 ou plus récent (testé avec 4.10).
+chercher dans Emby5 ; aucune app n'est lancée). Emby 4.8 ou plus récent (testé avec 4.10.1.0).
+Le support d'Emby est en **bêta** depuis la 0.4.0 (pastille dans Réglages) : retours bienvenus
+sur l'issue #1 du dépôt.
 
 Si `"jellyfin"` et `"emby"` sont tous deux actifs, seul Jellyfin est utilisé, et Réglages le
 signale sur sa ligne. Pour passer d'Emby à Jellyfin, mettez `"enabled": false` dans

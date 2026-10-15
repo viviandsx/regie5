@@ -43,7 +43,7 @@ Where to find the API keys
 - Jellyfin: Dashboard > API Keys > "+".
 - Emby: the server's settings > Advanced > Api Keys > New Api Key.
 
-Emby instead of Jellyfin: in config.json, the key is "emby" instead of
+Emby instead of Jellyfin (beta): in config.json, the key is "emby" instead of
 "jellyfin" (same fields). The tab and the texts then say Emby, and Options
 offers "Find in Emby5".
 
@@ -109,9 +109,9 @@ Où trouver les clés d'API
 - Emby : réglages du serveur > Advanced > Api Keys > New Api Key (interface
   en anglais).
 
-Emby à la place de Jellyfin : dans config.json, la clé est "emby" au lieu de
-"jellyfin" (mêmes champs). L'onglet et les textes disent alors Emby, et
-Options propose « Chercher dans Emby5 ».
+Emby à la place de Jellyfin (bêta) : dans config.json, la clé est "emby" au
+lieu de "jellyfin" (mêmes champs). L'onglet et les textes disent alors Emby,
+et Options propose « Chercher dans Emby5 ».
 
 Mise à jour
 - Copiez le nouveau dossier PPSA99520 PAR-DESSUS l'ancien. Le zip ne contient

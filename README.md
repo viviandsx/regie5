@@ -7,14 +7,14 @@
 <p align="center">
   <b>Your self-hosted media stack, on the TV, from your PS5.</b><br>
   A native PS5 homebrew app to keep an eye on Sonarr, Radarr, Seerr and Jellyfin
-  from the couch, with a controller.
+  (or Emby) from the couch, with a controller.
 </p>
 
 <p align="center">
   <img src="docs/images/home.jpg" width="820" alt="Régie5 home screen: upcoming episodes and films, recently added, server health">
 </p>
 
-Régie5 (French for a TV control room) is for people who run their own Jellyfin
+Régie5 (French for a TV control room) is for people who run their own Jellyfin (or Emby)
 server with the *arr apps and have a jailbroken PS5 under the TV. It shows what is
 coming, what is downloading, who is watching and how well, and lets you act on the
 few things worth doing from the couch: approve a request, stop a stream, scan the
@@ -32,11 +32,13 @@ never to the internet.
 | **Activity** | The download queue of Sonarr and Radarr merged (title, progress, time left, status; refreshed every 5 s), and a 14-day **log**: imports, Seerr requests, Jellyfin playback and sign-ins, health alerts. |
 | **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**; Seerr **issues** (open / resolved / all) with their comments, **Resolve** and **Comment** (ready-made sentences). |
 | **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, and server load through [Glances](https://nicolargo.github.io/glances/) if you use it. |
-| **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which asks for 120 Hz / 60 Hz / 120 Hz), and **set-up from a phone** (QR code). |
+| **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which asks for 120 Hz / 60 Hz / 120 Hz), **set-up from a phone** (QR code), and the **set-up screens** again. |
 
 Also:
 
 - **Counters on the tabs**: downloads in the queue, requests waiting for an answer, people watching.
+- **Emby** in Jellyfin's place (**beta**): the same screens, which then say *Emby*.
+- **Set-up screens** at the first start: choose your media server, scan a QR code, fill in a page on your phone.
 - **Several instances** of a service (for example Radarr and Radarr 4K) are shown together, each named.
 - **HTTPS** and reverse-proxy sub-paths (`https://example.lan/sonarr`), self-signed certificates on request.
 - **Liquid-glass interface** made for a TV: large type readable from 3 m, a springy focus drop, 4K at 60 fps,
@@ -54,6 +56,7 @@ Also:
   <img src="docs/images/diagnosis.jpg" width="400" alt="Jellyfin: playback diagnosis">
   <img src="docs/images/libraries.jpg" width="400" alt="Jellyfin: libraries and their size">
   <img src="docs/images/cleanup.jpg" width="400" alt="Library: Cleanup candidates">
+  <img src="docs/images/welcome.jpg" width="400" alt="Set-up screens: choosing the media server">
 </p>
 
 <sub>Screenshots: the desktop build in demo mode (`--demo`), no server involved. The films and
@@ -70,7 +73,7 @@ actions, each behind a confirmation whose focus starts on **Cancel**:
 
 - approve or decline a Seerr request;
 - resolve a Seerr issue, or post one of a few ready-made comments on it;
-- stop a Jellyfin playback session; scan the Jellyfin libraries;
+- stop a Jellyfin (or Emby) playback session; scan its libraries;
 - **Cleanup** (off by default): delete a film or a series **with its files** in
   Radarr/Sonarr, always added to the import-list exclusions so no list brings it
   back. It is turned on in Settings after a warning, offers only titles watched
@@ -81,8 +84,8 @@ actions, each behind a confirmation whose focus starts on **Cancel**:
 
 No download client, no indexer, no release search, no release or tracker names
 anywhere: Régie5 shows titles, progress and quality, nothing else. Its activity
-log never reads Jellyfin's free-text fields (which hold IP addresses and device
-names).
+log never reads Jellyfin's or Emby's free-text fields (which hold IP addresses and
+device names).
 
 ## Requirements
 
@@ -101,6 +104,7 @@ names).
 | [Radarr](https://radarr.video) | 5.0 | 6.4 | calendar, queue, films, health, disk space, history; Cleanup |
 | [Seerr](https://github.com/seerr-team/seerr) | 2.0 (Jellyseerr 2.x works too) | 3.5 | requests, approve / decline, issues (resolve, comment), posters through its image proxy |
 | [Jellyfin](https://jellyfin.org) | 10.9 | 12.2 | sessions, playback info, recently added, libraries, users, activity log, scheduled tasks |
+| [Emby](https://emby.media), in Jellyfin's place (**beta**) | 4.8 | 4.10.1 | the same as Jellyfin; *Find in Emby5* instead of Jelly5 |
 | [Glances](https://nicolargo.github.io/glances/) (optional) | 4.0 (API 4) | 4.x | server load |
 
 Each service is optional: a service turned off simply leaves its sections out.
@@ -116,17 +120,32 @@ are welcome. Overseerr 1.x is not supported (it has no Jellyfin links).
 3. Copy that whole folder into `/data/homebrew/` on the console (ps5upload or FTP),
    so that `/data/homebrew/PPSA99520/eboot.bin` exists.
 4. Wait about ten seconds: ShadowMount+ adds the **Régie5** tile to the home screen, under **Games**.
-5. Open Régie5.
+5. Open Régie5: at the first start, its set-up screens open (see below).
 
 **Updating:** copy the new `PPSA99520` folder over the old one. A release never
-contains a `config.json`, so yours is kept. 0.3.0 put the tile under Media; since
-0.3.1 it is under Games (the Media area does not let the app open the phone page):
-it moves by itself after the copy.
+contains a `config.json`, so yours is kept and the set-up screens do not open.
+0.3.0 put the tile under Media; since 0.3.1 it is under Games (the Media area does
+not let the app open the phone page): it moves by itself after the copy.
 **Uninstalling:** delete `/data/homebrew/PPSA99520`.
 
 The same steps, in English and French, are in `INSTALL.txt` inside the zip.
 
 ## Set up
+
+### At the first start
+
+When there is no `config.json` yet (or one Régie5 cannot read, or with every service
+off), Régie5 opens its set-up screens:
+
+1. **Get started**, then choose your media server: **Jellyfin**, **Emby** or **None**.
+2. A QR code and a 6-digit code appear: fill in the page on your phone, as below.
+3. Régie5 tests every service, as Settings does. **Start** opens the Home screen;
+   **Fix from the phone** goes back to the page.
+
+**Later** closes them at any step, and they do not open by themselves again: the Home
+screen offers **Set up** until a service is set, and **Settings › Setup** opens them
+at any time. A `config.json` that could not be read is kept beside the new one, as
+`config.json.invalid`.
 
 ### From your phone (recommended)
 
@@ -152,7 +171,12 @@ choose **Test all** in Settings. Several instances of a service are a list of na
 instances; the fields are described in `config.example.json`.
 
 Where the API keys are: Sonarr and Radarr, *Settings › General › Security*; Seerr,
-*Settings › General*; Jellyfin, *Dashboard › API Keys*.
+*Settings › General*; Jellyfin, *Dashboard › API Keys*; Emby, in the server's settings,
+*Advanced › Api Keys › New Api Key*.
+
+**Emby instead of Jellyfin:** write `"emby"` in `config.json` where the example has
+`"jellyfin"` (same fields: `url`, `apiKey`). The tab, the texts and the log then say
+*Emby*; one or the other, not both (with both on, Jellyfin is used and Settings says so).
 
 Behind a **reverse proxy**, the address may carry a path
 (`https://media.lan/sonarr`); see [docs/CONFIG.md](docs/CONFIG.md) (in French) for the
@@ -168,7 +192,7 @@ two ways to set the proxy up, and for redirects such as a login page in front of
 | L1 / R1 | previous / next tab |
 | L2 / R2 | previous / next letter (lists by title), week (guide) or page |
 | △ | refresh the screen |
-| Options | the selected item's menu (approve / decline, resolve / comment, keep / delete, find in Jelly5) |
+| Options | the selected item's menu (approve / decline, resolve / comment, keep / delete, find in Jelly5 or Emby5) |
 
 ## Known limitations
 
@@ -176,6 +200,10 @@ two ways to set the proxy up, and for redirects such as a login page in front of
   (`sceSystemServiceLaunchApp` and `sceLncUtilLaunchApp` are not available to
   apps). Options › **Find in Jelly5** tells you which title to look for in
   [Jelly5](https://github.com/02dnot/Jelly5) instead.
+- **Emby is in beta** (new in 0.4.0, marked *beta* in Settings): tested on the
+  console against Emby 4.10.1.0, not yet on a real Emby server with its users and
+  Emby Premiere. Cleanup with Emby is covered by the tests only so far. Reports
+  are welcome in [issue #1](https://github.com/viviandsx/regie5/issues/1).
 - **Seerr after a Cleanup deletion:** Seerr has no API to mark a title deleted.
   Its own *Media Availability Sync* job (nightly by default, or run by hand in
   Seerr › Settings › Jobs) marks it deleted, keeps its requests and lets it be
@@ -254,5 +282,5 @@ BlackBearReloaded's [ps5-opengl](https://github.com/blackbearreloaded/ps5-opengl
 [FreeType](https://freetype.org) and the [Inter](https://github.com/rsms/inter) typeface.
 
 Régie5 is not affiliated with or endorsed by Sony Interactive Entertainment, the
-Jellyfin project, or the Sonarr, Radarr or Seerr projects. *PlayStation*, *PS5* and
+Jellyfin project, Emby, or the Sonarr, Radarr or Seerr projects. *PlayStation*, *PS5* and
 *DualSense* are trademarks of Sony Interactive Entertainment Inc.
