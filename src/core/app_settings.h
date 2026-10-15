@@ -38,6 +38,9 @@ struct Settings {
     bool cleanup_everyone = true;   /* watched by every active user (else by at least one) */
     int cleanup_months = 6;         /* last watched more than this long ago */
     std::vector<Kept> kept;
+    /* The welcome screens were left with "Later": they no longer open by
+     * themselves (Settings and Home still offer them). */
+    bool welcome_later = false;
 
     bool is_kept(config::Service s, const std::string &instance, int id) const;
 };

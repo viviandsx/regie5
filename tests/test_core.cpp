@@ -15,6 +15,7 @@
 #include "core/i18n.h"
 #include "core/lang/language.h"
 #include "core/versions.h"
+#include "core/welcome.h"
 
 #include <cctype>
 #include <cstdio>
@@ -469,4 +470,49 @@ TEST(library_sizes_from_radarr_and_sonarr)
     lib.folders = {"elsewhere"};
     CHECK_EQ((long long)libraries::measure(lib, items, {hd, uhd, other}, {show}).bytes, 8LL + 5 + 100);
     CHECK_EQ(libraries::measure(lib, items, {}, {}).measured, 0);
+}
+
+TEST(welcome_when_to_show)
+{
+    config::Config none, sonarr, glances_only, off;
+    CHECK(config::parse(R"({"sonarr": {"url": "http://a:8989", "apiKey": "K"}})", &sonarr));
+    CHECK(config::parse(R"({"glances": {"url": "http://a:61208"}})", &glances_only));
+    CHECK(config::parse(R"({"jellyfin": {"enabled": false, "url": "http://a:8096", "apiKey": "K"}})", &off));
+    config::Config emby;
+    CHECK(config::parse(R"({"emby": {"url": "http://a:8096", "apiKey": "K"}})", &emby));
+    CHECK(welcome::configured(sonarr) && welcome::configured(emby));
+    CHECK(!welcome::configured(none) && !welcome::configured(glances_only) && !welcome::configured(off));
+
+    using E = config::LoadError;
+    welcome::Start s;
+    for (E e : {E::Missing, E::Unreadable, E::BadJson}) {   /* absent, unreadable, not JSON (an empty file too) */
+        s.error = e;
+        CHECK(welcome::should_show(s, none));
+    }
+    s.error = E::None;
+    CHECK(welcome::should_show(s, none));           /* {} */
+    CHECK(welcome::should_show(s, glances_only));   /* nothing but Glances */
+    CHECK(welcome::should_show(s, off));            /* everything off */
+    CHECK(!welcome::should_show(s, sonarr));        /* an update from 0.3.x: a config that works */
+    CHECK(!welcome::should_show(s, emby));
+    s.error = E::Missing;
+    s.from_backup = true;                           /* the PS5 took the app's copy: an existing user */
+    CHECK(!welcome::should_show(s, sonarr));
+    s.from_backup = false;
+    s.later = true;                                 /* "Later", once: never again by itself */
+    CHECK(!welcome::should_show(s, none));
+    s.later = false;
+    s.mock = true;
+    CHECK(!welcome::should_show(s, none));
+    s.forced = true;
+    CHECK(welcome::should_show(s, sonarr));         /* REGIE5_WELCOME=1, or the buttons */
+    config::Config empty_file;
+    CHECK(!config::parse("", &empty_file));         /* an empty config.json is "not JSON" */
+
+    app_settings::Settings a, b;
+    CHECK(app_settings::from_json(app_settings::to_json(a), &b) && !b.welcome_later);
+    a.welcome_later = true;
+    CHECK(app_settings::to_json(a).find("\"welcome\": \"later\"") != std::string::npos ||
+          app_settings::to_json(a).find("\"welcome\":\t\"later\"") != std::string::npos);
+    CHECK(app_settings::from_json(app_settings::to_json(a), &b) && b.welcome_later);
 }

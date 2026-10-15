@@ -49,6 +49,7 @@ add_library(regie5_data STATIC
     src/core/perf.cpp
     src/core/schedule.cpp
     src/core/versions.cpp
+    src/core/welcome.cpp
     src/api/arr.cpp
     src/api/glances.cpp
     src/api/http.cpp

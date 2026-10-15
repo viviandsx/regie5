@@ -47,6 +47,8 @@ std::string to_json(const Settings &s)
         cJSON_AddStringToObject(o, "title", k.title.c_str());
         cJSON_AddItemToArray(kept, o);
     }
+    if (s.welcome_later)
+        cJSON_AddStringToObject(root, "welcome", "later");
     char *text = cJSON_Print(root);
     std::string out = text ? text : "{}";
     cJSON_free(text);
@@ -67,6 +69,8 @@ bool from_json(const std::string &text, Settings *out)
         for (Refresh r : {Refresh::Auto, Refresh::Hz60, Refresh::Hz120})
             if (std::string(refresh->valuestring) == refresh_key(r))
                 out->refresh = r;
+    const cJSON *welcome = cJSON_GetObjectItemCaseSensitive(root, "welcome");
+    out->welcome_later = cJSON_IsString(welcome) && std::string(welcome->valuestring) == "later";
     const cJSON *c = cJSON_GetObjectItemCaseSensitive(root, "cleanup");
     out->cleanup_enabled = cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(c, "enabled"));
     const cJSON *by = cJSON_GetObjectItemCaseSensitive(c, "watchedBy");
