@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 16 octobre 2026 (soir). 0.4.0 publiée. **0.5.0 codée** (§ 2 decies) : les cinq chantiers faits (Nouveautés, espagnol et allemand, Découvrir et demandes Seerr, Quick Connect Jellyfin, communauté), patches `build/patches-17/`. **Essai console `app-18`** (`build/ps5/app-18/ESSAIS.txt`) à faire par Vivian, puis la release 0.5.0 (pas sans son accord). Marche à suivre : `docs/RELEASING.md`.**
+**Dernière mise à jour : 16 octobre 2026 (nuit). 0.4.0 publiée. **0.5.0 prête à publier** (§ 2 decies) : essai `app-18` validé par Vivian (A à F), zip `build/ps5/release-0.5.0/upload/PPSA99520.zip` (`32fd8c09…`), notes, README, recette `docs/RECETTE-0.5.0.md`, patch `build/patches-18/`. Reste : la recette console puis la publication (« Pour publier la 0.5.0 »), pas sans l'accord de Vivian.**
 
 ---
 
@@ -892,12 +892,51 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
       `jellyfin/quickconnect_*`, mock `forbidden`, tests, état `quickconnect` de
       `capture-states.sh`. À voir sur la console : contre le Jellyfin de Vivian (lecture seule ; la
       connexion ajoute Régie5 à ses appareils), avec `config-test.json`.
-- [ ] **Essai console `app-18`** (build de développement, journal UDP, `test-config`, version
+- [x] **Essai console `app-18`** (build de développement, journal UDP, `test-config`, version
       affichée `0.5.0-test` par `REGIE5_SHOW_VERSION`, demandes Seerr **jamais envoyées** par
       `REGIE5_DRY_REQUESTS=1` ; `release-ps5.sh` force les deux à vide / 0) : nouveautés, assistant,
       Quick Connect sur le Jellyfin de Vivian, Découvrir sur son Seerr (lecture seule, arrêt sur
       Annuler), espagnol puis allemand (langue de la console, puis retour au français), session
       révoquée et compte non administrateur (facultatif). Étapes : `build/ps5/app-18/ESSAIS.txt`.
+      **Fait par Vivian (16 octobre) : tout OK.** A : au lancement, l'assistant (config d'essai
+      vide), pas les Nouveautés ; B : Quick Connect sur son Jellyfin 12, compte admin ; C :
+      Nouveautés depuis Réglages, pas de réaffichage ; D : Découvrir, clavier système, fiche,
+      feuille, Annuler ; E : espagnol puis allemand, rien ne déborde ; F : session révoquée, retour
+      au vert. Fin : `test-config` et `config-test.json` supprimés, appareil « Regie5 » retiré de
+      Jellyfin, 0.4.0 réinstallée. Étape 45 fausse : `/download0` n'est visible
+      (`/mnt/sandbox/PPSA99520_000/download0/`) que Régie5 ouvert ; `settings-test.json` reste
+      sur la console, sans gêne (jamais lu par une release ; seul contenu sensible,
+      l'identifiant d'appareil, dont l'appareil est retiré de Jellyfin). Chemins pour les
+      prochaines listes : `docs/RELEASING.md`, « Essais console ».
+
+### Pour publier la 0.5.0 (préparé le 16 octobre 2026)
+
+1. [x] **Numéros** : `contentVersion` `00.005.000`, `project(regie5 VERSION 0.5.0)` ; profil
+       `param.json` inchangé (`games-hz120-0.3.1`, accepté par `check-param.py --release`).
+2. [x] **Zip** : `scripts/release-ps5.sh` → `build/ps5/release-0.5.0/upload/PPSA99520.zip`
+       (37 fichiers, ni `config.json` ni `test-config`), sha256
+       `32fd8c094b30a6c2cae671471ea2940c1b324cc396e720c78d703846874a0bf8`. Vérifié dans
+       `llvm-pie.elf` : pas de `REGIE5_DRY_REQUESTS` (le message « NOT sent » absent), version
+       `0.5.0` (pas `0.5.0-test`), pas d'adresse de journal (le mode `test-config` est donc
+       inactif). Tests Linux : 71 verts.
+3. [x] **Notes de version** `build/publish/release-notes-v0.5.0.md` (anglais).
+4. [x] **README** : capture `docs/images/discover.jpg` (ajoutée à `capture-readme.sh`), Seerr
+       (Découvrir, demandes) et Jellyfin (Quick Connect) dans le tableau des services, limite
+       « demandes au nom du compte de la clé d'API ».
+5. [x] **Recette** `docs/RECETTE-0.5.0.md` (mise à jour depuis la 0.4.0, Nouveautés, Réglages,
+       page du téléphone, Découvrir en lecture seule).
+6. [x] **Brouillon Reddit** `build/publish/reddit-r-ps5-jailbreak.md` mis à jour (0.5.0).
+7. [x] **`is4k`** : vérifié dans le code de Seerr (`server/entity/MediaRequest.ts`, branche
+       `develop`) : le corps est lu tel quel, `is4k: !!requestBody.is4k`, droits 4K
+       (`REQUEST_4K`, `REQUEST_4K_MOVIE` / `_TV`) vérifiés, approbation automatique par
+       `AUTO_APPROVE_4K` ou `MANAGE_REQUESTS` ; `serverId`, `profileId`, `rootFolder`,
+       `seasons`, `tvdbId` aux mêmes noms que les nôtres. Pas de vraie demande faite.
+8. [ ] Vivian : recette `docs/RECETTE-0.5.0.md` sur la console.
+9. [ ] Vivian : commit « Régie5 0.5.0 » (`build/patches-18/`), push, tag `v0.5.0`, release
+       GitHub (pièce jointe `PPSA99520.zip`, pas « pre-release »), empreinte vérifiée.
+10. [ ] Catalogue : la PR automatique du lendemain (`sha256`, `icon_url` en
+        `/v0.5.0/ps5/app/sce_sys/icon0.png`).
+11. [ ] Reddit : poster le brouillon une fois la fiche du catalogue en 0.5.0.
 - [x] **5. Communauté** — `docs/CONTRIBUTING.md` (anglais : bug, idée, traduction, code, règles
       du projet ; lié depuis le README) ; `docs/images/demo.gif` (600 px, ~3 Mo, 10 images/s :
       Accueil, Bibliothèque et fiche de Caminandes, Activité, Demandes, Jellyfin et diagnostic,
@@ -1104,3 +1143,4 @@ la Bibliothèque).
 | 16 oct. 2026 | Chantier 3 : Demandes › Découvrir (recherche au clavier système, rangées, fiche, demande Seerr avec saisons / 4K / profil / dossier), fixtures et tests ; lien « Questions » (Discussions). |
 | 16 oct. 2026 | Chantier 4 : Quick Connect pour Jellyfin (assistant, Réglages, session dans `config.json`, compte non administrateur accepté avec des messages clairs), tests. |
 | 16 oct. 2026 | Lignes des Nouveautés relues ; build de test `app-18` (demandes jamais envoyées, version affichée 0.5.0-test) et ses étapes. |
+| 16 oct. 2026 | `app-18` validé sur la console (A à F). 0.5.0 préparée : numéros, zip (`32fd8c09…`), notes, README (capture Découvrir), recette courte, brouillon Reddit ; `is4k` vérifié dans le code de Seerr ; emplacement de `/download0` vu par FTP (`RELEASING.md`). `build/patches-18/`. |

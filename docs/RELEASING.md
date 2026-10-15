@@ -176,6 +176,22 @@ Vérification locale possible avant la PR, dans un clone du catalogue :
 python3 -m catalog verify PPSA99520
 ```
 
+### Essais console : où sont les fichiers de l'app
+
+À recopier tel quel dans toute liste d'étapes d'essai :
+
+| Fichier | Vu depuis FTP / gestionnaire de fichiers | Quand |
+|---|---|---|
+| `config.json`, `test-config`, `config-test.json` | `/data/homebrew/PPSA99520/` | toujours |
+| `settings.json`, `settings-test.json`, `launches`, copie de `config.json`, `dev/app.log` | `/mnt/sandbox/PPSA99520_000/download0/regie5/` | **seulement pendant que Régie5 est ouvert** |
+
+`/download0` est le stockage propre au titre : la console ne le monte que pendant que le titre
+tourne (à `/mnt/sandbox/<TITLE_ID>_000/download0/`). Régie5 fermé, ce dossier n'existe pas
+dans un gestionnaire de fichiers. Pour y toucher : lancer Régie5, puis y aller par FTP
+(ftpsrv sur 2121, etaHEN sur 1337) ; un gestionnaire de fichiers web peut ne pas montrer
+`/mnt/sandbox`. `settings-test.json` (réglages de démonstration, identifiant d'appareil de
+l'essai) peut rester : une release ne le lit jamais, et l'appareil a été retiré de Jellyfin.
+
 ### Après
 
 - Les anciennes releases restent sur GitHub (le catalogue ne liste que la dernière) : ne pas

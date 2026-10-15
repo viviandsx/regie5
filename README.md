@@ -58,6 +58,7 @@ Also:
   <img src="docs/images/queue.jpg" width="400" alt="Activity: the download queue">
   <img src="docs/images/requests.jpg" width="400" alt="Requests from Seerr">
   <img src="docs/images/issues.jpg" width="400" alt="Requests: Seerr issues">
+  <img src="docs/images/discover.jpg" width="400" alt="Requests: Discover, trending films and series to request">
   <img src="docs/images/jellyfin.jpg" width="400" alt="Jellyfin: sessions and transcoding">
   <img src="docs/images/diagnosis.jpg" width="400" alt="Jellyfin: playback diagnosis">
   <img src="docs/images/libraries.jpg" width="400" alt="Jellyfin: libraries and their size">
@@ -110,8 +111,8 @@ device names).
 |---|---|---|---|
 | [Sonarr](https://sonarr.tv) | 4.0 | 4.0 | calendar, queue, series, health, disk space, history; Cleanup |
 | [Radarr](https://radarr.video) | 5.0 | 6.4 | calendar, queue, films, health, disk space, history; Cleanup |
-| [Seerr](https://github.com/seerr-team/seerr) | 2.0 (Jellyseerr 2.x works too) | 3.5 | requests, approve / decline, issues (resolve, comment), posters through its image proxy |
-| [Jellyfin](https://jellyfin.org) | 10.9 | 12.2 | sessions, playback info, recently added, libraries, users, activity log, scheduled tasks |
+| [Seerr](https://github.com/seerr-team/seerr) | 2.0 (Jellyseerr 2.x works too) | 3.5 | requests, approve / decline, issues (resolve, comment), Discover (search, trending, popular, upcoming) and new requests, posters through its image proxy |
+| [Jellyfin](https://jellyfin.org) | 10.9 | 12.2 | sessions, playback info, recently added, libraries, users, activity log, scheduled tasks; Quick Connect sign-in |
 | [Emby](https://emby.media), in Jellyfin's place (**beta**) | 4.8 | 4.10.1 | the same as Jellyfin; *Find in Emby5* instead of Jelly5 |
 | [Glances](https://nicolargo.github.io/glances/) (optional) | 4.0 (API 4) | 4.x | server load |
 
@@ -226,6 +227,9 @@ two ways to set the proxy up, and for redirects such as a login page in front of
   console against Emby 4.10.1.0, not yet on a real Emby server with its users and
   Emby Premiere. Cleanup with Emby is covered by the tests only so far. Reports
   are welcome in [issue #1](https://github.com/viviandsx/regie5/issues/1).
+- **Requests made from Régie5** are made as the account of Seerr's API key (its
+  administrator), not as one of Seerr's users: they count against no one's quota and
+  are usually approved at once. Asking on behalf of another user is not possible yet.
 - **Seerr after a Cleanup deletion:** Seerr has no API to mark a title deleted.
   Its own *Media Availability Sync* job (nightly by default, or run by hand in
   Seerr › Settings › Jobs) marks it deleted, keeps its requests and lets it be

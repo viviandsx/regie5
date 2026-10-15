@@ -23,7 +23,7 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "${TMP:?}"' EXIT
 
 # Home (focus on the recently added row), the Library (a series' page, the
-# films, the guide, the cleanup), the queue, the requests and the issues,
+# films, the guide, the cleanup), the queue, the requests, the issues and Discover,
 # Jellyfin, a playback diagnosis and the libraries, Settings; then the
 # welcome screens.
 s="4 down 2.5 shot:${TMP}/home.ppm up "
@@ -33,6 +33,7 @@ s+="right cross 1.5 down 2 shot:${TMP}/guide.ppm up "
 s+="right cross 1 right cross 3 right cross 1 right cross 3 shot:${TMP}/cleanup.ppm "
 s+="r1 3 shot:${TMP}/queue.ppm "
 s+="r1 2.5 shot:${TMP}/requests.ppm right cross 2.5 shot:${TMP}/issues.ppm "
+s+="right cross 2.5 down 0.5 down 0.5 right right right right 2.5 shot:${TMP}/discover.ppm "
 s+="r1 2.5 shot:${TMP}/jellyfin.ppm cross 1.5 shot:${TMP}/diagnosis.ppm circle 0.6 "
 s+="down down down down down 2 shot:${TMP}/libraries.ppm "
 s+="r1 3 shot:${TMP}/settings.ppm quit"
