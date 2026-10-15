@@ -37,11 +37,18 @@ struct ServiceConfig {
     /* "insecure": an https:// address whose certificate is not checked (a
      * self-signed one, on the local network). Off by default. */
     bool insecure = false;
+    /* Jellyfin without an API key: the session Quick Connect gave ("accessToken",
+     * written by the app), the account's name ("userName") and whether it is an
+     * administrator ("isAdmin"; some screens need one). An API key wins. */
+    std::string token, user;
+    bool admin = true;
+    /* Signed in by Quick Connect (no API key: the account's session). */
+    bool session() const { return api_key.empty() && !token.empty(); }
     bool operator==(const ServiceConfig &o) const
     {
         return name == o.name && enabled == o.enabled && url == o.url && api_key == o.api_key &&
                username == o.username && password == o.password && is4k == o.is4k &&
-               insecure == o.insecure;
+               insecure == o.insecure && token == o.token && admin == o.admin;
     }
 };
 
@@ -77,6 +84,16 @@ bool parse(const std::string &text, Config *out);
 
 /* Reads and parses the file at path. */
 LoadError load(const std::string &path, Config *out);
+
+/* config.json's text with a Quick Connect session written into its
+ * "jellyfin" (the first instance of a list): accessToken, userName, isAdmin;
+ * everything else kept. false when the text has no "jellyfin" to put it in. */
+bool with_jellyfin_session(const std::string &text, const std::string &token, const std::string &user, bool admin,
+                           std::string *out);
+/* A text file whole (up to 1 MiB); false when it cannot be read. */
+bool read_file(const std::string &path, std::string *out);
+/* A text file written whole, then renamed over the old one (never half a file). */
+bool write_file(const std::string &path, const std::string &text);
 
 /* Which services differ between a and b: bit i for service i. */
 unsigned changed(const Config &a, const Config &b);

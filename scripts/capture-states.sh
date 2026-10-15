@@ -5,7 +5,7 @@
 # screens. The Ménage is turned on (REGIE5_MOCK_CLEANUP, in memory).
 # Runs on fixtures/ (--mock): no server is contacted, no action is carried out;
 # the welcome screens' phone step is the demo one (nothing listens); "What's
-# new" (whatsnew); Demandes › Découvrir (discover).
+# new" (whatsnew); Demandes › Découvrir (discover); Quick Connect (quickconnect).
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 #   scripts/capture-states.sh                 all states, both languages
@@ -20,7 +20,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD="${ROOT}/build/linux"
 OUT="${OUT:-${ROOT}/build/states}"
-ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby welcome whatsnew discover)
+ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby welcome whatsnew discover quickconnect)
 STATES=("$@")
 [[ ${#STATES[@]} -eq 0 ]] && STATES=("${ALL_STATES[@]}")
 
@@ -124,6 +124,10 @@ for state in "${STATES[@]}"; do
         welcome) env+=(REGIE5_WELCOME=1) script="$(welcome_tour "${p}")" ;;
         whatsnew) env+=(REGIE5_WHATSNEW=1) script="3 shot:${p}-whatsnew.ppm quit" ;;
         discover) script="$(discover_tour "${p}")" ;;
+        quickconnect)   # Jellyfin with no key: the welcome screens' check, Quick Connect, then Settings
+            env+=(REGIE5_MOCK_QC=1 REGIE5_WELCOME=1 REGIE5_MOCK_DELAY_MS=300)
+            script="3 cross 1 cross 1.5 cross 3 shot:${p}-1-check.ppm right cross 1.5 shot:${p}-2-code.ppm "
+            script+="3 shot:${p}-3-done.ppm cross 3 shot:${p}-4-checked.ppm quit" ;;
         *) echo "unknown state: ${state} (${ALL_STATES[*]})" >&2; exit 2 ;;
         esac
         echo "${state} (${lang})"

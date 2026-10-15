@@ -40,6 +40,26 @@ une suppression par le Ménage, c'est la tâche « Media Availability Sync » de
 marque le titre (état normal ou 4K, selon l'instance). Le champ est lu et gardé pour les
 écrans qui distingueront les deux côtés ; il n'est jamais déduit du nom.
 
+## Jellyfin sans clé d'API : Quick Connect
+
+Une adresse sans clé suffit pour Jellyfin : Réglages › ligne Jellyfin › Options (M) ›
+« Quick Connect… », ou le bouton « Quick Connect » de la vérification de l'assistant. Le
+code affiché se valide dans Jellyfin, sur le téléphone (profil › Quick Connect). Régie5 écrit
+alors dans `"jellyfin"` (la première instance d'une liste) :
+
+| Champ | Rôle |
+|---|---|
+| `accessToken` | La session du compte (secrète comme une clé ; jamais montrée par la page du téléphone, jamais écrite dans un journal). |
+| `userName` | Le nom du compte, affiché sur la ligne Jellyfin. |
+| `isAdmin` | `false` pour un compte qui n'est pas administrateur : la ligne passe à l'orange, et les écrans qui demandent un administrateur le disent (arrêt de lecture, scan, tâches, journal, utilisateurs, diagnostic, Ménage). |
+
+Une `apiKey` passe avant la session. Changer l'adresse de Jellyfin depuis le téléphone efface
+la session (elle appartient à l'ancien serveur). Une session supprimée dans Jellyfin (Tableau
+de bord › Appareils) : Réglages le dit, il suffit de refaire Quick Connect. Régie5 se présente
+à Jellyfin sous le nom « Regie5 », avec un identifiant d'appareil tiré une fois et gardé dans
+`settings.json` (`"deviceId"`). Jellyfin 10.9 ou plus récent, Quick Connect activé (Tableau de
+bord › Général). Emby n'a pas d'équivalent sur le réseau local : il garde sa clé.
+
 ## Jellyfin ou Emby
 
 Le serveur multimédia est **Jellyfin** (clé `"jellyfin"`) **ou Emby** (clé `"emby"`, mêmes

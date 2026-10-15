@@ -98,7 +98,15 @@ std::vector<WelcomeFlow::Button> WelcomeFlow::buttons() const
         if (!m_share.error().empty())
             return {Button::Retry, Button::Check, Button::Later};
         return {Button::Check, Button::Later};
-    case Step::Check: return {Button::Go, Button::Fix};
+    case Step::Check: {
+        /* Jellyfin's address is there but no key: Quick Connect signs in instead. */
+        const bool qc = m_choice == Choice::Jellyfin && QuickConnectSheet::offered(m_ctx) &&
+                        m_ctx.services->config().at(config::Jellyfin).api_key.empty() &&
+                        m_ctx.services->config().at(config::Jellyfin).token.empty();
+        if (qc)
+            return {Button::Go, Button::QuickConnect, Button::Fix};
+        return {Button::Go, Button::Fix};
+    }
     }
     return {};
 }
@@ -123,11 +131,16 @@ void WelcomeFlow::press(Button b)
         break;
     case Button::Check: check(); break;
     case Button::Fix: open_phone(); break;
+    case Button::QuickConnect: m_qc.open(); break;
     }
 }
 
 void WelcomeFlow::input(const input::State &in)
 {
+    if (m_qc.is_open()) {
+        m_qc.input(in);
+        return;
+    }
     const uint32_t p = in.pressed;
     const int n = (int)buttons().size();
     if (p & input::Left)
@@ -152,8 +165,9 @@ void WelcomeFlow::draw(double now, float dt, bool *animating)
 {
     if (!m_open)
         return;
-    /* The phone saved: config.json is read again and every service tested. */
-    if (m_share.saved())
+    /* The phone saved, or Quick Connect signed in: config.json is read again
+     * and every service tested. */
+    if (m_share.saved() || m_qc.take_signed_in())
         check();
     if (m_show.step(dt, 10.f) || m_page.step(dt, 12.f))
         *animating = true;
@@ -247,6 +261,7 @@ void WelcomeFlow::draw(double now, float dt, bool *animating)
                         : b == Button::Check    ? i18n::tr(i18n::WelCheck)
                         : b == Button::Retry    ? i18n::tr(i18n::WelRetry)
                         : b == Button::Go       ? i18n::tr(i18n::WelGo)
+                        : b == Button::QuickConnect ? i18n::tr(i18n::QcTitle)
                                                 : i18n::tr(i18n::WelFix);
         labels.push_back(t);
         /* "Later" stands apart, at the right. */
@@ -266,6 +281,7 @@ void WelcomeFlow::draw(double now, float dt, bool *animating)
         gfx::text(rects[i].x + rects[i].w / 2, rects[i].y + 42, labels[i], on ? kButtonOn : kButtonText,
                   alpha(on ? kText : kText2, a * e), 1);
     }
+    m_qc.draw(dt, animating);
 }
 
 } // namespace ui

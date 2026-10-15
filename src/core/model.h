@@ -261,6 +261,16 @@ struct JellyfinUser {
     time_t last_activity = 0;
 };
 
+/* Quick Connect: the code shown on the TV, the secret the app asks about. */
+struct QuickConnect {
+    std::string code, secret;
+};
+/* What signing in gave: the session's token, whose account, whether an administrator. */
+struct JellyfinSession {
+    std::string token, user;
+    bool admin = false;
+};
+
 /* An item named by its id (a film, an episode, a series). */
 struct JellyfinItem {
     std::string id, name, type;     /* type: "Movie", "Episode", "Series" */

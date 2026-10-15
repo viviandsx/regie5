@@ -40,7 +40,10 @@ choose "Test all" in Settings.
 Where to find the API keys
 - Sonarr, Radarr: Settings > General > Security > API Key.
 - Seerr: Settings > General > API Key.
-- Jellyfin: Dashboard > API Keys > "+".
+- Jellyfin: Dashboard > API Keys > "+". Or no key at all: give only
+  Jellyfin's address, then Settings > Jellyfin's line > Options > Quick
+  Connect, and type the code shown in Jellyfin on your phone (your profile >
+  Quick Connect), with an administrator account.
 - Emby: the server's settings > Advanced > Api Keys > New Api Key.
 
 Emby instead of Jellyfin (beta): in config.json, the key is "emby" instead of
@@ -105,7 +108,10 @@ dans le même dossier, remplissez-le sur votre ordinateur, copiez-le dans
 Où trouver les clés d'API
 - Sonarr, Radarr : Settings > General > Security > API Key.
 - Seerr : Settings > General > API Key.
-- Jellyfin : Tableau de bord > Clés API > « + ».
+- Jellyfin : Tableau de bord > Clés API > « + ». Ou aucune clé : donnez
+  seulement l'adresse de Jellyfin, puis Réglages > ligne Jellyfin > Options >
+  Quick Connect, et tapez le code dans Jellyfin sur le téléphone (votre
+  profil > Quick Connect), avec un compte administrateur.
 - Emby : réglages du serveur > Advanced > Api Keys > New Api Key (interface
   en anglais).
 

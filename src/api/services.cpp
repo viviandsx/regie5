@@ -77,10 +77,14 @@ std::string Services::auth_header(config::Service s, int instance) const
         const config::ServiceConfig &c = m_cfg.at(s, instance);
         return c.username.empty() ? std::string() : http::header("Authorization", "Basic " + base64(c.username + ":" + c.password));
     }
-    const std::string &key = m_cfg.at(s, instance).api_key;
+    const config::ServiceConfig &c = m_cfg.at(s, instance);
+    const std::string &key = c.api_key;
+    if (s == config::Jellyfin && m_cfg.emby())
+        return http::header("X-Emby-Token", key);   /* Emby's documented header */
+    if (s == config::Jellyfin && key.empty())   /* Quick Connect: who signs in, and the session once there */
+        return http::header("Authorization", jellyfin::auth_client(m_device_id, m_device_name, m_version, c.token));
     if (s == config::Jellyfin)
-        return m_cfg.emby() ? http::header("X-Emby-Token", key)   /* Emby's documented header */
-                            : http::header("Authorization", jellyfin::auth_value(key));
+        return http::header("Authorization", jellyfin::auth_value(key));
     return http::header("X-Api-Key", key);
 }
 
@@ -100,9 +104,9 @@ http::Request Services::make(config::Service s, const std::string &method, const
 template <typename T>
 void Services::call(config::Service s, const std::string &method, const std::string &path,
                     std::function<bool(const std::string &, T *)> parse, std::function<void(Result<T>)> done,
-                    int instance, const std::string &body)
+                    int instance, const std::string &body, bool need_on)
 {
-    if (!enabled(s, instance)) {
+    if (need_on ? !enabled(s, instance) : m_cfg.at(s, instance).url.empty()) {
         Result<T> res;
         res.error = Error::Disabled;
         if (done)
@@ -111,11 +115,20 @@ void Services::call(config::Service s, const std::string &method, const std::str
     }
     http::Request req = make(s, method, path, instance);
     req.body = body;
-    m_pool.submit(std::move(req), [parse, done](http::Response &resp) -> std::function<void()> {
+    /* Signed in by Quick Connect: a 401 is a session that ended, a 403 an
+     * account that is not an administrator (never the key's fault). */
+    const config::ServiceConfig &c = m_cfg.at(s, instance);
+    const bool session = s == config::Jellyfin && !m_cfg.emby() && c.session();
+    const bool admin = c.admin;
+    m_pool.submit(std::move(req), [parse, done, session, admin](http::Response &resp) -> std::function<void()> {
         auto res = std::make_shared<Result<T>>();
         res->http_status = resp.status;
         const bool parsed = resp.ok() && parse(resp.body, &res->value);
         res->error = classify(resp, parsed);
+        if (session && resp.status == 401)
+            res->error = Error::Revoked;
+        else if (session && resp.status == 403 && !admin)
+            res->error = Error::NeedsAdmin;
         return [done, res] {
             if (done)
                 done(std::move(*res));
@@ -488,6 +501,31 @@ void Services::create_request(const seerr::NewRequest &r, std::function<void(Res
 {
     call<model::SeerrCreated>(config::Seerr, "POST", seerr::create_request_path(), seerr::parse_created,
                               std::move(done), 0, seerr::request_body(r));
+}
+
+void Services::quick_connect_enabled(std::function<void(Result<bool>)> done)
+{
+    call<bool>(config::Jellyfin, "GET", jellyfin::quick_connect_enabled_path(), jellyfin::parse_quick_connect_enabled,
+               std::move(done), 0, {}, false);
+}
+
+void Services::quick_connect_start(std::function<void(Result<model::QuickConnect>)> done)
+{
+    call<model::QuickConnect>(config::Jellyfin, "POST", jellyfin::quick_connect_initiate_path(),
+                              jellyfin::parse_quick_connect, std::move(done), 0, {}, false);
+}
+
+void Services::quick_connect_poll(const std::string &secret, std::function<void(Result<bool>)> done)
+{
+    call<bool>(config::Jellyfin, "GET", jellyfin::quick_connect_poll_path(secret), jellyfin::parse_quick_connect_poll,
+               std::move(done), 0, {}, false);
+}
+
+void Services::quick_connect_finish(const std::string &secret,
+                                    std::function<void(Result<model::JellyfinSession>)> done)
+{
+    call<model::JellyfinSession>(config::Jellyfin, "POST", jellyfin::quick_connect_auth_path(), jellyfin::parse_session,
+                                 std::move(done), 0, jellyfin::quick_connect_auth_body(secret), false);
 }
 
 void Services::sessions(std::function<void(Result<std::vector<model::Session>>)> done)

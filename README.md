@@ -36,7 +36,7 @@ never to the internet.
 | **Activity** | The download queue of Sonarr and Radarr merged (title, progress, time left, status; refreshed every 5 s), and a 14-day **log**: imports, Seerr requests, Jellyfin playback and sign-ins, health alerts. |
 | **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**; Seerr **issues** (open / resolved / all) with their comments, **Resolve** and **Comment** (ready-made sentences); **Discover**: search Seerr with the console's keyboard, trending, popular and upcoming films and series, a title's page, and **request** it (the seasons, 4K, the quality profile and folder). |
 | **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, and server load through [Glances](https://nicolargo.github.io/glances/) if you use it. |
-| **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which asks for 120 Hz / 60 Hz / 120 Hz), **set-up from a phone** (QR code), and the **set-up screens** again. |
+| **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which asks for 120 Hz / 60 Hz / 120 Hz), **set-up from a phone** (QR code), **Quick Connect** for Jellyfin (no API key to copy), the **set-up screens** and **What's new** again. |
 
 Also:
 
@@ -80,7 +80,8 @@ actions, each behind a confirmation whose focus starts on **Cancel**:
 - approve or decline a Seerr request; **request** a film or a series in Seerr (as the
   account of the API key: Seerr's administrator, so the request is usually approved at once);
 - resolve a Seerr issue, or post one of a few ready-made comments on it;
-- stop a Jellyfin (or Emby) playback session; scan its libraries;
+- stop a Jellyfin (or Emby) playback session; scan its libraries; with Quick Connect,
+  sign in to Jellyfin (Régie5 then appears among its devices);
 - **Cleanup** (off by default): delete a film or a series **with its files** in
   Radarr/Sonarr, always added to the import-list exclusions so no list brings it
   back. It is turned on in Settings after a warning, offers only titles watched
@@ -170,6 +171,19 @@ The page is served by the console on your local network only, while that window
 is open, and needs the code. Keys already saved are never sent back to the phone:
 a key field left empty keeps the saved key.
 
+### Jellyfin without an API key: Quick Connect
+
+Give Jellyfin's address only (no key), then choose **Quick Connect** on the set-up
+screens' check, or in Settings on Jellyfin's line (Options). A 6-digit code appears on
+the TV: on your phone, in Jellyfin (the app or a browser), open your profile ›
+**Quick Connect** and type it. Régie5 then uses that account's session, kept in
+`config.json`. Sign in with an **administrator** account: stopping a stream, scanning,
+the scheduled tasks, the activity log, the users and Cleanup need one; with another
+account Régie5 says so where it matters (Jellyfin's line in Settings turns orange). If
+the session is removed in Jellyfin (*Dashboard › Devices*), Settings says so: run Quick
+Connect again. An API key, when there is one, is used instead. Emby has no such thing on
+the local network: it keeps its API key.
+
 ### By file
 
 Copy `config.example.json` (in the app folder) to `config.json` in
@@ -178,7 +192,7 @@ choose **Test all** in Settings. Several instances of a service are a list of na
 instances; the fields are described in `config.example.json`.
 
 Where the API keys are: Sonarr and Radarr, *Settings › General › Security*; Seerr,
-*Settings › General*; Jellyfin, *Dashboard › API Keys*; Emby, in the server's settings,
+*Settings › General*; Jellyfin, *Dashboard › API Keys* (or Quick Connect, above); Emby, in the server's settings,
 *Advanced › Api Keys › New Api Key*.
 
 **Emby instead of Jellyfin:** write `"emby"` in `config.json` where the example has

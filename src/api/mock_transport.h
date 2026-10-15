@@ -18,7 +18,7 @@
  *   REGIE5_MOCK_DELAY_MS=800              every answer that late (default 250)
  *   REGIE5_MOCK_FAIL=radarr:unreachable,seerr:unauthorized
  *                                        (unreachable, timeout, unauthorized,
- *                                         notfound, servererror, badjson)
+ *                                         forbidden, notfound, servererror, badjson)
  *   REGIE5_MOCK_EMPTY=sonarr,seerr        their lists answer empty (same shape)
  *   REGIE5_MOCK_OLD=sonarr,jellyfin       their connection test answers a version
  *                                        older than Régie5's minimum (1.0.0)
@@ -28,6 +28,9 @@
  *   REGIE5_MOCK_MULTI=1                   a second Radarr, "Radarr 4K", under
  *                                        http://radarr.mock/radarr4k
  *                                        (both read by the shell, see config::mock)
+ *   REGIE5_MOCK_QC=1                      Jellyfin with no key yet: Quick Connect
+ *                                        signs in from fixtures/jellyfin/quickconnect_*
+ *                                        (read by the shell; in memory only)
  *   REGIE5_MOCK_CLEANUP=1                 the Ménage already turned on (read by
  *                                        the shell; in memory, as every --mock setting)
  */

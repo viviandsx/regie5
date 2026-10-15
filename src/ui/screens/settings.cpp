@@ -157,8 +157,25 @@ void SettingsScreen::draw_share(float dt, bool *animating)
               alpha(kText2, a), 2);
 }
 
+bool SettingsScreen::on_jellyfin_row() const
+{
+    return m_focused && m_focus < m_list.size() && m_list.service_of(m_focus) == config::Jellyfin &&
+           m_list.instance_of(m_focus) == 0 && QuickConnectSheet::offered(m_ctx);
+}
+
+std::vector<PadHint> SettingsScreen::hints() const
+{
+    if (on_jellyfin_row())
+        return {{PadButton::Options, i18n::tr(i18n::HintOptions)}};
+    return {};
+}
+
 Action SettingsScreen::input(const input::State &in)
 {
+    if (m_qc.is_open()) {
+        m_qc.input(in);
+        return Action::None;
+    }
     if (m_share.is_open()) {
         if (in.pressed & (input::Circle | input::Cross))
             close_share();
@@ -187,6 +204,12 @@ Action SettingsScreen::input(const input::State &in)
         m_focus++;
     } else if (m_focus == n && (p & (input::Left | input::Right))) {
         m_button = std::clamp(m_button + ((p & input::Left) ? -1 : 1), 0, button_count() - 1);
+    } else if ((p & input::Options) && on_jellyfin_row()) {
+        m_sheet.open(config::media_name(m_ctx.services->config().media), i18n::tr(i18n::QcAdminNote),
+                     {i18n::tr(i18n::QcMenu), i18n::tr(i18n::Cancel)}, 1, [this](int c) {
+                         if (c == 0)
+                             m_qc.open();
+                     });
     } else if (p & input::Cross) {
         if (m_focus < n) {
             test(m_focus);
@@ -218,6 +241,10 @@ Action SettingsScreen::input(const input::State &in)
 
 void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
 {
+    if (m_qc.take_signed_in()) {   /* the session is in config.json: every row again */
+        build_rows();
+        test_all();
+    }
     const float x0 = kPad + ox;
     gfx::text(x0, 250, tab_label(TabSettings), {gfx::Bold, 72}, kText);
     float y = 304;

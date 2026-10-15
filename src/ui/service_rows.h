@@ -24,6 +24,8 @@ public:
     void test(Context &ctx, int row);
     void test_all(Context &ctx);
     int size() const { return (int)m_rows.size(); }
+    config::Service service_of(int row) const { return m_rows[(size_t)row].service; }
+    int instance_of(int row) const { return m_rows[(size_t)row].instance; }
     /* Every row has an answer (none still testing). */
     bool settled() const;
 

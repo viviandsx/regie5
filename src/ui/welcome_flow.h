@@ -15,6 +15,7 @@
 #include "ui/context.h"
 #include "ui/drop.h"
 #include "ui/phone_share.h"
+#include "ui/quick_connect.h"
 #include "ui/service_rows.h"
 
 #include <string>
@@ -37,7 +38,7 @@ public:
 private:
     enum class Step { Intro, Server, Phone, Check };
     enum class Choice { Jellyfin, Emby, None };
-    enum class Button { Start, Later, Jellyfin, Emby, None, Check, Retry, Go, Fix };
+    enum class Button { Start, Later, Jellyfin, Emby, None, Check, Retry, Go, Fix, QuickConnect };
     std::vector<Button> buttons() const;
     void go(Step s);
     void press(Button b);
@@ -54,6 +55,7 @@ private:
     int m_focus = 0;
     bool m_config_changed = false;
     PhoneShare m_share;
+    QuickConnectSheet m_qc{m_ctx};   /* Jellyfin with an address and no key */
     ServiceRows m_rows;
     Anim m_show, m_page;   /* the whole fading in; each screen sliding in */
     Drop m_drop;

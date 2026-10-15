@@ -13,6 +13,7 @@
 #include "ui/context.h"
 #include "ui/drop.h"
 #include "ui/phone_share.h"
+#include "ui/quick_connect.h"
 #include "ui/screen.h"
 #include "ui/service_rows.h"
 #include "ui/widgets.h"
@@ -32,12 +33,14 @@ public:
     Action input(const input::State &in) override;
     void draw(double now, float dt, float ox, bool *animating) override;
     void enter_from_top() override { m_focus = 0; }
-    bool modal() const override { return m_sheet.is_open() || m_share.is_open(); }
+    bool modal() const override { return m_sheet.is_open() || m_share.is_open() || m_qc.is_open(); }
     void draw_overlay(float dt, bool *animating) override
     {
         m_sheet.draw(dt, animating);
         draw_share(dt, animating);
+        m_qc.draw(dt, animating);
     }
+    std::vector<PadHint> hints() const override;
 
     /* Tests every service that is on (at start, and on △). */
     void test_all();
@@ -68,6 +71,9 @@ private:
     Anim m_share_show;
     Drop m_drop;
     Sheet m_sheet;
+    QuickConnectSheet m_qc{m_ctx};
+    /* The row with the focus is Jellyfin's, where Options offers Quick Connect. */
+    bool on_jellyfin_row() const;
     std::shared_ptr<bool> m_alive = std::make_shared<bool>(true);
 };
 

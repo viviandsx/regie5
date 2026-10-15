@@ -150,6 +150,9 @@ bool apply(const std::string &current_text, const std::string &posted, std::stri
             else
                 cJSON_DeleteItemFromObjectCaseSensitive(o, "name");
             set_bool("enabled", !cJSON_IsFalse(cJSON_GetObjectItemCaseSensitive(it, "enabled")));
+            if (old && str(old, "url") != url)   /* another server: the old one's session means nothing there */
+                for (const char *k : {"accessToken", "userName", "isAdmin"})
+                    cJSON_DeleteItemFromObjectCaseSensitive(o, k);
             set_str("url", url);
             if (cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(it, "insecure")))
                 set_bool("insecure", true);

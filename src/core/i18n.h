@@ -548,6 +548,23 @@ enum S {
     RequestDuplicate,
     RequestRefused,
     RequestMock,
+    ErrRevoked,
+    ErrNeedsAdmin,
+    QcTitle,
+    QcMenu,
+    QcChecking,
+    QcCodeLead,
+    QcAdminNote,
+    QcWaiting,
+    QcDisabled,
+    QcNoUrl,
+    QcDone,
+    QcDoneNotAdmin,
+    QcSaveFailed,
+    QcMock,
+    QcNoKey,
+    QcRowUser,
+    QcRowNotAdmin,
     Count
 };
 

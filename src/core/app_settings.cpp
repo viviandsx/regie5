@@ -51,6 +51,8 @@ std::string to_json(const Settings &s)
         cJSON_AddStringToObject(root, "welcome", "later");
     if (!s.seen_version.empty())
         cJSON_AddStringToObject(root, "seenVersion", s.seen_version.c_str());
+    if (!s.device_id.empty())
+        cJSON_AddStringToObject(root, "deviceId", s.device_id.c_str());
     char *text = cJSON_Print(root);
     std::string out = text ? text : "{}";
     cJSON_free(text);
@@ -76,6 +78,9 @@ bool from_json(const std::string &text, Settings *out)
     const cJSON *seen = cJSON_GetObjectItemCaseSensitive(root, "seenVersion");
     if (cJSON_IsString(seen) && std::string(seen->valuestring).size() < 32)
         out->seen_version = seen->valuestring;
+    const cJSON *device = cJSON_GetObjectItemCaseSensitive(root, "deviceId");
+    if (cJSON_IsString(device) && std::string(device->valuestring).size() <= 64)
+        out->device_id = device->valuestring;
     const cJSON *c = cJSON_GetObjectItemCaseSensitive(root, "cleanup");
     out->cleanup_enabled = cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(c, "enabled"));
     const cJSON *by = cJSON_GetObjectItemCaseSensitive(c, "watchedBy");

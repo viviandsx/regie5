@@ -84,4 +84,22 @@ bool parse_tasks(const std::string &body, std::vector<model::Task> *out);
 /* Episodes of one series fold into one entry (the newest), counting them. */
 bool parse_recent(const std::string &body, std::vector<model::RecentItem> *out, size_t max_items = 20);
 
+/* Quick Connect (Jellyfin 10.9 and later; never on Emby): signing in without
+ * an API key, a code approved in Jellyfin on a phone.
+ *   GET /QuickConnect/Enabled          -> true / false
+ *   POST /QuickConnect/Initiate        -> {Code, Secret}
+ *   GET /QuickConnect/Connect?secret=  -> {Authenticated}
+ *   POST /Users/AuthenticateWithQuickConnect {"Secret"} -> {AccessToken, User} */
+std::string auth_client(const std::string &device_id, const std::string &device_name, const std::string &version,
+                        const std::string &token);
+std::string quick_connect_enabled_path();
+std::string quick_connect_initiate_path();
+std::string quick_connect_poll_path(const std::string &secret);
+std::string quick_connect_auth_path();
+std::string quick_connect_auth_body(const std::string &secret);
+bool parse_quick_connect_enabled(const std::string &body, bool *on);
+bool parse_quick_connect(const std::string &body, model::QuickConnect *out);
+bool parse_quick_connect_poll(const std::string &body, bool *approved);
+bool parse_session(const std::string &body, model::JellyfinSession *out);
+
 } // namespace jellyfin

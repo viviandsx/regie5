@@ -32,6 +32,8 @@ enum class Error {
     BadResponse,    /* answered, but not what this service says */
     Unsupported,    /* an address this platform cannot reach yet (https on the PS5) */
     Certificate,    /* https: the server's certificate is refused */
+    Revoked,        /* Jellyfin by Quick Connect: 401, the session has ended (revoked, device removed) */
+    NeedsAdmin,     /* Jellyfin by Quick Connect: 403 for an account that is not an administrator */
 };
 
 /* From a transport response and whether its body parsed. */
@@ -49,6 +51,14 @@ public:
     Services(const config::Config &cfg, http::Pool &pool, std::string lang);
 
     const config::Config &config() const { return m_cfg; }
+    /* Who Régie5 is to Jellyfin when it signs in (Quick Connect): this
+     * console's id (settings.json), its name, the app's version. */
+    void set_client(std::string device_id, std::string device_name, std::string version)
+    {
+        m_device_id = std::move(device_id);
+        m_device_name = std::move(device_name);
+        m_version = std::move(version);
+    }
     /* A new config.json (main thread). Requests already sent keep the
      * address and key they were made with. */
     void reconfigure(const config::Config &cfg) { m_cfg = cfg; }
@@ -149,6 +159,12 @@ public:
     /* Actions: POST. */
     void stop_session(const std::string &session_id, std::function<void(Result<bool>)> done);
     void refresh_library(std::function<void(Result<bool>)> done);
+    /* Quick Connect: asked of Jellyfin's address even while it is off (no key
+     * yet). Never on Emby. */
+    void quick_connect_enabled(std::function<void(Result<bool>)> done);
+    void quick_connect_start(std::function<void(Result<model::QuickConnect>)> done);
+    void quick_connect_poll(const std::string &secret, std::function<void(Result<bool>)> done);
+    void quick_connect_finish(const std::string &secret, std::function<void(Result<model::JellyfinSession>)> done);
 
 private:
     http::Request make(config::Service s, const std::string &method, const std::string &path, int instance = 0) const;
@@ -156,11 +172,12 @@ private:
     template <typename T>
     void call(config::Service s, const std::string &method, const std::string &path,
               std::function<bool(const std::string &, T *)> parse, std::function<void(Result<T>)> done,
-              int instance = 0, const std::string &body = {});
+              int instance = 0, const std::string &body = {}, bool need_on = true);
 
     config::Config m_cfg;
     http::Pool &m_pool;
     std::string m_lang;
+    std::string m_device_id = "regie5", m_device_name = "Regie5", m_version;
 };
 
 } // namespace api

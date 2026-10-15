@@ -750,6 +750,18 @@ int main()
             ctx.save_settings();
         }
     }
+    {   /* Who Régie5 is to Jellyfin (Quick Connect): an id made once, kept in settings.json */
+        if (ctx.settings.device_id.empty()) {
+            unsigned char raw[16];
+            if (platform::random_bytes(raw, sizeof raw)) {
+                static const char *const kHex = "0123456789abcdef";
+                for (unsigned char b : raw)
+                    ctx.settings.device_id += std::string(1, kHex[b >> 4]) + kHex[b & 15];
+                ctx.save_settings();
+            }
+        }
+        services.set_client(ctx.settings.device_id.empty() ? "regie5" : ctx.settings.device_id, "PS5", ctx.version);
+    }
 #endif
     ui::Shell shell(ctx);
 

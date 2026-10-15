@@ -48,9 +48,16 @@ ServiceConfig parse_one(const cJSON *o, Service svc, int n, const char *label)
     s.password = cJSON_IsString(pass) ? pass->valuestring : "";
     s.is4k = cJSON_IsTrue(is4k);
     s.insecure = cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(o, "insecure"));
+    const cJSON *token = cJSON_GetObjectItemCaseSensitive(o, "accessToken");
+    const cJSON *user_name = cJSON_GetObjectItemCaseSensitive(o, "userName");
+    if (svc == Jellyfin && cJSON_IsString(token)) {
+        s.token = token->valuestring;
+        s.user = cJSON_IsString(user_name) ? user_name->valuestring : "";
+        s.admin = !cJSON_IsFalse(cJSON_GetObjectItemCaseSensitive(o, "isAdmin"));
+    }
     /* On unless it says otherwise, as long as it has somewhere to go (and a
-     * key: Glances needs none). */
-    s.enabled = !cJSON_IsFalse(en) && !s.url.empty() && (svc == Glances || !s.api_key.empty());
+     * key, or Jellyfin's session: Glances needs none). */
+    s.enabled = !cJSON_IsFalse(en) && !s.url.empty() && (svc == Glances || !s.api_key.empty() || !s.token.empty());
     return s;
 }
 
@@ -134,6 +141,57 @@ LoadError load(const std::string &path, Config *out)
         text.append(buf, n);
     std::fclose(f);
     return parse(text, out) ? LoadError::None : LoadError::BadJson;
+}
+
+bool with_jellyfin_session(const std::string &text, const std::string &token, const std::string &user, bool admin,
+                           std::string *out)
+{
+    cJSON *root = cJSON_ParseWithLength(text.data(), text.size());
+    cJSON *j = root ? cJSON_GetObjectItemCaseSensitive(root, "jellyfin") : nullptr;
+    if (cJSON_IsArray(j))
+        j = cJSON_GetArrayItem(j, 0);
+    if (!cJSON_IsObject(j)) {
+        cJSON_Delete(root);
+        return false;
+    }
+    for (const char *k : {"accessToken", "userName", "isAdmin"})
+        cJSON_DeleteItemFromObjectCaseSensitive(j, k);
+    cJSON_AddStringToObject(j, "accessToken", token.c_str());
+    cJSON_AddStringToObject(j, "userName", user.c_str());
+    cJSON_AddBoolToObject(j, "isAdmin", admin);
+    char *printed = cJSON_Print(root);
+    *out = printed ? std::string(printed) + "\n" : std::string();
+    cJSON_free(printed);
+    cJSON_Delete(root);
+    return !out->empty();
+}
+
+bool read_file(const std::string &path, std::string *out)
+{
+    out->clear();
+    FILE *f = std::fopen(path.c_str(), "rb");
+    if (!f)
+        return false;
+    char buf[8192];
+    size_t n;
+    while ((n = std::fread(buf, 1, sizeof buf, f)) > 0 && out->size() < (1u << 20))
+        out->append(buf, n);
+    std::fclose(f);
+    return true;
+}
+
+bool write_file(const std::string &path, const std::string &text)
+{
+    const std::string tmp = path + ".tmp";
+    FILE *f = std::fopen(tmp.c_str(), "wb");
+    if (!f)
+        return false;
+    const bool written = std::fwrite(text.data(), 1, text.size(), f) == text.size();
+    if (std::fclose(f) != 0 || !written) {
+        std::remove(tmp.c_str());
+        return false;
+    }
+    return std::rename(tmp.c_str(), path.c_str()) == 0;
 }
 
 unsigned changed(const Config &a, const Config &b)

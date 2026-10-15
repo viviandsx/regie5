@@ -7,6 +7,7 @@
 #include "api/json.h"
 #include "core/libraries.h"
 
+#include <cctype>
 #include <algorithm>
 #include <cstdio>
 #include <cstdlib>
@@ -497,6 +498,90 @@ bool parse_items(const std::string &body, std::vector<model::JellyfinItem> *out)
             out->push_back(std::move(m));
     }
     return true;
+}
+
+namespace {
+
+/* A value inside the MediaBrowser header: no quotes, no commas, no control characters. */
+std::string header_safe(const std::string &s)
+{
+    std::string out;
+    for (char c : s)
+        if (c != '"' && c != ',' && (unsigned char)c >= 0x20)
+            out += c;
+    return out;
+}
+
+} // namespace
+
+std::string auth_client(const std::string &device_id, const std::string &device_name, const std::string &version,
+                        const std::string &token)
+{
+    std::string h = "MediaBrowser Client=\"Regie5\", Device=\"" + header_safe(device_name) + "\", DeviceId=\"" +
+                    header_safe(device_id) + "\", Version=\"" + header_safe(version) + "\"";
+    if (!token.empty())
+        h += ", Token=\"" + header_safe(token) + "\"";
+    return h;
+}
+
+std::string quick_connect_enabled_path() { return "/QuickConnect/Enabled"; }
+std::string quick_connect_initiate_path() { return "/QuickConnect/Initiate"; }
+std::string quick_connect_auth_path() { return "/Users/AuthenticateWithQuickConnect"; }
+
+std::string quick_connect_poll_path(const std::string &secret)
+{
+    std::string hex;   /* the secret is hex; anything else is left out of the URL */
+    for (char c : secret)
+        if (std::isxdigit((unsigned char)c))
+            hex += c;
+    return "/QuickConnect/Connect?secret=" + hex;
+}
+
+std::string quick_connect_auth_body(const std::string &secret)
+{
+    cJSON *o = cJSON_CreateObject();
+    cJSON_AddStringToObject(o, "Secret", secret.c_str());
+    char *text = cJSON_PrintUnformatted(o);
+    std::string out = text ? text : "{}";
+    cJSON_free(text);
+    cJSON_Delete(o);
+    return out;
+}
+
+bool parse_quick_connect_enabled(const std::string &body, bool *on)
+{
+    json::Doc d(body);
+    if (!cJSON_IsBool(d.root()))
+        return false;
+    *on = cJSON_IsTrue(d.root());
+    return true;
+}
+
+bool parse_quick_connect(const std::string &body, model::QuickConnect *out)
+{
+    json::Doc d(body);
+    out->code = json::str(d.root(), "Code");
+    out->secret = json::str(d.root(), "Secret");
+    return !out->code.empty() && !out->secret.empty();
+}
+
+bool parse_quick_connect_poll(const std::string &body, bool *approved)
+{
+    json::Doc d(body);
+    if (!cJSON_IsObject(d.root()))
+        return false;
+    *approved = json::boolean(d.root(), "Authenticated");
+    return true;
+}
+
+bool parse_session(const std::string &body, model::JellyfinSession *out)
+{
+    json::Doc d(body);
+    out->token = json::str(d.root(), "AccessToken");
+    const cJSON *user = json::get(d.root(), "User");
+    out->user = json::str(user, "Name");
+    out->admin = json::boolean(json::get(user, "Policy"), "IsAdministrator");
+    return !out->token.empty();
 }
 
 } // namespace jellyfin

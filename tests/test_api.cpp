@@ -14,6 +14,7 @@
 #include "api/json.h"
 #include "api/mock_transport.h"
 #include "api/seerr.h"
+#include "core/config_web.h"
 #include "api/services.h"
 #include "core/diagnosis.h"
 #include "core/jelly5.h"
@@ -426,6 +427,67 @@ TEST(seerr_new_request)
     for (const auto &t : found.value)
         CHECK(t.title.find("Iris's") != std::string::npos);
     CHECK(made.ok() && made.http_status == 204 && made.value.id == 0);
+}
+
+TEST(jellyfin_quick_connect)
+{
+    CHECK_EQ(jellyfin::auth_client("abc123", "PS5", "0.5.0", ""),
+             std::string("MediaBrowser Client=\"Regie5\", Device=\"PS5\", DeviceId=\"abc123\", Version=\"0.5.0\""));
+    CHECK_EQ(jellyfin::auth_client("a\"b,c", "PS5", "0.5.0", "tok"),
+             std::string("MediaBrowser Client=\"Regie5\", Device=\"PS5\", DeviceId=\"abc\", Version=\"0.5.0\", Token=\"tok\""));
+    CHECK_EQ(jellyfin::quick_connect_poll_path("6f2c&x=1"), std::string("/QuickConnect/Connect?secret=6f2c1"));
+    CHECK_EQ(jellyfin::quick_connect_auth_body("abc"), std::string("{\"Secret\":\"abc\"}"));
+    bool on = false;
+    CHECK(jellyfin::parse_quick_connect_enabled(fixture("jellyfin/quickconnect_enabled.json"), &on) && on);
+    CHECK(!jellyfin::parse_quick_connect_enabled("{}", &on));
+    model::QuickConnect qc;
+    CHECK(jellyfin::parse_quick_connect(fixture("jellyfin/quickconnect_initiate.json"), &qc));
+    CHECK(qc.code.size() == 6 && !qc.secret.empty());
+    bool approved = false;
+    CHECK(jellyfin::parse_quick_connect_poll(fixture("jellyfin/quickconnect_connect.json"), &approved) && approved);
+    model::JellyfinSession s;
+    CHECK(jellyfin::parse_session(fixture("jellyfin/users_authenticatewithquickconnect.json"), &s));
+    CHECK(!s.token.empty() && s.user == "Alice" && !s.admin);
+}
+
+TEST(jellyfin_session_in_config)
+{
+    /* Written into "jellyfin", the rest kept; read back on, with its account. */
+    const std::string text = "{\"jellyfin\": {\"url\": \"http://j:8096\", \"apiKey\": \"\"}, \"cleanup\": {\"ignoreUsers\": [\"Bob\"]}}";
+    config::Config before;
+    CHECK(config::parse(text, &before) && !before.services[config::Jellyfin].enabled);   /* no key, no session */
+    std::string out;
+    CHECK(config::with_jellyfin_session(text, "t0k", "Alice", false, &out));
+    config::Config c;
+    CHECK(config::parse(out, &c));
+    const config::ServiceConfig &j = c.services[config::Jellyfin];
+    CHECK(j.enabled && j.session() && j.token == "t0k" && j.user == "Alice" && !j.admin);
+    CHECK(c.ignore_users.size() == 1);
+    CHECK(!config::with_jellyfin_session("{\"sonarr\": {}}", "t", "u", true, &out));   /* nowhere to put it */
+
+    /* The phone page never shows it, and another address drops it. */
+    CHECK(config_web::public_view(out).find("t0k") == std::string::npos);
+    std::string kept, moved, err;
+    CHECK(config_web::apply(out, "{\"services\": {\"jellyfin\": [{\"url\": \"http://j:8096\", \"from\": 0}]}}", &kept, &err));
+    CHECK(kept.find("t0k") != std::string::npos);
+    CHECK(config_web::apply(out, "{\"services\": {\"jellyfin\": [{\"url\": \"http://other:8096\", \"from\": 0}]}}", &moved, &err));
+    CHECK(moved.find("t0k") == std::string::npos);
+
+    /* Signed in so: 401 is the session that ended, 403 an account that is no administrator. */
+    for (const char *fail : {"jellyfin:unauthorized", "jellyfin:forbidden"}) {
+        api::MockTransport mock(REGIE5_FIXTURES, 0, fail);
+        http::Pool pool(mock, 1, nullptr);
+        config::Config mc = config::mock();
+        mc.services[config::Jellyfin].api_key.clear();
+        mc.services[config::Jellyfin].token = "t0k";
+        mc.services[config::Jellyfin].admin = false;
+        api::Services sv(mc, pool, "en");
+        api::Result<std::vector<model::Task>> tasks;
+        sv.tasks([&](api::Result<std::vector<model::Task>> r) { tasks = r; });
+        drain(pool);
+        CHECK(tasks.error == (std::string(fail).find("forbidden") != std::string::npos ? api::Error::NeedsAdmin
+                                                                                         : api::Error::Revoked));
+    }
 }
 
 /* ---- Jellyfin ---- */

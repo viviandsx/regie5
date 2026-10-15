@@ -874,7 +874,23 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
       faite** (mock seulement, accord de Vivian nécessaire).
       Piste future (option B) : « Demander pour… » un utilisateur de Seerr (en-tête
       `X-Api-User`, ses droits et quotas).
-- [ ] **4. Quick Connect pour Jellyfin** — conception à valider.
+- [x] **4. Quick Connect pour Jellyfin** (conception validée le 16 octobre 2026, option A) —
+      `ui/quick_connect` : Réglages › ligne Jellyfin › Options (M) › « Quick Connect… », et bouton
+      « Quick Connect » de la vérification de l'assistant quand Jellyfin a une adresse sans clé.
+      `/QuickConnect/Enabled` → `POST /QuickConnect/Initiate` → code à 6 chiffres sur la télé →
+      `/QuickConnect/Connect?secret=` toutes les 2 s → `POST /Users/AuthenticateWithQuickConnect`.
+      Session écrite dans `config.json` (`accessToken`, `userName`, `isAdmin` ;
+      `config::with_jellyfin_session`, écriture atomique ; rien en `--mock`), jamais montrée par la
+      page du téléphone, effacée si l'adresse change. En-tête `MediaBrowser Client="Regie5",
+      Device, DeviceId, Version, Token` ; identifiant d'appareil tiré une fois (`settings.json`
+      `"deviceId"`). Une clé d'API passe avant. 401 avec la session → « Session Jellyfin terminée :
+      reconnectez-vous » (`Error::Revoked`) ; 403 pour un compte non administrateur → « Demande un
+      compte administrateur Jellyfin » (`Error::NeedsAdmin`), dans chaque section concernée ; ligne
+      orange « Quick Connect · <nom> · non administrateur ». Emby : pas d'équivalent local (Emby
+      Connect passe par internet), rien ne change. `REGIE5_MOCK_QC=1`, fixtures
+      `jellyfin/quickconnect_*`, mock `forbidden`, tests, état `quickconnect` de
+      `capture-states.sh`. À voir sur la console : contre le Jellyfin de Vivian (lecture seule ; la
+      connexion ajoute Régie5 à ses appareils), avec `config-test.json`.
 - [x] **5. Communauté** — `docs/CONTRIBUTING.md` (anglais : bug, idée, traduction, code, règles
       du projet ; lié depuis le README) ; `docs/images/demo.gif` (600 px, ~3 Mo, 10 images/s :
       Accueil, Bibliothèque et fiche de Caminandes, Activité, Demandes, Jellyfin et diagnostic,
@@ -1079,3 +1095,4 @@ la Bibliothèque).
 | 16 oct. 2026 | Chantier 2 : espagnol et allemand (`es.cpp`, `de.cpp`), langue système PS5 testée, pilules et puces de charge qui s'adaptent à la longueur des textes. |
 | 16 oct. 2026 | Chantier 5 : `CONTRIBUTING.md`, GIF de démonstration (`capture-gif.sh`), brouillon Reddit. Conceptions des chantiers 3 et 4 proposées. |
 | 16 oct. 2026 | Chantier 3 : Demandes › Découvrir (recherche au clavier système, rangées, fiche, demande Seerr avec saisons / 4K / profil / dossier), fixtures et tests ; lien « Questions » (Discussions). |
+| 16 oct. 2026 | Chantier 4 : Quick Connect pour Jellyfin (assistant, Réglages, session dans `config.json`, compte non administrateur accepté avec des messages clairs), tests. |

@@ -114,6 +114,10 @@ int main(int argc, char **argv)
         const char *multi = std::getenv("REGIE5_MOCK_MULTI");
         const char *emby = std::getenv("REGIE5_MOCK_EMBY");
         cfg = config::mock(off ? off : "", multi && *multi && *multi != '0', emby && *emby && *emby != '0');
+        if (const char *qc = std::getenv("REGIE5_MOCK_QC"); qc && *qc && *qc != '0') {
+            cfg.services[config::Jellyfin].api_key.clear();   /* an address, no key: Quick Connect's case */
+            cfg.services[config::Jellyfin].enabled = false;
+        }
     } else {
         cfg_error = config::load(config_path, &cfg);
         if (cfg_error != config::LoadError::None)
@@ -262,6 +266,18 @@ int main(int argc, char **argv)
             ctx.settings.seen_version = ctx.version;
             ctx.save_settings();
         }
+    }
+    {   /* Who Régie5 is to Jellyfin (Quick Connect): an id made once, kept in settings.json */
+        if (ctx.settings.device_id.empty()) {
+            unsigned char raw[16];
+            if (platform::random_bytes(raw, sizeof raw)) {
+                static const char *const kHex = "0123456789abcdef";
+                for (unsigned char b : raw)
+                    ctx.settings.device_id += std::string(1, kHex[b >> 4]) + kHex[b & 15];
+                ctx.save_settings();
+            }
+        }
+        services.set_client(ctx.settings.device_id.empty() ? "regie5" : ctx.settings.device_id, "Regie5 (Linux)", ctx.version);
     }
     ui::Shell shell(ctx);
     input::Repeater repeater;

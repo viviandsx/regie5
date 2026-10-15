@@ -44,6 +44,9 @@ struct Settings {
     /* The version whose "What's new" was last seen (or skipped on a first
      * start): it opens by itself when the series changes (core/whats_new). */
     std::string seen_version;
+    /* This console's (or computer's) id for Jellyfin's devices, made once
+     * (Quick Connect): empty until then. */
+    std::string device_id;
 
     bool is_kept(config::Service s, const std::string &instance, int id) const;
 };

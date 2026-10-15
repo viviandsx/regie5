@@ -180,6 +180,8 @@ std::string error(api::Error e, int http_status)
     case api::Error::Redirected: return f(i18n::tr(i18n::ErrRedirected), http_status);
     case api::Error::Http: return f(i18n::tr(i18n::ErrHttp), http_status);
     case api::Error::Disabled: return i18n::tr(i18n::StatusDisabled);
+    case api::Error::Revoked: return i18n::tr(i18n::ErrRevoked);
+    case api::Error::NeedsAdmin: return i18n::tr(i18n::ErrNeedsAdmin);
     case api::Error::None: break;
     }
     return {};

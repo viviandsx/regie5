@@ -143,6 +143,18 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
             status = i18n::tr(row.service == config::Glances ? i18n::GlancesOptional : i18n::StatusNotConfigured);
             break;
         }
+        if (ctx.services && row.service == config::Jellyfin && !emby) {
+            const config::ServiceConfig &jc = ctx.services->config().at(row.service, row.instance);
+            if (st.state != model::ServiceStatus::Ok && !jc.url.empty() && jc.api_key.empty() && jc.token.empty())
+                status = i18n::tr(i18n::QcNoKey);   /* an address, no key: Quick Connect is the way */
+            if (st.state == model::ServiceStatus::Ok && jc.session()) {   /* signed in by Quick Connect */
+                detail = fmt::f(i18n::tr(i18n::QcRowUser), jc.user.c_str()) +
+                         (jc.admin ? "" : std::string(" · ") + i18n::tr(i18n::QcRowNotAdmin)) +
+                         (detail.empty() ? "" : " · " + detail);
+                if (!jc.admin)
+                    dot = kOrange;
+            }
+        }
         if (row.service == config::Jellyfin && both_media)   /* "jellyfin" and "emby" both on */
             detail = i18n::tr(i18n::MediaBoth);
         const float cy = ry + row_h / 2;

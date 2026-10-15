@@ -80,6 +80,7 @@ add_library(regie5_ui STATIC
     src/ui/phone_share.cpp
     src/ui/jelly5_link.cpp
     src/ui/poster.cpp
+    src/ui/quick_connect.cpp
     src/ui/script.cpp
     src/ui/seerr_titles.cpp
     src/ui/service_rows.cpp

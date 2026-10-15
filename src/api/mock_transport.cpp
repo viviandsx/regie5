@@ -298,6 +298,8 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
             r.fail = http::Response::Timeout;
         else if (kind == "unauthorized")
             r.status = 401;
+        else if (kind == "forbidden")
+            r.status = 403;
         else if (kind == "notfound")
             r.status = 404;
         else if (kind == "servererror")
@@ -307,7 +309,10 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
         return r;
     }
 
-    if (req.method != "GET") {   /* an action: logged, never carried out */
+    /* Quick Connect's two POSTs only sign in: answered from the fixtures. */
+    const bool sign_in = req.method == "POST" && (service == "jellyfin") &&
+                         (path == "/QuickConnect/Initiate" || path == "/Users/AuthenticateWithQuickConnect");
+    if (req.method != "GET" && !sign_in) {   /* an action: logged, never carried out */
         std::fprintf(stderr, "mock: %s %s (nothing done)\n", req.method.c_str(), path.c_str());
         r.status = 204;
         return r;
