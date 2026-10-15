@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Regie5 — captures every screen in every state, in French and English, for
 # review: data, loading, empty, errors, services off, no configuration, two
-# Radarr instances, versions too old, Emby in Jellyfin's place. The Ménage is turned on (REGIE5_MOCK_CLEANUP, in memory).
-# Runs on fixtures/ (--mock): no server is contacted, no action is carried out.
+# Radarr instances, versions too old, Emby in Jellyfin's place, the welcome
+# screens. The Ménage is turned on (REGIE5_MOCK_CLEANUP, in memory).
+# Runs on fixtures/ (--mock): no server is contacted, no action is carried out;
+# the welcome screens' phone step is the demo one (nothing listens).
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 #   scripts/capture-states.sh                 all states, both languages
@@ -17,7 +19,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD="${ROOT}/build/linux"
 OUT="${OUT:-${ROOT}/build/states}"
-ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby)
+ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby welcome)
 STATES=("$@")
 [[ ${#STATES[@]} -eq 0 ]] && STATES=("${ALL_STATES[@]}")
 
@@ -34,13 +36,19 @@ ALL=sonarr,radarr,seerr,jellyfin
 # sheets: alerts, the Options menus (a recent addition, a series' page, a
 # request, a cleanup candidate), a request, a session's diagnosis; opened,
 # captured, closed with circle. Mock only: nothing could be changed anyway.
+# A series' page has no Options menu with Emby (its titles are not in Emby's
+# fixtures): detail_options=0 leaves that shot out.
 tour() {
-    local p="$1" sheets="$2" cleanup="$3" s=""
+    local p="$1" sheets="$2" cleanup="$3" detail_options="${4:-1}" s=""
     s+="3 shot:${p}-home.ppm "
     [[ ${sheets} == 1 ]] && s+="up cross 1 shot:${p}-home-alerts.ppm circle 0.6 down "
     [[ ${sheets} == 1 ]] && s+="down options 1 shot:${p}-home-options.ppm circle 0.6 up "
     s+="r1 2.5 shot:${p}-library-series.ppm "
-    [[ ${sheets} == 1 ]] && s+="down cross 1.5 shot:${p}-library-detail.ppm options 1 shot:${p}-library-detail-options.ppm circle 0.6 circle 0.6 up "
+    if [[ ${sheets} == 1 ]]; then
+        s+="down cross 1.5 shot:${p}-library-detail.ppm "
+        [[ ${detail_options} == 1 ]] && s+="options 1 shot:${p}-library-detail-options.ppm circle 0.6 "
+        s+="circle 0.6 up "
+    fi
     s+="right cross 2.5 shot:${p}-library-movies.ppm "
     s+="right cross 1 down 2 shot:${p}-library-guide.ppm up right cross 2.5 shot:${p}-library-missing.ppm "
     # The Ménage, "seen by at least one" (no title is seen by everyone in the fixtures).
@@ -54,7 +62,21 @@ tour() {
     [[ ${sheets} == 1 ]] && s+="down cross 1.5 shot:${p}-requests-issue-thread.ppm circle 0.6 options 1 shot:${p}-requests-issue-options.ppm circle 0.6 "
     s+="r1 2.5 shot:${p}-jellyfin.ppm "
     [[ ${sheets} == 1 ]] && s+="cross 1 shot:${p}-jellyfin-diagnosis.ppm circle 0.6 "
-    s+="r1 3 shot:${p}-settings.ppm quit"
+    s+="r1 3 shot:${p}-settings.ppm "
+    # Settings' buttons: Test all, Cleanup, Display refresh, Setup (the welcome screens).
+    [[ ${sheets} == 1 ]] && s+="down down down down down right right right 1 shot:${p}-settings-buttons.ppm "
+    s+="quit"
+    echo "${s}"
+}
+
+# The welcome screens (REGIE5_WELCOME=1 over --mock): the first screen, the
+# media server, the phone (Jellyfin, then Emby: the texts follow the choice),
+# the check, then Start and the Home screen behind them.
+welcome_tour() {
+    local p="$1" s=""
+    s+="3 shot:${p}-1-welcome.ppm cross 1.5 shot:${p}-2-server.ppm "
+    s+="cross 1.5 shot:${p}-3-phone.ppm circle 1 right cross 1.5 shot:${p}-3-phone-emby.ppm "
+    s+="cross 3 shot:${p}-4-check.ppm cross 3 shot:${p}-5-home.ppm quit"
     echo "${s}"
 }
 
@@ -66,6 +88,8 @@ for state in "${STATES[@]}"; do
         args=(--mock --lang "${lang}")
         sheets=0
         cleanup=1
+        detail_options=1
+        script=""
         case "${state}" in
         data) sheets=1 ;;
         loading) env=(REGIE5_MOCK_DELAY_MS=600000 REGIE5_MOCK_CLEANUP=1) ;;
@@ -74,14 +98,22 @@ for state in "${STATES[@]}"; do
         unauthorized) env+=(REGIE5_MOCK_FAIL="sonarr:unauthorized,radarr:unauthorized,seerr:unauthorized,jellyfin:unauthorized") ;;
         mixed) env+=(REGIE5_MOCK_FAIL="radarr:unreachable,seerr:badjson" REGIE5_MOCK_EMPTY=sonarr) ;;
         off) env+=(REGIE5_MOCK_OFF="${ALL}") ;;
-        noconfig) args=(--config "${OUT}/no-such-config.json" --lang "${lang}") cleanup=0 ;;
+        noconfig)
+            # No config.json and "Later" already chosen: the screens without
+            # the welcome on top (the "welcome" state shows them). settings.json
+            # lives beside the missing config.json, in a folder of <OUT>.
+            mkdir -p "${OUT}/noconfig"
+            printf '{ "welcome": "later" }\n' > "${OUT:?}/noconfig/settings.json"
+            args=(--config "${OUT}/noconfig/config.json" --lang "${lang}") cleanup=0 ;;
         multi) env+=(REGIE5_MOCK_MULTI=1) ;;
         old) env+=(REGIE5_MOCK_OLD="sonarr,jellyfin") ;;
-        emby) env+=(REGIE5_MOCK_EMBY=1) sheets=1 ;;
+        emby) env+=(REGIE5_MOCK_EMBY=1) sheets=1 detail_options=0 ;;
+        welcome) env+=(REGIE5_WELCOME=1) script="$(welcome_tour "${p}")" ;;
         *) echo "unknown state: ${state} (${ALL_STATES[*]})" >&2; exit 2 ;;
         esac
         echo "${state} (${lang})"
-        env "${env[@]}" REGIE5_SCRIPT="$(tour "${p}" "${sheets}" "${cleanup}")" "${BUILD}/regie5" "${args[@]}" >/dev/null 2>&1
+        [[ -n ${script} ]] || script="$(tour "${p}" "${sheets}" "${cleanup}" "${detail_options}")"
+        env "${env[@]}" REGIE5_SCRIPT="${script}" "${BUILD}/regie5" "${args[@]}" >/dev/null 2>&1
         if command -v convert >/dev/null; then
             for f in "${p}"-*.ppm; do
                 convert "${f}" -resize 960x540 "${f%.ppm}.png" && rm "${f}"

@@ -24,7 +24,8 @@ trap 'rm -rf "${TMP:?}"' EXIT
 
 # Home (focus on the recently added row), the Library (a series' page, the
 # films, the guide, the cleanup), the queue, the requests and the issues,
-# Jellyfin, a playback diagnosis and the libraries, Settings.
+# Jellyfin, a playback diagnosis and the libraries, Settings; then the
+# welcome screens.
 s="4 down 2.5 shot:${TMP}/home.ppm up "
 s+="r1 2.5 down cross 2 shot:${TMP}/series-detail.ppm circle 0.6 up "
 s+="right cross 2.5 shot:${TMP}/movies.ppm "
@@ -38,6 +39,9 @@ s+="r1 3 shot:${TMP}/settings.ppm quit"
 
 # Settings' display line as for the screenshots' size (else this monitor's).
 REGIE5_MOCK_DELAY_MS=0 REGIE5_MOCK_CLEANUP=1 REGIE5_RES=1920x1080 REGIE5_DISPLAY=1920x1080@60/0 REGIE5_SCRIPT="${s}" \
+    "${BUILD}/regie5" --demo --lang en >/dev/null 2>&1
+# The welcome screens (REGIE5_WELCOME=1): the media server's choice.
+REGIE5_MOCK_DELAY_MS=0 REGIE5_WELCOME=1 REGIE5_RES=1920x1080 REGIE5_SCRIPT="3 cross 2 shot:${TMP}/welcome.ppm quit" \
     "${BUILD}/regie5" --demo --lang en >/dev/null 2>&1
 for f in "${TMP}"/*.ppm; do
     n="$(basename "${f}" .ppm)"
