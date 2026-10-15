@@ -503,6 +503,7 @@ enum S {
     HomeConfigure,
     PhoneEmbyNote,
     DisplayDesktop,
+    EmbyBeta,
     Count
 };
 

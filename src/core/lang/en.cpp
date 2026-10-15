@@ -499,6 +499,7 @@ const Text kTexts[] = {
     {HomeConfigure, "Set up"},
     {MediaBoth, "\"jellyfin\" and \"emby\" in config.json: only Jellyfin is used"},
     {DisplayDesktop, "here the monitor decides (a setting for the PS5)"},
+    {EmbyBeta, "beta"},
     {LibKindCollections, "Collections"},
     {LibCollections, "%d collections"},
     {LibCollectionsOne, "%d collection"},

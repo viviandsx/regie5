@@ -156,7 +156,11 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
                                                                                                        : config::MediaServer::Jellyfin)
                                                                    : config::service_name(row.service);
         const bool show_url = !c.url.empty() && !ctx.mock && !compact;
-        gfx::text(x0 + 86, ry + (show_url ? 40 : row_h / 2 + 11), name, {gfx::SemiBold, compact ? 28.f : 32.f}, kText);
+        const float name_w =
+            gfx::text(x0 + 86, ry + (show_url ? 40 : row_h / 2 + 11), name, {gfx::SemiBold, compact ? 28.f : 32.f}, kText);
+        if (row.service == config::Jellyfin && emby && !both_media)   /* Emby is in beta (0.4.0) */
+            draw_chip(x0 + 86 + name_w + 14, ry + (show_url ? 40 : row_h / 2 + 11) - 28, i18n::tr(i18n::EmbyBeta),
+                      kOrange, 1.f, 18);
         if (show_url)
             gfx::text(x0 + 86, ry + 70, address_of(c.url), {gfx::Regular, 22, kListW * 0.4f}, kText3);
         const uint32_t ink = st.state == model::ServiceStatus::Failed ? 0xffff8a80u
