@@ -8,12 +8,16 @@ namespace http {
 
 namespace {
 size_t s_worker_stack = 0;   /* 0: kWorkerStack */
+void (*s_thread_start)() = nullptr;
 }
 
 void set_worker_stack(size_t bytes) { s_worker_stack = bytes; }
+void set_thread_start(void (*hook)()) { s_thread_start = hook; }
 
 void *Pool::start(void *pool)
 {
+    if (s_thread_start)
+        s_thread_start();
     static_cast<Pool *>(pool)->run();
     return nullptr;
 }

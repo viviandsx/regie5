@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 16 octobre 2026 (nuit). 0.4.0 publiée. **0.5.0 prête à publier** (§ 2 decies) : essai `app-18` validé par Vivian (A à F), zip `build/ps5/release-0.5.0/upload/PPSA99520.zip` (`32fd8c09…`), notes, README, recette `docs/RECETTE-0.5.0.md`, patch `build/patches-18/`. Reste : la recette console puis la publication (« Pour publier la 0.5.0 »), pas sans l'accord de Vivian.**
+**Dernière mise à jour : 16 octobre 2026. 0.5.0 publiée. **Plantage du testeur Emby (issue #1) analysé et corrigé** (§ 2 undecies) : zip de test `build/ps5/emby-fix-1/upload/PPSA99520.zip` (`ef0d93d2…`), essai console `build/ps5/emby-fix-1/ESSAIS.txt`, réponses à l'issue dans `build/publish/issue-1-*.md`, patches `build/patches-19/`. Reste : essai console de Vivian, réponses postées, retour du testeur, puis la 0.5.1.**
 
 ---
 
@@ -27,9 +27,10 @@ pour ce qui a été fait après la phase 0).
 | 9. Version 0.3.1 | correctif : page du téléphone (rangée Jeux), 120 Hz expérimental | ✅ publiée le 14 octobre 2026 (§ 2 septies) |
 | 10. Version 0.3.2 | 120 Hz par défaut (Auto), dates des films ; Multimédia écarté | ✅ publiée le 14 octobre 2026 (§ 2 septies, « 0.3.2 ») |
 | 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
-| 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | 🧪 codée ; essai console `app-18` à faire (§ 2 decies) |
+| 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | ✅ publiée (§ 2 decies) |
+| 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | 🧪 codé, zip de test `emby-fix-1` (§ 2 undecies) |
 
-Tests : **65** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **72** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -931,8 +932,8 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
        (`REQUEST_4K`, `REQUEST_4K_MOVIE` / `_TV`) vérifiés, approbation automatique par
        `AUTO_APPROVE_4K` ou `MANAGE_REQUESTS` ; `serverId`, `profileId`, `rootFolder`,
        `seasons`, `tvdbId` aux mêmes noms que les nôtres. Pas de vraie demande faite.
-8. [ ] Vivian : recette `docs/RECETTE-0.5.0.md` sur la console.
-9. [ ] Vivian : commit « Régie5 0.5.0 » (`build/patches-18/`), push, tag `v0.5.0`, release
+8. [x] Vivian : recette `docs/RECETTE-0.5.0.md` sur la console.
+9. [x] Vivian : commit « Régie5 0.5.0 » (`build/patches-18/`), push, tag `v0.5.0`, release
        GitHub (pièce jointe `PPSA99520.zip`, pas « pre-release »), empreinte vérifiée.
 10. [ ] Catalogue : la PR automatique du lendemain (`sha256`, `icon_url` en
         `/v0.5.0/ps5/app/sce_sys/icon0.png`).
@@ -945,6 +946,97 @@ Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
       version au moment de poster). GitHub Discussions : conseillé, à activer par Vivian
       (Settings › General › Features › Discussions). La mention de l'IA reste au README
       (« How Régie5 was made », traductions) et à `TRANSLATING.md`.
+
+## 2 undecies. Plantage du testeur Emby (issue #1, 16 octobre 2026)
+
+Signalé par Vivian : @ihatefillingthisout (firmware 12.40, webkit, ShadowMount+, kstuff)
+configure Emby par la page du téléphone, « Enregistrer » (message vert), revient sur la
+console : plantage, puis **à chaque lancement**. Écran de la console : SIGSEGV, « page fault
+(user read data, page not present) », adresse `0x7eedf8000`, RIP `0x470750`, backtrace[0]
+`0x80000cc3f`. Patches : `build/patches-19/`.
+
+- [x] **Quel binaire** (app chargée à `0x400000`, donc décalage `0x70750` dans `llvm-pie.elf`) :
+      0.4.0 et 0.5.0 : `0x70750` tombe **au milieu d'une instruction** (`launch_app`, `libraries::measure`),
+      impossible. **emby-test-1** (zip de test posté sur l'issue le 14 octobre, version affichée
+      0.3.900) : pile sur `mov (%rbp,%r15,8),%r8` de `ps5::on_crash` (+0xf0), la lecture de la pile
+      par le **rapport de plantage**. C'est donc emby-test-1 qui tourne chez lui.
+- [x] **Ce qui plante** : un premier plantage (inconnu) appelle `on_crash`, qui écrit sa ligne
+      « CRASH » dans `app.log`, puis lit 1536 mots (12 Kio) au-dessus de son cadre pour chercher
+      des adresses de retour. Sur un thread dont la pile est peu remplie (un worker HTTP : la pile
+      se termine juste au-dessus), la lecture **dépasse le haut de la pile** (adresse alignée sur
+      une page, `0x7eedf8000`) : second SIGSEGV dans le gestionnaire, et c'est lui que la console
+      affiche. Défaut présent depuis la 0.2.0 (`system_ps5.cpp` jamais modifié), donc aussi en
+      0.4.0 et 0.5.0 ; il masque tout plantage d'un worker. Pas lié au firmware 12.40 (la taille
+      du tas accordée pourrait l'être : `app.prev.log` le dira, ligne « heap: N MiB granted »).
+- [x] **Cause probable du premier plantage** (à confirmer par `app.prev.log`) : **Emby ignore
+      `fillWidth`** (vérifié sur l'Emby de test : `fillWidth=200` → 500×750, l'original ;
+      `maxWidth=200` → 200×300). Sur un vrai Emby (affiches 2000×3000, fonds 4K), l'Accueil
+      décode les originaux dès le démarrage, trois à la fois (`images`, 3 workers), environ
+      7 octets par pixel le temps du décodage : le tas de la PS5 (128 à 256 Mio) s'épuise, un `new`
+      échoue (`ud2`, signal 4, vu en probe-4), sur un worker → le rapport plante comme ci-dessus.
+      L'Emby de test n'a que des images de 500×750 : rien vu à l'essai B. Ni la lecture de
+      `config.json` (relue sans souci sous Linux, avec AddressSanitizer), ni la page du téléphone.
+- [x] **Reproduit sous Linux** (dans le scratchpad, sans toucher `build/emby-test/`) : code
+      d'emby-test-1 (`git archive 062524b`) + petit proxy devant l'Emby de test qui sert des
+      images à la taille d'un vrai serveur quand on demande `fillWidth` + `LD_PRELOAD` qui mesure
+      le tas : pic **24 Mio** avec les images de test, **116 Mio** avec les vraies tailles (une
+      allocation de 31 Mio : un fond 4K décodé en entier), pour 5 titres. Avec la correction :
+      **23 Mio** ; et si un serveur ignorait aussi `maxWidth`, **64 Mio** (garde-fou de décodage).
+      Le plantage lui-même dépend du tas de la console (Linux n'a pas de tas fixe).
+- [x] **Corrections** (patch 01) : `jellyfin::emby_image_path` (`fillWidth` → `maxWidth`, Emby
+      seulement : rien ne change pour Jellyfin), appliqué dans `art::submit` ; `art::decode` lit
+      d'abord la taille (`stbi_info_from_memory`) : au-delà de 4096×2304 l'image n'est pas décodée
+      (jaquette dessinée), au-delà de 1920×1080 une seule à la fois.
+- [x] **Rapport de plantage borné** (patch 02) : `note_thread_stack()` (main, workers HTTP par
+      `http::set_thread_start`) note le haut de la pile de chaque thread dans une table fixe
+      (pas de `thread_local` : la chaîne PS5 l'émule par `__emutls_get_address`, qui peut
+      allouer) ; ailleurs la lecture s'arrête à la fin de la page de `sp`. Même borne pour
+      `abort()`.
+- [x] **Garde-fou de démarrage** (patch 02, `core/boot_guard`, testé) : un plantage (signal ou
+      `abort`) dans les 30 s qui suivent la mise en service d'une configuration (démarrage ou
+      relecture) écrit `/download0/regie5/crash-mark` (empreinte FNV-1a du texte). Au démarrage,
+      `/download0/regie5/boot-guard` compte les plantages de suite avec le même texte ; au 2ᵉ, le
+      lancement suivant **met le fichier de côté** : `LoadError::SetAside`, rien de chargé, ni
+      copié, ni modifié ; message orange dans l'Accueil (carte « Configurer ») et Réglages,
+      assistant ouvert même après « Plus tard » ou avec la copie, texte propre sur son premier
+      écran (FR/EN/ES/DE). Un texte nouveau (page du téléphone, FTP) est chargé ; « Tout tester »
+      / △ / « Vérifier » relisent le fichier, et une relecture qui tient 30 s efface la mise de
+      côté. La copie de `/download0` est jugée comme `config.json` quand elle le remplace.
+      Linux : mêmes fichiers à côté de `settings.json`, `REGIE5_TEST_CRASH=N` (plantage à N s)
+      pour l'essayer ; rien en `--mock`. **Vu sous Linux** : 2 plantages → 3ᵉ lancement sur
+      l'assistant avec le message, Accueil et Réglages, △ → Emby au vert, `boot-guard` effacé
+      après 30 s.
+- [x] **Contournement pour le testeur** (dans `issue-1-crash-reply.md`) : **ne rien supprimer**.
+      Supprimer `config.json` ne suffit pas (la copie de `/download0/regie5/config.json`, mise à
+      jour au lancement qui a planté, donc identique, prendrait le relais) ; supprimer la copie
+      est impossible en pratique (`/download0` n'existe que Régie5 ouvert, et il plante en
+      quelques secondes). Donc : garder `config.json` sur le PC, le remplacer sur la console par
+      un fichier `{}` (valide : la copie n'est plus lue, puis écrasée par `{}`), lancer **une**
+      fois, récupérer `app.prev.log` (le lancement d'avant, celui qui a planté) pendant que
+      Régie5 est ouvert.
+- [x] **Zip de test** `build/ps5/emby-fix-1/upload/PPSA99520.zip` (sha256
+      `ef0d93d2ab5fa0808e4f683d4db2fd280b52592ebb032e1125a31546bbd593e3`) : la 0.5.0 + patches
+      01-02, comme une release (pas de journal UDP), version affichée `0.5.1-test1`,
+      `contentVersion` 00.005.000 inchangé (une 0.5.1 passera au-dessus). `emby-test-2` : build
+      intermédiaire écarté (`thread_local` émulé), à ne pas poster.
+- [ ] Vivian : essai console `build/ps5/emby-fix-1/ESSAIS.txt` (A : non-régression Jellyfin ;
+      B facultatif : l'Emby de test). Le garde-fou ne se déclenche pas à la demande sur la console.
+- [ ] Poster `build/publish/issue-1-crash-reply.md` tout de suite ; puis
+      `issue-1-test-build.md` avec le zip joint (renommé `PPSA99520-0.5.1-test1.zip`), jamais
+      en release.
+- [ ] Retour du testeur : `config.json` (clés en `xxx`), version exacte, `app.prev.log` (ligne
+      « CRASH signal … », « ALLOCATION FAILED », « heap: N MiB granted »).
+- [ ] **0.5.1** (recommandée, sans attendre le testeur plus de deux jours comme pour la 0.4.0) :
+      tout utilisateur d'Emby avec de vraies images est probablement touché en 0.4.0 / 0.5.0
+      (plantage à chaque lancement, sortie seulement par FTP), et le garde-fou et le rapport
+      servent à tous. `contentVersion` `00.005.001`, `project(regie5 VERSION 0.5.1)` ; les
+      Nouveautés ne se rouvrent pas (même série 0.5). Pas de 0.4.1 (le catalogue ne propose que la
+      dernière).
+- À surveiller : le journal de l'essai B (`build/ps5/logs/console-20261015-153949.log`) finit
+      par un plantage d'`app-17` (« CRASH signal 11 … fault address 0xa8 », sans ligne de pile :
+      même défaut du rapport) juste avant le lancement de la 0.3.2 réinstallée. Probablement la
+      copie de la 0.3.2 par-dessus l'app encore ouverte ; à garder en tête si une adresse 0xa8
+      revient.
 
 ## 3. En attente
 
@@ -1144,3 +1236,4 @@ la Bibliothèque).
 | 16 oct. 2026 | Chantier 4 : Quick Connect pour Jellyfin (assistant, Réglages, session dans `config.json`, compte non administrateur accepté avec des messages clairs), tests. |
 | 16 oct. 2026 | Lignes des Nouveautés relues ; build de test `app-18` (demandes jamais envoyées, version affichée 0.5.0-test) et ses étapes. |
 | 16 oct. 2026 | `app-18` validé sur la console (A à F). 0.5.0 préparée : numéros, zip (`32fd8c09…`), notes, README (capture Découvrir), recette courte, brouillon Reddit ; `is4k` vérifié dans le code de Seerr ; emplacement de `/download0` vu par FTP (`RELEASING.md`). `build/patches-18/`. |
+| 16 oct. 2026 | Plantage du testeur Emby (issue #1) : RIP dans le rapport de plantage d'emby-test-1 (lecture au-delà de la pile), cause probable les images Emby en taille d'origine (`fillWidth` ignoré), reproduit sous Linux (pic de tas ×5). Corrigé : `maxWidth` pour Emby, décodage plafonné, rapport borné, garde-fou de démarrage (`core/boot_guard`). Zip de test `emby-fix-1`, réponses à l'issue, `build/patches-19/`. |

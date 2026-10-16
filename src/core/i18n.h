@@ -565,6 +565,8 @@ enum S {
     QcNoKey,
     QcRowUser,
     QcRowNotAdmin,
+    ConfigSetAside,
+    WelSetAside,
     Count
 };
 

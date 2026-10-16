@@ -20,6 +20,7 @@
 #include "api/http.h"
 #include "api/mock_transport.h"
 #include "core/app_settings.h"
+#include "core/boot_guard.h"
 #include "api/services.h"
 #include "core/config.h"
 #include "core/i18n.h"
@@ -509,6 +510,8 @@ int main()
 #endif
              *REGIE5_LOG_HOST ? REGIE5_LOG_HOST : "(none)", REGIE5_LOG_PORT);
     ps5::install_crash_handler();
+    ps5::note_thread_stack();
+    http::set_thread_start(&ps5::note_thread_stack);
     signal(SIGPIPE, SIG_IGN);   /* a server that closes early: an error, not the end of the title */
     ps5::start_udp_mirror(kLog);
     ps5::log("[regie5] step: heap");
@@ -617,6 +620,9 @@ int main()
                  (platform::now() - t0) * 1000.0);
     }
 
+    /* Never a crash at every start because of config.json (core/boot_guard):
+     * its files in the app's data folder. */
+    boot_guard::Guard guard(kProbe ? "" : "/download0/regie5");
 #ifdef REGIE5_PROBE
     /* The demo data, from the title's folder: no network at all. */
     step("demo data and threads");
@@ -637,15 +643,23 @@ int main()
     if (test_config)
         ps5::log("[regie5] config: TEST MODE (/app0/test-config): config-test.json, settings-test.json, no copy");
     config::Config cfg;
-    config::LoadError cfg_error = config::load(config_path, &cfg);
+    /* The file this start would load: config.json, or the app's copy when
+     * there is none. Set aside if the app crashed at start with it twice in
+     * a row: then neither loaded, nor copied, nor changed. */
+    const bool copy_stands_in = !test_config && !file_exists(config_path.c_str()) && file_exists(kConfigCopy);
+    std::string guard_why;
+    const bool set_aside = guard.start(copy_stands_in ? kConfigCopy : config_path, &guard_why);
+    ps5::log("[regie5] boot guard: %s", guard_why.c_str());
+    config::LoadError cfg_error = set_aside ? config::LoadError::SetAside : config::load(config_path, &cfg);
     ps5::log("[regie5] config %s: %s", config_path.c_str(),
-             cfg_error == config::LoadError::None      ? "read"
-             : cfg_error == config::LoadError::Missing ? "NOT FOUND (put config.json in /data/homebrew/" REGIE5_TITLE_ID "/)"
-                                                       : "unreadable or not JSON");
+             cfg_error == config::LoadError::None       ? "read"
+             : cfg_error == config::LoadError::SetAside ? "SET ASIDE (crashed twice in a row at start), not loaded"
+             : cfg_error == config::LoadError::Missing  ? "NOT FOUND (put config.json in /data/homebrew/" REGIE5_TITLE_ID "/)"
+                                                        : "unreadable or not JSON");
     /* The app keeps a copy of the last config.json it could read: an update
      * that replaced the title's folder whole does not lose the servers. */
     bool from_backup = false;
-    if (test_config) {
+    if (test_config || set_aside) {
         /* neither the copy nor its update */
     } else if (cfg_error == config::LoadError::None) {
         if (!same_file(config_path.c_str(), kConfigCopy))
@@ -655,6 +669,8 @@ int main()
         from_backup = true;
         ps5::log("[regie5] config: the app's copy is used (%s)", kConfigCopy);
     }
+    if (cfg_error == config::LoadError::None)
+        guard.arm(from_backup ? kConfigCopy : config_path, platform::now());
     if (cfg.emby())
         ps5::log("[regie5] config: the media server is Emby");
     const long launches_before = log_launches();
@@ -719,6 +735,7 @@ int main()
     if (from_backup)
         ctx.config_shown += std::string(" (") + i18n::tr(i18n::ConfigFromBackup) + ")";
     ctx.config_error = cfg_error;
+    ctx.on_config_read = [&guard, config_path] { guard.arm(config_path, platform::now()); };
     /* settings.json: /app0 is the title's folder, written from a PC; the
      * app's own choices go to its data folder, which it can write. */
     ctx.settings_path = test_config ? "/download0/regie5/settings-test.json" : kSettings;
@@ -800,6 +817,7 @@ int main()
         if (pool.pump() + images.pump() > 0)
             dirty = true;
         const double now = platform::now();
+        guard.tick(now);
         uint32_t went_down = 0, held = 0;
         pad.read(&went_down, &held);
         if (platform::text_entry_active())

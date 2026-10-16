@@ -561,6 +561,8 @@ const Text kTexts[] = {
     {QcNoKey, "No key: Quick Connect in Options"},
     {QcRowUser, "Quick Connect · %s"},
     {QcRowNotAdmin, "not an administrator"},
+    {ConfigSetAside, "config.json set aside: two crashes in a row at start with this file. Fix it, then “Test all”."},
+    {WelSetAside, "Régie5 closed twice in a row at start with your config.json. It is not loaded this time, and not changed: fix it from your phone (or over FTP)."},
     {LibKindCollections, "Collections"},
     {LibCollections, "%d collections"},
     {LibCollectionsOne, "%d collection"},

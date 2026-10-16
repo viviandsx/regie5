@@ -4,13 +4,19 @@
  */
 #include "platform/ps5/system_ps5.h"
 
+#include "core/boot_guard.h"
+
 #include <arpa/inet.h>
+#include <pthread.h>
+#include <fcntl.h>
 #include <netinet/in.h>
 #include <signal.h>
 #include <sys/socket.h>
 #include <sys/ucontext.h>
 #include <unistd.h>
 
+#include <algorithm>
+#include <atomic>
 #include <cstdarg>
 #include <cstddef>
 #include <cstdio>
@@ -58,12 +64,60 @@ void emergency(const char *format, ...)
     (void)!write(2, line, used);
 }
 
+/* How far up a crash report may read a stack: to the top noted for this
+ * thread (note_thread_stack: main, the HTTP workers), else to the end of the
+ * page sp is in. Reading past a stack's top faulted in the handler itself
+ * (emby-test-1 on a 12.40 console, 16 October 2026): the console then showed
+ * that second fault, and the crash itself was lost. A fixed table, not a
+ * thread_local: the toolchain emulates those (a lookup that may allocate). */
+struct StackTop {
+    std::atomic<pthread_t> thread{};
+    std::atomic<uintptr_t> top{0};
+};
+StackTop s_tops[32];
+std::atomic<int> s_top_count{0};
+
+uintptr_t stack_top_of_this_thread()
+{
+    const pthread_t self = pthread_self();
+    const int n = std::min(s_top_count.load(), (int)(sizeof s_tops / sizeof s_tops[0]));
+    for (int i = 0; i < n; i++)
+        if (pthread_equal(s_tops[i].thread.load(), self))
+            return s_tops[i].top.load();
+    return 0;
+}
+
+int words_to_read(const uintptr_t *sp, int most)
+{
+    const uintptr_t from = (uintptr_t)sp;
+    uintptr_t top = stack_top_of_this_thread();
+    if (top <= from || top - from > (1u << 20))   /* not noted, or another stack */
+        top = (from | 0xfff) + 1;
+    const uintptr_t words = (top - from) / sizeof(uintptr_t);
+    return words < (uintptr_t)most ? (int)words : most;
+}
+
+/* The boot guard's mark (core/boot_guard): a crash while config.json is
+ * new counts against it. Plain open() and write(). */
+void leave_crash_mark()
+{
+    const char *text = boot_guard::crash_mark_text();
+    if (!text[0] || !boot_guard::crash_mark_path()[0])
+        return;
+    const int fd = open(boot_guard::crash_mark_path(), O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd >= 0) {
+        (void)!write(fd, text, std::strlen(text));
+        close(fd);
+    }
+}
+
 /* What looks like return addresses on the stack, from sp up. */
 void report_stack(const uintptr_t *sp)
 {
     const uintptr_t anchor = (uintptr_t)&ps5::log;
     int found = 0;
-    for (int i = 0; i < 512 && found < 24; i++) {
+    const int words = words_to_read(sp, 512);
+    for (int i = 0; i < words && found < 24; i++) {
         const uintptr_t v = sp[i];
         if (v > anchor - (64u << 20) && v < anchor + (64u << 20)) {
             emergency("[regie5] stack +%d 0x%lx", i * 8, (unsigned long)v);
@@ -104,12 +158,14 @@ void on_crash(int sig, siginfo_t *info, void *context)
         send_raw(line, (size_t)n);
         (void)!write(2, line, (size_t)n);
     }
+    leave_crash_mark();
     /* Words that point near the code, from this handler's frame upwards: the
      * signal frame (with the real rip, wherever the console keeps it), then
      * the stack of the code that crashed, so its likely return addresses. */
     const uintptr_t *sp = static_cast<const uintptr_t *>(__builtin_frame_address(0));
     int found = 0;
-    for (int i = 0; i < 1536 && found < 32; i++) {
+    const int words = words_to_read(sp, 1536);
+    for (int i = 0; i < words && found < 32; i++) {
         const uintptr_t v = sp[i];
         if (v > main_at - (64u << 20) && v < main_at + (64u << 20)) {
             n = std::snprintf(line, sizeof line, "[regie5] CRASH stack +%d 0x%lx\n", i * 8, (unsigned long)v);
@@ -137,6 +193,15 @@ void log_init(const char *host, int port)
     if (inet_pton(AF_INET, host, &s_addr.sin_addr) != 1)
         return;
     s_fd = socket(AF_INET, SOCK_DGRAM, 0);
+}
+
+void note_thread_stack()
+{
+    const int i = s_top_count.fetch_add(1);
+    if (i >= (int)(sizeof s_tops / sizeof s_tops[0]))
+        return;   /* a thread past the table: its report stops at the page's end */
+    s_tops[i].top.store((uintptr_t)__builtin_frame_address(0));
+    s_tops[i].thread.store(pthread_self());
 }
 
 int log_socket() { return s_fd; }
@@ -263,6 +328,7 @@ void regie5_alloc_failed(size_t asked, size_t live_bytes, int system)
 {
     ps5::emergency("[regie5] ABORT called from 0x%lx (ps5::log at 0x%lx)",
                    (unsigned long)(uintptr_t)__builtin_return_address(0), (unsigned long)(uintptr_t)&ps5::log);
+    ps5::leave_crash_mark();
     ps5::report_stack(static_cast<const uintptr_t *>(__builtin_frame_address(0)));
     ps5::end_title();
 }

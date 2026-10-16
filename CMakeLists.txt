@@ -36,6 +36,7 @@ add_library(regie5_data STATIC
     third_party/cjson/cJSON.c
     src/core/app_settings.cpp
     src/core/badges.cpp
+    src/core/boot_guard.cpp
     src/core/cleanup.cpp
     src/core/config.cpp
     src/core/config_page.cpp

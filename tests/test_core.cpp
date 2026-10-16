@@ -9,6 +9,7 @@
 #include "api/json.h"
 #include "core/app_settings.h"
 #include "core/badges.h"
+#include "core/boot_guard.h"
 #include "core/cleanup.h"
 #include "core/libraries.h"
 #include "core/config.h"
@@ -568,4 +569,87 @@ TEST(whats_new_when_to_show)
     CHECK(app_settings::to_json(a).find("seenVersion") == std::string::npos);
     a.seen_version = "0.5.0";
     CHECK(app_settings::from_json(app_settings::to_json(a), &b) && b.seen_version == "0.5.0");
+}
+
+TEST(boot_guard_sets_a_crashing_config_aside)
+{
+    using namespace boot_guard;
+    const std::string a = fingerprint("{\"emby\": {}}"), b = fingerprint("{}");
+    CHECK(a.size() == 16 && a != b && fingerprint("") == "");
+    CHECK_EQ(parse_state(format_state({2, a})).strikes, 2);
+    CHECK(parse_state("2 nothex").strikes == 0 && parse_state("").strikes == 0);
+
+    State s;
+    s = next(s, a, a);                       /* a crash at start with a */
+    CHECK(s.strikes == 1 && !set_aside(s, a));
+    s = next(s, a, a);                       /* again: the next start leaves it aside */
+    CHECK(s.strikes == 2 && set_aside(s, a));
+    CHECK(set_aside(next(s, "", a), a));     /* set aside, no crash since: stays so */
+    CHECK(!set_aside(next(s, "", b), b));    /* a new file (the phone page): loaded */
+    CHECK(next(State{1, a}, "", a).strikes == 0);   /* a start that held: forgotten */
+    CHECK(next(State{1, a}, b, a).strikes == 0);    /* a crash with another file */
+    CHECK(next(State{1, b}, a, a).strikes == 1);    /* strikes are per file */
+    CHECK(!set_aside(State{5, a}, ""));             /* no file: nothing to set aside */
+
+    /* The files: two crashes while the file was new, then set aside. */
+    char dir[] = "/tmp/regie5-guard-XXXXXX";
+    CHECK(mkdtemp(dir) != nullptr);
+    const std::string d = dir, cfg = d + "/config.json", mark = d + "/crash-mark";
+    if (FILE *f = std::fopen(cfg.c_str(), "w")) {
+        std::fputs("{\"emby\": {\"url\": \"http://e:8096\"}}", f);
+        std::fclose(f);
+    }
+    auto crash = [&] {   /* what the crash handler writes */
+        if (FILE *f = std::fopen(mark.c_str(), "w")) {
+            std::fputs(crash_mark_text(), f);
+            std::fclose(f);
+        }
+    };
+    std::string why;
+    for (int launch = 0; launch < kStrikes; launch++) {
+        Guard g(d);
+        CHECK(!g.start(cfg, &why));
+        g.arm(cfg, 0);
+        CHECK(crash_mark_text()[0] != '\0');
+        crash();
+    }
+    {
+        Guard g(d);
+        CHECK(g.start(cfg, &why));
+        CHECK(why.find("set aside") == 0);
+        CHECK(access(mark.c_str(), F_OK) != 0);   /* the mark is read once */
+        g.arm(cfg, 100);                          /* "Test all" reads it again... */
+        g.tick(100 + kSettle - 1);
+        CHECK(crash_mark_text()[0] != '\0');
+        g.tick(100 + kSettle);                    /* ...and it holds: cleared */
+        CHECK(crash_mark_text()[0] == '\0');
+    }
+    {
+        Guard g(d);
+        CHECK(!g.start(cfg, &why));
+        g.arm(cfg, 0);
+        g.tick(kSettle);
+        crash();   /* a late crash leaves an empty mark: not counted */
+    }
+    {
+        Guard g(d);
+        CHECK(!g.start(cfg, &why));
+        CHECK(why == "no crash at the last start");
+    }
+    Guard off("");   /* --mock: no files */
+    CHECK(!off.start(cfg, &why));
+    off.arm(cfg, 0);
+    CHECK(crash_mark_text()[0] == '\0');
+    unlink(cfg.c_str());
+    unlink(mark.c_str());
+    unlink((d + "/boot-guard").c_str());
+    rmdir(dir);
+
+    welcome::Start w;
+    w.error = config::LoadError::SetAside;
+    w.later = true;
+    w.from_backup = true;
+    CHECK(welcome::should_show(w, config::Config{}));   /* the file to fix: the welcome screens */
+    w.mock = true;
+    CHECK(!welcome::should_show(w, config::Config{}));
 }

@@ -518,7 +518,10 @@ void HomeScreen::draw_unconfigured(float x0, float dt, bool *animating)
     const float w = gfx::W - 2 * kPad;
     const gfx::Rect card{x0, 200, w, 290};
     glass_panel(card, 36, 1.f, true);
-    gfx::text(x0 + 64, card.y + 110, i18n::tr(i18n::HomeNotConfigured), {gfx::SemiBold, 40, w - 128}, kText);
+    if (m_ctx.config_error == config::LoadError::SetAside)   /* core/boot_guard: why nothing is linked */
+        gfx::text(x0 + 64, card.y + 76, i18n::tr(i18n::ConfigSetAside), {gfx::SemiBold, 30, w - 128, 2, 40}, kOrange);
+    else
+        gfx::text(x0 + 64, card.y + 110, i18n::tr(i18n::HomeNotConfigured), {gfx::SemiBold, 40, w - 128}, kText);
     const char *label = i18n::tr(i18n::HomeConfigure);
     const gfx::TextStyle style{gfx::Bold, 30};
     const float bw = gfx::text_width(label, style) + 96;

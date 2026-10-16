@@ -33,6 +33,7 @@ const char *config_error_text(config::LoadError e)
     case config::LoadError::Missing: return i18n::tr(i18n::ConfigMissing);
     case config::LoadError::Unreadable: return i18n::tr(i18n::ConfigUnreadable);
     case config::LoadError::BadJson: return i18n::tr(i18n::ConfigBadJson);
+    case config::LoadError::SetAside: return i18n::tr(i18n::ConfigSetAside);
     case config::LoadError::None: break;
     }
     return "";

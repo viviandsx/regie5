@@ -560,6 +560,8 @@ const Text kTexts[] = {
     {QcNoKey, "Sin clave: Quick Connect en Opciones"},
     {QcRowUser, "Quick Connect · %s"},
     {QcRowNotAdmin, "no es administrador"},
+    {ConfigSetAside, "config.json apartado: dos cierres seguidos al arrancar con este archivo. Corrígelo y pulsa «Probar todo»."},
+    {WelSetAside, "Régie5 se cerró dos veces seguidas al arrancar con tu config.json. Esta vez no se carga, y no se modifica: corrígelo desde el móvil (o por FTP)."},
     {LibKindCollections, "Colecciones"},
     {LibCollections, "%d colecciones"},
     {LibCollectionsOne, "%d colección"},

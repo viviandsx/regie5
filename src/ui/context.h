@@ -14,6 +14,7 @@
 #include "ui/jelly5_link.h"
 #include "ui/tabbar.h"
 
+#include <functional>
 #include <string>
 
 namespace ui {
@@ -33,6 +34,9 @@ struct Context {
     /* Goes up each time a reread config.json changes a service: the shell
      * then starts the other screens afresh. */
     unsigned config_gen = 0;
+    /* A reread config.json is in use from now (the platform's boot guard
+     * counts a crash in the next seconds against it). Optional. */
+    std::function<void()> on_config_read;
     bool mock = false;
     api::Services *services = nullptr;
     /* Health alerts seen come and go during this session (the journal's

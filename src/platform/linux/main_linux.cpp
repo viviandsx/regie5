@@ -19,9 +19,12 @@
  *                    square l1 r1 l2 r2 options), a number (seconds to wait) and
  *                    shot:<file.ppm> (the next frame, saved). quit ends the app.
  *                    e.g. REGIE5_SCRIPT="1 right right 0.8 shot:/tmp/a.ppm quit"
+ *   REGIE5_TEST_CRASH=N  a crash (SIGSEGV) N seconds after the start, to see
+ *                    the boot guard set config.json aside (core/boot_guard)
  */
 #include "api/mock_transport.h"
 #include "api/services.h"
+#include "core/boot_guard.h"
 #include "core/config.h"
 #include "core/i18n.h"
 #include "core/welcome.h"
@@ -46,11 +49,15 @@
 #include <SDL.h>
 
 #include <algorithm>
+#include <csignal>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <ctime>
 #include <memory>
+#include <fcntl.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 namespace {
 
@@ -63,6 +70,31 @@ void fit_drawable()
     int w = 0, h = 0;
     SDL_GL_GetDrawableSize(s_window, &w, &h);
     gfx_gl::resize(w, h);
+}
+
+/* A crash while a configuration is new leaves the boot guard's mark, then
+ * the system's handling goes on (SA_RESETHAND). */
+void on_crash(int sig)
+{
+    const char *text = boot_guard::crash_mark_text();
+    if (text[0] && boot_guard::crash_mark_path()[0]) {
+        const int fd = open(boot_guard::crash_mark_path(), O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        if (fd >= 0) {
+            (void)!write(fd, text, strlen(text));
+            close(fd);
+        }
+    }
+    raise(sig);
+}
+
+void install_crash_mark()
+{
+    struct sigaction sa {};
+    sa.sa_handler = on_crash;
+    sa.sa_flags = SA_RESETHAND;
+    sigemptyset(&sa.sa_mask);
+    for (int sig : {SIGSEGV, SIGBUS, SIGILL, SIGFPE, SIGABRT})
+        sigaction(sig, &sa, nullptr);
 }
 
 } // namespace
@@ -118,11 +150,30 @@ int main(int argc, char **argv)
             cfg.services[config::Jellyfin].api_key.clear();   /* an address, no key: Quick Connect's case */
             cfg.services[config::Jellyfin].enabled = false;
         }
-    } else {
-        cfg_error = config::load(config_path, &cfg);
+    }
+    /* Never a crash at every start because of config.json (core/boot_guard):
+     * its files beside settings.json; nothing in --mock. */
+    boot_guard::Guard guard(opt.mock ? std::string() : [&] {
+        const std::string beside = app_settings::path_beside(config_path);
+        const size_t slash = beside.find_last_of('/');
+        return slash == std::string::npos ? std::string(".") : beside.substr(0, slash);
+    }());
+    if (!opt.mock) {
+        install_crash_mark();
+        std::string why;
+        if (guard.start(config_path, &why)) {
+            cfg_error = config::LoadError::SetAside;
+        } else {
+            cfg_error = config::load(config_path, &cfg);
+            if (cfg_error == config::LoadError::None)
+                guard.arm(config_path, platform::now());
+        }
+        std::fprintf(stderr, "regie5: boot guard: %s\n", why.c_str());
         if (cfg_error != config::LoadError::None)
             std::fprintf(stderr, "regie5: %s: %s\n", config_path.c_str(),
-                         cfg_error == config::LoadError::Missing ? "not found" : "cannot be read or is not JSON");
+                         cfg_error == config::LoadError::Missing    ? "not found"
+                         : cfg_error == config::LoadError::SetAside ? "set aside, not loaded"
+                                                                    : "cannot be read or is not JSON");
     }
     i18n::set_emby(cfg.emby());
 
@@ -235,6 +286,7 @@ int main(int argc, char **argv)
     ctx.config_error = cfg_error;
     ctx.mock = opt.mock;
     ctx.services = &services;
+    ctx.on_config_read = [&guard, &config_path] { guard.arm(config_path, platform::now()); };
     if (!opt.mock) {   /* --mock keeps its settings in memory: nothing of the user's is touched */
         ctx.settings_path = app_settings::path_beside(config_path);
         if (!app_settings::load(ctx.settings_path, &ctx.settings))
@@ -296,6 +348,8 @@ int main(int argc, char **argv)
         std::fprintf(stderr, "display: %dx%d at %d Hz\n", platform::display_mode().width,
                      platform::display_mode().height, frame_hz);
     double last = platform::now();
+    const char *test_crash = std::getenv("REGIE5_TEST_CRASH");
+    const double crash_at = test_crash && *test_crash ? last + std::atof(test_crash) : 0;
     time_t last_minute = time(nullptr) / 60;
     uint64_t frames = 0;
     while (!quit) {
@@ -332,6 +386,9 @@ int main(int argc, char **argv)
             dirty = true;   /* answers arrived */
         phase_done(perf::Pump);
         const double now = platform::now();
+        guard.tick(now);
+        if (crash_at > 0 && now >= crash_at)
+            raise(SIGSEGV);
         const uint32_t scripted = script.step(now, &quit);
         if (script.wants_frame())
             dirty = true;

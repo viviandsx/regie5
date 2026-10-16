@@ -19,6 +19,8 @@ bool should_show(const Start &s, const config::Config &cfg)
 {
     if (s.forced)
         return true;
+    if (s.error == config::LoadError::SetAside && !s.mock)
+        return true;   /* the file to fix: whatever was chosen before */
     if (s.mock || s.later || s.from_backup)
         return false;
     return s.error != config::LoadError::None || !configured(cfg);

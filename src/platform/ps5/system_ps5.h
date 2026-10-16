@@ -33,6 +33,9 @@ size_t heap_size();
  * the handler's own frame upwards, whatever the console's ucontext layout), then the
  * system's own crash handling runs as before. */
 void install_crash_handler();
+/* First thing in a thread (main, the HTTP workers): how far up its stack a
+ * crash report may read. Elsewhere it stops at the end of the page. */
+[[gnu::noinline]] void note_thread_stack();
 
 /* Which launch functions the console binds (Open in Jelly5), as a log line. */
 void log_launch_support();

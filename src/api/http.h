@@ -27,6 +27,9 @@ constexpr size_t kWorkerStack = 512u << 10;
 /* Development: another size for the workers to come (Linux:
  * REGIE5_WORKER_STACK_KIB, to show the work fits in the PS5's 64 KiB). */
 void set_worker_stack(size_t bytes);
+/* Called first thing in each worker thread (the PS5 notes how far up its
+ * stack a crash report may read). Set before the pools are made. */
+void set_thread_start(void (*hook)());
 
 struct Request {
     std::string method = "GET";

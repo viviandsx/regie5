@@ -26,7 +26,8 @@ struct Start {
 
 /* Whether they open at start: forced, or a first start (no config.json
  * Régie5 can use: missing, empty, not JSON, or nothing on), unless "Later"
- * was chosen, the app's copy stood in, or the data is the example's. */
+ * was chosen, the app's copy stood in, or the data is the example's; and
+ * always when config.json was set aside (core/boot_guard). */
 bool should_show(const Start &s, const config::Config &cfg);
 
 } // namespace welcome

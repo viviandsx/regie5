@@ -29,6 +29,8 @@ bool reload_config(Context &ctx)
     if (!changed && !was_missing)
         return false;
     ctx.services->reconfigure(next);
+    if (ctx.on_config_read)
+        ctx.on_config_read();
     i18n::set_emby(next.emby());
     art::forget(changed);
     ctx.config_gen++;

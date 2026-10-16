@@ -76,7 +76,9 @@ struct Config {
 /* "Jellyfin" or "Emby": the name the interface gives the media server. */
 const char *media_name(MediaServer m);
 
-enum class LoadError { None, Missing, Unreadable, BadJson };
+/* SetAside: readable, but not loaded at this start (core/boot_guard: the
+ * app crashed at start with it, twice in a row). */
+enum class LoadError { None, Missing, Unreadable, BadJson, SetAside };
 
 /* Parses config.json's text. A service that is absent, or has no url or key,
  * is off. Returns false on malformed JSON. */

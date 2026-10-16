@@ -189,7 +189,10 @@ void WelcomeFlow::draw(double now, float dt, bool *animating)
         y += 110;
         gfx::text(x, y, i18n::tr(i18n::WelTitle), {gfx::SemiBold, 44, w}, kText);
         y += 70;
-        gfx::text(x, y, i18n::tr(i18n::WelIntro), {gfx::Regular, 32, w * 0.8f, 3, 46}, kText2);
+        if (m_ctx.config_error == config::LoadError::SetAside)   /* core/boot_guard: the file to fix */
+            gfx::text(x, y, i18n::tr(i18n::WelSetAside), {gfx::Regular, 32, w * 0.8f, 4, 46}, kOrange);
+        else
+            gfx::text(x, y, i18n::tr(i18n::WelIntro), {gfx::Regular, 32, w * 0.8f, 3, 46}, kText2);
         break;
     }
     case Step::Server:
