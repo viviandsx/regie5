@@ -196,6 +196,15 @@ std::string image_path(const std::string &item_id, const char *type, int width, 
     return p;
 }
 
+std::string emby_image_path(const std::string &path)
+{
+    std::string p = path;
+    const size_t at = p.find("?fillWidth=");
+    if (at != std::string::npos)
+        p.replace(at + 1, 9, "maxWidth");
+    return p;
+}
+
 bool parse_info(const std::string &body, std::string *version)
 {
     json::Doc d(body);

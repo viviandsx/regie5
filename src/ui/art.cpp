@@ -4,6 +4,7 @@
  */
 #include "ui/art.h"
 
+#include "api/jellyfin.h"
 #include "core/perf.h"
 #include "platform/platform.h"
 #include "ui/poster.h"
@@ -18,6 +19,7 @@
 #include <algorithm>
 #include <cmath>
 #include <memory>
+#include <mutex>
 #include <unordered_map>
 #include <vector>
 
@@ -31,6 +33,13 @@ constexpr int kUploadsPerFrame = 3;
  * A picture asked for and then scrolled past is dropped before it is fetched. */
 constexpr int kInFlight = 8;
 constexpr uint64_t kStaleFrames = 20;
+/* Decoding holds about 7 bytes a pixel of the heap for a while (the picture
+ * and the decoder's planes), and a PS5 heap is 128 to 256 MiB: a picture past
+ * kMaxPixels is not decoded (a drawn cover stands in), and those past
+ * kBigPixels go one at a time, never three at once on the image workers. */
+constexpr long long kMaxPixels = 4096LL * 2304;   /* a little over 4K UHD */
+constexpr long long kBigPixels = 1920LL * 1080;
+std::mutex s_big;
 
 struct Pixels {
     std::vector<uint8_t> rgba;   /* premultiplied */
@@ -128,6 +137,12 @@ void blur(Pixels &p, int radius)
 std::shared_ptr<Pixels> decode(const std::string &body, int mw, int mh, int blur_r)
 {
     int sw = 0, sh = 0, comp = 0;
+    if (!stbi_info_from_memory((const stbi_uc *)body.data(), (int)body.size(), &sw, &sh, &comp) ||
+        (long long)sw * sh > kMaxPixels)
+        return nullptr;
+    std::unique_lock<std::mutex> one_big(s_big, std::defer_lock);
+    if ((long long)sw * sh > kBigPixels)
+        one_big.lock();
     uint8_t *src = stbi_load_from_memory((const stbi_uc *)body.data(), (int)body.size(), &sw, &sh, &comp, 4);
     if (!src)
         return nullptr;
@@ -145,7 +160,8 @@ void submit(const std::string &key, Entry &e)
     e.state = Entry::Loading;
     s_loading++;
     http::Request req;
-    req.url = s_services->url(e.ref.service, e.ref.path, e.ref.instance);
+    const bool emby = e.ref.service == config::Jellyfin && s_services->config().emby();
+    req.url = s_services->url(e.ref.service, emby ? jellyfin::emby_image_path(e.ref.path) : e.ref.path, e.ref.instance);
     const std::string auth = s_services->auth_header(e.ref.service, e.ref.instance);
     if (!auth.empty())
         req.headers.push_back(auth);

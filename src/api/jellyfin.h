@@ -31,6 +31,9 @@ std::string stop_path(const std::string &session_id);
 std::string library_refresh_path();
 /* An item's image, at a width (Primary, Backdrop, Thumb). */
 std::string image_path(const std::string &item_id, const char *type, int width, const std::string &tag = {});
+/* The same path for Emby, which ignores fillWidth and would send the original
+ * (2000×3000 posters, 4K backdrops): maxWidth instead. */
+std::string emby_image_path(const std::string &path);
 
 /* GET: the activity log since a time, entries with a user only. */
 std::string activity_path(time_t since, int limit = 300);

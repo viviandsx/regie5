@@ -498,6 +498,10 @@ TEST(jellyfin_auth_and_paths)
     CHECK_EQ(jellyfin::stop_path("abc"), std::string("/Sessions/abc/Playing/Stop"));
     CHECK_EQ(jellyfin::library_refresh_path(), std::string("/Library/Refresh"));
     CHECK(jellyfin::image_path("id1", "Primary", 400).find("/Items/id1/Images/Primary?fillWidth=400") == 0);
+    /* Emby ignores fillWidth (the original would come, 4K backdrops and all): maxWidth. */
+    CHECK_EQ(jellyfin::emby_image_path(jellyfin::image_path("id1", "Backdrop", 480, "t")),
+             std::string("/Items/id1/Images/Backdrop?maxWidth=480&quality=90&format=Jpg&tag=t"));
+    CHECK_EQ(jellyfin::emby_image_path("/Items/x/Images/Primary"), std::string("/Items/x/Images/Primary"));
     std::string v;
     CHECK(jellyfin::parse_info(fixture("jellyfin/system_info.json"), &v));
     CHECK(v.rfind("12.", 0) == 0);
