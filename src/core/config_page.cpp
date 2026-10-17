@@ -73,8 +73,13 @@ function instance(key, multi, data, from){
   if (g) {
     box.appendChild(field(T.user, el("input", {type: "text", value: data.username || "", className: "user", autocapitalize: "off"})));
     box.appendChild(field(T.pass, el("input", {type: "password", className: "secret", placeholder: data.hasPassword ? T.passKept : T.optional})));
-  } else if (key === "plex") {   /* a token pasted by hand: the fallback */
+  } else if (key === "plex") {   /* signed in from here (plex.tv, the phone's internet); a pasted token: the fallback */
     if (data.userName) box.appendChild(el("p", {className: "hint", textContent: data.userName + (data.owner === false ? " · " + T.plexNotOwner : "")}));
+    const status = el("p", {className: "hint"});
+    const signIn = el("button", {type: "button", textContent: T.plexSignIn});
+    signIn.onclick = () => plexSignIn(box, url, status, signIn);
+    box.appendChild(el("div", {className: "row"}, [signIn]));
+    box.appendChild(status);
     const tok = el("input", {type: "text", className: "secret", autocapitalize: "off", autocomplete: "off", spellcheck: false, placeholder: data.hasKey ? T.keyKept : ""});
     box.appendChild(field(T.plexToken, tok));
     box.appendChild(el("p", {className: "hint", textContent: T.plexTokenHint}));
@@ -104,6 +109,93 @@ function instance(key, multi, data, from){
   showSec();
   box.appendChild(secRow);
   return box;
+}
+/* Plex: the PIN signs in on plex.tv, from this phone (it reaches the
+ * internet; the console may not). Only the server's own token goes to the
+ * console, never the account's. */
+function plexClientId(){
+  let id = "";
+  try { id = localStorage.getItem("regie5-plex-client") || ""; } catch (e) {}
+  if (!id) {
+    id = "regie5-" + Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, "0")).join("");
+    try { localStorage.setItem("regie5-plex-client", id); } catch (e) {}
+  }
+  return id;
+}
+function plexHeaders(token){
+  const h = {"Accept": "application/json", "X-Plex-Product": "Regie5", "X-Plex-Client-Identifier": plexClientId()};
+  if (token) h["X-Plex-Token"] = token;
+  return h;
+}
+const wait = ms => new Promise(r => setTimeout(r, ms));
+/* The saved address among a server's ways in (host and port). */
+function sameServer(address, server){
+  let u;
+  try { u = new URL(address); } catch (e) { return false; }
+  const port = u.port || (u.protocol === "https:" ? "443" : "80");
+  return (server.connections || []).some(c => {
+    try {
+      const v = new URL(c.uri);
+      return (v.hostname === u.hostname || c.address === u.hostname) && String(c.port || v.port) === port;
+    } catch (e) { return c.address === u.hostname && String(c.port) === port; }
+  });
+}
+async function plexSignIn(box, urlInput, status, button){
+  const address = urlInput.value.trim();
+  if (!/^https?:\/\//i.test(address)) { status.textContent = T.plexNoUrl; return; }
+  const tab = window.open("about:blank", "_blank");   /* opened on the tap itself: no blocker in the way */
+  button.disabled = true;
+  try {
+    let r = await fetch("https://plex.tv/api/v2/pins?strong=true", {method: "POST", headers: plexHeaders()});
+    if (!r.ok) throw new Error("plex.tv " + r.status);
+    const pin = await r.json();
+    const auth = "https://app.plex.tv/auth#?clientID=" + encodeURIComponent(plexClientId()) + "&code=" +
+                 encodeURIComponent(pin.code) + "&context%5Bdevice%5D%5Bproduct%5D=Regie5";
+    if (tab) tab.location.href = auth; else window.open(auth, "_blank");
+    status.textContent = T.plexWaiting;
+    let token = "";
+    for (let i = 0; i < 600 && !token; i++) {   /* once a second, ten minutes at most */
+      await wait(1000);
+      r = await fetch("https://plex.tv/api/v2/pins/" + encodeURIComponent(pin.id), {headers: plexHeaders()});
+      if (r.status === 404) break;   /* expired */
+      if (r.ok) token = (await r.json()).authToken || "";
+    }
+    if (!token) { status.textContent = T.plexExpired; return; }
+    const who = await (await fetch("https://plex.tv/api/v2/user", {headers: plexHeaders(token)})).json();
+    r = await fetch("https://clients.plex.tv/api/v2/resources?includeHttps=1", {headers: plexHeaders(token)});
+    if (!r.ok) throw new Error("plex.tv " + r.status);
+    const servers = (await r.json()).filter(d => String(d.provides || "").split(",").includes("server") && d.accessToken);
+    if (!servers.length) { status.textContent = T.plexNoServer; return; }
+    let server = servers.find(s => sameServer(address, s)) || (servers.length === 1 ? servers[0] : null);
+    if (!server) server = await plexChoose(box, servers, status);
+    status.textContent = T.saving;
+    const o = {from: Number(box.dataset.from), name: box.querySelector(".name").value.trim(), url: address,
+               enabled: box.querySelector(".on").checked,
+               insecure: address.toLowerCase().startsWith("https://") && box.querySelector(".insecure").checked,
+               apiKey: server.accessToken, userName: who.username || who.title || "", owner: !!server.owned};
+    const a = await fetch(api, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({services: {plex: [o]}})});
+    const answer = await a.json().catch(() => ({}));
+    if (a.ok && answer.ok) { say("ok", T.plexDone); load(); }
+    else status.textContent = T.failed + (answer.error || a.status);
+  } catch (err) {
+    if (tab && !tab.closed && tab.location.href === "about:blank") tab.close();
+    status.textContent = T.plexFailed + (err && err.message ? err.message : "");
+  } finally {
+    button.disabled = false;
+  }
+}
+/* Several servers, none at the address: the user picks. */
+function plexChoose(box, servers, status){
+  status.textContent = T.plexChoose;
+  return new Promise(resolve => {
+    const list = el("div", {className: "row"});
+    servers.forEach(s => {
+      const b = el("button", {type: "button", textContent: s.name + (s.owned ? "" : " · " + T.plexNotOwner)});
+      b.onclick = () => { list.remove(); resolve(s); };
+      list.appendChild(b);
+    });
+    status.after(list);
+  });
 }
 function build(view){
   form.innerHTML = "";
@@ -226,6 +318,14 @@ std::string page_html()
         {"plexTokenHint", i18n::PhonePlexTokenHint},
         {"plexNotOwner", i18n::PlexNotOwner},
         {"noTokenWarn", i18n::PhoneNoTokenWarn},
+        {"plexSignIn", i18n::PhonePlexSignIn},
+        {"plexWaiting", i18n::PhonePlexWaiting},
+        {"plexNoUrl", i18n::PhonePlexNoUrl},
+        {"plexExpired", i18n::PhonePlexExpired},
+        {"plexNoServer", i18n::PhonePlexNoServer},
+        {"plexChoose", i18n::PhonePlexChoose},
+        {"plexFailed", i18n::PhonePlexFailed},
+        {"plexDone", i18n::PhonePlexDone},
     };
     std::string t = "{";
     for (const auto &x : kTexts)

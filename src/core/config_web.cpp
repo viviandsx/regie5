@@ -185,8 +185,15 @@ bool apply(const std::string &current_text, const std::string &posted, std::stri
                 if (!k.empty()) {
                     set_str("token", k);
                     cJSON_DeleteItemFromObjectCaseSensitive(o, "apiKey");
-                    for (const char *w : {"userName", "owner"})   /* whose it is, unknown for a pasted one */
-                        cJSON_DeleteItemFromObjectCaseSensitive(o, w);
+                    /* Signed in from the page: whose it is; pasted by hand: unknown. */
+                    const std::string who = str(it, "userName");
+                    if (!who.empty()) {
+                        set_str("userName", who);
+                        set_bool("owner", !cJSON_IsFalse(cJSON_GetObjectItemCaseSensitive(it, "owner")));
+                    } else {
+                        for (const char *w : {"userName", "owner"})
+                            cJSON_DeleteItemFromObjectCaseSensitive(o, w);
+                    }
                 }
             } else {
                 const std::string k = str(it, "apiKey");

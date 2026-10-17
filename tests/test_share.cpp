@@ -145,6 +145,13 @@ TEST(share_plex)
     CHECK(config::parse(out, &c));
     CHECK(c.plex() && c.services[config::Jellyfin].api_key.empty() && c.services[config::Jellyfin].user.empty());
     CHECK(out.find("PLEXTOKEN") == std::string::npos);
+    /* Signed in from the page: the server's token, whose it is, whether the owner. */
+    CHECK(config_web::apply(R"({"plex": {"url": "http://10.0.0.2:32400"}})",
+                            R"({"services":{"plex":[{"from":0,"url":"http://10.0.0.2:32400","apiKey":"SERVERTOKEN","userName":"lea","owner":false,"enabled":true}]}})",
+                            &out, &error));
+    CHECK(config::parse(out, &c));
+    CHECK(c.services[config::Jellyfin].api_key == "SERVERTOKEN" && c.services[config::Jellyfin].user == "lea");
+    CHECK(!c.services[config::Jellyfin].admin);
     /* Without a token: written, on (Plex's "allowed without auth"). */
     CHECK(config_web::apply("", R"({"services":{"plex":[{"from":-1,"url":"http://10.0.0.2:32400","apiKey":"","enabled":true}]}})",
                             &out, &error));

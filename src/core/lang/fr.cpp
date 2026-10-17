@@ -569,7 +569,7 @@ const Text kTexts[] = {
     {PlexNotOwner, "pas le propriétaire du serveur"},
     {PhonePlexNote, "À remplir seulement si votre serveur multimédia est Plex (au lieu des précédents). Plex est en bêta."},
     {PhonePlexToken, "Jeton Plex (avancé)"},
-    {PhonePlexTokenHint, "Dans Plex Web : un film › ⋯ › Obtenir des infos › Afficher le XML ; le jeton est la valeur de X-Plex-Token à la fin de l'adresse. Plex dit qu'un jeton trouvé ainsi peut ne durer qu'un temps."},
+    {PhonePlexTokenHint, "Sans se connecter : dans Plex Web, un film › ⋯ › Obtenir des infos › Afficher le XML ; le jeton est la valeur de X-Plex-Token à la fin de l'adresse. Plex dit qu'un jeton trouvé ainsi peut ne durer qu'un temps."},
     {PhoneNoTokenWarn, "Sans jeton, Régie5 n'entre que si Plex laisse ce réseau entrer sans authentification (Paramètres › Réseau du serveur), ce que Plex déconseille."},
     {ErrPlexNoToken, "Plex demande un jeton : connectez-vous depuis le téléphone"},
     {ErrPlexRevoked, "Jeton Plex refusé : reconnectez-vous depuis le téléphone"},
@@ -585,6 +585,14 @@ const Text kTexts[] = {
     {DiagGuessed, "déduit par Régie5 (Plex ne donne pas la raison)"},
     {AdvNoHardwarePlex, "Transcodage par le processeur : l'accélération matérielle de Plex (Paramètres › Transcodeur, avec un Plex Pass pour le propriétaire du serveur) soulagerait le serveur."},
     {PlexStopNeedsPass, "Plex demande sans doute un Plex Pass pour cela"},
+    {PhonePlexSignIn, "Se connecter à Plex"},
+    {PhonePlexWaiting, "Connectez-vous sur la page Plex qui vient de s'ouvrir, puis revenez ici."},
+    {PhonePlexNoUrl, "Indiquez d'abord l'adresse du serveur Plex."},
+    {PhonePlexExpired, "Connexion non faite à temps : recommencez."},
+    {PhonePlexNoServer, "Ce compte Plex n'a accès à aucun serveur."},
+    {PhonePlexChoose, "Aucun serveur de ce compte n'est à cette adresse. Lequel ?"},
+    {PhonePlexFailed, "La connexion à Plex a échoué (le téléphone doit avoir internet) : "},
+    {PhonePlexDone, "Connecté à Plex : enregistré sur la console."},
 };
 
 } // namespace

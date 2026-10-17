@@ -570,7 +570,7 @@ const Text kTexts[] = {
     {PlexNotOwner, "not the server's owner"},
     {PhonePlexNote, "Only if your media server is Plex (instead of the ones above). Plex support is in beta."},
     {PhonePlexToken, "Plex token (advanced)"},
-    {PhonePlexTokenHint, "In Plex Web: a film › ⋯ › Get Info › View XML; the token is the X-Plex-Token value at the end of the address. Plex says a token found this way may only last a while."},
+    {PhonePlexTokenHint, "Without signing in: in Plex Web, a film › ⋯ › Get Info › View XML; the token is the X-Plex-Token value at the end of the address. Plex says a token found this way may only last a while."},
     {PhoneNoTokenWarn, "Without a token, Régie5 gets in only if Plex lets this network in without signing in (Settings › Network on the server), which Plex advises against."},
     {ErrPlexNoToken, "Plex asks for a token: sign in from the phone"},
     {ErrPlexRevoked, "Plex token refused: sign in again from the phone"},
@@ -586,6 +586,14 @@ const Text kTexts[] = {
     {DiagGuessed, "worked out by Régie5 (Plex gives no reason)"},
     {AdvNoHardwarePlex, "Transcoding on the CPU: Plex's hardware acceleration (Settings › Transcoder, with Plex Pass for the server's owner) would ease the server."},
     {PlexStopNeedsPass, "Plex seems to need Plex Pass for this"},
+    {PhonePlexSignIn, "Sign in to Plex"},
+    {PhonePlexWaiting, "Sign in on the Plex page that just opened, then come back here."},
+    {PhonePlexNoUrl, "Fill in the Plex server's address first."},
+    {PhonePlexExpired, "Not signed in in time: try again."},
+    {PhonePlexNoServer, "This Plex account has no server."},
+    {PhonePlexChoose, "None of this account's servers is at this address. Which one?"},
+    {PhonePlexFailed, "Signing in to Plex failed (the phone needs the internet for it): "},
+    {PhonePlexDone, "Signed in to Plex: saved on the console."},
 };
 
 } // namespace

@@ -93,7 +93,11 @@ qu'on quitte (ou retirez-le).
 | `token` | Le jeton **du serveur** (jamais celui du compte Plex), secret comme une clé : jamais renvoyé au téléphone, jamais écrit dans un journal. |
 | `userName`, `owner` | Écrits avec le jeton : le compte, et s'il est le propriétaire du serveur. `"owner": false` : la ligne passe à l'orange, et les écrans réservés au propriétaire le disent (sessions, arrêt, scan, tâches, journal, utilisateurs). |
 
-Le jeton s'obtient depuis la page du téléphone. En secours, il peut être collé à la main
+Le jeton s'obtient depuis la page du téléphone : « Se connecter à Plex » ouvre la page de
+connexion de Plex (le téléphone doit avoir internet, la console non) ; la page trouve le
+serveur à l'adresse indiquée (sinon, elle demande lequel) et n'envoie à la console que le jeton
+de ce serveur, jamais celui du compte. Régie5 apparaît sous le nom « Regie5 » dans les appareils
+autorisés du compte Plex ; l'en retirer révoque le jeton. En secours, il peut être collé à la main
 (Plex Web › un film › ⋯ › Obtenir des infos › Afficher le XML : la valeur de `X-Plex-Token`
 dans l'adresse ; Plex dit qu'un jeton trouvé ainsi peut ne durer qu'un temps). Sans jeton,
 Régie5 n'entre que si le serveur Plex laisse le réseau de la console entrer sans

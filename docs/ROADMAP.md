@@ -1139,7 +1139,18 @@ seulement après validation. Patches : `build/patches-21/`.
       jeton). Vu contre le serveur de test : Accueil, onglet Plex, diagnostic d'un transcodage
       4K HEVC → H.264, scan (Annuler par défaut), arrêt refusé (pas de Plex Pass), Journal.
       Emby et Jellyfin inchangés (états `data` et `emby`). 76 tests.
-- [ ] P4 (connexion par le téléphone : **compte Plex de test à créer par Vivian**), P6 (build console, zip testeur). P5 fait dans P3 (message du Ménage).
+- [~] **P4. Connexion par le téléphone** — code fait : bouton « Se connecter à Plex » de la page
+      (PIN fort sur plex.tv, page de connexion de Plex dans un nouvel onglet, attente du jeton une
+      fois par seconde, `/api/v2/user`, `clients.plex.tv/api/v2/resources`), serveur trouvé par
+      son adresse parmi ses connexions (sinon liste à choisir), seul le **jeton du serveur** envoyé
+      à la console avec le compte et `owner` ; identifiant client tiré par la page (« Regie5 »).
+      Relevé : le serveur Plex n'accepte en CORS que `app.plex.tv`, la page ne peut donc pas lire
+      son `/identity`. Essayé dans le navigateur avec plex.tv **simulé** (aucun appel réel) : les
+      deux cas (adresse trouvée, choix dans la liste), `config.json` avec le jeton du serveur, rien
+      du jeton du compte, rien dans le journal. Test `share_plex` étendu. **Reste : l'essai réel avec
+      le compte Plex de test de Vivian** (connexion, `resources`, jeton refusé après retrait de
+      l'appareil).
+- [ ] P4 en vrai (**compte Plex de test à créer par Vivian**), P6 (build console, zip testeur). P5 fait dans P3 (message du Ménage).
 
 ## 3. En attente
 
@@ -1350,3 +1361,4 @@ la Bibliothèque).
 | 17 oct. 2026 | Décisions Plex de Vivian (pas de Ménage avec Plex en 0.6.0). P1 : serveur Plex de test (Docker, sans compte), simulateur de lecture, relevé (images à la taille demandée, arrêt refusé sans Plex Pass). |
 | 17 oct. 2026 | P2 Plex : configuration `"plex"`, un seul serveur multimédia, noms, Réglages, assistant et page du téléphone (jeton collé), erreurs propres à Plex. |
 | 17 oct. 2026 | P3 Plex : client complet, écrans (sessions, diagnostic, arrêt, scan, tâches, ajouts récents, Journal, bibliothèques, utilisateurs), Ménage indisponible avec Plex, fixtures anonymisées et `--mock` (76 tests). |
+| 17 oct. 2026 | P4 Plex (code) : connexion par le téléphone (PIN plex.tv, jeton du serveur seulement), essayée avec plex.tv simulé ; essai réel en attente du compte de test. |

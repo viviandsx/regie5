@@ -569,7 +569,7 @@ const Text kTexts[] = {
     {PlexNotOwner, "nicht der Besitzer des Servers"},
     {PhonePlexNote, "Nur wenn dein Medienserver Plex ist (statt der obigen). Plex ist in der Beta."},
     {PhonePlexToken, "Plex-Token (erweitert)"},
-    {PhonePlexTokenHint, "In Plex Web: ein Film › ⋯ › Info abrufen › XML anzeigen; das Token ist der Wert von X-Plex-Token am Ende der Adresse. Laut Plex hält ein so gefundenes Token unter Umständen nur eine Weile."},
+    {PhonePlexTokenHint, "Ohne Anmeldung: in Plex Web ein Film › ⋯ › Info abrufen › XML anzeigen; das Token ist der Wert von X-Plex-Token am Ende der Adresse. Laut Plex hält ein so gefundenes Token unter Umständen nur eine Weile."},
     {PhoneNoTokenWarn, "Ohne Token kommt Régie5 nur hinein, wenn Plex dieses Netz ohne Anmeldung zulässt (Einstellungen › Netzwerk des Servers), wovon Plex abrät."},
     {ErrPlexNoToken, "Plex verlangt ein Token: vom Telefon aus anmelden"},
     {ErrPlexRevoked, "Plex-Token abgelehnt: vom Telefon aus neu anmelden"},
@@ -585,6 +585,14 @@ const Text kTexts[] = {
     {DiagGuessed, "von Régie5 abgeleitet (Plex nennt keinen Grund)"},
     {AdvNoHardwarePlex, "Transkodierung durch den Prozessor: Die Hardwarebeschleunigung von Plex (Einstellungen › Transcoder, mit Plex Pass für den Serverbesitzer) würde den Server entlasten."},
     {PlexStopNeedsPass, "Plex verlangt dafür wohl Plex Pass"},
+    {PhonePlexSignIn, "Bei Plex anmelden"},
+    {PhonePlexWaiting, "Melde dich auf der gerade geöffneten Plex-Seite an und komm dann hierher zurück."},
+    {PhonePlexNoUrl, "Gib zuerst die Adresse des Plex-Servers ein."},
+    {PhonePlexExpired, "Nicht rechtzeitig angemeldet: bitte erneut versuchen."},
+    {PhonePlexNoServer, "Dieses Plex-Konto hat keinen Zugriff auf einen Server."},
+    {PhonePlexChoose, "Kein Server dieses Kontos hat diese Adresse. Welcher?"},
+    {PhonePlexFailed, "Anmeldung bei Plex fehlgeschlagen (das Telefon braucht Internet): "},
+    {PhonePlexDone, "Bei Plex angemeldet: auf der Konsole gespeichert."},
 };
 
 } // namespace

@@ -569,7 +569,7 @@ const Text kTexts[] = {
     {PlexNotOwner, "no es el propietario del servidor"},
     {PhonePlexNote, "Solo si tu servidor multimedia es Plex (en lugar de los anteriores). Plex está en beta."},
     {PhonePlexToken, "Token de Plex (avanzado)"},
-    {PhonePlexTokenHint, "En Plex Web: una película › ⋯ › Obtener información › Ver XML; el token es el valor de X-Plex-Token al final de la dirección. Plex dice que un token obtenido así puede durar poco."},
+    {PhonePlexTokenHint, "Sin iniciar sesión: en Plex Web, una película › ⋯ › Obtener información › Ver XML; el token es el valor de X-Plex-Token al final de la dirección. Plex dice que un token obtenido así puede durar poco."},
     {PhoneNoTokenWarn, "Sin token, Régie5 solo entra si Plex deja entrar a esta red sin autenticación (Ajustes › Red del servidor), algo que Plex desaconseja."},
     {ErrPlexNoToken, "Plex pide un token: inicia sesión desde el teléfono"},
     {ErrPlexRevoked, "Token de Plex rechazado: vuelve a iniciar sesión desde el teléfono"},
@@ -585,6 +585,14 @@ const Text kTexts[] = {
     {DiagGuessed, "deducido por Régie5 (Plex no da el motivo)"},
     {AdvNoHardwarePlex, "Transcodificación por el procesador: la aceleración por hardware de Plex (Ajustes › Transcodificador, con Plex Pass para el propietario del servidor) aliviaría el servidor."},
     {PlexStopNeedsPass, "Plex probablemente requiere Plex Pass para esto"},
+    {PhonePlexSignIn, "Iniciar sesión en Plex"},
+    {PhonePlexWaiting, "Inicia sesión en la página de Plex que se acaba de abrir y vuelve aquí."},
+    {PhonePlexNoUrl, "Indica primero la dirección del servidor Plex."},
+    {PhonePlexExpired, "No se inició sesión a tiempo: vuelve a intentarlo."},
+    {PhonePlexNoServer, "Esta cuenta de Plex no tiene acceso a ningún servidor."},
+    {PhonePlexChoose, "Ningún servidor de esta cuenta está en esta dirección. ¿Cuál?"},
+    {PhonePlexFailed, "Falló el inicio de sesión en Plex (el teléfono necesita internet): "},
+    {PhonePlexDone, "Sesión iniciada en Plex: guardado en la consola."},
 };
 
 } // namespace

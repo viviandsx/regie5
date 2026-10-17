@@ -589,6 +589,14 @@ enum S {
     DiagGuessed,
     AdvNoHardwarePlex,
     PlexStopNeedsPass,
+    PhonePlexSignIn,
+    PhonePlexWaiting,
+    PhonePlexNoUrl,
+    PhonePlexExpired,
+    PhonePlexNoServer,
+    PhonePlexChoose,
+    PhonePlexFailed,
+    PhonePlexDone,
     Count
 };
 
