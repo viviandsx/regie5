@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. Suite : petits correctifs (§ 2 nonies).**
+**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 ouverte : Plex** ; étude de faisabilité `docs/PLEX.md` faite, **en attente de la validation de Vivian** (§ 2 duodecies).**
 
 ---
 
@@ -29,6 +29,7 @@ pour ce qui a été fait après la phase 0).
 | 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
 | 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | ✅ publiée (§ 2 decies) |
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
+| 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | étude faite (`docs/PLEX.md`), validation attendue (§ 2 duodecies) |
 
 Tests : **72** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -1070,6 +1071,35 @@ Le code est celui d'`emby-fix-1` (déjà commité) ; la 0.5.1 n'ajoute que les n
 12. [ ] Après la sortie (facultatif, si le testeur confirme) : la ligne « Emby is in beta » du
         README peut dire qu'Emby a été essayé sur un vrai serveur Emby 4.10.1 avec Premiere.
 
+## 2 duodecies. Version 0.6.0 — Plex (ouverte le 17 octobre 2026)
+
+Demandé par Vivian : Plex comme troisième serveur multimédia (clé `"plex"`, un seul serveur
+multimédia à la fois, mention beta). Étape 1 : étude sans code ; étape 2 (implémentation)
+seulement après validation. Patches : `build/patches-21/`.
+
+- [x] **Étude de faisabilité** `docs/PLEX.md` (17 octobre 2026), vérifiée sur la
+      spécification officielle de l'API de Plex Media Server (developer.plex.tv, OpenAPI 1.2.3),
+      le guide officiel « Authenticating with Plex », les articles d'aide de Plex, l'image
+      Docker officielle, le code de Seerr, de Tautulli et de python-plexapi, et une mesure des
+      en-têtes CORS de plex.tv (requêtes `OPTIONS`, aucun compte). Conclusions :
+      connexion **par le téléphone** (PIN plex.tv fait par la page locale : CORS `*` mesuré,
+      comme Seerr le fait dans le navigateur ; seul le jeton du serveur, trouvé par
+      `resources`, arrive sur la console), jeton collé en secours, accès sans jeton accepté ;
+      jeton **classique** (le JWT expire en 7 jours : impossible hors ligne) ; compte
+      **propriétaire** nécessaire pour sessions, arrêt, scan, tâches, historique de tous ;
+      **Plex Pass** pour l'accélération matérielle et sans doute l'arrêt d'une lecture ;
+      raisons de transcodage absentes des sessions (déduites) ; Journal réduit aux lectures
+      terminées ; Ménage réduit (« vu par tous », preuve dans l'historique) ou reporté avec
+      Tautulli ; images par `/photo/:/transcode`, **taille à mesurer** (leçon d'Emby) et
+      plafond de décodage gardé ; minimum PMS 1.41.9 ; serveur de test sans compte possible
+      (`ALLOWED_NETWORKS`, image officielle de 163 Mo).
+- [ ] **Décisions de Vivian** : (1) recommandation d'authentification (§ 1.4) ; (2) Ménage
+      Plex réduit ou reporté (§ 2.10) ; (3) téléchargement de l'image Docker
+      `plexinc/pms-docker:1.43.4.10903-e5521bd8c` (163 Mo) ; (4) agent de métadonnées du
+      serveur de test (Plex, avec GUID, ou Personal Media) ; (5) compte Plex de test : non pour
+      commencer, à revoir en P4.
+- [ ] Implémentation, séances P1 à P6 (`docs/PLEX.md` § 5).
+
 ## 3. En attente
 
 | Sujet | Qui | Détail |
@@ -1271,3 +1301,4 @@ la Bibliothèque).
 | 16 oct. 2026 | Plantage du testeur Emby (issue #1) : RIP dans le rapport de plantage d'emby-test-1 (lecture au-delà de la pile), cause probable les images Emby en taille d'origine (`fillWidth` ignoré), reproduit sous Linux (pic de tas ×5). Corrigé : `maxWidth` pour Emby, décodage plafonné, rapport borné, garde-fou de démarrage (`core/boot_guard`). Zip de test `emby-fix-1`, réponses à l'issue, `build/patches-19/`. |
 | 16 oct. 2026 | `emby-fix-1` validé sur la console (Jellyfin), patches-19 commités, contournement et zip de test postés sur l'issue. 0.5.1 préparée : numéros, zip (`75f6fced…`), notes, README et `INSTALL.txt` (garde-fou), recette courte, textes de sortie (release v0.5.0, issue #1), `build/patches-20/`. Publication : testeur OK ou 18 octobre au plus tard. |
 | 17 oct. 2026 | **0.5.1 publiée** (tag, release, zip `75f6fced…`) après la recette console OK ; testeur Emby sans réponse, message posté sur l'issue #1 (laissée ouverte) ; release v0.5.0 corrigée « Fixed in 0.5.1 ». Catalogue encore en 0.5.0. Bazarr et Lidarr retirés de la suite ; port 5555 gardé ouvert. |
+| 17 oct. 2026 | 0.6.0 ouverte (Plex). Étude de faisabilité `docs/PLEX.md` (sources officielles de Plex, Seerr, Tautulli ; CORS de plex.tv mesuré) ; décisions attendues ; `build/patches-21/`. |
