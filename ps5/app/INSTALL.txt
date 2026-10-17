@@ -33,6 +33,11 @@ First install
 "Set up" on the Home screen, or Settings (press R1 until the gear is selected)
 > "Setup". Settings > "From a phone" opens the same phone page directly.
 
+If Régie5 closes twice in a row right after starting with the same
+config.json, the next start does not load it (the file is not changed): the
+set-up screens open with a message, to fix it from the phone. Settings >
+"Test all" reads the file again.
+
 Without a phone: copy PPSA99520/config.example.json to config.json in the same
 folder, fill it in on your computer, copy it to /data/homebrew/PPSA99520/, then
 choose "Test all" in Settings.
@@ -100,6 +105,11 @@ Première installation
 rouvrir : « Configurer » sur l'Accueil, ou Réglages (R1 jusqu'à l'engrenage)
 > « Assistant ». Réglages > « Depuis le téléphone » ouvre directement la même
 page du téléphone.
+
+Si Régie5 se ferme deux fois de suite juste après son lancement avec le même
+config.json, le lancement suivant ne le charge pas (le fichier n'est pas
+modifié) : l'assistant s'ouvre avec un message, pour le corriger depuis le
+téléphone. Réglages > « Tout tester » relit le fichier.
 
 Sans téléphone : copiez PPSA99520/config.example.json sous le nom config.json
 dans le même dossier, remplissez-le sur votre ordinateur, copiez-le dans

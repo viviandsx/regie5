@@ -156,6 +156,11 @@ screen offers **Set up** until a service is set, and **Settings › Setup** open
 at any time. A `config.json` that could not be read is kept beside the new one, as
 `config.json.invalid`.
 
+If Régie5 closes twice in a row right after starting with the same `config.json`, the
+next start does not load it (the file is not changed): the Home screen and Settings say
+so and the set-up screens open, to fix it from the phone. **Test all** in Settings reads
+the file again.
+
 ### From your phone (recommended)
 
 1. In Régie5, press **R1** until the gear (**Settings**) is selected.

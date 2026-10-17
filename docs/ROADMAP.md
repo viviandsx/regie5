@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 16 octobre 2026. 0.5.0 publiée. **Plantage du testeur Emby (issue #1) analysé et corrigé** (§ 2 undecies) : zip de test `build/ps5/emby-fix-1/upload/PPSA99520.zip` (`ef0d93d2…`), essai console `build/ps5/emby-fix-1/ESSAIS.txt`, réponses à l'issue dans `build/publish/issue-1-*.md`, patches `build/patches-19/`. Reste : essai console de Vivian, réponses postées, retour du testeur, puis la 0.5.1.**
+**Dernière mise à jour : 16 octobre 2026. 0.5.0 publiée. **0.5.1 prête à publier** (§ 2 undecies, « Pour publier la 0.5.1 ») : correctif du plantage Emby (issue #1), zip `build/ps5/release-0.5.1/upload/PPSA99520.zip` (`75f6fced…`), notes, recette `docs/RECETTE-0.5.1.md`, patch `build/patches-20/`. On publie quand le testeur confirme `emby-fix-1`, au plus tard le **18 octobre 2026** sans réponse.**
 
 ---
 
@@ -28,7 +28,7 @@ pour ce qui a été fait après la phase 0).
 | 10. Version 0.3.2 | 120 Hz par défaut (Auto), dates des films ; Multimédia écarté | ✅ publiée le 14 octobre 2026 (§ 2 septies, « 0.3.2 ») |
 | 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
 | 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | ✅ publiée (§ 2 decies) |
-| 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | 🧪 codé, zip de test `emby-fix-1` (§ 2 undecies) |
+| 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | 🧪 `emby-fix-1` validé sur la console ; release prête, attend le testeur (au plus tard le 18 octobre) (§ 2 undecies) |
 
 Tests : **72** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -1019,24 +1019,59 @@ console : plantage, puis **à chaque lancement**. Écran de la console : SIGSEGV
       01-02, comme une release (pas de journal UDP), version affichée `0.5.1-test1`,
       `contentVersion` 00.005.000 inchangé (une 0.5.1 passera au-dessus). `emby-test-2` : build
       intermédiaire écarté (`thread_local` émulé), à ne pas poster.
-- [ ] Vivian : essai console `build/ps5/emby-fix-1/ESSAIS.txt` (A : non-régression Jellyfin ;
-      B facultatif : l'Emby de test). Le garde-fou ne se déclenche pas à la demande sur la console.
-- [ ] Poster `build/publish/issue-1-crash-reply.md` tout de suite ; puis
-      `issue-1-test-build.md` avec le zip joint (renommé `PPSA99520-0.5.1-test1.zip`), jamais
-      en release.
+- [x] Vivian (16 octobre) : essai console d'`emby-fix-1` avec son Jellyfin **OK** ; patches
+      01-02 de `build/patches-19/` commités et poussés (`762e998`, `3ca77de`) ; contournement
+      posté sur l'issue ; ligne « Known issue » ajoutée au texte de la release v0.5.0 ; zip de
+      test posté sur l'issue. Le garde-fou ne se déclenche pas à la demande sur la console.
 - [ ] Retour du testeur : `config.json` (clés en `xxx`), version exacte, `app.prev.log` (ligne
       « CRASH signal … », « ALLOCATION FAILED », « heap: N MiB granted »).
-- [ ] **0.5.1** (recommandée, sans attendre le testeur plus de deux jours comme pour la 0.4.0) :
-      tout utilisateur d'Emby avec de vraies images est probablement touché en 0.4.0 / 0.5.0
-      (plantage à chaque lancement, sortie seulement par FTP), et le garde-fou et le rapport
-      servent à tous. `contentVersion` `00.005.001`, `project(regie5 VERSION 0.5.1)` ; les
-      Nouveautés ne se rouvrent pas (même série 0.5). Pas de 0.4.1 (le catalogue ne propose que la
-      dernière).
+- [x] **0.5.1 décidée** (Vivian) : publiée dès que le testeur confirme `emby-fix-1`, ou au plus
+      tard le 18 octobre 2026 sans réponse. Pas de 0.4.1 (le catalogue ne propose que la
+      dernière). Préparation ci-dessous.
 - À surveiller : le journal de l'essai B (`build/ps5/logs/console-20261015-153949.log`) finit
       par un plantage d'`app-17` (« CRASH signal 11 … fault address 0xa8 », sans ligne de pile :
       même défaut du rapport) juste avant le lancement de la 0.3.2 réinstallée. Probablement la
       copie de la 0.3.2 par-dessus l'app encore ouverte ; à garder en tête si une adresse 0xa8
       revient.
+
+### Pour publier la 0.5.1 (préparé le 16 octobre 2026)
+
+Le code est celui d'`emby-fix-1` (déjà commité) ; la 0.5.1 n'ajoute que les numéros, le README,
+`INSTALL.txt`, la recette et la roadmap. Patch : `build/patches-20/`.
+
+1. [x] **Numéros** : `contentVersion` `00.005.001`, `project(regie5 VERSION 0.5.1)` ; profil
+       `param.json` inchangé (`games-hz120-0.3.1`, accepté par `check-param.py --release`). Les
+       Nouveautés ne se rouvrent pas (série 0.5) : pas de ligne à écrire.
+2. [x] **Zip** : `scripts/release-ps5.sh` → `build/ps5/release-0.5.1/upload/PPSA99520.zip`
+       (37 fichiers, ni `config.json` ni `test-config`), sha256
+       `75f6fced1dd15c1d16c31d5632c053801374514a23a70ca1fcbbada812abfb2b`. Vérifié dans
+       `llvm-pie.elf` : version `0.5.1` (ni `-test1` ni `-dev`), pas de « NOT sent », pas
+       d'adresse de journal, `emby_image_path` / `note_thread_stack` / `boot_guard` présents ;
+       `INSTALL.txt` du zip avec le paragraphe du garde-fou. Tests Linux : 72 verts.
+3. [x] **Notes de version** `build/publish/release-notes-v0.5.1.md` (anglais) : correctif Emby,
+       écran de plantage, garde-fou, que faire si la 0.4.0 / 0.5.0 se ferme à chaque lancement,
+       remerciement à @ihatefillingthisout pour le signalement.
+4. [x] **README** (« At the first start ») et **`INSTALL.txt`** (FR/EN) : un paragraphe sur le
+       garde-fou. Captures inchangées.
+5. [x] **Recette** `docs/RECETTE-0.5.1.md` (5 min : mise à jour, Réglages, page du téléphone,
+       relance).
+6. [ ] **Déclencheur** : le testeur confirme qu'`emby-fix-1` marche, **ou** le 18 octobre 2026
+       sans réponse. S'il répond que ça plante encore : ne pas publier, regarder son
+       `app.prev.log` d'abord.
+7. [ ] Vivian : recette `docs/RECETTE-0.5.1.md` sur la console.
+8. [ ] Vivian : commit « Régie5 0.5.1 » (`build/patches-20/`), push, tag `v0.5.1`
+       (`git push origin v0.5.1`), release GitHub « Régie5 0.5.1 » (texte = les notes, pièce
+       jointe `PPSA99520.zip`, pas « pre-release »), empreinte vérifiée.
+9. [ ] Release v0.5.0 : retirer la ligne « Known issue » (`build/publish/release-0.5.0-known-issue.md` :
+       quoi supprimer, ligne « Fixed in 0.5.1 » à mettre à la place). Texte seulement : ni le tag
+       ni le zip.
+10. [ ] Issue #1 : testeur OK → `build/publish/issue-1-closing.md`, puis fermer l'issue ; sans
+        réponse → `build/publish/issue-1-release-no-reply.md`, issue laissée ouverte.
+11. [ ] Catalogue : la PR automatique du lendemain (`version` 0.5.1, `sha256` de l'étape 2,
+        `icon_url` en `/v0.5.1/ps5/app/sce_sys/icon0.png`) ; sinon chemin manuel
+        (`docs/RELEASING.md` §3).
+12. [ ] Après la sortie (facultatif, si le testeur confirme) : la ligne « Emby is in beta » du
+        README peut dire qu'Emby a été essayé sur un vrai serveur Emby 4.10.1 avec Premiere.
 
 ## 3. En attente
 
@@ -1237,3 +1272,4 @@ la Bibliothèque).
 | 16 oct. 2026 | Lignes des Nouveautés relues ; build de test `app-18` (demandes jamais envoyées, version affichée 0.5.0-test) et ses étapes. |
 | 16 oct. 2026 | `app-18` validé sur la console (A à F). 0.5.0 préparée : numéros, zip (`32fd8c09…`), notes, README (capture Découvrir), recette courte, brouillon Reddit ; `is4k` vérifié dans le code de Seerr ; emplacement de `/download0` vu par FTP (`RELEASING.md`). `build/patches-18/`. |
 | 16 oct. 2026 | Plantage du testeur Emby (issue #1) : RIP dans le rapport de plantage d'emby-test-1 (lecture au-delà de la pile), cause probable les images Emby en taille d'origine (`fillWidth` ignoré), reproduit sous Linux (pic de tas ×5). Corrigé : `maxWidth` pour Emby, décodage plafonné, rapport borné, garde-fou de démarrage (`core/boot_guard`). Zip de test `emby-fix-1`, réponses à l'issue, `build/patches-19/`. |
+| 16 oct. 2026 | `emby-fix-1` validé sur la console (Jellyfin), patches-19 commités, contournement et zip de test postés sur l'issue. 0.5.1 préparée : numéros, zip (`75f6fced…`), notes, README et `INSTALL.txt` (garde-fou), recette courte, textes de sortie (release v0.5.0, issue #1), `build/patches-20/`. Publication : testeur OK ou 18 octobre au plus tard. |
