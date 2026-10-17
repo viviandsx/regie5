@@ -380,16 +380,56 @@ TEST(config_emby_in_place_of_jellyfin)
     CHECK(config::changed(a, b) & (1u << config::Jellyfin));
 }
 
+TEST(config_plex_in_place_of_jellyfin)
+{
+    config::Config c;
+    /* "token" is the secret; an address alone is on (Plex's "allowed without auth"). */
+    CHECK(config::parse(R"({"plex": {"url": "http://192.168.1.10:32400/", "token": "P", "userName": "lea", "owner": false}})", &c));
+    CHECK(c.plex() && !c.emby() && !c.both_media);
+    const config::ServiceConfig &p = c.services[config::Jellyfin];
+    CHECK(p.enabled);
+    CHECK_EQ(p.url, std::string("http://192.168.1.10:32400"));
+    CHECK_EQ(p.name, std::string("Plex"));
+    CHECK_EQ(p.api_key, std::string("P"));
+    CHECK_EQ(p.user, std::string("lea"));
+    CHECK(!p.admin);
+    CHECK(!p.session());   /* never Jellyfin's Quick Connect */
+    CHECK(config::parse(R"({"plex": {"url": "http://b:32400"}})", &c));
+    CHECK(c.plex() && c.services[config::Jellyfin].enabled && c.services[config::Jellyfin].api_key.empty());
+    CHECK(c.services[config::Jellyfin].admin);   /* the owner unless said otherwise */
+    CHECK(config::parse(R"({"plex": {"url": "http://b:32400", "apiKey": "K"}})", &c));   /* the wrong name, read anyway */
+    CHECK_EQ(c.services[config::Jellyfin].api_key, std::string("K"));
+    /* Several on: Jellyfin, then Emby, then Plex; Settings says so. */
+    CHECK(config::parse(R"({"emby": {"url": "http://a:8096", "apiKey": "E"}, "plex": {"url": "http://b:32400"}})", &c));
+    CHECK(c.emby() && c.both_media);
+    CHECK(config::parse(R"({"jellyfin": {"url": "http://a:8096", "apiKey": "J"}, "plex": {"url": "http://b:32400"}})", &c));
+    CHECK(!c.plex() && c.both_media);
+    CHECK(config::parse(R"({"emby": {"enabled": false, "url": "http://a:8096", "apiKey": "E"}, "plex": {"url": "http://b:32400"}})", &c));
+    CHECK(c.plex() && !c.both_media);
+    CHECK(config::parse(R"({"plex": {"enabled": false, "url": "http://b:32400"}})", &c));
+    CHECK(!c.plex() && !c.services[config::Jellyfin].enabled);
+    /* From Emby to Plex: the media server changed. */
+    config::Config a, b;
+    CHECK(config::parse(R"({"emby": {"url": "http://a:8096", "apiKey": "K"}})", &a));
+    CHECK(config::parse(R"({"plex": {"url": "http://a:8096", "token": "K", "name": "Emby"}})", &b));
+    CHECK(config::changed(a, b) & (1u << config::Jellyfin));
+    CHECK(config::mock({}, false, config::MediaServer::Plex).plex());
+}
+
 TEST(i18n_emby_names)
 {
     const i18n::Language &before = i18n::language();
     i18n::set_lang(i18n::find("fr"));
-    i18n::set_emby(true);
+    i18n::set_media(config::MediaServer::Emby);
     CHECK_EQ(std::string(i18n::tr(i18n::TabJellyfin)), std::string("Emby"));
     CHECK_EQ(std::string(i18n::tr(i18n::FindInJelly5)), std::string("Chercher dans Emby5"));
     CHECK(std::string(i18n::tr(i18n::ConfirmScanBody)).find("Jellyfin") == std::string::npos);
     const char *kept = i18n::tr(i18n::TabJellyfin);
-    i18n::set_emby(false);
+    i18n::set_media(config::MediaServer::Plex);
+    CHECK_EQ(std::string(i18n::tr(i18n::TabJellyfin)), std::string("Plex"));
+    CHECK_EQ(std::string(i18n::tr(i18n::FindInJelly5)), std::string("Chercher dans Plex"));
+    CHECK(std::string(i18n::tr(i18n::ConfirmScanBody)).find("Jellyfin") == std::string::npos);
+    i18n::set_media(config::MediaServer::Jellyfin);
     CHECK_EQ(std::string(i18n::tr(i18n::TabJellyfin)), std::string("Jellyfin"));
     CHECK_EQ(std::string(kept), std::string("Emby"));   /* a text handed out never goes stale */
     i18n::set_lang(before);
@@ -417,9 +457,12 @@ TEST(versions_minimum)
     CHECK(versions::supported(config::Jellyfin, ""));                /* unknown: let through */
     CHECK(versions::supported(config::Sonarr, "develop"));
     CHECK(versions::supported(config::Glances, "Intel(R) Core(TM) i5"));   /* no minimum */
-    CHECK(versions::supported(config::Jellyfin, "4.10.1.0", true));      /* Emby */
-    CHECK(versions::supported(config::Jellyfin, "4.8.11.0", true));
-    CHECK(!versions::supported(config::Jellyfin, "4.7.14.0", true));
+    CHECK(versions::supported(config::Jellyfin, "4.10.1.0", config::MediaServer::Emby));
+    CHECK(versions::supported(config::Jellyfin, "4.8.11.0", config::MediaServer::Emby));
+    CHECK(!versions::supported(config::Jellyfin, "4.7.14.0", config::MediaServer::Emby));
+    CHECK(versions::supported(config::Jellyfin, "1.43.4.10903-e5521bd8c", config::MediaServer::Plex));   /* the test server's */
+    CHECK(versions::supported(config::Jellyfin, "1.41.9.9961-46083195d", config::MediaServer::Plex));
+    CHECK(!versions::supported(config::Jellyfin, "1.40.5.8897-e5987a19d", config::MediaServer::Plex));
     CHECK(!versions::supported(config::Jellyfin, "4.10.1.0"));           /* the same number from Jellyfin */
 }
 

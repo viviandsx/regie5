@@ -48,11 +48,11 @@ void WhatsNewSheet::draw(float dt, bool *animating)
 
     /* The lines this version brings: up to five; "-" stands for none (every
      * key needs a text in every language). A line that names Jellyfin is for
-     * Jellyfin only: left out when the media server is Emby. */
+     * Jellyfin only: left out when the media server is Emby or Plex. */
     std::vector<const char *> items;
     for (i18n::S k : {i18n::WnItem1, i18n::WnItem2, i18n::WnItem3, i18n::WnItem4, i18n::WnItem5}) {
         const std::string text = i18n::plain(k);
-        if (text != "-" && !(i18n::emby() && text.find("Jellyfin") != std::string::npos))
+        if (text != "-" && !(i18n::media() != config::MediaServer::Jellyfin && text.find("Jellyfin") != std::string::npos))
             items.push_back(i18n::tr(k));
     }
     const float w = kPanelW - 2 * kIn;

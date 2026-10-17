@@ -633,7 +633,7 @@ TEST(emby_on_its_fixtures)
      * the same calls as Jellyfin's. */
     api::MockTransport mock(REGIE5_FIXTURES, 0, "");
     http::Pool pool(mock, 2, nullptr);
-    const config::Config cfg = config::mock("", false, true);
+    const config::Config cfg = config::mock("", false, config::MediaServer::Emby);
     CHECK(cfg.emby());
     api::Services s(cfg, pool, "fr");
     CHECK(s.auth_header(config::Jellyfin).find("X-Emby-Token") != std::string::npos);

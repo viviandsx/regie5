@@ -497,7 +497,7 @@ const Text kTexts[] = {
     {WelDemo, "Demo mode: nothing listens, nothing is saved. \"Check\" to go on."},
     {HomeNotConfigured, "Régie5 is not linked to your services yet."},
     {HomeConfigure, "Set up"},
-    {MediaBoth, "\"jellyfin\" and \"emby\" in config.json: only Jellyfin is used"},
+    {MediaBoth, "Several media servers in config.json: only %s is used"},
     {DisplayDesktop, "here the monitor decides (a setting for the PS5)"},
     {EmbyBeta, "beta"},
     {ButtonWhatsNew, "What's new"},
@@ -566,6 +566,15 @@ const Text kTexts[] = {
     {LibKindCollections, "Collections"},
     {LibCollections, "%d collections"},
     {LibCollectionsOne, "%d collection"},
+    {PlexNoToken, "No token: only if Plex lets this network in (not advised)"},
+    {PlexNotOwner, "not the server's owner"},
+    {PhonePlexNote, "Only if your media server is Plex (instead of the ones above). Plex support is in beta."},
+    {PhonePlexToken, "Plex token (advanced)"},
+    {PhonePlexTokenHint, "In Plex Web: a film › ⋯ › Get Info › View XML; the token is the X-Plex-Token value at the end of the address. Plex says a token found this way may only last a while."},
+    {PhoneNoTokenWarn, "Without a token, Régie5 gets in only if Plex lets this network in without signing in (Settings › Network on the server), which Plex advises against."},
+    {ErrPlexNoToken, "Plex asks for a token: sign in from the phone"},
+    {ErrPlexRevoked, "Plex token refused: sign in again from the phone"},
+    {ErrPlexOwner, "Needs the Plex server owner's account"},
 };
 
 } // namespace

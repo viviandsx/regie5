@@ -32,8 +32,8 @@ enum class Error {
     BadResponse,    /* answered, but not what this service says */
     Unsupported,    /* an address this platform cannot reach yet (https on the PS5) */
     Certificate,    /* https: the server's certificate is refused */
-    Revoked,        /* Jellyfin by Quick Connect: 401, the session has ended (revoked, device removed) */
-    NeedsAdmin,     /* Jellyfin by Quick Connect: 403 for an account that is not an administrator */
+    Revoked,        /* Jellyfin by Quick Connect: 401, the session has ended (revoked, device removed); Plex: its token refused */
+    NeedsAdmin,     /* Jellyfin by Quick Connect: 403 for an account that is not an administrator; Plex: not the owner */
 };
 
 /* From a transport response and whether its body parsed. */

@@ -671,8 +671,8 @@ int main()
     }
     if (cfg_error == config::LoadError::None)
         guard.arm(from_backup ? kConfigCopy : config_path, platform::now());
-    if (cfg.emby())
-        ps5::log("[regie5] config: the media server is Emby");
+    if (!(cfg.media == config::MediaServer::Jellyfin))
+        ps5::log("[regie5] config: the media server is %s", config::media_name(cfg.media));
     const long launches_before = log_launches();
     log_title_folder_writable();
     log_param_profile();
@@ -714,7 +714,7 @@ int main()
                  kStressFile, s_stress_minutes);
     }
 #endif
-    i18n::set_emby(cfg.emby());
+    i18n::set_media(cfg.media);
     http::Pool pool(*net, 4, nullptr);
     http::Pool images(*net, 3, nullptr);
     api::Services services(cfg, pool, i18n::code());

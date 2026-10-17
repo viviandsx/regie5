@@ -143,9 +143,14 @@ int main(int argc, char **argv)
     config::LoadError cfg_error = config::LoadError::None;
     if (opt.mock) {
         const char *off = std::getenv("REGIE5_MOCK_OFF");
-        const char *multi = std::getenv("REGIE5_MOCK_MULTI");
-        const char *emby = std::getenv("REGIE5_MOCK_EMBY");
-        cfg = config::mock(off ? off : "", multi && *multi && *multi != '0', emby && *emby && *emby != '0');
+        const auto on = [](const char *name) {
+            const char *v = std::getenv(name);
+            return v && *v && *v != '0';
+        };
+        cfg = config::mock(off ? off : "", on("REGIE5_MOCK_MULTI"),
+                           on("REGIE5_MOCK_PLEX")   ? config::MediaServer::Plex
+                           : on("REGIE5_MOCK_EMBY") ? config::MediaServer::Emby
+                                                    : config::MediaServer::Jellyfin);
         if (const char *qc = std::getenv("REGIE5_MOCK_QC"); qc && *qc && *qc != '0') {
             cfg.services[config::Jellyfin].api_key.clear();   /* an address, no key: Quick Connect's case */
             cfg.services[config::Jellyfin].enabled = false;
@@ -175,7 +180,7 @@ int main(int argc, char **argv)
                          : cfg_error == config::LoadError::SetAside ? "set aside, not loaded"
                                                                     : "cannot be read or is not JSON");
     }
-    i18n::set_emby(cfg.emby());
+    i18n::set_media(cfg.media);
 
     SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_PS5, "1");
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER | SDL_INIT_EVENTS) != 0) {

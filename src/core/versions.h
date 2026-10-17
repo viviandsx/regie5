@@ -15,8 +15,9 @@
 namespace versions {
 
 /* "4.0", "10.9"…; "" for a service with no minimum (Glances: its API path,
- * /api/4, already asks for Glances 4). emby: the media server is Emby. */
-const char *minimum(config::Service s, bool emby = false);
+ * /api/4, already asks for Glances 4). media: which media server is in
+ * Jellyfin's place. */
+const char *minimum(config::Service s, config::MediaServer media = config::MediaServer::Jellyfin);
 
 /* <0, 0, >0 as a is older, the same, newer; numbers compared one by one
  * ("10.11.2" > "10.9"), missing ones as 0. false when either is not a
@@ -24,6 +25,7 @@ const char *minimum(config::Service s, bool emby = false);
 bool compare(const std::string &a, const std::string &b, int *order);
 
 /* Whether this version of the service is one Régie5 works with. */
-bool supported(config::Service s, const std::string &version, bool emby = false);
+bool supported(config::Service s, const std::string &version,
+               config::MediaServer media = config::MediaServer::Jellyfin);
 
 } // namespace versions

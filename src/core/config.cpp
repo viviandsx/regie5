@@ -8,6 +8,7 @@
 
 #include <cerrno>
 #include <cstdio>
+#include <tuple>
 
 namespace config {
 
@@ -23,12 +24,16 @@ const char *service_key(Service s)
     return s >= 0 && s < ServiceCount ? kKeys[s] : "";
 }
 
-const char *media_name(MediaServer m) { return m == MediaServer::Emby ? "Emby" : "Jellyfin"; }
+const char *media_name(MediaServer m)
+{
+    return m == MediaServer::Emby ? "Emby" : m == MediaServer::Plex ? "Plex" : "Jellyfin";
+}
 
 namespace {
 
-/* label: the default name ("Emby" for an Emby server). */
-ServiceConfig parse_one(const cJSON *o, Service svc, int n, const char *label)
+/* label: the default name ("Emby" for an Emby server). plex: a Plex server,
+ * whose secret is its "token" and which may go without one. */
+ServiceConfig parse_one(const cJSON *o, Service svc, int n, const char *label, bool plex = false)
 {
     ServiceConfig s;
     const cJSON *name = cJSON_GetObjectItemCaseSensitive(o, "name");
@@ -50,6 +55,15 @@ ServiceConfig parse_one(const cJSON *o, Service svc, int n, const char *label)
     s.insecure = cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(o, "insecure"));
     const cJSON *token = cJSON_GetObjectItemCaseSensitive(o, "accessToken");
     const cJSON *user_name = cJSON_GetObjectItemCaseSensitive(o, "userName");
+    if (plex) {   /* "token", or an "apiKey" by mistake; who it belongs to, written by the phone's sign-in */
+        const cJSON *ptoken = cJSON_GetObjectItemCaseSensitive(o, "token");
+        if (cJSON_IsString(ptoken) && ptoken->valuestring[0])
+            s.api_key = ptoken->valuestring;
+        s.user = cJSON_IsString(user_name) ? user_name->valuestring : "";
+        s.admin = !cJSON_IsFalse(cJSON_GetObjectItemCaseSensitive(o, "owner"));
+        s.enabled = !cJSON_IsFalse(en) && !s.url.empty();
+        return s;
+    }
     if (svc == Jellyfin && cJSON_IsString(token)) {
         s.token = token->valuestring;
         s.user = cJSON_IsString(user_name) ? user_name->valuestring : "";
@@ -62,14 +76,14 @@ ServiceConfig parse_one(const cJSON *o, Service svc, int n, const char *label)
 }
 
 /* A service's object, or its list of instances, under key. */
-void parse_service(const cJSON *root, const char *key, Service svc, const char *label, Config *out)
+void parse_service(const cJSON *root, const char *key, Service svc, const char *label, Config *out, bool plex = false)
 {
     out->services[svc] = ServiceConfig{};
     out->services[svc].name = label;
     out->extra[svc].clear();
     const cJSON *o = cJSON_GetObjectItemCaseSensitive(root, key);
     if (cJSON_IsObject(o)) {
-        out->services[svc] = parse_one(o, svc, 0, label);
+        out->services[svc] = parse_one(o, svc, 0, label, plex);
     } else if (cJSON_IsArray(o)) {   /* instances */
         int n = 0;
         const cJSON *it;
@@ -78,9 +92,9 @@ void parse_service(const cJSON *root, const char *key, Service svc, const char *
             if (!cJSON_IsObject(it))
                 continue;
             if (n == 0)
-                out->services[svc] = parse_one(it, svc, 0, label);
+                out->services[svc] = parse_one(it, svc, 0, label, plex);
             else
-                out->extra[svc].push_back(parse_one(it, svc, n, label));
+                out->extra[svc].push_back(parse_one(it, svc, n, label, plex));
             n++;
         }
     }
@@ -106,18 +120,22 @@ bool parse(const std::string &text, Config *out)
     *out = Config{};
     for (int i = 0; i < ServiceCount; i++)
         parse_service(root, service_key((Service)i), (Service)i, service_name((Service)i), out);
-    /* "emby" fills the media server's place when Jellyfin is not on. */
-    if (cJSON_GetObjectItemCaseSensitive(root, "emby")) {
-        Config emby;
-        parse_service(root, "emby", Jellyfin, "Emby", &emby);
-        if (any_on(emby, Jellyfin)) {
-            if (any_on(*out, Jellyfin)) {
-                out->both_media = true;
-            } else {
-                out->services[Jellyfin] = emby.services[Jellyfin];
-                out->extra[Jellyfin] = emby.extra[Jellyfin];
-                out->media = MediaServer::Emby;
-            }
+    /* "emby", then "plex", fill the media server's place when nothing before
+     * them is on. */
+    for (const auto &[key, label, kind] : {std::tuple<const char *, const char *, MediaServer>{"emby", "Emby", MediaServer::Emby},
+                                           {"plex", "Plex", MediaServer::Plex}}) {
+        if (!cJSON_GetObjectItemCaseSensitive(root, key))
+            continue;
+        Config other;
+        parse_service(root, key, Jellyfin, label, &other, kind == MediaServer::Plex);
+        if (!any_on(other, Jellyfin))
+            continue;
+        if (any_on(*out, Jellyfin)) {
+            out->both_media = true;
+        } else {
+            out->services[Jellyfin] = other.services[Jellyfin];
+            out->extra[Jellyfin] = other.extra[Jellyfin];
+            out->media = kind;
         }
     }
     const cJSON *cleanup = cJSON_GetObjectItemCaseSensitive(root, "cleanup");
@@ -204,16 +222,17 @@ unsigned changed(const Config &a, const Config &b)
     return mask;
 }
 
-Config mock(const std::string &off, bool multi, bool emby)
+Config mock(const std::string &off, bool multi, MediaServer media)
 {
     Config c;
-    if (emby)
-        c.media = MediaServer::Emby;
+    c.media = media;
+    const bool emby = media == MediaServer::Emby, plex = media == MediaServer::Plex;
     const std::string list = "," + off + ",";
     for (int i = 0; i < ServiceCount; i++) {
         c.services[i].name = i == Jellyfin ? media_name(c.media) : service_name((Service)i);
         c.services[i].enabled = list.find(std::string(",") + service_key((Service)i) + ",") == std::string::npos;
-        c.services[i].url = std::string("http://") + (i == Jellyfin && emby ? "emby" : service_key((Service)i)) + ".mock";
+        c.services[i].url = std::string("http://") +
+                            (i == Jellyfin && emby ? "emby" : i == Jellyfin && plex ? "plex" : service_key((Service)i)) + ".mock";
         c.services[i].api_key = "mock";
     }
     if (multi) {

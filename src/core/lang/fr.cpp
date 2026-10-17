@@ -496,7 +496,7 @@ const Text kTexts[] = {
     {WelDemo, "Mode démo : rien n'écoute, rien n'est enregistré. « Vérifier » pour la suite."},
     {HomeNotConfigured, "Régie5 n'est pas encore relié à vos services."},
     {HomeConfigure, "Configurer"},
-    {MediaBoth, "« jellyfin » et « emby » dans config.json : seul Jellyfin est utilisé"},
+    {MediaBoth, "Plusieurs serveurs multimédias dans config.json : seul %s est utilisé"},
     {DisplayDesktop, "ici le moniteur choisit (réglage pour la PS5)"},
     {EmbyBeta, "bêta"},
     {ButtonWhatsNew, "Nouveautés"},
@@ -565,6 +565,15 @@ const Text kTexts[] = {
     {LibKindCollections, "Collections"},
     {LibCollections, "%d collections"},
     {LibCollectionsOne, "%d collection"},
+    {PlexNoToken, "Sans jeton : seulement si Plex laisse entrer ce réseau (déconseillé)"},
+    {PlexNotOwner, "pas le propriétaire du serveur"},
+    {PhonePlexNote, "À remplir seulement si votre serveur multimédia est Plex (au lieu des précédents). Plex est en bêta."},
+    {PhonePlexToken, "Jeton Plex (avancé)"},
+    {PhonePlexTokenHint, "Dans Plex Web : un film › ⋯ › Obtenir des infos › Afficher le XML ; le jeton est la valeur de X-Plex-Token à la fin de l'adresse. Plex dit qu'un jeton trouvé ainsi peut ne durer qu'un temps."},
+    {PhoneNoTokenWarn, "Sans jeton, Régie5 n'entre que si Plex laisse ce réseau entrer sans authentification (Paramètres › Réseau du serveur), ce que Plex déconseille."},
+    {ErrPlexNoToken, "Plex demande un jeton : connectez-vous depuis le téléphone"},
+    {ErrPlexRevoked, "Jeton Plex refusé : reconnectez-vous depuis le téléphone"},
+    {ErrPlexOwner, "Demande le compte propriétaire du serveur Plex"},
 };
 
 } // namespace

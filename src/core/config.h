@@ -17,10 +17,12 @@ namespace config {
  * and a password only if it asks for them. */
 enum Service { Sonarr = 0, Radarr, Seerr, Jellyfin, Glances, ServiceCount };
 
-/* The media server in the Jellyfin slot: Jellyfin, or Emby (config.json's
- * "emby" key, in place of "jellyfin"). Both speak the same API, with a few
- * differences that api/jellyfin handles; every screen is the same. */
-enum class MediaServer { Jellyfin, Emby };
+/* The media server in the Jellyfin slot: Jellyfin, Emby (config.json's
+ * "emby" key, in place of "jellyfin") or Plex ("plex"). Emby speaks
+ * Jellyfin's API, with a few differences that api/jellyfin handles; Plex has
+ * an API of its own (api/plex), read into the same models. Every screen is
+ * the same. */
+enum class MediaServer { Jellyfin, Emby, Plex };
 
 const char *service_name(Service s);   /* "Sonarr" ... (Jellyfin: "Jellyfin", see media_name) */
 const char *service_key(Service s);    /* "sonarr" ...: its key in config.json */
@@ -31,6 +33,9 @@ struct ServiceConfig {
     std::string url;      /* "http://192.168.1.10:8989", no trailing slash */
     std::string api_key;
     std::string username, password;   /* Glances behind --password (HTTP Basic) */
+    /* Plex: the server's token ("token") is kept in api_key, the one secret
+     * of a service. Without one, Plex lets in only the networks it was told
+     * to (its "allowed without auth" setting). */
     /* "is4k": a Radarr / Sonarr that Seerr knows as its 4K server. Said in
      * config.json, never guessed from the name. */
     bool is4k = false;
@@ -60,8 +65,8 @@ struct Config {
     /* Jellyfin accounts the cleanup does not count among "everyone" (names,
      * any case): test accounts, guests. "cleanup": {"ignoreUsers": [...]} */
     std::vector<std::string> ignore_users;
-    /* "emby" in place of "jellyfin". Both on: Jellyfin is used and both_media
-     * says so (Settings shows it). */
+    /* "emby" or "plex" in place of "jellyfin". Two or three on: the first of
+     * Jellyfin, Emby, Plex is used and both_media says so (Settings shows it). */
     MediaServer media = MediaServer::Jellyfin;
     bool both_media = false;
 
@@ -71,9 +76,10 @@ struct Config {
     }
     int count(Service s) const { return 1 + (int)extra[s].size(); }
     bool emby() const { return media == MediaServer::Emby; }
+    bool plex() const { return media == MediaServer::Plex; }
 };
 
-/* "Jellyfin" or "Emby": the name the interface gives the media server. */
+/* "Jellyfin", "Emby" or "Plex": the name the interface gives the media server. */
 const char *media_name(MediaServer m);
 
 /* SetAside: readable, but not loaded at this start (core/boot_guard: the
@@ -103,7 +109,7 @@ unsigned changed(const Config &a, const Config &b);
 /* The configuration --mock runs on: every service on (but those named in off,
  * separated by commas), at addresses only the mock transport answers. multi:
  * a second Radarr ("Radarr 4K", under a path, as behind a reverse proxy).
- * emby: Emby in the media server's place. */
-Config mock(const std::string &off = {}, bool multi = false, bool emby = false);
+ * media: the media server (Emby, Plex: in Jellyfin's place). */
+Config mock(const std::string &off = {}, bool multi = false, MediaServer media = MediaServer::Jellyfin);
 
 } // namespace config

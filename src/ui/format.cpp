@@ -174,14 +174,14 @@ std::string error(api::Error e, int http_status)
     case api::Error::Timeout: return i18n::tr(i18n::ErrTimeout);
     case api::Error::Unsupported: return i18n::tr(i18n::ErrUnsupported);
     case api::Error::Certificate: return i18n::tr(i18n::ErrCertificate);
-    case api::Error::Unauthorized: return i18n::tr(i18n::ErrUnauthorized);
+    case api::Error::Unauthorized: return i18n::tr(i18n::plex() ? i18n::ErrPlexNoToken : i18n::ErrUnauthorized);
     case api::Error::NotFound: return i18n::tr(i18n::ErrNotFound);
     case api::Error::BadResponse: return i18n::tr(i18n::ErrBadResponse);
     case api::Error::Redirected: return f(i18n::tr(i18n::ErrRedirected), http_status);
     case api::Error::Http: return f(i18n::tr(i18n::ErrHttp), http_status);
     case api::Error::Disabled: return i18n::tr(i18n::StatusDisabled);
-    case api::Error::Revoked: return i18n::tr(i18n::ErrRevoked);
-    case api::Error::NeedsAdmin: return i18n::tr(i18n::ErrNeedsAdmin);
+    case api::Error::Revoked: return i18n::tr(i18n::plex() ? i18n::ErrPlexRevoked : i18n::ErrRevoked);
+    case api::Error::NeedsAdmin: return i18n::tr(i18n::plex() ? i18n::ErrPlexOwner : i18n::ErrNeedsAdmin);
     case api::Error::None: break;
     }
     return {};

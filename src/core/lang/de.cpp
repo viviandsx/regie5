@@ -496,7 +496,7 @@ const Text kTexts[] = {
     {WelDemo, "Demomodus: nichts hört zu, nichts wird gespeichert. „Prüfen“, um weiterzumachen."},
     {HomeNotConfigured, "Régie5 ist noch nicht mit deinen Diensten verbunden."},
     {HomeConfigure, "Einrichten"},
-    {MediaBoth, "\"jellyfin\" und \"emby\" in config.json: nur Jellyfin wird verwendet"},
+    {MediaBoth, "Mehrere Medienserver in config.json: nur %s wird verwendet"},
     {DisplayDesktop, "hier entscheidet der Monitor (eine Einstellung für die PS5)"},
     {EmbyBeta, "Beta"},
     {ButtonWhatsNew, "Neuigkeiten"},
@@ -565,6 +565,15 @@ const Text kTexts[] = {
     {LibKindCollections, "Sammlungen"},
     {LibCollections, "%d Sammlungen"},
     {LibCollectionsOne, "%d Sammlung"},
+    {PlexNoToken, "Ohne Token: nur wenn Plex dieses Netz hereinlässt (nicht empfohlen)"},
+    {PlexNotOwner, "nicht der Besitzer des Servers"},
+    {PhonePlexNote, "Nur wenn dein Medienserver Plex ist (statt der obigen). Plex ist in der Beta."},
+    {PhonePlexToken, "Plex-Token (erweitert)"},
+    {PhonePlexTokenHint, "In Plex Web: ein Film › ⋯ › Info abrufen › XML anzeigen; das Token ist der Wert von X-Plex-Token am Ende der Adresse. Laut Plex hält ein so gefundenes Token unter Umständen nur eine Weile."},
+    {PhoneNoTokenWarn, "Ohne Token kommt Régie5 nur hinein, wenn Plex dieses Netz ohne Anmeldung zulässt (Einstellungen › Netzwerk des Servers), wovon Plex abrät."},
+    {ErrPlexNoToken, "Plex verlangt ein Token: vom Telefon aus anmelden"},
+    {ErrPlexRevoked, "Plex-Token abgelehnt: vom Telefon aus neu anmelden"},
+    {ErrPlexOwner, "Erfordert das Konto des Plex-Serverbesitzers"},
 };
 
 } // namespace

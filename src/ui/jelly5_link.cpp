@@ -21,7 +21,7 @@ bool Jelly5Link::available(const api::Services *services) const
 
 bool Jelly5Link::can_open(const api::Services *services)
 {
-    return platform::can_launch_apps() && services && !services->config().emby();
+    return platform::can_launch_apps() && services && services->config().media == config::MediaServer::Jellyfin;
 }
 
 const char *Jelly5Link::label(const api::Services *services) const

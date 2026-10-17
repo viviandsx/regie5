@@ -46,14 +46,15 @@ button.small{padding:6px 10px;font-size:14px}
 <form id="f"></form>
 <script>
 const T = __T__;
-const SERVICES = [["sonarr","Sonarr",true],["radarr","Radarr",true],["seerr","Seerr",false],["jellyfin","Jellyfin",false],["emby","Emby",false],["glances","Glances",false]];
-const PORTS = {sonarr: 8989, radarr: 7878, seerr: 5055, jellyfin: 8096, emby: 8096, glances: 61208};
+const SERVICES = [["sonarr","Sonarr",true],["radarr","Radarr",true],["seerr","Seerr",false],["jellyfin","Jellyfin",false],["emby","Emby",false],["plex","Plex",false],["glances","Glances",false]];
+const PORTS = {sonarr: 8989, radarr: 7878, seerr: 5055, jellyfin: 8096, emby: 8096, plex: 32400, glances: 61208};
+const MEDIA = ["jellyfin", "emby", "plex"];
 const query = new URLSearchParams(location.search);
 const code = query.get("c") || (prompt(T.askCode) || "").replace(/\D/g, "");
-/* m: the media server chosen in the welcome screens (jellyfin, emby, none):
- * the other one's section is not shown, and so not sent (left as it is). */
+/* m: the media server chosen in the welcome screens (jellyfin, emby, plex,
+ * none): the others' sections are not shown, and so not sent (left as they are). */
 const media = query.get("m");
-const shown = key => !media || (key !== "jellyfin" && key !== "emby") || key === media;
+const shown = key => !media || !MEDIA.includes(key) || key === media;
 const api = "/api/config?c=" + encodeURIComponent(code);
 document.getElementById("lead").textContent = T.lead;
 const form = document.getElementById("f");
@@ -72,6 +73,16 @@ function instance(key, multi, data, from){
   if (g) {
     box.appendChild(field(T.user, el("input", {type: "text", value: data.username || "", className: "user", autocapitalize: "off"})));
     box.appendChild(field(T.pass, el("input", {type: "password", className: "secret", placeholder: data.hasPassword ? T.passKept : T.optional})));
+  } else if (key === "plex") {   /* a token pasted by hand: the fallback */
+    if (data.userName) box.appendChild(el("p", {className: "hint", textContent: data.userName + (data.owner === false ? " · " + T.plexNotOwner : "")}));
+    const tok = el("input", {type: "text", className: "secret", autocapitalize: "off", autocomplete: "off", spellcheck: false, placeholder: data.hasKey ? T.keyKept : ""});
+    box.appendChild(field(T.plexToken, tok));
+    box.appendChild(el("p", {className: "hint", textContent: T.plexTokenHint}));
+    const warn = el("p", {className: "hint", textContent: T.noTokenWarn});
+    const showWarn = () => warn.style.display = !data.hasKey && !tok.value.trim() ? "" : "none";
+    tok.addEventListener("input", showWarn);
+    showWarn();
+    box.appendChild(warn);
   } else {
     box.appendChild(field(T.key, el("input", {type: "text", className: "secret", autocapitalize: "off", autocomplete: "off", spellcheck: false, placeholder: data.hasKey ? T.keyKept : ""})));
   }
@@ -109,7 +120,8 @@ function build(view){
     }
     sec.appendChild(head);
     if (key === "emby" && !media) sec.appendChild(el("p", {className: "lead", textContent: T.embyNote}));
-    (list.length ? list : [{enabled: key !== "glances" && (key !== "emby" || media === "emby")}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
+    if (key === "plex" && !media) sec.appendChild(el("p", {className: "lead", textContent: T.plexNote}));
+    (list.length ? list : [{enabled: key !== "glances" && (!["emby", "plex"].includes(key) || media === key)}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
     sec.appendChild(holder);
     form.appendChild(sec);
   }
@@ -209,6 +221,11 @@ std::string page_html()
         {"optional", i18n::PhoneOptional},
         {"askCode", i18n::PhoneAskCode},
         {"embyNote", i18n::PhoneEmbyNote},
+        {"plexNote", i18n::PhonePlexNote},
+        {"plexToken", i18n::PhonePlexToken},
+        {"plexTokenHint", i18n::PhonePlexTokenHint},
+        {"plexNotOwner", i18n::PlexNotOwner},
+        {"noTokenWarn", i18n::PhoneNoTokenWarn},
     };
     std::string t = "{";
     for (const auto &x : kTexts)

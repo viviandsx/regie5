@@ -53,13 +53,20 @@ std::vector<const cJSON *> instances(const cJSON *root, const char *key)
 
 bool is_glances(int s) { return s == config::Glances; }
 
-/* The keys of config.json the page shows, in its order: "emby" stands in the
- * media server's place when "jellyfin" is not on (config::parse). */
+/* The keys of config.json the page shows, in its order: "emby" and "plex"
+ * stand in the media server's place when "jellyfin" is not on
+ * (config::parse). */
 const struct {
     const char *key;
     config::Service service;
 } kKeys[] = {{"sonarr", config::Sonarr}, {"radarr", config::Radarr},     {"seerr", config::Seerr},
-             {"jellyfin", config::Jellyfin}, {"emby", config::Jellyfin}, {"glances", config::Glances}};
+             {"jellyfin", config::Jellyfin}, {"emby", config::Jellyfin}, {"plex", config::Jellyfin},
+             {"glances", config::Glances}};
+
+bool is_plex(const char *key) { return std::string(key) == "plex"; }
+
+/* The one secret of an instance: Plex calls its own a token. */
+const char *secret_name(const char *key) { return is_plex(key) ? "token" : "apiKey"; }
 
 } // namespace
 
@@ -84,7 +91,12 @@ std::string public_view(const std::string &config_text)
                 cJSON_AddStringToObject(o, "username", str(in, "username"));
                 cJSON_AddBoolToObject(o, "hasPassword", *str(in, "password") != '\0');
             } else {
-                cJSON_AddBoolToObject(o, "hasKey", *str(in, "apiKey") != '\0');
+                cJSON_AddBoolToObject(o, "hasKey", *str(in, secret_name(key)) != '\0' ||
+                                                       (is_plex(key) && *str(in, "apiKey") != '\0'));
+                if (is_plex(key)) {   /* who the token belongs to: shown, never the token */
+                    cJSON_AddStringToObject(o, "userName", str(in, "userName"));
+                    cJSON_AddBoolToObject(o, "owner", !cJSON_IsFalse(cJSON_GetObjectItemCaseSensitive(in, "owner")));
+                }
                 if (s == config::Sonarr || s == config::Radarr)
                     cJSON_AddBoolToObject(o, "is4k", cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(in, "is4k")));
             }
@@ -153,6 +165,9 @@ bool apply(const std::string &current_text, const std::string &posted, std::stri
             if (old && str(old, "url") != url)   /* another server: the old one's session means nothing there */
                 for (const char *k : {"accessToken", "userName", "isAdmin"})
                     cJSON_DeleteItemFromObjectCaseSensitive(o, k);
+            if (is_plex(key) && old && str(old, "url") != url)   /* nor its Plex token */
+                for (const char *k : {"token", "apiKey", "owner"})
+                    cJSON_DeleteItemFromObjectCaseSensitive(o, k);
             set_str("url", url);
             if (cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(it, "insecure")))
                 set_bool("insecure", true);
@@ -165,6 +180,14 @@ bool apply(const std::string &current_text, const std::string &posted, std::stri
                     set_str("password", pass);
                 if (cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(it, "clearPassword")))
                     set_str("password", "");
+            } else if (is_plex(key)) {   /* a token pasted (or none: Plex's "allowed without auth") */
+                const std::string k = str(it, "apiKey");
+                if (!k.empty()) {
+                    set_str("token", k);
+                    cJSON_DeleteItemFromObjectCaseSensitive(o, "apiKey");
+                    for (const char *w : {"userName", "owner"})   /* whose it is, unknown for a pasted one */
+                        cJSON_DeleteItemFromObjectCaseSensitive(o, w);
+                }
             } else {
                 const std::string k = str(it, "apiKey");
                 if (!k.empty())

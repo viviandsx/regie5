@@ -115,6 +115,43 @@ TEST(share_emby)
     CHECK(v.find("\"emby\":[{") != std::string::npos);
 }
 
+TEST(share_plex)
+{
+    /* The page has a Plex section; a pasted token is written as "token". */
+    CHECK(config_web::public_view(kConfig).find("\"plex\":[]") != std::string::npos);
+    std::string out, error;
+    CHECK(config_web::apply("", R"({"services":{"plex":[{"from":-1,"url":"http://10.0.0.2:32400","apiKey":"PLEXTOKEN","enabled":true}]}})",
+                            &out, &error));
+    config::Config c;
+    CHECK(config::parse(out, &c));
+    CHECK(c.plex());
+    CHECK_EQ(c.services[config::Jellyfin].api_key, std::string("PLEXTOKEN"));
+    CHECK(out.find("\"token\"") != std::string::npos && out.find("\"apiKey\"") == std::string::npos);
+    std::string v = config_web::public_view(out);
+    CHECK(v.find("PLEXTOKEN") == std::string::npos);   /* never back to the phone */
+    CHECK(v.find("\"hasKey\":true") != std::string::npos);
+    /* An empty field keeps the token. */
+    const std::string signed_in = R"({"plex": {"url": "http://10.0.0.2:32400", "token": "PLEXTOKEN", "userName": "lea", "owner": true}})";
+    CHECK(config_web::apply(signed_in, R"({"services":{"plex":[{"from":0,"url":"http://10.0.0.2:32400","apiKey":"","enabled":true}]}})",
+                            &out, &error));
+    CHECK(config::parse(out, &c));
+    CHECK_EQ(c.services[config::Jellyfin].api_key, std::string("PLEXTOKEN"));
+    CHECK_EQ(c.services[config::Jellyfin].user, std::string("lea"));
+    v = config_web::public_view(signed_in);
+    CHECK(v.find("\"userName\":\"lea\"") != std::string::npos);
+    /* Another address: the token belonged to the other server, it goes. */
+    CHECK(config_web::apply(signed_in, R"({"services":{"plex":[{"from":0,"url":"http://10.0.0.9:32400","apiKey":"","enabled":true}]}})",
+                            &out, &error));
+    CHECK(config::parse(out, &c));
+    CHECK(c.plex() && c.services[config::Jellyfin].api_key.empty() && c.services[config::Jellyfin].user.empty());
+    CHECK(out.find("PLEXTOKEN") == std::string::npos);
+    /* Without a token: written, on (Plex's "allowed without auth"). */
+    CHECK(config_web::apply("", R"({"services":{"plex":[{"from":-1,"url":"http://10.0.0.2:32400","apiKey":"","enabled":true}]}})",
+                            &out, &error));
+    CHECK(config::parse(out, &c));
+    CHECK(c.plex() && c.services[config::Jellyfin].enabled);
+}
+
 TEST(share_local_addresses_only)
 {
     for (const char *ip : {"127.0.0.1", "10.1.2.3", "172.16.0.1", "172.31.255.255", "192.168.1.20", "169.254.3.4",

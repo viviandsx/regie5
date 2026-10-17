@@ -9,6 +9,7 @@
 #include "api/arr.h"
 #include "api/glances.h"
 #include "api/jellyfin.h"
+#include "api/plex.h"
 #include "api/seerr.h"
 
 #include <algorithm>
@@ -81,6 +82,8 @@ std::string Services::auth_header(config::Service s, int instance) const
     }
     const config::ServiceConfig &c = m_cfg.at(s, instance);
     const std::string &key = c.api_key;
+    if (s == config::Jellyfin && m_cfg.plex())
+        return plex::token_header(key);   /* none without a token */
     if (s == config::Jellyfin && m_cfg.emby())
         return http::header("X-Emby-Token", key);   /* Emby's documented header */
     if (s == config::Jellyfin && key.empty())   /* Quick Connect: who signs in, and the session once there */
@@ -99,6 +102,9 @@ http::Request Services::make(config::Service s, const std::string &method, const
     if (!auth.empty())
         r.headers.push_back(auth);
     r.headers.push_back("Accept: application/json");
+    if (s == config::Jellyfin && m_cfg.plex())   /* who Régie5 is, on every Plex request */
+        for (std::string &h : plex::client_headers(m_device_id, m_device_name, m_version))
+            r.headers.push_back(std::move(h));
     r.insecure = m_cfg.at(s, instance).insecure;
     return r;
 }
@@ -120,9 +126,12 @@ void Services::call(config::Service s, const std::string &method, const std::str
     /* Signed in by Quick Connect: a 401 is a session that ended, a 403 an
      * account that is not an administrator (never the key's fault). */
     const config::ServiceConfig &c = m_cfg.at(s, instance);
-    const bool session = s == config::Jellyfin && !m_cfg.emby() && c.session();
+    const bool session = s == config::Jellyfin && m_cfg.media == config::MediaServer::Jellyfin && c.session();
     const bool admin = c.admin;
-    m_pool.submit(std::move(req), [parse, done, session, admin](http::Response &resp) -> std::function<void()> {
+    /* Plex: refused to an account that is not the owner (owner-only calls),
+     * a token it no longer takes, or no token at all. */
+    const bool plex = s == config::Jellyfin && m_cfg.plex(), token = !c.api_key.empty();
+    m_pool.submit(std::move(req), [parse, done, session, admin, plex, token](http::Response &resp) -> std::function<void()> {
         auto res = std::make_shared<Result<T>>();
         res->http_status = resp.status;
         const bool parsed = resp.ok() && parse(resp.body, &res->value);
@@ -131,6 +140,8 @@ void Services::call(config::Service s, const std::string &method, const std::str
             res->error = Error::Revoked;
         else if (session && resp.status == 403 && !admin)
             res->error = Error::NeedsAdmin;
+        else if (plex && (resp.status == 401 || resp.status == 403))
+            res->error = !admin ? Error::NeedsAdmin : token ? Error::Revoked : Error::Unauthorized;
         return [done, res] {
             if (done)
                 done(std::move(*res));
@@ -170,8 +181,8 @@ void Services::test(config::Service s, std::function<void(Result<std::string>)> 
         parse = glances::parse_test;
         break;
     default:
-        path = jellyfin::info_path();
-        parse = jellyfin::parse_info;
+        path = m_cfg.plex() ? plex::info_path() : jellyfin::info_path();
+        parse = m_cfg.plex() ? plex::parse_info : jellyfin::parse_info;
         break;
     }
     call<std::string>(s, "GET", path, parse, std::move(done), instance);

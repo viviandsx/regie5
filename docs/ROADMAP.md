@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 ouverte : Plex** ; étude validée, implémentation en cours (P1 serveur de test fait, § 2 duodecies).**
+**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 ouverte : Plex** ; étude validée, implémentation en cours (P1, P2 faits, § 2 duodecies).**
 
 ---
 
@@ -31,7 +31,7 @@ pour ce qui a été fait après la phase 0).
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | étude validée ; implémentation en cours (§ 2 duodecies) |
 
-Tests : **72** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **74** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -1108,6 +1108,19 @@ seulement après validation. Patches : `build/patches-21/`.
       3840×2160 → 960×540), `height` obligatoire ; `Media` d'une session = ce qui est envoyé, la
       source dans les métadonnées ; arrêt → 401 sans Plex Pass ; Butler presque sans titres ;
       `POST /library/sections` (la spécification dit `/all`).
+- [x] **P2. Configuration et noms** — clé `"plex"` (`url`, `token`, `userName`, `owner` ; une
+      adresse sans jeton est acceptée), `config::MediaServer::Plex`, un seul serveur multimédia
+      (Jellyfin, puis Emby, puis Plex ; « Plusieurs serveurs multimédias… : seul X est utilisé »),
+      `i18n::set_media` (Jellyfin et Jelly5 deviennent « Plex » : onglet, « Chercher dans Plex ») ;
+      `api/plex` (en-têtes `X-Plex-*` sur chaque requête, `X-Plex-Token` en en-tête seulement,
+      test de connexion sur `/`), erreurs propres à Plex (jeton absent, refusé, pas le
+      propriétaire) ; version minimale 1.41.9 ; Réglages : ligne Plex « bêta », version courte,
+      « Sans jeton : … (déconseillé) », compte et « pas le propriétaire » en orange ; assistant :
+      Jellyfin · Emby · **Plex** · Aucun (`m=plex`) ; page du téléphone : section Plex, jeton
+      collé (champ avancé, guide, avertissement sans jeton), jeton jamais renvoyé, effacé si
+      l'adresse change. `REGIE5_MOCK_PLEX=1` (configuration seulement, fixtures en P3).
+      `docs/CONFIG.md` (« Jellyfin, Emby ou Plex »), `config.example.json`. Vu contre le serveur de
+      test : Réglages au vert (v1.43.4.10903), assistant, page au format téléphone. 74 tests.
 - [ ] Séances P2 à P6 (`docs/PLEX.md` § 5 ; P5 devient le message « non disponible » du Ménage).
 
 ## 3. En attente
@@ -1314,3 +1327,4 @@ la Bibliothèque).
 | 17 oct. 2026 | **0.5.1 publiée** (tag, release, zip `75f6fced…`) après la recette console OK ; testeur Emby sans réponse, message posté sur l'issue #1 (laissée ouverte) ; release v0.5.0 corrigée « Fixed in 0.5.1 ». Catalogue encore en 0.5.0. Bazarr et Lidarr retirés de la suite ; port 5555 gardé ouvert. |
 | 17 oct. 2026 | 0.6.0 ouverte (Plex). Étude de faisabilité `docs/PLEX.md` (sources officielles de Plex, Seerr, Tautulli ; CORS de plex.tv mesuré) ; décisions attendues ; `build/patches-21/`. |
 | 17 oct. 2026 | Décisions Plex de Vivian (pas de Ménage avec Plex en 0.6.0). P1 : serveur Plex de test (Docker, sans compte), simulateur de lecture, relevé (images à la taille demandée, arrêt refusé sans Plex Pass). |
+| 17 oct. 2026 | P2 Plex : configuration `"plex"`, un seul serveur multimédia, noms, Réglages, assistant et page du téléphone (jeton collé), erreurs propres à Plex. |

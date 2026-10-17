@@ -28,7 +28,8 @@ constexpr double kPollEvery = 2.0;   /* seconds between two questions to Jellyfi
 
 bool QuickConnectSheet::offered(const Context &ctx)
 {
-    return ctx.services && !ctx.services->config().emby() && !ctx.services->config().at(config::Jellyfin).url.empty();
+    return ctx.services && ctx.services->config().media == config::MediaServer::Jellyfin &&
+           !ctx.services->config().at(config::Jellyfin).url.empty();
 }
 
 void QuickConnectSheet::open()

@@ -8,6 +8,8 @@
  */
 #pragma once
 
+#include "core/config.h"
+
 #include <string>
 
 namespace i18n {
@@ -567,6 +569,15 @@ enum S {
     QcRowNotAdmin,
     ConfigSetAside,
     WelSetAside,
+    PlexNoToken,
+    PlexNotOwner,
+    PhonePlexNote,
+    PhonePlexToken,
+    PhonePlexTokenHint,
+    PhoneNoTokenWarn,
+    ErrPlexNoToken,
+    ErrPlexRevoked,
+    ErrPlexOwner,
     Count
 };
 
@@ -586,15 +597,18 @@ const char *code();
 bool singular(long long n);
 
 const char *tr(S key);
-/* The same text as the language file has it, "Jellyfin" kept even with Emby. */
+/* The same text as the language file has it, "Jellyfin" kept even with Emby or Plex. */
 const char *plain(S key);
 
-/* The media server is Emby: in every text, "Jellyfin" reads "Emby" and
- * "Jelly5" (the PS5 client) "Emby5". Translations keep writing Jellyfin.
+/* The media server's names in every text: with Emby, "Jellyfin" reads
+ * "Emby" and "Jelly5" (the PS5 client) "Emby5"; with Plex, both read "Plex"
+ * (Plex's own PS5 app). Translations keep writing Jellyfin and Jelly5.
  * Main thread, like set_lang. */
-void set_emby(bool emby);
-/* "Jellyfin", or "Emby" after set_emby(true): the media server's name. */
+void set_media(config::MediaServer m);
+config::MediaServer media();
+/* "Jellyfin", "Emby" or "Plex": the media server's name. */
 const char *media_server();
 bool emby();
+bool plex();
 
 } // namespace i18n

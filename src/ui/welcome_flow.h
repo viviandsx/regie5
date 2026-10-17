@@ -37,8 +37,8 @@ public:
 
 private:
     enum class Step { Intro, Server, Phone, Check };
-    enum class Choice { Jellyfin, Emby, None };
-    enum class Button { Start, Later, Jellyfin, Emby, None, Check, Retry, Go, Fix, QuickConnect };
+    enum class Choice { Jellyfin, Emby, Plex, None };
+    enum class Button { Start, Later, Jellyfin, Emby, Plex, None, Check, Retry, Go, Fix, QuickConnect };
     std::vector<Button> buttons() const;
     void go(Step s);
     void press(Button b);

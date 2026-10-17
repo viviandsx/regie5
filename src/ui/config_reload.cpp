@@ -31,7 +31,7 @@ bool reload_config(Context &ctx)
     ctx.services->reconfigure(next);
     if (ctx.on_config_read)
         ctx.on_config_read();
-    i18n::set_emby(next.emby());
+    i18n::set_media(next.media);
     art::forget(changed);
     ctx.config_gen++;
     notify(i18n::tr(i18n::ConfigReloaded), true, platform::now());

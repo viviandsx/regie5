@@ -18,27 +18,30 @@ namespace {
 const Language *s_lang = nullptr;
 const char *s_texts[Count] = {};   /* the current language's, English where it has none */
 const char *s_plain[Count] = {};   /* the same, before the media server's name is put in */
-bool s_emby = false;
+config::MediaServer s_media = config::MediaServer::Jellyfin;
 
-/* A text with Emby's names in place of Jellyfin's, made once and kept for the
- * whole run: a pointer handed out by tr() never goes stale. */
-const char *emby_text(const char *text)
+/* A text with another media server's names in place of Jellyfin's, made once
+ * and kept for the whole run: a pointer handed out by tr() never goes stale. */
+const char *renamed(const char *text, config::MediaServer m)
 {
-    static std::map<const char *, std::unique_ptr<std::string>> made;
-    auto f = made.find(text);
+    static std::map<std::pair<const char *, int>, std::unique_ptr<std::string>> made;
+    const auto key = std::make_pair(text, (int)m);
+    auto f = made.find(key);
     if (f != made.end())
         return f->second->c_str();
     std::string s = text;
-    for (const auto &[from, to] : {std::pair<std::string, std::string>{"Jellyfin", "Emby"}, {"Jelly5", "Emby5"}})
+    const bool plex = m == config::MediaServer::Plex;
+    for (const auto &[from, to] : {std::pair<std::string, std::string>{"Jellyfin", plex ? "Plex" : "Emby"},
+                                   {"Jelly5", plex ? "Plex" : "Emby5"}})
         for (size_t at = s.find(from); at != std::string::npos; at = s.find(from, at + to.size()))
             s.replace(at, from.size(), to);
-    return made.emplace(text, std::make_unique<std::string>(std::move(s))).first->second->c_str();
+    return made.emplace(key, std::make_unique<std::string>(std::move(s))).first->second->c_str();
 }
 
 void fill()
 {
     for (int k = 0; k < Count; k++)
-        s_texts[k] = s_emby ? emby_text(s_plain[k]) : s_plain[k];
+        s_texts[k] = s_media == config::MediaServer::Jellyfin ? s_plain[k] : renamed(s_plain[k], s_media);
 }
 
 std::string lower(const std::string &s)
@@ -88,13 +91,15 @@ void set_lang(const Language &l)
     fill();
 }
 
-const char *media_server() { return s_emby ? "Emby" : "Jellyfin"; }
-bool emby() { return s_emby; }
+const char *media_server() { return config::media_name(s_media); }
+config::MediaServer media() { return s_media; }
+bool emby() { return s_media == config::MediaServer::Emby; }
+bool plex() { return s_media == config::MediaServer::Plex; }
 
-void set_emby(bool emby)
+void set_media(config::MediaServer m)
 {
     language();
-    s_emby = emby;
+    s_media = m;
     fill();
 }
 

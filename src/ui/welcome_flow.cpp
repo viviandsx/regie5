@@ -30,7 +30,8 @@ constexpr uint32_t kAccent = 0xff7c8cffu;   /* the wordmark's "5" */
 void WelcomeFlow::open()
 {
     m_open = true;
-    m_choice = m_ctx.services && m_ctx.services->config().emby() ? Choice::Emby : Choice::Jellyfin;
+    const config::MediaServer m = m_ctx.services ? m_ctx.services->config().media : config::MediaServer::Jellyfin;
+    m_choice = m == config::MediaServer::Emby ? Choice::Emby : m == config::MediaServer::Plex ? Choice::Plex : Choice::Jellyfin;
     m_show.snap(0.f);
     m_show.to(1.f);
     m_drop.hide();
@@ -45,7 +46,7 @@ void WelcomeFlow::close()
     m_open = false;
     m_ctx.settings.welcome_later = true;
     m_ctx.save_settings();
-    i18n::set_emby(m_ctx.services && m_ctx.services->config().emby());
+    i18n::set_media(m_ctx.services ? m_ctx.services->config().media : config::MediaServer::Jellyfin);
 }
 
 bool WelcomeFlow::take_config_changed()
@@ -69,7 +70,10 @@ void WelcomeFlow::go(Step s)
 
 std::string WelcomeFlow::media_query() const
 {
-    return m_choice == Choice::Emby ? "m=emby" : m_choice == Choice::None ? "m=none" : "m=jellyfin";
+    return m_choice == Choice::Emby   ? "m=emby"
+           : m_choice == Choice::Plex ? "m=plex"
+           : m_choice == Choice::None ? "m=none"
+                                      : "m=jellyfin";
 }
 
 void WelcomeFlow::open_phone()
@@ -93,7 +97,7 @@ std::vector<WelcomeFlow::Button> WelcomeFlow::buttons() const
 {
     switch (m_step) {
     case Step::Intro: return {Button::Start, Button::Later};
-    case Step::Server: return {Button::Jellyfin, Button::Emby, Button::None, Button::Later};
+    case Step::Server: return {Button::Jellyfin, Button::Emby, Button::Plex, Button::None, Button::Later};
     case Step::Phone:
         if (!m_share.error().empty())
             return {Button::Retry, Button::Check, Button::Later};
@@ -119,9 +123,13 @@ void WelcomeFlow::press(Button b)
     case Button::Go: close(); break;
     case Button::Jellyfin:
     case Button::Emby:
+    case Button::Plex:
     case Button::None:
-        m_choice = b == Button::Emby ? Choice::Emby : b == Button::None ? Choice::None : Choice::Jellyfin;
-        i18n::set_emby(m_choice == Choice::Emby);   /* the texts follow the choice at once */
+        m_choice = b == Button::Emby ? Choice::Emby : b == Button::Plex ? Choice::Plex : b == Button::None ? Choice::None : Choice::Jellyfin;
+        /* the texts follow the choice at once */
+        i18n::set_media(m_choice == Choice::Emby   ? config::MediaServer::Emby
+                        : m_choice == Choice::Plex ? config::MediaServer::Plex
+                                                   : config::MediaServer::Jellyfin);
         m_share.close();                            /* its address carries the choice */
         open_phone();
         break;
@@ -260,6 +268,7 @@ void WelcomeFlow::draw(double now, float dt, bool *animating)
                         : b == Button::Later    ? i18n::tr(i18n::WelLater)
                         : b == Button::Jellyfin ? "Jellyfin"   /* names, never translated nor swapped */
                         : b == Button::Emby     ? "Emby"
+                        : b == Button::Plex     ? "Plex"
                         : b == Button::None     ? i18n::tr(i18n::WelNone)
                         : b == Button::Check    ? i18n::tr(i18n::WelCheck)
                         : b == Button::Retry    ? i18n::tr(i18n::WelRetry)

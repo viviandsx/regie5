@@ -13,6 +13,7 @@ Les clés d'API ne sont jamais écrites dans un journal.
 | `enabled` | tous | `false` pour couper le service sans effacer sa configuration. Vrai par défaut. |
 | `url` | tous | Adresse du service. Peut contenir un chemin (`https://exemple.lan/radarr`) derrière un reverse proxy ou avec l'`urlBase` des *arr. |
 | `apiKey` | Sonarr, Radarr, Seerr, Jellyfin, Emby | Clé d'API du service. Sans clé, le service est coupé. |
+| `token` | Plex | Jeton du serveur Plex, écrit par la connexion depuis le téléphone (ou collé à la main). Voir « Plex » plus bas. |
 | `name` | tous | Nom affiché de l'instance (« Radarr 4K »). Par défaut, le nom du service. |
 | `is4k` | Sonarr, Radarr | `true` pour l'instance que **Seerr** utilise comme serveur 4K. `false` par défaut. Jamais déduit du nom. |
 | `insecure` | tous | `true` pour une adresse `https://` dont le certificat est **auto-signé** (réseau local) : il n'est pas vérifié. `false` par défaut : le certificat doit être signé par une autorité reconnue (Let's Encrypt…). |
@@ -25,7 +26,7 @@ sont jamais renvoyées au téléphone : un champ laissé vide garde la clé.
 
 Au **premier lancement** (`config.json` absent, illisible, ou sans aucun service principal
 actif : Glances seul ne compte pas), Régie5 ouvre son **assistant** : choix du serveur
-multimédia (Jellyfin, Emby ou aucun), la même page du téléphone (qui ne montre que le
+multimédia (Jellyfin, Emby, Plex ou aucun), la même page du téléphone (qui ne montre que le
 serveur choisi), puis le test de chaque service. « Plus tard » le ferme pour de bon
 (`settings.json` : `"welcome": "later"`) ; l'Accueil propose alors « Configurer », et
 Réglages › « Assistant » le rouvre à tout moment. Une mise à jour qui garde un `config.json`
@@ -60,10 +61,10 @@ de bord › Appareils) : Réglages le dit, il suffit de refaire Quick Connect. R
 `settings.json` (`"deviceId"`). Jellyfin 10.9 ou plus récent, Quick Connect activé (Tableau de
 bord › Général). Emby n'a pas d'équivalent sur le réseau local : il garde sa clé.
 
-## Jellyfin ou Emby
+## Jellyfin, Emby ou Plex
 
-Le serveur multimédia est **Jellyfin** (clé `"jellyfin"`) **ou Emby** (clé `"emby"`, mêmes
-champs), l'un ou l'autre :
+Le serveur multimédia est **Jellyfin** (clé `"jellyfin"`), **Emby** (clé `"emby"`, mêmes
+champs) **ou Plex** (clé `"plex"`, ci-dessous), un seul à la fois :
 
 ```json
 "emby": { "url": "http://192.168.1.10:8096", "apiKey": "…" }
@@ -76,9 +77,33 @@ chercher dans Emby5 ; aucune app n'est lancée). Emby 4.8 ou plus récent (test�
 Le support d'Emby est en **bêta** depuis la 0.4.0 (pastille dans Réglages) : retours bienvenus
 sur l'issue #1 du dépôt.
 
-Si `"jellyfin"` et `"emby"` sont tous deux actifs, seul Jellyfin est utilisé, et Réglages le
-signale sur sa ligne. Pour passer d'Emby à Jellyfin, mettez `"enabled": false` dans
-`"emby"` (ou retirez-le).
+Si plusieurs sont actifs, le premier de Jellyfin, Emby, Plex est utilisé, et Réglages le
+signale sur sa ligne. Pour passer de l'un à l'autre, mettez `"enabled": false` dans celui
+qu'on quitte (ou retirez-le).
+
+### Plex (bêta, 0.6.0)
+
+```json
+"plex": { "url": "http://192.168.1.10:32400" }
+```
+
+| Champ | Rôle |
+|---|---|
+| `url` | Adresse du serveur Plex (port 32400 par défaut). |
+| `token` | Le jeton **du serveur** (jamais celui du compte Plex), secret comme une clé : jamais renvoyé au téléphone, jamais écrit dans un journal. |
+| `userName`, `owner` | Écrits avec le jeton : le compte, et s'il est le propriétaire du serveur. `"owner": false` : la ligne passe à l'orange, et les écrans réservés au propriétaire le disent (sessions, arrêt, scan, tâches, journal, utilisateurs). |
+
+Le jeton s'obtient depuis la page du téléphone. En secours, il peut être collé à la main
+(Plex Web › un film › ⋯ › Obtenir des infos › Afficher le XML : la valeur de `X-Plex-Token`
+dans l'adresse ; Plex dit qu'un jeton trouvé ainsi peut ne durer qu'un temps). Sans jeton,
+Régie5 n'entre que si le serveur Plex laisse le réseau de la console entrer sans
+authentification (Paramètres › Réseau › « List of IP addresses and networks that are allowed
+without auth ») : Plex le déconseille, Réglages l'affiche. Changer l'adresse depuis le
+téléphone efface le jeton (il appartient à l'autre serveur). Plex Media Server 1.41.9 ou plus
+récent (testé avec 1.43.4). Un Plex en « Connexions sécurisées : obligatoires » :
+`https://<IP>:32400` avec `"insecure": true` (son certificat est au nom de `*.plex.direct`).
+Options propose « Chercher dans Plex » (le titre à chercher dans l'app Plex de la PS5). Le
+Ménage n'est pas disponible avec Plex pour l'instant. Étude : `docs/PLEX.md`.
 
 ## Derrière un reverse proxy
 

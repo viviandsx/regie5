@@ -9,7 +9,8 @@
     "              {\"name\": \"Radarr 4K\", \"url\": ..., \"apiKey\": ..., \"is4k\": true} ]",
     "is4k (Radarr, Sonarr; false by default): true for the instance Seerr uses as its 4K server.",
     "  It is never guessed from the name. See docs/CONFIG.md.",
-    "Emby instead of Jellyfin: rename \"jellyfin\" to \"emby\" (same fields). One or the other."
+    "Emby instead of Jellyfin: rename \"jellyfin\" to \"emby\" (same fields). One media server only.",
+    "Plex instead (beta): \"plex\": {\"url\": \"http://192.168.1.10:32400\"}, signed in from the phone page (it adds \"token\")."
   ],
   "sonarr": {
     "enabled": true,

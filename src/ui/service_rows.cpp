@@ -102,7 +102,8 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
     const int n = (int)m_rows.size();
     const bool compact = n > 5;
     const float row_h = row_height(n);
-    const bool emby = ctx.services && ctx.services->config().emby();
+    const config::MediaServer media = ctx.services ? ctx.services->config().media : config::MediaServer::Jellyfin;
+    const bool jellyfin = media == config::MediaServer::Jellyfin;
     const bool both_media = ctx.services && ctx.services->config().both_media;
     for (int i = 0; i < n; i++) {
         const Row &row = m_rows[i];
@@ -119,10 +120,12 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
             status = i18n::tr(i18n::StatusOk);
             /* A version; Glances has none to give: its CPU's name. */
             detail = st.version.empty() ? "" : row.service == config::Glances ? st.version : "v" + st.version;
-            if (!versions::supported(row.service, st.version, emby)) {   /* it answers, but too old to rely on */
+            if (row.service == config::Jellyfin && media == config::MediaServer::Plex)   /* "v1.43.4.10903", not its build's hash */
+                detail = detail.substr(0, detail.find('-'));
+            if (!versions::supported(row.service, st.version, media)) {   /* it answers, but too old to rely on */
                 dot = kOrange;
                 status = i18n::tr(i18n::VersionUnsupported);
-                detail = fmt::f(i18n::tr(i18n::VersionMinimum), st.version.c_str(), versions::minimum(row.service, emby));
+                detail = fmt::f(i18n::tr(i18n::VersionMinimum), st.version.c_str(), versions::minimum(row.service, media));
             }
             break;
         case model::ServiceStatus::Failed:
@@ -143,7 +146,7 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
             status = i18n::tr(row.service == config::Glances ? i18n::GlancesOptional : i18n::StatusNotConfigured);
             break;
         }
-        if (ctx.services && row.service == config::Jellyfin && !emby) {
+        if (ctx.services && row.service == config::Jellyfin && jellyfin) {
             const config::ServiceConfig &jc = ctx.services->config().at(row.service, row.instance);
             if (st.state != model::ServiceStatus::Ok && !jc.url.empty() && jc.api_key.empty() && jc.token.empty())
                 status = i18n::tr(i18n::QcNoKey);   /* an address, no key: Quick Connect is the way */
@@ -155,8 +158,19 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
                     dot = kOrange;
             }
         }
-        if (row.service == config::Jellyfin && both_media)   /* "jellyfin" and "emby" both on */
-            detail = i18n::tr(i18n::MediaBoth);
+        if (ctx.services && row.service == config::Jellyfin && media == config::MediaServer::Plex && !both_media) {
+            const config::ServiceConfig &pc = ctx.services->config().at(row.service, row.instance);
+            if (pc.api_key.empty())   /* no token: only if Plex lets this network in, which it advises against */
+                detail = i18n::tr(i18n::PlexNoToken) + (detail.empty() ? "" : " · " + detail);
+            else if (st.state == model::ServiceStatus::Ok && !pc.user.empty())
+                detail = fmt::f(i18n::tr(i18n::QcRowUser), pc.user.c_str()) + (detail.empty() ? "" : " · " + detail);
+            if (st.state == model::ServiceStatus::Ok && !pc.admin) {   /* signed in, but not the server's owner */
+                detail = std::string(i18n::tr(i18n::PlexNotOwner)) + (detail.empty() ? "" : " · " + detail);
+                dot = kOrange;
+            }
+        }
+        if (row.service == config::Jellyfin && both_media)   /* two media servers on */
+            detail = fmt::f(i18n::tr(i18n::MediaBoth), config::media_name(media));
         const float cy = ry + row_h / 2;
         if (st.state == model::ServiceStatus::Ok || st.state == model::ServiceStatus::Failed)
             gfx::shadow({x0 + 44, cy - 9, 18, 18}, 9, 10, 0.6f, 0);
@@ -170,13 +184,13 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
         const bool show_url = !c.url.empty() && !ctx.mock && !compact;
         const float name_w =
             gfx::text(x0 + 86, ry + (show_url ? 40 : row_h / 2 + 11), name, {gfx::SemiBold, compact ? 28.f : 32.f}, kText);
-        if (row.service == config::Jellyfin && emby && !both_media)   /* Emby is in beta (0.4.0) */
+        if (row.service == config::Jellyfin && !jellyfin && !both_media)   /* Emby (0.4.0) and Plex (0.6.0) are in beta */
             draw_chip(x0 + 86 + name_w + 14, ry + (show_url ? 40 : row_h / 2 + 11) - 28, i18n::tr(i18n::EmbyBeta),
                       kOrange, 1.f, 18);
         if (show_url)
             gfx::text(x0 + 86, ry + 70, address_of(c.url), {gfx::Regular, 22, kListW * 0.4f}, kText3);
         const uint32_t ink = st.state == model::ServiceStatus::Failed ? 0xffff8a80u
-                             : st.state == model::ServiceStatus::Ok && !versions::supported(row.service, st.version, emby)
+                             : st.state == model::ServiceStatus::Ok && !versions::supported(row.service, st.version, media)
                                  ? 0xffffd60au
                                  : kText;
         const bool two = !detail.empty() && !compact;
