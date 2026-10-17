@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 16 octobre 2026. 0.5.0 publiée. **0.5.1 prête à publier** (§ 2 undecies, « Pour publier la 0.5.1 ») : correctif du plantage Emby (issue #1), zip `build/ps5/release-0.5.1/upload/PPSA99520.zip` (`75f6fced…`), notes, recette `docs/RECETTE-0.5.1.md`, patch `build/patches-20/`. On publie quand le testeur confirme `emby-fix-1`, au plus tard le **18 octobre 2026** sans réponse.**
+**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. Suite : petits correctifs (§ 2 nonies).**
 
 ---
 
@@ -28,7 +28,7 @@ pour ce qui a été fait après la phase 0).
 | 10. Version 0.3.2 | 120 Hz par défaut (Auto), dates des films ; Multimédia écarté | ✅ publiée le 14 octobre 2026 (§ 2 septies, « 0.3.2 ») |
 | 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
 | 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | ✅ publiée (§ 2 decies) |
-| 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | 🧪 `emby-fix-1` validé sur la console ; release prête, attend le testeur (au plus tard le 18 octobre) (§ 2 undecies) |
+| 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
 
 Tests : **72** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -817,23 +817,20 @@ et copier `app.prev.log` (`scripts/ps5-fetch-log.py <console> 2121 PPSA99520`).
 
 ## 2 nonies. Après la 0.4.0 (ordre décidé par Vivian le 15 octobre 2026)
 
-Rien qui touche au code Emby.
+Rien qui touche au code Emby. Bazarr et Lidarr retirés de la suite (Vivian, 17 octobre 2026) :
+ils ne seront pas implémentés.
 
 1. [ ] **Petits correctifs** : un message visible à l'écran (ou une notification système) si
        la console refuse la mémoire demandée, au lieu du seul journal (§ 3, « Taille du tas ») ;
        Bibliothèque › Manquants qui reste sur ses squelettes sans configuration au lieu de
        « Pas de configuration » (vu avec l'état `noconfig` de `capture-states.sh`).
-2. [ ] **Bazarr en lecture seule** : sous-titres manquants (Bibliothèque › Manquants, fiches),
-       sans noms de fournisseurs. Endpoints à vérifier dans la doc officielle avant de coder.
-3. [ ] **Lidarr en lecture seule** : sorties d'albums dans « À venir » et le Guide, file
-       d'attente dans Activité (titres, progression, jamais de noms de releases).
 
 ## 2 decies. Version 0.5.0 (ouverte le 16 octobre 2026)
 
 La 0.4.0 est publiée. Cinq chantiers, décidés par Vivian ; les chantiers 3 et 4 passent par
 une conception validée avant d'être codés. Patches : `build/patches-16/` (chantiers 1, 2, 5) et `build/patches-17/` (3, 4, puis les lignes des Nouveautés et le build de test).
 Un seul build de test console à la fin, puis la release (pas sans l'accord de Vivian).
-Le § 2 nonies (correctifs, Bazarr, Lidarr) vient après.
+Le § 2 nonies (petits correctifs) vient après.
 
 - [x] **1. Écran « Nouveautés » après une mise à jour** — `core/whats_new` (testé) : s'ouvre
       une fois au premier lancement d'une nouvelle **série** de versions (0.5 ; un correctif
@@ -1023,7 +1020,7 @@ console : plantage, puis **à chaque lancement**. Écran de la console : SIGSEGV
       01-02 de `build/patches-19/` commités et poussés (`762e998`, `3ca77de`) ; contournement
       posté sur l'issue ; ligne « Known issue » ajoutée au texte de la release v0.5.0 ; zip de
       test posté sur l'issue. Le garde-fou ne se déclenche pas à la demande sur la console.
-- [ ] Retour du testeur : `config.json` (clés en `xxx`), version exacte, `app.prev.log` (ligne
+- [ ] Retour du testeur (aucune réponse au 17 octobre ; message de sortie posté) : `config.json` (clés en `xxx`), version exacte, `app.prev.log` (ligne
       « CRASH signal … », « ALLOCATION FAILED », « heap: N MiB granted »).
 - [x] **0.5.1 décidée** (Vivian) : publiée dès que le testeur confirme `emby-fix-1`, ou au plus
       tard le 18 octobre 2026 sans réponse. Pas de 0.4.1 (le catalogue ne propose que la
@@ -1055,19 +1052,19 @@ Le code est celui d'`emby-fix-1` (déjà commité) ; la 0.5.1 n'ajoute que les n
        garde-fou. Captures inchangées.
 5. [x] **Recette** `docs/RECETTE-0.5.1.md` (5 min : mise à jour, Réglages, page du téléphone,
        relance).
-6. [ ] **Déclencheur** : le testeur confirme qu'`emby-fix-1` marche, **ou** le 18 octobre 2026
+6. [x] **Déclencheur** : pas de réponse du testeur, release faite le 17 octobre. Règle d'origine : le testeur confirme qu'`emby-fix-1` marche, **ou** le 18 octobre 2026
        sans réponse. S'il répond que ça plante encore : ne pas publier, regarder son
        `app.prev.log` d'abord.
-7. [ ] Vivian : recette `docs/RECETTE-0.5.1.md` sur la console.
-8. [ ] Vivian : commit « Régie5 0.5.1 » (`build/patches-20/`), push, tag `v0.5.1`
+7. [x] Vivian : recette `docs/RECETTE-0.5.1.md` sur la console.
+8. [x] Vivian : commit « Régie5 0.5.1 » (`build/patches-20/`), push, tag `v0.5.1`
        (`git push origin v0.5.1`), release GitHub « Régie5 0.5.1 » (texte = les notes, pièce
        jointe `PPSA99520.zip`, pas « pre-release »), empreinte vérifiée.
-9. [ ] Release v0.5.0 : retirer la ligne « Known issue » (`build/publish/release-0.5.0-known-issue.md` :
+9. [x] Release v0.5.0 : retirer la ligne « Known issue » (`build/publish/release-0.5.0-known-issue.md` :
        quoi supprimer, ligne « Fixed in 0.5.1 » à mettre à la place). Texte seulement : ni le tag
        ni le zip.
-10. [ ] Issue #1 : testeur OK → `build/publish/issue-1-closing.md`, puis fermer l'issue ; sans
+10. [x] Issue #1 : sans réponse, `issue-1-release-no-reply.md` posté, issue ouverte. Règle : testeur OK → `build/publish/issue-1-closing.md`, puis fermer l'issue ; sans
         réponse → `build/publish/issue-1-release-no-reply.md`, issue laissée ouverte.
-11. [ ] Catalogue : la PR automatique du lendemain (`version` 0.5.1, `sha256` de l'étape 2,
+11. [ ] Catalogue (encore en 0.5.0 le 17 octobre) : la PR automatique du lendemain (`version` 0.5.1, `sha256` de l'étape 2,
         `icon_url` en `/v0.5.1/ps5/app/sce_sys/icon0.png`) ; sinon chemin manuel
         (`docs/RELEASING.md` §3).
 12. [ ] Après la sortie (facultatif, si le testeur confirme) : la ligne « Emby is in beta » du
@@ -1077,7 +1074,7 @@ Le code est celui d'`emby-fix-1` (déjà commité) ; la 0.5.1 n'ajoute que les n
 
 | Sujet | Qui | Détail |
 |---|---|---|
-| Port 5555 (ufw) | Vivian | Ouvert pour les tests, à refermer à la fin. |
+| Port 5555 (ufw) | Vivian | Gardé ouvert pour les tests console (décision du 17 octobre 2026). |
 | PR Jelly5 | Vivian | Sans lanceur depuis une app, Régie5 ne s'en sert pas sur PS5 : la proposer ou non est une décision à part (`docs/JELLY5-PR.md`). |
 | Taille du tas sur PS5 | 6.2 | 256 Mio accordé et l'affichage démarre (probe-5) : on garde 256 ; l'usage mesuré est ~20 Mio. En 6.2 : message visible à l'écran (ou notification système) si la mémoire est refusée, au lieu du seul journal. |
 
@@ -1273,3 +1270,4 @@ la Bibliothèque).
 | 16 oct. 2026 | `app-18` validé sur la console (A à F). 0.5.0 préparée : numéros, zip (`32fd8c09…`), notes, README (capture Découvrir), recette courte, brouillon Reddit ; `is4k` vérifié dans le code de Seerr ; emplacement de `/download0` vu par FTP (`RELEASING.md`). `build/patches-18/`. |
 | 16 oct. 2026 | Plantage du testeur Emby (issue #1) : RIP dans le rapport de plantage d'emby-test-1 (lecture au-delà de la pile), cause probable les images Emby en taille d'origine (`fillWidth` ignoré), reproduit sous Linux (pic de tas ×5). Corrigé : `maxWidth` pour Emby, décodage plafonné, rapport borné, garde-fou de démarrage (`core/boot_guard`). Zip de test `emby-fix-1`, réponses à l'issue, `build/patches-19/`. |
 | 16 oct. 2026 | `emby-fix-1` validé sur la console (Jellyfin), patches-19 commités, contournement et zip de test postés sur l'issue. 0.5.1 préparée : numéros, zip (`75f6fced…`), notes, README et `INSTALL.txt` (garde-fou), recette courte, textes de sortie (release v0.5.0, issue #1), `build/patches-20/`. Publication : testeur OK ou 18 octobre au plus tard. |
+| 17 oct. 2026 | **0.5.1 publiée** (tag, release, zip `75f6fced…`) après la recette console OK ; testeur Emby sans réponse, message posté sur l'issue #1 (laissée ouverte) ; release v0.5.0 corrigée « Fixed in 0.5.1 ». Catalogue encore en 0.5.0. Bazarr et Lidarr retirés de la suite ; port 5555 gardé ouvert. |
