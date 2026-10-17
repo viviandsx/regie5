@@ -560,3 +560,34 @@ et un retour par écran avec captures (comme pour Emby).
 | Arrêt sans Plex Pass | action refusée | lu dans `GET /`, dit dans la confirmation et l'erreur |
 | Ménage : lecture en cours d'un autre compte invisible | titre proposé à tort | version réduite + bandeau, ou pas de Ménage Plex en 0.6.0 |
 | plex.tv change sa politique CORS | connexion par le téléphone impossible | repli : jeton collé (§ 1.3 A) |
+
+---
+
+## 7. Relevé sur le serveur de test (séance P1, 17 octobre 2026)
+
+Plex Media Server **1.43.4.10903** (`plexinc/pms-docker:1.43.4.10903-e5521bd8c`, 541 Mo sur le
+disque), jamais lié à un compte, `ALLOWED_NETWORKS=172.16.0.0/12`, port publié sur 127.0.0.1
+seulement. `scripts/plex-test-server.sh` (`start`, `setup`, `stop`, `status`),
+`scripts/plex-test-setup.py` (bibliothèques Films / Séries par l'API, agents Plex,
+`build/plex-test/config.json`), `scripts/plex-test-play.sh` (lecture transcodée ou directe sans
+Plex Web ni compte). Données dans `build/plex-test/` (non versionné).
+
+| Point | Constat |
+|---|---|
+| JSON | toutes les réponses lues sont en `application/json` avec `Accept: application/json` (`/identity`, `/`, sections, listes, métadonnées, sessions, historique, `/accounts`, `/butler`, `/activities`) ; booléens en `true`/`false` ; `apiVersion` `1.2.3`. |
+| `/identity` | sans jeton : `machineIdentifier`, `version`, `claimed` ; `startState` tant que le serveur démarre. |
+| `/` | `myPlexSubscription: false` (pas de Plex Pass), `friendlyName` = nom de la machine. |
+| Création d'une bibliothèque | `POST /library/sections` (et **pas** `POST /library/sections/all` écrit dans la spécification : 404). Sans effet sur Régie5, qui n'en crée pas. |
+| GUID | `includeGuids=1` donne `Guid[]` : `imdb://`, `tmdb://`, `tvdb://` pour trois films, `imdb://` seul pour un quatrième, `tvdb://` seul pour la série. Le rapprochement doit accepter n'importe lequel des trois. |
+| **Images** | `/photo/:/transcode?width=W&height=H&minSize=1&upscale=0&url=…` : affiche 2000×3000 → **300×450** (6 Ko), fond 3840×2160 → **960×540** (12 Ko) et **1920×1080** (36 Ko). Taille demandée **respectée**. Sans `height` : **400** (les deux sont obligatoires). Demande plus grande que l'original avec `upscale=0` : l'original (2000×3000) ; Régie5 ne demande jamais plus que l'écran, et le plafond de décodage reste. Sans transcodeur (`/library/metadata/1/thumb/…`) : l'original en entier (2000×3000, 3840×2160) : **jamais utilisé**. |
+| Sessions (transcodage) | `Media`/`Part`/`Stream` d'une session décrivent **ce qui est envoyé** (H.264 720×404, MP3), pas la source ; la source se lit dans `GET /library/metadata/{ratingKey}` (HEVC 3840×2160, AAC) ou dans `TranscodeSession.sourceVideoCodec` / `sourceAudioCodec`. `TranscodeSession` présent avec `videoDecision`, `audioDecision`, `speed`, `throttled`, `progress`, `maxOffsetAvailable` (**en secondes**, `viewOffset` en millisecondes), `transcodeHwRequested`. `Part.decision` : `transcode` ou `directplay`. |
+| Sessions (lecture directe) | pas de `TranscodeSession`, `Part.decision: directplay`, `Session.id` présent quand le fichier est lu. Une lecture qui ne fait que déclarer sa progression n'a pas d'élément `Session` : pas d'arrêt possible pour elle. |
+| Utilisateur d'une session | sur ce serveur sans compte, `User` est **vide** ; `Player.userID` vaut 1. Avec un vrai serveur, `User.title` (à vérifier avec un compte). `Player.address` contient une IP : jamais lu. |
+| **Arrêt** | `POST /status/sessions/terminate?sessionId=…&reason=…` → **401** sur ce serveur (sans Plex Pass), alors que les autres opérations passent sans jeton : cohérent avec un arrêt réservé au Plex Pass. Régie5 ne doit **pas** lire ce 401 comme « jeton refusé ». |
+| Scan | `POST /library/sections/{id}/refresh` → 200. |
+| Activités | `/activities` vide en dehors d'un scan long (le scan de 5 fichiers finit avant la lecture). |
+| Butler | 23 tâches, `name`, `interval`, `enabled`, `scheduleRandomized` ; **`title` présent pour une seule** (« Backup Database »). Régie5 affichera un nom tiré de `name` (« GenerateChapterThumbs » → « Generate Chapter Thumbs »). |
+| Historique | une lecture passée à 90 % donne une ligne (`viewedAt`, `accountID` 1, `deviceID`), et `viewCount` / `lastViewedAt` sur l'élément. |
+| `/accounts` | un compte, `id` 1, `name` « Administrator ». |
+| Nombres | `X-Plex-Container-Size: 0` → `totalSize` (4 films ; `type=4` : 3 épisodes). |
+| Chemins | `Part.file` (chemin du fichier) et `Location.path` présents : jamais lus (seul le dernier nom d'un dossier de bibliothèque, comme pour Jellyfin). |

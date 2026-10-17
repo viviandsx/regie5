@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 ouverte : Plex** ; étude de faisabilité `docs/PLEX.md` faite, **en attente de la validation de Vivian** (§ 2 duodecies).**
+**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 ouverte : Plex** ; étude validée, implémentation en cours (P1 serveur de test fait, § 2 duodecies).**
 
 ---
 
@@ -29,7 +29,7 @@ pour ce qui a été fait après la phase 0).
 | 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
 | 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | ✅ publiée (§ 2 decies) |
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
-| 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | étude faite (`docs/PLEX.md`), validation attendue (§ 2 duodecies) |
+| 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | étude validée ; implémentation en cours (§ 2 duodecies) |
 
 Tests : **72** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -1093,12 +1093,22 @@ seulement après validation. Patches : `build/patches-21/`.
       Tautulli ; images par `/photo/:/transcode`, **taille à mesurer** (leçon d'Emby) et
       plafond de décodage gardé ; minimum PMS 1.41.9 ; serveur de test sans compte possible
       (`ALLOWED_NETWORKS`, image officielle de 163 Mo).
-- [ ] **Décisions de Vivian** : (1) recommandation d'authentification (§ 1.4) ; (2) Ménage
-      Plex réduit ou reporté (§ 2.10) ; (3) téléchargement de l'image Docker
-      `plexinc/pms-docker:1.43.4.10903-e5521bd8c` (163 Mo) ; (4) agent de métadonnées du
-      serveur de test (Plex, avec GUID, ou Personal Media) ; (5) compte Plex de test : non pour
-      commencer, à revoir en P4.
-- [ ] Implémentation, séances P1 à P6 (`docs/PLEX.md` § 5).
+- [x] **Décisions de Vivian** (17 octobre 2026) : (1) authentification validée : PIN plex.tv par
+      le téléphone via la page locale (jeton classique propre au serveur, jamais celui du compte),
+      jeton collé en secours, accès sans jeton accepté mais déconseillé à l'écran ; (2) **pas de
+      Ménage avec Plex en 0.6.0** : message « non disponible avec Plex pour l'instant » dans le
+      Ménage ; piste Tautulli plus tard (§ 3) ; (3) image Docker téléchargée ; (4) agent Plex sur
+      le serveur de test ; (5) compte Plex de test : à la séance de connexion par le téléphone,
+      créé par Vivian avec une adresse dédiée. Implémentation en autonomie, une séance à la fois ;
+      arrêt pour le compte Plex ou pour le test console. Patches : `build/patches-22/`.
+- [x] **P1. Serveur de test** — `scripts/plex-test-server.sh` (PMS 1.43.4, 127.0.0.1:32400, sans
+      compte, `ALLOWED_NETWORKS`), `scripts/plex-test-setup.py` (bibliothèques par l'API, agents
+      Plex), `scripts/plex-test-play.sh` (lecture transcodée ou directe sans Plex Web). Relevé dans
+      `docs/PLEX.md` § 7 : JSON partout ; **images à la taille demandée** (2000×3000 → 300×450,
+      3840×2160 → 960×540), `height` obligatoire ; `Media` d'une session = ce qui est envoyé, la
+      source dans les métadonnées ; arrêt → 401 sans Plex Pass ; Butler presque sans titres ;
+      `POST /library/sections` (la spécification dit `/all`).
+- [ ] Séances P2 à P6 (`docs/PLEX.md` § 5 ; P5 devient le message « non disponible » du Ménage).
 
 ## 3. En attente
 
@@ -1106,6 +1116,7 @@ seulement après validation. Patches : `build/patches-21/`.
 |---|---|---|
 | Port 5555 (ufw) | Vivian | Gardé ouvert pour les tests console (décision du 17 octobre 2026). |
 | PR Jelly5 | Vivian | Sans lanceur depuis une app, Régie5 ne s'en sert pas sur PS5 : la proposer ou non est une décision à part (`docs/JELLY5-PR.md`). |
+| Ménage avec Plex | plus tard | Pas en 0.6.0 (décision de Vivian, 17 octobre 2026) : Plex ne montre pas les lectures en cours des autres comptes. Piste : **Tautulli** (optionnel, lecture seule, réseau local), qui enregistre chaque lecture par utilisateur (`docs/PLEX.md` § 2.10). |
 | Taille du tas sur PS5 | 6.2 | 256 Mio accordé et l'affichage démarre (probe-5) : on garde 256 ; l'usage mesuré est ~20 Mio. En 6.2 : message visible à l'écran (ou notification système) si la mémoire est refusée, au lieu du seul journal. |
 
 ### Actions réelles
@@ -1302,3 +1313,4 @@ la Bibliothèque).
 | 16 oct. 2026 | `emby-fix-1` validé sur la console (Jellyfin), patches-19 commités, contournement et zip de test postés sur l'issue. 0.5.1 préparée : numéros, zip (`75f6fced…`), notes, README et `INSTALL.txt` (garde-fou), recette courte, textes de sortie (release v0.5.0, issue #1), `build/patches-20/`. Publication : testeur OK ou 18 octobre au plus tard. |
 | 17 oct. 2026 | **0.5.1 publiée** (tag, release, zip `75f6fced…`) après la recette console OK ; testeur Emby sans réponse, message posté sur l'issue #1 (laissée ouverte) ; release v0.5.0 corrigée « Fixed in 0.5.1 ». Catalogue encore en 0.5.0. Bazarr et Lidarr retirés de la suite ; port 5555 gardé ouvert. |
 | 17 oct. 2026 | 0.6.0 ouverte (Plex). Étude de faisabilité `docs/PLEX.md` (sources officielles de Plex, Seerr, Tautulli ; CORS de plex.tv mesuré) ; décisions attendues ; `build/patches-21/`. |
+| 17 oct. 2026 | Décisions Plex de Vivian (pas de Ménage avec Plex en 0.6.0). P1 : serveur Plex de test (Docker, sans compte), simulateur de lecture, relevé (images à la taille demandée, arrêt refusé sans Plex Pass). |
