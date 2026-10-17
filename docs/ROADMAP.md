@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 ouverte : Plex** ; étude validée, implémentation en cours (P1 à P3 faits ; P4 attend le compte Plex de test de Vivian, § 2 duodecies).**
+**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 prête à publier** (Plex en BETA, zip `6757ea3b…`) : essai avec compte fait (jeton du propriétaire = jeton du compte, dit partout) ; recette console à refaire sur le nouveau zip (§ 2 duodecies).**
 
 ---
 
@@ -29,7 +29,7 @@ pour ce qui a été fait après la phase 0).
 | 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
 | 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | ✅ publiée (§ 2 decies) |
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
-| 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | étude validée ; implémentation en cours (§ 2 duodecies) |
+| 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | prête : essai avec compte et recette console en attente (§ 2 duodecies) |
 
 Tests : **76** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -1163,6 +1163,55 @@ seulement après validation. Patches : `build/patches-21/`.
       les jetons). Étapes : `build/plex-test/ESSAI-COMPTE.txt` (21 étapes). En attente de Vivian.
  P5 fait dans P3 (message du Ménage).
 
+### Pour publier la 0.6.0 (préparé le 17 octobre 2026)
+
+Plex en **BETA** ; pas de zip de test pour un utilisateur de Plex (décision de Vivian). Patches :
+`build/patches-22/` (05 : essai avec le compte, 06 : la release).
+
+1. [x] **Numéros** : `contentVersion` `00.006.000`, `project(regie5 VERSION 0.6.0)` ; profil
+       `param.json` inchangé (`games-hz120-0.3.1`).
+2. [x] **Nouveautés** de la série 0.6 (FR/EN/ES/DE, vues sans débordement) : Plex bêta ; retours
+       des utilisateurs de Plex dans une issue, même si tout marche ; Réglages › Nouveautés.
+3. [x] **README** (Plex bêta : fonctionnalités, tableau des services 1.41.9 / 1.43.4, connexion
+       depuis le téléphone, limites connues, lien vers le formulaire), **`INSTALL.txt`** (FR/EN),
+       modèle d'issue **`.github/ISSUE_TEMPLATE/plex_feedback.yml`** (« Plex feedback (beta) » :
+       version de PMS, Plex Pass, compte utilisé, autres comptes, connexion, ce qui marche, ce qui
+       ne marche pas, captures ; étiquettes `plex` et `beta`).
+4. [x] **Notes de version** `build/publish/release-notes-v0.6.0.md` (anglais : appel aux
+       utilisateurs de Plex en tête, ce qui marche, limites connues).
+5. [x] **Brouillon Reddit** `build/publish/reddit-r-ps5-jailbreak-v0.6.0.md` (appel aux
+       utilisateurs de Plex).
+6. [x] **Recette console** `docs/RECETTE-0.6.0.md` (22 étapes : mise à jour, Nouveautés, Accueil,
+       onglet Jellyfin, Réglages, page du téléphone, ligne Affichage ; aucune écriture, pas de Plex).
+7. [x] **Zip** : `scripts/release-ps5.sh` → `build/ps5/release-0.6.0/upload/PPSA99520.zip`
+       (37 fichiers, ni `config.json` ni `test-config`), sha256
+       `c14c91997ec55d1a0b55a32ca5c3064428d9e8787fb80f01539884dd0f3ff385`. Vérifié dans
+       `llvm-pie.elf` : version `0.6.0` (ni `-test` ni `-dev`), pas de « NOT sent », pas d'adresse de
+       journal ; profil accepté par `check-param.py --release`. Tests Linux : 76 verts.
+8. [x] Vivian : essai avec le compte Plex de test (17 octobre 2026) : liaison, refus sans jeton,
+       connexion par le téléphone (serveur trouvé directement), ligne verte, `unclaim` OK.
+       **Deux constats** : pour le propriétaire, le jeton « du serveur » est **le jeton du compte** ;
+       retirer l'appareil « Regie5 » **ne le révoque pas** (encore accepté 5 minutes après).
+       Recherche (`docs/PLEX.md` § 8) : rien de mieux pour une console hors ligne (jeton transitoire :
+       48 h, perdu au redémarrage du serveur ; JWT d'appareil : 7 jours, rafraîchi par internet).
+       Corrigé : avertissement sur la page du téléphone sous « Se connecter à Plex » (4 langues),
+       README, `docs/CONFIG.md`, `docs/PLEX.md`, notes de version, brouillon Reddit ; révocation
+       réelle = changer le mot de passe sur plex.tv avec « Sign out connected devices » ; voie sans
+       jeton (liste « allowed without auth » réduite à l'adresse de la console) décrite. Ligne de
+       diagnostic de la console du navigateur retirée. Nouveau zip `release-0.6.0b` ci-dessous.
+9. [~] Vivian : recette `docs/RECETTE-0.6.0.md` faite sur le premier zip (`c14c9199…`) ; **à refaire**
+       avec `build/ps5/release-0.6.0b/upload/PPSA99520.zip`, sha256
+       `6757ea3b5918e58be14c593922c895d804b074e7ffb4d061ce41fcd16345a080` (mêmes contrôles : 37
+       fichiers, version 0.6.0, ni « NOT sent » ni ligne de diagnostic). C'est lui qui sera publié.
+10. [ ] Vivian : patch `06-regie5-0.6.0-v2` de `build/patches-22/` (le 05 est commité ; l'ancien 06 n'est plus à utiliser), commit « Régie5 0.6.0 », push.
+11. [ ] Vivian : tag `v0.6.0` et push du tag seul.
+12. [ ] Vivian : release GitHub « Régie5 0.6.0 » (texte = les notes, pièce jointe `PPSA99520.zip`,
+        pas « pre-release »), empreinte vérifiée.
+13. [ ] Vivian : étiquettes `plex` et `beta` créées sur le dépôt (le formulaire les pose).
+14. [ ] Catalogue : la PR automatique du lendemain (`version` 0.6.0, `sha256`, `icon_url` en
+        `/v0.6.0/ps5/app/sce_sys/icon0.png`).
+15. [ ] Reddit : poster le brouillon une fois la fiche du catalogue en 0.6.0.
+
 ## 3. En attente
 
 | Sujet | Qui | Détail |
@@ -1373,3 +1422,5 @@ la Bibliothèque).
 | 17 oct. 2026 | P2 Plex : configuration `"plex"`, un seul serveur multimédia, noms, Réglages, assistant et page du téléphone (jeton collé), erreurs propres à Plex. |
 | 17 oct. 2026 | P3 Plex : client complet, écrans (sessions, diagnostic, arrêt, scan, tâches, ajouts récents, Journal, bibliothèques, utilisateurs), Ménage indisponible avec Plex, fixtures anonymisées et `--mock` (76 tests). |
 | 17 oct. 2026 | P4 Plex (code) : connexion par le téléphone (PIN plex.tv, jeton du serveur seulement), essayée avec plex.tv simulé ; essai réel en attente du compte de test. |
+| 17 oct. 2026 | Plan changé : 0.6.0 directe avec Plex en BETA. Essai avec le compte de test préparé (`claim` / `unclaim`, 21 étapes) ; 0.6.0 préparée : numéros, Nouveautés, README, `INSTALL.txt`, formulaire « Plex feedback (beta) », notes, brouillon Reddit, recette console, zip (`c14c9199…`). |
+| 17 oct. 2026 | Essai Plex avec compte : le jeton du propriétaire est celui du compte, et retirer l'appareil ne le révoque pas. Rien de mieux chez Plex hors ligne (`docs/PLEX.md` § 8) : avertissements partout, vraie révocation expliquée. Zip `release-0.6.0b` (`6757ea3b…`). |

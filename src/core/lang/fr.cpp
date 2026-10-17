@@ -501,10 +501,10 @@ const Text kTexts[] = {
     {EmbyBeta, "bêta"},
     {ButtonWhatsNew, "Nouveautés"},
     {WnTitle, "Nouveautés de Régie5 %s"},
-    {WnItem1, "Demandez des films et des séries à Seerr : recherche, Découvrir, les saisons voulues, la 4K."},
-    {WnItem2, "Quick Connect pour Jellyfin : connexion par un code sur le téléphone, sans clé d'API à copier."},
-    {WnItem3, "Español et Deutsch : Régie5 suit la langue de la console."},
-    {WnItem4, "Cet écran à tout moment : Réglages › Nouveautés."},
+    {WnItem1, "Plex (bêta) : Régie5 marche aussi avec Plex Media Server. Connexion depuis la page du téléphone."},
+    {WnItem2, "Utilisateurs de Plex : vos retours sont bienvenus dans une issue GitHub, même si tout marche."},
+    {WnItem3, "Cet écran à tout moment : Réglages › Nouveautés."},
+    {WnItem4, "-"},
     {WnItem5, "-"},
     {WnOk, "OK"},
     {ViewDiscover, "Découvrir"},
@@ -593,6 +593,7 @@ const Text kTexts[] = {
     {PhonePlexChoose, "Aucun serveur de ce compte n'est à cette adresse. Lequel ?"},
     {PhonePlexFailed, "La connexion à Plex a échoué (le téléphone doit avoir internet) : "},
     {PhonePlexDone, "Connecté à Plex : enregistré sur la console."},
+    {PhonePlexOwnerWarn, "Pour le propriétaire du serveur, Plex donne le jeton du compte lui-même : il est gardé sur la console et ouvre tout le compte Plex. Retirer « Regie5 » des appareils du compte ne le révoque pas : changez le mot de passe sur plex.tv en cochant « Déconnecter les appareils connectés »."},
 };
 
 } // namespace

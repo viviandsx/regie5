@@ -1,0 +1,78 @@
+name: Plex feedback (beta)
+description: You use Régie5 with Plex? Tell us how it goes, even if everything works.
+title: "Plex feedback: "
+labels: [plex, beta]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Plex support is new in 0.6.0 and was tested against a test server only: **every report helps**,
+        "it all works" included. **Never paste a Plex token, an API key, a password or your config.json
+        as it is**: replace them with `xxx`, and addresses with `192.168.x.x`. A photo of the TV is welcome.
+  - type: input
+    id: version
+    attributes:
+      label: Régie5 version
+      description: Shown at the bottom of Settings (the gear).
+      placeholder: "0.6.0"
+    validations:
+      required: true
+  - type: input
+    id: pms
+    attributes:
+      label: Plex Media Server version
+      description: Shown on Plex's line in Settings, or in Plex › Settings › General.
+      placeholder: "1.43.4"
+    validations:
+      required: true
+  - type: dropdown
+    id: plexpass
+    attributes:
+      label: Does the server's owner have Plex Pass?
+      options:
+        - "Yes"
+        - "No"
+        - I don't know
+    validations:
+      required: true
+  - type: dropdown
+    id: accounts
+    attributes:
+      label: Which Plex account is Régie5 signed in with?
+      options:
+        - The server's owner
+        - A shared account (a friend's server)
+        - A Plex Home user
+        - No token (the server lets the console's network in without signing in)
+    validations:
+      required: true
+  - type: textarea
+    id: others
+    attributes:
+      label: Other accounts on the server
+      description: Shared accounts, Plex Home users (how many, no names needed).
+      placeholder: "Two shared accounts, one Plex Home user"
+  - type: textarea
+    id: signin
+    attributes:
+      label: Signing in
+      description: Did "Sign in to Plex" on the phone page work? Pasted token? What did Settings say?
+  - type: textarea
+    id: works
+    attributes:
+      label: What works
+      description: Home (recently added, pictures), the Plex tab (playing now, diagnosis, scan, tasks, libraries, users), Activity › Journal, "Find in Plex"…
+    validations:
+      required: true
+  - type: textarea
+    id: broken
+    attributes:
+      label: What does not work, or looks wrong
+      description: The screen, what it showed, what you expected. "Nothing" is a fine answer.
+    validations:
+      required: true
+  - type: textarea
+    id: shots
+    attributes:
+      label: Screenshots or photos
+      description: Drop them here (hide anything private).

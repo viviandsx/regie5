@@ -79,6 +79,7 @@ function instance(key, multi, data, from){
     const signIn = el("button", {type: "button", textContent: T.plexSignIn});
     signIn.onclick = () => plexSignIn(box, url, status, signIn);
     box.appendChild(el("div", {className: "row"}, [signIn]));
+    box.appendChild(el("p", {className: "hint", textContent: T.plexOwnerWarn}));
     box.appendChild(status);
     const tok = el("input", {type: "text", className: "secret", autocapitalize: "off", autocomplete: "off", spellcheck: false, placeholder: data.hasKey ? T.keyKept : ""});
     box.appendChild(field(T.plexToken, tok));
@@ -111,8 +112,9 @@ function instance(key, multi, data, from){
   return box;
 }
 /* Plex: the PIN signs in on plex.tv, from this phone (it reaches the
- * internet; the console may not). Only the server's own token goes to the
- * console, never the account's. */
+ * internet; the console may not). The console gets the token Plex gives for
+ * the server: for its owner, the account's own (docs/PLEX.md § 8), which the
+ * page says before signing in. */
 function plexClientId(){
   let id = "";
   try { id = localStorage.getItem("regie5-plex-client") || ""; } catch (e) {}
@@ -168,9 +170,6 @@ async function plexSignIn(box, urlInput, status, button){
     if (!servers.length) { status.textContent = T.plexNoServer; return; }
     let server = servers.find(s => sameServer(address, s)) || (servers.length === 1 ? servers[0] : null);
     if (!server) server = await plexChoose(box, servers, status);
-    /* Whether Plex gave this server a token of its own (never the tokens themselves). */
-    console.info("Regie5: Plex server token " + (server.accessToken === token ? "is the account's" : "is its own") +
-                 ", owner: " + !!server.owned);
     status.textContent = T.saving;
     const o = {from: Number(box.dataset.from), name: box.querySelector(".name").value.trim(), url: address,
                enabled: box.querySelector(".on").checked,
@@ -329,6 +328,7 @@ std::string page_html()
         {"plexChoose", i18n::PhonePlexChoose},
         {"plexFailed", i18n::PhonePlexFailed},
         {"plexDone", i18n::PhonePlexDone},
+        {"plexOwnerWarn", i18n::PhonePlexOwnerWarn},
     };
     std::string t = "{";
     for (const auto &x : kTexts)

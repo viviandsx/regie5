@@ -501,10 +501,10 @@ const Text kTexts[] = {
     {EmbyBeta, "Beta"},
     {ButtonWhatsNew, "Neuigkeiten"},
     {WnTitle, "Neu in Régie5 %s"},
-    {WnItem1, "Filme und Serien bei Seerr anfragen: Suche, Entdecken, die gewünschten Staffeln, 4K."},
-    {WnItem2, "Quick Connect für Jellyfin: Anmeldung mit einem Code auf dem Handy, ohne API-Schlüssel zu kopieren."},
-    {WnItem3, "Español und Deutsch: Régie5 folgt der Sprache der Konsole."},
-    {WnItem4, "Diesen Bildschirm jederzeit wieder: Einstellungen › Neuigkeiten."},
+    {WnItem1, "Plex (Beta): Régie5 funktioniert jetzt auch mit Plex Media Server. Anmeldung über die Telefonseite."},
+    {WnItem2, "Plex-Nutzer: Rückmeldungen sind in einem GitHub-Issue willkommen, auch wenn alles funktioniert."},
+    {WnItem3, "Diesen Bildschirm jederzeit wieder: Einstellungen › Neuigkeiten."},
+    {WnItem4, "-"},
     {WnItem5, "-"},
     {WnOk, "OK"},
     {ViewDiscover, "Entdecken"},
@@ -593,6 +593,7 @@ const Text kTexts[] = {
     {PhonePlexChoose, "Kein Server dieses Kontos hat diese Adresse. Welcher?"},
     {PhonePlexFailed, "Anmeldung bei Plex fehlgeschlagen (das Telefon braucht Internet): "},
     {PhonePlexDone, "Bei Plex angemeldet: auf der Konsole gespeichert."},
+    {PhonePlexOwnerWarn, "Für den Serverbesitzer gibt Plex das Token des Kontos selbst: Es bleibt auf der Konsole und öffnet das ganze Plex-Konto. „Regie5“ aus den Geräten des Kontos zu entfernen widerruft es nicht: Passwort auf plex.tv ändern und „Verbundene Geräte abmelden“ ankreuzen."},
 };
 
 } // namespace

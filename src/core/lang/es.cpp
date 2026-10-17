@@ -501,10 +501,10 @@ const Text kTexts[] = {
     {EmbyBeta, "beta"},
     {ButtonWhatsNew, "Novedades"},
     {WnTitle, "Novedades de Régie5 %s"},
-    {WnItem1, "Solicita películas y series a Seerr: búsqueda, Descubrir, las temporadas que quieras, 4K."},
-    {WnItem2, "Quick Connect de Jellyfin: inicia sesión con un código en el móvil, sin copiar ninguna clave de API."},
-    {WnItem3, "Español y Deutsch: Régie5 sigue el idioma de la consola."},
-    {WnItem4, "Esta pantalla, cuando quieras: Ajustes › Novedades."},
+    {WnItem1, "Plex (beta): Régie5 también funciona con Plex Media Server. Inicio de sesión desde la página del teléfono."},
+    {WnItem2, "Usuarios de Plex: tus comentarios son bienvenidos en un issue de GitHub, aunque todo funcione."},
+    {WnItem3, "Esta pantalla, cuando quieras: Ajustes › Novedades."},
+    {WnItem4, "-"},
     {WnItem5, "-"},
     {WnOk, "OK"},
     {ViewDiscover, "Descubrir"},
@@ -593,6 +593,7 @@ const Text kTexts[] = {
     {PhonePlexChoose, "Ningún servidor de esta cuenta está en esta dirección. ¿Cuál?"},
     {PhonePlexFailed, "Falló el inicio de sesión en Plex (el teléfono necesita internet): "},
     {PhonePlexDone, "Sesión iniciada en Plex: guardado en la consola."},
+    {PhonePlexOwnerWarn, "Para el propietario del servidor, Plex da el token de la propia cuenta: se guarda en la consola y abre toda la cuenta de Plex. Quitar «Regie5» de los dispositivos de la cuenta no lo revoca: cambia la contraseña en plex.tv marcando «Cerrar sesión en los dispositivos conectados»."},
 };
 
 } // namespace

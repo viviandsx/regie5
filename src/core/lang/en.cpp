@@ -502,10 +502,10 @@ const Text kTexts[] = {
     {EmbyBeta, "beta"},
     {ButtonWhatsNew, "What's new"},
     {WnTitle, "What's new in Régie5 %s"},
-    {WnItem1, "Request films and series from Seerr: search, Discover, the seasons you want, 4K."},
-    {WnItem2, "Jellyfin Quick Connect: sign in with a code on your phone, no API key to copy."},
-    {WnItem3, "Español and Deutsch: Régie5 follows the console's language."},
-    {WnItem4, "This screen again at any time: Settings › What's new."},
+    {WnItem1, "Plex (beta): Régie5 also works with Plex Media Server. Sign in from the phone page."},
+    {WnItem2, "Plex users: your feedback is welcome in a GitHub issue, even if everything works."},
+    {WnItem3, "This screen again at any time: Settings › What's new."},
+    {WnItem4, "-"},
     {WnItem5, "-"},
     {WnOk, "OK"},
     {ViewDiscover, "Discover"},
@@ -594,6 +594,7 @@ const Text kTexts[] = {
     {PhonePlexChoose, "None of this account's servers is at this address. Which one?"},
     {PhonePlexFailed, "Signing in to Plex failed (the phone needs the internet for it): "},
     {PhonePlexDone, "Signed in to Plex: saved on the console."},
+    {PhonePlexOwnerWarn, "For the server's owner, Plex gives the Plex account's own token: it is kept on the console and opens the whole account. Removing \"Regie5\" from the account's devices does not revoke it: change your password on plex.tv and tick \"Sign out connected devices after password change\"."},
 };
 
 } // namespace

@@ -123,9 +123,10 @@ Déroulé proposé (Réglages › « Depuis le téléphone », ou l'assistant av
    par la console**, et prend **son** `accessToken` (le jeton propre à ce serveur pour ce
    compte) et `owned` (propriétaire ou non). Serveur absent : « Ce compte Plex n'a pas accès à
    ce serveur ».
-5. La page envoie à la console **seulement** ce jeton de serveur, `owned` et le nom du compte
-   (même code à 6 chiffres que la page actuelle). **Le jeton du compte ne quitte jamais le
-   téléphone.** La console l'écrit dans `config.json`, relit et teste.
+5. La page envoie à la console ce jeton de serveur, `owned` et le nom du compte (même code à 6
+   chiffres que la page actuelle). La console l'écrit dans `config.json`, relit et teste.
+   **Corrigé après l'essai du 17 octobre 2026 (§ 8)** : pour le propriétaire, ce jeton « de
+   serveur » est le jeton du compte lui-même, et retirer l'appareil ne le révoque pas.
 
 Conséquences : la console ne touche jamais internet ; Régie5 apparaît dans les appareils
 autorisés du compte sous le nom « Regie5 » ; l'identifiant client envoyé à plex.tv est celui
@@ -591,3 +592,31 @@ Plex Web ni compte). Données dans `build/plex-test/` (non versionné).
 | `/accounts` | un compte, `id` 1, `name` « Administrator ». |
 | Nombres | `X-Plex-Container-Size: 0` → `totalSize` (4 films ; `type=4` : 3 épisodes). |
 | Chemins | `Part.file` (chemin du fichier) et `Location.path` présents : jamais lus (seul le dernier nom d'un dossier de bibliothèque, comme pour Jellyfin). |
+
+---
+
+## 8. Le jeton du propriétaire (essai avec un compte, 17 octobre 2026)
+
+Essai de Vivian avec un compte Plex gratuit de test, serveur de test lié au compte :
+
+- la connexion par le téléphone marche (serveur trouvé directement, ligne Plex au vert) ;
+- **pour le propriétaire, l'`accessToken` du serveur dans `resources` est le jeton du compte**
+  (la page l'a comparé, sans afficher de jeton) : la console garde donc un jeton qui ouvre tout
+  le compte Plex ;
+- **retirer l'appareil « Regie5 »** des appareils autorisés du compte **ne l'a pas révoqué** :
+  encore accepté par le serveur 5 minutes après.
+
+Ce que Plex documente, et pourquoi rien ne convient mieux à une console hors ligne :
+
+| Jeton | Portée | Pourquoi pas |
+|---|---|---|
+| Transitoire, `POST /security/token?type=delegation&scope=all` [S1] | ce serveur seul, même niveau que le jeton qui le demande | « valid for up to 48 hours and are destroyed if the server instance is restarted » : rien de durable |
+| JWT d'appareil [S1, « JWT Authentication »] | par appareil, « Each device can be individually disabled » | expire en 7 jours ; le rafraîchir demande `clients.plex.tv`, donc internet |
+| Jeton classique (utilisé) | tout le compte, pour le propriétaire | durable, mais large ; révocation : changement de mot de passe avec « Sign out connected devices » [S3 204059436] |
+| Compte partagé | ses bibliothèques partagées, jeton propre au serveur | pas de sessions, d'arrêt, de scan, de tâches ni d'historique des autres (réservés au propriétaire) |
+| Aucun jeton (« allowed without auth » réduit à l'adresse de la console) | ce serveur seul, droits du propriétaire | Plex le déconseille ; la révocation = retirer l'adresse de la liste |
+
+Décision pour la 0.6.0 : garder le jeton classique, et le dire clairement (page du téléphone au
+moment de la connexion, README, `docs/CONFIG.md`, notes de version), avec la vraie façon de le
+révoquer. Piste : le JWT d'appareil si une console en ligne ou un rafraîchissement par le
+téléphone devient acceptable.

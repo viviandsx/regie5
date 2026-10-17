@@ -7,21 +7,22 @@
 <p align="center">
   <b>Your self-hosted media stack, on the TV, from your PS5.</b><br>
   A native PS5 homebrew app to keep an eye on Sonarr, Radarr, Seerr and Jellyfin
-  (or Emby) from the couch, with a controller.
+  (or Emby, or Plex) from the couch, with a controller.
 </p>
 
 <p align="center">
   <img src="docs/images/home.jpg" width="820" alt="Régie5 home screen: upcoming episodes and films, recently added, server health">
 </p>
 
-Régie5 (French for a TV control room) is for people who run their own Jellyfin (or Emby)
-server with the *arr apps and have a jailbroken PS5 under the TV. It shows what is
+Régie5 (French for a TV control room) is for people who run their own Jellyfin (or Emby,
+or Plex) server with the *arr apps and have a jailbroken PS5 under the TV. It shows what is
 coming, what is downloading, who is watching and how well, and lets you act on the
 few things worth doing from the couch: approve a request, stop a stream, scan the
 libraries, free some space.
 
 Everything stays on your local network: Régie5 talks only to your own servers,
-never to the internet.
+never to the internet. (Signing in to Plex is the one exception, and it happens on your
+phone, which reaches plex.tv: the console still does not.)
 
 ## Features
 
@@ -42,6 +43,9 @@ Also:
 
 - **Counters on the tabs**: downloads in the queue, requests waiting for an answer, people watching.
 - **Emby** in Jellyfin's place (**beta**): the same screens, which then say *Emby*.
+- **Plex** in Jellyfin's place (**beta**, new in 0.6.0): the same screens, which then say *Plex*;
+  sign in from the phone page. **Plex users: please [open an issue with your feedback](https://github.com/viviandsx/regie5/issues/new?template=plex_feedback.yml),
+  even if everything works.**
 - **Set-up screens** at the first start: choose your media server, scan a QR code, fill in a page on your phone.
 - **Several instances** of a service (for example Radarr and Radarr 4K) are shown together, each named.
 - **HTTPS** and reverse-proxy sub-paths (`https://example.lan/sonarr`), self-signed certificates on request.
@@ -81,8 +85,9 @@ actions, each behind a confirmation whose focus starts on **Cancel**:
 - approve or decline a Seerr request; **request** a film or a series in Seerr (as the
   account of the API key: Seerr's administrator, so the request is usually approved at once);
 - resolve a Seerr issue, or post one of a few ready-made comments on it;
-- stop a Jellyfin (or Emby) playback session; scan its libraries; with Quick Connect,
-  sign in to Jellyfin (Régie5 then appears among its devices);
+- stop a Jellyfin, Emby or Plex playback session; scan its libraries; with Quick Connect,
+  sign in to Jellyfin (Régie5 then appears among its devices); with Plex, sign in from
+  the phone (Régie5 then appears among the Plex account's devices);
 - **Cleanup** (off by default): delete a film or a series **with its files** in
   Radarr/Sonarr, always added to the import-list exclusions so no list brings it
   back. It is turned on in Settings after a warning, offers only titles watched
@@ -94,7 +99,7 @@ actions, each behind a confirmation whose focus starts on **Cancel**:
 No download client, no indexer, no release search, no release or tracker names
 anywhere: Régie5 shows titles, progress and quality, nothing else. Its activity
 log never reads Jellyfin's or Emby's free-text fields (which hold IP addresses and
-device names).
+device names), nor Plex's addresses and devices.
 
 ## Requirements
 
@@ -103,7 +108,7 @@ device names).
   firmware **13.60**.
 - A way to copy a folder to the console: **ps5upload** or an **FTP** payload.
 - At least one of the services below, reachable from the console on your local
-  network, with its API key.
+  network, with its API key (Plex: a sign-in from the phone).
 
 ### Services and versions
 
@@ -114,6 +119,7 @@ device names).
 | [Seerr](https://github.com/seerr-team/seerr) | 2.0 (Jellyseerr 2.x works too) | 3.5 | requests, approve / decline, issues (resolve, comment), Discover (search, trending, popular, upcoming) and new requests, posters through its image proxy |
 | [Jellyfin](https://jellyfin.org) | 10.9 | 12.2 | sessions, playback info, recently added, libraries, users, activity log, scheduled tasks; Quick Connect sign-in |
 | [Emby](https://emby.media), in Jellyfin's place (**beta**) | 4.8 | 4.10.1 | the same as Jellyfin; *Find in Emby5* instead of Jelly5 |
+| [Plex Media Server](https://www.plex.tv), in Jellyfin's place (**beta**) | 1.41.9 | 1.43.4 | the same as Jellyfin but Cleanup; the log shows finished playbacks; *Find in Plex* instead of Jelly5 |
 | [Glances](https://nicolargo.github.io/glances/) (optional) | 4.0 (API 4) | 4.x | server load |
 
 Each service is optional: a service turned off simply leaves its sections out.
@@ -146,7 +152,7 @@ The same steps, in English and French, are in `INSTALL.txt` inside the zip.
 When there is no `config.json` yet (or one Régie5 cannot read, or with every service
 off), Régie5 opens its set-up screens:
 
-1. **Get started**, then choose your media server: **Jellyfin**, **Emby** or **None**.
+1. **Get started**, then choose your media server: **Jellyfin**, **Emby**, **Plex** or **None**.
 2. A QR code and a 6-digit code appear: fill in the page on your phone, as below.
 3. Régie5 tests every service, as Settings does. **Start** opens the Home screen;
    **Fix from the phone** goes back to the page.
@@ -190,6 +196,23 @@ the session is removed in Jellyfin (*Dashboard › Devices*), Settings says so: 
 Connect again. An API key, when there is one, is used instead. Emby has no such thing on
 the local network: it keeps its API key.
 
+### Plex (beta): sign in from the phone
+
+Give Plex's address (port 32400) on the phone page, then tap **Sign in to Plex**: Plex's
+own sign-in page opens on the phone (the phone needs the internet for it, the console does
+not). Régie5 finds your server among the account's (or asks which one) and saves its
+token on the console. **For the server's owner, the token Plex gives is the Plex account's
+own**: it is kept in plain text in `config.json` on the console, and it opens the whole Plex
+account, not just this server. Removing "Regie5" from the account's devices does **not**
+end it (tried); to really revoke it, change the Plex account's password on plex.tv and tick
+*Sign out connected devices* (this signs every app and server out of the account). To keep
+no token at all on the console, set the Plex server's *List of IP addresses and networks that
+are allowed without auth* (Settings › Network) to the console's address only and leave the
+token empty: Régie5 then gets the owner's rights on that server alone, which Plex advises
+against; removing the address revokes it. Sign in as the **server's owner**: what is playing, stopping a
+stream, scanning, the tasks, the log and the users need it. A token can also be pasted by
+hand (the page says where to find one). Plex 1.41.9 or later.
+
 ### By file
 
 Copy `config.example.json` (in the app folder) to `config.json` in
@@ -203,7 +226,9 @@ Where the API keys are: Sonarr and Radarr, *Settings › General › Security*; 
 
 **Emby instead of Jellyfin:** write `"emby"` in `config.json` where the example has
 `"jellyfin"` (same fields: `url`, `apiKey`). The tab, the texts and the log then say
-*Emby*; one or the other, not both (with both on, Jellyfin is used and Settings says so).
+*Emby*. **Plex:** `"plex"` with its `url`; its `token` comes from the phone page. One media
+server at a time (with several on, Jellyfin, then Emby, then Plex is used, and Settings
+says so).
 
 Behind a **reverse proxy**, the address may carry a path
 (`https://media.lan/sonarr`); see [docs/CONFIG.md](docs/CONFIG.md) (in French) for the
@@ -219,7 +244,7 @@ two ways to set the proxy up, and for redirects such as a login page in front of
 | L1 / R1 | previous / next tab |
 | L2 / R2 | previous / next letter (lists by title), week (guide) or page |
 | △ | refresh the screen |
-| Options | the selected item's menu (approve / decline, resolve / comment, keep / delete, find in Jelly5 or Emby5) |
+| Options | the selected item's menu (approve / decline, resolve / comment, keep / delete, find in Jelly5, Emby5 or Plex) |
 | □ | Discover: clear the search |
 
 ## Known limitations
@@ -232,6 +257,13 @@ two ways to set the proxy up, and for redirects such as a login page in front of
   console against Emby 4.10.1.0, not yet on a real Emby server with its users and
   Emby Premiere. Cleanup with Emby is covered by the tests only so far. Reports
   are welcome in [issue #1](https://github.com/viviandsx/regie5/issues/1).
+- **Plex is in beta** (new in 0.6.0, marked *beta* in Settings): tested against a test
+  server without Plex Pass, not yet on a real one. Plex gives no reason for a transcode:
+  the diagnosis works them out from the session and says so. Stopping a stream seems to
+  need **Plex Pass** (Plex refused it on the test server; Régie5 says so). **No Cleanup
+  with Plex** for now: Plex does not show what other accounts are in the middle of
+  watching. The log shows finished playbacks only (Plex keeps no activity log). Every
+  report helps: [Plex feedback](https://github.com/viviandsx/regie5/issues/new?template=plex_feedback.yml).
 - **Requests made from Régie5** are made as the account of Seerr's API key (its
   administrator), not as one of Seerr's users: they count against no one's quota and
   are usually approved at once. Asking on behalf of another user is not possible yet.
@@ -248,7 +280,9 @@ two ways to set the proxy up, and for redirects such as a login page in front of
   may be sent that resolution: choose 60 Hz (Settings › Display refresh) to keep 4K.
 - **Library sizes** come from Radarr and Sonarr (Jellyfin gives none): a title they
   do not know is counted but not measured, and the Jellyfin tab says how many were.
-- `config.json` holds your API keys in plain text on the console.
+- `config.json` holds your API keys in plain text on the console, and with Plex the
+  owner's **Plex account token** (Plex has no token limited to one server that the
+  console could keep): see *Plex (beta): sign in from the phone* for how to revoke it.
 - Only firmware 13.60 has been tested.
 
 ## Building from source
@@ -314,5 +348,5 @@ BlackBearReloaded's [ps5-opengl](https://github.com/blackbearreloaded/ps5-opengl
 [FreeType](https://freetype.org) and the [Inter](https://github.com/rsms/inter) typeface.
 
 Régie5 is not affiliated with or endorsed by Sony Interactive Entertainment, the
-Jellyfin project, Emby, or the Sonarr, Radarr or Seerr projects. *PlayStation*, *PS5* and
+Jellyfin project, Emby, Plex, or the Sonarr, Radarr or Seerr projects. *PlayStation*, *PS5* and
 *DualSense* are trademarks of Sony Interactive Entertainment Inc.

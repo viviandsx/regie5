@@ -13,7 +13,7 @@ Les clés d'API ne sont jamais écrites dans un journal.
 | `enabled` | tous | `false` pour couper le service sans effacer sa configuration. Vrai par défaut. |
 | `url` | tous | Adresse du service. Peut contenir un chemin (`https://exemple.lan/radarr`) derrière un reverse proxy ou avec l'`urlBase` des *arr. |
 | `apiKey` | Sonarr, Radarr, Seerr, Jellyfin, Emby | Clé d'API du service. Sans clé, le service est coupé. |
-| `token` | Plex | Jeton du serveur Plex, écrit par la connexion depuis le téléphone (ou collé à la main). Voir « Plex » plus bas. |
+| `token` | Plex | Jeton Plex, écrit par la connexion depuis le téléphone (ou collé à la main). Pour le propriétaire, c'est le jeton du compte Plex. Voir « Plex » plus bas. |
 | `name` | tous | Nom affiché de l'instance (« Radarr 4K »). Par défaut, le nom du service. |
 | `is4k` | Sonarr, Radarr | `true` pour l'instance que **Seerr** utilise comme serveur 4K. `false` par défaut. Jamais déduit du nom. |
 | `insecure` | tous | `true` pour une adresse `https://` dont le certificat est **auto-signé** (réseau local) : il n'est pas vérifié. `false` par défaut : le certificat doit être signé par une autorité reconnue (Let's Encrypt…). |
@@ -90,14 +90,22 @@ qu'on quitte (ou retirez-le).
 | Champ | Rôle |
 |---|---|
 | `url` | Adresse du serveur Plex (port 32400 par défaut). |
-| `token` | Le jeton **du serveur** (jamais celui du compte Plex), secret comme une clé : jamais renvoyé au téléphone, jamais écrit dans un journal. |
+| `token` | Le jeton que Plex donne pour ce serveur. **Pour le propriétaire, Plex donne le jeton du compte lui-même** (vérifié le 17 octobre 2026) : il ouvre tout le compte Plex, pas seulement ce serveur. Secret : jamais renvoyé au téléphone, jamais écrit dans un journal, mais en clair dans `config.json`. |
 | `userName`, `owner` | Écrits avec le jeton : le compte, et s'il est le propriétaire du serveur. `"owner": false` : la ligne passe à l'orange, et les écrans réservés au propriétaire le disent (sessions, arrêt, scan, tâches, journal, utilisateurs). |
 
 Le jeton s'obtient depuis la page du téléphone : « Se connecter à Plex » ouvre la page de
 connexion de Plex (le téléphone doit avoir internet, la console non) ; la page trouve le
-serveur à l'adresse indiquée (sinon, elle demande lequel) et n'envoie à la console que le jeton
-de ce serveur, jamais celui du compte. Régie5 apparaît sous le nom « Regie5 » dans les appareils
-autorisés du compte Plex ; l'en retirer révoque le jeton. En secours, il peut être collé à la main
+serveur à l'adresse indiquée (sinon, elle demande lequel) et envoie à la console le jeton que
+Plex donne pour ce serveur : pour un compte partagé, un jeton propre au serveur ; **pour le
+propriétaire, le jeton du compte**. Régie5 apparaît sous le nom « Regie5 » dans les appareils
+autorisés du compte Plex, mais **l'en retirer ne révoque pas le jeton** (essayé : encore accepté
+5 minutes après). Pour le révoquer vraiment : sur plex.tv, changer le mot de passe du compte en
+cochant « Déconnecter les appareils connectés » (d'après l'aide de Plex, tous les jetons du compte
+sont alors invalidés, et toutes les apps et tous les serveurs du compte déconnectés). Plex n'offre
+pas de jeton limité à un serveur qu'une console hors ligne pourrait garder (`docs/PLEX.md` § 8).
+Autre voie, sans aucun jeton sur la console : la liste « allowed without auth » du serveur
+réduite à l'adresse de la console (voir plus bas), que Plex déconseille. En secours, le jeton
+peut être collé à la main
 (Plex Web › un film › ⋯ › Obtenir des infos › Afficher le XML : la valeur de `X-Plex-Token`
 dans l'adresse ; Plex dit qu'un jeton trouvé ainsi peut ne durer qu'un temps). Sans jeton,
 Régie5 n'entre que si le serveur Plex laisse le réseau de la console entrer sans

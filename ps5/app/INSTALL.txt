@@ -8,8 +8,8 @@ You need
 - A jailbroken PS5 running ShadowMount+ (it turns folders in /data/homebrew/
   into home-screen tiles). Tested on firmware 13.60.
 - A way to copy a folder to the console: ps5upload, or an FTP server payload.
-- Your Sonarr, Radarr, Seerr and/or Jellyfin (or Emby), reachable from the
-  console on your local network, and their API keys.
+- Your Sonarr, Radarr, Seerr and/or Jellyfin (or Emby, or Plex), reachable
+  from the console on your local network, and their API keys.
 
 First install
 1. Unzip this archive on your computer. It holds one folder: PPSA99520.
@@ -19,8 +19,8 @@ First install
    screen, under Games. (If it does not appear, restart ShadowMount+ or the
    console.)
 4. Open Régie5. At the first start, its set-up screens open: choose
-   "Get started", then your media server (Jellyfin, Emby or None). A QR code
-   and a 6-digit code appear on the TV.
+   "Get started", then your media server (Jellyfin, Emby, Plex or None). A QR
+   code and a 6-digit code appear on the TV.
 5. Scan the QR code with your phone (same network as the console), or type the
    address shown on the TV into the phone's browser.
 6. On the page, fill in each service: address (http:// or https://, with the
@@ -55,6 +55,13 @@ Emby instead of Jellyfin (beta): in config.json, the key is "emby" instead of
 "jellyfin" (same fields). The tab and the texts then say Emby, and Options
 offers "Find in Emby5".
 
+Plex instead of Jellyfin (beta, new in 0.6.0): on the phone page, give Plex's
+address (port 32400), then tap "Sign in to Plex" (the phone needs the
+internet for it, the console does not) and sign in as the server's owner.
+Options offers "Find in Plex"; Cleanup is not available with Plex yet.
+Plex users: please open an issue with your feedback, even if everything works:
+https://github.com/viviandsx/regie5/issues/new?template=plex_feedback.yml
+
 Updating
 - Copy the new PPSA99520 folder OVER the old one. The zip never holds a
   config.json: yours is kept, and the set-up screens do not open.
@@ -63,13 +70,14 @@ Updating
 
 Good to know
 - Régie5 only talks to your own servers on your local network: nothing goes to
-  the internet.
+  the internet (signing in to Plex goes to plex.tv from your phone, not from
+  the console).
 - config.json holds your API keys in plain text on the console.
 - Cleanup (deleting films and series with their files) is off by default; it is
   turned on in Settings, after a warning, and every deletion asks twice.
 - "Open in Jelly5" is not possible: the console does not let one app start
-  another. Options > "Find in Jelly5" (or "Find in Emby5") tells you which
-  title to look for there.
+  another. Options > "Find in Jelly5" (or "Find in Emby5", "Find in Plex")
+  tells you which title to look for there.
 - Uninstall: delete /data/homebrew/PPSA99520.
 
 FRANÇAIS
@@ -80,8 +88,8 @@ Il faut
   /data/homebrew/ en tuiles sur l'écran d'accueil). Testé en firmware 13.60.
 - Un moyen de copier un dossier sur la console : ps5upload, ou un payload
   serveur FTP.
-- Votre Sonarr, Radarr, Seerr et/ou Jellyfin (ou Emby), joignables depuis la
-  console sur votre réseau local, et leurs clés d'API.
+- Votre Sonarr, Radarr, Seerr et/ou Jellyfin (ou Emby, ou Plex), joignables
+  depuis la console sur votre réseau local, et leurs clés d'API.
 
 Première installation
 1. Décompressez cette archive sur votre ordinateur. Elle contient un seul
@@ -91,8 +99,8 @@ Première installation
 3. Attendez une dizaine de secondes : ShadowMount+ ajoute la tuile « Régie5 »
    sur l'écran d'accueil, dans Jeux. (Sinon, relancez ShadowMount+ ou la console.)
 4. Ouvrez Régie5. Au premier lancement, son assistant s'ouvre : choisissez
-   « Commencer », puis votre serveur multimédia (Jellyfin, Emby ou Aucun). Un
-   QR code et un code à 6 chiffres s'affichent sur la télé.
+   « Commencer », puis votre serveur multimédia (Jellyfin, Emby, Plex ou
+   Aucun). Un QR code et un code à 6 chiffres s'affichent sur la télé.
 5. Scannez le QR code avec votre téléphone (même réseau que la console), ou
    tapez dans son navigateur l'adresse affichée sur la télé.
 6. Sur la page, remplissez chaque service : adresse (http:// ou https://, avec
@@ -129,6 +137,14 @@ Emby à la place de Jellyfin (bêta) : dans config.json, la clé est "emby" au
 lieu de "jellyfin" (mêmes champs). L'onglet et les textes disent alors Emby,
 et Options propose « Chercher dans Emby5 ».
 
+Plex à la place de Jellyfin (bêta, nouveau en 0.6.0) : sur la page du
+téléphone, donnez l'adresse de Plex (port 32400), puis touchez « Se connecter
+à Plex » (le téléphone doit avoir internet, la console non) et connectez-vous
+avec le compte propriétaire du serveur. Options propose « Chercher dans
+Plex » ; le Ménage n'est pas encore disponible avec Plex.
+Utilisateurs de Plex : ouvrez une issue avec vos retours, même si tout marche :
+https://github.com/viviandsx/regie5/issues/new?template=plex_feedback.yml
+
 Mise à jour
 - Copiez le nouveau dossier PPSA99520 PAR-DESSUS l'ancien. Le zip ne contient
   jamais de config.json : le vôtre est conservé, et l'assistant ne s'ouvre
@@ -139,12 +155,13 @@ Mise à jour
 
 À savoir
 - Régie5 ne parle qu'à vos serveurs, sur votre réseau local : rien ne part sur
-  internet.
+  internet (la connexion à Plex passe par plex.tv depuis votre téléphone, pas
+  depuis la console).
 - config.json contient vos clés d'API en clair sur la console.
 - Le Ménage (suppression de films et séries avec leurs fichiers) est désactivé
   par défaut ; il s'active dans Réglages, après un avertissement, et chaque
   suppression demande deux confirmations.
 - « Ouvrir dans Jelly5 » n'est pas possible : la console ne laisse pas une app
   en lancer une autre. Options > « Chercher dans Jelly5 » (ou « Chercher dans
-  Emby5 ») indique le titre à y chercher.
+  Emby5 », « Chercher dans Plex ») indique le titre à y chercher.
 - Désinstaller : supprimez /data/homebrew/PPSA99520.
