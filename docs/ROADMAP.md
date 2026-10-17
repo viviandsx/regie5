@@ -1150,7 +1150,18 @@ seulement après validation. Patches : `build/patches-21/`.
       du jeton du compte, rien dans le journal. Test `share_plex` étendu. **Reste : l'essai réel avec
       le compte Plex de test de Vivian** (connexion, `resources`, jeton refusé après retrait de
       l'appareil).
-- [ ] P4 en vrai (**compte Plex de test à créer par Vivian**), P6 (build console, zip testeur). P5 fait dans P3 (message du Ménage).
+- [x] **Changement de plan (Vivian, 17 octobre 2026)** : pas de zip de test pour un utilisateur de
+      Plex ; la **0.6.0 sort directement avec Plex en BETA**, et les utilisateurs de Plex sont invités à
+      ouvrir une issue pour tout retour (modèle « Plex feedback (beta) »). Avant la release : l'essai de
+      la connexion avec le compte Plex de test de Vivian (sous Linux), et la recette console de
+      non-régression Jellyfin avec sa config. Pas d'essai Plex sur la console.
+- [~] **Essai avec le compte Plex de test** — préparé : `scripts/plex-test-server.sh claim` (code de
+      réclamation demandé sans écho, jamais gardé ; les réseaux Docker n'entrent plus sans jeton) et
+      `unclaim` (jeton du compte retiré des réglages du serveur par l'outil de Plex dans le conteneur,
+      retour sans compte) ; accès à distance coupé et nom « Regie5 test » réglés avant toute liaison ;
+      la page écrit dans la console du navigateur si le jeton du serveur est celui du compte (jamais
+      les jetons). Étapes : `build/plex-test/ESSAI-COMPTE.txt` (21 étapes). En attente de Vivian.
+ P5 fait dans P3 (message du Ménage).
 
 ## 3. En attente
 

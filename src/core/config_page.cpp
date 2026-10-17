@@ -168,6 +168,9 @@ async function plexSignIn(box, urlInput, status, button){
     if (!servers.length) { status.textContent = T.plexNoServer; return; }
     let server = servers.find(s => sameServer(address, s)) || (servers.length === 1 ? servers[0] : null);
     if (!server) server = await plexChoose(box, servers, status);
+    /* Whether Plex gave this server a token of its own (never the tokens themselves). */
+    console.info("Regie5: Plex server token " + (server.accessToken === token ? "is the account's" : "is its own") +
+                 ", owner: " + !!server.owned);
     status.textContent = T.saving;
     const o = {from: Number(box.dataset.from), name: box.querySelector(".name").value.trim(), url: address,
                enabled: box.querySelector(".on").checked,
