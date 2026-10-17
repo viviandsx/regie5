@@ -1,0 +1,219 @@
+{
+  "MediaContainer": {
+    "size": 4,
+    "totalSize": 4,
+    "offset": 0,
+    "allowSync": true,
+    "art": "/:/resources/movie-fanart.jpg",
+    "identifier": "com.plexapp.plugins.library",
+    "librarySectionID": 1,
+    "librarySectionTitle": "Films",
+    "mediaTagPrefix": "/system/bundle/media/flags/",
+    "mediaTagVersion": 1786914632,
+    "thumb": "/:/resources/movie.png",
+    "title1": "Films",
+    "title2": "All Films",
+    "viewGroup": "movie",
+    "viewMode": 65592,
+    "Metadata": [
+      {
+        "ratingKey": "4",
+        "key": "/library/metadata/4",
+        "guid": "plex://movie/5d77699b96b655001fdd3b87",
+        "type": "movie",
+        "title": "Tears of Steel",
+        "audienceRating": 5.5,
+        "viewCount": 5,
+        "lastViewedAt": 1792246132,
+        "year": 2012,
+        "thumb": "/library/metadata/4/thumb/1792244314",
+        "art": "/library/metadata/4/art/1792244314",
+        "duration": 20023,
+        "originallyAvailableAt": "2012-09-26",
+        "addedAt": 1792244233,
+        "updatedAt": 1792244314,
+        "Media": [
+          {
+            "id": 4,
+            "duration": 20023,
+            "bitrate": 14761,
+            "width": 3840,
+            "height": 2160,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "hevc",
+            "videoResolution": "4k",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "main",
+            "Part": [
+              {
+                "id": 4,
+                "key": "/library/parts/4/1792244233/file.mkv",
+                "duration": 20023,
+                "size": 36944274,
+                "container": "mkv",
+                "videoProfile": "main"
+              }
+            ]
+          }
+        ],
+        "UltraBlurColors": {
+          "topLeft": "381f50",
+          "topRight": "4e3275",
+          "bottomRight": "5d3881",
+          "bottomLeft": "6e4394"
+        }
+      },
+      {
+        "ratingKey": "3",
+        "key": "/library/metadata/3",
+        "guid": "plex://movie/5d77688123d5a3001f4ed3df",
+        "type": "movie",
+        "title": "Sintel",
+        "contentRating": "PG",
+        "audienceRating": 7.4,
+        "year": 2010,
+        "thumb": "/library/metadata/3/thumb/1792244313",
+        "art": "/library/metadata/3/art/1792244313",
+        "duration": 20023,
+        "originallyAvailableAt": "2010-09-30",
+        "addedAt": 1792244164,
+        "updatedAt": 1792244313,
+        "Media": [
+          {
+            "id": 3,
+            "duration": 20023,
+            "bitrate": 297,
+            "width": 1920,
+            "height": 1080,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "h264",
+            "videoResolution": "1080",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "high",
+            "Part": [
+              {
+                "id": 3,
+                "key": "/library/parts/3/1792244164/file.mkv",
+                "duration": 20023,
+                "size": 743585,
+                "container": "mkv",
+                "videoProfile": "high"
+              }
+            ]
+          }
+        ],
+        "UltraBlurColors": {
+          "topLeft": "142f4c",
+          "topRight": "2d5c88",
+          "bottomRight": "305b8d",
+          "bottomLeft": "29547f"
+        }
+      },
+      {
+        "ratingKey": "2",
+        "key": "/library/metadata/2",
+        "guid": "plex://movie/5d776833103a2d001f5674a1",
+        "type": "movie",
+        "title": "Elephants Dream",
+        "contentRating": "Not Rated",
+        "audienceRating": 5.4,
+        "year": 2006,
+        "thumb": "/library/metadata/2/thumb/1792244313",
+        "art": "/library/metadata/2/art/1792244313",
+        "duration": 20023,
+        "originallyAvailableAt": "2006-05-04",
+        "addedAt": 1792244157,
+        "updatedAt": 1792244313,
+        "Media": [
+          {
+            "id": 2,
+            "duration": 20023,
+            "bitrate": 140,
+            "width": 1280,
+            "height": 720,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "h264",
+            "videoResolution": "720",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "high",
+            "Part": [
+              {
+                "id": 2,
+                "key": "/library/parts/2/1792244157/file.mkv",
+                "duration": 20023,
+                "size": 351446,
+                "container": "mkv",
+                "videoProfile": "high"
+              }
+            ]
+          }
+        ],
+        "UltraBlurColors": {
+          "topLeft": "4a1f17",
+          "topRight": "81482b",
+          "bottomRight": "75352b",
+          "bottomLeft": "81482b"
+        }
+      },
+      {
+        "ratingKey": "1",
+        "key": "/library/metadata/1",
+        "guid": "plex://movie/5d7768352e80df001ebde4c9",
+        "type": "movie",
+        "title": "Big Buck Bunny",
+        "contentRating": "G",
+        "audienceRating": 5.4,
+        "year": 2008,
+        "thumb": "/library/metadata/1/thumb/1792244313",
+        "art": "/library/metadata/1/art/1792244313",
+        "duration": 20023,
+        "originallyAvailableAt": "2008-04-10",
+        "addedAt": 1792244156,
+        "updatedAt": 1792244313,
+        "hasPremiumPrimaryExtra": "1",
+        "Media": [
+          {
+            "id": 1,
+            "duration": 20023,
+            "bitrate": 2903,
+            "width": 1280,
+            "height": 720,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "h264",
+            "videoResolution": "720",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "high",
+            "Part": [
+              {
+                "id": 1,
+                "key": "/library/parts/1/1792244156/file.mkv",
+                "duration": 20023,
+                "size": 7264935,
+                "container": "mkv",
+                "videoProfile": "high"
+              }
+            ]
+          }
+        ],
+        "UltraBlurColors": {
+          "topLeft": "16361a",
+          "topRight": "3b6a43",
+          "bottomRight": "336c3b",
+          "bottomLeft": "396a46"
+        }
+      }
+    ]
+  }
+}

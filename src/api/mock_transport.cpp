@@ -151,6 +151,33 @@ std::string search_matches(const std::string &body, const std::string &query)
     return out;
 }
 
+/* "/" -> root, "/status/sessions" -> status_sessions, "/:/prefs" -> prefs;
+ * a library's list by what is asked: its latest (sorted by date), a count
+ * (a page of 0), or its titles with their ids; several items at once ->
+ * library_metadata_ids. */
+std::string plex_file_for(const std::string &path, const std::string &query)
+{
+    if (path.rfind("/photo/", 0) == 0)
+        return {};   /* pictures: none in fixtures/ */
+    std::string p = path == "/" ? "root" : path == "/:/prefs" ? "prefs" : path;
+    while (!p.empty() && p[0] == '/')
+        p.erase(0, 1);
+    std::string name;
+    for (char c : p)
+        name += c == '/' ? '_' : (char)std::tolower((unsigned char)c);
+    if (name.rfind("library_metadata_", 0) == 0 && name.find(',') != std::string::npos)
+        name = "library_metadata_ids";
+    if (name.rfind("library_sections_", 0) == 0 && name.size() > 4 && name.compare(name.size() - 4, 4, "_all") == 0 &&
+        name != "library_sections_all") {
+        const bool episodes = query_value(query, "type") == "4";
+        if (query_value(query, "X-Plex-Container-Size") == "0")
+            name += episodes ? "_count_episode" : "_count";
+        else if (!query_value(query, "sort").empty())
+            name += "_recent";
+    }
+    return "plex/" + name + ".json";
+}
+
 } // namespace
 
 MockTransport::MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty,
@@ -184,6 +211,8 @@ std::string MockTransport::file_for(const std::string &url)
     std::string service, path, query;
     if (!split(url, &service, &path, &query))
         return {};
+    if (service == "plex")   /* Plex's paths: fixtures/plex/ (scripts/make-plex-fixtures.py) */
+        return plex_file_for(path, query);
     std::string p = path;
     /* An *arr behind a path of its own (urlBase, a reverse proxy): what
      * precedes /api/ is not part of the file's name. */
@@ -260,7 +289,7 @@ std::string MockTransport::picture_for(const std::string &url)
 
 std::string MockTransport::emptied(const std::string &rel, const std::string &body)
 {
-    for (const char *kept : {"system_status", "settings_about", "system_info", "/movie_", "/tv_"})
+    for (const char *kept : {"system_status", "settings_about", "system_info", "/movie_", "/tv_", "plex/root", "plex/identity"})
         if (rel.find(kept) != std::string::npos)
             return body;
     cJSON *root = cJSON_ParseWithLength(body.data(), body.size());
@@ -346,7 +375,8 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
             const size_t at = r.body.find(k);
             if (at != std::string::npos && (rel.find("system_status") != std::string::npos ||
                                             rel.find("settings_about") != std::string::npos ||
-                                            rel.find("system_info") != std::string::npos))
+                                            rel.find("system_info") != std::string::npos ||
+                                            rel == "plex/root.json"))
                 r.body.replace(at + k.size(), r.body.find('"', at + k.size()) - at - k.size(), "1.0.0");
         }
     }

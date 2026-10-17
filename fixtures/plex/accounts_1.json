@@ -1,0 +1,18 @@
+{
+  "MediaContainer": {
+    "size": 1,
+    "identifier": "com.plexapp.system.accounts",
+    "Account": [
+      {
+        "id": 1,
+        "key": "/accounts/1",
+        "name": "Administrator",
+        "defaultAudioLanguage": "C.",
+        "autoSelectAudio": false,
+        "defaultSubtitleLanguage": "C.",
+        "subtitleMode": 0,
+        "thumb": ""
+      }
+    ]
+  }
+}

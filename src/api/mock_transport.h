@@ -25,6 +25,8 @@
  *   REGIE5_MOCK_OFF=jellyfin              off, as if "enabled": false
  *   REGIE5_MOCK_EMBY=1                    Emby in Jellyfin's place: http://emby.mock,
  *                                        answered from fixtures/emby/ (read by the shell)
+ *   REGIE5_MOCK_PLEX=1                    Plex in Jellyfin's place: http://plex.mock,
+ *                                        answered from fixtures/plex/ (read by the shell)
  *   REGIE5_MOCK_MULTI=1                   a second Radarr, "Radarr 4K", under
  *                                        http://radarr.mock/radarr4k
  *                                        (both read by the shell, see config::mock)

@@ -34,6 +34,7 @@ enum class Error {
     Certificate,    /* https: the server's certificate is refused */
     Revoked,        /* Jellyfin by Quick Connect: 401, the session has ended (revoked, device removed); Plex: its token refused */
     NeedsAdmin,     /* Jellyfin by Quick Connect: 403 for an account that is not an administrator; Plex: not the owner */
+    NeedsPlexPass,  /* Plex: an action refused to an owner without Plex Pass (stopping a playback) */
 };
 
 /* From a transport response and whether its body parsed. */
@@ -149,7 +150,11 @@ public:
      * key's account). */
     void create_request(const seerr::NewRequest &r, std::function<void(Result<model::SeerrCreated>)> done);
 
-    /* Jellyfin. */
+    /* The media server's picture of an item: its poster ("Primary") or
+     * backdrop ("Backdrop"), at a width (Jellyfin, Emby, Plex alike). */
+    std::string media_image(const std::string &id, const char *type, int width, const std::string &tag = {}) const;
+
+    /* Jellyfin (or Emby, or Plex). */
     void sessions(std::function<void(Result<std::vector<model::Session>>)> done);
     void tasks(std::function<void(Result<std::vector<model::Task>>)> done);
     void recent(std::function<void(Result<std::vector<model::RecentItem>>)> done);
@@ -173,6 +178,13 @@ private:
     void call(config::Service s, const std::string &method, const std::string &path,
               std::function<bool(const std::string &, T *)> parse, std::function<void(Result<T>)> done,
               int instance = 0, const std::string &body = {}, bool need_on = true);
+    /* Plex's ways to the same results (api/plex). */
+    void plex_sessions(std::function<void(Result<std::vector<model::Session>>)> done);
+    void plex_tasks(std::function<void(Result<std::vector<model::Task>>)> done);
+    void plex_recent(std::function<void(Result<std::vector<model::RecentItem>>)> done);
+    void plex_refresh(std::function<void(Result<bool>)> done);
+    void plex_users(std::function<void(Result<std::vector<model::JellyfinUser>>)> done);
+    void plex_encoding(std::function<void(Result<model::EncodingInfo>)> done);
 
     config::Config m_cfg;
     http::Pool &m_pool;

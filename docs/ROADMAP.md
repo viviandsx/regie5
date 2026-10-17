@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 ouverte : Plex** ; étude validée, implémentation en cours (P1, P2 faits, § 2 duodecies).**
+**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 ouverte : Plex** ; étude validée, implémentation en cours (P1 à P3 faits ; P4 attend le compte Plex de test de Vivian, § 2 duodecies).**
 
 ---
 
@@ -31,7 +31,7 @@ pour ce qui a été fait après la phase 0).
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | étude validée ; implémentation en cours (§ 2 duodecies) |
 
-Tests : **74** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **76** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -1121,7 +1121,25 @@ seulement après validation. Patches : `build/patches-21/`.
       l'adresse change. `REGIE5_MOCK_PLEX=1` (configuration seulement, fixtures en P3).
       `docs/CONFIG.md` (« Jellyfin, Emby ou Plex »), `config.example.json`. Vu contre le serveur de
       test : Réglages au vert (v1.43.4.10903), assistant, page au format téléphone. 74 tests.
-- [ ] Séances P2 à P6 (`docs/PLEX.md` § 5 ; P5 devient le message « non disponible » du Ménage).
+- [x] **P3. Client Plex et écrans** — `api/plex` complet : sessions (ce qui est envoyé, et la
+      source lue dans les métadonnées de l'élément ; compte nommé par `/accounts` quand Plex ne le
+      nomme pas), raisons de transcodage **déduites** et dites comme telles (« déduit par
+      Régie5 »), accélération matérielle par son nom, avance du transcodage ; arrêt
+      (`POST /status/sessions/terminate`, refus → « arrêter une lecture demande un Plex Pass »,
+      prévenu dans la confirmation sans Plex Pass) ; scan de chaque bibliothèque ; Butler
+      (« Planifiée », « Tous les N jours ») et activités en cours ; ajouts récents (par
+      bibliothèque, épisodes regroupés) ; Journal = lectures terminées (« Regardé par … ») ;
+      bibliothèques, nombres, utilisateurs (« Propriétaire », dernière activité d'après
+      l'historique) ; images toujours par le transcodeur (`Services::media_image`) ; Ménage :
+      « non disponible avec Plex pour l'instant » (rien demandé, ne s'active pas dans Réglages).
+      Jamais lus : adresses, `deviceID`, chemins. `fixtures/plex/` (21 fichiers,
+      `scripts/make-plex-fixtures.py`, anonymisés, un 2ᵉ compte « Lea » synthétique),
+      `REGIE5_MOCK_PLEX=1`, état `plex` de `capture-states.sh` (vu en FR, EN, ES, DE : rien ne
+      déborde), test anti-fuite étendu (`address`, `remotePublicAddress`, `file`, `deviceID`,
+      jeton). Vu contre le serveur de test : Accueil, onglet Plex, diagnostic d'un transcodage
+      4K HEVC → H.264, scan (Annuler par défaut), arrêt refusé (pas de Plex Pass), Journal.
+      Emby et Jellyfin inchangés (états `data` et `emby`). 76 tests.
+- [ ] P4 (connexion par le téléphone : **compte Plex de test à créer par Vivian**), P6 (build console, zip testeur). P5 fait dans P3 (message du Ménage).
 
 ## 3. En attente
 
@@ -1248,10 +1266,13 @@ Variables de développement : `REGIE5_FPS=1` (temps d'image chaque seconde),
 `REGIE5_NO_LAUNCH=1` (une console qui ne lance pas d'app : « Chercher dans Jelly5 »),
 `REGIE5_MOCK_OLD=sonarr,jellyfin` (versions trop anciennes en `--mock`),
 `REGIE5_MOCK_EMBY=1` (Emby à la place de Jellyfin en `--mock`, `fixtures/emby/`),
+`REGIE5_MOCK_PLEX=1` (Plex à la place de Jellyfin en `--mock`, `fixtures/plex/`),
 `REGIE5_WELCOME=1` (l'assistant même avec une config ou en `--mock`),
 `REGIE5_WHATSNEW=1` (l'écran « Nouveautés » au lancement, même en `--mock`),
 `REGIE5_SHARE_LOG_CODE=1` (le code de la page du téléphone dans le terminal, pour un essai
 par `curl`).
+Plex de test : `scripts/plex-test-server.sh start`, puis `setup`, puis
+`scripts/run-linux.sh --config build/plex-test/config.json` ; une lecture : `scripts/plex-test-play.sh transcode 4`.
 Emby de test : `scripts/emby-test-server.sh start`, puis `setup`, puis
 `scripts/run-linux.sh --config build/emby-test/config.json`.
 `scripts/make-fixtures.py` régénère les fixtures en GET seulement (`--only library` pour
@@ -1328,3 +1349,4 @@ la Bibliothèque).
 | 17 oct. 2026 | 0.6.0 ouverte (Plex). Étude de faisabilité `docs/PLEX.md` (sources officielles de Plex, Seerr, Tautulli ; CORS de plex.tv mesuré) ; décisions attendues ; `build/patches-21/`. |
 | 17 oct. 2026 | Décisions Plex de Vivian (pas de Ménage avec Plex en 0.6.0). P1 : serveur Plex de test (Docker, sans compte), simulateur de lecture, relevé (images à la taille demandée, arrêt refusé sans Plex Pass). |
 | 17 oct. 2026 | P2 Plex : configuration `"plex"`, un seul serveur multimédia, noms, Réglages, assistant et page du téléphone (jeton collé), erreurs propres à Plex. |
+| 17 oct. 2026 | P3 Plex : client complet, écrans (sessions, diagnostic, arrêt, scan, tâches, ajouts récents, Journal, bibliothèques, utilisateurs), Ménage indisponible avec Plex, fixtures anonymisées et `--mock` (76 tests). |

@@ -77,6 +77,10 @@ void SettingsScreen::toggle_cleanup()
         m_ctx.save_settings();
         return;
     }
+    if (m_ctx.services && m_ctx.services->config().plex()) {   /* not with Plex yet: never turned on */
+        notify(i18n::tr(i18n::CleanupNoPlex), false, platform::now());
+        return;
+    }
     m_sheet.open(i18n::tr(i18n::CleanupWarnTitle), i18n::tr(i18n::CleanupWarnBody),
                  {i18n::tr(i18n::Cancel), i18n::tr(i18n::CleanupEnable)}, 0,
                  [this](int choice) {

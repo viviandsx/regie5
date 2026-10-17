@@ -575,6 +575,17 @@ const Text kTexts[] = {
     {ErrPlexNoToken, "Plex asks for a token: sign in from the phone"},
     {ErrPlexRevoked, "Plex token refused: sign in again from the phone"},
     {ErrPlexOwner, "Needs the Plex server owner's account"},
+    {PlexStopReason, "Playback stopped by the server's administrator"},
+    {ErrNeedsPlexPass, "Refused by Plex: stopping a playback needs Plex Pass"},
+    {CleanupNoPlex, "The cleanup is not available with Plex for now."},
+    {JWatched, "%s watched it"},
+    {TaskScheduled, "Scheduled"},
+    {TaskEveryDay, "Every day"},
+    {TaskEveryDays, "Every %d days"},
+    {UserOwner, "Owner"},
+    {DiagGuessed, "worked out by Régie5 (Plex gives no reason)"},
+    {AdvNoHardwarePlex, "Transcoding on the CPU: Plex's hardware acceleration (Settings › Transcoder, with Plex Pass for the server's owner) would ease the server."},
+    {PlexStopNeedsPass, "Plex seems to need Plex Pass for this"},
 };
 
 } // namespace

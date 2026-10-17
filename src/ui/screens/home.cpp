@@ -5,7 +5,6 @@
 #include "ui/screens/home.h"
 
 #include "api/arr.h"
-#include "api/jellyfin.h"
 #include "core/jelly5.h"
 #include "core/schedule.h"
 #include "core/welcome.h"
@@ -197,8 +196,8 @@ void HomeScreen::rebuild_recent()
     for (const auto &r : m_recent.value) {
         Card k;
         k.key = r.id;
-        k.poster = {config::Jellyfin, jellyfin::image_path(r.image_id, "Primary", 400, r.image_tag)};
-        k.backdrop = {config::Jellyfin, jellyfin::image_path(r.backdrop_id, "Backdrop", 480)};
+        k.poster = {config::Jellyfin, m_ctx.services->media_image(r.image_id, "Primary", 400, r.image_tag)};
+        k.backdrop = {config::Jellyfin, m_ctx.services->media_image(r.backdrop_id, "Backdrop", 480)};
         k.title = r.title;
         k.seed = seed_of(r.title);
         if (r.type == "Episode")

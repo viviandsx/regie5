@@ -1,0 +1,188 @@
+{
+  "MediaContainer": {
+    "size": 3,
+    "totalSize": 3,
+    "offset": 0,
+    "allowSync": true,
+    "art": "/:/resources/show-fanart.jpg",
+    "identifier": "com.plexapp.plugins.library",
+    "librarySectionID": 2,
+    "librarySectionTitle": "Séries",
+    "mediaTagPrefix": "/system/bundle/media/flags/",
+    "mediaTagVersion": 1786914632,
+    "nocache": true,
+    "thumb": "/:/resources/show.png",
+    "title1": "Séries",
+    "title2": "All Shows",
+    "viewGroup": "show",
+    "viewMode": 65592,
+    "Metadata": [
+      {
+        "ratingKey": "10",
+        "key": "/library/metadata/10",
+        "parentRatingKey": "7",
+        "grandparentRatingKey": "6",
+        "guid": "local://10",
+        "parentGuid": "local://7",
+        "grandparentGuid": "plex://show/5d9c08a22df347001e3b5d6a",
+        "grandparentSlug": "caminandes",
+        "type": "episode",
+        "title": "Episode 3",
+        "grandparentKey": "/library/metadata/6",
+        "parentKey": "/library/metadata/7",
+        "grandparentTitle": "Caminandes",
+        "parentTitle": "Season 1",
+        "contentRating": "TV-Y",
+        "index": 3,
+        "parentIndex": 1,
+        "year": 2013,
+        "thumb": "/library/metadata/10/thumb/1792244315",
+        "art": "/library/metadata/6/art/1792244315",
+        "grandparentThumb": "/library/metadata/6/thumb/1792244315",
+        "grandparentArt": "/library/metadata/6/art/1792244315",
+        "duration": 15023,
+        "addedAt": 1792244243,
+        "updatedAt": 1792244315,
+        "Media": [
+          {
+            "id": 8,
+            "duration": 15023,
+            "bitrate": 2893,
+            "width": 1280,
+            "height": 720,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "h264",
+            "videoResolution": "720",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "high",
+            "Part": [
+              {
+                "id": 8,
+                "key": "/library/parts/8/1792244243/file.mkv",
+                "duration": 15023,
+                "size": 5433439,
+                "container": "mkv",
+                "videoProfile": "high"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ratingKey": "9",
+        "key": "/library/metadata/9",
+        "parentRatingKey": "7",
+        "grandparentRatingKey": "6",
+        "guid": "local://9",
+        "parentGuid": "local://7",
+        "grandparentGuid": "plex://show/5d9c08a22df347001e3b5d6a",
+        "grandparentSlug": "caminandes",
+        "type": "episode",
+        "title": "Episode 2",
+        "grandparentKey": "/library/metadata/6",
+        "parentKey": "/library/metadata/7",
+        "grandparentTitle": "Caminandes",
+        "parentTitle": "Season 1",
+        "contentRating": "TV-Y",
+        "index": 2,
+        "parentIndex": 1,
+        "viewCount": 1,
+        "lastViewedAt": 1792244509,
+        "year": 2013,
+        "thumb": "/library/metadata/9/thumb/1792244315",
+        "art": "/library/metadata/6/art/1792244315",
+        "grandparentThumb": "/library/metadata/6/thumb/1792244315",
+        "grandparentArt": "/library/metadata/6/art/1792244315",
+        "duration": 15023,
+        "addedAt": 1792244241,
+        "updatedAt": 1792244315,
+        "Media": [
+          {
+            "id": 7,
+            "duration": 15023,
+            "bitrate": 2893,
+            "width": 1280,
+            "height": 720,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "h264",
+            "videoResolution": "720",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "high",
+            "Part": [
+              {
+                "id": 7,
+                "key": "/library/parts/7/1792244241/file.mkv",
+                "duration": 15023,
+                "size": 5433439,
+                "container": "mkv",
+                "videoProfile": "high"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ratingKey": "8",
+        "key": "/library/metadata/8",
+        "parentRatingKey": "7",
+        "grandparentRatingKey": "6",
+        "guid": "local://8",
+        "parentGuid": "local://7",
+        "grandparentGuid": "plex://show/5d9c08a22df347001e3b5d6a",
+        "grandparentSlug": "caminandes",
+        "type": "episode",
+        "title": "Episode 1",
+        "grandparentKey": "/library/metadata/6",
+        "parentKey": "/library/metadata/7",
+        "grandparentTitle": "Caminandes",
+        "parentTitle": "Season 1",
+        "contentRating": "TV-Y",
+        "index": 1,
+        "parentIndex": 1,
+        "viewCount": 1,
+        "lastViewedAt": 1792246131,
+        "year": 2013,
+        "thumb": "/library/metadata/8/thumb/1792244315",
+        "art": "/library/metadata/6/art/1792244315",
+        "grandparentThumb": "/library/metadata/6/thumb/1792244315",
+        "grandparentArt": "/library/metadata/6/art/1792244315",
+        "duration": 15023,
+        "addedAt": 1792244237,
+        "updatedAt": 1792244315,
+        "Media": [
+          {
+            "id": 6,
+            "duration": 15023,
+            "bitrate": 2893,
+            "width": 1280,
+            "height": 720,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "h264",
+            "videoResolution": "720",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "high",
+            "Part": [
+              {
+                "id": 6,
+                "key": "/library/parts/6/1792244237/file.mkv",
+                "duration": 15023,
+                "size": 5433439,
+                "container": "mkv",
+                "videoProfile": "high"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

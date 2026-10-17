@@ -386,6 +386,10 @@ struct Session {
     std::vector<Stream> streams;
     std::string container_in;
     int audio_index = -1, subtitle_index = -1;
+    /* Plex: the media the session plays (its source is read apart), and
+     * transcode reasons Régie5 worked out itself (Plex gives none). */
+    std::string media_id, user_id;   /* user_id: the account, when Plex does not name it */
+    bool reasons_guessed = false;
 };
 
 /* The server's load (Glances, optional): percentages. */
@@ -400,6 +404,7 @@ struct EncodingInfo {
     std::string hw_accel;   /* "none", "vaapi"... */
     bool throttling = false;
     int throttle_delay = 0;   /* seconds the transcode may run ahead before it is held */
+    bool plex_pass = true;    /* Plex: the owner's Plex Pass (hardware transcoding, stopping a playback) */
 };
 
 struct Task {
@@ -408,6 +413,7 @@ struct Task {
     double progress = 0;   /* percent, while running */
     enum Result { Never, Completed, Failed, Cancelled, Aborted } last = Never;
     time_t last_end = 0;
+    int every_days = 0;   /* Plex's Butler: how often it runs; it tells nothing of the last run */
 };
 
 struct RecentItem {

@@ -1,0 +1,114 @@
+{
+  "MediaContainer": {
+    "size": 1,
+    "allowSync": true,
+    "identifier": "com.plexapp.plugins.library",
+    "librarySectionID": 2,
+    "librarySectionTitle": "Séries",
+    "mediaTagPrefix": "/system/bundle/media/flags/",
+    "mediaTagVersion": 1786914632,
+    "Metadata": [
+      {
+        "ratingKey": "8",
+        "key": "/library/metadata/8",
+        "parentRatingKey": "7",
+        "grandparentRatingKey": "6",
+        "guid": "local://8",
+        "parentGuid": "local://7",
+        "grandparentGuid": "plex://show/5d9c08a22df347001e3b5d6a",
+        "grandparentSlug": "caminandes",
+        "type": "episode",
+        "title": "Episode 1",
+        "grandparentKey": "/library/metadata/6",
+        "parentKey": "/library/metadata/7",
+        "librarySectionTitle": "Séries",
+        "librarySectionID": 2,
+        "librarySectionKey": "/library/sections/2",
+        "grandparentTitle": "Caminandes",
+        "parentTitle": "Season 1",
+        "contentRating": "TV-Y",
+        "index": 1,
+        "parentIndex": 1,
+        "viewCount": 1,
+        "lastViewedAt": 1792246131,
+        "year": 2013,
+        "thumb": "/library/metadata/8/thumb/1792244315",
+        "art": "/library/metadata/6/art/1792244315",
+        "grandparentThumb": "/library/metadata/6/thumb/1792244315",
+        "grandparentArt": "/library/metadata/6/art/1792244315",
+        "duration": 15023,
+        "addedAt": 1792244237,
+        "updatedAt": 1792244315,
+        "Media": [
+          {
+            "id": 6,
+            "duration": 15023,
+            "bitrate": 2893,
+            "width": 1280,
+            "height": 720,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "h264",
+            "videoResolution": "720",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "high",
+            "Part": [
+              {
+                "id": 6,
+                "key": "/library/parts/6/1792244237/file.mkv",
+                "duration": 15023,
+                "size": 5433439,
+                "container": "mkv",
+                "videoProfile": "high",
+                "Stream": [
+                  {
+                    "id": 11,
+                    "streamType": 1,
+                    "codec": "h264",
+                    "index": 0,
+                    "bitrate": 2893,
+                    "language": "English",
+                    "languageTag": "en",
+                    "languageCode": "eng",
+                    "bitDepth": 8,
+                    "chromaLocation": "left",
+                    "chromaSubsampling": "4:2:0",
+                    "codedHeight": 720,
+                    "codedWidth": 1280,
+                    "colorRange": "tv",
+                    "frameRate": 24.0,
+                    "hasScalingMatrix": false,
+                    "height": 720,
+                    "level": 31,
+                    "profile": "high",
+                    "refFrames": 4,
+                    "scanType": "progressive",
+                    "width": 1280,
+                    "displayTitle": "720p",
+                    "extendedDisplayTitle": "720p (H.264)"
+                  },
+                  {
+                    "id": 12,
+                    "streamType": 2,
+                    "selected": true,
+                    "codec": "aac",
+                    "index": 1,
+                    "channels": 2,
+                    "language": "English",
+                    "languageTag": "en",
+                    "languageCode": "eng",
+                    "samplingRate": 44100,
+                    "displayTitle": "English (AAC Stereo)",
+                    "extendedDisplayTitle": "English (AAC Stereo)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

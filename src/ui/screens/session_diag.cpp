@@ -63,7 +63,8 @@ std::string advice_text(diagnosis::Advice a, const model::Session &s)
     case diagnosis::SubText: return fmt::f(i18n::tr(i18n::AdvSubText), sub ? fmt::codec(sub->codec).c_str() : "?");
     case diagnosis::Bitrate: return i18n::tr(i18n::AdvBitrate);
     case diagnosis::Generic: return i18n::tr(i18n::AdvGeneric);
-    case diagnosis::NoHardware: return i18n::tr(i18n::emby() ? i18n::AdvNoHardwareEmby : i18n::AdvNoHardware);
+    case diagnosis::NoHardware:
+        return i18n::tr(i18n::emby() ? i18n::AdvNoHardwareEmby : i18n::plex() ? i18n::AdvNoHardwarePlex : i18n::AdvNoHardware);
     case diagnosis::Slow: return i18n::tr(i18n::AdvSlow);
     }
     return {};
@@ -154,8 +155,10 @@ void SessionDiag::draw(const model::Session &s, const model::EncodingInfo &enc, 
     /* Why. */
     if (tr) {
         gfx::text(x, y, i18n::tr(i18n::DiagWhy), head, kText);
-        gfx::text(x + 420, y, s.transcode_reasons.empty() ? "?" : fmt::transcode_reasons(s.transcode_reasons),
-                  {gfx::Medium, 24, w - 420}, kText2);
+        /* Plex gives no reason: Régie5's own reading of the session, said as such. */
+        const std::string why = s.transcode_reasons.empty() ? "?" : fmt::transcode_reasons(s.transcode_reasons) +
+                                                                        (s.reasons_guessed ? std::string(" · ") + i18n::tr(i18n::DiagGuessed) : "");
+        gfx::text(x + 420, y, why, {gfx::Medium, 24, w - 420}, kText2);
     } else {
         gfx::text(x, y, i18n::tr(s.method == model::Session::DirectStream ? i18n::DiagStreamNote : i18n::DiagDirectNote),
                   {gfx::Medium, 26, w}, kText2);

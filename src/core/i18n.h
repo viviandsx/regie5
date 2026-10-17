@@ -578,6 +578,17 @@ enum S {
     ErrPlexNoToken,
     ErrPlexRevoked,
     ErrPlexOwner,
+    PlexStopReason,
+    ErrNeedsPlexPass,
+    CleanupNoPlex,
+    JWatched,
+    TaskScheduled,
+    TaskEveryDay,
+    TaskEveryDays,
+    UserOwner,
+    DiagGuessed,
+    AdvNoHardwarePlex,
+    PlexStopNeedsPass,
     Count
 };
 

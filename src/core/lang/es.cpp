@@ -574,6 +574,17 @@ const Text kTexts[] = {
     {ErrPlexNoToken, "Plex pide un token: inicia sesión desde el teléfono"},
     {ErrPlexRevoked, "Token de Plex rechazado: vuelve a iniciar sesión desde el teléfono"},
     {ErrPlexOwner, "Requiere la cuenta del propietario del servidor Plex"},
+    {PlexStopReason, "Reproducción detenida por el administrador del servidor"},
+    {ErrNeedsPlexPass, "Rechazado por Plex: detener una reproducción requiere Plex Pass"},
+    {CleanupNoPlex, "La limpieza no está disponible con Plex por ahora."},
+    {JWatched, "Visto por %s"},
+    {TaskScheduled, "Programada"},
+    {TaskEveryDay, "Todos los días"},
+    {TaskEveryDays, "Cada %d días"},
+    {UserOwner, "Propietario"},
+    {DiagGuessed, "deducido por Régie5 (Plex no da el motivo)"},
+    {AdvNoHardwarePlex, "Transcodificación por el procesador: la aceleración por hardware de Plex (Ajustes › Transcodificador, con Plex Pass para el propietario del servidor) aliviaría el servidor."},
+    {PlexStopNeedsPass, "Plex probablemente requiere Plex Pass para esto"},
 };
 
 } // namespace

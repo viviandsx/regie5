@@ -1,0 +1,112 @@
+{
+  "MediaContainer": {
+    "size": 1,
+    "allowSync": true,
+    "identifier": "com.plexapp.plugins.library",
+    "librarySectionID": 1,
+    "librarySectionTitle": "Films",
+    "mediaTagPrefix": "/system/bundle/media/flags/",
+    "mediaTagVersion": 1786914632,
+    "Metadata": [
+      {
+        "ratingKey": "4",
+        "key": "/library/metadata/4",
+        "guid": "plex://movie/5d77699b96b655001fdd3b87",
+        "type": "movie",
+        "title": "Tears of Steel",
+        "librarySectionTitle": "Films",
+        "librarySectionID": 1,
+        "librarySectionKey": "/library/sections/1",
+        "audienceRating": 5.5,
+        "viewCount": 5,
+        "lastViewedAt": 1792246132,
+        "year": 2012,
+        "thumb": "/library/metadata/4/thumb/1792244314",
+        "art": "/library/metadata/4/art/1792244314",
+        "duration": 20023,
+        "originallyAvailableAt": "2012-09-26",
+        "addedAt": 1792244233,
+        "updatedAt": 1792244314,
+        "Media": [
+          {
+            "id": 4,
+            "duration": 20023,
+            "bitrate": 14761,
+            "width": 3840,
+            "height": 2160,
+            "aspectRatio": 1.78,
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "videoCodec": "hevc",
+            "videoResolution": "4k",
+            "container": "mkv",
+            "videoFrameRate": "24p",
+            "videoProfile": "main",
+            "Part": [
+              {
+                "id": 4,
+                "key": "/library/parts/4/1792244233/file.mkv",
+                "duration": 20023,
+                "size": 36944274,
+                "container": "mkv",
+                "videoProfile": "main",
+                "Stream": [
+                  {
+                    "id": 9,
+                    "streamType": 1,
+                    "codec": "hevc",
+                    "index": 0,
+                    "bitrate": 14761,
+                    "language": "English",
+                    "languageTag": "en",
+                    "languageCode": "eng",
+                    "bitDepth": 8,
+                    "chromaLocation": "left",
+                    "chromaSubsampling": "4:2:0",
+                    "codedHeight": 2160,
+                    "codedWidth": 3840,
+                    "colorRange": "tv",
+                    "frameRate": 24.0,
+                    "height": 2160,
+                    "level": 150,
+                    "profile": "main",
+                    "refFrames": 1,
+                    "scanType": "progressive",
+                    "width": 3840,
+                    "displayTitle": "4K",
+                    "extendedDisplayTitle": "4K (HEVC Main)"
+                  },
+                  {
+                    "id": 10,
+                    "streamType": 2,
+                    "selected": true,
+                    "codec": "aac",
+                    "index": 1,
+                    "channels": 2,
+                    "language": "English",
+                    "languageTag": "en",
+                    "languageCode": "eng",
+                    "samplingRate": 44100,
+                    "displayTitle": "English (AAC Stereo)",
+                    "extendedDisplayTitle": "English (AAC Stereo)"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "UltraBlurColors": {
+          "topLeft": "381f50",
+          "topRight": "4e3275",
+          "bottomRight": "5d3881",
+          "bottomLeft": "6e4394"
+        },
+        "Guid": [
+          {
+            "id": "imdb://tt2285752"
+          }
+        ]
+      }
+    ]
+  }
+}

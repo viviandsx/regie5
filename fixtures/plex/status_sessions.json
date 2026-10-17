@@ -1,0 +1,280 @@
+{
+  "MediaContainer": {
+    "size": 2,
+    "Metadata": [
+      {
+        "addedAt": 1792244237,
+        "art": "/library/metadata/6/art/1792244315",
+        "contentRating": "TV-Y",
+        "duration": 15023,
+        "grandparentArt": "/library/metadata/6/art/1792244315",
+        "grandparentGuid": "plex://show/5d9c08a22df347001e3b5d6a",
+        "grandparentKey": "/library/metadata/6",
+        "grandparentRatingKey": "6",
+        "grandparentSlug": "caminandes",
+        "grandparentThumb": "/library/metadata/6/thumb/1792244315",
+        "grandparentTitle": "Caminandes",
+        "guid": "local://8",
+        "index": 1,
+        "key": "/library/metadata/8",
+        "lastViewedAt": 1792246131,
+        "librarySectionID": "2",
+        "librarySectionKey": "/library/sections/2",
+        "librarySectionTitle": "Séries",
+        "parentGuid": "local://7",
+        "parentIndex": 1,
+        "parentKey": "/library/metadata/7",
+        "parentRatingKey": "7",
+        "parentTitle": "Season 1",
+        "ratingKey": "8",
+        "sessionKey": "10",
+        "thumb": "/library/metadata/8/thumb/1792244315",
+        "title": "Episode 1",
+        "type": "episode",
+        "updatedAt": 1792244315,
+        "viewCount": 1,
+        "viewOffset": 1504,
+        "year": 2013,
+        "Media": [
+          {
+            "aspectRatio": "1.78",
+            "audioChannels": 2,
+            "audioCodec": "aac",
+            "bitrate": 2893,
+            "container": "mkv",
+            "duration": 15023,
+            "height": 720,
+            "id": "6",
+            "videoCodec": "h264",
+            "videoFrameRate": "24p",
+            "videoProfile": "high",
+            "videoResolution": "720",
+            "width": 1280,
+            "selected": true,
+            "Part": [
+              {
+                "container": "mkv",
+                "duration": 15023,
+                "id": "6",
+                "key": "/library/parts/6/1792244237/file.mkv",
+                "size": 5433439,
+                "videoProfile": "high",
+                "decision": "directplay",
+                "selected": true,
+                "Stream": [
+                  {
+                    "bitDepth": 8,
+                    "bitrate": 2893,
+                    "chromaLocation": "left",
+                    "chromaSubsampling": "4:2:0",
+                    "codec": "h264",
+                    "codedHeight": 720,
+                    "codedWidth": 1280,
+                    "colorRange": "tv",
+                    "displayTitle": "720p (H.264)",
+                    "extendedDisplayTitle": "720p (H.264)",
+                    "frameRate": 24.0,
+                    "hasScalingMatrix": false,
+                    "height": 720,
+                    "id": "11",
+                    "index": 0,
+                    "language": "English",
+                    "languageCode": "eng",
+                    "languageTag": "en",
+                    "level": 31,
+                    "profile": "high",
+                    "refFrames": 4,
+                    "scanType": "progressive",
+                    "streamType": 1,
+                    "width": 1280,
+                    "location": "direct"
+                  },
+                  {
+                    "channels": 2,
+                    "codec": "aac",
+                    "displayTitle": "English (AAC Stereo)",
+                    "extendedDisplayTitle": "English (AAC Stereo)",
+                    "id": "12",
+                    "index": 1,
+                    "language": "English",
+                    "languageCode": "eng",
+                    "languageTag": "en",
+                    "samplingRate": 44100,
+                    "selected": true,
+                    "streamType": 2,
+                    "location": "direct"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "User": {
+          "id": "1",
+          "title": "Administrator"
+        },
+        "Player": {
+          "machineIdentifier": "player-1",
+          "platform": "Roku",
+          "product": "Plex for Roku",
+          "profile": "Roku-7.x",
+          "state": "playing",
+          "title": "Test TV",
+          "local": true,
+          "relayed": false,
+          "secure": false,
+          "userID": 1
+        },
+        "Session": {
+          "id": "player-1",
+          "bandwidth": 6076,
+          "location": "lan"
+        }
+      },
+      {
+        "addedAt": 1792244233,
+        "art": "/library/metadata/4/art/1792244314",
+        "audienceRating": 5.5,
+        "duration": 20023,
+        "guid": "plex://movie/5d77699b96b655001fdd3b87",
+        "key": "/library/metadata/4",
+        "lastViewedAt": 1792246132,
+        "librarySectionID": "1",
+        "librarySectionKey": "/library/sections/1",
+        "librarySectionTitle": "Films",
+        "originallyAvailableAt": "2012-09-26",
+        "ratingKey": "4",
+        "sessionKey": "11",
+        "thumb": "/library/metadata/4/thumb/1792244314",
+        "title": "Tears of Steel",
+        "type": "movie",
+        "updatedAt": 1792244314,
+        "viewCount": 5,
+        "viewOffset": 2004,
+        "year": 2012,
+        "Media": [
+          {
+            "id": "4",
+            "videoProfile": "main",
+            "audioChannels": 2,
+            "audioCodec": "mp3",
+            "bitrate": 1459,
+            "container": "mpegts",
+            "duration": 20023,
+            "height": 404,
+            "protocol": "hls",
+            "videoCodec": "h264",
+            "videoFrameRate": "24p",
+            "videoResolution": "SD",
+            "width": 720,
+            "selected": true,
+            "Part": [
+              {
+                "id": "4",
+                "videoProfile": "main",
+                "bitrate": 1459,
+                "container": "mpegts",
+                "duration": 20023,
+                "height": 404,
+                "protocol": "hls",
+                "width": 720,
+                "decision": "transcode",
+                "selected": true,
+                "Stream": [
+                  {
+                    "bitDepth": 8,
+                    "bitrate": 1297,
+                    "codec": "h264",
+                    "displayTitle": "4K (HEVC Main)",
+                    "extendedDisplayTitle": "4K (HEVC Main)",
+                    "frameRate": 24.0,
+                    "height": 404,
+                    "id": "9",
+                    "language": "English",
+                    "languageCode": "eng",
+                    "languageTag": "en",
+                    "streamType": 1,
+                    "width": 720,
+                    "decision": "transcode",
+                    "location": "segments-av"
+                  },
+                  {
+                    "bitrate": 162,
+                    "bitrateMode": "vbr",
+                    "channels": 2,
+                    "codec": "mp3",
+                    "displayTitle": "English (AAC Stereo)",
+                    "extendedDisplayTitle": "English (AAC Stereo)",
+                    "id": "10",
+                    "language": "English",
+                    "languageCode": "eng",
+                    "languageTag": "en",
+                    "selected": true,
+                    "streamType": 2,
+                    "decision": "transcode",
+                    "location": "segments-av"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "UltraBlurColors": [
+          {
+            "bottomLeft": "6e4394",
+            "bottomRight": "5d3881",
+            "topLeft": "381f50",
+            "topRight": "4e3275"
+          }
+        ],
+        "User": {
+          "id": "2",
+          "title": "Lea"
+        },
+        "Player": {
+          "machineIdentifier": "player-2",
+          "platform": "Firefox",
+          "product": "Plex Web",
+          "profile": "Firefox",
+          "state": "playing",
+          "title": "Test browser",
+          "version": "4.150.0",
+          "local": true,
+          "relayed": false,
+          "secure": false,
+          "userID": 1
+        },
+        "Session": {
+          "id": "player-2",
+          "bandwidth": 1532,
+          "location": "lan"
+        },
+        "TranscodeSession": {
+          "key": "/transcode/sessions/session-1",
+          "throttled": false,
+          "complete": false,
+          "progress": 65.0,
+          "size": -1,
+          "speed": 4.099999904632568,
+          "error": false,
+          "duration": 20023,
+          "remaining": 1,
+          "context": "streaming",
+          "sourceVideoCodec": "hevc",
+          "sourceAudioCodec": "aac",
+          "videoDecision": "transcode",
+          "audioDecision": "transcode",
+          "protocol": "hls",
+          "container": "mpegts",
+          "videoCodec": "h264",
+          "audioCodec": "mp3",
+          "audioChannels": 2,
+          "transcodeHwRequested": false,
+          "timeStamp": 1792246147.0833945,
+          "maxOffsetAvailable": 8.0,
+          "minOffsetAvailable": 0.0
+        }
+      }
+    ]
+  }
+}

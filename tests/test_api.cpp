@@ -13,6 +13,7 @@
 #include "api/jellyfin.h"
 #include "api/json.h"
 #include "api/mock_transport.h"
+#include "api/plex.h"
 #include "api/seerr.h"
 #include "core/config_web.h"
 #include "api/services.h"
@@ -713,6 +714,187 @@ TEST(emby_on_its_fixtures)
     CHECK_EQ(off.hw_accel, std::string("none"));
 }
 
+TEST(plex_on_its_fixtures)
+{
+    /* fixtures/plex/: the test Plex 1.43.4 (scripts/make-plex-fixtures.py), through the media server's calls. */
+    api::MockTransport mock(REGIE5_FIXTURES, 0, "");
+    http::Pool pool(mock, 2, nullptr);
+    const config::Config cfg = config::mock("", false, config::MediaServer::Plex);
+    CHECK(cfg.plex());
+    api::Services s(cfg, pool, "fr");
+    CHECK_EQ(s.auth_header(config::Jellyfin), std::string("X-Plex-Token: mock"));
+    CHECK(s.media_image("4", "Primary", 400).find("/photo/:/transcode?width=400&height=600") == 0);
+
+    api::Result<std::string> version;
+    s.test(config::Jellyfin, [&](api::Result<std::string> r) { version = r; });
+    api::Result<std::vector<model::Session>> sessions;
+    s.sessions([&](api::Result<std::vector<model::Session>> r) { sessions = r; });
+    api::Result<std::vector<model::ActivityEntry>> log;
+    s.activity(0, [&](api::Result<std::vector<model::ActivityEntry>> r) { log = r; });
+    api::Result<std::vector<model::JellyfinUser>> users;
+    s.users([&](api::Result<std::vector<model::JellyfinUser>> r) { users = r; });
+    api::Result<model::JellyfinUser> lea;
+    s.user("2", [&](api::Result<model::JellyfinUser> r) { lea = r; });
+    api::Result<std::vector<model::RecentItem>> recent;
+    s.recent([&](api::Result<std::vector<model::RecentItem>> r) { recent = r; });
+    api::Result<model::EncodingInfo> enc;
+    s.encoding([&](api::Result<model::EncodingInfo> r) { enc = r; });
+    api::Result<std::vector<model::JellyfinLibrary>> libs;
+    s.libraries([&](api::Result<std::vector<model::JellyfinLibrary>> r) { libs = r; });
+    api::Result<std::vector<model::UserItem>> films;
+    s.library_items("1", [&](api::Result<std::vector<model::UserItem>> r) { films = r; });
+    api::Result<int> episodes, movies;
+    s.library_count("2", "Episode", [&](api::Result<int> r) { episodes = r; });
+    s.library_count("1", "", [&](api::Result<int> r) { movies = r; });
+    api::Result<std::vector<model::Task>> tasks;
+    s.tasks([&](api::Result<std::vector<model::Task>> r) { tasks = r; });
+    api::Result<std::vector<model::JellyfinItem>> items;
+    s.items({"1", "10"}, [&](api::Result<std::vector<model::JellyfinItem>> r) { items = r; });
+    api::Result<std::vector<model::UserItem>> cleanup;
+    s.user_items("1", [&](api::Result<std::vector<model::UserItem>> r) { cleanup = r; });
+    for (int i = 0; i < 4; i++)   /* sessions, recent, users: answers that ask again */
+        drain(pool);
+
+    CHECK(version.ok());
+    CHECK_EQ(version.value, std::string("1.43.4.10903-e5521bd8c"));
+    CHECK(sessions.ok());
+    CHECK_EQ(sessions.value.size(), (size_t)2);
+    for (const auto &p : sessions.value) {
+        CHECK(!p.id.empty());
+        if (p.item_name == "Tears of Steel") {   /* 4K HEVC, sent as H.264 */
+            CHECK_EQ(p.user, std::string("Lea"));
+            CHECK_EQ(p.client, std::string("Plex Web"));
+            CHECK(p.method == model::Session::Transcode);
+            CHECK(!p.video_direct && !p.audio_direct);
+            CHECK_EQ(p.video_codec, std::string("h264"));
+            CHECK_EQ(p.hw_accel, std::string("none"));
+            CHECK(p.completion > 0 && p.completion <= 100);
+            CHECK(p.reasons_guessed);
+            CHECK(std::find(p.transcode_reasons.begin(), p.transcode_reasons.end(), "VideoCodecNotSupported") !=
+                  p.transcode_reasons.end());
+            const model::Session::Stream *v = diagnosis::video(p);
+            CHECK(v && v->codec == "hevc" && v->height == 2160);   /* the source, from the item's metadata */
+            CHECK_EQ(p.container_in, std::string("mkv"));
+            CHECK(p.audio_index > 0 && diagnosis::audio(p) && diagnosis::audio(p)->codec == "aac");
+        } else {   /* an episode, played as it is */
+            CHECK_EQ(p.series_name, std::string("Caminandes"));
+            CHECK_EQ(p.item_type, std::string("Episode"));
+            CHECK(p.season == 1 && p.episode >= 1);
+            CHECK(p.method == model::Session::DirectPlay);
+            CHECK(p.transcode_reasons.empty() && !p.reasons_guessed);
+            CHECK(p.runtime_ticks > 0 && p.position_ticks > 0);
+        }
+    }
+    CHECK(log.ok() && !log.value.empty());
+    bool by_lea = false;
+    for (const auto &e : log.value) {
+        CHECK_EQ(e.type, std::string("Watched"));
+        CHECK(e.when > 0 && !e.item_id.empty());
+        by_lea |= e.user_id == "2";
+    }
+    CHECK(by_lea);
+    CHECK(users.ok());
+    CHECK_EQ(users.value.size(), (size_t)2);
+    for (const auto &u : users.value) {
+        CHECK(u.admin == (u.id == "1"));   /* the owner */
+        CHECK(u.last_activity > 0);        /* dated by their latest playback */
+    }
+    CHECK(lea.ok() && lea.value.name == "Lea");
+    CHECK(recent.ok());
+    CHECK_EQ(recent.value.size(), (size_t)5);   /* four films, and the series' three episodes folded */
+    for (const auto &r : recent.value)
+        if (r.type == "Episode")
+            CHECK(r.new_episodes == 3 && r.title == "Caminandes" && !r.image_id.empty() && r.image_id != r.id);
+    CHECK(enc.ok());
+    CHECK(enc.value.throttling && enc.value.throttle_delay == 60);
+    CHECK(!enc.value.plex_pass);
+    CHECK(enc.value.hw_accel.empty());   /* no Plex Pass: Plex does not show the setting */
+    CHECK(libs.ok());
+    CHECK_EQ(libs.value.size(), (size_t)2);
+    for (const auto &l : libs.value)
+        CHECK(l.folders.size() == 1 && l.folders[0] == (l.kind == model::JellyfinLibrary::Movies ? "movies" : "shows"));
+    CHECK(films.ok());
+    CHECK_EQ(films.value.size(), (size_t)4);
+    for (const auto &f : films.value)
+        if (f.tmdb_id == 10378)   /* Big Buck Bunny */
+            CHECK(f.imdb_id == "tt1254207" && !f.series);
+    CHECK(episodes.ok() && episodes.value == 3);
+    CHECK(movies.ok() && movies.value == 4);
+    CHECK(tasks.ok() && !tasks.value.empty());
+    for (const auto &t : tasks.value)
+        CHECK(t.every_days > 0 && !t.name.empty() && t.name.find("ButlerTask") == std::string::npos);
+    CHECK(items.ok());   /* the mock answers one list for any ids */
+    CHECK(std::any_of(items.value.begin(), items.value.end(), [](const model::JellyfinItem &i) {
+        return i.type == "Episode" && i.series_name == "Caminandes" && i.season == 1;
+    }));
+    CHECK(cleanup.error == api::Error::Disabled);   /* no cleanup with Plex yet */
+}
+
+TEST(plex_parsers)
+{
+    /* Ids from every kind of agent; a library folder's last name only. */
+    std::vector<model::UserItem> its;
+    CHECK(plex::parse_section_items(R"({"MediaContainer": {"Metadata": [
+        {"ratingKey": "7", "type": "movie", "guid": "com.plexapp.agents.imdb://tt0111161?lang=en"},
+        {"ratingKey": 8, "type": "show", "guid": "com.plexapp.agents.thetvdb://81189/1/2?lang=en"},
+        {"ratingKey": "9", "type": "movie", "guid": "plex://movie/5d77", "Guid": [{"id": "tmdb://278"}, {"id": "imdb://tt0111161"}]},
+        {"ratingKey": "10", "type": "movie", "guid": "com.plexapp.agents.themoviedb://603?lang=fr"},
+        {"ratingKey": "11", "type": "artist"}]}})", &its));
+    CHECK_EQ(its.size(), (size_t)4);
+    CHECK_EQ(its[0].imdb_id, std::string("tt0111161"));
+    CHECK(its[1].series && its[1].tvdb_id == 81189 && its[1].id == "8");
+    CHECK(its[2].tmdb_id == 278 && its[2].imdb_id == "tt0111161");
+    CHECK_EQ(its[3].tmdb_id, 603);
+    std::vector<model::JellyfinLibrary> libs;
+    CHECK(plex::parse_sections(R"({"MediaContainer": {"Directory": [{"key": "3", "title": "4K", "type": "movie",
+        "Location": [{"path": "/mnt/media/Films 4K/"}, {"path": "D:\\Films"}]}, {"key": "4", "title": "Photos", "type": "photo"}]}})",
+                               &libs));
+    CHECK(libs.size() == 2 && libs[0].folders.size() == 2);
+    CHECK(libs[0].folders[0] == "Films 4K" && libs[0].folders[1] == "Films");
+    CHECK(libs[1].kind == model::JellyfinLibrary::Other);
+    /* A history entry: never its device. */
+    std::vector<model::ActivityEntry> h;
+    CHECK(plex::parse_history(R"({"MediaContainer": {"Metadata": [{"ratingKey": "4", "viewedAt": 1792244391,
+        "accountID": 1, "deviceID": 5}, {"ratingKey": "5"}]}})", &h));
+    CHECK(h.size() == 1 && h[0].user_id == "1" && h[0].item_id == "4");
+    /* A remux (both copied) and a stream whose sound alone is converted. */
+    std::vector<model::Session> ss;
+    CHECK(plex::parse_sessions(R"J({"MediaContainer": {"Metadata": [
+        {"ratingKey": "1", "type": "movie", "title": "A", "Session": {"id": "s1"}, "Player": {"state": "paused", "address": "10.0.0.9"},
+         "TranscodeSession": {"videoDecision": "copy", "audioDecision": "copy"}},
+        {"ratingKey": "2", "type": "movie", "title": "B", "Session": {"id": "s2"}, "Player": {},
+         "TranscodeSession": {"videoDecision": "copy", "audioDecision": "transcode", "sourceAudioCodec": "truehd", "audioCodec": "aac"}},
+        {"ratingKey": "3", "type": "movie", "title": "C", "Player": {}, "TranscodeSession": {"videoDecision": "transcode",
+         "sourceVideoCodec": "h264", "videoCodec": "h264", "subtitleDecision": "burn", "transcodeHwEncodingTitle": "Intel (QuickSync)"}}]}})J",
+                               &ss));
+    CHECK_EQ(ss.size(), (size_t)3);
+    CHECK(ss[0].method == model::Session::DirectStream && ss[0].paused && ss[0].transcode_reasons.empty());
+    CHECK(ss[1].method == model::Session::DirectStream && !ss[1].audio_direct);
+    CHECK(ss[1].transcode_reasons.size() == 1 && ss[1].transcode_reasons[0] == "AudioCodecNotSupported");
+    CHECK(ss[2].method == model::Session::Transcode && ss[2].id.empty());   /* nothing to stop it by */
+    CHECK_EQ(ss[2].hw_accel, std::string("Intel (QuickSync)"));
+    CHECK(std::find(ss[2].transcode_reasons.begin(), ss[2].transcode_reasons.end(), "SubtitleCodecNotSupported") !=
+          ss[2].transcode_reasons.end());
+    CHECK(std::find(ss[2].transcode_reasons.begin(), ss[2].transcode_reasons.end(), "ContainerBitrateExceedsLimit") !=
+          ss[2].transcode_reasons.end());
+    /* Paths: ids kept to what Plex uses, values encoded, the token never in an address. */
+    CHECK_EQ(plex::stop_path("ab c", "Arrêtée"), std::string("/status/sessions/terminate?sessionId=ab%20c&reason=Arr%C3%AAt%C3%A9e"));
+    CHECK_EQ(plex::metadata_path({"1", "x/../2", ""}), std::string("/library/metadata/1,x2"));
+    CHECK_EQ(plex::image_path("6", "Backdrop", 480),
+             std::string("/photo/:/transcode?width=480&height=270&upscale=0&url=%2Flibrary%2Fmetadata%2F6%2Fart"));
+    CHECK(plex::history_path(100).find("viewedAt%3E=100") != std::string::npos);
+    CHECK_EQ(plex::token_header(""), std::string());
+    for (const std::string &h2 : plex::client_headers("id\r\nX: y", "PS5", "0.6.0"))
+        CHECK(h2.find('\n') == std::string::npos && h2.find('\r') == std::string::npos);
+    using M = api::MockTransport;
+    CHECK_EQ(M::file_for("http://plex.mock/"), std::string("plex/root.json"));
+    CHECK_EQ(M::file_for("http://plex.mock" + plex::recent_path("2", true, 60)), std::string("plex/library_sections_2_all_recent.json"));
+    CHECK_EQ(M::file_for("http://plex.mock" + plex::count_path("2", "Episode")), std::string("plex/library_sections_2_all_count_episode.json"));
+    CHECK_EQ(M::file_for("http://plex.mock" + plex::section_items_path("1")), std::string("plex/library_sections_1_all.json"));
+    CHECK_EQ(M::file_for("http://plex.mock" + plex::metadata_path({"1", "10"})), std::string("plex/library_metadata_ids.json"));
+    CHECK_EQ(M::file_for("http://plex.mock/:/prefs"), std::string("plex/prefs.json"));
+}
+
 TEST(services_behind_a_reverse_proxy)
 {
     /* Sub-paths, with or without a final slash, one or two levels deep (tested against nginx). */
@@ -757,7 +939,10 @@ TEST(fixtures_hold_no_forbidden_field)
     static const char *const kForbidden[] = {"\"releaseGroups\"", "\"releaseGroup\"", "\"sceneName\"",
                                              "\"relativePath\"", "\"originalFilePath\"", "\"downloadClient\"",
                                              "\"indexer\"", "\"outputPath\"", "\"downloadId\"",
-                                             "\"statusMessages\"", "\"sourceTitle\"", "\"ShortOverview\""};
+                                             "\"statusMessages\"", "\"sourceTitle\"", "\"ShortOverview\"",
+                                             /* Plex: addresses, files, a history entry's device, a token */
+                                             "\"address\"", "\"remotePublicAddress\"", "\"file\"", "\"deviceID\"",
+                                             "X-Plex-Token", "\"token\"", "\"platformVersion\""};
     for (const char *root : {REGIE5_FIXTURES, REGIE5_DEMO}) {
         int files = 0;
         for (const auto &e : std::filesystem::recursive_directory_iterator(root)) {

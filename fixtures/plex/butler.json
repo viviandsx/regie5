@@ -1,0 +1,146 @@
+{
+  "ButlerTasks": {
+    "ButlerTask": [
+      {
+        "name": "AutomaticUpdates",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": false
+      },
+      {
+        "name": "BackupDatabase",
+        "interval": 3,
+        "scheduleRandomized": false,
+        "enabled": true,
+        "title": "Backup Database",
+        "description": "Create a backup copy of the server's database in the configured backup directory"
+      },
+      {
+        "name": "ButlerTaskCleanSupplementalLogFiles",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": false
+      },
+      {
+        "name": "ButlerTaskGenerateAdMarkers",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": false
+      },
+      {
+        "name": "ButlerTaskGenerateCreditsMarkers",
+        "interval": 1,
+        "scheduleRandomized": true,
+        "enabled": true
+      },
+      {
+        "name": "ButlerTaskGenerateIntroMarkers",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "ButlerTaskGenerateVoiceActivity",
+        "interval": 1,
+        "scheduleRandomized": true,
+        "enabled": false
+      },
+      {
+        "name": "CleanOldBundles",
+        "interval": 7,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "CleanOldCacheFiles",
+        "interval": 7,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "DeepMediaAnalysis",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "GarbageCollectBlobs",
+        "interval": 7,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "GarbageCollectLibraryMedia",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "GenerateChapterThumbs",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "GenerateMediaIndexFiles",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": false
+      },
+      {
+        "name": "LoudnessAnalysis",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "MusicAnalysis",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "OptimizeDatabase",
+        "interval": 7,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "ProcessAssets",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "RefreshEpgGuides",
+        "interval": 1,
+        "scheduleRandomized": true,
+        "enabled": true
+      },
+      {
+        "name": "RefreshLibraries",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": false
+      },
+      {
+        "name": "RefreshLocalMedia",
+        "interval": 3,
+        "scheduleRandomized": false,
+        "enabled": true
+      },
+      {
+        "name": "RefreshPeriodicMetadata",
+        "interval": 1,
+        "scheduleRandomized": true,
+        "enabled": true
+      },
+      {
+        "name": "UpgradeMediaAnalysis",
+        "interval": 1,
+        "scheduleRandomized": false,
+        "enabled": true
+      }
+    ]
+  }
+}

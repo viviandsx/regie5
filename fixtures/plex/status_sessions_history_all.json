@@ -1,0 +1,123 @@
+{
+  "MediaContainer": {
+    "size": 9,
+    "totalSize": 9,
+    "offset": 0,
+    "Metadata": [
+      {
+        "historyKey": "/status/sessions/history/7",
+        "key": "/library/metadata/4",
+        "ratingKey": "4",
+        "librarySectionID": "1",
+        "title": "Tears of Steel",
+        "type": "movie",
+        "thumb": "/library/metadata/4/thumb/1792244314",
+        "originallyAvailableAt": "2012-09-26",
+        "viewedAt": 1792246132,
+        "accountID": 1
+      },
+      {
+        "historyKey": "/status/sessions/history/6",
+        "key": "/library/metadata/8",
+        "ratingKey": "8",
+        "librarySectionID": "2",
+        "parentKey": "/library/metadata/7",
+        "grandparentKey": "/library/metadata/6",
+        "grandparentTitle": "Caminandes",
+        "type": "episode",
+        "thumb": "/library/metadata/8/thumb/1792244315",
+        "parentThumb": "/library/metadata/7/thumb/-1",
+        "grandparentThumb": "/library/metadata/6/thumb/1792244315",
+        "grandparentArt": "/library/metadata/6/art/1792244315",
+        "index": 1,
+        "parentIndex": 1,
+        "viewedAt": 1792246131,
+        "accountID": 1
+      },
+      {
+        "historyKey": "/status/sessions/history/5",
+        "key": "/library/metadata/4",
+        "ratingKey": "4",
+        "librarySectionID": "1",
+        "title": "Tears of Steel",
+        "type": "movie",
+        "thumb": "/library/metadata/4/thumb/1792244314",
+        "originallyAvailableAt": "2012-09-26",
+        "viewedAt": 1792246054,
+        "accountID": 1
+      },
+      {
+        "historyKey": "/status/sessions/history/4",
+        "key": "/library/metadata/4",
+        "ratingKey": "4",
+        "librarySectionID": "1",
+        "title": "Tears of Steel",
+        "type": "movie",
+        "thumb": "/library/metadata/4/thumb/1792244314",
+        "originallyAvailableAt": "2012-09-26",
+        "viewedAt": 1792246022,
+        "accountID": 1
+      },
+      {
+        "historyKey": "/status/sessions/history/3",
+        "key": "/library/metadata/4",
+        "ratingKey": "4",
+        "librarySectionID": "1",
+        "title": "Tears of Steel",
+        "type": "movie",
+        "thumb": "/library/metadata/4/thumb/1792244314",
+        "originallyAvailableAt": "2012-09-26",
+        "viewedAt": 1792245962,
+        "accountID": 1
+      },
+      {
+        "historyKey": "/status/sessions/history/2",
+        "key": "/library/metadata/9",
+        "ratingKey": "9",
+        "librarySectionID": "2",
+        "parentKey": "/library/metadata/7",
+        "grandparentKey": "/library/metadata/6",
+        "grandparentTitle": "Caminandes",
+        "type": "episode",
+        "thumb": "/library/metadata/9/thumb/1792244315",
+        "parentThumb": "/library/metadata/7/thumb/-1",
+        "grandparentThumb": "/library/metadata/6/thumb/1792244315",
+        "grandparentArt": "/library/metadata/6/art/1792244315",
+        "index": 2,
+        "parentIndex": 1,
+        "viewedAt": 1792244509,
+        "accountID": 1
+      },
+      {
+        "historyKey": "/status/sessions/history/1",
+        "key": "/library/metadata/4",
+        "ratingKey": "4",
+        "librarySectionID": "1",
+        "title": "Tears of Steel",
+        "type": "movie",
+        "thumb": "/library/metadata/4/thumb/1792244314",
+        "originallyAvailableAt": "2012-09-26",
+        "viewedAt": 1792244391,
+        "accountID": 1
+      },
+      {
+        "historyKey": "/status/sessions/history/900",
+        "key": "/library/metadata/1",
+        "ratingKey": "1",
+        "title": "synthetic",
+        "type": "movie",
+        "viewedAt": 1792159785,
+        "accountID": 2
+      },
+      {
+        "historyKey": "/status/sessions/history/901",
+        "key": "/library/metadata/10",
+        "ratingKey": "10",
+        "title": "synthetic",
+        "type": "episode",
+        "viewedAt": 1792073385,
+        "accountID": 2
+      }
+    ]
+  }
+}

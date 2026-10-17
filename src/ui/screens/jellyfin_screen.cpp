@@ -4,7 +4,6 @@
  */
 #include "ui/screens/jellyfin_screen.h"
 
-#include "api/jellyfin.h"
 #include "core/i18n.h"
 #include "platform/platform.h"
 #include "ui/art.h"
@@ -177,7 +176,9 @@ void JellyfinScreen::confirm_stop(const model::Session &s)
     std::string what = media_title(s);
     if (s.episode > 0)
         what += " " + fmt::episode(s.season, s.episode);
-    const std::string body = fmt::f(i18n::tr(i18n::ConfirmStopBody), what.c_str(), s.device.c_str(), s.user.c_str());
+    std::string body = fmt::f(i18n::tr(i18n::ConfirmStopBody), what.c_str(), s.device.c_str(), s.user.c_str());
+    if (i18n::plex() && m_encoding.ready() && !m_encoding.value.plex_pass)   /* Plex refuses it without Plex Pass, it seems */
+        body += std::string(". ") + i18n::tr(i18n::PlexStopNeedsPass);
     m_sheet.open(i18n::tr(i18n::ConfirmStop), body, {i18n::tr(i18n::Cancel), i18n::tr(i18n::StopPlayback)}, 0,
                  [this, id](int choice) {
                      if (choice != 1 || m_busy || !m_ctx.services)
@@ -273,7 +274,7 @@ bool JellyfinScreen::backdrop(std::string *key, art::Ref *ref, int *seed) const
         return false;
     const model::Session &s = m_sessions.value[m_slots[m_focus].index];
     const std::string id = s.series_id.empty() ? s.item_id : s.series_id;
-    *ref = {config::Jellyfin, jellyfin::image_path(id, "Backdrop", 480)};
+    *ref = {config::Jellyfin, m_ctx.services->media_image(id, "Backdrop", 480)};
     *key = "jf:" + id;
     *seed = (int)(seed_of(id) % 997);
     return true;
@@ -355,7 +356,7 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
         const bool f = m_focused && &slot == &fs;
         const std::string pid = s.series_id.empty() ? s.item_id : s.series_id;
         const std::string title = media_title(s);
-        art::draw_poster({x0 + 18, y + 14, 85, 128}, {config::Jellyfin, jellyfin::image_path(pid, "Primary", 200)},
+        art::draw_poster({x0 + 18, y + 14, 85, 128}, {config::Jellyfin, m_ctx.services->media_image(pid, "Primary", 200)},
                          title, seed_of(title), 10, 1.f, 200);
         const float tx = x0 + 128, right = x0 + kListW - 28;
 
@@ -436,6 +437,8 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
             state = fmt::f(i18n::tr(i18n::TaskRunning), (int)(t.progress + 0.5));
             dot = 0xff0a84ffu;
             draw_progress({right - 300, y + 58, 300, 6}, (float)(t.progress / 100.0), dot);
+        } else if (t.every_days > 0) {   /* Plex's Butler: when it runs, nothing of the last time */
+            state = i18n::tr(i18n::TaskScheduled);
         } else if (t.last == model::Task::Never) {
             state = i18n::tr(i18n::TaskNever);
         } else {
@@ -450,7 +453,9 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
         gfx::text(right, y + 46, state, {gfx::Medium, 24}, kText2, 2);
         gfx::fill({right - sw - 26, y + 34, 12, 12}, dot, 6);
         gfx::text(x0 + 30, y + 40, t.name, {f ? gfx::Bold : gfx::SemiBold, 28, kListW - sw - 120}, kText);
-        gfx::text(x0 + 30, y + 70, t.category, {gfx::Regular, 20, kListW - sw - 120}, kText3);
+        const std::string under = t.every_days > 0 ? fmt::f(i18n::tr(t.every_days == 1 ? i18n::TaskEveryDay : i18n::TaskEveryDays), t.every_days)
+                                                   : t.category;
+        gfx::text(x0 + 30, y + 70, under, {gfx::Regular, 20, kListW - sw - 120}, kText3);
     }
     gfx::pop_scissor();
     if (art::busy())
@@ -537,7 +542,7 @@ void JellyfinScreen::draw_users(float x0, float dy, const Slot &fs, double now, 
                                    u.disabled ? kText3 : kText);
         float cx = x0 + 30 + nw + 18;
         if (u.admin)
-            cx += draw_chip(cx, y + 26, i18n::tr(i18n::UserAdmin), 0xffbf5af2u, 1.f, 22) + 10;
+            cx += draw_chip(cx, y + 26, i18n::tr(i18n::plex() ? i18n::UserOwner : i18n::UserAdmin), 0xffbf5af2u, 1.f, 22) + 10;
         if (u.disabled)
             draw_chip(cx, y + 26, i18n::tr(i18n::UserDisabled), kRed, 1.f, 22);
     }

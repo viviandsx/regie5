@@ -574,6 +574,17 @@ const Text kTexts[] = {
     {ErrPlexNoToken, "Plex verlangt ein Token: vom Telefon aus anmelden"},
     {ErrPlexRevoked, "Plex-Token abgelehnt: vom Telefon aus neu anmelden"},
     {ErrPlexOwner, "Erfordert das Konto des Plex-Serverbesitzers"},
+    {PlexStopReason, "Wiedergabe vom Administrator des Servers beendet"},
+    {ErrNeedsPlexPass, "Von Plex abgelehnt: Wiedergabe beenden erfordert Plex Pass"},
+    {CleanupNoPlex, "Das Aufräumen ist mit Plex vorerst nicht verfügbar."},
+    {JWatched, "Von %s angesehen"},
+    {TaskScheduled, "Geplant"},
+    {TaskEveryDay, "Täglich"},
+    {TaskEveryDays, "Alle %d Tage"},
+    {UserOwner, "Besitzer"},
+    {DiagGuessed, "von Régie5 abgeleitet (Plex nennt keinen Grund)"},
+    {AdvNoHardwarePlex, "Transkodierung durch den Prozessor: Die Hardwarebeschleunigung von Plex (Einstellungen › Transcoder, mit Plex Pass für den Serverbesitzer) würde den Server entlasten."},
+    {PlexStopNeedsPass, "Plex verlangt dafür wohl Plex Pass"},
 };
 
 } // namespace

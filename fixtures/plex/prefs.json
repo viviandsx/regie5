@@ -1,0 +1,17 @@
+{
+  "MediaContainer": {
+    "size": 1,
+    "Setting": [
+      {
+        "id": "TranscoderThrottleBuffer",
+        "label": "Transcoder default throttle buffer",
+        "type": "int",
+        "default": 60,
+        "value": 60,
+        "hidden": false,
+        "advanced": true,
+        "group": "transcoder"
+      }
+    ]
+  }
+}

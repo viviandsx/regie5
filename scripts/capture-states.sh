@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Regie5 — captures every screen in every state, in French and English, for
 # review: data, loading, empty, errors, services off, no configuration, two
-# Radarr instances, versions too old, Emby in Jellyfin's place, the welcome
+# Radarr instances, versions too old, Emby or Plex in Jellyfin's place, the welcome
 # screens. The Ménage is turned on (REGIE5_MOCK_CLEANUP, in memory).
 # Runs on fixtures/ (--mock): no server is contacted, no action is carried out;
 # the welcome screens' phone step is the demo one (nothing listens); "What's
@@ -20,7 +20,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD="${ROOT}/build/linux"
 OUT="${OUT:-${ROOT}/build/states}"
-ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby welcome whatsnew discover quickconnect)
+ALL_STATES=(data loading empty offline unauthorized mixed off noconfig multi old emby plex welcome whatsnew discover quickconnect)
 STATES=("$@")
 [[ ${#STATES[@]} -eq 0 ]] && STATES=("${ALL_STATES[@]}")
 
@@ -121,6 +121,7 @@ for state in "${STATES[@]}"; do
         multi) env+=(REGIE5_MOCK_MULTI=1) ;;
         old) env+=(REGIE5_MOCK_OLD="sonarr,jellyfin") ;;
         emby) env+=(REGIE5_MOCK_EMBY=1) sheets=1 detail_options=0 ;;
+        plex) env+=(REGIE5_MOCK_PLEX=1) sheets=1 ;;   # Plex: "Find in Plex", the Ménage not available
         welcome) env+=(REGIE5_WELCOME=1) script="$(welcome_tour "${p}")" ;;
         whatsnew) env+=(REGIE5_WHATSNEW=1) script="3 shot:${p}-whatsnew.ppm quit" ;;
         discover) script="$(discover_tour "${p}")" ;;

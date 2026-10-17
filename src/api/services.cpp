@@ -11,6 +11,7 @@
 #include "api/jellyfin.h"
 #include "api/plex.h"
 #include "api/seerr.h"
+#include "core/i18n.h"
 
 #include <algorithm>
 #include <ctime>
@@ -255,6 +256,13 @@ void Services::movies(std::function<void(Result<std::vector<model::Movie>>)> don
 void Services::user_items(const std::string &user_id, std::function<void(Result<std::vector<model::UserItem>>)> done)
 {
     using Items = Result<std::vector<model::UserItem>>;
+    if (m_cfg.plex()) {   /* no cleanup with Plex yet (docs/PLEX.md § 2.10) */
+        Items r;
+        r.error = Error::Disabled;
+        if (done)
+            done(std::move(r));
+        return;
+    }
     if (!m_cfg.emby()) {
         call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::user_items_path(user_id),
                                            jellyfin::parse_user_items, std::move(done));
@@ -290,12 +298,26 @@ void Services::user_items(const std::string &user_id, std::function<void(Result<
 
 void Services::jellyfin_index(std::function<void(Result<std::vector<model::UserItem>>)> done)
 {
+    if (m_cfg.plex()) {   /* Jelly5's links: never with Plex (its titles are looked for by name) */
+        Result<std::vector<model::UserItem>> r;
+        r.error = Error::Disabled;
+        if (done)
+            done(std::move(r));
+        return;
+    }
     call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::index_path(), jellyfin::parse_user_items,
                                        std::move(done));
 }
 
 void Services::server_id(std::function<void(Result<std::string>)> done)
 {
+    if (m_cfg.plex()) {   /* Jelly5's: never with Plex */
+        Result<std::string> r;
+        r.error = Error::Disabled;
+        if (done)
+            done(std::move(r));
+        return;
+    }
     call<std::string>(config::Jellyfin, "GET", jellyfin::info_path(), jellyfin::parse_server_id, std::move(done));
 }
 
@@ -355,12 +377,22 @@ void Services::recent_requests(std::function<void(Result<model::RequestPage>)> d
 
 void Services::activity(time_t since, std::function<void(Result<std::vector<model::ActivityEntry>>)> done)
 {
+    if (m_cfg.plex()) {   /* Plex keeps no activity log: its finished playbacks */
+        call<std::vector<model::ActivityEntry>>(config::Jellyfin, "GET", plex::history_path(since), plex::parse_history,
+                                                std::move(done));
+        return;
+    }
     call<std::vector<model::ActivityEntry>>(config::Jellyfin, "GET", jellyfin::activity_path(since),
                                             jellyfin::parse_activity, std::move(done));
 }
 
 void Services::libraries(std::function<void(Result<std::vector<model::JellyfinLibrary>>)> done)
 {
+    if (m_cfg.plex()) {
+        call<std::vector<model::JellyfinLibrary>>(config::Jellyfin, "GET", plex::sections_path(), plex::parse_sections,
+                                                  std::move(done));
+        return;
+    }
     call<std::vector<model::JellyfinLibrary>>(config::Jellyfin, "GET", jellyfin::libraries_path(),
                                               jellyfin::parse_libraries, std::move(done));
 }
@@ -368,6 +400,11 @@ void Services::libraries(std::function<void(Result<std::vector<model::JellyfinLi
 void Services::library_items(const std::string &library_id,
                              std::function<void(Result<std::vector<model::UserItem>>)> done)
 {
+    if (m_cfg.plex()) {
+        call<std::vector<model::UserItem>>(config::Jellyfin, "GET", plex::section_items_path(library_id),
+                                           plex::parse_section_items, std::move(done));
+        return;
+    }
     call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::library_items_path(library_id),
                                        jellyfin::parse_user_items, std::move(done));
 }
@@ -375,18 +412,29 @@ void Services::library_items(const std::string &library_id,
 void Services::library_count(const std::string &library_id, const std::string &type,
                              std::function<void(Result<int>)> done)
 {
+    if (m_cfg.plex()) {
+        call<int>(config::Jellyfin, "GET", plex::count_path(library_id, type), plex::parse_count, std::move(done));
+        return;
+    }
     call<int>(config::Jellyfin, "GET", jellyfin::library_count_path(library_id, type), jellyfin::parse_count,
               std::move(done));
 }
 
 void Services::user(const std::string &user_id, std::function<void(Result<model::JellyfinUser>)> done)
 {
+    if (m_cfg.plex()) {
+        call<model::JellyfinUser>(config::Jellyfin, "GET", plex::account_path(user_id), plex::parse_account,
+                                  std::move(done));
+        return;
+    }
     call<model::JellyfinUser>(config::Jellyfin, "GET", jellyfin::user_path(user_id), jellyfin::parse_user,
                               std::move(done));
 }
 
 void Services::users(std::function<void(Result<std::vector<model::JellyfinUser>>)> done)
 {
+    if (m_cfg.plex())
+        return plex_users(std::move(done));
     call<std::vector<model::JellyfinUser>>(config::Jellyfin, "GET", jellyfin::users_path(), jellyfin::parse_users,
                                            std::move(done));
 }
@@ -394,12 +442,19 @@ void Services::users(std::function<void(Result<std::vector<model::JellyfinUser>>
 void Services::items(const std::vector<std::string> &ids,
                      std::function<void(Result<std::vector<model::JellyfinItem>>)> done)
 {
+    if (m_cfg.plex()) {
+        call<std::vector<model::JellyfinItem>>(config::Jellyfin, "GET", plex::metadata_path(ids), plex::parse_items,
+                                               std::move(done));
+        return;
+    }
     call<std::vector<model::JellyfinItem>>(config::Jellyfin, "GET", jellyfin::items_path(ids), jellyfin::parse_items,
                                            std::move(done));
 }
 
 void Services::encoding(std::function<void(Result<model::EncodingInfo>)> done)
 {
+    if (m_cfg.plex())
+        return plex_encoding(std::move(done));
     call<model::EncodingInfo>(config::Jellyfin, "GET", jellyfin::encoding_path(), jellyfin::parse_encoding,
                               std::move(done));
 }
@@ -553,18 +608,24 @@ void Services::quick_connect_finish(const std::string &secret,
 
 void Services::sessions(std::function<void(Result<std::vector<model::Session>>)> done)
 {
+    if (m_cfg.plex())
+        return plex_sessions(std::move(done));
     call<std::vector<model::Session>>(config::Jellyfin, "GET", jellyfin::sessions_path(), jellyfin::parse_sessions,
                                       std::move(done));
 }
 
 void Services::tasks(std::function<void(Result<std::vector<model::Task>>)> done)
 {
+    if (m_cfg.plex())
+        return plex_tasks(std::move(done));
     call<std::vector<model::Task>>(config::Jellyfin, "GET", jellyfin::tasks_path(), jellyfin::parse_tasks,
                                    std::move(done));
 }
 
 void Services::recent(std::function<void(Result<std::vector<model::RecentItem>>)> done)
 {
+    if (m_cfg.plex())
+        return plex_recent(std::move(done));
     call<std::vector<model::RecentItem>>(
         config::Jellyfin, "GET", jellyfin::recent_path(),
         [](const std::string &b, std::vector<model::RecentItem> *o) { return jellyfin::parse_recent(b, o); },
@@ -573,12 +634,222 @@ void Services::recent(std::function<void(Result<std::vector<model::RecentItem>>)
 
 void Services::stop_session(const std::string &session_id, std::function<void(Result<bool>)> done)
 {
+    if (m_cfg.plex()) {
+        /* Refused to the owner: Plex Pass, it seems (docs/PLEX.md); never "the token". */
+        const bool owner = m_cfg.at(config::Jellyfin).admin;
+        call<bool>(config::Jellyfin, "POST", plex::stop_path(session_id, i18n::tr(i18n::PlexStopReason)), accept_any,
+                   [done, owner](Result<bool> r) {
+                       if (owner && (r.http_status == 401 || r.http_status == 403))
+                           r.error = Error::NeedsPlexPass;
+                       if (done)
+                           done(std::move(r));
+                   });
+        return;
+    }
     call<bool>(config::Jellyfin, "POST", jellyfin::stop_path(session_id), accept_any, std::move(done));
 }
 
 void Services::refresh_library(std::function<void(Result<bool>)> done)
 {
+    if (m_cfg.plex())
+        return plex_refresh(std::move(done));
     call<bool>(config::Jellyfin, "POST", jellyfin::library_refresh_path(), accept_any, std::move(done));
+}
+
+std::string Services::media_image(const std::string &id, const char *type, int width, const std::string &tag) const
+{
+    if (id.empty())
+        return {};
+    return m_cfg.plex() ? plex::image_path(id, type, width) : jellyfin::image_path(id, type, width, tag);
+}
+
+/* ---- Plex ---- */
+
+namespace {
+
+/* Several answers gathered on the main thread, then handed on once: the
+ * first failure is kept, to say why when nothing came. */
+template <typename T> struct Gather {
+    int left = 0;
+    Error error = Error::None;
+    int http_status = 0;
+    T value{};
+    void failed(Error e, int status)
+    {
+        if (error == Error::None)
+            error = e, http_status = status;
+    }
+};
+
+} // namespace
+
+void Services::plex_sessions(std::function<void(Result<std::vector<model::Session>>)> done)
+{
+    using Sessions = Result<std::vector<model::Session>>;
+    call<std::vector<model::Session>>(
+        config::Jellyfin, "GET", plex::sessions_path(), plex::parse_sessions, [this, done](Sessions list) {
+            if (!list.ok() || list.value.empty())
+                return done(std::move(list));
+            /* A session's media is what is sent: the source is in each item's metadata. */
+            auto shared = std::make_shared<Sessions>(std::move(list));
+            auto left = std::make_shared<int>((int)shared->value.size());
+            for (size_t i = 0; i < shared->value.size(); i++) {
+                call<model::Session>(
+                    config::Jellyfin, "GET", plex::metadata_path({shared->value[i].item_id}),
+                    [base = shared->value[i]](const std::string &b, model::Session *o) {
+                        *o = base;
+                        return plex::apply_source(b, o);
+                    },
+                    [this, shared, left, i, done](Result<model::Session> r) {
+                        if (r.ok())   /* else: shown without its source */
+                            shared->value[i] = std::move(r.value);
+                        if (--*left > 0)
+                            return;
+                        /* A server may leave a session's account unnamed: the accounts name it. */
+                        const bool unnamed = std::any_of(shared->value.begin(), shared->value.end(), [](const model::Session &s) {
+                            return s.user.empty() && !s.user_id.empty();
+                        });
+                        if (!unnamed)
+                            return done(std::move(*shared));
+                        call<std::vector<model::JellyfinUser>>(
+                            config::Jellyfin, "GET", plex::accounts_path(), plex::parse_accounts,
+                            [shared, done](Result<std::vector<model::JellyfinUser>> users) {
+                                for (auto &s : shared->value)
+                                    for (const auto &u : users.value)
+                                        if (s.user.empty() && u.id == s.user_id)
+                                            s.user = u.name;
+                                done(std::move(*shared));
+                            });
+                    });
+            }
+        });
+}
+
+void Services::plex_encoding(std::function<void(Result<model::EncodingInfo>)> done)
+{
+    call<model::EncodingInfo>(config::Jellyfin, "GET", plex::prefs_path(), plex::parse_prefs,
+                              [this, done](Result<model::EncodingInfo> prefs) {
+                                  if (!prefs.ok())
+                                      return done(std::move(prefs));
+                                  auto shared = std::make_shared<Result<model::EncodingInfo>>(std::move(prefs));
+                                  call<bool>(config::Jellyfin, "GET", plex::info_path(), plex::parse_plex_pass,
+                                             [shared, done](Result<bool> pass) {
+                                                 if (pass.ok())
+                                                     shared->value.plex_pass = pass.value;
+                                                 done(std::move(*shared));
+                                             });
+                              });
+}
+
+void Services::plex_tasks(std::function<void(Result<std::vector<model::Task>>)> done)
+{
+    using Tasks = Result<std::vector<model::Task>>;
+    call<std::vector<model::Task>>(
+        config::Jellyfin, "GET", plex::butler_path(), plex::parse_butler, [this, done](Tasks butler) {
+            if (!butler.ok())
+                return done(std::move(butler));
+            auto shared = std::make_shared<Tasks>(std::move(butler));
+            call<std::vector<model::Task>>(config::Jellyfin, "GET", plex::activities_path(), plex::parse_activities,
+                                           [shared, done](Tasks running) {
+                                               /* what runs now first (a scan's progress), then the Butler's */
+                                               if (running.ok())
+                                                   shared->value.insert(shared->value.begin(), running.value.begin(),
+                                                                        running.value.end());
+                                               done(std::move(*shared));
+                                           });
+        });
+}
+
+void Services::plex_recent(std::function<void(Result<std::vector<model::RecentItem>>)> done)
+{
+    using Recent = Result<std::vector<model::RecentItem>>;
+    call<std::vector<model::JellyfinLibrary>>(
+        config::Jellyfin, "GET", plex::sections_path(), plex::parse_sections,
+        [this, done](Result<std::vector<model::JellyfinLibrary>> libs) {
+            Recent out;
+            out.error = libs.error, out.http_status = libs.http_status;
+            if (!libs.ok())
+                return done(std::move(out));
+            auto g = std::make_shared<Gather<std::vector<model::RecentItem>>>();
+            std::vector<std::pair<std::string, bool>> asks;   /* a library, and whether its latest are episodes */
+            for (const auto &l : libs.value)
+                if (l.kind == model::JellyfinLibrary::Movies || l.kind == model::JellyfinLibrary::Shows)
+                    asks.push_back({l.id, l.kind == model::JellyfinLibrary::Shows});
+            if (asks.empty())
+                return done(std::move(out));
+            g->left = (int)asks.size();
+            auto ok_count = std::make_shared<int>(0);
+            for (const auto &[id, episodes] : asks)
+                call<std::vector<model::RecentItem>>(
+                    config::Jellyfin, "GET", plex::recent_path(id, episodes, episodes ? 60 : 20), plex::parse_recent,
+                    [g, ok_count, done](Recent r) {
+                        if (r.ok()) {
+                            ++*ok_count;
+                            g->value.insert(g->value.end(), r.value.begin(), r.value.end());
+                        } else {
+                            g->failed(r.error, r.http_status);
+                        }
+                        if (--g->left > 0)
+                            return;
+                        Recent all;
+                        if (*ok_count == 0)   /* nothing came: why */
+                            all.error = g->error, all.http_status = g->http_status;
+                        else
+                            all.value = plex::merge_recent(std::move(g->value));
+                        done(std::move(all));
+                    });
+        });
+}
+
+void Services::plex_refresh(std::function<void(Result<bool>)> done)
+{
+    call<std::vector<model::JellyfinLibrary>>(
+        config::Jellyfin, "GET", plex::sections_path(), plex::parse_sections,
+        [this, done](Result<std::vector<model::JellyfinLibrary>> libs) {
+            Result<bool> out;
+            out.error = libs.error, out.http_status = libs.http_status;
+            if (!libs.ok() || libs.value.empty())
+                return done(std::move(out));
+            auto g = std::make_shared<Gather<bool>>();
+            g->left = (int)libs.value.size();
+            for (const auto &l : libs.value)   /* every library: Plex scans them one by one */
+                call<bool>(config::Jellyfin, "POST", plex::section_refresh_path(l.id), accept_any,
+                           [g, done](Result<bool> r) {
+                               if (!r.ok())
+                                   g->failed(r.error, r.http_status);
+                               if (--g->left > 0)
+                                   return;
+                               Result<bool> all;
+                               all.error = g->error, all.http_status = g->http_status;
+                               all.value = g->error == Error::None;
+                               done(std::move(all));
+                           });
+        });
+}
+
+void Services::plex_users(std::function<void(Result<std::vector<model::JellyfinUser>>)> done)
+{
+    using Users = Result<std::vector<model::JellyfinUser>>;
+    call<std::vector<model::JellyfinUser>>(
+        config::Jellyfin, "GET", plex::accounts_path(), plex::parse_accounts, [this, done](Users users) {
+            if (!users.ok() || users.value.empty())
+                return done(std::move(users));
+            /* Plex dates no account: its latest playback, from the last six months' history. */
+            auto shared = std::make_shared<Users>(std::move(users));
+            call<std::vector<model::ActivityEntry>>(
+                config::Jellyfin, "GET", plex::history_path(std::time(nullptr) - 183 * 86400, 1000), plex::parse_history,
+                [shared, done](Result<std::vector<model::ActivityEntry>> h) {
+                    if (h.ok()) {
+                        const auto last = plex::last_played_by_account(h.value);
+                        for (auto &u : shared->value) {
+                            auto f = last.find(u.id);
+                            if (f != last.end())
+                                u.last_activity = f->second;
+                        }
+                    }
+                    done(std::move(*shared));
+                });
+        });
 }
 
 } // namespace api

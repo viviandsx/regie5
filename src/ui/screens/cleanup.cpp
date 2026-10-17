@@ -39,7 +39,7 @@ CleanupView::CleanupView(Context &ctx) : m_ctx(ctx) {}
 void CleanupView::load(bool force)
 {
     api::Services *svc = m_ctx.services;
-    if (!svc)
+    if (!svc || svc->config().plex())   /* not with Plex yet: nothing asked (draw says why) */
         return;
     std::weak_ptr<bool> alive = m_alive;
     auto stale = [force](const auto &l) { return !l.loading() && (force || l.state == load::Idle); };
@@ -353,7 +353,9 @@ void CleanupView::draw(double now, float x0, bool focused, float dt, bool *anima
                   {gfx::SemiBold, 26}, kText2);
     const gfx::Rect area{x0, kTop, kListW, 260};
     if (n == 0) {
-        if (m_show_kept) {
+        if (m_ctx.services && m_ctx.services->config().plex()) {   /* docs/PLEX.md § 2.10 */
+            draw_empty(area, i18n::tr(i18n::CleanupNoPlex));
+        } else if (m_show_kept) {
             draw_empty(area, i18n::tr(i18n::CleanupKeptEmpty));
         } else if (m_users.state == load::Off) {
             draw_empty(area, m_ctx.off_text(i18n::JellyfinOff));

@@ -5,7 +5,6 @@
 #include "ui/screens/journal.h"
 
 #include "api/arr.h"
-#include "api/jellyfin.h"
 #include "api/seerr.h"
 #include "core/i18n.h"
 #include "platform/platform.h"
@@ -314,11 +313,14 @@ void JournalView::rebuild()
                 what = m.type == "Episode" && !m.series_name.empty()
                            ? m.series_name + " · " + fmt::episode(m.season, m.episode)
                            : m.name + (m.year > 0 ? " (" + std::to_string(m.year) + ")" : "");
-                x.picture = {config::Jellyfin, jellyfin::image_path(m.id, "Primary", 160)};
+                x.picture = {config::Jellyfin, m_ctx.services->media_image(m.id, "Primary", 160)};
             }
             if (a.type == "VideoPlayback") {
                 x.title = what;
                 x.line = fmt::f(i18n::tr(i18n::JPlayStart), who.c_str());
+            } else if (a.type == "Watched") {   /* Plex: a playback seen to the end */
+                x.title = what;
+                x.line = fmt::f(i18n::tr(i18n::JWatched), who.c_str());
             } else if (a.type == "VideoPlaybackStopped") {
                 x.title = what;
                 x.line = fmt::f(i18n::tr(i18n::JPlayStop), who.c_str());

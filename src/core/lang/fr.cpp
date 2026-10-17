@@ -574,6 +574,17 @@ const Text kTexts[] = {
     {ErrPlexNoToken, "Plex demande un jeton : connectez-vous depuis le téléphone"},
     {ErrPlexRevoked, "Jeton Plex refusé : reconnectez-vous depuis le téléphone"},
     {ErrPlexOwner, "Demande le compte propriétaire du serveur Plex"},
+    {PlexStopReason, "Lecture arrêtée par l'administrateur du serveur"},
+    {ErrNeedsPlexPass, "Refusé par Plex : arrêter une lecture demande un Plex Pass"},
+    {CleanupNoPlex, "Le Ménage n'est pas disponible avec Plex pour l'instant."},
+    {JWatched, "Regardé par %s"},
+    {TaskScheduled, "Planifiée"},
+    {TaskEveryDay, "Tous les jours"},
+    {TaskEveryDays, "Tous les %d jours"},
+    {UserOwner, "Propriétaire"},
+    {DiagGuessed, "déduit par Régie5 (Plex ne donne pas la raison)"},
+    {AdvNoHardwarePlex, "Transcodage par le processeur : l'accélération matérielle de Plex (Paramètres › Transcodeur, avec un Plex Pass pour le propriétaire du serveur) soulagerait le serveur."},
+    {PlexStopNeedsPass, "Plex demande sans doute un Plex Pass pour cela"},
 };
 
 } // namespace
