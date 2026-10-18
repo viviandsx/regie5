@@ -9,6 +9,7 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_SIZES_H
+#include FT_SYNTHESIS_H
 
 #include <algorithm>
 #include <cmath>
@@ -40,11 +41,44 @@ struct Face {
 Face s_faces[4];
 bool s_ready = false;
 
+/* The characters Inter has not (Japanese, Chinese, Korean): Noto Sans CJK,
+ * a subset (scripts/make-cjk-font.py), one weight made bolder by FreeType for
+ * SemiBold and Bold. Read at the first such character only: 2.4 MiB of heap
+ * never taken by those who see none. What neither has is drawn as □. */
+const char *const kFallbackFile = "fonts/NotoSansCJK-Subset.otf";
+Face s_fallback;
+int s_fallback_state = 0;   /* 0 not read yet, 1 there, -1 missing */
+constexpr uint32_t kMissing = 0x25A1;   /* □, Inter's */
+
+bool fallback_ready()
+{
+    if (s_fallback_state == 0) {
+        Face &f = s_fallback;
+        const bool ok = platform::read_asset(kFallbackFile, &f.data) &&
+                        FT_New_Memory_Face(s_ft, f.data.data(), (FT_Long)f.data.size(), 0, &f.face) == 0;
+        s_fallback_state = ok ? 1 : -1;
+        if (ok)
+            std::fprintf(stderr, "font: %s read for a character Inter has not (%zu KiB)\n", kFallbackFile,
+                         f.data.size() >> 10);
+        else
+            std::fprintf(stderr, "font: %s missing: such characters are drawn as a box\n", kFallbackFile);
+    }
+    return s_fallback_state > 0;
+}
+
+/* Characters that are drawn as nothing: controls, joiners and marks without a shape. */
+bool shapeless(uint32_t cp)
+{
+    return cp < 0x20 || (cp >= 0x7f && cp < 0xa0) || (cp >= 0x200b && cp <= 0x200f) || (cp >= 0x2028 && cp <= 0x202e) ||
+           (cp >= 0x2060 && cp <= 0x206f) || (cp >= 0xfe00 && cp <= 0xfe0f) || cp == 0xfeff || cp >= 0xe0000;
+}
+
 struct Glyph {
     std::vector<uint8_t> alpha;
     int w = 0, h = 0, left = 0, top = 0;
     float advance = 0;
     unsigned index = 0;
+    bool inter = true;   /* from Inter (kerned with its neighbours), else the fallback */
 };
 std::unordered_map<uint64_t, Glyph> s_glyphs;
 
@@ -54,9 +88,8 @@ int clamp_weight(int w) { return w < 0 ? 0 : w > 3 ? 3 : w; }
 
 long size26_of(float size_px) { return std::max(1L, std::lround(size_px * 64.f)); }
 
-Face &face_at(int weight, long size26)
+Face &sized(Face &f, long size26)
 {
-    Face &f = s_faces[clamp_weight(weight)];
     if (f.size26 == size26)
         return f;
     auto it = f.sizes.find(size26);
@@ -74,6 +107,8 @@ Face &face_at(int weight, long size26)
     return f;
 }
 
+Face &face_at(int weight, long size26) { return sized(s_faces[clamp_weight(weight)], size26); }
+
 const Glyph &glyph(int weight, long size26, uint32_t cp)
 {
     const uint64_t key = ((uint64_t)clamp_weight(weight) << 62) | ((uint64_t)(size26 & 0x3fffffff) << 32) | cp;
@@ -83,10 +118,27 @@ const Glyph &glyph(int weight, long size26, uint32_t cp)
     if (s_glyphs.size() > 20000)
         s_glyphs.clear();   /* a bound, never reached in normal use */
     Glyph g;
-    Face &f = face_at(weight, size26);
-    g.index = FT_Get_Char_Index(f.face, cp);
-    if (FT_Load_Glyph(f.face, g.index, FT_LOAD_RENDER | FT_LOAD_TARGET_LIGHT) == 0) {
-        const FT_GlyphSlot s = f.face->glyph;
+    Face *f = &face_at(weight, size26);
+    g.index = FT_Get_Char_Index(f->face, cp);
+    bool loaded = false;
+    if (g.index == 0 && !shapeless(cp)) {   /* not Inter's: the fallback, else □ */
+        if (fallback_ready()) {
+            Face &fb = sized(s_fallback, size26);
+            const unsigned i = FT_Get_Char_Index(fb.face, cp);
+            if (i != 0 && FT_Load_Glyph(fb.face, i, FT_LOAD_NO_BITMAP | FT_LOAD_TARGET_LIGHT) == 0) {
+                if (clamp_weight(weight) >= 2)   /* SemiBold, Bold */
+                    FT_GlyphSlot_Embolden(fb.face->glyph);
+                loaded = FT_Render_Glyph(fb.face->glyph, FT_RENDER_MODE_LIGHT) == 0;
+                f = &fb, g.index = i, g.inter = false;
+            }
+        }
+        if (g.inter)
+            g.index = FT_Get_Char_Index(f->face, kMissing);
+    }
+    if (g.index == 0 && shapeless(cp))   /* nothing to draw, no width (never .notdef's box) */
+        return s_glyphs.emplace(key, std::move(g)).first->second;
+    if (loaded || FT_Load_Glyph(f->face, g.index, FT_LOAD_RENDER | FT_LOAD_TARGET_LIGHT) == 0) {
+        const FT_GlyphSlot s = f->face->glyph;
         g.advance = (float)s->linearHoriAdvance / 65536.f;
         g.w = (int)s->bitmap.width;
         g.h = (int)s->bitmap.rows;
@@ -144,8 +196,8 @@ float measure(int weight, long size26, const uint32_t *cp, size_t n)
     unsigned prev = 0;
     for (size_t i = 0; i < n; i++) {
         const Glyph &g = glyph(weight, size26, cp[i]);
-        w += kerning(weight, size26, prev, g.index) + g.advance;
-        prev = g.index;
+        w += (g.inter ? kerning(weight, size26, prev, g.index) : 0) + g.advance;
+        prev = g.inter ? g.index : 0;   /* Inter's kerning between Inter's glyphs only */
     }
     return w;
 }
@@ -241,6 +293,8 @@ bool init()
     return true;
 }
 
+bool fallback_loaded() { return s_fallback_state > 0; }
+
 float width(int weight, float size_px, const std::string &utf8)
 {
     if (!s_ready || utf8.empty())
@@ -282,8 +336,8 @@ Run layout(int weight, float size_px, const std::string &utf8, float max_w, int 
         unsigned prev = 0;
         for (uint32_t c : l) {
             const Glyph &g = glyph(weight, size26, c);
-            pen += kerning(weight, size26, prev, g.index);
-            prev = g.index;
+            pen += g.inter ? kerning(weight, size26, prev, g.index) : 0;
+            prev = g.inter ? g.index : 0;
             if (g.w > 0 && g.h > 0)
                 run.glyphs.push_back({c, (int)std::lround(pen) + g.left, base - g.top});
             pen += g.advance;

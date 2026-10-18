@@ -39,6 +39,7 @@ and one cropped. The file-by-file list, with authors, licences and sources, is i
 | Font | Licence |
 | --- | --- |
 | [Inter](https://github.com/rsms/inter) - Copyright (c) 2016 The Inter Project Authors | SIL Open Font License 1.1 (`assets/fonts/Inter-LICENSE.txt`) |
+| [Noto Sans CJK](https://github.com/notofonts/noto-cjk) JP Regular 2.004, a subset (`assets/fonts/NotoSansCJK-Subset.otf`, made by `scripts/make-cjk-font.py`) - Copyright © 2014-2021 Adobe | SIL Open Font License 1.1 (`assets/fonts/NotoSansCJK-LICENSE.txt`) |
 
 ## Libraries linked into the program
 

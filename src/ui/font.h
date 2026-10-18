@@ -15,8 +15,11 @@
 
 namespace font {
 
-/* Loads the four Inter weights (once). false when one is missing. */
+/* Loads the four Inter weights (once). false when one is missing. The CJK
+ * fallback is read later, at the first character Inter has not. */
 bool init();
+/* Whether that fallback has been read (and was there). */
+bool fallback_loaded();
 
 /* weight: gfx::Weight (0 Regular .. 3 Bold). */
 float width(int weight, float size_px, const std::string &utf8);

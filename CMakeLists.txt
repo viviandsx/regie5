@@ -178,6 +178,7 @@ add_test(NAME regie5_tests COMMAND regie5_tests)
 add_executable(regie5_ui_tests
     tests/main.cpp
     tests/test_art.cpp
+    tests/test_fonts.cpp
     tests/test_frame_budgets.cpp
     tests/gfx_stub.cpp
     tests/platform_stub.cpp

@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. 0.7.0 en cours (§ 2 quattuordecies) : lots 1 et 2 commités (patches 01 à 08), **essai console `opt-1` fait et analysé** : on garde P2 + P3, pas P1. En cours : B3 (polices CJK, validé par Vivian), puis C1.**
+**Dernière mise à jour : 18 octobre 2026. 0.7.0 en cours (§ 2 quattuordecies) : lots 1 et 2 commités (patches 01 à 08), **essai console `opt-1` fait et analysé** : on garde P2 + P3, pas P1. B3 (polices CJK) fait ; en cours : C1.**
 
 ---
 
@@ -33,7 +33,7 @@ pour ce qui a été fait après la phase 0).
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | lot 1 (Linux) fait ; lot 2 (console) en cours |
 
-Tests : **97** (`regie5_tests` : 91, `regie5_ui_tests` : 6, lancés par `ctest`), tous verts.
+Tests : **98** (`regie5_tests` : 91, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
 
 ---
 
@@ -1490,9 +1490,29 @@ Mesures et fichiers intermédiaires dans le scratchpad.
 
 ### Lot 3
 
-- [~] **B3. Polices non latines — validé par Vivian le 18 octobre 2026** : sous-ensemble CJK
-      dans le zip, chargé à la demande, □ pour les caractères introuvables ; arabe et hébreu
-      écartés en V1. En cours. Proposition d'origine : Mesuré sur
+- [x] **B3. Polices non latines** (patch 10 ; validé par Vivian le 18 octobre 2026 :
+      sous-ensemble CJK dans le zip, chargé à la demande, □ pour l'introuvable, arabe et hébreu
+      écartés en V1). `scripts/make-cjk-font.py` fait `assets/fonts/NotoSansCJK-Subset.otf`
+      **sans rien télécharger** : Noto Sans CJK JP Regular 2.004 du système (`fonts-noto-cjk`),
+      la bibliothèque de sous-ensemble de HarfBuzz (`libharfbuzz-subset0`, par `ctypes`), les
+      jeux de caractères des codecs de Python : kana, ponctuation CJK, formes pleine chasse,
+      idéogrammes de GB 2312, JIS X 0208 niveau 1 et **Big5 niveau 1** (traditionnels, ajoutés
+      puisque la taille le permettait), 2 350 hangul de KS X 1001 ; tables de mise en forme et
+      hints retirés (l'app ne fait pas de mise en forme : avec elles, 18 294 glyphes et 4,2 Mio).
+      Résultat : **12 378 glyphes, 2,30 Mio** (9 237 idéogrammes), licence OFL
+      (`assets/fonts/NotoSansCJK-LICENSE.txt`, `THIRD_PARTY_NOTICES.md`). `font.cpp` : la police
+      n'est lue qu'au **premier caractère absent d'Inter** (2,3 Mio de tas, jamais pris sinon ;
+      une ligne « font: … read » dans le journal), un seul poids, épaissi par FreeType pour
+      SemiBold et Bold ; ce que ni Inter ni elle n'ont devient **□** (celui d'Inter) ; les
+      caractères sans forme (espace de largeur nulle, sélecteurs de variante, contrôles) ne
+      dessinent rien. **Correction de l'audit** : avant, un caractère absent n'était pas sauté
+      mais dessiné en `.notdef` d'Inter (une case pleine avec un « ? »). Le crénage d'Inter ne
+      s'applique qu'entre glyphes d'Inter. Zip PS5 9,7 → **11,7 Mo**, dossier 44 → 47 Mio.
+      Vu sous Linux (fixtures copiées avec des titres japonais, chinois, coréens, thaï et arabe) :
+      CJK dessinés, thaï et arabe en □ ; captures latines identiques. Test
+      `fonts_fall_back_for_cjk_and_box_the_rest` (latin sans lecture du repli ; あ ア 日 这 這 한
+      dessinés en Regular et Bold ; thaï, arabe = □ ; largeur nulle sans forme ; pas de crénage
+      entre polices). À dire dans le README et les notes de la 0.7.0. Proposition d'origine : Mesuré sur
       les polices du laptop (FreeType) : Inter (l'app) n'a ni kana, ni idéogrammes, ni hangul, ni
       arabe, ni hébreu (2 937 glyphes, 0,4 Mio par graisse, 4 graisses). Noto Sans CJK (toutes les
       langues CJK) : **18,6 Mio** par graisse, 65 535 glyphes, ~300 o par glyphe, 20 976
