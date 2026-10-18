@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : **lot 1 (Linux) fait** (M1, B2 + C4, R1, R2, P4) ; **lot 2 codé**, build de test console `opt-1` prêt (`build/ps5/opt-1/ESSAIS.txt`) ; B3 attend la validation de Vivian.**
+**Dernière mise à jour : 18 octobre 2026. 0.7.0 en cours (§ 2 quattuordecies) : lots 1 et 2 commités (patches 01 à 08), **essai console `opt-1` fait et analysé** : on garde P2 + P3, pas P1. En cours : B3 (polices CJK, validé par Vivian), puis C1.**
 
 ---
 
@@ -1413,8 +1413,8 @@ Mesures et fichiers intermédiaires dans le scratchpad.
 
 ### Lot 2 (console)
 
-- [~] **P1. Threads de travail sous le thread principal** (patch 07, code fait, **mesure
-      console à faire**) — l'audit a vu des images de 90 à 173 ms que rien de mesuré n'explique
+- [x] **P1. Threads de travail sous le thread principal** (patch 07 ; **mesuré : pas gardé**,
+      voir l'analyse de l'A/B ci-dessous) — l'audit a vu des images de 90 à 173 ms que rien de mesuré n'explique
       pendant que les workers parsent et décodent. On ne sait pas comment la console ordonne
       ses threads : le build de test le **journalise** au démarrage (« threads (start): main:
       policy …, priority … (range …), CPUs … », idem pour un worker) et **essaie** d'abaisser
@@ -1430,7 +1430,7 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       abaissés), à tour de rôle ; une ligne par tour : images, moyenne, pire, **images manquées à
       120 Hz (> 12,5 ms)**, > 17,5 / 25 / 50 ms, glyphes et pire image de texte, envois et pire
       image d'envois. Les requêtes restent en GET seulement (mode stress).
-- [~] **P2 + P3. Budgets par image** (patch 06, code fait, **mesure console à faire**) —
+- [x] **P2 + P3. Budgets par image** (patch 06 ; **mesuré : gardés**, voir l'analyse de l'A/B) —
       **P2** : une image ne passe pas plus de **35 % de sa durée** (2,9 ms à 120 Hz, 5,8 ms à
       60 Hz) à mettre en page et rastériser des textes nouveaux ; au-delà, les textes nouveaux
       suivants sont dessinés à l'image suivante (leur largeur est juste quand même, la mise en
@@ -1458,12 +1458,41 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       R1 facultatif en arrêtant Sonarr, A/B automatique de 12 min sans toucher la manette, puis
       **supprimer `stress` et `ab`**). Vérifié : les 7 patches appliqués dans l'ordre sur la
       0.6.0 redonnent l'arbre de travail ; compilation PS5 à chaque point.
-- [ ] Vivian : l'essai `opt-1` ; puis analyse du journal (A/B par configuration, tailles des
-      réponses, redites d'images), et choix des réglages par défaut (P1 activé ou non).
+- [x] Vivian (18 octobre 2026) : patches 01 à 08 commités et poussés ; essai `opt-1` fait
+      (journal `build/ps5/logs/console-20261018-175142.log`) : A et B OK (rien de différent, les
+      jaquettes reviennent tout de suite), C allé au bout sans plantage ; R1 avec Sonarr arrêté
+      pas essayé ; `stress` et `ab` supprimés, 0.6.0 réinstallée.
+- [x] **Analyse de l'A/B** (120 Hz, 4K, 9 tours comptés après le tour d'échauffement, chacun à
+      froid) :
+
+      | | A (comme la 0.6.0) | B (budgets P2 + P3) | C (B + workers abaissés) |
+      |---|---|---|---|
+      | images manquées (> 12,5 ms), tours 1 / 2 / 3 | 5 / 10 / 8 | **0 / 0 / 0** | 1 / 0 / 0 |
+      | > 17,5 ms | 2 / 2 / 2 | 0 / 0 / 0 | 0 / 0 / 0 |
+      | pire écart | 24,6 / 25,4 / 25,4 ms | **11,7 / 12,0 / 12,5 ms** | 13,2 / 11,1 / 12,0 ms |
+      | pire image de texte | 11,7 / 19,2 / 19,1 ms | 8,3 / 7,1 / 7,1 ms | 7,0 / 7,2 / 7,2 ms |
+      | pire image d'envois | 5,0 / 5,9 / 7,1 ms | **3,6 / 3,6 / 3,6 ms** | 3,6 / 3,6 / 3,6 ms |
+      | moyenne | 8,33 / 8,28 / 8,28 ms | 8,25 / 8,28 / 8,28 ms | 8,33 / 8,28 / 8,27 ms |
+
+      **Décision : P2 et P3 gardés** (déjà actifs par défaut depuis le patch 06) : plus aucune
+      image manquée à 120 Hz sur les tours B, le pire écart passe de ~25 ms (3 images) à ~12 ms.
+      Un texte seul peut encore dépasser le budget (le premier d'une image passe toujours :
+      7 à 8 ms), sans image manquée. **P1 pas gardé** : C ne fait pas mieux que B (1 image
+      manquée sur 3 tours contre 0). Le journal dit pourquoi : le thread principal et les
+      workers ont **la même politique (1) et la même priorité (700, échelle 256 à 767)** ;
+      l'abaissement à 732 marche (relu 732) mais ne change rien : les saccades venaient du
+      travail fait dans l'image (textes, envois), pas des workers. Affinité : non lisible
+      (`pthread_getaffinity_np` : erreur 34, taille d'ensemble refusée) ; sans objet. Le code de
+      mesure et le test A/B restent (builds de développement seulement, aucun effet en release).
+      **Partie B du même journal** : `/api/v3/movie` de Vivian = **2,8 Mio** (823 ms), lu **une
+      seule fois** (cache partagé) ; `/api/v3/series` 188 Kio ; images : **149 requêtes pour 147
+      adresses (1 % de redites, contre 59 % le 13 octobre)** ; tas : pic 32,0 Mio.
 
 ### Lot 3
 
-- [ ] **B3. Polices non latines — proposition, en attente de Vivian (rien codé).** Mesuré sur
+- [~] **B3. Polices non latines — validé par Vivian le 18 octobre 2026** : sous-ensemble CJK
+      dans le zip, chargé à la demande, □ pour les caractères introuvables ; arabe et hébreu
+      écartés en V1. En cours. Proposition d'origine : Mesuré sur
       les polices du laptop (FreeType) : Inter (l'app) n'a ni kana, ni idéogrammes, ni hangul, ni
       arabe, ni hébreu (2 937 glyphes, 0,4 Mio par graisse, 4 graisses). Noto Sans CJK (toutes les
       langues CJK) : **18,6 Mio** par graisse, 65 535 glyphes, ~300 o par glyphe, 20 976
