@@ -4,10 +4,11 @@
  *
  * The renderer's backend for the interface's tests: no GPU. Textures are
  * counted (made, released, their bytes) so the picture cache can be checked;
- * everything drawn is dropped. No assets either (no fonts: text is never
- * drawn here).
+ * everything drawn is dropped. Assets (the fonts) come from the source tree.
  */
 #include "gfx_stub.h"
+
+#include <cstdio>
 
 #include "platform/platform.h"
 #include "ui/gfx.h"
@@ -69,5 +70,17 @@ size_t live_bytes = 0;
 } // namespace gfx_stub
 
 namespace platform {
-bool read_asset(const std::string &, std::vector<uint8_t> *) { return false; }
+bool read_asset(const std::string &rel, std::vector<uint8_t> *out)
+{
+    FILE *f = std::fopen((std::string(REGIE5_ASSETS) + "/" + rel).c_str(), "rb");
+    if (!f)
+        return false;
+    out->clear();
+    uint8_t buf[65536];
+    size_t n;
+    while ((n = std::fread(buf, 1, sizeof buf, f)) > 0)
+        out->insert(out->end(), buf, buf + n);
+    std::fclose(f);
+    return true;
+}
 } // namespace platform

@@ -176,7 +176,7 @@ bool Shell::draw(double now, float dt)
                         PadHint{PadButton::Circle, i18n::tr(i18n::HintBack)}},
                        2, 28.f, 0.9f);
         draw_notes(now, &animating);
-        return animating;
+        return animating || gfx::text_waiting();
     }
     if (m_ctx.whats_new_request) {   /* after the welcome screens, never under them */
         m_ctx.whats_new_request = false;
@@ -220,7 +220,7 @@ bool Shell::draw(double now, float dt)
     scr.draw_overlay(dt, &animating);
     m_whats_new.draw(dt, &animating);
     draw_notes(now, &animating);
-    return animating;
+    return animating || gfx::text_waiting();   /* some new text waits for the next frame */
 }
 
 } // namespace ui

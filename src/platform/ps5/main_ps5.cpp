@@ -150,6 +150,15 @@ double s_stress_minutes = 0;   /* 0: off */
  * and R1 / L1 do not wrap around). */
 constexpr const char *kStressAgain = "circle 1 circle 1 l1 0.5 l1 0.5 l1 0.5 l1 0.5 l1 0.5 l1 2 ";
 
+/* A frame's budgets (P2 new texts, P3 uploads), from the display's period:
+ * at 120 Hz 2.9 ms of texts and 2.1 ms of uploads in a frame of 8.3. */
+void set_frame_budgets(bool on, int hz)
+{
+    const double period = 1000.0 / (hz > 0 ? hz : 60);
+    gfx::set_text_budget(on ? period * 0.35 : 0);
+    art::set_upload_budget(on ? period * 0.25 : 0);
+}
+
 /* The endurance test reaches the real servers for a long time: anything but
  * GET is refused before it leaves (the tour never confirms; this makes sure). */
 class GetOnly : public http::Transport {
@@ -915,6 +924,8 @@ int main()
                          display.asked_hz() > hz ? ": refused by the display (the driver's [ps5-output-mode] line has the code), 60 Hz kept"
                                                  : hz == 120 ? ", accepted" : "");
                 report.set_hz(hz);
+                /* 0.7.0: new texts and uploads within a share of the frame. */
+                set_frame_budgets(true, hz);
                 if (s_bench)
                     ps5::log("[regie5] bench: on (%s), the tour runs by itself; each frame is timed in parts "
                              "(the GPU is waited for after the scene)",

@@ -33,7 +33,7 @@ pour ce qui a été fait après la phase 0).
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | lot 1 (Linux) fait ; lot 2 (console) en cours |
 
-Tests : **95** (`regie5_tests` : 91, `regie5_ui_tests` : 4, lancés par `ctest`), tous verts.
+Tests : **97** (`regie5_tests` : 91, `regie5_ui_tests` : 6, lancés par `ctest`), tous verts.
 
 ---
 
@@ -1414,7 +1414,17 @@ Mesures et fichiers intermédiaires dans le scratchpad.
 ### Lot 2 (console)
 
 - [ ] **P1.** Priorité des threads réseau et images, mesure avant/après.
-- [ ] **P2 + P3.** Budget par image (glyphes, envois de textures) à 120 Hz.
+- [~] **P2 + P3. Budgets par image** (patch 06, code fait, **mesure console à faire**) —
+      **P2** : une image ne passe pas plus de **35 % de sa durée** (2,9 ms à 120 Hz, 5,8 ms à
+      60 Hz) à mettre en page et rastériser des textes nouveaux ; au-delà, les textes nouveaux
+      suivants sont dessinés à l'image suivante (leur largeur est juste quand même, la mise en
+      page autour ne bouge pas ; l'app redessine tant qu'il en reste). Constat de l'audit : 81 à
+      87 glyphes en 9 à 15 ms à l'ouverture d'un écran. **P3** : envois de jaquettes au GPU dans
+      **25 % de l'image** (2,1 ms à 120 Hz), une au moins, trois au plus comme avant (pire relevé
+      10,5 ms). Sur PS5 seulement (`set_frame_budgets`, après la première image, selon la
+      fréquence obtenue) ; Linux sans budget (captures inchangées). Tests : 12 textes avec un
+      budget minuscule → un par image, largeur juste, `text_waiting` ; 3 jaquettes avec un budget
+      minuscule → une par image ; sans budget, tout dans la même image.
 - [ ] **P5.** Seulement si simple.
 - [ ] Build de test console unique (journal UDP), étapes avant/après pour P1, P2, P3.
 

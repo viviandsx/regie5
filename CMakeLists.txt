@@ -178,11 +178,13 @@ add_test(NAME regie5_tests COMMAND regie5_tests)
 add_executable(regie5_ui_tests
     tests/main.cpp
     tests/test_art.cpp
+    tests/test_frame_budgets.cpp
     tests/gfx_stub.cpp
     tests/platform_stub.cpp
 )
 target_link_libraries(regie5_ui_tests PRIVATE regie5_ui)
 target_compile_definitions(regie5_ui_tests PRIVATE
-    REGIE5_FIXTURES="${CMAKE_SOURCE_DIR}/fixtures")
+    REGIE5_FIXTURES="${CMAKE_SOURCE_DIR}/fixtures"
+    REGIE5_ASSETS="${CMAKE_SOURCE_DIR}/assets")
 target_compile_options(regie5_ui_tests PRIVATE -Wall -Wextra -Wno-unused-parameter)
 add_test(NAME regie5_ui_tests COMMAND regie5_ui_tests)

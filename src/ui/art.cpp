@@ -34,6 +34,10 @@ size_t s_budget = 192u << 20;   /* bytes of textures kept (art::set_budget) */
 size_t s_file_budget = 32u << 20;
 constexpr size_t kFileKeptMax = 1u << 20;   /* larger files are not kept */
 constexpr int kUploadsPerFrame = 3;
+/* Milliseconds of uploads a frame may spend (0: no limit, kUploadsPerFrame
+ * only): one upload always goes, the next only within the budget (a poster
+ * takes 1 to 3.5 ms on the console, a 120 Hz frame 8.3 ms in all). */
+double s_upload_budget_ms = 0;
 /* Pictures on their way at once: the rest wait here, the ones on screen first.
  * A picture asked for and then scrolled past is dropped before it is fetched. */
 constexpr int kInFlight = 8;
@@ -275,6 +279,7 @@ Entry *request(const Ref &ref, int mw, int mh, int blur_r)
 
 void set_budget(size_t bytes) { s_budget = bytes; }
 void set_file_budget(size_t bytes) { s_file_budget = bytes; }
+void set_upload_budget(double ms) { s_upload_budget_ms = ms; }
 
 void init(api::Services *services, http::Pool *images)
 {
@@ -308,10 +313,13 @@ void frame()
         submit(w.second, e);
     }
     int uploads = 0;
+    const double uploads_t0 = platform::now();
     for (auto &kv : s_cache) {
         Entry &e = kv.second;
         if (e.state != Entry::Decoded || uploads >= kUploadsPerFrame)
             continue;
+        if (uploads > 0 && s_upload_budget_ms > 0 && (platform::now() - uploads_t0) * 1000.0 >= s_upload_budget_ms)
+            break;   /* the rest next frame */
         perf::Frame &pf = perf::cur();
         perf::Timer timer(&pf.upload_ms);
         pf.uploads++;

@@ -12,6 +12,7 @@
 #include "ui/gfx.h"
 
 #include "core/perf.h"
+#include "platform/platform.h"
 #include "ui/font.h"
 
 #include <algorithm>
@@ -177,6 +178,27 @@ struct Entry {
 };
 std::unordered_map<Key, Entry, KeyHash> s_text;
 
+/* Laying out and rasterising new texts costs time in the frame that first
+ * draws them (a new screen: 80 glyphs, 9 to 15 ms on the console, past a
+ * 120 Hz frame). Past s_budget_ms in a frame, the next new texts wait for
+ * the next frame (drawn a frame or two later, within the screen's fade-in). */
+double s_budget_ms = 0;   /* 0: no limit (set_text_budget) */
+uint64_t s_budget_frame = ~0ull;
+double s_spent_ms = 0;
+bool s_deferred = false;   /* this frame left some text for the next */
+
+bool over_budget()
+{
+    if (s_budget_ms <= 0)
+        return false;
+    if (s_budget_frame != frame_index()) {
+        s_budget_frame = frame_index();
+        s_spent_ms = 0;
+        s_deferred = false;
+    }
+    return s_spent_ms >= s_budget_ms;
+}
+
 Key key_of(const std::string &s, const TextStyle &st)
 {
     return {s,
@@ -188,13 +210,19 @@ Key key_of(const std::string &s, const TextStyle &st)
             (int)std::lround(scale() * 100)};
 }
 
-Entry *entry(const std::string &s, const TextStyle &st)
+/* may_wait: a text being drawn, which may wait a frame (over_budget). */
+Entry *entry(const std::string &s, const TextStyle &st, bool may_wait = false)
 {
     if (s.empty())
         return nullptr;
     const Key k = key_of(s, st);
     auto it = s_text.find(k);
     if (it == s_text.end()) {
+        if (may_wait && over_budget()) {
+            s_deferred = true;
+            return nullptr;
+        }
+        const double t0 = s_budget_ms > 0 ? platform::now() : 0;
         perf::Frame &pf = perf::cur();
         perf::Timer timer(&pf.text_ms);
         pf.texts++;
@@ -216,6 +244,10 @@ Entry *entry(const std::string &s, const TextStyle &st)
         for (Page &p : s_pages)
             upload(p);
         it = s_text.emplace(k, std::move(e)).first;
+        if (s_budget_ms > 0) {
+            over_budget();   /* the frame's count, started if need be */
+            s_spent_ms += (platform::now() - t0) * 1000.0;
+        }
     }
     it->second.used = frame_index();
     return &it->second;
@@ -237,9 +269,14 @@ void reset_atlas()
 
 float text(float x, float baseline, const std::string &s, const TextStyle &st, uint32_t color, int align)
 {
-    Entry *e = entry(s, st);
-    if (!e)
-        return 0;
+    Entry *e = entry(s, st, true);
+    if (!e) {
+        if (s.empty())
+            return 0;
+        /* Waits for the next frame: its width all the same (no rasterising), for what is laid out after it. */
+        const float w = font::width((int)st.weight, st.size * scale(), s) / scale();
+        return st.max_w > 0 ? std::min(w, st.max_w) : w;
+    }
     float left = x;
     if (align == 1)
         left -= e->advance / 2;
@@ -265,6 +302,16 @@ float text_width(const std::string &s, const TextStyle &st)
 }
 
 size_t text_cache_size() { return s_text.size(); }
+
+void set_text_budget(double ms) { s_budget_ms = ms; }
+
+bool text_waiting()
+{
+    over_budget();   /* a new frame clears it */
+    return s_deferred;
+}
+
+void forget_texts() { reset_atlas(); }
 
 void set_atlas_budget(size_t bytes) { s_atlas_budget = bytes; }
 

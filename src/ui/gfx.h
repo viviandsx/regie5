@@ -107,6 +107,13 @@ float text(float x, float baseline, const std::string &s, const TextStyle &st, u
 float text_width(const std::string &s, const TextStyle &st);
 /* Texts kept laid out. */
 size_t text_cache_size();
+/* Milliseconds a frame may spend laying out and rasterising new texts (0:
+ * no limit); past it, the next new ones are drawn in a following frame. */
+void set_text_budget(double ms);
+/* This frame left some new text for the next one (keep drawing). */
+bool text_waiting();
+/* Every text and glyph forgotten (a test starting cold). */
+void forget_texts();
 /* Bytes of glyph atlas pages (GPU) before it starts afresh: 48 MiB by default. */
 void set_atlas_budget(size_t bytes);
 /* Times the atlas started afresh (each one re-rasterises what is on screen). */

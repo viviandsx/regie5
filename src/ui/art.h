@@ -38,6 +38,9 @@ void set_budget(size_t bytes);
  * console): the same poster at another size, or again after its texture was
  * let go, is decoded from them instead of being asked again. */
 void set_file_budget(size_t bytes);
+/* Milliseconds a frame may spend sending pictures to the GPU (0: no limit
+ * but three a frame); one always goes. */
+void set_upload_budget(double ms);
 
 /* Call at the start of every frame: uploads what arrived, evicts what is old. */
 void frame();
