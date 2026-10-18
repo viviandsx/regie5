@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 17 octobre 2026. **0.5.1 publiée** le 17 octobre (correctif du plantage Emby, issue #1, § 2 undecies). Catalogue homebrew.page encore en 0.5.0 : PR automatique attendue la nuit suivante. **0.6.0 prête à publier** (Plex en BETA, zip `6757ea3b…`) : essai avec compte fait (jeton du propriétaire = jeton du compte, dit partout) ; recette console à refaire sur le nouveau zip (§ 2 duodecies).**
+**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **Audit d'optimisation** fait sans code (§ 2 terdecies) : 5 points proposés en premier, en attente de Vivian.**
 
 ---
 
@@ -29,7 +29,8 @@ pour ce qui a été fait après la phase 0).
 | 11. Version 0.4.0 : Emby + assistant | Emby demandé dans la première issue ; assistant de première configuration | ✅ publiée (Emby en beta) |
 | 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | ✅ publiée (§ 2 decies) |
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
-| 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | prête : essai avec compte et recette console en attente (§ 2 duodecies) |
+| 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | ✅ publiée ; catalogue en attente (§ 2 duodecies) |
+| 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | proposé le 18 octobre 2026 (§ 2 terdecies), rien codé |
 
 Tests : **76** (`regie5_tests`, lancé par `ctest`), tous verts.
 
@@ -1199,18 +1200,97 @@ Plex en **BETA** ; pas de zip de test pour un utilisateur de Plex (décision de 
        réelle = changer le mot de passe sur plex.tv avec « Sign out connected devices » ; voie sans
        jeton (liste « allowed without auth » réduite à l'adresse de la console) décrite. Ligne de
        diagnostic de la console du navigateur retirée. Nouveau zip `release-0.6.0b` ci-dessous.
-9. [~] Vivian : recette `docs/RECETTE-0.6.0.md` faite sur le premier zip (`c14c9199…`) ; **à refaire**
+9. [x] Vivian : recette `docs/RECETTE-0.6.0.md` faite sur le premier zip (`c14c9199…`) ; **à refaire**
        avec `build/ps5/release-0.6.0b/upload/PPSA99520.zip`, sha256
        `6757ea3b5918e58be14c593922c895d804b074e7ffb4d061ce41fcd16345a080` (mêmes contrôles : 37
        fichiers, version 0.6.0, ni « NOT sent » ni ligne de diagnostic). C'est lui qui sera publié.
-10. [ ] Vivian : patch `06-regie5-0.6.0-v2` de `build/patches-22/` (le 05 est commité ; l'ancien 06 n'est plus à utiliser), commit « Régie5 0.6.0 », push.
-11. [ ] Vivian : tag `v0.6.0` et push du tag seul.
-12. [ ] Vivian : release GitHub « Régie5 0.6.0 » (texte = les notes, pièce jointe `PPSA99520.zip`,
+10. [x] Vivian : patch `06-regie5-0.6.0-v2` de `build/patches-22/` (le 05 est commité ; l'ancien 06 n'est plus à utiliser), commit « Régie5 0.6.0 », push.
+11. [x] Vivian : tag `v0.6.0` et push du tag seul.
+12. [x] Vivian : release GitHub « Régie5 0.6.0 » (texte = les notes, pièce jointe `PPSA99520.zip`,
         pas « pre-release »), empreinte vérifiée.
 13. [ ] Vivian : étiquettes `plex` et `beta` créées sur le dépôt (le formulaire les pose).
-14. [ ] Catalogue : la PR automatique du lendemain (`version` 0.6.0, `sha256`, `icon_url` en
+14. [ ] Catalogue (pas encore en 0.6.0 le 18 octobre ; Vivian vérifie le 19, sinon `docs/RELEASING.md` § 3) : la PR automatique du lendemain (`version` 0.6.0, `sha256`, `icon_url` en
         `/v0.6.0/ps5/app/sce_sys/icon0.png`).
 15. [ ] Reddit : poster le brouillon une fois la fiche du catalogue en 0.6.0.
+
+## 2 terdecies. Audit d'optimisation (18 octobre 2026, sans code)
+
+Demandé par Vivian après la 0.6.0 : code et journaux console (`build/ps5/logs/`, 35 fichiers,
+11 au 15 octobre ; aucun journal Emby ou Plex sur console). Intérêt : ★★★ fort, ★★ moyen,
+★ faible. Difficulté : F facile, M moyenne, D difficile. « Console » : demande un essai PS5.
+
+**Ce qui va bien (mesuré)** : 120 Hz tenu en rangée Jeux (série B : 0 écart > 17,5 ms) ; tas
+plat sur 10 min de stress (19,9 → 22,8 Mio, pic 32,6, 0 échec), pic de 35 Mio au plus dans
+tous les journaux pour 256 Mio accordés : **aucune fuite vue** ; aucun « glyph atlas started
+afresh » ; glyphes préparés au démarrage : 952 en 45 ms.
+
+### Performances PS5
+
+| # | Constat (preuve) | Gain | Int. | Diff. | Console |
+|---|---|---|---|---|---|
+| P1 | Images de 90 à 173 ms sur Demandes alors que les phases mesurées font < 4 ms (`console-20261013-210345.log`, #1904 à #1951, en même temps que les réponses Seerr `/movie/N` et les jaquettes). Aucune priorité ni affinité n'est donnée aux 7 threads (4 HTTP + 3 images, qui parsent, décodent, réduisent, floutent ; `main_ps5.cpp:718`) : hypothèse, ils prennent le cœur du thread principal | plus de saccades à l'ouverture des écrans chargés | ★★★ | F | oui (mesurer avant/après) |
+| P2 | Rastérisation des glyphes à l'ouverture d'un écran : 6 à 15 ms sur une image (image #2 : 81 à 87 glyphes, 9 à 11 ms ; pire 25,5 ms) ; 44 secondes sur 1 763 ont une image > 8,3 ms à cause d'eux | 1 à 2 images sautées en moins à chaque écran à 120 Hz | ★★ | M (budget de glyphes par image, ou préchauffage étendu) | oui |
+| P3 | Envois de textures : 3 par image (`art.cpp` `kUploadsPerFrame`), pire 10,5 ms > 8,3 ms à 120 Hz | défilement plus régulier pendant l'arrivée des jaquettes | ★★ | F (budget en temps) | oui |
+| P4 | Jaquettes retéléchargées : 576 requêtes d'image pour 236 adresses (59 % de redites, même journal). La clé du cache contient la taille (`key_of`) : une affiche est téléchargée pour chaque taille (80, 160, 360, 500) et après chaque éviction (64 Mio) | jaquettes immédiates au retour sur un écran, moins de réseau | ★★ | M (cache des JPEG compressés par adresse, ~16 Mio ≈ 250 affiches) | non (mesure console ensuite) |
+| P5 | Démarrage à 120 Hz : le pilote passe 1,7 s à changer de mode vidéo (`[ps5-prepare-startup] video_ms=1701` ; 10 à 45 ms à 60 Hz), la 1re image reste figée 1,7 s après le splash. Les étapes ne sont pas horodatées : durée totale du démarrage inconnue | sans doute incompressible (TV) ; cacher le splash après la 2e image ; horodater les étapes | ★ | F | oui |
+| P6 | `art::frame()` et `art::busy()` parcourent tout le cache à chaque image (3 passes et un tri) | négligeable aujourd'hui, à surveiller avec des milliers de titres | ★ | F | non |
+
+### Mémoire
+
+| # | Constat (preuve) | Gain | Int. | Diff. | Console |
+|---|---|---|---|---|---|
+| M1 | **Grosses bibliothèques (même mécanisme qu'Emby)** : `/api/v3/movie` et `/api/v3/series` arrivent en entier (texte + arbre cJSON, 4 à 8 fois le texte), plafond `kMaxBody` 64 Mio. Les fixtures font 720 o par film ; un vrai Radarr fait plutôt 3 à 6 Ko : 5 000 films ≈ 15 à 30 Mo de JSON → pic estimé à 80–200 Mio. La liste est demandée **trois fois** séparément (Bibliothèque `library.cpp:253-271`, Ménage `cleanup.cpp:54-64`, tailles de l'onglet Jellyfin `jellyfin_stats.cpp:101-112`) et gardée en double (parts + fusion). Le journal ne donne pas la taille des réponses | évite le prochain plantage « grosse config » | ★★★ | M (taille dans le journal, cache partagé, garde-fou avec message clair) à D (parseur en flux) | mesure sous Linux (proxy + `LD_PRELOAD`, comme pour Emby), puis console |
+| M2 | Les entrées « Failed » du cache d'images et `SeerrTitles` ne sont jamais purgées | aucun en pratique | ★ | F | non |
+
+### Réseau
+
+| # | Constat (preuve) | Gain | Int. | Diff. | Console |
+|---|---|---|---|---|---|
+| R1 | Serveur lent ou éteint : connexion 5 s par adresse (`kConnectMs`), délai 10 s, 4 workers partagés par tous les services. Au démarrage, Sonarr a répondu en 5,5 à 6,7 s (`console-20261014-192427.log:72-87`) et ses 3 requêtes ont occupé 3 workers sur 4 | les autres services s'affichent sans attendre le lent | ★★★ | M (au plus 2 requêtes en vol par hôte ; hôte « injoignable » 30 s après un échec de connexion) | Linux (port filtré) puis console |
+| R2 | `Connection: close` à chaque requête (`http_wire.cpp:129`) et résolution DNS à chaque requête (`socket_transport.cpp:82`, pas de cache) : en HTTPS derrière un reverse proxy avec un nom (le cas du § 2 bis), chaque jaquette paie DNS + TCP + poignée TLS. Jamais mesuré (Vivian est en HTTP sur IP). Seule requête HTTPS des journaux : Glances en **34,7 s** pour un délai de 10 s (`console-20261013-161003.log:268`, build sans détail TLS) : la poignée mbedTLS ne vérifie le délai qu'en attente réseau | HTTPS utilisable pour la communauté | ★★ | F (cache DNS) / D (keep-alive) | oui (un proxy HTTPS de test) |
+| R3 | Pas de `Accept-Encoding: gzip` : grosses listes non compressées (voir M1) | réseau ÷ 5 à 10 sur ces listes | ★ | M (miniz) | non |
+| R4 | Tailles des bibliothèques (onglet Jellyfin) : `ask_arr()` ne redemande jamais, même avec △ (`jellyfin_stats.cpp:91`) ; après un échec, à confirmer : tailles absentes jusqu'au redémarrage | petite correction | ★ | F | non (`REGIE5_MOCK_FAIL`) |
+
+Rafraîchissements : seulement écran visible (5 s file d'attente et sessions, 10 s tâches,
+5 s Glances) avec garde contre les doublons : rien à reprendre.
+
+### Robustesse
+
+| # | Constat (preuve) | Gain | Int. | Diff. | Console |
+|---|---|---|---|---|---|
+| B1 | = M1 : le plus probable des prochains plantages | | ★★★ | | |
+| B2 | Parseurs testés sur des fixtures valides seulement : aucun test avec JSON tronqué, `null`, chaîne au lieu d'un nombre, nombre géant (`json::i64` fait `llround` puis un cast : comportement indéfini sur 1e300 ou NaN, `json.cpp:27`) | moins de plantages sur des serveurs inhabituels | ★★ | F (un test « chaque parseur × corps hostiles », un fuzz court sous ASan) | non |
+| B3 | Une seule police (Inter : latin, grec, cyrillique) : un titre japonais, chinois, coréen, arabe ou hébreu (anime, Découvrir, noms d'utilisateurs) s'affiche vide | lisible pour toute la communauté | ★★ | M (police de repli sous-ensemble, budget d'atlas) | oui (mémoire) |
+| B4 | Firmware : le journal ne note pas la version du système ; le plantage `0xa8` du 15 octobre reste inexpliqué | diagnostics des issues plus rapides | ★ | F | oui |
+
+### Ergonomie (à compléter par Vivian à la manette)
+
+| # | Constat | Int. | Diff. | Console |
+|---|---|---|---|---|
+| E1 | 1,7 s figé au démarrage à 120 Hz (P5) | ★ | F | oui |
+| E2 | Pendant les 5 à 10 s d'attente d'un serveur lent (R1), l'écran montre des squelettes sans dire qui est lent : nommer le service après 3 s | ★★ | F | non |
+| E3 | Pas de mesure sur ce qui est lent ou confus à la manette : une séance de 15 min avec relevé par Vivian (écrans trop chargés, textes) | ★★ | — | oui |
+
+### Code
+
+| # | Constat (preuve) | Int. | Diff. |
+|---|---|---|---|
+| C1 | `services.cpp` (855 lignes) : 22 branches `if (m_cfg.plex())` ; Emby est un drapeau dans `jellyfin.cpp`, relu dans `art.cpp`, `format.cpp`, `session_diag.cpp`, `cleanup.cpp`. Piste : une interface « serveur multimédia » (Jellyfin, Emby, Plex) ; tests de fixtures déjà là pour les trois | ★★ | D |
+| C2 | Fichiers gros : `library.cpp` 1 008, `main_ps5.cpp` 947 (sonde, bench et stress dans la boucle principale), `discover.cpp` 909, `test_api.cpp` 1 371 | ★ | M |
+| C3 | Trois chargements des listes *arr (M1) : un cache partagé dans `Context` | ★★ | M |
+| C4 | Pas de test sur `art` (plafond de décodage, éviction, budget : la leçon d'Emby), ni sur les délais de `socket_transport` (serveur muet, réponse coupée) | ★★ | F |
+
+### Recommandation : les 5 premiers
+
+1. **M1 + C3** — mesurer la taille des listes (taille dans le journal, mesure sous Linux avec un
+   gros Radarr simulé), un seul cache partagé, garde-fou avec message clair.
+2. **P1** — priorité des threads de travail sous celle du thread principal ; avant/après sur
+   console (Demandes, Bibliothèque).
+3. **B2 + C4** — tests hostiles des parseurs, tests de `art` et des délais HTTP (Linux seul).
+4. **R1 + cache DNS de R2** — limite par hôte, hôte injoignable mis de côté, avec E2.
+5. **P2 + P3** — budget de glyphes et d'envois de textures par image à 120 Hz.
+
+Ensuite : P4 (cache des JPEG), R2 keep-alive après une mesure HTTPS, B3, C1.
 
 ## 3. En attente
 
