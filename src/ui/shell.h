@@ -37,6 +37,7 @@ private:
     std::unique_ptr<Screen> make_screen(int tab);
     /* Every screen made again (config.json changed behind them). */
     void remake_screens(bool current_too);
+    void draw_waiting(double now, float max_w, bool *animating);
 
     Context &m_ctx;
     unsigned m_config_gen = 0;   /* the config the screens were made with */

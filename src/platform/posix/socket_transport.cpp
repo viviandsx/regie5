@@ -19,6 +19,7 @@
 #include <cerrno>
 #include <cstdio>
 #include <cstring>
+#include <map>
 #include <memory>
 #include <mutex>
 #include <vector>
@@ -96,6 +97,31 @@ bool resolve(const std::string &host, int port, bool names, std::vector<sockaddr
     return !out->empty();
 }
 
+/* Looked-up names, kept: a poster no longer pays a lookup, and a name that
+ * could not be found is not asked again at once (on a console without a
+ * DNS server, each attempt may take several seconds). */
+constexpr double kNameKept = 300, kNameFailureKept = 30;
+
+} // namespace
+
+struct SocketTransport::Names {
+    struct Entry {
+        std::vector<sockaddr_storage> addrs;
+        std::string error;   /* empty: found */
+        double until = 0;
+    };
+    std::mutex lock;
+    std::map<std::string, Entry> by_name;   /* "host:port" */
+};
+
+namespace {
+
+bool numeric(const std::string &host)
+{
+    unsigned char buf[sizeof(in6_addr)];
+    return inet_pton(AF_INET, host.c_str(), buf) == 1 || inet_pton(AF_INET6, host.c_str(), buf) == 1;
+}
+
 /* Waits for fd to be ready for ev, in slices; 1 ready, 0 time is up, -1 cancelled or failed. */
 int wait_for(int fd, short ev, double deadline, const std::atomic<bool> *cancel)
 {
@@ -141,7 +167,8 @@ int open_connection(const std::vector<sockaddr_storage> &addrs, const std::atomi
             }
             const int w = wait_for(s.fd, POLLOUT, platform::now() + kConnectMs / 1000.0, cancel);
             if (w <= 0) {
-                *fail = w == 0 ? http::Response::Timeout : http::Response::Other;
+                /* No connection in time: unreachable (nothing answered), not a slow server. */
+                *fail = w == 0 ? http::Response::Connect : http::Response::Other;
                 *error = w == 0 ? "connect: timed out" : "cancelled";
                 if (w < 0)
                     return -1;
@@ -421,8 +448,32 @@ struct SocketTransport::Authorities {
 #endif
 
 SocketTransport::SocketTransport(std::function<void(const std::string &)> log, bool resolve_names)
-    : m_log(std::move(log)), m_resolve_names(resolve_names), m_ca(std::make_unique<Authorities>())
+    : m_log(std::move(log)), m_resolve_names(resolve_names), m_ca(std::make_unique<Authorities>()),
+      m_names(std::make_unique<Names>())
 {
+}
+
+bool SocketTransport::lookup(const std::string &host, int port, std::vector<sockaddr_storage> *out, std::string *error)
+{
+    if (numeric(host) || !m_resolve_names)
+        return resolve(host, port, m_resolve_names, out, error);
+    const std::string key = host + ":" + std::to_string(port);
+    const double now = platform::now();
+    {
+        std::lock_guard<std::mutex> l(m_names->lock);
+        auto it = m_names->by_name.find(key);
+        if (it != m_names->by_name.end() && now < it->second.until) {
+            *out = it->second.addrs;
+            *error = it->second.error;
+            return error->empty();
+        }
+    }
+    m_lookups++;
+    const bool ok = resolve(host, port, true, out, error);
+    std::lock_guard<std::mutex> l(m_names->lock);
+    m_names->by_name[key] = {ok ? *out : std::vector<sockaddr_storage>{}, ok ? std::string() : *error,
+                             platform::now() + (ok ? kNameKept : kNameFailureKept)};
+    return ok;
 }
 
 SocketTransport::~SocketTransport() = default;
@@ -494,7 +545,7 @@ http::Response SocketTransport::perform(const http::Request &req, const std::ato
 
     std::vector<sockaddr_storage> addrs;
     std::string error;
-    if (!resolve(u.host, u.port, m_resolve_names, &addrs, &error))
+    if (!lookup(u.host, u.port, &addrs, &error))
         return done(http::Response::Connect, error);
     http::Response::Fail fail = http::Response::Connect;
     Fd s;

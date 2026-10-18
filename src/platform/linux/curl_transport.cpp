@@ -109,8 +109,11 @@ http::Response CurlTransport::perform(const http::Request &req, const std::atomi
     } else {
         r.body.clear();
         r.error = curl_easy_strerror(rc);
-        r.fail = sink.over                         ? http::Response::TooLarge
-                 : rc == CURLE_OPERATION_TIMEDOUT ? http::Response::Timeout
+        curl_off_t connected = 0;   /* 0: the time ran out before a connection (unreachable) */
+        curl_easy_getinfo(c, CURLINFO_CONNECT_TIME_T, &connected);
+        r.fail = sink.over                                           ? http::Response::TooLarge
+                 : rc == CURLE_OPERATION_TIMEDOUT && connected == 0 ? http::Response::Connect
+                 : rc == CURLE_OPERATION_TIMEDOUT                   ? http::Response::Timeout
                  : (rc == CURLE_COULDNT_CONNECT || rc == CURLE_COULDNT_RESOLVE_HOST ||
                     rc == CURLE_COULDNT_RESOLVE_PROXY)
                      ? http::Response::Connect

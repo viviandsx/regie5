@@ -13,6 +13,7 @@
 #include "ui/screens/library.h"
 #include "ui/screens/requests.h"
 #include "ui/screens/settings.h"
+#include "ui/format.h"
 #include "ui/style.h"
 #include "ui/widgets.h"
 
@@ -137,6 +138,27 @@ bool Shell::input(const input::State &in, double now)
     return true;
 }
 
+/* A service slow to answer (a request on its way for kSlowAfter seconds),
+ * named at the bottom left: the skeletons above it are waiting for it. */
+void Shell::draw_waiting(double now, float max_w, bool *animating)
+{
+    constexpr double kSlowAfter = 3.0;
+    if (!m_ctx.services || max_w < 200)
+        return;
+    double longest = 0;
+    const std::vector<std::string> slow = m_ctx.services->slow(kSlowAfter, &longest);
+    if (!m_ctx.services->idle())
+        *animating = true;   /* the line appears, and its seconds count, without a press */
+    if (slow.empty())
+        return;
+    std::string names;
+    for (size_t i = 0; i < slow.size() && i < 3; i++)
+        names += (i ? ", " : "") + slow[i];
+    gfx::text(kPad, gfx::H - 52 + 9, fmt::f(i18n::tr(i18n::WaitingFor), names.c_str(), (int)longest),
+              {gfx::Regular, 26, max_w}, kText2);
+    (void)now;
+}
+
 bool Shell::draw(double now, float dt)
 {
     bool animating = false;
@@ -193,7 +215,8 @@ bool Shell::draw(double now, float dt)
                       PadHint{PadButton::R1, i18n::tr(i18n::HintTabs)},
                       PadHint{PadButton::Triangle, i18n::tr(i18n::HintRefresh)}})
         hints.push_back(h);
-    draw_pad_hints(gfx::W - kPad, gfx::H - 52, hints, 2, 28.f, 0.9f);
+    const float hints_w = draw_pad_hints(gfx::W - kPad, gfx::H - 52, hints, 2, 28.f, 0.9f);
+    draw_waiting(now, gfx::W - 2 * kPad - hints_w - 48, &animating);
     scr.draw_overlay(dt, &animating);
     m_whats_new.draw(dt, &animating);
     draw_notes(now, &animating);

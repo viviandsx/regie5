@@ -167,6 +167,7 @@ void submit(const std::string &key, Entry &e)
         req.headers.push_back(auth);
     req.timeout_s = 20;
     req.insecure = s_services->config().at(e.ref.service, e.ref.instance).insecure;
+    req.server = s_services->config().at(e.ref.service, e.ref.instance).url;   /* its own turn (http::Pool) */
     const int mw = e.mw, mh = e.mh, blur_r = e.blur;
     const uint64_t sent = e.sent = ++s_sent;
     s_pool->submit(std::move(req), [key, mw, mh, blur_r, sent](http::Response &resp) -> std::function<void()> {

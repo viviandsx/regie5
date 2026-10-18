@@ -8,6 +8,11 @@
  * on the worker too; what it hands back runs on the main thread, in pump().
  * Workers get a stack of at least kWorkerStack: the PS5 gives new threads
  * only 64 KiB.
+ *
+ * Each server (Request::server, else its scheme, host and port) has at most
+ * kPerServer requests on its way: a slow one never holds every worker, the
+ * others go on. One that could not be reached is set aside kSetAside seconds:
+ * its requests fail at once meanwhile (Request::fresh still goes).
  */
 #pragma once
 
@@ -15,12 +20,18 @@
 #include <condition_variable>
 #include <deque>
 #include <functional>
+#include <map>
 #include <mutex>
 #include <string>
 #include <pthread.h>
 #include <vector>
 
 namespace http {
+
+/* Requests on their way to one server at once, and how long one that could
+ * not be reached is set aside. */
+constexpr int kPerServer = 2;
+constexpr double kSetAside = 10.0;
 
 /* The stack a worker asks for (more if the system's default is larger). */
 constexpr size_t kWorkerStack = 512u << 10;
@@ -40,7 +51,12 @@ struct Request {
     /* Bytes of body at most (a library list): past it the answer is given up,
      * Response::TooLarge. 0: the transport's own limit (64 MiB). */
     size_t max_body = 0;
-    bool insecure = false;   /* https: the certificate is not checked (config.json "insecure") */
+    bool insecure = false;
+    /* Which server it goes to, for the limit and the setting aside (a
+     * service's address); empty: the URL's scheme, host and port. */
+    std::string server;
+    /* Tried even while its server is set aside (a connection test). */
+    bool fresh = false;   /* https: the certificate is not checked (config.json "insecure") */
 };
 
 struct Response {
@@ -78,21 +94,33 @@ public:
     int pump();
     /* Requests waiting or running. */
     int busy() const { return m_busy.load(); }
+    /* For each server with a request on its way (or waiting its turn): the
+     * seconds since the oldest was submitted. */
+    std::map<std::string, double> waiting() const;
+    /* The key a request counts under (Request::server, else from its URL). */
+    static std::string server_of(const Request &req);
 
 private:
     struct Job {
         Request req;
         Work work;
+        std::string server;
+        double since = 0;   /* when submitted (seconds, steady clock) */
     };
     void run();
+    /* Under the lock: the first job whose server has room (or is set aside), else end. */
+    std::deque<Job>::iterator next_job(double now);
     static void *start(void *pool);
 
     Transport &m_transport;
     std::function<void()> m_wake;
     std::vector<pthread_t> m_threads;
-    std::mutex m_mutex;
+    mutable std::mutex m_mutex;
     std::condition_variable m_cv;
     std::deque<Job> m_jobs;
+    std::map<std::string, int> m_running;             /* by server */
+    std::multimap<std::string, double> m_started;     /* by server: when each running one was submitted */
+    std::map<std::string, double> m_down_until;       /* by server: set aside until */
     std::vector<std::function<void()>> m_done;
     std::atomic<bool> m_stop{false};
     std::atomic<int> m_busy{0};

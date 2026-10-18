@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : lot 1 sous Linux, points M1 et B2 + C4 faits.**
+**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : lot 1 sous Linux, points M1, B2 + C4 et R1 faits.**
 
 ---
 
@@ -33,7 +33,7 @@ pour ce qui a été fait après la phase 0).
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | en cours : lot 1 (Linux) |
 
-Tests : **87** (`regie5_tests` : 84, `regie5_ui_tests` : 3, lancés par `ctest`), tous verts.
+Tests : **91** (`regie5_tests` : 88, `regie5_ui_tests` : 3, lancés par `ctest`), tous verts.
 
 ---
 
@@ -1358,7 +1358,23 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       respecte déjà le délai **pendant les attentes réseau** ; les 34,7 s du 13 octobre (build
       d'avant la 0.2.0, sans détail TLS) restent à expliquer (R2).
       ASan + UBSan : `scratchpad/asan.sh` (copie de l'arbre, `-fsanitize=address,undefined`).
-- [ ] **R1 + cache DNS.** Limite par serveur, serveur injoignable mis de côté, service lent nommé.
+- [x] **R1 + cache DNS. Un serveur lent ou éteint ne bloque plus les autres** (patch 03) —
+      (1) `http::Pool` : **au plus 2 requêtes en vol par service** (`Request::server` = l'adresse
+      du service, mise par `Services` et par le cache d'images ; sinon schéma + hôte + port) : un
+      Sonarr lent n'occupe plus 3 des 4 workers, les autres services passent. (2) **Mise de
+      côté** : un service qui n'a pas répondu à la connexion (refus, pas de route, délai de
+      connexion) est mis de côté **10 s** ; ses requêtes échouent tout de suite (« Injoignable »)
+      au lieu d'attendre 5 s chacune ; la première réponse le remet en service ; « Tester » et
+      « Tout tester » passent quand même (`Request::fresh`). Un délai de connexion dépassé est
+      maintenant « injoignable » (avant : « pas de réponse à temps », faux), aussi avec libcurl.
+      (3) **Le service lent est nommé** en bas à gauche après 3 s : « En attente de Sonarr,
+      Radarr (5 s)… » (FR/EN/ES/DE ; `Pool::waiting`, `Services::slow`), vu avec
+      `REGIE5_MOCK_DELAY_MS=8000`. (4) **Cache DNS** du transport de la PS5 : un nom trouvé est
+      gardé 5 min, un nom introuvable 30 s (sans serveur DNS, chaque essai peut prendre plusieurs
+      secondes) ; les adresses numériques ne sont jamais cherchées. Tests : tour de chaque
+      serveur (le lent jamais plus de 2, l'autre servi pendant ce temps), mise de côté (essayé une
+      fois, puis réponse immédiate ; `fresh` passe), service lent nommé, nom cherché une fois
+      (trouvé ou non). Captures data / offline / mixed / multi identiques.
 - [ ] **R2.** Délai appliqué à la négociation TLS ; connexions gardées ouvertes si sûr et testé.
 - [ ] **P4.** Une jaquette reçue n'est plus redemandée pour une autre taille.
 

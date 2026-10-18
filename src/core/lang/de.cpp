@@ -38,6 +38,7 @@ const Text kTexts[] = {
     {ErrRedirected, "Umgeleitet (HTTP %d) – Anmeldeseite eines Proxys oder falsche Adresse?"},
     {ErrBadResponse, "Unerwartete Antwort – ist es der richtige Dienst?"},
     {ErrTooLarge, "Bibliothek zu groß für Régie5 (über %d MB)"},
+    {WaitingFor, "Warten auf %s (%d s)…"},
     {ButtonTestAll, "Alle testen"},
     {ButtonFromPhone, "Per Handy"},
     {ShareTitle, "Per Handy einrichten"},

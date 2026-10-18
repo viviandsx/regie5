@@ -42,6 +42,7 @@ enum S {
     ErrRedirected,
     ErrBadResponse,
     ErrTooLarge,
+    WaitingFor,
     ButtonTestAll,
     ButtonFromPhone,
     ShareTitle,

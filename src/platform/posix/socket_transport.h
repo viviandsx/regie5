@@ -20,6 +20,9 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include <vector>
+
+struct sockaddr_storage;
 
 namespace platform_posix {
 
@@ -45,6 +48,8 @@ public:
      * answer that has one: the PS5 checks its own clock against it. Set
      * before the first request. */
     void on_server_date(std::function<void(int64_t)> f) { m_on_date = std::move(f); }
+    /* Times the system was asked to look a name up (the rest came from the kept ones). */
+    int name_lookups() const { return m_lookups.load(); }
 
 private:
     std::function<void(const std::string &)> m_log;
@@ -52,6 +57,11 @@ private:
     std::function<void(int64_t)> m_on_date;
     struct Authorities;
     std::unique_ptr<Authorities> m_ca;
+    /* Names looked up, kept a while (found or not). */
+    struct Names;
+    std::unique_ptr<Names> m_names;
+    std::atomic<int> m_lookups{0};
+    bool lookup(const std::string &host, int port, std::vector<sockaddr_storage> *out, std::string *error);
 };
 
 } // namespace platform_posix

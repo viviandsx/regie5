@@ -73,13 +73,19 @@ public:
     bool enabled(config::Service s, int instance = 0) const { return m_cfg.at(s, instance).enabled; }
     /* How many instances a service has (1 unless config.json lists more). */
     int instances(config::Service s) const { return m_cfg.count(s); }
+    /* The services with a request waiting longer than min_seconds, by name
+     * ("Sonarr", "Radarr 4K"), the longest wait first, and that wait. */
+    std::vector<std::string> slow(double min_seconds, double *longest = nullptr) const;
+    /* No request waiting or on its way. */
+    bool idle() const { return m_pool.busy() == 0; }
     /* A path on a service, as a full URL (images included). The service's url
      * may hold a path of its own (a reverse proxy, the *arr's urlBase). */
     std::string url(config::Service s, const std::string &path, int instance = 0) const;
     /* The auth header for a service (for images fetched elsewhere); empty when none. */
     std::string auth_header(config::Service s, int instance = 0) const;
 
-    /* The connection test: an authenticated read that answers the version. */
+    /* The connection test: an authenticated read that answers the version
+     * (tried even while the server is set aside, http::Pool). */
     void test(config::Service s, std::function<void(Result<std::string>)> done, int instance = 0);
 
     /* Sonarr / Radarr: one instance each call (the first by default); what
@@ -184,7 +190,8 @@ private:
     template <typename T>
     void call(config::Service s, const std::string &method, const std::string &path,
               std::function<bool(const std::string &, T *)> parse, std::function<void(Result<T>)> done,
-              int instance = 0, const std::string &body = {}, bool need_on = true, size_t max_body = 0);
+              int instance = 0, const std::string &body = {}, bool need_on = true, size_t max_body = 0,
+              bool fresh = false);
     /* Plex's ways to the same results (api/plex). */
     void plex_sessions(std::function<void(Result<std::vector<model::Session>>)> done);
     void plex_tasks(std::function<void(Result<std::vector<model::Task>>)> done);

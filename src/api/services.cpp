@@ -115,13 +115,35 @@ http::Request Services::make(config::Service s, const std::string &method, const
         for (std::string &h : plex::client_headers(m_device_id, m_device_name, m_version))
             r.headers.push_back(std::move(h));
     r.insecure = m_cfg.at(s, instance).insecure;
+    r.server = m_cfg.at(s, instance).url;   /* each service its own turn (http::Pool) */
     return r;
+}
+
+std::vector<std::string> Services::slow(double min_seconds, double *longest) const
+{
+    std::vector<std::pair<double, std::string>> found;
+    for (const auto &kv : m_pool.waiting()) {
+        if (kv.second < min_seconds)
+            continue;
+        for (int s = 0; s < config::ServiceCount; s++)
+            for (int i = 0; i < m_cfg.count((config::Service)s); i++)
+                if (m_cfg.at((config::Service)s, i).url == kv.first && !kv.first.empty())
+                    found.push_back({kv.second, m_cfg.at((config::Service)s, i).name});
+    }
+    std::sort(found.begin(), found.end(), [](const auto &a, const auto &b) { return a.first > b.first; });
+    std::vector<std::string> out;
+    for (const auto &f : found)
+        if (std::find(out.begin(), out.end(), f.second) == out.end())
+            out.push_back(f.second);
+    if (longest)
+        *longest = found.empty() ? 0 : found.front().first;
+    return out;
 }
 
 template <typename T>
 void Services::call(config::Service s, const std::string &method, const std::string &path,
                     std::function<bool(const std::string &, T *)> parse, std::function<void(Result<T>)> done,
-                    int instance, const std::string &body, bool need_on, size_t max_body)
+                    int instance, const std::string &body, bool need_on, size_t max_body, bool fresh)
 {
     if (need_on ? !enabled(s, instance) : m_cfg.at(s, instance).url.empty()) {
         Result<T> res;
@@ -133,6 +155,7 @@ void Services::call(config::Service s, const std::string &method, const std::str
     http::Request req = make(s, method, path, instance);
     req.body = body;
     req.max_body = max_body;
+    req.fresh = fresh;
     /* Signed in by Quick Connect: a 401 is a session that ended, a 403 an
      * account that is not an administrator (never the key's fault). */
     const config::ServiceConfig &c = m_cfg.at(s, instance);
@@ -195,7 +218,7 @@ void Services::test(config::Service s, std::function<void(Result<std::string>)> 
         parse = m_cfg.plex() ? plex::parse_info : jellyfin::parse_info;
         break;
     }
-    call<std::string>(s, "GET", path, parse, std::move(done), instance);
+    call<std::string>(s, "GET", path, parse, std::move(done), instance, {}, true, 0, true);
 }
 
 void Services::health(config::Service s, std::function<void(Result<std::vector<model::Health>>)> done, int instance)

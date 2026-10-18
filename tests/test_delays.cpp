@@ -8,11 +8,16 @@
  */
 #include "check.h"
 
+#include "api/services.h"
 #include "platform/platform.h"
 #include "platform/posix/socket_transport.h"
 
 #include <arpa/inet.h>
 #include <atomic>
+#include <condition_variable>
+#include <map>
+#include <mutex>
+#include <set>
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <thread>
@@ -187,4 +192,171 @@ TEST(http_delays_hold_during_the_tls_handshake)
         CHECK(t.r.fail == http::Response::Other);
         CHECK(t.seconds < 1.0);
     }
+}
+
+namespace {
+
+/* Requests held until released, counted by server. */
+class Gate : public http::Transport {
+public:
+    http::Response perform(const http::Request &req, const std::atomic<bool> *cancel) override
+    {
+        const std::string server = http::Pool::server_of(req);
+        {
+            std::lock_guard<std::mutex> l(m);
+            calls[server]++;
+            const int now_running = ++running[server];
+            most[server] = std::max(most[server], now_running);
+        }
+        http::Response r;
+        if (fail_connect.count(server)) {
+            r.fail = http::Response::Connect;
+        } else {
+            std::unique_lock<std::mutex> l(m);
+            cv.wait(l, [&] { return open || (cancel && *cancel); });
+            r.status = 200;
+        }
+        std::lock_guard<std::mutex> l(m);
+        running[server]--;
+        return r;
+    }
+    void release()
+    {
+        {
+            std::lock_guard<std::mutex> l(m);
+            open = true;
+        }
+        cv.notify_all();
+    }
+    int get(std::map<std::string, int> &v, const std::string &k)
+    {
+        std::lock_guard<std::mutex> l(m);
+        return v[k];
+    }
+    std::mutex m;
+    std::condition_variable cv;
+    bool open = false;
+    std::map<std::string, int> calls, running, most;
+    std::set<std::string> fail_connect;
+};
+
+void drain(http::Pool &pool)
+{
+    for (int i = 0; i < 400 && (pool.busy() > 0 || pool.pump() > 0); i++)
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    pool.pump();
+}
+
+http::Request to(const std::string &server, const char *path = "/x")
+{
+    http::Request r;
+    r.url = server + path;
+    r.server = server;
+    return r;
+}
+
+} // namespace
+
+TEST(each_server_waits_its_turn)
+{
+    Gate gate;
+    http::Pool pool(gate, 4, nullptr);
+    int done_b = 0;
+    for (int i = 0; i < 5; i++)
+        pool.submit(to("http://slow:1"), nullptr);
+    pool.submit(to("http://quick:2"), [&done_b](http::Response &) -> std::function<void()> {
+        return [&done_b] { done_b++; };
+    });
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    /* The slow server holds two workers, never four; the other server was reached meanwhile. */
+    CHECK_EQ(gate.get(gate.running, "http://slow:1"), 2);
+    CHECK_EQ(gate.get(gate.calls, "http://quick:2"), 1);
+    const std::map<std::string, double> waiting = pool.waiting();
+    CHECK(waiting.count("http://slow:1") && waiting.at("http://slow:1") >= 0.15);
+    gate.release();
+    drain(pool);
+    CHECK_EQ(gate.get(gate.most, "http://slow:1"), 2);
+    CHECK_EQ(gate.get(gate.calls, "http://slow:1"), 5);
+    CHECK_EQ(done_b, 1);
+    CHECK(pool.waiting().empty());
+    /* The server's own address when Request::server is empty. */
+    http::Request plain;
+    plain.url = "https://media.example:8920/jellyfin/Items?x=1";
+    CHECK_EQ(http::Pool::server_of(plain), std::string("https://media.example:8920"));
+}
+
+TEST(an_unreachable_server_is_set_aside)
+{
+    Gate gate;
+    gate.open = true;
+    gate.fail_connect.insert("http://down:1");
+    http::Pool pool(gate, 2, nullptr);
+    std::vector<http::Response::Fail> got;
+    auto keep = [&got](http::Response &r) -> std::function<void()> {
+        const http::Response::Fail f = r.fail;
+        return [&got, f] { got.push_back(f); };
+    };
+    pool.submit(to("http://down:1"), keep);
+    drain(pool);
+    /* Asked again at once: answered "unreachable" without trying; the others go on. */
+    for (int i = 0; i < 3; i++)
+        pool.submit(to("http://down:1"), keep);
+    pool.submit(to("http://up:2"), keep);
+    drain(pool);
+    CHECK_EQ(gate.get(gate.calls, "http://down:1"), 1);
+    CHECK_EQ(gate.get(gate.calls, "http://up:2"), 1);
+    CHECK_EQ(got.size(), (size_t)5);
+    CHECK(got[0] == http::Response::Connect && got[1] == http::Response::Connect);
+    /* A connection test still goes. */
+    http::Request test = to("http://down:1");
+    test.fresh = true;
+    pool.submit(test, keep);
+    drain(pool);
+    CHECK_EQ(gate.get(gate.calls, "http://down:1"), 2);
+}
+
+TEST(services_name_the_slow_one)
+{
+    Gate gate;
+    http::Pool pool(gate, 4, nullptr);
+    config::Config cfg = config::mock();
+    api::Services s(cfg, pool, "fr");
+    s.queue(config::Sonarr, nullptr);
+    CHECK(!s.idle());
+    std::this_thread::sleep_for(std::chrono::milliseconds(250));
+    double longest = 0;
+    const std::vector<std::string> slow = s.slow(0.2, &longest);
+    CHECK(slow.size() == 1 && slow[0] == cfg.at(config::Sonarr).name);
+    CHECK(longest >= 0.2);
+    CHECK(s.slow(5).empty());
+    gate.release();
+    drain(pool);
+    CHECK(s.idle());
+}
+
+TEST(names_are_looked_up_once_in_a_while)
+{
+    platform_posix::SocketTransport t;
+    http::Request req;
+    req.timeout_s = 1;
+    /* A port nothing listens on: refused, but the name was looked up. */
+    int port = 0;
+    {
+        Server s(silent);
+        port = std::stoi(s.url().substr(s.url().rfind(':') + 1));
+    }
+    req.url = "http://localhost:" + std::to_string(port) + "/x";
+    t.perform(req, nullptr);
+    t.perform(req, nullptr);
+    CHECK_EQ(t.name_lookups(), 1);
+    /* A name that is not found: not asked again at once either. */
+    req.url = "http://regie5-no-such-host.invalid/x";
+    http::Response a = t.perform(req, nullptr);
+    http::Response b = t.perform(req, nullptr);
+    CHECK(a.fail == http::Response::Connect && b.fail == http::Response::Connect);
+    CHECK_EQ(t.name_lookups(), 2);
+    /* Numeric addresses are never looked up. */
+    req.url = "http://127.0.0.1:" + std::to_string(port) + "/x";
+    t.perform(req, nullptr);
+    CHECK_EQ(t.name_lookups(), 2);
 }
