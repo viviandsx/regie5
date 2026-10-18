@@ -302,16 +302,18 @@ TEST(cleanup_candidates)
     };
     cleanup::Library radarr;
     radarr.service = config::Radarr, radarr.instance_name = "Radarr";
-    radarr.movies = {movie(1, "Old, both", 101, "", 8e9), movie(2, "Old, one", 102, "", 9e9),
+    const std::vector<model::Movie> films = {movie(1, "Old, both", 101, "", 8e9), movie(2, "Old, one", 102, "", 9e9),
                      movie(3, "Favourite", 103, "", 7e9), movie(4, "Recent", 104, "", 6e9),
                      movie(5, "Unknown to Jellyfin", 105, "", 5e9), movie(6, "By IMDb", 0, "tt6", 4e9),
                      movie(7, "Kept", 107, "", 3e9), movie(8, "No file", 108, "", 0)};
+    radarr.movies = &films;
     cleanup::Library sonarr;
     sonarr.service = config::Sonarr, sonarr.instance_name = "Sonarr";
     model::Series ended, running;
     ended.id = 20, ended.title = "Ended", ended.tvdb_id = 201, ended.size = 20e9, ended.status = model::Series::Ended;
     running.id = 21, running.title = "Running", running.tvdb_id = 202, running.size = 30e9;
-    sonarr.series = {ended, running};
+    const std::vector<model::Series> shows = {ended, running};
+    sonarr.series = &shows;
 
     auto item = [](int tmdb, const char *imdb, bool played, time_t last, bool fav = false) {
         model::UserItem u;

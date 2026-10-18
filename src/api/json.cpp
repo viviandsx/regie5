@@ -10,6 +10,203 @@
 
 namespace json {
 
+namespace {
+
+/* Walks a document without building it: only the list's elements go to cJSON. */
+class Walker {
+public:
+    Walker(const std::string &t, const std::function<void(const cJSON *)> &fn)
+        : m_p(t.data()), m_end(t.data() + t.size()), m_fn(fn)
+    {
+    }
+
+    Each run(std::initializer_list<const char *> path)
+    {
+        m_path = path.begin();
+        m_levels = path.size();
+        Each r;
+        if (m_levels == 0) {
+            space();
+            if (m_p >= m_end || *m_p != '[')   /* an error object is not a list */
+                return Each::Bad;
+            r = list() ? Each::Done : Each::Bad;
+        } else {
+            r = object(0);
+        }
+        space();
+        return r != Each::Bad && m_p == m_end ? r : Each::Bad;
+    }
+
+private:
+    void space()
+    {
+        while (m_p < m_end && (*m_p == ' ' || *m_p == '\t' || *m_p == '\n' || *m_p == '\r'))
+            m_p++;
+    }
+
+    /* At a '"': past the string; its raw text in *out. */
+    bool string(std::string *out)
+    {
+        if (m_p >= m_end || *m_p != '"')
+            return false;
+        const char *start = ++m_p;
+        while (m_p < m_end && *m_p != '"') {
+            if (*m_p == '\\' && ++m_p >= m_end)
+                return false;
+            m_p++;
+        }
+        if (m_p >= m_end)
+            return false;
+        if (out)
+            out->assign(start, m_p);
+        m_p++;
+        return true;
+    }
+
+    /* Past any value (its brackets balanced; cJSON checks the elements). */
+    bool skip()
+    {
+        space();
+        if (m_p >= m_end)
+            return false;
+        if (*m_p == '"')
+            return string(nullptr);
+        if (*m_p == '{' || *m_p == '[') {
+            int depth = 0;
+            while (m_p < m_end) {
+                const char c = *m_p;
+                if (c == '"') {
+                    if (!string(nullptr))
+                        return false;
+                    continue;
+                }
+                if (c == '{' || c == '[') {
+                    depth++;
+                } else if (c == '}' || c == ']') {
+                    if (--depth == 0) {
+                        m_p++;
+                        return true;
+                    }
+                }
+                m_p++;
+            }
+            return false;
+        }
+        const char *start = m_p;
+        while (m_p < m_end && *m_p != ',' && *m_p != '}' && *m_p != ']' && *m_p != ' ' && *m_p != '\t' && *m_p != '\n' &&
+               *m_p != '\r')
+            m_p++;
+        return m_p > start;
+    }
+
+    /* One element: its text parsed alone, then handed over. */
+    bool element()
+    {
+        space();
+        const char *start = m_p;
+        if (!skip())
+            return false;
+        cJSON *e = cJSON_ParseWithLength(start, (size_t)(m_p - start));
+        if (!e)
+            return false;
+        m_fn(e);
+        cJSON_Delete(e);
+        return true;
+    }
+
+    /* At the list's value: an array, or a lone object. */
+    bool list()
+    {
+        space();
+        if (m_p < m_end && *m_p == '{')
+            return element();
+        if (m_p >= m_end || *m_p != '[')
+            return false;
+        m_p++;
+        space();
+        if (m_p < m_end && *m_p == ']') {
+            m_p++;
+            return true;
+        }
+        for (;;) {
+            if (!element())
+                return false;
+            space();
+            if (m_p < m_end && *m_p == ',') {
+                m_p++;
+                continue;
+            }
+            if (m_p < m_end && *m_p == ']') {
+                m_p++;
+                return true;
+            }
+            return false;
+        }
+    }
+
+    /* At an object on the path, level deep: its members, the one on the path followed. */
+    Each object(size_t level)
+    {
+        space();
+        if (m_p >= m_end || *m_p != '{')
+            return Each::Bad;
+        m_p++;
+        Each found = level + 1 == m_levels ? Each::Missing : Each::Bad;   /* a member on the way must be there */
+        bool seen = false;
+        space();
+        if (m_p < m_end && *m_p == '}') {
+            m_p++;
+            return found;
+        }
+        for (;;) {
+            space();
+            std::string key;
+            if (!string(&key))
+                return Each::Bad;
+            space();
+            if (m_p >= m_end || *m_p != ':')
+                return Each::Bad;
+            m_p++;
+            if (!seen && key == m_path[level]) {
+                seen = true;
+                if (level + 1 == m_levels) {
+                    if (!list())
+                        return Each::Bad;
+                    found = Each::Done;
+                } else {
+                    found = object(level + 1);
+                    if (found == Each::Bad)
+                        return Each::Bad;
+                }
+            } else if (!skip()) {
+                return Each::Bad;
+            }
+            space();
+            if (m_p < m_end && *m_p == ',') {
+                m_p++;
+                continue;
+            }
+            if (m_p < m_end && *m_p == '}') {
+                m_p++;
+                return found;
+            }
+            return Each::Bad;
+        }
+    }
+
+    const char *m_p, *m_end;
+    const std::function<void(const cJSON *)> &m_fn;
+    const char *const *m_path = nullptr;
+    size_t m_levels = 0;
+};
+
+} // namespace
+
+Each each(const std::string &text, std::initializer_list<const char *> path, const std::function<void(const cJSON *)> &fn)
+{
+    return Walker(text, fn).run(path);
+}
+
 const cJSON *get(const cJSON *o, const char *key)
 {
     return cJSON_IsObject(o) ? cJSON_GetObjectItemCaseSensitive(o, key) : nullptr;

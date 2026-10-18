@@ -37,13 +37,17 @@ struct Request {
     std::vector<std::string> headers;   /* "Name: value" */
     std::string body;                   /* sent as application/json when not empty */
     int timeout_s = 10;
+    /* Bytes of body at most (a library list): past it the answer is given up,
+     * Response::TooLarge. 0: the transport's own limit (64 MiB). */
+    size_t max_body = 0;
     bool insecure = false;   /* https: the certificate is not checked (config.json "insecure") */
 };
 
 struct Response {
     /* no HTTP answer, and why; Unsupported: this transport cannot reach such an address (https on the PS5) */
-    /* Certificate: an https:// server whose certificate is refused */
-    enum Fail { None, Connect, Timeout, Other, Unsupported, Certificate } fail = None;
+    /* Certificate: an https:// server whose certificate is refused; TooLarge:
+     * a body past Request::max_body (given up before it fills the memory) */
+    enum Fail { None, Connect, Timeout, Other, Unsupported, Certificate, TooLarge } fail = None;
     int status = 0;            /* HTTP status; 0 when no answer */
     std::string body;
     std::string content_type;
@@ -96,5 +100,7 @@ private:
 
 /* "Name: value" for the services' auth headers. */
 std::string header(const std::string &name, const std::string &value);
+/* A body's size for the log: "812 B", "31 KiB", "18.5 MiB". */
+std::string size_text(size_t bytes);
 
 } // namespace http

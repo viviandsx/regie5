@@ -17,6 +17,10 @@ void JellyfinStats::load(bool force, double now)
 {
     if (!m_ctx.services)
         return;
+    if (m_ctx.lists && m_libs.ready() && m_ctx.lists->version() != m_lists_seen) {   /* a list arrived */
+        m_lists_seen = m_ctx.lists->version();
+        remeasure();
+    }
     std::weak_ptr<bool> alive = m_alive;
     if ((force || now - m_users_at > 60) && !m_users.loading()) {
         m_users_at = now;
@@ -38,9 +42,9 @@ void JellyfinStats::load(bool force, double now)
     if ((force || m_libs.state == load::Idle) && !m_libs.loading()) {
         if (!m_libs.ready())
             m_libs.state = load::Loading;
-        if (force) {   /* the sizes are asked again too */
-            m_movies.clear();
-            m_series.clear();
+        if (force && m_ctx.lists) {   /* the sizes are asked again too */
+            m_ctx.lists->want_movies(true);
+            m_ctx.lists->want_series(true);
         }
         m_ctx.services->libraries([this, alive](api::Result<std::vector<model::JellyfinLibrary>> r) {
             if (alive.expired())
@@ -88,45 +92,23 @@ void JellyfinStats::ask_library(size_t k)
 
 void JellyfinStats::ask_arr()
 {
-    if (!m_movies.empty() || !m_series.empty())
-        return;   /* already asked (or there): titles do not move much */
-    api::Services &svc = *m_ctx.services;
-    std::weak_ptr<bool> alive = m_alive;
-    for (int i = 0; i < svc.instances(config::Radarr); i++)
-        m_movies.push_back({config::Radarr, i, {}});
-    for (int i = 0; i < svc.instances(config::Sonarr); i++)
-        m_series.push_back({config::Sonarr, i, {}});
-    for (size_t k = 0; k < m_movies.size(); k++) {
-        m_movies[k].load.state = load::Loading;
-        svc.movies(
-            [this, alive, k](api::Result<std::vector<model::Movie>> r) {
-                if (alive.expired() || k >= m_movies.size())
-                    return;
-                m_movies[k].load.take(std::move(r), platform::now());
-                remeasure();
-            },
-            m_movies[k].instance);
-    }
-    for (size_t k = 0; k < m_series.size(); k++) {
-        m_series[k].load.state = load::Loading;
-        svc.series(
-            [this, alive, k](api::Result<std::vector<model::Series>> r) {
-                if (alive.expired() || k >= m_series.size())
-                    return;
-                m_series[k].load.take(std::move(r), platform::now());
-                remeasure();
-            },
-            m_series[k].instance);
-    }
+    /* Shared with the Library (Context::lists): asked once for both. */
+    if (!m_ctx.lists)
+        return;
+    m_ctx.lists->want_movies(false);
+    m_ctx.lists->want_series(false);
+    m_lists_seen = m_ctx.lists->version();
     remeasure();
 }
 
 bool JellyfinStats::arr_done() const
 {
-    for (const auto &p : m_movies)
+    if (!m_ctx.lists)
+        return true;
+    for (const auto &p : m_ctx.lists->movies())
         if (p.load.loading() || p.load.state == load::Idle)
             return false;
-    for (const auto &p : m_series)
+    for (const auto &p : m_ctx.lists->series())
         if (p.load.loading() || p.load.state == load::Idle)
             return false;
     return true;
@@ -136,16 +118,17 @@ void JellyfinStats::remeasure()
 {
     if (!arr_done() || !m_libs.ready())
         return;
-    /* Every instance's titles, once (a few thousand: matched by index, not per frame). */
-    std::vector<model::Movie> movies;
-    std::vector<model::Series> series;
-    bool any = false;
-    for (const auto &p : m_movies)
-        if (p.load.ready())
-            movies.insert(movies.end(), p.load.value.begin(), p.load.value.end()), any = true;
-    for (const auto &p : m_series)
-        if (p.load.ready())
-            series.insert(series.end(), p.load.value.begin(), p.load.value.end()), any = true;
+    /* Every instance's titles, once (a few thousand: matched by index, not
+     * per frame); with one instance each, the shared lists themselves. */
+    Load<Shared<model::Movie>> movies_all;
+    Load<Shared<model::Series>> series_all;
+    if (m_ctx.lists) {
+        join_shared(m_ctx.lists->movies(), &movies_all);
+        join_shared(m_ctx.lists->series(), &series_all);
+    }
+    const bool any = movies_all.value || series_all.value;
+    const std::vector<model::Movie> &movies = list_of(movies_all);
+    const std::vector<model::Series> &series = list_of(series_all);
     for (size_t k = 0; k < m_data.size() && k < m_libs.value.size(); k++) {
         Data &d = m_data[k];
         if (d.measured || !d.items.ready())

@@ -53,8 +53,7 @@ private:
         bool measured = false;
     };
     std::vector<Data> m_data;   /* by library */
-    std::vector<Part<std::vector<model::Movie>>> m_movies;
-    std::vector<Part<std::vector<model::Series>>> m_series;
+    unsigned m_lists_seen = ~0u;   /* the version of Context::lists measured from */
     Load<std::vector<model::JellyfinUser>> m_users;
     double m_users_at = -100;
     std::shared_ptr<bool> m_alive = std::make_shared<bool>(true);

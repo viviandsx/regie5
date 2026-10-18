@@ -606,10 +606,16 @@ int main()
         const size_t heap = ps5::heap_size();
         const size_t pictures = heap >= (256u << 20) ? 64u << 20 : heap >= (192u << 20) ? 48u << 20 : 32u << 20;
         const size_t glyphs = heap >= (192u << 20) ? 48u << 20 : 32u << 20;
+        /* A library list is held as text while it is read (and up to half as
+         * much again while its string grows), then about a quarter of it as
+         * titles: 32 MiB of text is some 8 000 films. Past it, a clear
+         * message instead of a heap gone (api::Error::TooLarge). */
+        const size_t lists = heap >= (256u << 20) ? 32u << 20 : heap >= (192u << 20) ? 24u << 20 : 16u << 20;
         art::set_budget(pictures);
         gfx::set_atlas_budget(glyphs);
-        ps5::log("[regie5] budgets for a %zu MiB heap: pictures %zu MiB, glyph pages %zu MiB", heap >> 20,
-                 pictures >> 20, glyphs >> 20);
+        api::set_list_limit(lists);
+        ps5::log("[regie5] budgets for a %zu MiB heap: pictures %zu MiB, glyph pages %zu MiB, a library list %zu MiB",
+                 heap >> 20, pictures >> 20, glyphs >> 20, lists >> 20);
     }
     step("glyphs");
     {

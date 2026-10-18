@@ -27,7 +27,9 @@
 
 #include <map>
 #include <memory>
+#include <set>
 #include <string>
+#include <tuple>
 #include <vector>
 
 namespace ui {
@@ -51,12 +53,6 @@ public:
     void choose(int pill);
 
 private:
-    struct Source {
-        config::Service service;
-        int instance;
-        Load<std::vector<model::Movie>> movies;
-        Load<std::vector<model::Series>> series;
-    };
     void rebuild();
     void act();   /* the focused row's actions */
     void keep(const cleanup::Candidate &c);
@@ -66,7 +62,8 @@ private:
     Context &m_ctx;
     Load<std::vector<model::JellyfinUser>> m_users;
     std::map<std::string, Load<std::vector<model::UserItem>>> m_items;   /* by user id */
-    std::vector<Source> m_sources;   /* every Radarr and Sonarr instance */
+    unsigned m_lists_seen = ~0u;   /* the version of Context::lists rebuilt from */
+    std::set<std::tuple<int, int, int>> m_gone;   /* deleted here: service, instance, id */
     std::vector<cleanup::Candidate> m_list;
     int64_t m_total = 0;
     bool m_show_kept = false;   /* the kept titles instead of the candidates */

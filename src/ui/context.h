@@ -11,6 +11,7 @@
 #include "core/app_settings.h"
 #include "core/config.h"
 #include "core/i18n.h"
+#include "ui/arr_lists.h"
 #include "ui/jelly5_link.h"
 #include "ui/tabbar.h"
 
@@ -39,6 +40,8 @@ struct Context {
     std::function<void()> on_config_read;
     bool mock = false;
     api::Services *services = nullptr;
+    /* The Radarr films and Sonarr series, once for every screen (the shell's). */
+    ArrLists *lists = nullptr;
     /* Health alerts seen come and go during this session (the journal's
      * "Santé"): kept by the Home screen, which reads the servers' health. */
     struct HealthEvent {

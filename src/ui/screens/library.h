@@ -105,14 +105,18 @@ private:
     void draw_missing(double now, float x0, float dt, bool *animating);
 
     Context &m_ctx;
-    /* Each read from every instance of Sonarr / Radarr (the parts), and seen
-     * as one (merge_parts): what the grids and lists show. */
-    Load<std::vector<model::Series>> m_series;
-    Load<std::vector<model::Movie>> m_movies;
+    /* Every instance's series and films (Context::lists, shared with the
+     * other screens), joined: what the grids and lists show. */
+    Load<Shared<model::Series>> m_series;
+    Load<Shared<model::Movie>> m_movies;
+    unsigned m_lists_seen = ~0u;   /* the lists' version joined last */
+    void sync_lists();             /* joins them again when one arrived */
+    const std::vector<model::Series> &series_list() const { return list_of(m_series); }
+    const std::vector<model::Movie> &movies_list() const { return list_of(m_movies); }
+    /* The Missing view's, each read from every instance (the parts) and seen
+     * as one (merge_parts). */
     Load<api::Services::MissingEpisodes> m_missing_eps;
     Load<api::Services::MissingMovies> m_missing_movies;
-    std::vector<Part<std::vector<model::Series>>> m_series_parts;
-    std::vector<Part<std::vector<model::Movie>>> m_movies_parts;
     std::vector<Part<api::Services::MissingEpisodes>> m_missing_eps_parts;
     std::vector<Part<api::Services::MissingMovies>> m_missing_movies_parts;
     std::vector<Part<std::vector<model::QualityProfile>>> m_profiles;   /* every Sonarr, then every Radarr */

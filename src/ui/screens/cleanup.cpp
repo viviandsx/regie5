@@ -43,32 +43,13 @@ void CleanupView::load(bool force)
         return;
     std::weak_ptr<bool> alive = m_alive;
     auto stale = [force](const auto &l) { return !l.loading() && (force || l.state == load::Idle); };
-    if (m_sources.empty())
-        for (config::Service s : {config::Radarr, config::Sonarr})
-            for (int i = 0; i < svc->instances(s); i++)
-                m_sources.push_back({s, i, {}, {}});
-    for (size_t k = 0; k < m_sources.size(); k++) {
-        Source &src = m_sources[k];
-        if (src.service == config::Radarr && stale(src.movies)) {
-            src.movies.state = load::Loading;
-            svc->movies(
-                [this, alive, k](api::Result<std::vector<model::Movie>> r) {
-                    if (alive.expired() || k >= m_sources.size())
-                        return;
-                    m_sources[k].movies.take(std::move(r), platform::now());
-                    rebuild();
-                },
-                src.instance);
-        } else if (src.service == config::Sonarr && stale(src.series)) {
-            src.series.state = load::Loading;
-            svc->series(
-                [this, alive, k](api::Result<std::vector<model::Series>> r) {
-                    if (alive.expired() || k >= m_sources.size())
-                        return;
-                    m_sources[k].series.take(std::move(r), platform::now());
-                    rebuild();
-                },
-                src.instance);
+    /* Every Radarr's films and Sonarr's series: shared with the Library (Context::lists). */
+    if (m_ctx.lists) {
+        m_ctx.lists->want_movies(force);
+        m_ctx.lists->want_series(force);
+        if (m_ctx.lists->version() != m_lists_seen) {
+            m_lists_seen = m_ctx.lists->version();
+            rebuild();
         }
     }
     if (stale(m_users)) {
@@ -119,24 +100,34 @@ void CleanupView::rebuild()
         items[kv.first] = kv.second.value;
     }
     std::vector<cleanup::Library> libs;
-    for (const Source &src : m_sources) {
-        const bool ready = src.service == config::Radarr ? src.movies.ready() : src.series.ready();
-        const bool off = src.service == config::Radarr ? src.movies.state == load::Off : src.series.state == load::Off;
-        if (off)
-            continue;
-        if (!ready)
-            return;
-        cleanup::Library l;
-        l.service = src.service;
-        l.instance = src.instance;
-        l.instance_name = m_ctx.services->config().at(src.service, src.instance).name;
-        l.movies = src.movies.value;
-        l.series = src.series.value;
-        libs.push_back(std::move(l));
-    }
+    if (!m_ctx.lists)
+        return;
+    auto add = [&](const auto &parts, auto field) {
+        for (const auto &p : parts) {
+            if (p.load.state == load::Off)
+                continue;
+            if (!p.load.ready() || !p.load.value)
+                return false;
+            cleanup::Library l;
+            l.service = p.service;
+            l.instance = p.instance;
+            l.instance_name = m_ctx.services->config().at(p.service, p.instance).name;
+            l.*field = p.load.value.get();   /* the shared list itself, never a copy */
+            libs.push_back(std::move(l));
+        }
+        return true;
+    };
+    if (!add(m_ctx.lists->movies(), &cleanup::Library::movies) || !add(m_ctx.lists->series(), &cleanup::Library::series))
+        return;
     const cleanup::Criteria c{m_ctx.settings.cleanup_everyone, m_ctx.settings.cleanup_months};
     m_list = cleanup::candidates(libs, m_users.value, items, m_ctx.services->config().ignore_users, c, m_ctx.settings,
                                  time(nullptr));
+    /* Deleted meanwhile: never shown again, even from a list read before. */
+    m_list.erase(std::remove_if(m_list.begin(), m_list.end(),
+                                [this](const cleanup::Candidate &x) {
+                                    return m_gone.count(std::make_tuple((int)x.service, x.instance, x.id)) > 0;
+                                }),
+                 m_list.end());
     for (const auto &x : m_list)
         m_total += x.size;
     m_focus = std::clamp(m_focus, 0, std::max(0, (int)m_list.size() - 1));
@@ -283,12 +274,14 @@ void CleanupView::do_delete(const cleanup::Candidate &c)
         notify(fmt::f(i18n::tr(seerr ? i18n::CleanupDoneSeerr : i18n::CleanupDone), c.title.c_str(),
                       fmt::size(c.size).c_str()),
                true, platform::now(), seerr ? 6.0 : 3.0);
-        for (Source &src : m_sources)
-            if (src.service == c.service && src.instance == c.instance) {
-                src.movies.state = load::Idle;
-                src.series.state = load::Idle;
-            }
-        load(false);
+        m_gone.insert(std::make_tuple((int)c.service, c.instance, c.id));
+        rebuild();
+        if (m_ctx.lists) {   /* that list asked again (the Library's too) */
+            if (c.service == config::Radarr)
+                m_ctx.lists->want_movies(true);
+            else
+                m_ctx.lists->want_series(true);
+        }
     };
     if (c.service == config::Radarr)
         m_ctx.services->delete_movie(c.instance, c.id, after);
@@ -344,8 +337,12 @@ void CleanupView::draw(double now, float x0, bool focused, float dt, bool *anima
     bool loading = !m_users.ready() && m_users.state != load::Failed && m_users.state != load::Off;
     for (const auto &kv : m_items)
         loading |= kv.second.loading();
-    for (const auto &s : m_sources)
-        loading |= s.movies.loading() || s.series.loading();
+    if (m_ctx.lists && !m_ctx.services->config().plex()) {
+        for (const auto &p : m_ctx.lists->movies())
+            loading |= p.load.loading();
+        for (const auto &p : m_ctx.lists->series())
+            loading |= p.load.loading();
+    }
     const int n = (int)m_list.size();
     if (!m_show_kept && n > 0)
         gfx::text(x0, 262,

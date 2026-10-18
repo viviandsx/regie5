@@ -15,12 +15,20 @@ namespace platform_linux {
 
 namespace {
 
+struct Sink {
+    std::string *body;
+    size_t max;          /* bytes at most (Request::max_body, else 64 MiB) */
+    bool over = false;   /* given up there */
+};
+
 size_t on_body(char *p, size_t size, size_t n, void *ud)
 {
-    auto *body = static_cast<std::string *>(ud);
-    if (body->size() > (64u << 20))
-        return 0;   /* far past anything these APIs send: give up */
-    body->append(p, size * n);
+    auto *sink = static_cast<Sink *>(ud);
+    if (sink->body->size() + size * n > sink->max) {
+        sink->over = true;
+        return 0;   /* give up: CURLE_WRITE_ERROR */
+    }
+    sink->body->append(p, size * n);
     return size * n;
 }
 
@@ -71,7 +79,8 @@ http::Response CurlTransport::perform(const http::Request &req, const std::atomi
     curl_easy_setopt(c, CURLOPT_SSL_VERIFYHOST, req.insecure ? 0L : 2L);
     curl_easy_setopt(c, CURLOPT_ACCEPT_ENCODING, "");
     curl_easy_setopt(c, CURLOPT_WRITEFUNCTION, on_body);
-    curl_easy_setopt(c, CURLOPT_WRITEDATA, &r.body);
+    Sink sink{&r.body, req.max_body ? req.max_body : (size_t)64 << 20};
+    curl_easy_setopt(c, CURLOPT_WRITEDATA, &sink);
     curl_easy_setopt(c, CURLOPT_NOPROGRESS, 0L);
     curl_easy_setopt(c, CURLOPT_XFERINFOFUNCTION, on_progress);
     curl_easy_setopt(c, CURLOPT_XFERINFODATA, (void *)cancel);
@@ -100,7 +109,8 @@ http::Response CurlTransport::perform(const http::Request &req, const std::atomi
     } else {
         r.body.clear();
         r.error = curl_easy_strerror(rc);
-        r.fail = rc == CURLE_OPERATION_TIMEDOUT ? http::Response::Timeout
+        r.fail = sink.over                         ? http::Response::TooLarge
+                 : rc == CURLE_OPERATION_TIMEDOUT ? http::Response::Timeout
                  : (rc == CURLE_COULDNT_CONNECT || rc == CURLE_COULDNT_RESOLVE_HOST ||
                     rc == CURLE_COULDNT_RESOLVE_PROXY)
                      ? http::Response::Connect
@@ -111,8 +121,9 @@ http::Response CurlTransport::perform(const http::Request &req, const std::atomi
     if (m_log) {
         /* The address only: the key travels in a header and is never printed. */
         const std::string shown = req.url.substr(0, req.url.find('?'));
-        std::fprintf(stderr, "http: %s %s -> %d%s%s (%.0f ms)\n", req.method.c_str(), shown.c_str(), r.status,
-                     r.error.empty() ? "" : " ", r.error.c_str(), (platform::now() - t0) * 1000.0);
+        std::fprintf(stderr, "http: %s %s -> %d%s%s (%.0f ms%s%s)\n", req.method.c_str(), shown.c_str(), r.status,
+                     r.error.empty() ? "" : " ", r.error.c_str(), (platform::now() - t0) * 1000.0,
+                     r.body.empty() ? "" : ", ", r.body.empty() ? "" : http::size_text(r.body.size()).c_str());
     }
     return r;
 }

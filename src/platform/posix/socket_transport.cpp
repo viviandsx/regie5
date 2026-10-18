@@ -472,8 +472,9 @@ http::Response SocketTransport::perform(const http::Request &req, const std::ato
             /* The address only: the key travels in a header and is never printed. */
             const std::string shown = req.url.substr(0, req.url.find('?'));
             char tail[260];
-            const int n = std::snprintf(tail, sizeof tail, " -> %d%s%s (%.0f ms", r.status, r.error.empty() ? "" : " ",
-                                        r.error.c_str(), (platform::now() - t0) * 1000.0);
+            const int n = std::snprintf(tail, sizeof tail, " -> %d%s%s (%.0f ms%s%s", r.status, r.error.empty() ? "" : " ",
+                                        r.error.c_str(), (platform::now() - t0) * 1000.0, r.body.empty() ? "" : ", ",
+                                        r.body.empty() ? "" : http::size_text(r.body.size()).c_str());
             if (n > 0 && n < (int)sizeof tail && t_connected > 0)
                 std::snprintf(tail + n, sizeof tail - n, ": connected %.0f, TLS %.0f", (t_connected - t0) * 1000.0,
                               t_secured > 0 ? (t_secured - t_connected) * 1000.0 : -1.0);
@@ -529,7 +530,7 @@ http::Response SocketTransport::perform(const http::Request &req, const std::ato
         sent += (size_t)w.n;
     }
 
-    http::wire::Reader reader(req.method == "HEAD");
+    http::wire::Reader reader(req.method == "HEAD", req.max_body);
     std::vector<char> buf(16384);   /* on the heap: worker stacks are small on the PS5 */
     for (;;) {
         const Io got = ch->read(buf.data(), buf.size());
@@ -537,7 +538,7 @@ http::Response SocketTransport::perform(const http::Request &req, const std::ato
             return done(got.fail, got.error);
         const http::wire::Reader::State st = got.n > 0 ? reader.feed(buf.data(), (size_t)got.n) : reader.finish();
         if (st == http::wire::Reader::Bad)
-            return done(http::Response::Other, reader.error);
+            return done(reader.too_large ? http::Response::TooLarge : http::Response::Other, reader.error);
         if (st == http::wire::Reader::Done)
             break;
     }

@@ -28,6 +28,7 @@ Error classify(const http::Response &r, bool parsed)
     case http::Response::Other: return Error::Unreachable;
     case http::Response::Unsupported: return Error::Unsupported;
     case http::Response::Certificate: return Error::Certificate;
+    case http::Response::TooLarge: return Error::TooLarge;
     case http::Response::None: break;
     }
     if (r.status == 401 || r.status == 403)
@@ -40,6 +41,13 @@ Error classify(const http::Response &r, bool parsed)
         return Error::Http;
     return parsed ? Error::None : Error::BadResponse;
 }
+
+namespace {
+size_t s_list_limit = 64u << 20;
+} // namespace
+
+void set_list_limit(size_t bytes) { s_list_limit = bytes; }
+size_t list_limit() { return s_list_limit; }
 
 Services::Services(const config::Config &cfg, http::Pool &pool, std::string lang)
     : m_cfg(cfg), m_pool(pool), m_lang(std::move(lang))
@@ -113,7 +121,7 @@ http::Request Services::make(config::Service s, const std::string &method, const
 template <typename T>
 void Services::call(config::Service s, const std::string &method, const std::string &path,
                     std::function<bool(const std::string &, T *)> parse, std::function<void(Result<T>)> done,
-                    int instance, const std::string &body, bool need_on)
+                    int instance, const std::string &body, bool need_on, size_t max_body)
 {
     if (need_on ? !enabled(s, instance) : m_cfg.at(s, instance).url.empty()) {
         Result<T> res;
@@ -124,6 +132,7 @@ void Services::call(config::Service s, const std::string &method, const std::str
     }
     http::Request req = make(s, method, path, instance);
     req.body = body;
+    req.max_body = max_body;
     /* Signed in by Quick Connect: a 401 is a session that ended, a 403 an
      * account that is not an administrator (never the key's fault). */
     const config::ServiceConfig &c = m_cfg.at(s, instance);
@@ -240,7 +249,7 @@ void Services::series(std::function<void(Result<std::vector<model::Series>>)> do
         [instance](const std::string &b, std::vector<model::Series> *o) {
             return tagged(arr::parse_series(b, o), o, instance);
         },
-        std::move(done), instance);
+        std::move(done), instance, {}, true, list_limit());
 }
 
 void Services::movies(std::function<void(Result<std::vector<model::Movie>>)> done, int instance)
@@ -250,7 +259,7 @@ void Services::movies(std::function<void(Result<std::vector<model::Movie>>)> don
         [instance](const std::string &b, std::vector<model::Movie> *o) {
             return tagged(arr::parse_movies(b, o), o, instance);
         },
-        std::move(done), instance);
+        std::move(done), instance, {}, true, list_limit());
 }
 
 void Services::user_items(const std::string &user_id, std::function<void(Result<std::vector<model::UserItem>>)> done)
@@ -265,7 +274,7 @@ void Services::user_items(const std::string &user_id, std::function<void(Result<
     }
     if (!m_cfg.emby()) {
         call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::user_items_path(user_id),
-                                           jellyfin::parse_user_items, std::move(done));
+                                           jellyfin::parse_user_items, std::move(done), 0, {}, true, list_limit());
         return;
     }
     /* Emby dates no series, even one watched to the end: its latest episode
@@ -292,8 +301,10 @@ void Services::user_items(const std::string &user_id, std::function<void(Result<
                             i.last_played = std::max(i.last_played, f->second);
                     }
                     done(std::move(*shared));
-                });
-        });
+                },
+                0, {}, true, list_limit());
+        },
+        0, {}, true, list_limit());
 }
 
 void Services::jellyfin_index(std::function<void(Result<std::vector<model::UserItem>>)> done)
@@ -306,7 +317,7 @@ void Services::jellyfin_index(std::function<void(Result<std::vector<model::UserI
         return;
     }
     call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::index_path(), jellyfin::parse_user_items,
-                                       std::move(done));
+                                       std::move(done), 0, {}, true, list_limit());
 }
 
 void Services::server_id(std::function<void(Result<std::string>)> done)
@@ -402,11 +413,11 @@ void Services::library_items(const std::string &library_id,
 {
     if (m_cfg.plex()) {
         call<std::vector<model::UserItem>>(config::Jellyfin, "GET", plex::section_items_path(library_id),
-                                           plex::parse_section_items, std::move(done));
+                                           plex::parse_section_items, std::move(done), 0, {}, true, list_limit());
         return;
     }
     call<std::vector<model::UserItem>>(config::Jellyfin, "GET", jellyfin::library_items_path(library_id),
-                                       jellyfin::parse_user_items, std::move(done));
+                                       jellyfin::parse_user_items, std::move(done), 0, {}, true, list_limit());
 }
 
 void Services::library_count(const std::string &library_id, const std::string &type,

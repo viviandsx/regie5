@@ -18,7 +18,8 @@
  *   REGIE5_MOCK_DELAY_MS=800              every answer that late (default 250)
  *   REGIE5_MOCK_FAIL=radarr:unreachable,seerr:unauthorized
  *                                        (unreachable, timeout, unauthorized,
- *                                         forbidden, notfound, servererror, badjson)
+ *                                         forbidden, notfound, servererror, badjson,
+ *                                         toolarge: the library lists only)
  *   REGIE5_MOCK_EMPTY=sonarr,seerr        their lists answer empty (same shape)
  *   REGIE5_MOCK_OLD=sonarr,jellyfin       their connection test answers a version
  *                                        older than Régie5's minimum (1.0.0)

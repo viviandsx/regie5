@@ -522,15 +522,14 @@ std::string section_items_path(const std::string &section_id)
 
 bool parse_section_items(const std::string &body, std::vector<model::UserItem> *out)
 {
-    json::Doc doc(body);
-    const cJSON *c = container(doc);
-    if (!cJSON_IsObject(c))
-        return false;
     out->clear();
-    for (const cJSON *m : list(c, "Metadata")) {
+    /* A whole library: one title at a time (json::each); none at all is an empty one. */
+    return json::each(body, {"MediaContainer", "Metadata"}, [out](const cJSON *m) {
+        if (!cJSON_IsObject(m))
+            return;
         const std::string type = text(m, "type");
         if (type != "movie" && type != "show")
-            continue;
+            return;
         model::UserItem it;
         it.id = text(m, "ratingKey");
         it.series = type == "show";
@@ -540,8 +539,7 @@ bool parse_section_items(const std::string &body, std::vector<model::UserItem> *
         it.played = whole(m, "viewCount") > 0;
         it.last_played = (time_t)whole(m, "lastViewedAt");
         out->push_back(std::move(it));
-    }
-    return true;
+    }) != json::Each::Bad;
 }
 
 std::string count_path(const std::string &section_id, const std::string &type)

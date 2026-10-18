@@ -18,8 +18,10 @@
 
 namespace ui {
 
-Shell::Shell(Context &ctx) : m_ctx(ctx), m_config_gen(ctx.config_gen), m_watch(ctx), m_welcome(ctx), m_whats_new(ctx)
+Shell::Shell(Context &ctx)
+    : m_ctx(ctx), m_config_gen(ctx.config_gen), m_lists(ctx.services), m_watch(ctx), m_welcome(ctx), m_whats_new(ctx)
 {
+    m_ctx.lists = &m_lists;
     static const char *const kMade[TabCount] = {"screen made: Home",     "screen made: Library",
                                                 "screen made: Activity", "screen made: Requests",
                                                 "screen made: Jellyfin", "screen made: Settings"};
@@ -52,6 +54,7 @@ void Shell::remake_screens(bool current_too)
 {
     m_config_gen = m_ctx.config_gen;
     m_ctx.jelly5.reset();
+    m_lists.reset();   /* asked again from the new addresses */
     for (int t = 0; t < TabCount; t++)
         if (current_too || t != m_tab)
             m_screens[t] = make_screen(t);

@@ -335,7 +335,10 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
             r.status = 500;
         else if (kind == "badjson")
             r.status = 200, r.body = "<html>not json</html>", r.content_type = "text/html";
-        return r;
+        else if (kind == "toolarge" && req.max_body)   /* a library past the limit (other calls answer) */
+            r.fail = http::Response::TooLarge, r.error = "answer too large";
+        if (kind != "toolarge" || req.max_body)
+            return r;
     }
 
     /* Quick Connect's two POSTs only sign in: answered from the fixtures. */
@@ -381,6 +384,11 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
         }
     }
     r.content_type = "application/json";
+    if (req.max_body && r.body.size() > req.max_body) {   /* as a transport gives up */
+        r = http::Response{};
+        r.fail = http::Response::TooLarge;
+        r.error = "answer too large";
+    }
     return r;
 }
 

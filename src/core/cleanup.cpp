@@ -111,7 +111,9 @@ std::vector<Candidate> candidates(const std::vector<Library> &libraries,
     if (active.empty())
         return out;   /* nobody to judge by */
     for (const Library &lib : libraries) {
-        for (const auto &m : lib.movies) {
+        static const std::vector<model::Movie> kNoMovies;
+        static const std::vector<model::Series> kNoSeries;
+        for (const auto &m : lib.movies ? *lib.movies : kNoMovies) {
             if (m.size <= 0 || kept.is_kept(config::Radarr, lib.instance_name, m.id))
                 continue;
             const Seen s = seen(users, active, items, [&m](const model::UserItem &u) { return same_movie(m, u); });
@@ -120,7 +122,7 @@ std::vector<Candidate> candidates(const std::vector<Library> &libraries,
             out.push_back({config::Radarr, lib.instance, lib.instance_name, m.id, m.title, m.year, m.size, s.by,
                            s.last, m.tmdb_id});
         }
-        for (const auto &x : lib.series) {
+        for (const auto &x : lib.series ? *lib.series : kNoSeries) {
             if (x.size <= 0 || x.status != model::Series::Ended ||
                 kept.is_kept(config::Sonarr, lib.instance_name, x.id))
                 continue;

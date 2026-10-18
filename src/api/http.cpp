@@ -4,6 +4,8 @@
  */
 #include "api/http.h"
 
+#include <cstdio>
+
 namespace http {
 
 namespace {
@@ -104,5 +106,17 @@ void Pool::run()
 }
 
 std::string header(const std::string &name, const std::string &value) { return name + ": " + value; }
+
+std::string size_text(size_t bytes)
+{
+    char buf[32];
+    if (bytes < 1024)
+        std::snprintf(buf, sizeof buf, "%zu B", bytes);
+    else if (bytes < (1u << 20))
+        std::snprintf(buf, sizeof buf, "%zu KiB", (bytes + 512) >> 10);
+    else
+        std::snprintf(buf, sizeof buf, "%.1f MiB", bytes / 1048576.0);
+    return buf;
+}
 
 } // namespace http

@@ -60,20 +60,14 @@ std::string played_episodes_path(const std::string &user_id)
 
 bool parse_played_episodes(const std::string &body, std::map<std::string, time_t> *latest)
 {
-    json::Doc d(body);
-    const cJSON *items = json::get(d.root(), "Items");
-    if (!cJSON_IsArray(items))
-        return false;
     latest->clear();
-    const cJSON *it;
-    cJSON_ArrayForEach(it, items)
-    {
+    /* Every episode a user watched: one at a time (json::each). */
+    return json::each(body, {"Items"}, [latest](const cJSON *it) {
         const std::string series = json::str(it, "SeriesId");
         const time_t when = json::parse_time(json::str(json::get(it, "UserData"), "LastPlayedDate"));
         if (!series.empty() && when > 0)
             (*latest)[series] = std::max((*latest)[series], when);
-    }
-    return true;
+    }) == json::Each::Done;
 }
 
 std::string index_path()
@@ -136,14 +130,9 @@ bool parse_count(const std::string &body, int *count)
 
 bool parse_user_items(const std::string &body, std::vector<model::UserItem> *out)
 {
-    json::Doc d(body);
-    const cJSON *items = json::get(d.root(), "Items");
-    if (!cJSON_IsArray(items))
-        return false;
     out->clear();
-    const cJSON *it;
-    cJSON_ArrayForEach(it, items)
-    {
+    /* A whole library: one item at a time (json::each). */
+    return json::each(body, {"Items"}, [out](const cJSON *it) {
         model::UserItem u;
         u.id = json::str(it, "Id");
         u.series = json::str(it, "Type") == "Series";
@@ -158,8 +147,7 @@ bool parse_user_items(const std::string &body, std::vector<model::UserItem> *out
         const cJSON *left = json::get(ud, "UnplayedItemCount");
         u.unplayed = cJSON_IsNumber(left) ? left->valueint : -1;
         out->push_back(std::move(u));
-    }
-    return true;
+    }) == json::Each::Done;
 }
 
 bool parse_encoding(const std::string &body, model::EncodingInfo *out)

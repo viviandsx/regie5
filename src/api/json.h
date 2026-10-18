@@ -11,6 +11,8 @@
 
 #include <cstdint>
 #include <ctime>
+#include <functional>
+#include <initializer_list>
 #include <string>
 
 namespace json {
@@ -28,6 +30,16 @@ public:
 private:
     cJSON *m_root;
 };
+
+/* A long list read one element at a time: a whole document as cJSON takes
+ * about five times its text (a 5 000-film Radarr: 19 MiB of text, 110 MiB of
+ * tree), one element only a few KiB. path: the members leading to the list
+ * from the top object ({"Items"}, {"MediaContainer", "Metadata"}); empty: the
+ * text is the list. fn sees each element (a lone object in place of the list
+ * counts as one). Bad: not JSON, or not shaped so; Missing: the last member is
+ * absent (fn never called); Done: the list was read. */
+enum class Each { Bad, Missing, Done };
+Each each(const std::string &text, std::initializer_list<const char *> path, const std::function<void(const cJSON *)> &fn);
 
 const cJSON *get(const cJSON *o, const char *key);
 std::string str(const cJSON *o, const char *key, const std::string &def = {});

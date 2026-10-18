@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **Audit d'optimisation** fait sans code (§ 2 terdecies) : 5 points proposés en premier, en attente de Vivian.**
+**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : lot 1 sous Linux, point M1 fait.**
 
 ---
 
@@ -30,9 +30,10 @@ pour ce qui a été fait après la phase 0).
 | 12. Version 0.5.0 | Nouveautés, espagnol et allemand, demandes Seerr, Quick Connect, communauté | ✅ publiée (§ 2 decies) |
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | ✅ publiée ; catalogue en attente (§ 2 duodecies) |
-| 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | proposé le 18 octobre 2026 (§ 2 terdecies), rien codé |
+| 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
+| 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | en cours : lot 1 (Linux) |
 
-Tests : **76** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **80** (`regie5_tests`, lancé par `ctest`), tous verts.
 
 ---
 
@@ -1291,6 +1292,63 @@ Rafraîchissements : seulement écran visible (5 s file d'attente et sessions, 1
 5. **P2 + P3** — budget de glyphes et d'envois de textures par image à 120 Hz.
 
 Ensuite : P4 (cache des JPEG), R2 keep-alive après une mesure HTTPS, B3, C1.
+
+## 2 quattuordecies. Version 0.7.0 — optimisation (ouverte le 18 octobre 2026)
+
+Décidé par Vivian : tous les points de l'audit (§ 2 terdecies), dans cet ordre, en autonomie.
+Un patch et un message de commit par point (`build/patches-23/`, arbre de travail déjà dans
+l'état final : `git apply --cached`). Lot 1 sous Linux ; lot 2 sur console ; un seul build de
+test console (journal UDP) à la fin des lots 1 et 2 ; pas de release sans accord. Lot 3 : B3
+seulement après validation des tailles, C1 en dernier (comportement et captures identiques).
+Mesures et fichiers intermédiaires dans le scratchpad.
+
+### Lot 1 (Linux)
+
+- [x] **M1. Grosses bibliothèques** (patch 01) — mesuré sous Linux avec une bibliothèque
+      synthétique de **5 000 films** (18,5 Mio de JSON, ~3,9 Ko par film comme un vrai Radarr
+      v5) et **500 séries** (2,0 Mio), compteur de tas en `LD_PRELOAD` :
+
+      | | avant | après |
+      |---|---|---|
+      | lecture des 5 000 films (`arr::parse_movies`) | pic **113 Mio** | pic **24 Mio** (texte 18,5 + titres 4,6) |
+      | lecture des 500 séries | pic 11,5 Mio | pic 2,6 Mio |
+      | app entière en `--mock` (Accueil, Bibliothèque, Ménage, Jellyfin) | pic **130 Mio** | pic **48,5 Mio** |
+      | app entière, fixtures normales | 14,0 Mio | 13,8 Mio |
+
+      (1) `json::each` lit une longue liste **un élément à la fois** (un arbre cJSON fait ~5 fois
+      le texte) : films et séries Radarr/Sonarr, `Items` Jellyfin/Emby (bibliothèques, ce que
+      chaque utilisateur a vu, index de Jelly5), `Metadata` Plex. (2) **Un seul cache partagé**
+      (`ui/arr_lists`, dans `Context::lists`) : Bibliothèque, Ménage et tailles de l'onglet
+      Jellyfin lisaient chacun les mêmes listes (et la Bibliothèque les gardait en double) ;
+      avec une instance, plus aucune copie (`cleanup::Library` pointe sur la liste partagée) ;
+      △ redemande sans doublon en vol ; un titre supprimé par le Ménage n'y revient jamais.
+      (3) **Limite** `api::set_list_limit` (Linux 64 Mio ; PS5 32 / 24 / 16 Mio de texte selon le
+      tas de 256 / 192 / 128 Mio, soit ~8 000 films) : au-delà, la réception s'arrête
+      (`Response::TooLarge`) et l'écran dit « Radarr : Bibliothèque trop grande pour Régie5
+      (plus de 32 Mo) » (FR/EN/ES/DE), au lieu d'un plantage ; `REGIE5_MOCK_FAIL=radarr:toolarge`
+      pour le voir. (4) **Taille de chaque réponse** dans le journal HTTP (PS5 et
+      `REGIE5_HTTP_LOG=1`) : « -> 200 (59 ms, 18.5 MiB) ». Vérifié : 80 tests ; captures
+      data / multi / mixed / emby / plex / loading / offline / empty / unauthorized identiques
+      à la 0.6.0 (hors horloge, heures relatives et curseur). Constat de l'audit R4 (tailles
+      jamais redemandées) : faux, △ les redemandait déjà ; c'est maintenant le cache partagé.
+- [ ] **B2 + C4.** Réponses abîmées, `json.cpp:27`, tests du cache d'images et des délais HTTP.
+- [ ] **R1 + cache DNS.** Limite par serveur, serveur injoignable mis de côté, service lent nommé.
+- [ ] **R2.** Délai appliqué à la négociation TLS ; connexions gardées ouvertes si sûr et testé.
+- [ ] **P4.** Une jaquette reçue n'est plus redemandée pour une autre taille.
+
+### Lot 2 (console)
+
+- [ ] **P1.** Priorité des threads réseau et images, mesure avant/après.
+- [ ] **P2 + P3.** Budget par image (glyphes, envois de textures) à 120 Hz.
+- [ ] **P5.** Seulement si simple.
+- [ ] Build de test console unique (journal UDP), étapes avant/après pour P1, P2, P3.
+
+### Lot 3
+
+- [ ] **B3.** Polices non latines : tailles, impact zip et mémoire, proposition légère —
+      **attendre la validation de Vivian avant de coder.**
+- [ ] **C1.** Interface commune Jellyfin / Emby / Plex, en dernier, sans changement de comportement.
+- [ ] Liste d'observations pour la séance ergonomie de 15 minutes à la manette.
 
 ## 3. En attente
 

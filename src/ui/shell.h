@@ -40,6 +40,7 @@ private:
 
     Context &m_ctx;
     unsigned m_config_gen = 0;   /* the config the screens were made with */
+    ArrLists m_lists;            /* m_ctx.lists */
 
     std::unique_ptr<Screen> m_screens[TabCount];
     TabBar m_bar;

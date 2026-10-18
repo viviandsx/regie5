@@ -172,13 +172,9 @@ model::Movie read_movie(const cJSON *it)
 
 bool parse_series(const std::string &body, std::vector<model::Series> *out)
 {
-    json::Doc d(body);
-    if (!cJSON_IsArray(d.root()))
-        return false;
     out->clear();
-    const cJSON *it;
-    cJSON_ArrayForEach(it, d.root())
-    {
+    /* One series at a time (json::each): a big library never stands whole as a tree. */
+    return json::each(body, {}, [out](const cJSON *it) {
         model::Series s;
         s.id = json::integer(it, "id");
         s.title = json::str(it, "title");
@@ -227,19 +223,14 @@ bool parse_series(const std::string &body, std::vector<model::Series> *out)
                       return (a.number == 0 ? 1 << 20 : a.number) < (b.number == 0 ? 1 << 20 : b.number);
                   });
         out->push_back(std::move(s));
-    }
-    return true;
+    }) == json::Each::Done;
 }
 
 bool parse_movies(const std::string &body, std::vector<model::Movie> *out)
 {
-    json::Doc d(body);
-    if (!cJSON_IsArray(d.root()))
-        return false;
     out->clear();
-    const cJSON *it;
-    cJSON_ArrayForEach(it, d.root()) out->push_back(read_movie(it));
-    return true;
+    /* One film at a time (json::each): a big library never stands whole as a tree. */
+    return json::each(body, {}, [out](const cJSON *it) { out->push_back(read_movie(it)); }) == json::Each::Done;
 }
 
 bool parse_missing_episodes(const std::string &body, std::vector<model::MissingEpisode> *out, int *total)

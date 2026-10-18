@@ -138,6 +138,14 @@ std::string request_text(const Request &req, const Url &u)
     return t;
 }
 
+Reader::Reader(bool head, size_t max_body) : m_head(head), m_max(max_body ? max_body : kMaxBody) {}
+
+Reader::State Reader::too_big()
+{
+    too_large = true;
+    return fail("answer too large");
+}
+
 Reader::State Reader::fail(const char *why)
 {
     m_part = Broken;
@@ -163,8 +171,8 @@ Reader::State Reader::feed(const char *data, size_t n)
         return m_part == Finished ? Done : More;
     }
     case ToClose:
-        if (body.size() + n > kMaxBody)
-            return fail("answer too large");
+        if (body.size() + n > m_max)
+            return too_big();
         body.append(data, n);
         return More;
     case Chunked:
@@ -248,8 +256,8 @@ Reader::State Reader::parse_head()
             return parse_chunks();
         }
         if (length >= 0) {
-            if ((unsigned long long)length > kMaxBody)
-                return fail("answer too large");
+            if ((unsigned long long)length > m_max)
+                return too_big();
             m_part = Sized;
             m_left = (size_t)length;
             if (m_left == 0) {
@@ -282,8 +290,8 @@ Reader::State Reader::parse_chunks()
         if (m_in_chunk) {
             if (m_left > 0) {
                 const size_t take = m_buf.size() < m_left ? m_buf.size() : m_left;
-                if (body.size() + take > kMaxBody)
-                    return fail("answer too large");
+                if (body.size() + take > m_max)
+                    return too_big();
                 body.append(m_buf, 0, take);
                 m_buf.erase(0, take);
                 m_left -= take;
@@ -307,8 +315,8 @@ Reader::State Reader::parse_chunks()
         const unsigned long long size = std::strtoull(size_text.c_str(), &stop, 16);
         if (stop == size_text.c_str() || (*stop && *stop != ';' && *stop != ' ' && *stop != '\t'))
             return fail("bad chunk size");
-        if (size > kMaxBody)
-            return fail("answer too large");
+        if (size > m_max)
+            return too_big();
         if (size == 0) {
             m_trailers = true;
             continue;

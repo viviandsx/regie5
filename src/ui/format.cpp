@@ -183,6 +183,7 @@ std::string error(api::Error e, int http_status)
     case api::Error::Revoked: return i18n::tr(i18n::plex() ? i18n::ErrPlexRevoked : i18n::ErrRevoked);
     case api::Error::NeedsAdmin: return i18n::tr(i18n::plex() ? i18n::ErrPlexOwner : i18n::ErrNeedsAdmin);
     case api::Error::NeedsPlexPass: return i18n::tr(i18n::ErrNeedsPlexPass);
+    case api::Error::TooLarge: return f(i18n::tr(i18n::ErrTooLarge), (int)(api::list_limit() >> 20));
     case api::Error::None: break;
     }
     return {};

@@ -25,8 +25,9 @@ struct Library {
     config::Service service = config::Radarr;
     int instance = 0;
     std::string instance_name;
-    std::vector<model::Movie> movies;   /* Radarr */
-    std::vector<model::Series> series;  /* Sonarr */
+    /* Read during candidates() only (the screens' shared lists, never copied). */
+    const std::vector<model::Movie> *movies = nullptr;   /* Radarr */
+    const std::vector<model::Series> *series = nullptr;  /* Sonarr */
 };
 
 struct Criteria {

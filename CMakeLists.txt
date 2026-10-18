@@ -71,6 +71,7 @@ target_compile_options(regie5_data PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-Wall -Wext
 # The interface: drawing on top of ui/gfx.h, widgets and screens.
 add_library(regie5_ui STATIC
     src/ui/ambient.cpp
+    src/ui/arr_lists.cpp
     src/ui/art.cpp
     src/ui/badges.cpp
     src/ui/config_reload.cpp
@@ -155,6 +156,7 @@ add_executable(regie5_tests
     tests/main.cpp
     tests/test_api.cpp
     tests/test_core.cpp
+    tests/test_lists.cpp
     tests/test_share.cpp
     tests/platform_stub.cpp
     src/platform/posix/config_server.cpp

@@ -151,11 +151,11 @@ void LibraryScreen::go_to(int view, time_t when)
 void LibraryScreen::open_media(config::Service s, int instance, int id)
 {
     if (s == config::Sonarr && m_series.ready()) {
-        for (const auto &x : m_series.value)
+        for (const auto &x : series_list())
             if (x.id == id && x.instance == instance)
                 show_series(x);
     } else if (s == config::Radarr && m_movies.ready()) {
-        for (const auto &m : m_movies.value)
+        for (const auto &m : movies_list())
             if (m.id == id && m.instance == instance)
                 show_movie(m);
     }
@@ -188,6 +188,17 @@ template <typename T> std::string LibraryScreen::failed_parts(const std::vector<
                    fmt::labelled(m_ctx.services->config().at(p.service, p.instance).name,
                                  fmt::error(p.load.error, p.load.http_status));
     return out;
+}
+
+void LibraryScreen::sync_lists()
+{
+    if (!m_ctx.lists || m_ctx.lists->version() == m_lists_seen)
+        return;
+    m_lists_seen = m_ctx.lists->version();
+    join_shared(m_ctx.lists->series(), &m_series);
+    join_shared(m_ctx.lists->movies(), &m_movies);
+    rebuild();
+    rebuild_missing();
 }
 
 void LibraryScreen::activate()
@@ -248,31 +259,11 @@ void LibraryScreen::load(bool force)
         if (!merged->ready())
             merged->state = load::Loading;
     };
-    if (stale(m_series) && !m_series.loading())
-        fetch(m_series_parts, &m_series, config::Sonarr, [&](size_t k, int inst) {
-            s.series(
-                [this, alive, k](api::Result<std::vector<model::Series>> r) {
-                    if (alive.expired() || k >= m_series_parts.size())
-                        return;
-                    m_series_parts[k].load.take(std::move(r), platform::now());
-                    merge_parts(m_series_parts, &m_series);
-                    rebuild();
-                    rebuild_missing();
-                },
-                inst);
-        });
-    if (stale(m_movies) && !m_movies.loading())
-        fetch(m_movies_parts, &m_movies, config::Radarr, [&](size_t k, int inst) {
-            s.movies(
-                [this, alive, k](api::Result<std::vector<model::Movie>> r) {
-                    if (alive.expired() || k >= m_movies_parts.size())
-                        return;
-                    m_movies_parts[k].load.take(std::move(r), platform::now());
-                    merge_parts(m_movies_parts, &m_movies);
-                    rebuild();
-                },
-                inst);
-        });
+    if (m_ctx.lists) {   /* shared with the cleanup and the Jellyfin tab: asked once */
+        m_ctx.lists->want_series(force);
+        m_ctx.lists->want_movies(force);
+        sync_lists();
+    }
     if (m_profiles.empty())
         for (config::Service svc : {config::Sonarr, config::Radarr})
             for (int i = 0; i < s.instances(svc); i++)
@@ -355,8 +346,8 @@ void LibraryScreen::rebuild()
     };
     std::vector<Item> items;
     if (tv && m_series.ready()) {
-        for (int i = 0; i < (int)m_series.value.size(); i++) {
-            const model::Series &s = m_series.value[i];
+        for (int i = 0; i < (int)series_list().size(); i++) {
+            const model::Series &s = series_list()[i];
             const Filter f = m_filter[0];
             if ((f == Monitored && !s.monitored) || (f == MissingOnly && s.missing() == 0) ||
                 (f == EndedOrDownloaded && s.status != model::Series::Ended))
@@ -391,8 +382,8 @@ void LibraryScreen::rebuild()
             items.push_back(std::move(it));
         }
     } else if (!tv && m_movies.ready()) {
-        for (int i = 0; i < (int)m_movies.value.size(); i++) {
-            const model::Movie &m = m_movies.value[i];
+        for (int i = 0; i < (int)movies_list().size(); i++) {
+            const model::Movie &m = movies_list()[i];
             const Filter f = m_filter[1];
             const bool missing = m.monitored && !m.has_file;
             if ((f == Monitored && !m.monitored) || (f == MissingOnly && !missing) ||
@@ -493,7 +484,7 @@ void LibraryScreen::open_detail()
             return;
         const MissingRow &r = m_missing[m_focus[Missing]];
         if (r.tv && m_series.ready()) {
-            for (const auto &s : m_series.value)
+            for (const auto &s : series_list())
                 if (s.id == r.id && s.instance == r.instance)
                     show_series(s);
         } else if (!r.tv && m_missing_movies.ready()) {
@@ -508,10 +499,10 @@ void LibraryScreen::open_detail()
         return;
     const int i = m_cards[m_focus[g]].index;
     if (m_view == Series) {
-        const model::Series &x = m_series.value[i];
+        const model::Series &x = series_list()[i];
         show_series(x);
     } else {
-        const model::Movie &m = m_movies.value[i];
+        const model::Movie &m = movies_list()[i];
         show_movie(m);
     }
 }
@@ -741,8 +732,8 @@ bool LibraryScreen::backdrop(std::string *key, art::Ref *ref, int *seed) const
             return false;
         const Card &c = m_cards[m_focus[g]];
         s = m_view == Series ? config::Sonarr : config::Radarr;
-        id = m_view == Series ? m_series.value[c.index].id : m_movies.value[c.index].id;
-        instance = m_view == Series ? m_series.value[c.index].instance : m_movies.value[c.index].instance;
+        id = m_view == Series ? series_list()[c.index].id : movies_list()[c.index].id;
+        instance = m_view == Series ? series_list()[c.index].instance : movies_list()[c.index].instance;
         title = c.title;
     }
     *ref = {s, arr::mediacover_path(id, "fanart-360.jpg"), instance};
@@ -814,7 +805,7 @@ void LibraryScreen::draw_grid(double now, float x0, float dt, bool *animating)
     const bool tv = m_view == Series;
     const int g = tv ? 0 : 1;
     const load::State st = tv ? m_series.state : m_movies.state;
-    const int total = tv ? (int)m_series.value.size() : (int)m_movies.value.size();
+    const int total = tv ? (int)series_list().size() : (int)movies_list().size();
     const int n = (int)m_cards.size();
 
     /* How many, and how they are sorted. */
@@ -825,7 +816,7 @@ void LibraryScreen::draw_grid(double now, float x0, float dt, bool *animating)
             count = shown_of(n, total);
         const float count_w = gfx::text(x0, 262, count, {gfx::Medium, 24}, kText3);
         /* An instance that failed beside one that answered. */
-        const std::string failures = tv ? failed_parts(m_series_parts) : failed_parts(m_movies_parts);
+        const std::string failures = tv ? failed_parts(m_ctx.lists->series()) : failed_parts(m_ctx.lists->movies());
         if (!failures.empty())
             draw_chip(x0 + count_w + 18, 238, failures, kRed, 1.f, 22);
     }
@@ -835,7 +826,7 @@ void LibraryScreen::draw_grid(double now, float x0, float dt, bool *animating)
         return;
     }
     if (st == load::Failed) {
-        draw_empty(area, tv ? failed_parts(m_series_parts) : failed_parts(m_movies_parts), i18n::tr(i18n::Retry),
+        draw_empty(area, tv ? failed_parts(m_ctx.lists->series()) : failed_parts(m_ctx.lists->movies()), i18n::tr(i18n::Retry),
                    true);
         return;
     }
@@ -870,8 +861,8 @@ void LibraryScreen::draw_grid(double now, float x0, float dt, bool *animating)
             if (i >= n)
                 break;
             const Card &card = m_cards[i];
-            const int id = tv ? m_series.value[card.index].id : m_movies.value[card.index].id;
-            const int inst = tv ? m_series.value[card.index].instance : m_movies.value[card.index].instance;
+            const int id = tv ? series_list()[card.index].id : movies_list()[card.index].id;
+            const int inst = tv ? series_list()[card.index].instance : movies_list()[card.index].instance;
             const float x = x0 + c * (kCardW + kGapX), y = kGridTop + r * kRowH - scroll;
             const bool focused = m_focused && !m_header && i == f;
             const float lift = m_lifts.step(std::to_string(g) + ":" + std::to_string(inst) + ":" + std::to_string(id),
@@ -892,8 +883,8 @@ void LibraryScreen::draw_grid(double now, float x0, float dt, bool *animating)
             continue;
         for (int c = 0; c < kCols && r * kCols + c < n; c++) {
             const Card &card = m_cards[r * kCols + c];
-            const int id = tv ? m_series.value[card.index].id : m_movies.value[card.index].id;
-            const int inst = tv ? m_series.value[card.index].instance : m_movies.value[card.index].instance;
+            const int id = tv ? series_list()[card.index].id : movies_list()[card.index].id;
+            const int inst = tv ? series_list()[card.index].instance : movies_list()[card.index].instance;
             art::get({svc, arr::mediacover_path(id, "poster-500.jpg"), inst}, px, px * 3 / 2);
         }
     }

@@ -35,7 +35,14 @@ enum class Error {
     Revoked,        /* Jellyfin by Quick Connect: 401, the session has ended (revoked, device removed); Plex: its token refused */
     NeedsAdmin,     /* Jellyfin by Quick Connect: 403 for an account that is not an administrator; Plex: not the owner */
     NeedsPlexPass,  /* Plex: an action refused to an owner without Plex Pass (stopping a playback) */
+    TooLarge,       /* a library list past list_limit(): given up before it fills the memory */
 };
+
+/* The most a library list (every film of a Radarr, every title of a media
+ * server) may weigh as text: past it, Error::TooLarge rather than a crash.
+ * Set by the platform from its memory (64 MiB by default). */
+void set_list_limit(size_t bytes);
+size_t list_limit();
 
 /* From a transport response and whether its body parsed. */
 Error classify(const http::Response &r, bool parsed);
@@ -177,7 +184,7 @@ private:
     template <typename T>
     void call(config::Service s, const std::string &method, const std::string &path,
               std::function<bool(const std::string &, T *)> parse, std::function<void(Result<T>)> done,
-              int instance = 0, const std::string &body = {}, bool need_on = true);
+              int instance = 0, const std::string &body = {}, bool need_on = true, size_t max_body = 0);
     /* Plex's ways to the same results (api/plex). */
     void plex_sessions(std::function<void(Result<std::vector<model::Session>>)> done);
     void plex_tasks(std::function<void(Result<std::vector<model::Task>>)> done);
