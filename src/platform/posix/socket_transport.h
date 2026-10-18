@@ -50,6 +50,11 @@ public:
     void on_server_date(std::function<void(int64_t)> f) { m_on_date = std::move(f); }
     /* Times the system was asked to look a name up (the rest came from the kept ones). */
     int name_lookups() const { return m_lookups.load(); }
+    /* https connections are kept for the next request to the same server
+     * (no new handshake); plain http ones are not, unless this is set (tests). */
+    void keep_plain_alive(bool on) { m_keep_plain = on; }
+    /* New connections made (the others were kept ones). */
+    int connections_opened() const { return m_opened.load(); }
 
 private:
     std::function<void(const std::string &)> m_log;
@@ -61,6 +66,10 @@ private:
     struct Names;
     std::unique_ptr<Names> m_names;
     std::atomic<int> m_lookups{0};
+    struct Idle;   /* connections kept for the next request */
+    std::unique_ptr<Idle> m_idle;
+    bool m_keep_plain = false;
+    std::atomic<int> m_opened{0};
     bool lookup(const std::string &host, int port, std::vector<sockaddr_storage> *out, std::string *error);
 };
 

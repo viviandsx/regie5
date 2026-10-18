@@ -30,7 +30,8 @@ namespace {
  * server goes. */
 class Server {
 public:
-    explicit Server(std::function<void(int fd, const std::atomic<bool> &stop)> behave)
+    /* accepts: connections taken one after the other, each behave(fd) in turn. */
+    explicit Server(std::function<void(int fd, const std::atomic<bool> &stop)> behave, int accepts = 1)
     {
         m_listen = socket(AF_INET, SOCK_STREAM, 0);
         const int one = 1;
@@ -43,12 +44,15 @@ public:
         getsockname(m_listen, reinterpret_cast<sockaddr *>(&a), &len);
         m_port = ntohs(a.sin_port);
         listen(m_listen, 4);
-        m_thread = std::thread([this, behave] {
-            const int fd = accept(m_listen, nullptr, nullptr);
-            if (fd < 0)
-                return;
-            behave(fd, m_stop);
-            close(fd);
+        m_thread = std::thread([this, behave, accepts] {
+            for (int i = 0; i < accepts && !m_stop; i++) {
+                const int fd = accept(m_listen, nullptr, nullptr);
+                if (fd < 0)
+                    return;
+                m_accepted++;
+                behave(fd, m_stop);
+                close(fd);
+            }
         });
     }
     ~Server()
@@ -58,6 +62,7 @@ public:
         close(m_listen);
         m_thread.join();
     }
+    int accepted() const { return m_accepted.load(); }
     std::string url(const char *scheme = "http") const
     {
         return std::string(scheme) + "://127.0.0.1:" + std::to_string(m_port) + "/x";
@@ -66,6 +71,7 @@ public:
 private:
     int m_listen = -1, m_port = 0;
     std::atomic<bool> m_stop{false};
+    std::atomic<int> m_accepted{0};
     std::thread m_thread;
 };
 
@@ -359,4 +365,145 @@ TEST(names_are_looked_up_once_in_a_while)
     req.url = "http://127.0.0.1:" + std::to_string(port) + "/x";
     t.perform(req, nullptr);
     CHECK_EQ(t.name_lookups(), 2);
+}
+
+namespace {
+
+/* One request off the socket (its headers, and a body by Content-Length); false when it closed. */
+bool read_request(int fd, std::string *method)
+{
+    std::string in;
+    char c;
+    while (in.find("\r\n\r\n") == std::string::npos) {
+        if (recv(fd, &c, 1, 0) != 1)
+            return false;
+        in += c;
+    }
+    *method = in.substr(0, in.find(' '));
+    const size_t cl = in.find("Content-Length: ");
+    for (int n = cl == std::string::npos ? 0 : std::atoi(in.c_str() + cl + 16); n > 0; n--)
+        if (recv(fd, &c, 1, 0) != 1)
+            return false;
+    return true;
+}
+
+Timed get_on(platform_posix::SocketTransport &t, const std::string &url, const char *method = "GET")
+{
+    http::Request req;
+    req.url = url;
+    req.method = method;
+    req.timeout_s = 3;
+    if (std::string(method) != "GET")
+        req.body = "{}";
+    const double t0 = platform::now();
+    Timed out;
+    out.r = t.perform(req, nullptr);
+    out.seconds = platform::now() - t0;
+    return out;
+}
+
+} // namespace
+
+TEST(connections_are_kept_only_when_safe)
+{
+    /* A server that keeps the connection: three reads, one connection. */
+    {
+        Server s([](int fd, const std::atomic<bool> &) {
+            std::string m;
+            while (read_request(fd, &m))
+                send_text(fd, "HTTP/1.1 200 OK\r\nContent-Length: 2\r\n\r\nok");
+        });
+        platform_posix::SocketTransport t;
+        t.keep_plain_alive(true);
+        for (int i = 0; i < 3; i++) {
+            Timed g = get_on(t, s.url());
+            CHECK(g.r.ok() && g.r.body == "ok");
+        }
+        CHECK_EQ(t.connections_opened(), 1);
+        /* An action never takes a kept connection. */
+        Timed p = get_on(t, s.url(), "POST");
+        CHECK_EQ(t.connections_opened(), 2);
+        (void)p;
+    }
+    /* Chunked answers are kept too. */
+    {
+        Server s([](int fd, const std::atomic<bool> &) {
+            std::string m;
+            while (read_request(fd, &m))
+                send_text(fd, "HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\n\r\n2\r\nok\r\n0\r\n\r\n");
+        });
+        platform_posix::SocketTransport t;
+        t.keep_plain_alive(true);
+        CHECK(get_on(t, s.url()).r.body == "ok");
+        CHECK(get_on(t, s.url()).r.body == "ok");
+        CHECK_EQ(t.connections_opened(), 1);
+    }
+    /* Never kept: "Connection: close", HTTP/1.0, a body without a length, bytes past the body. */
+    for (const char *answer : {"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 2\r\n\r\nok",
+                               "HTTP/1.0 200 OK\r\nContent-Length: 2\r\n\r\nok",
+                               "HTTP/1.1 200 OK\r\nContent-Length: 2\r\n\r\nokEXTRA"}) {
+        Server s(
+            [answer](int fd, const std::atomic<bool> &) {
+                std::string m;
+                if (read_request(fd, &m))
+                    send_text(fd, answer);
+            },
+            2);
+        platform_posix::SocketTransport t;
+        t.keep_plain_alive(true);
+        CHECK(get_on(t, s.url()).r.body == "ok");
+        CHECK(get_on(t, s.url()).r.body == "ok");
+        CHECK_EQ(t.connections_opened(), 2);
+    }
+    /* Plain http is not kept by default (https is). */
+    {
+        Server s(
+            [](int fd, const std::atomic<bool> &) {
+                std::string m;
+                while (read_request(fd, &m))
+                    send_text(fd, "HTTP/1.1 200 OK\r\nContent-Length: 2\r\n\r\nok");
+            },
+            2);
+        platform_posix::SocketTransport t;
+        CHECK(get_on(t, s.url()).r.ok());
+        CHECK(get_on(t, s.url()).r.ok());
+        CHECK_EQ(t.connections_opened(), 2);
+    }
+}
+
+TEST(a_kept_connection_the_server_dropped_is_replaced)
+{
+    /* The first connection answers once, then takes the next request and
+     * closes without a word (an idle timeout on the server's side): the read
+     * is sent again on a new connection, answered. */
+    Server s(
+        [](int fd, const std::atomic<bool> &) {
+            static int n = 0;
+            std::string m;
+            if (!read_request(fd, &m))
+                return;
+            if (n++ == 0) {
+                send_text(fd, "HTTP/1.1 200 OK\r\nContent-Length: 2\r\n\r\nok");
+                read_request(fd, &m);   /* the second request: dropped */
+                return;
+            }
+            send_text(fd, "HTTP/1.1 200 OK\r\nContent-Length: 5\r\n\r\nagain");
+        },
+        2);
+    platform_posix::SocketTransport t;
+    t.keep_plain_alive(true);
+    CHECK(get_on(t, s.url()).r.body == "ok");
+    Timed second = get_on(t, s.url());
+    CHECK(second.r.ok() && second.r.body == "again");
+    CHECK_EQ(t.connections_opened(), 2);
+    CHECK(second.seconds < 1.0);
+}
+
+TEST(a_connection_that_never_comes_keeps_to_the_delay)
+{
+    /* 192.0.2.1 (TEST-NET-1, never routed): the connection waits, but no
+     * longer than the request's delay (each address had 5 s before). */
+    Timed t = get("http://192.0.2.1:8989/api", 1);
+    CHECK(t.r.fail == http::Response::Connect);
+    CHECK(t.seconds < 1.6);
 }

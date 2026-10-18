@@ -32,9 +32,9 @@ bool parse_http_date(const std::string &s, int64_t *utc);
 /* http(s)://host[:port][/path][?query]; false for anything else. */
 bool parse_url(const std::string &url, Url *out);
 
-/* The request as sent: one per connection (Connection: close), no
- * compression asked, the body as JSON. */
-std::string request_text(const Request &req, const Url &u);
+/* The request as sent: one per connection (Connection: close) unless
+ * keep_alive, no compression asked, the body as JSON. */
+std::string request_text(const Request &req, const Url &u, bool keep_alive = false);
 
 /* The answer, fed as it comes. */
 class Reader {
@@ -54,6 +54,10 @@ public:
     int64_t server_date = 0;   /* the Date header, UTC seconds; 0 if none */
     std::string error;   /* why it is Bad */
     bool too_large = false;   /* Bad because the body passed max_body */
+    /* Done, and the connection may carry another request: HTTP/1.1, no
+     * "Connection: close", the body's end known (a length, chunks or none),
+     * nothing after it. */
+    bool reusable() const { return m_part == Finished && m_http11 && !m_close && m_framed && !m_extra && m_buf.empty(); }
 
 private:
     enum Part { Head, Sized, Chunked, ToClose, Finished, Broken };
@@ -68,6 +72,7 @@ private:
     std::string m_buf;     /* bytes not consumed yet (head, chunk sizes) */
     size_t m_left = 0;     /* body bytes still to come (Sized), or of the chunk (Chunked) */
     bool m_in_chunk = false, m_trailers = false;
+    bool m_http11 = false, m_close = false, m_framed = false, m_extra = false;   /* reusable() */
 };
 
 } // namespace http::wire

@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : lot 1 sous Linux, points M1, B2 + C4 et R1 faits.**
+**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : lot 1 sous Linux, points M1, B2 + C4, R1 et R2 faits.**
 
 ---
 
@@ -33,7 +33,7 @@ pour ce qui a été fait après la phase 0).
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | en cours : lot 1 (Linux) |
 
-Tests : **91** (`regie5_tests` : 88, `regie5_ui_tests` : 3, lancés par `ctest`), tous verts.
+Tests : **94** (`regie5_tests` : 91, `regie5_ui_tests` : 3, lancés par `ctest`), tous verts.
 
 ---
 
@@ -1375,7 +1375,27 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       serveur (le lent jamais plus de 2, l'autre servi pendant ce temps), mise de côté (essayé une
       fois, puis réponse immédiate ; `fresh` passe), service lent nommé, nom cherché une fois
       (trouvé ou non). Captures data / offline / mixed / multi identiques.
-- [ ] **R2.** Délai appliqué à la négociation TLS ; connexions gardées ouvertes si sûr et testé.
+- [x] **R2. Délais partout, connexions HTTPS gardées** (patch 04) — (1) **Délai** : la
+      connexion ne dépasse plus le délai de la requête (avant : 5 s par adresse, en plus) ; la
+      négociation TLS vérifie le délai et l'annulation **à chaque étape**, pas seulement pendant
+      les attentes réseau (le travail de mbedTLS compte aussi). Les 34,7 s du 13 octobre ne se
+      reproduisent pas : toutes les attentes respectaient déjà le délai sur le code actuel (tests
+      du patch 02), il venait d'un build d'avant la 0.2.0 ; à revoir sur console avec la ligne
+      « connected …, TLS … » (build de test, étape HTTPS). Le mode restartable de mbedTLS (ECC
+      découpé) a été écarté : il ne couvre que ECDHE-ECDSA, pas les certificats RSA courants.
+      (2) **Connexions gardées, HTTPS seulement** (le gain est la négociation TLS ; en HTTP sur
+      le réseau local, une connexion coûte ~1 ms : rien de changé, `Connection: close` comme
+      avant). Gardée seulement si sûr : réponse HTTP/1.1, sans `Connection: close`, fin connue
+      (longueur ou morceaux), rien après ; au plus 2 par serveur, 10 s ; une connexion que le
+      serveur a fermée est écartée avant usage ; **une lecture** envoyée sur une connexion gardée
+      que le serveur a lâchée est renvoyée une fois sur une neuve ; **une action (POST, DELETE)
+      ne prend jamais une connexion gardée** (elle ne doit jamais partir deux fois). Journal :
+      « (42 ms, 550 B: kept connection) ». Tests : 3 lectures sur 1 connexion (longueur et
+      morceaux), jamais gardée avec `Connection: close`, HTTP/1.0 ou des octets en trop, une
+      action sur une connexion neuve, une connexion lâchée remplacée sans erreur, connexion vers
+      une adresse muette (192.0.2.1) arrêtée au délai. Vu en vrai TLS sous Linux (serveur
+      Python HTTPS, transport de la PS5) : 6 requêtes, **1 seule connexion**, 1 négociation.
+      ASan + UBSan : rien.
 - [ ] **P4.** Une jaquette reçue n'est plus redemandée pour une autre taille.
 
 ### Lot 2 (console)

@@ -16,6 +16,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+#include <algorithm>
 #include <cerrno>
 #include <cstdio>
 #include <cstring>
@@ -141,12 +142,17 @@ int wait_for(int fd, short ev, double deadline, const std::atomic<bool> *cancel)
     }
 }
 
-/* A connected socket to one of the addresses, or -1 (and why). */
-int open_connection(const std::vector<sockaddr_storage> &addrs, const std::atomic<bool> *cancel,
+/* A connected socket to one of the addresses, or -1 (and why). Each address
+ * gets kConnectMs, never past the request's deadline. */
+int open_connection(const std::vector<sockaddr_storage> &addrs, double deadline, const std::atomic<bool> *cancel,
                     http::Response::Fail *fail, std::string *error)
 {
     *fail = http::Response::Connect;
     for (const sockaddr_storage &a : addrs) {
+        if (platform::now() >= deadline) {
+            *error = "connect: timed out";
+            return -1;
+        }
         Fd s;
         s.fd = socket(a.ss_family, SOCK_STREAM, 0);
         if (s.fd < 0) {
@@ -165,7 +171,7 @@ int open_connection(const std::vector<sockaddr_storage> &addrs, const std::atomi
                 *error = std::string("connect: ") + std::strerror(errno);
                 continue;
             }
-            const int w = wait_for(s.fd, POLLOUT, platform::now() + kConnectMs / 1000.0, cancel);
+            const int w = wait_for(s.fd, POLLOUT, std::min(platform::now() + kConnectMs / 1000.0, deadline), cancel);
             if (w <= 0) {
                 /* No connection in time: unreachable (nothing answered), not a slow server. */
                 *fail = w == 0 ? http::Response::Connect : http::Response::Other;
@@ -230,6 +236,12 @@ class Channel {
 public:
     Channel(int fd, double deadline, const std::atomic<bool> *cancel) : m_fd(fd), m_deadline(deadline), m_cancel(cancel) {}
     virtual ~Channel() = default;
+    /* Another request on the same connection: its own deadline. */
+    void set_deadline(double deadline, const std::atomic<bool> *cancel)
+    {
+        m_deadline = deadline;
+        m_cancel = cancel;
+    }
     /* Waits as needed until the deadline. */
     virtual Io write(const char *p, size_t n) = 0;
     virtual Io read(char *p, size_t n) = 0;
@@ -370,6 +382,12 @@ public:
             return failed(http::Response::Other, "TLS: " + tls_text(rc));
         mbedtls_ssl_set_bio(&m_ssl, &m_fd, bio_send, bio_recv, nullptr);
         for (;;) {
+            /* At every step, not only while waiting for the server: the
+             * handshake's own work (keys, certificates) counts too. */
+            if (m_cancel && m_cancel->load())
+                return failed(http::Response::Other, "cancelled");
+            if (platform::now() >= m_deadline)
+                return failed(http::Response::Timeout, "TLS handshake: timed out");
             rc = mbedtls_ssl_handshake(&m_ssl);
             if (rc == 0)
                 break;
@@ -432,7 +450,27 @@ private:
 
 #endif
 
+/* A connection, and how it is spoken (plain or TLS). The channel goes
+ * first: TLS says goodbye before the socket closes. */
+struct Conn {
+    Fd s;
+    std::unique_ptr<Channel> ch;
+    double idle_since = 0;
+};
+
+/* https connections kept for the next request to the same server: no new
+ * TCP connection, no new TLS handshake (the costly part on the console). At
+ * most kIdlePerServer each, kIdleKeep seconds; one the server closed
+ * meanwhile is dropped before use. */
+constexpr int kIdlePerServer = 2;
+constexpr double kIdleKeep = 10.0;
+
 } // namespace
+
+struct SocketTransport::Idle {
+    std::mutex lock;
+    std::multimap<std::string, std::unique_ptr<Conn>> by_server;
+};
 
 #ifdef REGIE5_TLS
 struct SocketTransport::Authorities {
@@ -449,7 +487,7 @@ struct SocketTransport::Authorities {
 
 SocketTransport::SocketTransport(std::function<void(const std::string &)> log, bool resolve_names)
     : m_log(std::move(log)), m_resolve_names(resolve_names), m_ca(std::make_unique<Authorities>()),
-      m_names(std::make_unique<Names>())
+      m_names(std::make_unique<Names>()), m_idle(std::make_unique<Idle>())
 {
 }
 
@@ -511,6 +549,7 @@ http::Response SocketTransport::perform(const http::Request &req, const std::ato
 {
     const double t0 = platform::now();
     double t_connected = 0, t_secured = 0;   /* https: where the time went, for the log */
+    bool reused = false;
     http::Response r;
     auto done = [&](http::Response::Fail fail, const std::string &error) {
         r.fail = fail;
@@ -526,7 +565,9 @@ http::Response SocketTransport::perform(const http::Request &req, const std::ato
             const int n = std::snprintf(tail, sizeof tail, " -> %d%s%s (%.0f ms%s%s", r.status, r.error.empty() ? "" : " ",
                                         r.error.c_str(), (platform::now() - t0) * 1000.0, r.body.empty() ? "" : ", ",
                                         r.body.empty() ? "" : http::size_text(r.body.size()).c_str());
-            if (n > 0 && n < (int)sizeof tail && t_connected > 0)
+            if (n > 0 && n < (int)sizeof tail && reused)
+                std::snprintf(tail + n, sizeof tail - n, ": kept connection");
+            else if (n > 0 && n < (int)sizeof tail && t_connected > 0)
                 std::snprintf(tail + n, sizeof tail - n, ": connected %.0f, TLS %.0f", (t_connected - t0) * 1000.0,
                               t_secured > 0 ? (t_secured - t_connected) * 1000.0 : -1.0);
             const size_t used = std::strlen(tail);
@@ -542,64 +583,120 @@ http::Response SocketTransport::perform(const http::Request &req, const std::ato
     const bool tls = u.scheme == "https";
     if (tls && !has_tls())
         return done(http::Response::Unsupported, "https is not supported here");
-
-    std::vector<sockaddr_storage> addrs;
-    std::string error;
-    if (!lookup(u.host, u.port, &addrs, &error))
-        return done(http::Response::Connect, error);
-    http::Response::Fail fail = http::Response::Connect;
-    Fd s;
-    s.fd = open_connection(addrs, cancel, &fail, &error);
-    if (s.fd < 0)
-        return done(fail, error);
-
-    if (tls)
-        t_connected = platform::now();
     const double deadline = t0 + (req.timeout_s > 0 ? req.timeout_s : 10);
-    std::unique_ptr<Channel> ch;
+    /* Kept connections: https (a handshake saved), plain only when asked
+     * (tests); reads only, an action (POST, DELETE) always goes on a new
+     * connection. A kept one the server dropped meanwhile fails before the
+     * first byte of the answer: the read is then sent once more on a new one. */
+    const bool keep = tls || m_keep_plain;
+    const bool again_ok = req.method == "GET" || req.method == "HEAD";
+    const std::string server = u.scheme + "://" + u.host + ":" + std::to_string(u.port) + (req.insecure ? " insecure" : "");
+
+    for (int attempt = 0;; attempt++) {
+        std::unique_ptr<Conn> c;
+        reused = false;
+        if (keep && again_ok && attempt == 0) {   /* an action always on a new connection */
+            std::lock_guard<std::mutex> l(m_idle->lock);
+            const double now = platform::now();
+            for (auto it = m_idle->by_server.find(server); it != m_idle->by_server.end() && it->first == server;) {
+                std::unique_ptr<Conn> k = std::move(it->second);
+                it = m_idle->by_server.erase(it);
+                pollfd p{k->s.fd, POLLIN, 0};
+                if (now - k->idle_since > kIdleKeep || poll(&p, 1, 0) != 0)
+                    continue;   /* too old, or the server closed it (or said something unasked) */
+                c = std::move(k);
+                break;
+            }
+        }
+        reused = c != nullptr;
+        if (!c) {
+            std::vector<sockaddr_storage> addrs;
+            std::string error;
+            if (!lookup(u.host, u.port, &addrs, &error))
+                return done(http::Response::Connect, error);
+            http::Response::Fail fail = http::Response::Connect;
+            c = std::make_unique<Conn>();
+            c->s.fd = open_connection(addrs, deadline, cancel, &fail, &error);
+            if (c->s.fd < 0)
+                return done(fail, error);
+            m_opened++;
+            if (tls)
+                t_connected = platform::now();
 #ifdef REGIE5_TLS
-    if (tls) {
-        if (!req.insecure && m_ca->count == 0)
-            return done(http::Response::Certificate, "no certificate authorities to check against");
-        auto t = std::make_unique<Tls>(s.fd, deadline, cancel);
-        const Io opened = t->open(u.host, &m_ca->chain, req.insecure);
-        if (opened.fail != http::Response::None)
-            return done(opened.fail, opened.error);
-        t_secured = platform::now();
-        ch = std::move(t);
-    }
+            if (tls) {
+                if (!req.insecure && m_ca->count == 0)
+                    return done(http::Response::Certificate, "no certificate authorities to check against");
+                auto t = std::make_unique<Tls>(c->s.fd, deadline, cancel);
+                const Io opened = t->open(u.host, &m_ca->chain, req.insecure);
+                if (opened.fail != http::Response::None)
+                    return done(opened.fail, opened.error);
+                t_secured = platform::now();
+                c->ch = std::move(t);
+            }
 #endif
-    if (!ch)
-        ch = std::make_unique<Plain>(s.fd, deadline, cancel);
+            if (!c->ch)
+                c->ch = std::make_unique<Plain>(c->s.fd, deadline, cancel);
+        }
+        c->ch->set_deadline(deadline, cancel);
+        Channel &ch = *c->ch;
 
-    const std::string text = http::wire::request_text(req, u);
-    size_t sent = 0;
-    while (sent < text.size()) {
-        const Io w = ch->write(text.data() + sent, text.size() - sent);
-        if (w.fail != http::Response::None)
-            return done(w.fail, w.error);
-        sent += (size_t)w.n;
+        const std::string text = http::wire::request_text(req, u, keep);
+        size_t sent = 0;
+        Io failure;
+        while (sent < text.size() && failure.fail == http::Response::None) {
+            const Io w = ch.write(text.data() + sent, text.size() - sent);
+            if (w.fail != http::Response::None)
+                failure = w;
+            else
+                sent += (size_t)w.n;
+        }
+        http::wire::Reader reader(req.method == "HEAD", req.max_body);
+        size_t got_bytes = 0;
+        bool closed_early = false;
+        if (failure.fail == http::Response::None) {
+            std::vector<char> buf(16384);   /* on the heap: worker stacks are small on the PS5 */
+            for (;;) {
+                const Io got = ch.read(buf.data(), buf.size());
+                if (got.fail != http::Response::None) {
+                    failure = got;
+                    break;
+                }
+                closed_early = got.n == 0 && got_bytes == 0;
+                got_bytes += (size_t)got.n;
+                const http::wire::Reader::State st =
+                    got.n > 0 ? reader.feed(buf.data(), (size_t)got.n) : reader.finish();
+                if (st == http::wire::Reader::Bad) {
+                    failure.fail = reader.too_large ? http::Response::TooLarge : http::Response::Other;
+                    failure.error = reader.error;
+                    break;
+                }
+                if (st == http::wire::Reader::Done)
+                    break;
+            }
+        }
+        if (failure.fail != http::Response::None || closed_early) {
+            /* A kept connection the server dropped: nothing of the answer came. */
+            const bool dropped = reused && got_bytes == 0 && failure.fail != http::Response::Timeout;
+            if (dropped && again_ok && attempt == 0 && platform::now() < deadline)
+                continue;
+            if (failure.fail == http::Response::None)
+                failure = failed(http::Response::Other, "connection closed without an answer");
+            return done(failure.fail, failure.error);
+        }
+        if (keep && reader.reusable()) {   /* kept for the next request to this server */
+            c->idle_since = platform::now();
+            std::lock_guard<std::mutex> l(m_idle->lock);
+            if ((int)m_idle->by_server.count(server) < kIdlePerServer)
+                m_idle->by_server.emplace(server, std::move(c));
+        }
+        c.reset();   /* or closed: TLS says goodbye before the socket closes */
+        if (m_on_date && reader.server_date > 0)
+            m_on_date(reader.server_date);
+        r.status = reader.status;
+        r.content_type = reader.content_type;
+        r.body = std::move(reader.body);
+        return done(http::Response::None, "");
     }
-
-    http::wire::Reader reader(req.method == "HEAD", req.max_body);
-    std::vector<char> buf(16384);   /* on the heap: worker stacks are small on the PS5 */
-    for (;;) {
-        const Io got = ch->read(buf.data(), buf.size());
-        if (got.fail != http::Response::None)
-            return done(got.fail, got.error);
-        const http::wire::Reader::State st = got.n > 0 ? reader.feed(buf.data(), (size_t)got.n) : reader.finish();
-        if (st == http::wire::Reader::Bad)
-            return done(reader.too_large ? http::Response::TooLarge : http::Response::Other, reader.error);
-        if (st == http::wire::Reader::Done)
-            break;
-    }
-    ch.reset();   /* TLS says goodbye before the socket closes */
-    if (m_on_date && reader.server_date > 0)
-        m_on_date(reader.server_date);
-    r.status = reader.status;
-    r.content_type = reader.content_type;
-    r.body = std::move(reader.body);
-    return done(http::Response::None, "");
 }
 
 } // namespace platform_posix

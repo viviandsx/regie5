@@ -118,7 +118,7 @@ bool parse_url(const std::string &url, Url *out)
     return true;
 }
 
-std::string request_text(const Request &req, const Url &u)
+std::string request_text(const Request &req, const Url &u, bool keep_alive)
 {
     std::string host = u.host.find(':') != std::string::npos ? "[" + u.host + "]" : u.host;
     if (u.port != (u.scheme == "https" ? 443 : 80))
@@ -128,7 +128,7 @@ std::string request_text(const Request &req, const Url &u)
     t += "User-Agent: Regie5\r\n";
     t += "Accept: application/json, image/*, */*\r\n";
     t += "Accept-Encoding: identity\r\n";
-    t += "Connection: close\r\n";
+    t += keep_alive ? "Connection: keep-alive\r\n" : "Connection: close\r\n";
     for (const std::string &h : req.headers)
         t += h + "\r\n";
     if (!req.body.empty())
@@ -166,6 +166,7 @@ Reader::State Reader::feed(const char *data, size_t n)
         return parse_head();
     case Sized: {
         const size_t take = n < m_left ? n : m_left;
+        m_extra = m_extra || take < n;   /* bytes past the body: never reused */
         body.append(data, take);
         m_left -= take;
         if (m_left == 0)
@@ -217,6 +218,7 @@ Reader::State Reader::parse_head()
             return fail("not an HTTP answer");
         if (status >= 100 && status < 200)
             continue;   /* 100 Continue and the like: the real answer follows */
+        m_http11 = status_line.compare(0, 8, "HTTP/1.1") == 0;
 
         long long length = -1;
         bool chunked = false;
@@ -241,6 +243,8 @@ Reader::State Reader::parse_head()
                 parse_http_date(value, &server_date);
             } else if (name == "content-type") {
                 content_type = value;
+            } else if (name == "connection") {
+                m_close = lower(value).find("close") != std::string::npos;
             } else if (name == "content-encoding") {
                 const std::string v = lower(value);
                 if (!v.empty() && v != "identity")
@@ -252,8 +256,11 @@ Reader::State Reader::parse_head()
         rest.swap(m_buf);
         if (m_head || status == 204 || status == 304) {
             m_part = Finished;
+            m_framed = true;
+            m_extra = !rest.empty();
             return Done;
         }
+        m_framed = chunked || length >= 0;
         if (chunked) {
             m_part = Chunked;
             m_buf = rest;
@@ -266,6 +273,7 @@ Reader::State Reader::parse_head()
             m_left = (size_t)length;
             if (m_left == 0) {
                 m_part = Finished;
+                m_extra = !rest.empty();
                 return Done;
             }
             body.reserve(m_left);
