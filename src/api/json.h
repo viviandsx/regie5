@@ -42,11 +42,20 @@ enum class Each { Bad, Missing, Done };
 Each each(const std::string &text, std::initializer_list<const char *> path, const std::function<void(const cJSON *)> &fn);
 
 const cJSON *get(const cJSON *o, const char *key);
+/* Mistyped fields give the default; so do numbers out of the type's range
+ * (1e300, 1e400 read as infinity: a plain cast would be undefined). */
 std::string str(const cJSON *o, const char *key, const std::string &def = {});
 int64_t i64(const cJSON *o, const char *key, int64_t def = 0);
 int integer(const cJSON *o, const char *key, int def = 0);
 double num(const cJSON *o, const char *key, double def = 0);
 bool boolean(const cJSON *o, const char *key, bool def = false);
+
+/* A number as a whole one, rounded; false when no int64_t holds it (huge,
+ * infinite, not a number). */
+bool whole(double d, int64_t *out);
+/* A text's decimal number as an int ("123", "-4", "12abc" gives 12); def when
+ * there is none or it does not fit (a provider id written as text). */
+int int_of(const std::string &s, int def = 0);
 
 /* "2026-10-11T20:00:00Z", "2026-10-11T20:00:00.000Z", "2026-10-11T20:00:00.1234567Z",
  * "2026-10-11" (midnight UTC), with an optional +hh:mm offset: seconds since

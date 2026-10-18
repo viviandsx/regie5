@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : lot 1 sous Linux, point M1 fait.**
+**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : lot 1 sous Linux, points M1 et B2 + C4 faits.**
 
 ---
 
@@ -33,7 +33,7 @@ pour ce qui a été fait après la phase 0).
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | en cours : lot 1 (Linux) |
 
-Tests : **80** (`regie5_tests`, lancé par `ctest`), tous verts.
+Tests : **87** (`regie5_tests` : 84, `regie5_ui_tests` : 3, lancés par `ctest`), tous verts.
 
 ---
 
@@ -1331,7 +1331,33 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       data / multi / mixed / emby / plex / loading / offline / empty / unauthorized identiques
       à la 0.6.0 (hors horloge, heures relatives et curseur). Constat de l'audit R4 (tailles
       jamais redemandées) : faux, △ les redemandait déjà ; c'est maintenant le cache partagé.
-- [ ] **B2 + C4.** Réponses abîmées, `json.cpp:27`, tests du cache d'images et des délais HTTP.
+- [x] **B2 + C4. Réponses abîmées, comportements indéfinis, tests** (patch 02) — test
+      `every_parser_survives_hostile_answers` : les **62 parseurs** (Sonarr, Radarr, Seerr,
+      Jellyfin, Emby, Plex, Glances) × 30 versions de leur fixture (coupée au tiers, à moitié,
+      aux deux tiers, à un octet de la fin ; nombres à 1e300, −1e300, 9,3e18, 1e400 et −1e400
+      (infini) ; chaînes changées en nombres géants, nombres en chaînes, toutes les valeurs à
+      `null`, objets et listes échangés, chaînes vides ou de 5 000 caractères ; et du bruit :
+      vide, HTML, `[[[[…`, 1 000 crochets, octets invalides), soit plus de 1 800 lectures.
+      **Sous UBSan, la 0.6.0 s'arrête dès la première file d'attente** (`arr.cpp:567`, 1e300
+      converti en entier : comportement indéfini) ; corrigé, plus rien sous ASan + UBSan.
+      Corrections : `json::whole` (arrondi refusé hors de `int64_t`, infini, NaN : la valeur par
+      défaut) pour `json::i64` (l'ancien `json.cpp:27`), `json::integer` (hors d'un `int` : défaut),
+      le `whole` et le `text` de Plex ; `json::num` et le `number` de Plex refusent l'infini ;
+      `json::int_of` remplace `atoi` (identifiants TMDB/TVDB écrits en texte, Plex et Jellyfin) ;
+      taille de file d'attente lue en entier ; progression des tâches bornée à 0–100 (Jellyfin,
+      Plex) ; port d'adresse limité à 5 chiffres, statut HTTP lu sur 3 chiffres exactement ; index
+      `from` de la page du téléphone borné. Tests nouveaux : `json_numbers_out_of_range…` ;
+      **cache d'images** (nouvel exécutable `regie5_ui_tests`, rendu factice qui compte les
+      textures, `tests/gfx_stub.cpp`, images PNG fabriquées par le test) : taille demandée,
+      jamais agrandie ; une image de 5 000 × 3 000 jamais décodée (carte dessinée) ; échec gardé
+      jusqu'à △ ; budget tenu (les plus anciennes rendues) ; `forget` rend tout ; **délais HTTP**
+      du transport de la PS5 contre des serveurs locaux qui se taisent, envoient un octet toutes
+      les 100 ms, coupent la réponse, refusent la connexion, parlent HTTP au lieu de TLS ou
+      négocient TLS au compte-gouttes : chaque requête finit dans son délai (+ 0,6 s), l'annulation
+      en moins d'une seconde. Ces tests passent aussi sur le code actuel : la négociation TLS
+      respecte déjà le délai **pendant les attentes réseau** ; les 34,7 s du 13 octobre (build
+      d'avant la 0.2.0, sans détail TLS) restent à expliquer (R2).
+      ASan + UBSan : `scratchpad/asan.sh` (copie de l'arbre, `-fsanitize=address,undefined`).
 - [ ] **R1 + cache DNS.** Limite par serveur, serveur injoignable mis de côté, service lent nommé.
 - [ ] **R2.** Délai appliqué à la négociation TLS ; connexions gardées ouvertes si sûr et testé.
 - [ ] **P4.** Une jaquette reçue n'est plus redemandée pour une autre taille.

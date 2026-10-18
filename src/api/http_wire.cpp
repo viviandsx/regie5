@@ -97,6 +97,8 @@ bool parse_url(const std::string &url, Url *out)
     if (u.host.empty())
         return false;
     if (!port.empty()) {
+        if (port.size() > 5)   /* never a port, and atoi would overflow */
+            return false;
         for (char ch : port)
             if (!std::isdigit((unsigned char)ch))
                 return false;
@@ -208,7 +210,9 @@ Reader::State Reader::parse_head()
         const std::string status_line = head.substr(0, line_end);
         if (status_line.compare(0, 7, "HTTP/1.") != 0 || status_line.size() < 12 || status_line[8] != ' ')
             return fail("not an HTTP answer");
-        status = std::atoi(status_line.c_str() + 9);
+        status = 0;
+        for (size_t k = 9; k < 12; k++)   /* three digits, never more */
+            status = std::isdigit((unsigned char)status_line[k]) ? status * 10 + (status_line[k] - '0') : -1000;
         if (status < 100 || status > 999)
             return fail("not an HTTP answer");
         if (status >= 100 && status < 200)

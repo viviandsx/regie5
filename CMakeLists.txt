@@ -156,6 +156,8 @@ add_executable(regie5_tests
     tests/main.cpp
     tests/test_api.cpp
     tests/test_core.cpp
+    tests/test_delays.cpp
+    tests/test_hostile.cpp
     tests/test_lists.cpp
     tests/test_share.cpp
     tests/platform_stub.cpp
@@ -170,3 +172,17 @@ target_compile_definitions(regie5_tests PRIVATE
     REGIE5_SOURCE="${CMAKE_SOURCE_DIR}")
 target_compile_options(regie5_tests PRIVATE -Wall -Wextra -Wno-unused-parameter)
 add_test(NAME regie5_tests COMMAND regie5_tests)
+
+# The interface's parts that can run without a GPU (the picture cache), on a
+# renderer that only counts (tests/gfx_stub.cpp).
+add_executable(regie5_ui_tests
+    tests/main.cpp
+    tests/test_art.cpp
+    tests/gfx_stub.cpp
+    tests/platform_stub.cpp
+)
+target_link_libraries(regie5_ui_tests PRIVATE regie5_ui)
+target_compile_definitions(regie5_ui_tests PRIVATE
+    REGIE5_FIXTURES="${CMAKE_SOURCE_DIR}/fixtures")
+target_compile_options(regie5_ui_tests PRIVATE -Wall -Wextra -Wno-unused-parameter)
+add_test(NAME regie5_ui_tests COMMAND regie5_ui_tests)

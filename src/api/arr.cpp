@@ -555,8 +555,8 @@ bool parse_queue(const std::string &body, config::Service from, time_t now, std:
             q.title = json::str(movie, "title");
             q.year = json::integer(movie, "year");
         }
-        q.size = (int64_t)json::num(it, "size");
-        q.size_left = (int64_t)json::num(it, "sizeleft");
+        q.size = json::i64(it, "size");
+        q.size_left = json::i64(it, "sizeleft");
         q.progress = q.size > 0 ? std::clamp(1.0 - (double)q.size_left / (double)q.size, 0.0, 1.0) : 0.0;
         /* The estimate when it is still ahead; one already past is stale: the timespan then. */
         const time_t eta = json::parse_time(json::str(it, "estimatedCompletionTime"));

@@ -4,6 +4,8 @@
  */
 #include "api/json.h"
 
+#include <cerrno>
+#include <climits>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
@@ -218,18 +220,42 @@ std::string str(const cJSON *o, const char *key, const std::string &def)
     return cJSON_IsString(v) && v->valuestring ? std::string(v->valuestring) : def;
 }
 
+bool whole(double d, int64_t *out)
+{
+    /* 2^63 exactly is past int64_t; every double below it fits. */
+    if (!std::isfinite(d) || d >= 9223372036854775808.0 || d < -9223372036854775808.0)
+        return false;
+    *out = (int64_t)std::llround(d);
+    return true;
+}
+
+int int_of(const std::string &s, int def)
+{
+    errno = 0;
+    char *end = nullptr;
+    const long long v = std::strtoll(s.c_str(), &end, 10);
+    if (end == s.c_str() || errno == ERANGE || v < INT_MIN || v > INT_MAX)
+        return def;
+    return (int)v;
+}
+
 int64_t i64(const cJSON *o, const char *key, int64_t def)
 {
     const cJSON *v = get(o, key);
-    return cJSON_IsNumber(v) ? (int64_t)std::llround(v->valuedouble) : def;
+    int64_t n = 0;
+    return cJSON_IsNumber(v) && whole(v->valuedouble, &n) ? n : def;
 }
 
-int integer(const cJSON *o, const char *key, int def) { return (int)i64(o, key, def); }
+int integer(const cJSON *o, const char *key, int def)
+{
+    const int64_t n = i64(o, key, def);
+    return n >= INT_MIN && n <= INT_MAX ? (int)n : def;
+}
 
 double num(const cJSON *o, const char *key, double def)
 {
     const cJSON *v = get(o, key);
-    return cJSON_IsNumber(v) ? v->valuedouble : def;
+    return cJSON_IsNumber(v) && std::isfinite(v->valuedouble) ? v->valuedouble : def;   /* 1e400: infinity */
 }
 
 bool boolean(const cJSON *o, const char *key, bool def)

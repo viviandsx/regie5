@@ -68,9 +68,10 @@ std::string text(const cJSON *o, const char *key)
     const cJSON *v = json::get(o, key);
     if (cJSON_IsString(v) && v->valuestring)
         return v->valuestring;
-    if (cJSON_IsNumber(v)) {
+    int64_t n = 0;
+    if (cJSON_IsNumber(v) && json::whole(v->valuedouble, &n)) {
         char buf[32];
-        std::snprintf(buf, sizeof buf, "%lld", (long long)std::llround(v->valuedouble));
+        std::snprintf(buf, sizeof buf, "%lld", (long long)n);
         return buf;
     }
     return {};
@@ -80,17 +81,21 @@ double number(const cJSON *o, const char *key, double def = 0)
 {
     const cJSON *v = json::get(o, key);
     if (cJSON_IsNumber(v))
-        return v->valuedouble;
+        return std::isfinite(v->valuedouble) ? v->valuedouble : def;
     if (cJSON_IsString(v) && v->valuestring && *v->valuestring) {
         char *end = nullptr;
         const double d = std::strtod(v->valuestring, &end);
-        if (end && *end == '\0')
+        if (end && *end == '\0' && std::isfinite(d))
             return d;
     }
     return def;
 }
 
-int64_t whole(const cJSON *o, const char *key, int64_t def = 0) { return (int64_t)std::llround(number(o, key, (double)def)); }
+int64_t whole(const cJSON *o, const char *key, int64_t def = 0)
+{
+    int64_t n = 0;
+    return json::whole(number(o, key, (double)def), &n) ? n : def;
+}
 
 /* The answer's MediaContainer, which every Plex answer is wrapped in. */
 const cJSON *container(const json::Doc &doc) { return json::get(doc.root(), "MediaContainer"); }
@@ -128,9 +133,9 @@ void read_guid(const std::string &g, int *tmdb, int *tvdb, std::string *imdb)
     if (scheme == "imdb" && value.rfind("tt", 0) == 0 && imdb->empty())
         *imdb = value;
     else if ((scheme == "tmdb" || scheme == "themoviedb") && std::isdigit((unsigned char)value[0]) && !*tmdb)
-        *tmdb = std::atoi(value.c_str());
+        *tmdb = json::int_of(value);
     else if ((scheme == "tvdb" || scheme == "thetvdb") && std::isdigit((unsigned char)value[0]) && !*tvdb)
-        *tvdb = std::atoi(value.c_str());
+        *tvdb = json::int_of(value);
 }
 
 /* "movie", "episode"... as Jellyfin's item types, which the screens know. */
@@ -607,7 +612,7 @@ bool parse_activities(const std::string &body, std::vector<model::Task> *out)
         t.key = text(a, "type");
         t.name = text(a, "title");
         t.state = model::Task::Running;
-        t.progress = std::max(0.0, number(a, "progress", 0));
+        t.progress = std::clamp(number(a, "progress", 0), 0.0, 100.0);
         out->push_back(std::move(t));
     }
     return true;

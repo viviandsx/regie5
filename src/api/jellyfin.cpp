@@ -137,8 +137,8 @@ bool parse_user_items(const std::string &body, std::vector<model::UserItem> *out
         u.id = json::str(it, "Id");
         u.series = json::str(it, "Type") == "Series";
         const cJSON *ids = json::get(it, "ProviderIds");
-        u.tmdb_id = std::atoi(json::str(ids, "Tmdb").c_str());
-        u.tvdb_id = std::atoi(json::str(ids, "Tvdb").c_str());
+        u.tmdb_id = json::int_of(json::str(ids, "Tmdb"));
+        u.tvdb_id = json::int_of(json::str(ids, "Tvdb"));
         u.imdb_id = json::str(ids, "Imdb");
         const cJSON *ud = json::get(it, "UserData");
         u.played = json::boolean(ud, "Played");
@@ -334,7 +334,7 @@ bool parse_tasks(const std::string &body, std::vector<model::Task> *out)
         t.state = state == "Running" ? model::Task::Running
                   : state == "Cancelling" ? model::Task::Cancelling
                                           : model::Task::Idle;
-        t.progress = json::num(it, "CurrentProgressPercentage");
+        t.progress = std::clamp(json::num(it, "CurrentProgressPercentage"), 0.0, 100.0);
         const cJSON *last = json::get(it, "LastExecutionResult");
         if (cJSON_IsObject(last)) {
             const std::string st = json::str(last, "Status");

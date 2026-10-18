@@ -144,7 +144,9 @@ bool apply(const std::string &current_text, const std::string &posted, std::stri
                 return false;
             }
             const cJSON *from_j = cJSON_GetObjectItemCaseSensitive(it, "from");
-            const int from = cJSON_IsNumber(from_j) ? (int)from_j->valuedouble : -1;
+            const int from = cJSON_IsNumber(from_j) && from_j->valuedouble >= 0 && from_j->valuedouble < 1e6
+                                 ? (int)from_j->valuedouble
+                                 : -1;
             const cJSON *old = from >= 0 && from < (int)before.size() ? before[(size_t)from] : nullptr;
             /* The old instance as the base: fields the page does not know stay. */
             cJSON *o = old ? cJSON_Duplicate(old, true) : cJSON_CreateObject();
