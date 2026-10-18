@@ -8,6 +8,9 @@
 
 #include <arpa/inet.h>
 #include <pthread.h>
+#include <pthread_np.h>
+#include <sched.h>
+#include <sys/cpuset.h>
 #include <fcntl.h>
 #include <netinet/in.h>
 #include <signal.h>
@@ -21,6 +24,7 @@
 #include <cstddef>
 #include <cstdio>
 #include <cstring>
+#include <string>
 #include <__verbose_abort>
 
 extern "C" {
@@ -202,6 +206,131 @@ void note_thread_stack()
         return;   /* a thread past the table: its report stops at the page's end */
     s_tops[i].top.store((uintptr_t)__builtin_frame_address(0));
     s_tops[i].thread.store(pthread_self());
+}
+
+/* ---- the threads' turns (0.7.0, P1) ---------------------------------------- */
+
+/* Weak: an import the console does not export is left at NULL by the loader,
+ * and a weak reference keeps the compiler from assuming it is not. */
+#pragma weak pthread_getschedparam
+#pragma weak pthread_setschedparam
+#pragma weak pthread_getaffinity_np
+#pragma weak sched_get_priority_min
+#pragma weak sched_get_priority_max
+
+namespace {
+
+/* Imports the loader may leave at NULL: checked before each call. */
+bool sched_calls_bound()
+{
+    return (const void *)&pthread_getschedparam != nullptr && (const void *)&pthread_setschedparam != nullptr;
+}
+
+std::string cpus_of(pthread_t t)
+{
+    if ((const void *)&pthread_getaffinity_np == nullptr)
+        return "unknown (pthread_getaffinity_np not bound)";
+    cpuset_t set;
+    CPU_ZERO(&set);
+    const int rc = pthread_getaffinity_np(t, sizeof set, &set);
+    if (rc != 0)
+        return "unknown (error " + std::to_string(rc) + ")";
+    std::string out;
+    for (int c = 0; c < 64 && c < CPU_SETSIZE; c++)
+        if (CPU_ISSET(c, &set))
+            out += (out.empty() ? "" : ",") + std::to_string(c);
+    return out.empty() ? "none" : out;
+}
+
+std::string sched_of(pthread_t t)
+{
+    if (!sched_calls_bound())
+        return "unknown (pthread_getschedparam not bound)";
+    int policy = 0;
+    sched_param p{};
+    const int rc = pthread_getschedparam(t, &policy, &p);
+    if (rc != 0)
+        return "unknown (error " + std::to_string(rc) + ")";
+    char buf[96];
+    const bool range = (const void *)&sched_get_priority_min != nullptr && (const void *)&sched_get_priority_max != nullptr;
+    std::snprintf(buf, sizeof buf, "policy %d, priority %d (range %d..%d)", policy, p.sched_priority,
+                  range ? sched_get_priority_min(policy) : -1, range ? sched_get_priority_max(policy) : -1);
+    return buf;
+}
+
+struct Saved {
+    int policy = 0, priority = 0;
+    bool known = false;
+};
+Saved s_saved[32];
+char s_lower_text[200];
+
+} // namespace
+
+void log_threads(const char *where)
+{
+    const int n = std::min(s_top_count.load(), (int)(sizeof s_tops / sizeof s_tops[0]));
+    if (n <= 0)
+        return;
+    log("[regie5] threads (%s): %d known; main: %s, CPUs %s", where, n, sched_of(s_tops[0].thread.load()).c_str(),
+        cpus_of(s_tops[0].thread.load()).c_str());
+    if (n > 1)
+        log("[regie5] threads (%s): a worker: %s, CPUs %s", where, sched_of(s_tops[1].thread.load()).c_str(),
+            cpus_of(s_tops[1].thread.load()).c_str());
+}
+
+const char *lower_workers(bool on)
+{
+    const int n = std::min(s_top_count.load(), (int)(sizeof s_tops / sizeof s_tops[0]));
+    if (!sched_calls_bound() || n < 2) {
+        std::snprintf(s_lower_text, sizeof s_lower_text, "not possible: %s",
+                      n < 2 ? "no worker known" : "pthread_setschedparam not bound");
+        return s_lower_text;
+    }
+    int main_policy = 0;
+    sched_param mp{};
+    if (pthread_getschedparam(s_tops[0].thread.load(), &main_policy, &mp) != 0) {
+        std::snprintf(s_lower_text, sizeof s_lower_text, "not possible: the main thread's priority unknown");
+        return s_lower_text;
+    }
+    /* The console's scale (256..767): a larger number is a lower priority.
+     * A POSIX one (a small number, larger is higher): one under the main's. */
+    const bool sony = mp.sched_priority >= 256;
+    int changed = 0, failed = 0, first_from = -1, first_to = -1, first_read = -1;
+    for (int i = 1; i < n; i++) {
+        const pthread_t t = s_tops[i].thread.load();
+        int policy = 0;
+        sched_param p{};
+        if (pthread_getschedparam(t, &policy, &p) != 0) {
+            failed++;
+            continue;
+        }
+        if (!s_saved[i].known)
+            s_saved[i] = {policy, p.sched_priority, true};
+        sched_param want{};
+        if (!on)
+            want.sched_priority = s_saved[i].priority;
+        else if (sony)
+            want.sched_priority = std::min(767, std::max(s_saved[i].priority, mp.sched_priority) + 32);
+        else
+            want.sched_priority = std::min(s_saved[i].priority, mp.sched_priority - 1);
+        const int rc = pthread_setschedparam(t, on ? policy : s_saved[i].policy, &want);
+        int after_policy = 0;
+        sched_param after{};
+        pthread_getschedparam(t, &after_policy, &after);
+        if (rc != 0) {
+            failed++;
+        } else {
+            changed++;
+        }
+        if (first_from < 0)
+            first_from = p.sched_priority, first_to = want.sched_priority, first_read = after.sched_priority;
+    }
+    std::snprintf(s_lower_text, sizeof s_lower_text,
+                  "%s: %d worker(s) set, %d refused (%s scale; main %d; first worker %d -> %d, read back %d)",
+                  on ? "lowered" : "as given", changed, failed, sony ? "console" : "POSIX", mp.sched_priority,
+                  first_from, first_to, first_read);
+    return s_lower_text;
 }
 
 int log_socket() { return s_fd; }

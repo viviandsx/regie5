@@ -150,6 +150,17 @@ double s_stress_minutes = 0;   /* 0: off */
  * and R1 / L1 do not wrap around). */
 constexpr const char *kStressAgain = "circle 1 circle 1 l1 0.5 l1 0.5 l1 0.5 l1 0.5 l1 0.5 l1 2 ";
 
+/* The A/B test of 0.7.0 (development builds; a file named ab beside the
+ * stress file): each tour of the endurance test starts cold (the pictures
+ * and laid-out texts forgotten, the glyphs warmed as at start) under one of
+ * three set-ups in turn, logged with the tour: A as 0.6.0 (no frame budgets,
+ * the workers as the system gave them), B the frame budgets (P2: new texts,
+ * P3: uploads), C those and the workers lowered (P1). The first tour warms
+ * up (the display's mode change, the lists read once) and is not counted. */
+constexpr const char *kAbFile = "/app0/ab";
+bool s_ab = false;
+constexpr const char *kAbNames[3] = {"A (as 0.6.0)", "B (frame budgets)", "C (budgets + workers lowered)"};
+
 /* A frame's budgets (P2 new texts, P3 uploads), from the display's period:
  * at 120 Hz 2.9 ms of texts and 2.1 ms of uploads in a frame of 8.3. */
 void set_frame_budgets(bool on, int hz)
@@ -439,16 +450,25 @@ void log_thread_stack()
 
 /* What the tour measured: every frame drawn while something moved. */
 struct TourStats {
-    long frames = 0, over_17 = 0, over_25 = 0, over_50 = 0;
-    double worst = 0, sum = 0;
+    long frames = 0, over_12 = 0, over_17 = 0, over_25 = 0, over_50 = 0, glyphs = 0, uploads = 0;
+    double worst = 0, sum = 0, worst_text = 0, worst_upload = 0;
     void add(double gap_ms)
     {
         frames++;
         sum += gap_ms;
         worst = std::max(worst, gap_ms);
+        over_12 += gap_ms > 12.5;   /* a frame missed at 120 Hz */
         over_17 += gap_ms > 17.5;
         over_25 += gap_ms > 25;
         over_50 += gap_ms > 50;
+    }
+    /* What the frame laid out and uploaded (perf, development builds). */
+    void note(const perf::Frame &f)
+    {
+        glyphs += f.glyphs;
+        uploads += f.uploads;
+        worst_text = std::max(worst_text, f.text_ms);
+        worst_upload = std::max(worst_upload, f.upload_ms);
     }
 };
 
@@ -812,6 +832,7 @@ int main()
 #else
     s_bench = file_exists(kBenchFile);
     gfx_gl::set_bench(s_bench);
+    s_ab = *REGIE5_LOG_HOST != '\0' && s_stress_minutes > 0 && file_exists(kAbFile);
     ui::Script tour(s_bench || s_stress_minutes > 0 ? kTour : nullptr);
 #endif
     const double stress_start = platform::now();
@@ -858,8 +879,26 @@ int main()
                      stress_tours, now - stress_start, s_stress_minutes * 60, (unsigned long long)gfx::frame_index(),
                      display.refresh(), stats.frames ? stats.sum / stats.frames : 0.0, stats.worst, stats.over_17,
                      stats.over_25, stats.over_50);
+            if (s_ab)
+                ps5::log("[regie5] ab: tour %d %s | %ld frames, avg %.2f ms, worst %.1f ms, missed (>12.5 ms) %ld, "
+                         ">17.5 ms %ld, >25 ms %ld, >50 ms %ld | glyphs %ld (worst frame %.1f ms), uploads %ld (worst "
+                         "frame %.1f ms)",
+                         stress_tours, stress_tours == 1 ? "warm-up, not counted" : kAbNames[(stress_tours - 2) % 3],
+                         stats.frames, stats.frames ? stats.sum / stats.frames : 0.0, stats.worst, stats.over_12,
+                         stats.over_17, stats.over_25, stats.over_50, stats.glyphs, stats.worst_text, stats.uploads,
+                         stats.worst_upload);
             ps5::log_heap("stress");
             stats = TourStats{};
+            if (s_ab) {   /* the next tour's set-up, from cold */
+                const int k = (stress_tours - 1) % 3;
+                set_frame_budgets(k >= 1, display.refresh());
+                ps5::log("[regie5] ab: tour %d runs %s; workers %s", stress_tours + 1, kAbNames[k],
+                         ps5::lower_workers(k == 2));
+                art::forget(~0u);
+                gfx::forget_texts();
+                ui::prewarm_text();
+                drew_last = false;   /* the warming is not part of the tour's frames */
+            }
             if (now - stress_start >= s_stress_minutes * 60) {
                 stress_over = true;
                 ps5::log("[regie5] stress: FINISHED, %d tours in %.1f min, still running; the controller is yours",
@@ -924,8 +963,13 @@ int main()
                          display.asked_hz() > hz ? ": refused by the display (the driver's [ps5-output-mode] line has the code), 60 Hz kept"
                                                  : hz == 120 ? ", accepted" : "");
                 report.set_hz(hz);
-                /* 0.7.0: new texts and uploads within a share of the frame. */
-                set_frame_budgets(true, hz);
+                /* 0.7.0: the frame budgets on (in the A/B test, off for the
+                 * first tour, as 0.6.0); the threads as the system gave them. */
+                set_frame_budgets(!s_ab, hz);
+                ps5::log_threads("start");
+                if (s_ab)
+                    ps5::log("[regie5] ab: on (%s), %.0f min: tour 1 warms up, then A, B, C in turn, each from cold",
+                             kAbFile, s_stress_minutes);
                 if (s_bench)
                     ps5::log("[regie5] bench: on (%s), the tour runs by itself; each frame is timed in parts "
                              "(the GPU is waited for after the scene)",
@@ -950,8 +994,10 @@ int main()
             idle_frames = (dirty || animating) ? 0 : idle_frames + 1;
             if ((++frames % 120) == 0)
                 gfx::collect();
-            if (drew_last && !tour_over)
+            if (drew_last && !tour_over) {
                 stats.add(gap * 1000.0);
+                stats.note(perf::cur());
+            }
             report.drawn(gfx::frame_index(), drew_last ? gap * 1000.0 : 0.0, now);
             drew_last = true;
         } else {

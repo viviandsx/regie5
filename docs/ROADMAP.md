@@ -1413,7 +1413,23 @@ Mesures et fichiers intermédiaires dans le scratchpad.
 
 ### Lot 2 (console)
 
-- [ ] **P1.** Priorité des threads réseau et images, mesure avant/après.
+- [~] **P1. Threads de travail sous le thread principal** (patch 07, code fait, **mesure
+      console à faire**) — l'audit a vu des images de 90 à 173 ms que rien de mesuré n'explique
+      pendant que les workers parsent et décodent. On ne sait pas comment la console ordonne
+      ses threads : le build de test le **journalise** au démarrage (« threads (start): main:
+      policy …, priority … (range …), CPUs … », idem pour un worker) et **essaie** d'abaisser
+      les 7 workers (`ps5::lower_workers`) : échelle de la console détectée (256 à 767, plus
+      grand = moins prioritaire : le worker passe 32 sous le principal), sinon échelle POSIX
+      (un cran sous le principal) ; relu après coup et journalisé ; rétabli à la demande. Les 5
+      fonctions sont des imports **faibles** (un import absent reste NULL sans planter, vérifié
+      dans l'ELF). Pas activé hors du test A/B tant que la mesure ne l'a pas justifié.
+      **Test A/B automatique** (build de développement, fichiers `stress` et `ab` dans le
+      dossier du titre) : le tour du mode stress tourne en boucle, le 1ᵉʳ tour chauffe, puis
+      chaque tour **repart à froid** (jaquettes et textes oubliés, glyphes préchauffés comme au
+      démarrage) sous **A** (comme la 0.6.0), **B** (budgets P2 + P3) ou **C** (budgets + workers
+      abaissés), à tour de rôle ; une ligne par tour : images, moyenne, pire, **images manquées à
+      120 Hz (> 12,5 ms)**, > 17,5 / 25 / 50 ms, glyphes et pire image de texte, envois et pire
+      image d'envois. Les requêtes restent en GET seulement (mode stress).
 - [~] **P2 + P3. Budgets par image** (patch 06, code fait, **mesure console à faire**) —
       **P2** : une image ne passe pas plus de **35 % de sa durée** (2,9 ms à 120 Hz, 5,8 ms à
       60 Hz) à mettre en page et rastériser des textes nouveaux ; au-delà, les textes nouveaux
@@ -1425,7 +1441,14 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       fréquence obtenue) ; Linux sans budget (captures inchangées). Tests : 12 textes avec un
       budget minuscule → un par image, largeur juste, `text_waiting` ; 3 jaquettes avec un budget
       minuscule → une par image ; sans budget, tout dans la même image.
-- [ ] **P5.** Seulement si simple.
+- [x] **P5. Démarrage figé 1,7 s à 120 Hz : rien de simple, non codé** — les journaux du
+      pilote montrent que ces 1,7 s sont le **changement de mode vidéo** (`[ps5-prepare-startup]
+      video_ms=1701` à 120 Hz, 10 à 46 ms à 60 Hz), fait par le pilote à la 2ᵉ image : l'écran
+      se resynchronise, il n'y a rien à dessiner pendant ce temps. Le seul levier (Réglages ›
+      Affichage › 60 Hz) existe déjà. Vu au passage : le test `&getaddrinfo != nullptr` du
+      démarrage est un import ordinaire (non faible), que le compilateur peut considérer toujours
+      vrai ; sans effet aujourd'hui (toutes les consoles vues l'exportent), à rendre faible un
+      jour comme ceux de P1.
 - [ ] Build de test console unique (journal UDP), étapes avant/après pour P1, P2, P3.
 
 ### Lot 3

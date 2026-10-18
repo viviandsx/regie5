@@ -37,6 +37,14 @@ void install_crash_handler();
  * crash report may read. Elsewhere it stops at the end of the page. */
 [[gnu::noinline]] void note_thread_stack();
 
+/* The threads' scheduling, as log lines: the main thread's and a worker's
+ * policy, priority (and the policy's range) and CPUs. */
+void log_threads(const char *where);
+/* The worker threads (HTTP, pictures) under the main thread (on: lowered;
+ * off: back to what the system gave them), so that a decode never takes the
+ * drawing's turn. What was done, as a log line ("not possible: ..."). */
+const char *lower_workers(bool on);
+
 /* Which launch functions the console binds (Open in Jelly5), as a log line. */
 void log_launch_support();
 /* Where random_bytes found its randomness ("/dev/urandom", "the CPU (RDRAND)"). */
