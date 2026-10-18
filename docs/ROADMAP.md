@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : **lot 1 (Linux) fait** (M1, B2 + C4, R1, R2, P4) ; lot 2 (console) en préparation.**
+**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : **lot 1 (Linux) fait** (M1, B2 + C4, R1, R2, P4) ; **lot 2 codé**, build de test console `opt-1` prêt (`build/ps5/opt-1/ESSAIS.txt`) ; B3 attend la validation de Vivian.**
 
 ---
 
@@ -1449,14 +1449,55 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       démarrage est un import ordinaire (non faible), que le compilateur peut considérer toujours
       vrai ; sans effet aujourd'hui (toutes les consoles vues l'exportent), à rendre faible un
       jour comme ceux de P1.
-- [ ] Build de test console unique (journal UDP), étapes avant/après pour P1, P2, P3.
+- [x] **Build de test console `opt-1`** (lots 1 et 2, patches 01 à 07) — build de
+      développement, version affichée `0.7.0-test1`, journal UDP vers le laptop (192.168.1.15) ;
+      `build/ps5/opt-1/PPSA99520.zip` (sha256
+      `ce4dc9c482865429be13c8be6896ca507571bdf4ac680dcbfbd6fd667a845436`) ; les deux fichiers du
+      test A/B dans `build/ps5/opt-1/ab-files/` (`stress` = 12, `ab` vide) ; marche à suivre
+      `build/ps5/opt-1/ESSAIS.txt` (25 min : installer, utilisation normale avec les budgets,
+      R1 facultatif en arrêtant Sonarr, A/B automatique de 12 min sans toucher la manette, puis
+      **supprimer `stress` et `ab`**). Vérifié : les 7 patches appliqués dans l'ordre sur la
+      0.6.0 redonnent l'arbre de travail ; compilation PS5 à chaque point.
+- [ ] Vivian : l'essai `opt-1` ; puis analyse du journal (A/B par configuration, tailles des
+      réponses, redites d'images), et choix des réglages par défaut (P1 activé ou non).
 
 ### Lot 3
 
-- [ ] **B3.** Polices non latines : tailles, impact zip et mémoire, proposition légère —
-      **attendre la validation de Vivian avant de coder.**
+- [ ] **B3. Polices non latines — proposition, en attente de Vivian (rien codé).** Mesuré sur
+      les polices du laptop (FreeType) : Inter (l'app) n'a ni kana, ni idéogrammes, ni hangul, ni
+      arabe, ni hébreu (2 937 glyphes, 0,4 Mio par graisse, 4 graisses). Noto Sans CJK (toutes les
+      langues CJK) : **18,6 Mio** par graisse, 65 535 glyphes, ~300 o par glyphe, 20 976
+      idéogrammes, 189 kana, 11 172 hangul ; Droid Sans Fallback : 3,8 Mio, 20 902 idéogrammes,
+      **pas de hangul** ; Noto Sans Arabic 0,24 Mio, Hebrew 27 Kio, Thai 38 Kio. Aujourd'hui un
+      caractère absent est **sauté** (le titre paraît tronqué, sans signe).
+      **Proposition légère** : (1) **repli chargé à la demande** : la police de repli n'est lue
+      qu'au premier caractère absent d'Inter (0 octet de tas pour qui n'en voit jamais),
+      une seule graisse (le gras simulé par FreeType) ; (2) **sous-ensemble CJK** fait une fois
+      par un script (Noto Sans CJK, OFL) : kana, ~7 000 idéogrammes courants (GB 2312, qui
+      contient les jōyō japonais) et 2 350 hangul courants (KS X 1001) ≈ 9 600 glyphes ≈ **2,8 Mio**
+      (zip +2,3 Mio environ, 44 → ~47 Mio), **+2,8 Mio de tas** une fois chargé ; atlas : un
+      idéogramme en 4K tient ~80 px, une page de 16 Mio en garde ~600, le budget actuel (48 Mio)
+      ~1 800 avant de repartir à neuf : suffisant pour une bibliothèque ; (3) **arabe, hébreu,
+      devanagari : pas en V1** (sens de lecture de droite à gauche et lettres liées : il faudrait
+      HarfBuzz, plusieurs centaines de Kio et du travail) ; (4) dans tous les cas, un caractère
+      introuvable s'affiche en **□** au lieu de disparaître. Variante plus légère encore : (2) en
+      « paquet de polices » facultatif (un dossier à copier), le zip ne change pas.
+      **À valider : (2) dans le zip ou en paquet facultatif ; sous-ensemble proposé ; (3) écarté.**
 - [ ] **C1.** Interface commune Jellyfin / Emby / Plex, en dernier, sans changement de comportement.
-- [ ] Liste d'observations pour la séance ergonomie de 15 minutes à la manette.
+- [ ] **Séance ergonomie (15 min à la manette, Vivian, plus tard)** — à observer, en notant
+      ce qui gêne (même un détail) :
+      1. Du lancement au premier écran utile : combien de secondes, qu'est-ce qui arrive en dernier ?
+      2. Onglets (L1/R1, barre du haut) : sait-on toujours où est le focus (la goutte) ?
+      3. Bibliothèque : retrouver un film précis — combien de temps ? L2/R2 par lettre compris ?
+      4. Les pilules en haut (Séries, Films, Guide…) : passer de la grille aux pilules et revenir.
+      5. Options (M) : devine-t-on qu'il existe ? le « M Options » du bas se voit-il ?
+      6. Textes coupés par « … » qui gênent (titres, messages d'erreur) à 3 m de la TV.
+      7. Onglet Jellyfin : qu'est-ce qu'on regarde vraiment ? qu'est-ce qui est en trop ?
+      8. Confirmations (focus sur Annuler) : rassurant ou pénible ?
+      9. ○ Retour : revient-on toujours là où on s'attend ?
+      10. Messages d'erreur (un service arrêté) : compris sans réfléchir ?
+      11. Nouveau en 0.7.0 : « En attente de Sonarr (5 s)… » en bas à gauche : utile, gênant ?
+      12. Petites infos (pastilles, dates, tailles) : lisibles de loin ?
 
 ## 3. En attente
 

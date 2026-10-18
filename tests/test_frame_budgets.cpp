@@ -59,6 +59,7 @@ TEST(texts_past_the_budget_wait_a_frame)
     gfx::begin_frame();
     CHECK(!gfx::text_waiting());   /* a new frame starts clear */
     gfx::set_text_budget(0);
+    gfx::forget_texts();   /* the atlas's pages given back */
 }
 
 namespace {
