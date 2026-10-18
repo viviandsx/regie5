@@ -228,3 +228,52 @@ TEST(art_keeps_to_its_budget)
     art::forget(1u << config::Radarr);
     CHECK_EQ(gfx_stub::live_bytes, before);
 }
+
+TEST(art_asks_each_file_once)
+{
+    Rig rig;
+    const art::Ref r = pic("/img/200x300/same.png");
+    /* Two sizes asked in the same frame: one request, two textures (the
+     * test's PNG files are stored uncompressed: 240 KiB, under the 1 MiB kept at most). */
+    rig.settle([&] {
+        art::get(r, 160, 240);
+        art::get(r, 100, 150);
+    });
+    CHECK_EQ(rig.net.count("/img/200x300/same.png"), 1);
+    CHECK_EQ(gfx::texture_width(art::get(r, 160, 240)), 160);
+    CHECK_EQ(gfx::texture_width(art::get(r, 100, 150)), 100);
+    /* A third size later, and a blurred copy: decoded from the file kept. */
+    rig.settle([&] {
+        art::get(r, 80, 120);
+        art::get(r, 64, 96, 6);
+    });
+    CHECK(art::get(r, 80, 120) != nullptr && art::get(r, 64, 96, 6) != nullptr);
+    CHECK_EQ(rig.net.count("/img/200x300/same.png"), 1);
+    /* Textures let go (budget), drawn again: still not asked again. */
+    art::set_budget(1);
+    rig.frames(6, [&] { art::get(pic("/img/10x10/other.png"), 10, 10); });
+    CHECK(art::get(r, 160, 240) == nullptr);
+    art::set_budget(192u << 20);
+    rig.settle([&] { art::get(r, 160, 240); });
+    CHECK(art::get(r, 160, 240) != nullptr);
+    CHECK_EQ(rig.net.count("/img/200x300/same.png"), 1);
+    /* The service forgotten (config.json changed): asked again. */
+    art::forget(1u << config::Radarr);
+    rig.settle([&] { art::get(r, 160, 240); });
+    CHECK_EQ(rig.net.count("/img/200x300/same.png"), 2);
+    /* The files' budget: the least recent go. */
+    art::set_file_budget(3 * 1000);
+    for (int i = 0; i < 4; i++) {
+        const art::Ref k = pic("/img/20x20/k" + std::to_string(i) + ".png");
+        rig.settle([&] { art::get(k, 20, 20); });
+    }
+    art::forget(0);   /* nothing forgotten: only to be sure files stay unless asked */
+    art::set_budget(1);
+    rig.frames(6, [&] { art::get(pic("/img/10x10/other.png"), 10, 10); });
+    art::set_budget(192u << 20);
+    rig.settle([&] { art::get(pic("/img/20x20/k3.png"), 20, 20); });
+    CHECK_EQ(rig.net.count("/img/20x20/k3.png"), 1);   /* the latest kept */
+    rig.settle([&] { art::get(pic("/img/20x20/k0.png"), 20, 20); });
+    CHECK_EQ(rig.net.count("/img/20x20/k0.png"), 2);   /* the oldest gone */
+    art::set_file_budget(32u << 20);
+}

@@ -90,6 +90,9 @@ public:
     ~Pool();
 
     void submit(Request req, Work work);
+    /* Work with no request (decoding a picture already here), on a worker
+     * all the same; what it hands back runs in pump(). */
+    void submit_local(std::function<std::function<void()>()> work);
     /* On the main thread: runs what finished. Returns how many. */
     int pump();
     /* Requests waiting or running. */
@@ -106,6 +109,7 @@ private:
         Work work;
         std::string server;
         double since = 0;   /* when submitted (seconds, steady clock) */
+        std::function<std::function<void()>()> local;   /* set: no request */
     };
     void run();
     /* Under the lock: the first job whose server has room (or is set aside), else end. */

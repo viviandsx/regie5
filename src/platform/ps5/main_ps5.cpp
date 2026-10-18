@@ -611,11 +611,16 @@ int main()
          * titles: 32 MiB of text is some 8 000 films. Past it, a clear
          * message instead of a heap gone (api::Error::TooLarge). */
         const size_t lists = heap >= (256u << 20) ? 32u << 20 : heap >= (192u << 20) ? 24u << 20 : 16u << 20;
+        /* Picture files as they came (a poster: 30 to 80 KiB), so that the
+         * same one at another size is not asked again: 12 MiB is ~250. */
+        const size_t files = heap >= (256u << 20) ? 12u << 20 : heap >= (192u << 20) ? 8u << 20 : 4u << 20;
         art::set_budget(pictures);
+        art::set_file_budget(files);
         gfx::set_atlas_budget(glyphs);
         api::set_list_limit(lists);
-        ps5::log("[regie5] budgets for a %zu MiB heap: pictures %zu MiB, glyph pages %zu MiB, a library list %zu MiB",
-                 heap >> 20, pictures >> 20, glyphs >> 20, lists >> 20);
+        ps5::log("[regie5] budgets for a %zu MiB heap: pictures %zu MiB, their files %zu MiB, glyph pages %zu MiB, "
+                 "a library list %zu MiB",
+                 heap >> 20, pictures >> 20, files >> 20, glyphs >> 20, lists >> 20);
     }
     step("glyphs");
     {

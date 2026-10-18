@@ -34,6 +34,10 @@ void init(api::Services *services, http::Pool *images);
 /* Bytes of pictures kept on the GPU before the least recent go (192 MiB by
  * default; less on a console). */
 void set_budget(size_t bytes);
+/* Bytes of picture files kept as they came (32 MiB by default; less on a
+ * console): the same poster at another size, or again after its texture was
+ * let go, is decoded from them instead of being asked again. */
+void set_file_budget(size_t bytes);
 
 /* Call at the start of every frame: uploads what arrived, evicts what is old. */
 void frame();

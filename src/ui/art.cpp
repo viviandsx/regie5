@@ -28,6 +28,11 @@ namespace art {
 namespace {
 
 size_t s_budget = 192u << 20;   /* bytes of textures kept (art::set_budget) */
+/* The pictures' files as they came (JPEG, PNG: a few dozen KiB each), by
+ * address: the same poster at another size, or again after its texture was
+ * let go, is decoded from here instead of being asked again. */
+size_t s_file_budget = 32u << 20;
+constexpr size_t kFileKeptMax = 1u << 20;   /* larger files are not kept */
 constexpr int kUploadsPerFrame = 3;
 /* Pictures on their way at once: the rest wait here, the ones on screen first.
  * A picture asked for and then scrolled past is dropped before it is fetched. */
@@ -67,6 +72,38 @@ size_t s_bytes = 0;
 int s_loading = 0;
 uint64_t s_asked = 0;
 uint64_t s_sent = 0;
+
+struct File {
+    std::shared_ptr<const std::string> bytes;
+    uint64_t used = 0;
+};
+std::unordered_map<std::string, File> s_files;   /* by file_key */
+size_t s_file_bytes = 0;
+std::unordered_map<std::string, int> s_fetching;   /* by file_key: requests on their way */
+uint64_t s_gen = 0;   /* goes up with forget(): files on their way from before are not kept */
+
+/* The file a picture comes from, whatever size it is drawn at. */
+std::string file_key(const Ref &r) { return std::to_string((int)r.service) + "." + std::to_string(r.instance) + "|" + r.path; }
+
+void keep_file(const std::string &fk, std::shared_ptr<const std::string> bytes)
+{
+    if (!bytes || bytes->size() > kFileKeptMax || s_files.count(fk))
+        return;
+    s_file_bytes += bytes->size();
+    s_files[fk] = {std::move(bytes), s_frame};
+    if (s_file_bytes <= s_file_budget)
+        return;
+    std::vector<std::pair<uint64_t, std::string>> old;   /* the least recently used go first */
+    for (const auto &kv : s_files)
+        old.push_back({kv.second.used, kv.first});
+    std::sort(old.begin(), old.end());
+    for (const auto &o : old) {
+        if (s_file_bytes <= s_file_budget * 3 / 4)
+            break;
+        s_file_bytes -= s_files[o.second].bytes->size();
+        s_files.erase(o.second);
+    }
+}
 
 std::string key_of(const Ref &r, int w, int h, int blur)
 {
@@ -155,10 +192,35 @@ std::shared_ptr<Pixels> decode(const std::string &body, int mw, int mh, int blur
     return px;
 }
 
+/* The picture decoded (on a worker), handed to its entry if it still waits for it. */
+std::function<void()> arrived(const std::string &key, uint64_t sent, std::shared_ptr<Pixels> px)
+{
+    return [key, px, sent] {
+        s_loading--;
+        auto f = s_cache.find(key);
+        if (f == s_cache.end() || f->second.sent != sent)
+            return;
+        f->second.state = px ? Entry::Decoded : Entry::Failed;
+        f->second.px = px;
+    };
+}
+
 void submit(const std::string &key, Entry &e)
 {
     e.state = Entry::Loading;
     s_loading++;
+    const int mw = e.mw, mh = e.mh, blur_r = e.blur;
+    const uint64_t sent = e.sent = ++s_sent;
+    const std::string fk = file_key(e.ref);
+    auto kept = s_files.find(fk);
+    if (kept != s_files.end()) {   /* the file is here (another size, or let go): decoded, nothing asked */
+        kept->second.used = s_frame;
+        std::shared_ptr<const std::string> bytes = kept->second.bytes;
+        s_pool->submit_local([key, sent, bytes, mw, mh, blur_r]() -> std::function<void()> {
+            return arrived(key, sent, decode(*bytes, mw, mh, blur_r));
+        });
+        return;
+    }
     http::Request req;
     const bool emby = e.ref.service == config::Jellyfin && s_services->config().emby();
     req.url = s_services->url(e.ref.service, emby ? jellyfin::emby_image_path(e.ref.path) : e.ref.path, e.ref.instance);
@@ -168,17 +230,23 @@ void submit(const std::string &key, Entry &e)
     req.timeout_s = 20;
     req.insecure = s_services->config().at(e.ref.service, e.ref.instance).insecure;
     req.server = s_services->config().at(e.ref.service, e.ref.instance).url;   /* its own turn (http::Pool) */
-    const int mw = e.mw, mh = e.mh, blur_r = e.blur;
-    const uint64_t sent = e.sent = ++s_sent;
-    s_pool->submit(std::move(req), [key, mw, mh, blur_r, sent](http::Response &resp) -> std::function<void()> {
-        std::shared_ptr<Pixels> px = resp.ok() ? decode(resp.body, mw, mh, blur_r) : nullptr;
-        return [key, px, sent] {
-            s_loading--;
-            auto f = s_cache.find(key);
-            if (f == s_cache.end() || f->second.sent != sent)
-                return;
-            f->second.state = px ? Entry::Decoded : Entry::Failed;
-            f->second.px = px;
+    s_fetching[fk]++;
+    const uint64_t gen = s_gen;
+    s_pool->submit(std::move(req), [key, fk, gen, mw, mh, blur_r, sent](http::Response &resp) -> std::function<void()> {
+        std::shared_ptr<const std::string> bytes;
+        if (resp.ok())
+            bytes = std::make_shared<const std::string>(std::move(resp.body));
+        std::shared_ptr<Pixels> px = bytes ? decode(*bytes, mw, mh, blur_r) : nullptr;
+        if (!px)
+            bytes.reset();   /* not a picture we can use: not kept */
+        std::function<void()> done = arrived(key, sent, px);
+        return [done, fk, gen, bytes] {
+            auto f = s_fetching.find(fk);
+            if (f != s_fetching.end() && --f->second <= 0)
+                s_fetching.erase(f);
+            if (gen == s_gen)   /* not from an address forgotten meanwhile */
+                keep_file(fk, bytes);
+            done();
         };
     });
 }
@@ -206,6 +274,7 @@ Entry *request(const Ref &ref, int mw, int mh, int blur_r)
 } // namespace
 
 void set_budget(size_t bytes) { s_budget = bytes; }
+void set_file_budget(size_t bytes) { s_file_budget = bytes; }
 
 void init(api::Services *services, http::Pool *images)
 {
@@ -232,7 +301,11 @@ void frame()
     for (const auto &w : wanted) {
         if (s_loading >= kInFlight)
             break;
-        submit(w.second, s_cache[w.second]);
+        Entry &e = s_cache[w.second];
+        const std::string fk = file_key(e.ref);
+        if (s_fetching.count(fk) && !s_files.count(fk))
+            continue;   /* its file is on its way for another size: decoded from it once here */
+        submit(w.second, e);
     }
     int uploads = 0;
     for (auto &kv : s_cache) {
@@ -314,6 +387,16 @@ void retry_failed()
 
 void forget(unsigned services)
 {
+    s_gen++;
+    for (auto it = s_files.begin(); it != s_files.end();) {
+        const int service = std::atoi(it->first.c_str());
+        if (services & (1u << service)) {
+            s_file_bytes -= it->second.bytes->size();
+            it = s_files.erase(it);
+        } else {
+            ++it;
+        }
+    }
     for (auto it = s_cache.begin(); it != s_cache.end();) {
         Entry &e = it->second;
         if (!(services & (1u << e.ref.service))) {

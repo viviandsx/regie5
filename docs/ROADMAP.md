@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : lot 1 sous Linux, points M1, B2 + C4, R1 et R2 faits.**
+**Dernière mise à jour : 18 octobre 2026. **0.6.0 publiée** (Plex en BETA). Catalogue homebrew.page pas encore en 0.6.0 : Vivian vérifie le 19 octobre, sinon chemin manuel de `docs/RELEASING.md` § 3. **0.7.0 en cours** (optimisation, § 2 quattuordecies) : **lot 1 (Linux) fait** (M1, B2 + C4, R1, R2, P4) ; lot 2 (console) en préparation.**
 
 ---
 
@@ -31,9 +31,9 @@ pour ce qui a été fait après la phase 0).
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | ✅ publiée ; catalogue en attente (§ 2 duodecies) |
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
-| 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | en cours : lot 1 (Linux) |
+| 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | lot 1 (Linux) fait ; lot 2 (console) en cours |
 
-Tests : **94** (`regie5_tests` : 91, `regie5_ui_tests` : 3, lancés par `ctest`), tous verts.
+Tests : **95** (`regie5_tests` : 91, `regie5_ui_tests` : 4, lancés par `ctest`), tous verts.
 
 ---
 
@@ -1396,7 +1396,20 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       une adresse muette (192.0.2.1) arrêtée au délai. Vu en vrai TLS sous Linux (serveur
       Python HTTPS, transport de la PS5) : 6 requêtes, **1 seule connexion**, 1 négociation.
       ASan + UBSan : rien.
-- [ ] **P4.** Une jaquette reçue n'est plus redemandée pour une autre taille.
+- [x] **P4. Une jaquette reçue n'est plus redemandée** (patch 05) — le cache d'images garde
+      aussi **les fichiers tels qu'ils sont arrivés** (JPEG, PNG : 30 à 80 Kio une affiche), par
+      adresse : la même affiche à une autre taille (cartes 80, 160, 360, 500 px, copie floutée du
+      fond), ou de nouveau après que sa texture a été rendue, est **décodée depuis le fichier
+      gardé** sur un worker (`Pool::submit_local`), sans requête ; deux tailles demandées dans la
+      même image n'envoient qu'une requête (la seconde attend le fichier). Budget : PS5 12 / 8 /
+      4 Mio selon le tas (≈ 250 affiches), Linux 32 Mio, les moins récents partent ; un fichier de
+      plus de 1 Mio ou qui ne se décode pas n'est pas gardé ; config.json change → oubliés.
+      Journal console du 13 octobre : 576 requêtes d'images pour 236 adresses (59 % de redites) ;
+      à remesurer sur le build de test. Test `art_asks_each_file_once` (2 tailles dans la même
+      image : 1 requête ; 3ᵉ taille et copie floutée : 0 ; texture rendue puis redessinée : 0 ;
+      service oublié : redemandé ; budget des fichiers tenu). Captures `--demo` (vraies affiches)
+      identiques à la 0.6.0. Aussi : dans `http::Pool`, le compte par serveur se fait sous le même
+      verrou que le choix de la requête (une course pouvait laisser passer une 3ᵉ requête).
 
 ### Lot 2 (console)
 

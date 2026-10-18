@@ -86,9 +86,24 @@ void Pool::submit(Request req, Work work)
     m_cv.notify_one();
 }
 
+void Pool::submit_local(std::function<std::function<void()>()> work)
+{
+    m_busy++;
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        Job j;
+        j.local = std::move(work);
+        j.since = clock_now();
+        m_jobs.push_back(std::move(j));
+    }
+    m_cv.notify_one();
+}
+
 std::deque<Pool::Job>::iterator Pool::next_job(double now)
 {
     for (auto it = m_jobs.begin(); it != m_jobs.end(); ++it) {
+        if (it->local)
+            return it;   /* no server to wait for */
         const auto down = m_down_until.find(it->server);
         if (down != m_down_until.end() && now < down->second && !it->req.fresh)
             return it;   /* answered at once */
@@ -109,7 +124,8 @@ std::map<std::string, double> Pool::waiting() const
         age = std::max(age, now - since);
     };
     for (const Job &j : m_jobs)
-        note(j.server, j.since);
+        if (!j.local)
+            note(j.server, j.since);
     for (const auto &kv : m_started)
         note(kv.first, kv.second);
     return out;
@@ -147,12 +163,26 @@ void Pool::run()
                 return;
             job = std::move(*it);
             m_jobs.erase(it);
-            const auto down = m_down_until.find(job.server);
-            aside = !job.req.fresh && down != m_down_until.end() && clock_now() < down->second;
-            if (!aside) {
-                m_running[job.server]++;
-                started = m_started.emplace(job.server, job.since);
+            if (!job.local) {   /* counted at once, under the same lock as the choice */
+                const auto down = m_down_until.find(job.server);
+                aside = !job.req.fresh && down != m_down_until.end() && clock_now() < down->second;
+                if (!aside) {
+                    m_running[job.server]++;
+                    started = m_started.emplace(job.server, job.since);
+                }
             }
+        }
+        if (job.local) {
+            std::function<void()> then = job.local();
+            {
+                std::lock_guard<std::mutex> lock(m_mutex);
+                m_done.push_back(std::move(then));
+            }
+            m_busy--;
+            m_cv.notify_all();
+            if (m_wake)
+                m_wake();
+            continue;
         }
         Response resp;
         if (aside) {   /* unreachable a moment ago: not tried again so soon */
