@@ -58,6 +58,7 @@ add_library(regie5_data STATIC
     src/api/http_wire.cpp
     src/api/jellyfin.cpp
     src/api/json.cpp
+    src/api/media_server.cpp
     src/api/mock_transport.cpp
     src/api/plex.cpp
     src/api/seerr.cpp

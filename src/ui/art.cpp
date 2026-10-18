@@ -4,7 +4,6 @@
  */
 #include "ui/art.h"
 
-#include "api/jellyfin.h"
 #include "core/perf.h"
 #include "platform/platform.h"
 #include "ui/poster.h"
@@ -226,8 +225,9 @@ void submit(const std::string &key, Entry &e)
         return;
     }
     http::Request req;
-    const bool emby = e.ref.service == config::Jellyfin && s_services->config().emby();
-    req.url = s_services->url(e.ref.service, emby ? jellyfin::emby_image_path(e.ref.path) : e.ref.path, e.ref.instance);
+    /* The media server's pictures as it is asked them (Emby: another size parameter). */
+    const std::string path = e.ref.service == config::Jellyfin ? s_services->media_fetch_path(e.ref.path) : e.ref.path;
+    req.url = s_services->url(e.ref.service, path, e.ref.instance);
     const std::string auth = s_services->auth_header(e.ref.service, e.ref.instance);
     if (!auth.empty())
         req.headers.push_back(auth);

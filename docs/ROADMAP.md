@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. 0.7.0 en cours (§ 2 quattuordecies) : lots 1 et 2 commités (patches 01 à 08), **essai console `opt-1` fait et analysé** : on garde P2 + P3, pas P1. B3 (polices CJK) fait ; en cours : C1.**
+**Dernière mise à jour : 18 octobre 2026. 0.7.0 en cours (§ 2 quattuordecies) : lots 1 et 2 commités (patches 01 à 08), **essai console `opt-1` fait et analysé** : on garde P2 + P3, pas P1. B3 (polices CJK) et C1 (interface commune des serveurs multimédias) faits ; reste la séance ergonomie de Vivian, puis la préparation de la 0.7.0.**
 
 ---
 
@@ -33,7 +33,7 @@ pour ce qui a été fait après la phase 0).
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | lot 1 (Linux) fait ; lot 2 (console) en cours |
 
-Tests : **98** (`regie5_tests` : 91, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
+Tests : **99** (`regie5_tests` : 92, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
 
 ---
 
@@ -1532,7 +1532,32 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       introuvable s'affiche en **□** au lieu de disparaître. Variante plus légère encore : (2) en
       « paquet de polices » facultatif (un dossier à copier), le zip ne change pas.
       **À valider : (2) dans le zip ou en paquet facultatif ; sous-ensemble proposé ; (3) écarté.**
-- [ ] **C1.** Interface commune Jellyfin / Emby / Plex, en dernier, sans changement de comportement.
+- [x] **C1. Interface commune Jellyfin / Emby / Plex** (patch 11, après l'analyse de l'A/B) —
+      `api::MediaServer` (`src/api/media_server.{h,cpp}`) : en-tête d'authentification, en-têtes
+      envoyés à chaque requête, lecture des refus (session terminée, pas le propriétaire, jeton
+      refusé), test de connexion, chemin d'image et chemin de téléchargement d'image, et les 17
+      appels du serveur multimédia (sessions, tâches, ajouts récents, journal, bibliothèques,
+      titres et compte d'une bibliothèque, utilisateurs, éléments, encodage, ce qu'a vu un
+      utilisateur, index de Jelly5, Id du serveur, arrêt d'une lecture, scan). Trois classes :
+      **Jellyfin**, **Emby** (dérivée : son en-tête, `maxWidth` pour les images, la date des
+      séries en deux appels) et **Plex** ; le code de chaque branche a été **déplacé tel quel**.
+      `Services` garde les trois objets toute sa vie (une réponse en vol après un changement de
+      config.json retrouve le sien) et choisit par `media()`. `services.cpp` : **855 → 533
+      lignes, 22 → 0** branches `plex()` / `emby()` (une seule sélection reste, dans `media()`) ;
+      `Services::call` dans un en-tête interne (`services_call.h`) ; le cache d'images demande
+      le chemin au serveur (`media_fetch_path`) au lieu de tester `emby()`. Quick Connect reste
+      dans `Services` (Jellyfin seul, appelé même service éteint). Les écarts d'affichage propres
+      à chaque serveur dans l'interface (`format.cpp`, `session_diag.cpp`, `settings.cpp`…) ne
+      changent pas : ce sont des textes différents, pas du code en double.
+      **Comportement inchangé, vérifié** : 99 tests verts (Emby et Plex sur leurs fixtures, Quick
+      Connect) ; nouveau test `media_servers_read_refusals_their_own_way` (Jellyfin par clé,
+      Emby, Plex non propriétaire / jeton refusé / sans jeton, arrêt refusé au propriétaire =
+      Plex Pass), **passé aussi sur le code de la 0.6.0** ; captures de 9 états (data, emby, plex,
+      multi, mixed, offline, unauthorized, quickconnect, old) : 119 identiques, le reste = heure,
+      curseur, heures relatives, et deux écarts dus à l'ordre d'arrivée des réponses (focus de
+      l'Accueil Emby, ordre de deux alertes de la même minute) qui **varient déjà d'un lancement
+      à l'autre en 0.6.0** : sur 3 lancements de chaque version, mêmes images. Compilation PS5,
+      ASan + UBSan : rien.
 - [ ] **Séance ergonomie (15 min à la manette, Vivian, plus tard)** — à observer, en notant
       ce qui gêne (même un détail) :
       1. Du lancement au premier écran utile : combien de secondes, qu'est-ce qui arrive en dernier ?

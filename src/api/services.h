@@ -14,10 +14,13 @@
 #include "core/model.h"
 
 #include <functional>
+#include <memory>
 #include <string>
 #include <vector>
 
 namespace api {
+
+class MediaServer;
 
 /* Why a call failed, in the terms the interface explains. */
 enum class Error {
@@ -57,6 +60,7 @@ template <typename T> struct Result {
 class Services {
 public:
     Services(const config::Config &cfg, http::Pool &pool, std::string lang);
+    ~Services();
 
     const config::Config &config() const { return m_cfg; }
     /* Who Régie5 is to Jellyfin when it signs in (Quick Connect): this
@@ -166,6 +170,8 @@ public:
     /* The media server's picture of an item: its poster ("Primary") or
      * backdrop ("Backdrop"), at a width (Jellyfin, Emby, Plex alike). */
     std::string media_image(const std::string &id, const char *type, int width, const std::string &tag = {}) const;
+    /* A media server picture's path as it is fetched (Emby asks another size parameter). */
+    std::string media_fetch_path(const std::string &path) const;
 
     /* Jellyfin (or Emby, or Plex). */
     void sessions(std::function<void(Result<std::vector<model::Session>>)> done);
@@ -185,6 +191,10 @@ public:
     void quick_connect_finish(const std::string &secret, std::function<void(Result<model::JellyfinSession>)> done);
 
 private:
+    friend class MediaServer;   /* api/media_server: Jellyfin, Emby, Plex */
+    /* The media server config.json names (the three are kept: answers on
+     * their way after config.json changed still find theirs). */
+    MediaServer &media() const;
     http::Request make(config::Service s, const std::string &method, const std::string &path, int instance = 0) const;
     /* parse: on the worker; false when the body is not what was expected. */
     template <typename T>
@@ -192,18 +202,11 @@ private:
               std::function<bool(const std::string &, T *)> parse, std::function<void(Result<T>)> done,
               int instance = 0, const std::string &body = {}, bool need_on = true, size_t max_body = 0,
               bool fresh = false);
-    /* Plex's ways to the same results (api/plex). */
-    void plex_sessions(std::function<void(Result<std::vector<model::Session>>)> done);
-    void plex_tasks(std::function<void(Result<std::vector<model::Task>>)> done);
-    void plex_recent(std::function<void(Result<std::vector<model::RecentItem>>)> done);
-    void plex_refresh(std::function<void(Result<bool>)> done);
-    void plex_users(std::function<void(Result<std::vector<model::JellyfinUser>>)> done);
-    void plex_encoding(std::function<void(Result<model::EncodingInfo>)> done);
-
     config::Config m_cfg;
     http::Pool &m_pool;
     std::string m_lang;
     std::string m_device_id = "regie5", m_device_name = "Regie5", m_version;
+    std::unique_ptr<MediaServer> m_jellyfin, m_emby, m_plex;
 };
 
 } // namespace api

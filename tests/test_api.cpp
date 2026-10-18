@@ -1369,3 +1369,49 @@ TEST(http_wire_date)
     CHECK(r.feed(a.data(), a.size()) == http::wire::Reader::Done);
     CHECK_EQ(r.server_date, (int64_t)1791808472);
 }
+
+TEST(media_servers_read_refusals_their_own_way)
+{
+    using E = api::Error;
+    struct Case {
+        config::MediaServer media;
+        const char *fail;
+        bool admin, token;
+        E want;
+    };
+    const Case cases[] = {
+        /* Jellyfin by key: the key refused. */
+        {config::MediaServer::Jellyfin, "jellyfin:unauthorized", true, true, E::Unauthorized},
+        {config::MediaServer::Jellyfin, "jellyfin:forbidden", true, true, E::Unauthorized},
+        /* Emby: the key refused, never a session's end. */
+        {config::MediaServer::Emby, "emby:unauthorized", false, true, E::Unauthorized},
+        {config::MediaServer::Emby, "emby:forbidden", false, true, E::Unauthorized},
+        /* Plex: not the owner, a token no longer taken, or no token at all. */
+        {config::MediaServer::Plex, "plex:unauthorized", false, true, E::NeedsAdmin},
+        {config::MediaServer::Plex, "plex:forbidden", true, true, E::Revoked},
+        {config::MediaServer::Plex, "plex:unauthorized", true, false, E::Unauthorized},
+    };
+    for (const Case &c : cases) {
+        api::MockTransport mock(REGIE5_FIXTURES, 0, c.fail);
+        http::Pool pool(mock, 1, nullptr);
+        config::Config cfg = config::mock("", false, c.media);
+        cfg.services[config::Jellyfin].admin = c.admin;
+        if (!c.token)
+            cfg.services[config::Jellyfin].api_key.clear();
+        api::Services s(cfg, pool, "en");
+        api::Result<std::vector<model::JellyfinLibrary>> libs;
+        s.libraries([&](api::Result<std::vector<model::JellyfinLibrary>> r) { libs = r; });
+        drain(pool);
+        CHECK(libs.error == c.want);
+    }
+    /* Stopping a playback refused to Plex's owner: a Plex Pass, not the token. */
+    api::MockTransport mock(REGIE5_FIXTURES, 0, "plex:forbidden");
+    http::Pool pool(mock, 1, nullptr);
+    config::Config cfg = config::mock("", false, config::MediaServer::Plex);
+    cfg.services[config::Jellyfin].admin = true;
+    api::Services s(cfg, pool, "en");
+    api::Result<bool> stopped;
+    s.stop_session("1", [&](api::Result<bool> r) { stopped = r; });
+    drain(pool);
+    CHECK(stopped.error == E::NeedsPlexPass);
+}
