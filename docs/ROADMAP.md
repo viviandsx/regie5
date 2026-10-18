@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. 0.7.0 en cours (§ 2 quattuordecies) : lots 1 et 2 commités (patches 01 à 08), **essai console `opt-1` fait et analysé** : on garde P2 + P3, pas P1. B3 (polices CJK) et C1 (interface commune des serveurs multimédias) faits ; reste la séance ergonomie de Vivian, puis la préparation de la 0.7.0.**
+**Dernière mise à jour : 18 octobre 2026. **0.7.0 prête à publier** (optimisation, polices CJK, interface commune des serveurs multimédias ; zip `c54af57f…`) : recette console `docs/RECETTE-0.7.0.md` puis publication (§ 2 quattuordecies, « Pour publier la 0.7.0 »). Pas de séance d'ergonomie pour cette version (décision de Vivian).**
 
 ---
 
@@ -31,7 +31,7 @@ pour ce qui a été fait après la phase 0).
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | ✅ publiée ; catalogue en attente (§ 2 duodecies) |
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
-| 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | lot 1 (Linux) fait ; lot 2 (console) en cours |
+| 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | prête : recette console puis publication |
 
 Tests : **99** (`regie5_tests` : 92, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
 
@@ -1558,7 +1558,8 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       l'Accueil Emby, ordre de deux alertes de la même minute) qui **varient déjà d'un lancement
       à l'autre en 0.6.0** : sur 3 lancements de chaque version, mêmes images. Compilation PS5,
       ASan + UBSan : rien.
-- [ ] **Séance ergonomie (15 min à la manette, Vivian, plus tard)** — à observer, en notant
+- [ ] **Séance ergonomie** : **pas pour la 0.7.0** (décision de Vivian, 18 octobre 2026) ; la
+      liste reste pour plus tard. À observer, en notant
       ce qui gêne (même un détail) :
       1. Du lancement au premier écran utile : combien de secondes, qu'est-ce qui arrive en dernier ?
       2. Onglets (L1/R1, barre du haut) : sait-on toujours où est le focus (la goutte) ?
@@ -1572,6 +1573,39 @@ Mesures et fichiers intermédiaires dans le scratchpad.
       10. Messages d'erreur (un service arrêté) : compris sans réfléchir ?
       11. Nouveau en 0.7.0 : « En attente de Sonarr (5 s)… » en bas à gauche : utile, gênant ?
       12. Petites infos (pastilles, dates, tailles) : lisibles de loin ?
+
+### Pour publier la 0.7.0 (préparé le 18 octobre 2026)
+
+Patch : `build/patches-23/12-regie5-0.7.0` (arbre de travail dans l'état final : `--cached`).
+
+1. [x] **Numéros** : `contentVersion` `00.007.000`, `project(regie5 VERSION 0.7.0)` ; profil
+       `param.json` inchangé (`games-hz120-0.3.1`, accepté par `check-param.py --release`).
+2. [x] **Nouveautés** de la série 0.7 (FR/EN/ES/DE, vues sans débordement) : plus fluide à
+       120 Hz ; jaquette déjà reçue revenue tout de suite ; grandes bibliothèques et serveur lent ;
+       titres japonais, chinois et coréens ; Réglages › Nouveautés.
+3. [x] **README** : interface plus fluide, grandes bibliothèques et serveurs lents, titres CJK
+       (fonctionnalités) ; autres écritures en □ et bibliothèque trop grande (limites) ; Noto
+       Sans CJK (crédits). `INSTALL.txt` inchangé (rien de nouveau à installer).
+4. [x] **Notes de version** `build/publish/release-notes-v0.7.0.md` (anglais, chiffres mesurés
+       sur la console : 5 à 10 images manquées par tour → 0, pire écart 25 → 12 ms ; 59 % → 1 %
+       d'images redemandées ; 113 → 24 Mio pour lire 5 000 films).
+5. [x] **Recette console** `docs/RECETTE-0.7.0.md` (23 étapes : mise à jour, Nouveautés,
+       Accueil, Bibliothèque avec défilement rapide, Activité, Demandes › Découvrir, Jellyfin,
+       Réglages, page du téléphone ; aucune écriture).
+6. [x] **Zip** : `scripts/release-ps5.sh` → `build/ps5/release-0.7.0/upload/PPSA99520.zip`
+       (39 fichiers : ceux de la 0.6.0, plus la police CJK et sa licence ; ni `config.json` ni
+       `test-config`, ni `stress` ni `ab`), sha256
+       `c54af57f7c6fe7ff8a2322be5a09e0620f51c8c10473d5b58908fa84d6a3e023`. Vérifié dans
+       `llvm-pie.elf` : version `0.7.0`, mêmes chaînes « -test » / « -dev » que la 0.6.0 publiée
+       (celles de bzip2 et de Mbed TLS seulement), pas d'adresse de journal. Tests Linux : 99 verts.
+7. [ ] Vivian : recette `docs/RECETTE-0.7.0.md` avec ce zip.
+8. [ ] Vivian : patch `12-regie5-0.7.0` de `build/patches-23/` (`git apply --cached`), commit
+       « Régie5 0.7.0 », push.
+9. [ ] Vivian : tag `v0.7.0` et push du tag seul.
+10. [ ] Vivian : release GitHub « Régie5 0.7.0 » (texte = les notes, pièce jointe `PPSA99520.zip`,
+        pas « pre-release »), empreinte vérifiée (`sha256sum`).
+11. [ ] Catalogue : la PR automatique du lendemain (`version` 0.7.0, `sha256`, `icon_url` en
+        `/v0.7.0/ps5/app/sce_sys/icon0.png`) ; sinon le chemin manuel de `docs/RELEASING.md` § 3.
 
 ## 3. En attente
 

@@ -50,7 +50,13 @@ Also:
 - **Several instances** of a service (for example Radarr and Radarr 4K) are shown together, each named.
 - **HTTPS** and reverse-proxy sub-paths (`https://example.lan/sonarr`), self-signed certificates on request.
 - **Liquid-glass interface** made for a TV: large type readable from 3 m, a springy focus drop, 4K at 60 fps,
-  120 Hz on a display that accepts it, 60 Hz on the others.
+  120 Hz on a display that accepts it, 60 Hz on the others. New texts and posters are prepared a little
+  in each frame, so that opening a screen does not stutter (0.7.0).
+- **Large libraries, slow servers** (0.7.0): a library of thousands of films is read with little memory and
+  read once for every screen; a poster already received is never asked again; a slow or switched-off server
+  no longer holds up the others, and the one being waited for is named at the bottom of the screen.
+- **Japanese, Chinese and Korean titles** are shown (new in 0.7.0), with a font read only when such a
+  title appears.
 - **English, French, Spanish and German**, following the console's language. The Spanish and German
   translations were made with the help of AI: corrections by native speakers are welcome, and so are
   [new languages](docs/TRANSLATING.md).
@@ -283,6 +289,12 @@ two ways to set the proxy up, and for redirects such as a login page in front of
 - `config.json` holds your API keys in plain text on the console, and with Plex the
   owner's **Plex account token** (Plex has no token limited to one server that the
   console could keep): see *Plex (beta): sign in from the phone* for how to revoke it.
+- **Other scripts** (Arabic, Hebrew, Thai, Devanagari…) are shown as □: they need a
+  right-to-left layout or joined letters that Régie5 does not do yet. Latin, Greek,
+  Cyrillic, Japanese, Chinese and Korean are shown.
+- **Very large libraries:** a library list larger than 32 MB as sent by the server
+  (some 8,000 films in Radarr) is not read on the console, so that it cannot run out of
+  memory: the Library then says *Library too large for Régie5* for that instance.
 - Only firmware 13.60 has been tested.
 
 ## Building from source
@@ -345,7 +357,8 @@ BlackBearReloaded's [ps5-opengl](https://github.com/blackbearreloaded/ps5-opengl
 [Mbed TLS](https://github.com/Mbed-TLS/mbedtls), [cJSON](https://github.com/DaveGamble/cJSON),
 [stb_image](https://github.com/nothings/stb), Nayuki's
 [QR Code generator](https://www.nayuki.io/page/qr-code-generator-library),
-[FreeType](https://freetype.org) and the [Inter](https://github.com/rsms/inter) typeface.
+[FreeType](https://freetype.org), the [Inter](https://github.com/rsms/inter) typeface and a subset of
+[Noto Sans CJK](https://github.com/notofonts/noto-cjk).
 
 Régie5 is not affiliated with or endorsed by Sony Interactive Entertainment, the
 Jellyfin project, Emby, Plex, or the Sonarr, Radarr or Seerr projects. *PlayStation*, *PS5* and
