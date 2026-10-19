@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 18 octobre 2026. **0.7.0 prête à publier** (optimisation, polices CJK, interface commune des serveurs multimédias ; zip `c54af57f…`) : recette console `docs/RECETTE-0.7.0.md` puis publication (§ 2 quattuordecies, « Pour publier la 0.7.0 »). Pas de séance d'ergonomie pour cette version (décision de Vivian).**
+**Dernière mise à jour : 19 octobre 2026. **0.7.0 publiée**, fiche homebrew.page en 0.7.0. En cours : PR manuelle sur le catalogue pour la nouvelle description (Jellyfin, Emby ou Plex).**
 
 ---
 
@@ -31,7 +31,7 @@ pour ce qui a été fait après la phase 0).
 | 13. Correctif 0.5.1 | Plantage du testeur Emby : images Emby, rapport de plantage, garde-fou de démarrage | ✅ publiée le 17 octobre 2026 ; catalogue en attente de la PR automatique (§ 2 undecies) |
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | ✅ publiée ; catalogue en attente (§ 2 duodecies) |
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
-| 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | prête : recette console puis publication |
+| 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | ✅ publiée ; catalogue en 0.7.0 (19 octobre 2026) |
 
 Tests : **99** (`regie5_tests` : 92, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
 
@@ -1598,14 +1598,25 @@ Patch : `build/patches-23/12-regie5-0.7.0` (arbre de travail dans l'état final 
        `c54af57f7c6fe7ff8a2322be5a09e0620f51c8c10473d5b58908fa84d6a3e023`. Vérifié dans
        `llvm-pie.elf` : version `0.7.0`, mêmes chaînes « -test » / « -dev » que la 0.6.0 publiée
        (celles de bzip2 et de Mbed TLS seulement), pas d'adresse de journal. Tests Linux : 99 verts.
-7. [ ] Vivian : recette `docs/RECETTE-0.7.0.md` avec ce zip.
-8. [ ] Vivian : patch `12-regie5-0.7.0` de `build/patches-23/` (`git apply --cached`), commit
+7. [x] Vivian : recette `docs/RECETTE-0.7.0.md` avec ce zip.
+8. [x] Vivian : patch `12-regie5-0.7.0` de `build/patches-23/` (`git apply --cached`), commit
        « Régie5 0.7.0 », push.
-9. [ ] Vivian : tag `v0.7.0` et push du tag seul.
-10. [ ] Vivian : release GitHub « Régie5 0.7.0 » (texte = les notes, pièce jointe `PPSA99520.zip`,
+9. [x] Vivian : tag `v0.7.0` et push du tag seul.
+10. [x] Vivian : release GitHub « Régie5 0.7.0 » (texte = les notes, pièce jointe `PPSA99520.zip`,
         pas « pre-release »), empreinte vérifiée (`sha256sum`).
-11. [ ] Catalogue : la PR automatique du lendemain (`version` 0.7.0, `sha256`, `icon_url` en
+11. [x] Catalogue : la PR automatique du lendemain (`version` 0.7.0, `sha256`, `icon_url` en
         `/v0.7.0/ps5/app/sce_sys/icon0.png`) ; sinon le chemin manuel de `docs/RELEASING.md` § 3.
+        Vu par Vivian le 19 octobre 2026 : homebrew.page affiche la 0.7.0 (fiche : `sha256`
+        `c54af57f…`, `icon_url` en `/v0.7.0/`).
+12. [ ] **Nouvelle description sur le catalogue** (demandée par Vivian le 19 octobre 2026) :
+        « A TV remote for your self-hosted media stack: Sonarr, Radarr, Seerr and Jellyfin, Emby or
+        Plex at a glance, with request approval, playback diagnosis and an optional cleanup. »
+        (174 caractères ; règles de `docs/metadata.md` du catalogue : 200 au plus, une phrase en
+        texte brut, NFC, sans espace en bord). `build/publish/PPSA99520.json` mis à jour (état
+        publié de la 0.7.0, catégorie `video`, nouvelle description). Vivian : PR manuelle depuis
+        le fork `viviandsx/ps5-homebrew-catalog`, ne changeant que `description` dans
+        `apps/PPSA99520.json` ; attendre « Validate submission » au vert et la fusion. Le README
+        dit déjà « Jellyfin (or Emby, or Plex) » : rien à changer.
 
 ## 3. En attente
 
