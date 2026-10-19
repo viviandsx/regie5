@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 19 octobre 2026. **0.7.0 publiée**, fiche homebrew.page en 0.7.0. En cours : PR manuelle sur le catalogue pour la nouvelle description (Jellyfin, Emby ou Plex).**
+**Dernière mise à jour : 19 octobre 2026. **0.7.0 publiée**, fiche homebrew.page en 0.7.0 avec la nouvelle description (PR #432 du catalogue, fusionnée).**
 
 ---
 
@@ -1608,7 +1608,7 @@ Patch : `build/patches-23/12-regie5-0.7.0` (arbre de travail dans l'état final 
         `/v0.7.0/ps5/app/sce_sys/icon0.png`) ; sinon le chemin manuel de `docs/RELEASING.md` § 3.
         Vu par Vivian le 19 octobre 2026 : homebrew.page affiche la 0.7.0 (fiche : `sha256`
         `c54af57f…`, `icon_url` en `/v0.7.0/`).
-12. [ ] **Nouvelle description sur le catalogue** (demandée par Vivian le 19 octobre 2026) :
+12. [x] **Nouvelle description sur le catalogue** (demandée par Vivian le 19 octobre 2026) :
         « A TV remote for your self-hosted media stack: Sonarr, Radarr, Seerr and Jellyfin, Emby or
         Plex at a glance, with request approval, playback diagnosis and an optional cleanup. »
         (174 caractères ; règles de `docs/metadata.md` du catalogue : 200 au plus, une phrase en
@@ -1616,7 +1616,8 @@ Patch : `build/patches-23/12-regie5-0.7.0` (arbre de travail dans l'état final 
         publié de la 0.7.0, catégorie `video`, nouvelle description). Vivian : PR manuelle depuis
         le fork `viviandsx/ps5-homebrew-catalog`, ne changeant que `description` dans
         `apps/PPSA99520.json` ; attendre « Validate submission » au vert et la fusion. Le README
-        dit déjà « Jellyfin (or Emby, or Plex) » : rien à changer.
+        dit déjà « Jellyfin (or Emby, or Plex) » : rien à changer. **Fait** : PR #432 sur
+        `blackbearreloaded/ps5-homebrew-catalog`, fusionnée le 19 octobre 2026.
 
 ## 3. En attente
 
