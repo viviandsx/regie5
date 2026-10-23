@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 19 octobre 2026. **0.7.0 publiée**, fiche homebrew.page en 0.7.0 avec la nouvelle description (PR #432 du catalogue, fusionnée).**
+**Dernière mise à jour : 23 octobre 2026. 0.7.0 publiée (catalogue en 0.7.0). 0.8.0 ouverte : étude disques et statistiques (`docs/DISKS-STATS.md`), en attente de validation.**
 
 ---
 
@@ -32,6 +32,7 @@ pour ce qui a été fait après la phase 0).
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | ✅ publiée ; catalogue en attente (§ 2 duodecies) |
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | ✅ publiée ; catalogue en 0.7.0 (19 octobre 2026) |
+| 17. Version 0.8.0 : disques et statistiques | Scrutiny (santé SMART) et statistiques de visionnage, optionnels, en lecture seule (§ 2 quindecies) | étude rédigée, en attente de validation |
 
 Tests : **99** (`regie5_tests` : 92, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
 
@@ -1619,6 +1620,21 @@ Patch : `build/patches-23/12-regie5-0.7.0` (arbre de travail dans l'état final 
         dit déjà « Jellyfin (or Emby, or Plex) » : rien à changer. **Fait** : PR #432 sur
         `blackbearreloaded/ps5-homebrew-catalog`, fusionnée le 19 octobre 2026.
 
+## 2 quindecies. Version 0.8.0 — disques et statistiques (ouverte le 23 octobre 2026)
+
+Étude sans code : `docs/DISKS-STATS.md`. En résumé :
+
+- **Scrutiny** : API sans authentification, lue en GET seulement (`/api/health`, `/api/summary`,
+  `/api/device/{id}/details`, `/api/settings`) ; clé des disques changée en 0.9 (WWN →
+  `scrutiny_uuid`), les deux pris en charge ; jamais de numéro de série ni de modèle.
+- **Jellydash n'a pas d'API** pour une app tierce (pages PHP, appels internes, session par mot
+  de passe). Proposé à la place : le plugin **Playback Reporting** (dépôt officiel Jellyfin),
+  détecté tout seul, avec la clé d'admin déjà configurée. Emby : plugin équivalent, à vérifier.
+  Plex : Tautulli, plus tard.
+- Emplacement proposé : alertes disques dans le bandeau santé de l'Accueil ; pilules
+  **Serveur · Statistiques** sur l'onglet du serveur multimédia ; Wrapped plus tard.
+- Questions ouvertes : § 7 de l'étude.
+
 ## 3. En attente
 
 | Sujet | Qui | Détail |
@@ -1831,3 +1847,4 @@ la Bibliothèque).
 | 17 oct. 2026 | P4 Plex (code) : connexion par le téléphone (PIN plex.tv, jeton du serveur seulement), essayée avec plex.tv simulé ; essai réel en attente du compte de test. |
 | 17 oct. 2026 | Plan changé : 0.6.0 directe avec Plex en BETA. Essai avec le compte de test préparé (`claim` / `unclaim`, 21 étapes) ; 0.6.0 préparée : numéros, Nouveautés, README, `INSTALL.txt`, formulaire « Plex feedback (beta) », notes, brouillon Reddit, recette console, zip (`c14c9199…`). |
 | 17 oct. 2026 | Essai Plex avec compte : le jeton du propriétaire est celui du compte, et retirer l'appareil ne le révoque pas. Rien de mieux chez Plex hors ligne (`docs/PLEX.md` § 8) : avertissements partout, vraie révocation expliquée. Zip `release-0.6.0b` (`6757ea3b…`). |
+| 23 oct. 2026 | 0.8.0 ouverte : étude `docs/DISKS-STATS.md` (Scrutiny ; Jellydash sans API, Playback Reporting proposé ; emplacements, configuration, fixtures, estimation), sans code. |
