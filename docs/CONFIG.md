@@ -17,7 +17,8 @@ Les clés d'API ne sont jamais écrites dans un journal.
 | `name` | tous | Nom affiché de l'instance (« Radarr 4K »). Par défaut, le nom du service. |
 | `is4k` | Sonarr, Radarr | `true` pour l'instance que **Seerr** utilise comme serveur 4K. `false` par défaut. Jamais déduit du nom. |
 | `insecure` | tous | `true` pour une adresse `https://` dont le certificat est **auto-signé** (réseau local) : il n'est pas vérifié. `false` par défaut : le certificat doit être signé par une autorité reconnue (Let's Encrypt…). |
-| `username`, `password` | Glances | Seulement si Glances est lancé avec `--password` (voir `docs/GLANCES.md`). |
+| `username`, `password` | Glances, Scrutiny | Seulement si Glances est lancé avec `--password` (voir `docs/GLANCES.md`), ou si un reverse proxy demande un mot de passe devant Scrutiny (HTTP Basic). |
+| `statistics` | Jellyfin | `false` cache Jellyfin › Statistiques même quand le plugin Playback Reporting est installé (`docs/STATISTICS.md`). Vrai par défaut. |
 
 Sur PS5, le fichier peut aussi être rempli **depuis un téléphone** : Réglages › « Depuis le
 téléphone » affiche un QR code vers une page servie par la console sur le réseau local
@@ -25,7 +26,7 @@ téléphone » affiche un QR code vers une page servie par la console sur le ré
 sont jamais renvoyées au téléphone : un champ laissé vide garde la clé.
 
 Au **premier lancement** (`config.json` absent, illisible, ou sans aucun service principal
-actif : Glances seul ne compte pas), Régie5 ouvre son **assistant** : choix du serveur
+actif : Glances et Scrutiny seuls ne comptent pas), Régie5 ouvre son **assistant** : choix du serveur
 multimédia (Jellyfin, Emby, Plex ou aucun), la même page du téléphone (qui ne montre que le
 serveur choisi), puis le test de chaque service. « Plus tard » le ferme pour de bon
 (`settings.json` : `"welcome": "later"`) ; l'Accueil propose alors « Configurer », et
@@ -164,3 +165,14 @@ Guide, le même épisode ou la même sortie n'apparaît qu'une fois.
 
 Comptes Jellyfin ou Emby (noms, sans tenir compte de la casse) qui ne comptent pas dans « vu par
 tous les comptes actifs ». Le Ménage lui-même s'active dans Réglages, pas ici.
+
+## Services optionnels
+
+| Clé | Ce qu'il apporte | Guide |
+|---|---|---|
+| `glances` | La charge du serveur (processeur, mémoire) en haut de l'onglet Jellyfin et dans la fiche diagnostic. | `docs/GLANCES.md` |
+| `scrutiny` | La santé des disques (SMART, température) : alertes de l'Accueil, section Disques de Jellyfin › Serveur. | `docs/SCRUTINY.md` |
+
+Ni l'un ni l'autre n'a de clé d'API. Les **statistiques de visionnage** ne demandent pas de
+clé non plus : le plugin Playback Reporting de Jellyfin, s'il est installé, est trouvé tout
+seul (`docs/STATISTICS.md`).

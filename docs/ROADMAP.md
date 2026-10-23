@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 23 octobre 2026. 0.7.0 publiée (catalogue en 0.7.0). 0.8.0 ouverte : étude disques et statistiques (`docs/DISKS-STATS.md`), en attente de validation.**
+**Dernière mise à jour : 23 octobre 2026. 0.7.0 publiée (catalogue en 0.7.0). 0.8.0 : disques (Scrutiny) et statistiques (Playback Reporting) faits sous Linux, build de test console `app-19` à essayer.**
 
 ---
 
@@ -32,9 +32,9 @@ pour ce qui a été fait après la phase 0).
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | ✅ publiée ; catalogue en attente (§ 2 duodecies) |
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | ✅ publiée ; catalogue en 0.7.0 (19 octobre 2026) |
-| 17. Version 0.8.0 : disques et statistiques | Scrutiny (santé SMART) et statistiques de visionnage, optionnels, en lecture seule (§ 2 quindecies) | étude rédigée, en attente de validation |
+| 17. Version 0.8.0 : disques et statistiques | Scrutiny (santé SMART) et statistiques de visionnage, optionnels, en lecture seule (§ 2 quindecies) | fait sous Linux ; essai console en attente |
 
-Tests : **99** (`regie5_tests` : 92, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
+Tests : **109** (`regie5_tests` : 102, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
 
 ---
 
@@ -1633,7 +1633,25 @@ Patch : `build/patches-23/12-regie5-0.7.0` (arbre de travail dans l'état final 
   Plex : Tautulli, plus tard.
 - Emplacement proposé : alertes disques dans le bandeau santé de l'Accueil ; pilules
   **Serveur · Statistiques** sur l'onglet du serveur multimédia ; Wrapped plus tard.
-- Questions ouvertes : § 7 de l'étude.
+- Décisions de Vivian et mesures : § 0 de l'étude (Playback Reporting retenu, Emby sans
+  statistiques en 0.8.0, seuils gardés ; `/api/summary` de son Scrutiny : 8,9 Ko pour 3 disques).
+
+Fait sous Linux (23 octobre 2026) :
+
+- `api/scrutiny`, `core/disks` (état, chaleur, relevé ancien), `api/playback` (seulement les
+  GET sûrs), `core/stats` (barres 7 j / 30 j / 12 mois), fixtures inventées
+  (`scripts/make-disks-stats-fixtures.py`, rappelé par `make-fixtures.py` et `make-demo.py`),
+  `--mock` qui ramène les dates de ces fixtures à aujourd'hui.
+- Accueil : disques en alerte dans le bandeau santé ; ✕ sur l'alerte ouvre la fiche du disque.
+- Onglet du serveur multimédia : pilules Serveur · Statistiques (seulement si le plugin
+  répond) ; section Disques et fiche disque ; Statistiques (total, barres, utilisateurs,
+  films et séries les plus vus avec leurs jaquettes trouvées par le nom dans Radarr / Sonarr),
+  état « Aucun visionnage » pour un plugin tout juste installé.
+- Réglages : ligne Scrutiny (« 4 disques »), « Statistiques : Playback Reporting 19 » sur la
+  ligne Jellyfin ; six lignes gardent leurs deux lignes de texte. Page du téléphone : Scrutiny.
+- 4 langues, Nouveautés de la 0.8.0, `docs/SCRUTINY.md`, `docs/STATISTICS.md`, `CONFIG.md`,
+  README. 10 tests de plus (109).
+- Vérifié contre les vrais serveurs de Vivian en GET (3 disques, plugin vide).
 
 ## 3. En attente
 
@@ -1848,3 +1866,4 @@ la Bibliothèque).
 | 17 oct. 2026 | Plan changé : 0.6.0 directe avec Plex en BETA. Essai avec le compte de test préparé (`claim` / `unclaim`, 21 étapes) ; 0.6.0 préparée : numéros, Nouveautés, README, `INSTALL.txt`, formulaire « Plex feedback (beta) », notes, brouillon Reddit, recette console, zip (`c14c9199…`). |
 | 17 oct. 2026 | Essai Plex avec compte : le jeton du propriétaire est celui du compte, et retirer l'appareil ne le révoque pas. Rien de mieux chez Plex hors ligne (`docs/PLEX.md` § 8) : avertissements partout, vraie révocation expliquée. Zip `release-0.6.0b` (`6757ea3b…`). |
 | 23 oct. 2026 | 0.8.0 ouverte : étude `docs/DISKS-STATS.md` (Scrutiny ; Jellydash sans API, Playback Reporting proposé ; emplacements, configuration, fixtures, estimation), sans code. |
+| 23 oct. 2026 | 0.8.0, décisions de Vivian (Playback Reporting, pilules, Emby sans statistiques, seuils). Implémentation Linux : Scrutiny 0.8 / 0.9, bandeau santé, Serveur › Disques et fiche disque, Statistiques 7 j / 30 j / 12 mois, `--mock`, 4 langues, docs, 109 tests ; build de test console `app-19`. |

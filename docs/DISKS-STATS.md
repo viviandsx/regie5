@@ -26,6 +26,41 @@ Sources lues (code et documentation officiels, pas de mémoire) :
   `UserData`, liste des plugins. Scrutiny et Jellydash : **pas trouvés** sur les ports par
   défaut de la machine du Jellyfin ; leurs adresses sont à demander (§ 7).
 
+## 0. Décisions et mesures (23 octobre 2026, après l'étude)
+
+Décisions de Vivian :
+
+1. **Playback Reporting** à la place de Jellydash (qui n'a pas d'API). Installé sur le Jellyfin
+   de Vivian, conservation « Forever » ; il répond en GET (version 19.0.0.0), vide au départ.
+   Jellydash n'est plus nécessaire : aucune clé `"jellydash"`.
+2. Pilules **Serveur · Statistiques** sur l'onglet du serveur multimédia ; disques dans Serveur.
+3. **Emby** : pas de statistiques en 0.8.0, aucun plugin téléchargé.
+4. Seuils de température gardés : 50 / 60 °C disque dur (et SSD SATA), 70 / 80 °C NVMe.
+
+Mesures sur le Scrutiny de Vivian (0.9, 3 disques, GET seulement) :
+
+| Appel | Taille | Temps |
+|---|---|---|
+| `/api/summary` | **8,9 Ko** (≈ 3 Ko par disque, dont ~70 points d'historique de température) | 0,15 s |
+| `/api/summary/temp?duration_key=week` | 5,8 Ko | 0,06 s |
+| `/api/device/{id}/details?duration_key=week` | 65 Ko (dont 39 Ko de `metadata`) | 0,1 s |
+| `/api/settings` | 0,4 Ko | 0,03 s |
+
+Sans risque pour la mémoire de la PS5 : même 20 disques avec trois ans d'historique
+resteraient sous 1 Mo. La fiche n'est demandée qu'à son ouverture.
+
+Écarts avec l'étude, à l'implémentation :
+
+- Un échec selon les seuils de **Scrutiny** (bit 2) est en **rouge**, comme un échec SMART :
+  la page de Scrutiny dit « Failed » dans les deux cas.
+- Les attributs à l'état « avertissement » (2) sont montrés dans la fiche (« à surveiller »,
+  orange), jamais dans le bandeau de l'Accueil.
+- Un disque sans relevé du tout n'est pas une alerte (« Pas de relevé » dans la liste) ; un
+  relevé de plus de 48 h en est une.
+- `details` de Scrutiny regroupe par 24 h à partir du moment demandé : deux points tombent le
+  même jour ; la courbe en garde un par date.
+- Pas d'historique Santé du Journal pour les disques en 0.8.0.
+
 ---
 
 ## 1. Scrutiny : santé des disques

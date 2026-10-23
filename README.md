@@ -32,11 +32,11 @@ phone, which reaches plex.tv: the console still does not.)
 
 | | |
 |---|---|
-| **Home** | Upcoming episodes and films (14 days, Sonarr + Radarr calendars), recently added to Jellyfin, disk space and health alerts of every instance. |
+| **Home** | Upcoming episodes and films (14 days, Sonarr + Radarr calendars), recently added to Jellyfin, disk space and health alerts of every instance, and failing or hot disks through [Scrutiny](https://github.com/AnalogJ/scrutiny) if you use it. |
 | **Library** | Your series and films (read-only), a week-by-week **TV guide**, what is **missing**, and an optional **Cleanup** view. |
 | **Activity** | The download queue of Sonarr and Radarr merged (title, progress, time left, status; refreshed every 5 s), and a 14-day **log**: imports, Seerr requests, Jellyfin playback and sign-ins, health alerts. |
 | **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**; Seerr **issues** (open / resolved / all) with their comments, **Resolve** and **Comment** (ready-made sentences); **Discover**: search Seerr with the console's keyboard, trending, popular and upcoming films and series, a title's page, and **request** it (the seasons, 4K, the quality profile and folder). |
-| **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, and server load through [Glances](https://nicolargo.github.io/glances/) if you use it. |
+| **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, server load through [Glances](https://nicolargo.github.io/glances/) and **disk health** through [Scrutiny](https://github.com/AnalogJ/scrutiny) (state, temperature, a sheet per disk) if you use them; **viewing statistics** (hours watched by day, month and user, most-watched films and series over 7 days, 30 days or 12 months) with Jellyfin's Playback Reporting plugin. |
 | **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which asks for 120 Hz / 60 Hz / 120 Hz), **set-up from a phone** (QR code), **Quick Connect** for Jellyfin (no API key to copy), the **set-up screens** and **What's new** again. |
 
 Also:
@@ -127,6 +127,8 @@ device names), nor Plex's addresses and devices.
 | [Emby](https://emby.media), in Jellyfin's place (**beta**) | 4.8 | 4.10.1 | the same as Jellyfin; *Find in Emby5* instead of Jelly5 |
 | [Plex Media Server](https://www.plex.tv), in Jellyfin's place (**beta**) | 1.41.9 | 1.43.4 | the same as Jellyfin but Cleanup; the log shows finished playbacks; *Find in Plex* instead of Jelly5 |
 | [Glances](https://nicolargo.github.io/glances/) (optional) | 4.0 (API 4) | 4.x | server load |
+| [Scrutiny](https://github.com/AnalogJ/scrutiny) (optional) | 0.8 | 0.9.5 | disk health (SMART, temperature), read-only ([guide](docs/SCRUTINY.md)) |
+| [Playback Reporting](https://github.com/jellyfin/jellyfin-plugin-playbackreporting), a Jellyfin plugin (optional) | — | 19 | viewing statistics, read-only ([guide](docs/STATISTICS.md)); not with Emby or Plex yet |
 
 Each service is optional: a service turned off simply leaves its sections out.
 Settings tests every service and says plainly when one does not answer as expected,
