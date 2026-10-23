@@ -32,11 +32,11 @@ phone, which reaches plex.tv: the console still does not.)
 
 | | |
 |---|---|
-| **Home** | Upcoming episodes and films (14 days, Sonarr + Radarr calendars), recently added to Jellyfin, disk space and health alerts of every instance, and failing or hot disks through [Scrutiny](https://github.com/AnalogJ/scrutiny) if you use it. |
+| **Home** | Upcoming episodes and films (14 days, Sonarr + Radarr calendars), recently added to Jellyfin, disk space and health alerts of every instance, and failing or hot disks through [Scrutiny](https://github.com/AnalogJ/scrutiny) if you use it (new in 0.8.0). |
 | **Library** | Your series and films (read-only), a week-by-week **TV guide**, what is **missing**, and an optional **Cleanup** view. |
 | **Activity** | The download queue of Sonarr and Radarr merged (title, progress, time left, status; refreshed every 5 s), and a 14-day **log**: imports, Seerr requests, Jellyfin playback and sign-ins, health alerts. |
 | **Requests** | Seerr requests (pending / approved / all), with **Approve** and **Decline**; Seerr **issues** (open / resolved / all) with their comments, **Resolve** and **Comment** (ready-made sentences); **Discover**: search Seerr with the console's keyboard, trending, popular and upcoming films and series, a title's page, and **request** it (the seasons, 4K, the quality profile and folder). |
-| **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, server load through [Glances](https://nicolargo.github.io/glances/) and **disk health** through [Scrutiny](https://github.com/AnalogJ/scrutiny) (state, temperature, a sheet per disk) if you use them; **viewing statistics** (hours watched by day, month and user, most-watched films and series over 7 days, 30 days or 12 months) with Jellyfin's Playback Reporting plugin. |
+| **Jellyfin** | Who is watching what, Direct Play or transcoding and **why**, a **playback diagnosis** (source vs. sent to the client, hardware acceleration, "is the transcode keeping up?", advice), **Stop playback**, **Scan libraries**, your **libraries** (how many films, series and episodes, and their size) and **users** (when each was last active), scheduled tasks, server load through [Glances](https://nicolargo.github.io/glances/) and **disk health** through [Scrutiny](https://github.com/AnalogJ/scrutiny) (state, temperature, a sheet per disk) if you use them; **viewing statistics** (new in 0.8.0: hours watched by day, month and user, most-watched films and series over 7 days, 30 days or 12 months) with Jellyfin's Playback Reporting plugin. |
 | **Settings** | Connection state of every service and instance, version, Cleanup on/off, **display refresh** (Auto, which asks for 120 Hz / 60 Hz / 120 Hz), **set-up from a phone** (QR code), **Quick Connect** for Jellyfin (no API key to copy), the **set-up screens** and **What's new** again. |
 
 Also:
@@ -72,6 +72,9 @@ Also:
   <img src="docs/images/jellyfin.jpg" width="400" alt="Jellyfin: sessions and transcoding">
   <img src="docs/images/diagnosis.jpg" width="400" alt="Jellyfin: playback diagnosis">
   <img src="docs/images/libraries.jpg" width="400" alt="Jellyfin: libraries and their size">
+  <img src="docs/images/disks.jpg" width="400" alt="Jellyfin › Server: the disks through Scrutiny">
+  <img src="docs/images/disk.jpg" width="400" alt="A disk's sheet: its state, temperatures of the last 7 days, failing SMART attributes">
+  <img src="docs/images/statistics.jpg" width="400" alt="Jellyfin › Statistics: hours watched by month and by user, most watched films and series">
   <img src="docs/images/cleanup.jpg" width="400" alt="Library: Cleanup candidates">
   <img src="docs/images/welcome.jpg" width="400" alt="Set-up screens: choosing the media server">
 </p>
@@ -286,6 +289,12 @@ two ways to set the proxy up, and for redirects such as a login page in front of
   60 Hz on a display that refuses it; 120 Hz chosen by hand says so in Settings. A
   change applies at the next start. A TV that takes 120 Hz only at a lower resolution
   may be sent that resolution: choose 60 Hz (Settings › Display refresh) to keep 4K.
+- **Viewing statistics** need Jellyfin's Playback Reporting plugin, and count from the day
+  it is installed (it keeps 3 months by default: choose *Forever* in its settings for a
+  year). Not with Emby or Plex yet. A film or series shows its poster when Radarr or
+  Sonarr knows it under the same title; else a generated card.
+- **Disk temperatures**: Scrutiny sets no threshold; Régie5 calls a hard disk or SATA SSD
+  warm from 50 °C and too hot from 60 °C (an NVMe SSD from 70 °C and 80 °C).
 - **Library sizes** come from Radarr and Sonarr (Jellyfin gives none): a title they
   do not know is counted but not measured, and the Jellyfin tab says how many were.
 - `config.json` holds your API keys in plain text on the console, and with Plex the

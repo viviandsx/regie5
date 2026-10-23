@@ -62,6 +62,15 @@ Options offers "Find in Plex"; Cleanup is not available with Plex yet.
 Plex users: please open an issue with your feedback, even if everything works:
 https://github.com/viviandsx/regie5/issues/new?template=plex_feedback.yml
 
+Optional, new in 0.8.0
+- Disk health: if you run Scrutiny, give its address (usually port 8080) in
+  its section of the phone page. Failing, hot or silent disks then count among
+  Home's alerts, and Jellyfin > Server lists the disks. No key needed.
+- Viewing statistics: install the official "Playback Reporting" plugin in
+  Jellyfin (Dashboard > Plugins > Catalog), restart Jellyfin; nothing to enter
+  in Régie5. Jellyfin > Statistics then shows hours watched and the most
+  watched films and series (counted from the day the plugin is installed).
+
 Updating
 - Copy the new PPSA99520 folder OVER the old one. The zip never holds a
   config.json: yours is kept, and the set-up screens do not open.
@@ -144,6 +153,17 @@ avec le compte propriétaire du serveur. Options propose « Chercher dans
 Plex » ; le Ménage n'est pas encore disponible avec Plex.
 Utilisateurs de Plex : ouvrez une issue avec vos retours, même si tout marche :
 https://github.com/viviandsx/regie5/issues/new?template=plex_feedback.yml
+
+Facultatif, nouveau en 0.8.0
+- Santé des disques : si vous avez Scrutiny, donnez son adresse (port 8080 en
+  général) dans sa section de la page du téléphone. Les disques en panne,
+  trop chauds ou sans relevé comptent alors parmi les alertes de l'Accueil,
+  et Jellyfin > Serveur liste les disques. Aucune clé.
+- Statistiques de visionnage : installez le plugin officiel « Playback
+  Reporting » dans Jellyfin (Tableau de bord > Extensions > Catalogue),
+  redémarrez Jellyfin ; rien à saisir dans Régie5. Jellyfin > Statistiques
+  montre alors les heures de visionnage et les films et séries les plus vus
+  (comptés depuis l'installation du plugin).
 
 Mise à jour
 - Copiez le nouveau dossier PPSA99520 PAR-DESSUS l'ancien. Le zip ne contient

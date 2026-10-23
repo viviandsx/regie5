@@ -4,7 +4,7 @@
 travail, ce fichier suffit ; le détail technique est dans `docs/ARCHITECTURE.md` (§8 à §11
 pour ce qui a été fait après la phase 0).
 
-**Dernière mise à jour : 23 octobre 2026. 0.7.0 publiée (catalogue en 0.7.0). 0.8.0 : disques (Scrutiny) et statistiques (Playback Reporting) faits sous Linux, build de test console `app-19` à essayer.**
+**Dernière mise à jour : 23 octobre 2026. 0.8.0 (disques et statistiques) prête à publier : `app-19` validé sur la console, défaut de mise en page corrigé, zip de release fait ; reste la recette `docs/RECETTE-0.8.0.md` puis la publication (§ 2 quindecies).**
 
 ---
 
@@ -32,7 +32,7 @@ pour ce qui a été fait après la phase 0).
 | 14. Version 0.6.0 : Plex | Plex Media Server, troisième serveur multimédia (beta) | ✅ publiée ; catalogue en attente (§ 2 duodecies) |
 | 15. Audit d'optimisation | Performances PS5, mémoire, réseau, robustesse, ergonomie, code | validé par Vivian le 18 octobre 2026 (§ 2 terdecies) |
 | 16. Version 0.7.0 : optimisation | Les points de l'audit, en 3 lots (§ 2 quattuordecies) | ✅ publiée ; catalogue en 0.7.0 (19 octobre 2026) |
-| 17. Version 0.8.0 : disques et statistiques | Scrutiny (santé SMART) et statistiques de visionnage, optionnels, en lecture seule (§ 2 quindecies) | fait sous Linux ; essai console en attente |
+| 17. Version 0.8.0 : disques et statistiques | Scrutiny (santé SMART) et statistiques de visionnage, optionnels, en lecture seule (§ 2 quindecies) | `app-19` validé sur la console ; release préparée, recette et publication en attente |
 
 Tests : **109** (`regie5_tests` : 102, `regie5_ui_tests` : 7, lancés par `ctest`), tous verts.
 
@@ -1653,6 +1653,50 @@ Fait sous Linux (23 octobre 2026) :
   README. 10 tests de plus (109).
 - Vérifié contre les vrais serveurs de Vivian en GET (3 disques, plugin vide).
 
+Essai console `app-19` (23 octobre 2026, Vivian) : installation, Nouveautés, Réglages,
+Scrutiny ajouté depuis le téléphone (3 disques), disques et fiche disque, Statistiques vides
+sur les 3 périodes : **OK** (étape 16 et partie E facultatives non faites). Journal : tas au
+plus 29,7 Mio sur 256, aucune erreur ; `/api/summary` 9 Ko, une fiche disque 65 Ko.
+Un défaut vu : dans Jellyfin › Serveur, le panneau des lectures passait à moitié sous les
+pilules. Corrigé : contenu sous les pilules comme dans Activité (352, coupé à 332), le
+défilement s'arrête au début d'un bloc (jamais un panneau coupé en haut), retour en haut
+avec le focus sur les pilules. `capture-states.sh` capture de nouveau l'onglet du serveur (il
+restait coincé dans Demandes › Découvrir depuis la 0.5.0).
+
+### Pour publier la 0.8.0 (préparé le 23 octobre 2026)
+
+Patches : `build/patches-26/` (`patches-25` : incomplet, à ignorer). `01` et `03` : arbre de travail dans l'état final (`--cached`) ;
+`02` (captures du README) : `git apply` puis `git add`.
+
+1. [x] **Numéros** : `contentVersion` `00.008.000`, `project(regie5 VERSION 0.8.0)` ; profil
+       `param.json` inchangé (`games-hz120-0.3.1`).
+2. [x] **Nouveautés** de la série 0.8 (FR/EN/ES/DE) : déjà dans `app-19`, vues sur la console.
+3. [x] **README** : disques et statistiques (fonctionnalités, services, limites), trois captures
+       de plus (disques, fiche disque, statistiques) et deux refaites (Jellyfin, bibliothèques).
+       `INSTALL.txt` : « Facultatif, nouveau en 0.8.0 » (Scrutiny, Playback Reporting).
+4. [x] **Notes de version** `build/publish/release-notes-v0.8.0.md` (anglais).
+5. [x] **Recette console** `docs/RECETTE-0.8.0.md` (22 étapes : mise à jour, Accueil, l'onglet
+       Jellyfin et son défilement, fiche disque, Statistiques, Réglages, page du téléphone ;
+       aucune écriture).
+6. [x] **Zip** : `scripts/release-ps5.sh` → `build/ps5/release-0.8.0/upload/PPSA99520.zip`
+       (39 fichiers, les mêmes qu'en 0.7.0 ; ni `config.json` ni `test-config`), sha256
+       `3375cb2d60a66935ca42159a0fcd336a24a0cae887efeb0972bf262a161f1e23`. Vérifié dans
+       `llvm-pie.elf` : version `0.8.0`, pas d'adresse de journal, mêmes chaînes « -test » /
+       « -dev » que la 0.7.0. Tests Linux : 109 verts.
+7. [ ] Vivian : recette `docs/RECETTE-0.8.0.md` avec ce zip.
+8. [ ] Vivian : patch `01` (`git apply --cached`), commit avec `01-….msg`.
+9. [ ] Vivian : patch `02` (`git apply`, puis `git add docs/images`), commit avec `02-….msg`.
+10. [ ] Vivian : patch `03` (`git apply --cached`), commit « Régie5 0.8.0 ».
+11. [ ] Vivian : push de `main`.
+12. [ ] Vivian : tag `v0.8.0`.
+13. [ ] Vivian : push du tag seul.
+14. [ ] Vivian : release GitHub « Régie5 0.8.0 » (texte = les notes, pièce jointe
+        `PPSA99520.zip`, pas « pre-release »).
+15. [ ] Vivian : empreinte du zip téléchargé depuis la release (`sha256sum`) = celle du point 6.
+16. [ ] Catalogue : la PR automatique du lendemain (`version` 0.8.0, `sha256` du point 6,
+        `icon_url` en `/v0.8.0/ps5/app/sce_sys/icon0.png`) ; sinon le chemin manuel de
+        `docs/RELEASING.md` § 3.
+
 ## 3. En attente
 
 | Sujet | Qui | Détail |
@@ -1867,3 +1911,4 @@ la Bibliothèque).
 | 17 oct. 2026 | Essai Plex avec compte : le jeton du propriétaire est celui du compte, et retirer l'appareil ne le révoque pas. Rien de mieux chez Plex hors ligne (`docs/PLEX.md` § 8) : avertissements partout, vraie révocation expliquée. Zip `release-0.6.0b` (`6757ea3b…`). |
 | 23 oct. 2026 | 0.8.0 ouverte : étude `docs/DISKS-STATS.md` (Scrutiny ; Jellydash sans API, Playback Reporting proposé ; emplacements, configuration, fixtures, estimation), sans code. |
 | 23 oct. 2026 | 0.8.0, décisions de Vivian (Playback Reporting, pilules, Emby sans statistiques, seuils). Implémentation Linux : Scrutiny 0.8 / 0.9, bandeau santé, Serveur › Disques et fiche disque, Statistiques 7 j / 30 j / 12 mois, `--mock`, 4 langues, docs, 109 tests ; build de test console `app-19`. |
+| 23 oct. 2026 | `app-19` validé sur la console. Onglet du serveur : contenu sous les pilules, défilement par blocs ; `capture-states.sh` réparé (Demandes › Découvrir) ; nombre de lectures groupé. Release 0.8.0 préparée : numéros, README et captures, `INSTALL.txt`, notes, recette, zip (`3375cb2d…`), `build/patches-26/`. |

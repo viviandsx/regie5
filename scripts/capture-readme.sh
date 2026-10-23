@@ -24,8 +24,8 @@ trap 'rm -rf "${TMP:?}"' EXIT
 
 # Home (focus on the recently added row), the Library (a series' page, the
 # films, the guide, the cleanup), the queue, the requests, the issues and Discover,
-# Jellyfin, a playback diagnosis and the libraries, Settings; then the
-# welcome screens.
+# Jellyfin, a playback diagnosis, the disks and a disk's sheet, the libraries,
+# Statistics, Settings; then the welcome screens.
 s="4 down 2.5 shot:${TMP}/home.ppm up "
 s+="r1 2.5 down cross 2 shot:${TMP}/series-detail.ppm circle 0.6 up "
 s+="right cross 2.5 shot:${TMP}/movies.ppm "
@@ -35,7 +35,12 @@ s+="r1 3 shot:${TMP}/queue.ppm "
 s+="r1 2.5 shot:${TMP}/requests.ppm right cross 2.5 shot:${TMP}/issues.ppm "
 s+="right cross 2.5 down 0.5 down 0.5 right right right right 2.5 shot:${TMP}/discover.ppm "
 s+="r1 2.5 shot:${TMP}/jellyfin.ppm cross 1.5 shot:${TMP}/diagnosis.ppm circle 0.6 "
-s+="down down down down down 2 shot:${TMP}/libraries.ppm "
+# The disks (demo/scrutiny: sdb failing) and sdb's sheet, the libraries,
+# then up to the pills and Statistics over 12 months (the focus came in on
+# the first playback: 3 playbacks, the scan, 4 disks, then the films and the series).
+s+="down down down down down 2 shot:${TMP}/disks.ppm cross 1.5 shot:${TMP}/disk.ppm circle 0.6 "
+s+="down down down down 2 shot:${TMP}/libraries.ppm "
+s+="up up up up up up up up up up 1 right cross 1 right right right cross 3 shot:${TMP}/statistics.ppm "
 s+="r1 3 shot:${TMP}/settings.ppm quit"
 
 # Settings' display line as for the screenshots' size (else this monitor's).
