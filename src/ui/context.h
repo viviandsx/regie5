@@ -61,6 +61,7 @@ struct Context {
     struct Goto {
         int tab = -1, view = -1;
         time_t when = 0;
+        std::string item;
     } go;
     /* The counters on the tabs (by ui::Tab): posted by BadgeWatch, and by a
      * screen as soon as it loads the same data. */

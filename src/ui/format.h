@@ -8,6 +8,7 @@
 #pragma once
 
 #include "api/services.h"
+#include "core/disks.h"
 #include "core/i18n.h"
 #include "core/model.h"
 
@@ -63,6 +64,15 @@ std::string labelled(const std::string &who, const std::string &what);
 std::string health(const model::Health &h);
 /* "Erreur", "Avertissement", "Information". */
 std::string health_level(model::Health::Level l);
+
+/* A disk (Scrutiny): what is wrong, its state, its kind ("disque dur"). */
+std::string disk_alert(const disks::Alert &a, const model::Disk &d, time_t now);
+std::string disk_state(disks::State s);
+std::string disk_kind(const model::Disk &d);
+/* A whole number with its thousands marked: "39 875", "39,875", "39.875". */
+std::string grouped(int64_t n);
+/* Watched time: "45 min", "3 h 20", "128 h" (hours past a day, not days). */
+std::string watch_time(int64_t seconds);
 
 /* Jellyfin's transcode reasons, in words, joined. */
 std::string transcode_reasons(const std::vector<std::string> &reasons);

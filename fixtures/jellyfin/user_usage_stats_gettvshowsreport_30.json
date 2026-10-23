@@ -1,0 +1,97 @@
+[
+ {
+  "label": "Amber Station",
+  "count": 2,
+  "time": 4680
+ },
+ {
+  "label": "Camille's Forest",
+  "count": 1,
+  "time": 1440
+ },
+ {
+  "label": "Elias and the Velvet Lantern",
+  "count": 11,
+  "time": 22140
+ },
+ {
+  "label": "Elias's Machine II",
+  "count": 3,
+  "time": 6840
+ },
+ {
+  "label": "Ember of Pemberly",
+  "count": 7,
+  "time": 15120
+ },
+ {
+  "label": "Hollis: Open Ledger",
+  "count": 16,
+  "time": 38640
+ },
+ {
+  "label": "Lonely Kingdom",
+  "count": 1,
+  "time": 2640
+ },
+ {
+  "label": "Meridian of Glenrock II",
+  "count": 3,
+  "time": 7680
+ },
+ {
+  "label": "Nadia and the Hollow Tide",
+  "count": 8,
+  "time": 18000
+ },
+ {
+  "label": "Nadia and the Silent Mirror",
+  "count": 2,
+  "time": 2640
+ },
+ {
+  "label": "Open Frontier",
+  "count": 8,
+  "time": 20700
+ },
+ {
+  "label": "Oskar's Winter",
+  "count": 4,
+  "time": 9840
+ },
+ {
+  "label": "Pilot of Avalon",
+  "count": 13,
+  "time": 24660
+ },
+ {
+  "label": "Quillon: Northern Ocean",
+  "count": 14,
+  "time": 26580
+ },
+ {
+  "label": "Sacha and the Burning Machine",
+  "count": 1,
+  "time": 1680
+ },
+ {
+  "label": "The Sleeping Station",
+  "count": 2,
+  "time": 4920
+ },
+ {
+  "label": "The Wandering Ocean",
+  "count": 1,
+  "time": 2280
+ },
+ {
+  "label": "Valemont: Quiet Signal",
+  "count": 2,
+  "time": 4920
+ },
+ {
+  "label": "Westmere: Crimson Satellite",
+  "count": 2,
+  "time": 2640
+ }
+]

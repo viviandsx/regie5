@@ -40,6 +40,12 @@
     "username": "",
     "password": ""
   },
+  "scrutiny": {
+    "enabled": false,
+    "url": "http://192.168.1.10:8080",
+    "username": "",
+    "password": ""
+  },
   "cleanup": {
     "ignoreUsers": []
   }

@@ -84,6 +84,7 @@ private:
     /* "Radarr 4K": the instance's name (the service's when it has only one). */
     const std::string &name_of(const Source &src) const;
     Load<std::vector<model::RecentItem>> m_recent;
+    Load<model::DiskReport> m_disks;   /* Scrutiny, when set up */
     Row m_rows[2];   /* upcoming, recent */
     int m_row = 1;   /* 0 the health banner, 1 upcoming, 2 recent */
     Anim m_page;

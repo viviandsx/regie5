@@ -1,0 +1,22 @@
+{
+ "settings": {
+  "theme": "system",
+  "layout": "material",
+  "dashboard_display": "name",
+  "dashboard_sort": "status",
+  "temperature_unit": "celsius",
+  "file_size_si_units": true,
+  "line_stroke": "smooth",
+  "powered_on_hours_unit": "humanize",
+  "collector": {
+   "discard_sct_temp_history": false
+  },
+  "metrics": {
+   "notify_level": 2,
+   "status_filter_attributes": 0,
+   "status_threshold": 3,
+   "repeat_notifications": true
+  }
+ },
+ "success": true
+}

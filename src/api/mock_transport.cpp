@@ -4,11 +4,13 @@
  */
 #include "api/mock_transport.h"
 
+#include "api/json.h"
 #include "cJSON.h"
 
 #include <cctype>
 #include <chrono>
 #include <cstdio>
+#include <ctime>
 #include <thread>
 #include <vector>
 
@@ -151,6 +153,20 @@ std::string search_matches(const std::string &body, const std::string &query)
     return out;
 }
 
+/* Howard Hinnant's civil_from_days (public domain): a day number back to a date. */
+void civil_from_days(int64_t z, int *y, int *m, int *d)
+{
+    z += 719468;
+    const int64_t era = (z >= 0 ? z : z - 146096) / 146097;
+    const unsigned doe = (unsigned)(z - era * 146097);
+    const unsigned yoe = (doe - doe / 1460 + doe / 36524 - doe / 146096) / 365;
+    const unsigned doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+    const unsigned mp = (5 * doy + 2) / 153;
+    *d = (int)(doy - (153 * mp + 2) / 5 + 1);
+    *m = (int)(mp < 10 ? mp + 3 : mp - 9);
+    *y = (int)(yoe + era * 400 + (*m <= 2));
+}
+
 /* "/" -> root, "/status/sessions" -> status_sessions, "/:/prefs" -> prefs;
  * a library's list by what is asked: its latest (sorted by date), a count
  * (a page of 0), or its titles with their ids; several items at once ->
@@ -179,6 +195,35 @@ std::string plex_file_for(const std::string &path, const std::string &query)
 }
 
 } // namespace
+
+std::string MockTransport::dated(const std::string &body, int64_t shift_days)
+{
+    if (shift_days == 0)
+        return body;
+    /* Every "yyyy-mm-dd" in the text, keys included. */
+    std::string out = body;
+    auto digits = [&](size_t at, size_t n) {
+        for (size_t i = 0; i < n; i++)
+            if (!std::isdigit((unsigned char)out[at + i]))
+                return false;
+        return true;
+    };
+    for (size_t i = 0; i + 10 <= out.size(); i++) {
+        if (!(digits(i, 4) && out[i + 4] == '-' && digits(i + 5, 2) && out[i + 7] == '-' && digits(i + 8, 2)) ||
+            (i > 0 && std::isdigit((unsigned char)out[i - 1])))
+            continue;
+        const int y = std::stoi(out.substr(i, 4)), m = std::stoi(out.substr(i + 5, 2)), d = std::stoi(out.substr(i + 8, 2));
+        if (m < 1 || m > 12 || d < 1 || d > 31)
+            continue;
+        int ny, nm, nd;
+        civil_from_days(json::days_from_civil(y, m, d) + shift_days, &ny, &nm, &nd);
+        char buf[16];
+        std::snprintf(buf, sizeof buf, "%04d-%02d-%02d", ny, nm, nd);
+        out.replace(i, 10, buf);
+        i += 9;
+    }
+    return out;
+}
 
 MockTransport::MockTransport(std::string root, int delay_ms, const std::string &fail, const std::string &empty,
                              const std::string &old)
@@ -222,6 +267,8 @@ std::string MockTransport::file_for(const std::string &url)
     for (const char *prefix : {"/api/v3/", "/api/v1/", "/api/4/"})
         if (p.rfind(prefix, 0) == 0)
             p = p.substr(std::string(prefix).size());
+    if (service == "scrutiny" && p.rfind("/api/", 0) == 0)   /* Scrutiny's API has no version in its path */
+        p = p.substr(5);
     while (!p.empty() && p[0] == '/')
         p.erase(0, 1);
     std::string name;
@@ -250,6 +297,8 @@ std::string MockTransport::file_for(const std::string &url)
                                                           : "");
     } else if (media && name == "items" && query_value(query, "IncludeItemTypes") == "Movie,Series")
         name = "items_index";   /* every film and series (Jelly5's links) */
+    if (media && name.rfind("user_usage_stats_", 0) == 0 && !query_value(query, "days").empty())
+        name += "_" + query_value(query, "days");   /* Playback Reporting: one answer per period */
     if (service == "seerr" && name == "issue") {   /* Seerr's default filter is "open" */
         const std::string f = query_value(query, "filter");
         name += "_" + (f.empty() ? std::string("open") : f);
@@ -289,14 +338,21 @@ std::string MockTransport::picture_for(const std::string &url)
 
 std::string MockTransport::emptied(const std::string &rel, const std::string &body)
 {
-    for (const char *kept : {"system_status", "settings_about", "system_info", "/movie_", "/tv_", "plex/root", "plex/identity"})
+    for (const char *kept : {"system_status", "settings_about", "system_info", "/movie_", "/tv_", "plex/root", "plex/identity",
+                             "/plugins", "scrutiny/settings"})
         if (rel.find(kept) != std::string::npos)
             return body;
     cJSON *root = cJSON_ParseWithLength(body.data(), body.size());
     if (!root)
         return body;
     std::string out = "[]";
-    if (cJSON_IsObject(root)) {
+    if (rel == "scrutiny/summary.json") {   /* its disks are an object's members, not a list */
+        if (cJSON *data = cJSON_GetObjectItemCaseSensitive(root, "data"))
+            cJSON_ReplaceItemInObjectCaseSensitive(data, "summary", cJSON_CreateObject());
+        char *text = cJSON_PrintUnformatted(root);
+        out = text ? text : body;
+        cJSON_free(text);
+    } else if (cJSON_IsObject(root)) {
         empty_lists(root);
         char *text = cJSON_PrintUnformatted(root);
         out = text ? text : body;
@@ -371,6 +427,13 @@ http::Response MockTransport::perform(const http::Request &req, const std::atomi
     r.status = 200;
     if (rel == "seerr/search.json")
         body = search_matches(body, unescape(query_value(query, "query")));
+    if (rel.rfind("scrutiny/", 0) == 0 || rel.find("/user_usage_stats_") != std::string::npos) {
+        const time_t now = time(nullptr);
+        struct tm t;
+        localtime_r(&now, &t);
+        body = dated(body, json::days_from_civil(t.tm_year + 1900, t.tm_mon + 1, t.tm_mday) -
+                               json::days_from_civil(kAnchorY, kAnchorM, kAnchorD));
+    }
     r.body = m_empty.count(service) ? emptied(rel, body) : body;
     if (m_old.count(service)) {   /* the connection test's answer: an old version */
         for (const char *key : {"version", "Version"}) {

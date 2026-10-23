@@ -265,7 +265,7 @@ void SettingsScreen::draw(double now, float dt, float ox, bool *animating)
         gfx::text(x0, y, i18n::tr(i18n::SettingsServices), {gfx::SemiBold, 30}, kText2);
     }
 
-    /* The services: one pane, a row each (each instance); compact past five. */
+    /* The services: one pane, a row each (each instance); compact past six. */
     const int n = m_list.size();
     const float row_h = ServiceRows::row_height(n);
     const gfx::Rect pane{x0, kListY, kListW, n * row_h + 2 * kListPad};

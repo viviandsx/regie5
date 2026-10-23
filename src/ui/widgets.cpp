@@ -244,12 +244,21 @@ void ListSheet::update(std::vector<Item> items)
     m_focus = std::min(m_focus, std::max(0, (int)m_items.size() - 1));
 }
 
+bool ListSheet::any_action() const
+{
+    for (const Item &it : m_items)
+        if (!it.action.empty())
+            return true;
+    return false;
+}
+
 void ListSheet::input(const input::State &in)
 {
     const uint32_t p = in.pressed;
     if (p & (input::Circle | input::Cross)) {
         m_open = false;
-        if ((p & input::Cross) && m_chosen && m_focus < (int)m_items.size()) {
+        if ((p & input::Cross) && m_chosen && m_focus < (int)m_items.size() &&
+            (!any_action() || !m_items[m_focus].action.empty())) {
             std::function<void(int)> chosen = std::move(m_chosen);
             chosen(m_focus);   /* may open another sheet */
         }
@@ -303,7 +312,11 @@ void ListSheet::draw(float dt, bool *animating)
         }
         gfx::pop_scissor();
     }
-    if (m_chosen)
+    const std::string action = m_focus < n ? m_items[m_focus].action : std::string();
+    if (m_chosen && !action.empty())
+        draw_pad_hints(r.x + kW / 2, r.y + h - 42, {{PadButton::Cross, action}, {PadButton::Circle, i18n::tr(i18n::Close)}},
+                       1, 28.f, a);
+    else if (m_chosen && !any_action())
         draw_pad_hints(r.x + kW / 2, r.y + h - 42,
                        {{PadButton::Cross, i18n::tr(i18n::HintSelect)}, {PadButton::Circle, i18n::tr(i18n::Cancel)}}, 1,
                        28.f, a);

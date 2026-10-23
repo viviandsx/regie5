@@ -10,6 +10,8 @@
 #include "api/arr.h"
 #include "api/glances.h"
 #include "api/jellyfin.h"
+#include "api/playback.h"
+#include "api/scrutiny.h"
 #include "api/seerr.h"
 
 #include <algorithm>
@@ -92,7 +94,7 @@ std::string base64(const std::string &in)
 
 std::string Services::auth_header(config::Service s, int instance) const
 {
-    if (s == config::Glances) {   /* none, or HTTP Basic when Glances asks for a password */
+    if (config::keyless(s)) {   /* none, or HTTP Basic when Glances (or a proxy) asks for a password */
         const config::ServiceConfig &c = m_cfg.at(s, instance);
         return c.username.empty() ? std::string() : http::header("Authorization", "Basic " + base64(c.username + ":" + c.password));
     }
@@ -172,6 +174,10 @@ void Services::test(config::Service s, std::function<void(Result<std::string>)> 
     case config::Glances:
         path = glances::quicklook_path();
         parse = glances::parse_test;
+        break;
+    case config::Scrutiny:
+        path = scrutiny::summary_path();
+        parse = scrutiny::parse_test;
         break;
     default:
         path = media().test_path();
@@ -361,6 +367,110 @@ void Services::server_load(std::function<void(Result<model::ServerLoad>)> done)
 {
     call<model::ServerLoad>(config::Glances, "GET", glances::quicklook_path(), glances::parse_quicklook,
                             std::move(done));
+}
+
+void Services::disks(std::function<void(Result<model::DiskReport>)> done)
+{
+    /* Its settings first (which failures count; the default when they do
+     * not answer), then the disks. */
+    call<int>(config::Scrutiny, "GET", scrutiny::settings_path(), scrutiny::parse_settings,
+              [this, done](Result<int> settings) {
+                  const int threshold = settings.ok() ? settings.value : 3;
+                  call<model::DiskReport>(
+                      config::Scrutiny, "GET", scrutiny::summary_path(),
+                      [threshold](const std::string &b, model::DiskReport *o) {
+                          o->threshold = threshold;
+                          return scrutiny::parse_summary(b, &o->disks);
+                      },
+                      done);
+              });
+}
+
+void Services::disk_detail(const std::string &key, std::function<void(Result<model::DiskDetail>)> done)
+{
+    const std::string path = scrutiny::details_path(key);
+    if (path.empty()) {
+        Result<model::DiskDetail> r;
+        r.error = Error::BadResponse;
+        if (done)
+            done(std::move(r));
+        return;
+    }
+    call<model::DiskDetail>(config::Scrutiny, "GET", path, scrutiny::parse_details, std::move(done));
+}
+
+bool Services::stats_possible() const
+{
+    return m_cfg.media == config::MediaServer::Jellyfin && enabled(config::Jellyfin) && m_cfg.at(config::Jellyfin).stats;
+}
+
+void Services::stats_plugin(std::function<void(Result<std::string>)> done)
+{
+    if (!stats_possible()) {
+        Result<std::string> r;
+        r.error = Error::Disabled;
+        if (done)
+            done(std::move(r));
+        return;
+    }
+    call<std::string>(config::Jellyfin, "GET", playback::plugins_path(), playback::parse_plugins, std::move(done));
+}
+
+void Services::play_stats(int days, std::function<void(Result<model::PlayStats>)> done)
+{
+    if (!stats_possible()) {
+        Result<model::PlayStats> r;
+        r.error = Error::Disabled;
+        if (done)
+            done(std::move(r));
+        return;
+    }
+    const time_t now = time(nullptr);
+    struct tm local;
+    localtime_r(&now, &local);
+    const std::string period = playback::period_query(days, now, local.tm_gmtoff);
+    /* Four answers, one after the other, into one: the first failure is the result's. */
+    auto stats = std::make_shared<model::PlayStats>();
+    auto fail = [done](Error e, int status) {
+        Result<model::PlayStats> r;
+        r.error = e;
+        r.http_status = status;
+        if (done)
+            done(std::move(r));
+    };
+    using Users = std::vector<model::PlayStats::User>;
+    using Days = std::vector<std::pair<std::string, int64_t>>;
+    using Titles = std::vector<model::PlayStats::Title>;
+    call<Users>(config::Jellyfin, "GET", playback::users_path(period), playback::parse_users,
+                [this, period, stats, fail, done](Result<Users> u) {
+                    if (!u.ok())
+                        return fail(u.error, u.http_status);
+                    stats->users = std::move(u.value);
+                    call<Days>(config::Jellyfin, "GET", playback::days_path(period), playback::parse_days,
+                               [this, period, stats, fail, done](Result<Days> d) {
+                                   if (!d.ok())
+                                       return fail(d.error, d.http_status);
+                                   stats->days = std::move(d.value);
+                                   call<Titles>(config::Jellyfin, "GET", playback::movies_path(period),
+                                                playback::parse_titles,
+                                                [this, period, stats, fail, done](Result<Titles> m) {
+                                                    if (!m.ok())
+                                                        return fail(m.error, m.http_status);
+                                                    stats->movies = std::move(m.value);
+                                                    call<Titles>(config::Jellyfin, "GET", playback::series_path(period),
+                                                                 playback::parse_titles,
+                                                                 [stats, fail, done](Result<Titles> s) {
+                                                                     if (!s.ok())
+                                                                         return fail(s.error, s.http_status);
+                                                                     stats->series = std::move(s.value);
+                                                                     Result<model::PlayStats> r;
+                                                                     r.value = std::move(*stats);
+                                                                     if (done)
+                                                                         done(std::move(r));
+                                                                 });
+                                                });
+                               });
+                });
 }
 
 void Services::requests(RequestFilter f, std::function<void(Result<model::RequestPage>)> done)

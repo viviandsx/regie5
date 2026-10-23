@@ -4,6 +4,7 @@
  */
 #include "ui/screens/jellyfin_screen.h"
 
+#include "core/disks.h"
 #include "core/i18n.h"
 #include "platform/platform.h"
 #include "ui/art.h"
@@ -18,10 +19,12 @@ namespace ui {
 
 namespace {
 
-constexpr float kTop = 300;   /* the first section title's baseline (page coordinates) */
+constexpr float kTop = 300;   /* the first section title's baseline (page coordinates), without pills */
 constexpr float kSessionH = 156, kTaskH = 84, kGap = 14, kButtonH = 76;
 constexpr float kListW = gfx::W - 2 * kPad;
-constexpr float kViewTop = 240;   /* where the page shows from (under the title) */
+constexpr float kViewTop = 240;   /* where the page shows from (under the title), without pills */
+constexpr float kBarY = 250;      /* the pills (Serveur · Statistiques) */
+constexpr float kPillsShift = 72;
 
 std::string clock_of(int64_t ticks)
 {
@@ -54,7 +57,78 @@ void JellyfinScreen::activate()
         refresh_sessions();
     if (now - m_last_tasks > 5)
         refresh_tasks();
+    if (now - m_last_disks > 60)
+        refresh_disks();
+    if (m_plugin.state == load::Idle && m_ctx.services) {   /* Playback Reporting: asked once (△ again) */
+        m_plugin.state = load::Loading;
+        std::weak_ptr<bool> alive = m_alive;
+        m_ctx.services->stats_plugin([this, alive](api::Result<std::string> r) {
+            if (!alive.expired())
+                m_plugin.take(std::move(r), platform::now());
+        });
+    }
     m_stats.load(false, now);
+    if (m_view == Stats)
+        m_statsv.load(false, now);
+}
+
+float JellyfinScreen::shift() const { return pills() ? kPillsShift : 0.f; }
+
+void JellyfinScreen::enter_from_top()
+{
+    if (pills()) {
+        m_bar = true;
+        m_bar_focus = m_view;
+    } else {
+        m_focus = 0;
+    }
+}
+
+void JellyfinScreen::refresh_disks()
+{
+    if (!m_ctx.services || m_disks.loading())
+        return;
+    m_last_disks = platform::now();
+    if (!m_disks.ready())
+        m_disks.state = load::Loading;
+    std::weak_ptr<bool> alive = m_alive;
+    m_ctx.services->disks([this, alive](api::Result<model::DiskReport> r) {
+        if (alive.expired())
+            return;
+        m_disks.take(std::move(r), platform::now());
+        if (!m_pending_disk.empty() && m_disks.ready()) {
+            const std::string key = m_pending_disk;
+            m_pending_disk.clear();
+            open_disk(key);
+        }
+    });
+}
+
+void JellyfinScreen::open_disk(const std::string &key)
+{
+    if (!m_disks.ready()) {   /* from Home, before the disks came: once they do */
+        m_pending_disk = key;
+        return;
+    }
+    m_focus_disk = key;   /* the focus goes to it at the next layout */
+    m_disk_sheet.open(key);
+    m_disk_detail = {};
+    m_disk_detail.state = load::Loading;
+    std::weak_ptr<bool> alive = m_alive;
+    m_ctx.services->disk_detail(key, [this, alive, key](api::Result<model::DiskDetail> r) {
+        if (!alive.expired() && m_disk_sheet.key() == key)
+            m_disk_detail.take(std::move(r), platform::now());
+    });
+}
+
+void JellyfinScreen::go_to(int view, time_t, const std::string &item)
+{
+    m_view = Server;
+    m_bar = false;
+    if (!item.empty()) {
+        layout();
+        open_disk(item);
+    }
 }
 
 void JellyfinScreen::refresh_sessions()
@@ -111,6 +185,10 @@ const model::Session *JellyfinScreen::session(const std::string &id) const
 void JellyfinScreen::draw_overlay(float dt, bool *animating)
 {
     m_sheet.draw(dt, animating);
+    if (m_disk_sheet.is_open() && m_disks.ready())
+        for (const auto &d : m_disks.value.disks)
+            if (d.key == m_disk_sheet.key())
+                m_disk_sheet.draw(d, m_disks.value.threshold, m_disk_detail, platform::now(), dt, animating);
     if (const model::Session *s = m_diag.is_open() ? session(m_diag.session_id()) : nullptr) {
         auto p = m_pace.find(s->id);
         m_diag.draw(*s, m_encoding.value, p != m_pace.end() ? p->second : diagnosis::Pace{},
@@ -135,7 +213,9 @@ void JellyfinScreen::refresh_tasks()
 void JellyfinScreen::layout()
 {
     m_slots.clear();
-    float y = kTop + 26;
+    m_top = kTop + shift();
+    m_view_top = kViewTop + shift();
+    float y = m_top + 26;
     const int ns = m_sessions.ready() ? (int)m_sessions.value.size() : 0;
     for (int i = 0; i < ns; i++) {
         m_slots.push_back({Slot::Session, i, y, kSessionH});
@@ -158,6 +238,8 @@ void JellyfinScreen::layout()
             y += 120 + 8;
         y += 56;
     };
+    if (m_disks.state != load::Off && m_disks.state != load::Idle)   /* Scrutiny, when set up */
+        section(&m_disks_y, Slot::Disk, m_disks.ready() ? (int)m_disks.value.disks.size() : 0);
     section(&m_libs_y, Slot::Library, (int)m_lib_lines.size());
     section(&m_users_y, Slot::User, m_stats.users().ready() ? (int)m_stats.users().value.size() : 0);
     m_tasks_y = y;
@@ -166,6 +248,13 @@ void JellyfinScreen::layout()
     for (int i = 0; i < nt; i++) {
         m_slots.push_back({Slot::Task, i, y, kTaskH});
         y += kTaskH + 8;
+    }
+    if (!m_focus_disk.empty() && m_disks.ready()) {
+        for (int i = 0; i < (int)m_slots.size(); i++)
+            if (m_slots[i].kind == Slot::Disk && m_slots[i].index < (int)m_disks.value.disks.size() &&
+                m_disks.value.disks[m_slots[i].index].key == m_focus_disk)
+                m_focus = i;
+        m_focus_disk.clear();
     }
     m_focus = std::clamp(m_focus, 0, (int)m_slots.size() - 1);
 }
@@ -228,6 +317,10 @@ Action JellyfinScreen::input(const input::State &in)
         m_sheet.input(in);
         return Action::None;
     }
+    if (m_disk_sheet.is_open()) {
+        m_disk_sheet.input(in);
+        return Action::None;
+    }
     if (m_diag.is_open()) {
         const std::string id = m_diag.session_id();
         if (m_diag.input(in) == SessionDiag::Stop)
@@ -243,15 +336,58 @@ Action JellyfinScreen::input(const input::State &in)
         refresh_sessions();
         refresh_tasks();
         refresh_load();
+        refresh_disks();
         m_encoding.state = load::Idle;
+        m_plugin.state = load::Idle;
         m_stats.load(true, platform::now());
+        if (m_view == Stats)
+            m_statsv.load(true, platform::now());
         activate();
+        return Action::None;
+    }
+    if (!pills())
+        m_view = Server, m_bar = false;
+    if (m_bar) {   /* the views, then Statistiques' periods; ✕ chooses */
+        const int slots = ViewCount + (m_view == Stats ? (int)stats::PeriodCount : 0);
+        if (p & input::Up)
+            return Action::ToTabs;
+        if (p & (input::Left | input::Right)) {
+            const int f = m_bar_focus + ((p & input::Left) ? -1 : 1);
+            if (f < 0 || f >= slots)
+                return Action::Bump;
+            m_bar_focus = f;
+        } else if (p & input::Cross) {
+            if (m_bar_focus < ViewCount) {
+                if (m_bar_focus != m_view) {
+                    m_view = (View)m_bar_focus;
+                    if (m_view == Stats)
+                        m_statsv.load(false, platform::now());
+                } else if (m_view == Server) {
+                    m_bar = false;
+                }
+            } else {
+                m_statsv.set_period(m_bar_focus - ViewCount, platform::now());
+            }
+        } else if (p & input::Down) {
+            if (m_view == Stats)
+                return Action::Bump;   /* nothing to focus under the pills */
+            m_bar = false;
+        }
+        return Action::None;
+    }
+    if (m_view == Stats) {   /* (no focus of its own: back to the pills) */
+        m_bar = true, m_bar_focus = ViewCount + m_statsv.period();
         return Action::None;
     }
     const int n = (int)m_slots.size();
     if (p & input::Up) {
-        if (m_focus == 0)
+        if (m_focus == 0) {
+            if (pills()) {
+                m_bar = true, m_bar_focus = m_view;
+                return Action::None;
+            }
             return Action::ToTabs;
+        }
         m_focus--;
     } else if (p & input::Down) {
         if (m_focus >= n - 1)
@@ -263,12 +399,16 @@ Action JellyfinScreen::input(const input::State &in)
             m_diag.open(m_sessions.value[s.index].id);   /* "why does it stutter?", and stop from there */
         else if (s.kind == Slot::Scan && m_ctx.services && m_ctx.services->enabled(config::Jellyfin))
             confirm_scan();
+        else if (s.kind == Slot::Disk && m_disks.ready() && s.index < (int)m_disks.value.disks.size())
+            open_disk(m_disks.value.disks[s.index].key);
     }
     return Action::None;
 }
 
 bool JellyfinScreen::backdrop(std::string *key, art::Ref *ref, int *seed) const
 {
+    if (m_view == Stats && pills())
+        return m_focused && m_statsv.backdrop(key, ref, seed);
     if (!m_focused || m_focus >= (int)m_slots.size() || m_slots[m_focus].kind != Slot::Session ||
         !m_sessions.ready())
         return false;
@@ -288,6 +428,8 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
         refresh_tasks();
     if (now - m_last_load >= 5.0 && m_ctx.services && m_ctx.services->enabled(config::Glances))
         refresh_load();
+    if (now - m_last_disks >= 300)
+        refresh_disks();
     m_stats.load(false, now);
     m_lib_lines = m_stats.library_lines();
     layout();
@@ -301,18 +443,34 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
             gfx::text(x0 + kListW, 200, i18n::tr(i18n::DiagLoadNA), {gfx::Regular, 22}, kText3, 2);
     }
 
+    /* Serveur · Statistiques, when Playback Reporting is there; its periods on the right. */
+    if (pills()) {
+        const std::vector<std::string> views = {i18n::tr(i18n::ViewServer), i18n::tr(i18n::ViewStats)};
+        const bool on_bar = m_focused && m_bar;
+        draw_pills(x0, kBarY, views, m_view, on_bar && m_bar_focus < ViewCount ? m_bar_focus : m_view,
+                   on_bar && m_bar_focus < ViewCount, m_view_drop, dt, animating);
+        if (m_view == Stats) {
+            const bool on_periods = on_bar && m_bar_focus >= ViewCount;
+            draw_pills(x0 + kListW, kBarY, m_statsv.period_labels(), m_statsv.period(),
+                       on_periods ? m_bar_focus - ViewCount : m_statsv.period(), on_periods, m_period_drop, dt, animating,
+                       true);
+            m_drop.hide();
+            m_statsv.draw(now, x0, kBarY + 90, dt, animating);
+            return;
+        }
+    }
     if (m_sessions.state == load::Off) {
-        draw_empty({x0, kTop - 20, kListW, 200}, m_ctx.off_text(i18n::JellyfinOff));
+        draw_empty({x0, m_top - 20, kListW, 200}, m_ctx.off_text(i18n::JellyfinOff));
         return;
     }
 
     /* The page scrolls to keep the focused slot in view. */
     const Slot &fs = m_slots[std::min(m_focus, (int)m_slots.size() - 1)];
     const float page_h = m_slots.back().y + m_slots.back().h + 60;
-    const float scroll = list_scroll(m_scroll, fs.y - kViewTop, fs.h, gfx::H - 120 - kViewTop, page_h - kViewTop,
+    const float scroll = list_scroll(m_scroll, fs.y - m_view_top, fs.h, gfx::H - 120 - m_view_top, page_h - m_view_top,
                                      dt, animating);
     const float dy = -scroll;
-    gfx::push_scissor({0, kViewTop, gfx::W, gfx::H - 110 - kViewTop});
+    gfx::push_scissor({0, m_view_top, gfx::W, gfx::H - 110 - m_view_top});
 
     /* Panes first, then the drop, then the words. */
     for (const Slot &s : m_slots)
@@ -325,7 +483,7 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
             scan = &s;
     if (scan)
         glass_panel({x0, scan->y + dy, scan_w, kButtonH}, kButtonH / 2, 1.f, false);
-    if (m_focused) {
+    if (m_focused && !m_bar) {
         const float w = fs.kind == Slot::Scan ? scan_w : kListW;
         m_drop.to({x0, fs.y + dy, w, fs.h}, m_focus, 0, dy);
         m_drop.draw(dt, 1.f, animating, fs.kind == Slot::Scan ? -1.f : fs.kind == Slot::Session ? 24.f : 18.f);
@@ -335,9 +493,9 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
     }
 
     /* Now playing. */
-    gfx::text(x0, kTop + dy, i18n::tr(i18n::SectionSessions), {gfx::SemiBold, 32}, kText);
+    gfx::text(x0, m_top + dy, i18n::tr(i18n::SectionSessions), {gfx::SemiBold, 32}, kText);
     if (!m_sessions.ready() || m_sessions.value.empty()) {
-        const gfx::Rect r{x0, kTop + 26 + dy, kListW, 120};
+        const gfx::Rect r{x0, m_top + 26 + dy, kListW, 120};
         if (m_sessions.state == load::Failed)
             draw_empty(r, fmt::labelled(i18n::media_server(), fmt::error(m_sessions.error, m_sessions.http_status)),
                        i18n::tr(i18n::Retry), true);
@@ -351,9 +509,9 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
             continue;
         const model::Session &s = m_sessions.value[slot.index];
         const float y = slot.y + dy;
-        if (y + slot.h < kViewTop || y > gfx::H)
+        if (y + slot.h < m_view_top || y > gfx::H)
             continue;
-        const bool f = m_focused && &slot == &fs;
+        const bool f = m_focused && !m_bar && &slot == &fs;
         const std::string pid = s.series_id.empty() ? s.item_id : s.series_id;
         const std::string title = media_title(s);
         art::draw_poster({x0 + 18, y + 14, 85, 128}, {config::Jellyfin, m_ctx.services->media_image(pid, "Primary", 200)},
@@ -401,12 +559,14 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
 
     /* The library scan. */
     if (scan) {
-        const bool f = m_focused && scan == &fs;
+        const bool f = m_focused && !m_bar && scan == &fs;
         gfx::text(x0 + scan_w / 2, scan->y + dy + 48, i18n::tr(i18n::ScanLibraries),
                   {f ? gfx::Bold : gfx::SemiBold, 28}, f ? kText : kText2, 1);
     }
 
     /* Scheduled tasks. */
+    if (m_disks.state != load::Off && m_disks.state != load::Idle)
+        draw_disks(x0, dy, fs, now, animating);
     draw_libraries(x0, dy, fs, now, animating);
     draw_users(x0, dy, fs, now, animating);
     const float tasks_title = m_tasks_y;
@@ -427,9 +587,9 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
             continue;
         const model::Task &t = m_tasks.value[slot.index];
         const float y = slot.y + dy;
-        if (y + slot.h < kViewTop || y > gfx::H)
+        if (y + slot.h < m_view_top || y > gfx::H)
             continue;
-        const bool f = m_focused && &slot == &fs;
+        const bool f = m_focused && !m_bar && &slot == &fs;
         const float right = x0 + kListW - 28;
         std::string state;
         uint32_t dot = 0xff8e8e93u;
@@ -482,9 +642,9 @@ void JellyfinScreen::draw_libraries(float x0, float dy, const Slot &fs, double n
             continue;
         const JellyfinStats::LibraryLine &l = m_lib_lines[slot.index];
         const float y = slot.y + dy;
-        if (y + slot.h < kViewTop || y > gfx::H)
+        if (y + slot.h < m_view_top || y > gfx::H)
             continue;
-        const bool f = m_focused && &slot == &fs;
+        const bool f = m_focused && !m_bar && &slot == &fs;
         const float right = x0 + kListW - 28;
         /* Counts and size on the right; skeletons while they come. */
         float rw = 0;
@@ -526,9 +686,9 @@ void JellyfinScreen::draw_users(float x0, float dy, const Slot &fs, double now, 
             continue;
         const model::JellyfinUser &u = users.value[slot.index];
         const float y = slot.y + dy;
-        if (y + slot.h < kViewTop || y > gfx::H)
+        if (y + slot.h < m_view_top || y > gfx::H)
             continue;
-        const bool f = m_focused && &slot == &fs;
+        const bool f = m_focused && !m_bar && &slot == &fs;
         const float right = x0 + kListW - 28;
         const std::string seen =
             u.last_activity ? fmt::f(i18n::tr(i18n::UserSeen), fmt::ago(u.last_activity, now_t).c_str())
@@ -545,6 +705,71 @@ void JellyfinScreen::draw_users(float x0, float dy, const Slot &fs, double now, 
             cx += draw_chip(cx, y + 26, i18n::tr(i18n::plex() ? i18n::UserOwner : i18n::UserAdmin), 0xffbf5af2u, 1.f, 22) + 10;
         if (u.disabled)
             draw_chip(cx, y + 26, i18n::tr(i18n::UserDisabled), kRed, 1.f, 22);
+    }
+}
+
+void JellyfinScreen::draw_disks(float x0, float dy, const Slot &fs, double now, bool *animating)
+{
+    gfx::text(x0, m_disks_y + dy, i18n::tr(i18n::SectionDisks), {gfx::SemiBold, 32}, kText);
+    if (!m_disks.ready() || m_disks.value.disks.empty()) {
+        const gfx::Rect r{x0, m_disks_y + 26 + dy, kListW, 120};
+        if (m_disks.state == load::Failed)
+            draw_empty(r, fmt::labelled(config::service_name(config::Scrutiny), fmt::error(m_disks.error, m_disks.http_status)),
+                       i18n::tr(i18n::Retry), true);
+        else if (!m_disks.ready())
+            draw_skeleton(r, 18, now, animating);
+        else
+            draw_empty(r, i18n::tr(i18n::DisksEmpty));
+        return;
+    }
+    const time_t now_t = time(nullptr);
+    for (const Slot &slot : m_slots) {
+        if (slot.kind != Slot::Disk || slot.index >= (int)m_disks.value.disks.size())
+            continue;
+        const model::Disk &d = m_disks.value.disks[slot.index];
+        const float y = slot.y + dy;
+        if (y + slot.h < m_view_top || y > gfx::H)
+            continue;
+        const bool f = m_focused && !m_bar && &slot == &fs;
+        const float right = x0 + kListW - 28;
+        const disks::State st = disks::state(d, m_disks.value.threshold);
+        const std::vector<disks::Alert> alerts = disks::alerts(d, m_disks.value.threshold, now_t);
+        bool error = false, warning = false;
+        for (const auto &a : alerts)
+            (a.error ? error : warning) = true;
+        const uint32_t dot = st == disks::State::Unknown ? 0xff8e8e93u : error ? kRed : warning ? kOrange : kGreen;
+
+        /* On the right: its temperature, then its state. */
+        const std::string state = fmt::disk_state(st);
+        const float sw = gfx::text_width(state, {gfx::Medium, 24});
+        gfx::text(right, y + 50, state, {gfx::Medium, 24},
+                  st == disks::State::Passed || st == disks::State::Unknown ? kText2 : 0xffff8a80u, 2);
+        float cx = right - sw - 30;
+        if (d.temp > 0) {
+            const disks::Heat h = disks::heat(d);
+            const std::string t = fmt::f("%d °C", d.temp);
+            const float w = gfx::text_width(t, {gfx::SemiBold, 26});
+            gfx::text(cx, y + 50, t, {gfx::SemiBold, 26}, h == disks::Heat::Hot ? kRed : h == disks::Heat::Warm ? kOrange : kText, 2);
+            cx -= w + 24;
+        }
+        for (const auto &a : alerts)
+            if (a.kind == disks::Alert::Stale || a.kind == disks::Alert::Warm || a.kind == disks::Alert::Hot) {
+                const char *chip = i18n::tr(a.kind == disks::Alert::Stale ? i18n::DiskStaleChip
+                                            : a.kind == disks::Alert::Hot ? i18n::DiskHotChip
+                                                                          : i18n::DiskWarmChip);
+                cx -= chip_width(chip, 20);
+                draw_chip(cx, y + 26, chip, a.error ? kRed : kOrange, 1.f, 20);
+                cx -= 12;
+            }
+        gfx::fill({x0 + 30, y + 36, 12, 12}, dot, 6);
+        std::string what = fmt::disk_kind(d);
+        if (d.capacity > 0)
+            what += " · " + fmt::size(d.capacity);
+        if (!d.label.empty() && !d.device.empty())
+            what += " · " + d.device;
+        const float tw = cx - x0 - 80;
+        gfx::text(x0 + 58, y + 40, disks::name(d), {f ? gfx::Bold : gfx::SemiBold, 28, tw}, kText);
+        gfx::text(x0 + 58, y + 70, what, {gfx::Regular, 20, tw}, kText3);
     }
 }
 

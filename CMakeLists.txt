@@ -42,6 +42,7 @@ add_library(regie5_data STATIC
     src/core/config_page.cpp
     src/core/config_web.cpp
     src/core/diagnosis.cpp
+    src/core/disks.cpp
     src/core/i18n.cpp
     src/core/input.cpp
     src/core/jelly5.cpp
@@ -49,6 +50,7 @@ add_library(regie5_data STATIC
     src/core/options.cpp
     src/core/perf.cpp
     src/core/schedule.cpp
+    src/core/stats.cpp
     src/core/versions.cpp
     src/core/welcome.cpp
     src/core/whats_new.cpp
@@ -60,7 +62,9 @@ add_library(regie5_data STATIC
     src/api/json.cpp
     src/api/media_server.cpp
     src/api/mock_transport.cpp
+    src/api/playback.cpp
     src/api/plex.cpp
+    src/api/scrutiny.cpp
     src/api/seerr.cpp
     src/api/services.cpp
 )
@@ -95,6 +99,7 @@ add_library(regie5_ui STATIC
     src/ui/whats_new_sheet.cpp
     src/ui/widgets.cpp
     src/ui/screens/cleanup.cpp
+    src/ui/screens/disk_sheet.cpp
     src/ui/screens/discover.cpp
     src/ui/screens/downloads.cpp
     src/ui/screens/guide.cpp
@@ -108,6 +113,7 @@ add_library(regie5_ui STATIC
     src/ui/screens/requests.cpp
     src/ui/screens/session_diag.cpp
     src/ui/screens/settings.cpp
+    src/ui/screens/stats_view.cpp
     third_party/qrcodegen/qrcodegen.c
 )
 target_include_directories(regie5_ui PRIVATE third_party/stb third_party/qrcodegen)
@@ -158,6 +164,7 @@ add_executable(regie5_tests
     tests/test_api.cpp
     tests/test_core.cpp
     tests/test_delays.cpp
+    tests/test_disks_stats.cpp
     tests/test_hostile.cpp
     tests/test_lists.cpp
     tests/test_share.cpp

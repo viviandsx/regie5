@@ -14,13 +14,13 @@ namespace config {
 
 const char *service_name(Service s)
 {
-    static const char *const kNames[ServiceCount] = {"Sonarr", "Radarr", "Seerr", "Jellyfin", "Glances"};
+    static const char *const kNames[ServiceCount] = {"Sonarr", "Radarr", "Seerr", "Jellyfin", "Glances", "Scrutiny"};
     return s >= 0 && s < ServiceCount ? kNames[s] : "";
 }
 
 const char *service_key(Service s)
 {
-    static const char *const kKeys[ServiceCount] = {"sonarr", "radarr", "seerr", "jellyfin", "glances"};
+    static const char *const kKeys[ServiceCount] = {"sonarr", "radarr", "seerr", "jellyfin", "glances", "scrutiny"};
     return s >= 0 && s < ServiceCount ? kKeys[s] : "";
 }
 
@@ -53,6 +53,7 @@ ServiceConfig parse_one(const cJSON *o, Service svc, int n, const char *label, b
     s.password = cJSON_IsString(pass) ? pass->valuestring : "";
     s.is4k = cJSON_IsTrue(is4k);
     s.insecure = cJSON_IsTrue(cJSON_GetObjectItemCaseSensitive(o, "insecure"));
+    s.stats = !cJSON_IsFalse(cJSON_GetObjectItemCaseSensitive(o, "statistics"));
     const cJSON *token = cJSON_GetObjectItemCaseSensitive(o, "accessToken");
     const cJSON *user_name = cJSON_GetObjectItemCaseSensitive(o, "userName");
     if (plex) {   /* "token", or an "apiKey" by mistake; who it belongs to, written by the phone's sign-in */
@@ -70,8 +71,8 @@ ServiceConfig parse_one(const cJSON *o, Service svc, int n, const char *label, b
         s.admin = !cJSON_IsFalse(cJSON_GetObjectItemCaseSensitive(o, "isAdmin"));
     }
     /* On unless it says otherwise, as long as it has somewhere to go (and a
-     * key, or Jellyfin's session: Glances needs none). */
-    s.enabled = !cJSON_IsFalse(en) && !s.url.empty() && (svc == Glances || !s.api_key.empty() || !s.token.empty());
+     * key, or Jellyfin's session: Glances and Scrutiny need none). */
+    s.enabled = !cJSON_IsFalse(en) && !s.url.empty() && (keyless(svc) || !s.api_key.empty() || !s.token.empty());
     return s;
 }
 

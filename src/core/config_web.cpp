@@ -51,7 +51,8 @@ std::vector<const cJSON *> instances(const cJSON *root, const char *key)
     return out;
 }
 
-bool is_glances(int s) { return s == config::Glances; }
+/* Glances and Scrutiny: no key, a user and a password if they ask for them. */
+bool is_glances(int s) { return config::keyless((config::Service)s); }
 
 /* The keys of config.json the page shows, in its order: "emby" and "plex"
  * stand in the media server's place when "jellyfin" is not on
@@ -61,7 +62,7 @@ const struct {
     config::Service service;
 } kKeys[] = {{"sonarr", config::Sonarr}, {"radarr", config::Radarr},     {"seerr", config::Seerr},
              {"jellyfin", config::Jellyfin}, {"emby", config::Jellyfin}, {"plex", config::Jellyfin},
-             {"glances", config::Glances}};
+             {"glances", config::Glances}, {"scrutiny", config::Scrutiny}};
 
 bool is_plex(const char *key) { return std::string(key) == "plex"; }
 

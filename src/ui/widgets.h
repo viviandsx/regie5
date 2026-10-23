@@ -69,12 +69,14 @@ private:
 /* A sheet that lists things (the servers' alerts): each row with chips (a
  * label and the colour of its dot), a sentence and a quieter line under it.
  * ↑/↓ move through them; ○ or ✕ closes it. With chosen, it is a choice: ✕
- * closes it and gives the row (○ gives nothing). */
+ * closes it and gives the row (○ gives nothing); when some rows have an
+ * action ("Ouvrir"), only those are chosen, and ✕ says it on them. */
 class ListSheet {
 public:
     struct Item {
         std::vector<std::pair<std::string, uint32_t>> chips;
         std::string text, detail;
+        std::string action;   /* what ✕ does on this row; empty: nothing (when another row has one) */
     };
     void open(std::string title, std::vector<Item> items, std::string empty_text,
               std::function<void(int)> chosen = {});
@@ -85,6 +87,7 @@ public:
     void draw(float dt, bool *animating);
 
 private:
+    bool any_action() const;
     bool m_open = false;
     std::string m_title, m_empty;
     std::vector<Item> m_items;

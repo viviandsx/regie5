@@ -1,0 +1,259 @@
+{
+ "data": {
+  "summary": {
+   "0x5000000000000001": {
+    "device": {
+     "CreatedAt": "2026-06-01T08:00:00Z",
+     "UpdatedAt": "2026-10-23T00:00:00Z",
+     "DeletedAt": null,
+     "archived": false,
+     "wwn": "0x5000000000000001",
+     "device_name": "sda",
+     "device_uuid": "",
+     "device_serial_id": "",
+     "device_label": "",
+     "manufacturer": "",
+     "model_name": "Disque de démonstration",
+     "interface_type": "",
+     "interface_speed": "",
+     "serial_number": "",
+     "firmware": "",
+     "rotational_speed": 0,
+     "capacity": 512110190592,
+     "form_factor": "2.5 inches",
+     "smart_support": true,
+     "device_protocol": "ATA",
+     "device_type": "sat",
+     "label": "",
+     "host_id": "",
+     "device_status": 0
+    },
+    "smart": {
+     "collector_date": "2026-10-23T00:00:06Z",
+     "temp": 36,
+     "power_on_hours": 8213
+    },
+    "temp_history": [
+     {
+      "date": "2026-10-17T01:00:00Z",
+      "temp": 35
+     },
+     {
+      "date": "2026-10-18T01:00:00Z",
+      "temp": 36
+     },
+     {
+      "date": "2026-10-19T01:00:00Z",
+      "temp": 35
+     },
+     {
+      "date": "2026-10-20T01:00:00Z",
+      "temp": 37
+     },
+     {
+      "date": "2026-10-21T01:00:00Z",
+      "temp": 36
+     },
+     {
+      "date": "2026-10-22T01:00:00Z",
+      "temp": 36
+     },
+     {
+      "date": "2026-10-23T01:00:00Z",
+      "temp": 36
+     }
+    ]
+   },
+   "0x5000000000000002": {
+    "device": {
+     "CreatedAt": "2026-06-01T08:00:00Z",
+     "UpdatedAt": "2026-10-23T00:00:00Z",
+     "DeletedAt": null,
+     "archived": false,
+     "wwn": "0x5000000000000002",
+     "device_name": "sdb",
+     "device_uuid": "",
+     "device_serial_id": "",
+     "device_label": "",
+     "manufacturer": "",
+     "model_name": "Disque de démonstration",
+     "interface_type": "",
+     "interface_speed": "",
+     "serial_number": "",
+     "firmware": "",
+     "rotational_speed": 7200,
+     "capacity": 8001563222016,
+     "form_factor": "3.5 inches",
+     "smart_support": true,
+     "device_protocol": "ATA",
+     "device_type": "sat",
+     "label": "",
+     "host_id": "",
+     "device_status": 1
+    },
+    "smart": {
+     "collector_date": "2026-10-23T00:00:06Z",
+     "temp": 41,
+     "power_on_hours": 39875
+    },
+    "temp_history": [
+     {
+      "date": "2026-10-17T01:00:00Z",
+      "temp": 40
+     },
+     {
+      "date": "2026-10-18T01:00:00Z",
+      "temp": 41
+     },
+     {
+      "date": "2026-10-19T01:00:00Z",
+      "temp": 41
+     },
+     {
+      "date": "2026-10-20T01:00:00Z",
+      "temp": 42
+     },
+     {
+      "date": "2026-10-21T01:00:00Z",
+      "temp": 41
+     },
+     {
+      "date": "2026-10-22T01:00:00Z",
+      "temp": 40
+     },
+     {
+      "date": "2026-10-23T01:00:00Z",
+      "temp": 41
+     }
+    ]
+   },
+   "0x5000000000000003": {
+    "device": {
+     "CreatedAt": "2026-06-01T08:00:00Z",
+     "UpdatedAt": "2026-10-23T00:00:00Z",
+     "DeletedAt": null,
+     "archived": false,
+     "wwn": "0x5000000000000003",
+     "device_name": "sdc",
+     "device_uuid": "",
+     "device_serial_id": "",
+     "device_label": "",
+     "manufacturer": "",
+     "model_name": "Disque de démonstration",
+     "interface_type": "",
+     "interface_speed": "",
+     "serial_number": "",
+     "firmware": "",
+     "rotational_speed": 5400,
+     "capacity": 8001563222016,
+     "form_factor": "3.5 inches",
+     "smart_support": true,
+     "device_protocol": "ATA",
+     "device_type": "sat",
+     "label": "Sauvegardes",
+     "host_id": "",
+     "device_status": 0
+    },
+    "smart": {
+     "collector_date": "2026-10-23T00:00:06Z",
+     "temp": 57,
+     "power_on_hours": 21450
+    },
+    "temp_history": [
+     {
+      "date": "2026-10-17T01:00:00Z",
+      "temp": 52
+     },
+     {
+      "date": "2026-10-18T01:00:00Z",
+      "temp": 54
+     },
+     {
+      "date": "2026-10-19T01:00:00Z",
+      "temp": 55
+     },
+     {
+      "date": "2026-10-20T01:00:00Z",
+      "temp": 56
+     },
+     {
+      "date": "2026-10-21T01:00:00Z",
+      "temp": 55
+     },
+     {
+      "date": "2026-10-22T01:00:00Z",
+      "temp": 57
+     },
+     {
+      "date": "2026-10-23T01:00:00Z",
+      "temp": 57
+     }
+    ]
+   },
+   "0x5000000000000004": {
+    "device": {
+     "CreatedAt": "2026-06-01T08:00:00Z",
+     "UpdatedAt": "2026-10-19T00:00:00Z",
+     "DeletedAt": null,
+     "archived": false,
+     "wwn": "0x5000000000000004",
+     "device_name": "nvme0",
+     "device_uuid": "",
+     "device_serial_id": "",
+     "device_label": "",
+     "manufacturer": "",
+     "model_name": "Disque de démonstration",
+     "interface_type": "",
+     "interface_speed": "",
+     "serial_number": "",
+     "firmware": "",
+     "rotational_speed": 0,
+     "capacity": 1000204886016,
+     "form_factor": "",
+     "smart_support": true,
+     "device_protocol": "NVMe",
+     "device_type": "nvme",
+     "label": "",
+     "host_id": "",
+     "device_status": 0
+    },
+    "smart": {
+     "collector_date": "2026-10-19T00:00:06Z",
+     "temp": 48,
+     "power_on_hours": 6120
+    },
+    "temp_history": [
+     {
+      "date": "2026-10-13T01:00:00Z",
+      "temp": 46
+     },
+     {
+      "date": "2026-10-14T01:00:00Z",
+      "temp": 47
+     },
+     {
+      "date": "2026-10-15T01:00:00Z",
+      "temp": 48
+     },
+     {
+      "date": "2026-10-16T01:00:00Z",
+      "temp": 47
+     },
+     {
+      "date": "2026-10-17T01:00:00Z",
+      "temp": 48
+     },
+     {
+      "date": "2026-10-18T01:00:00Z",
+      "temp": 48
+     },
+     {
+      "date": "2026-10-19T01:00:00Z",
+      "temp": 48
+     }
+    ]
+   }
+  }
+ },
+ "success": true
+}

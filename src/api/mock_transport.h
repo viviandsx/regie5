@@ -7,7 +7,9 @@
  * named from the path: the /api/vN/ prefix dropped, lower case, '/' as '_'
  * (/api/v3/system/status -> system_status.json, /Sessions -> sessions.json).
  * Seerr's request list adds its filter (request_pending.json); its search
- * keeps the titles of search.json that hold the query. Actions (POST)
+ * keeps the titles of search.json that hold the query; Playback Reporting's
+ * answers add the period (user_usage_stats_playactivity_7.json), Scrutiny's
+ * paths drop /api/ (summary.json). Actions (POST)
  * are only logged and answered 204: nothing anywhere changes.
  *
  * Pictures: none in fixtures/ (every card is a generated one). A root with an
@@ -63,6 +65,12 @@ public:
      * picture): radarr/mediacover/12/poster (any size), jellyfin/items/<id>/primary,
      * seerr/<file> (any size). Public for the tests. */
     static std::string picture_for(const std::string &url);
+    /* Scrutiny's readings and Playback Reporting's days are written as of
+     * kAnchor (fixtures/); dates moved by today - kAnchor days, so the mock
+     * shows today's reading and the last days whatever the date. Public for
+     * the tests. */
+    static constexpr int kAnchorY = 2026, kAnchorM = 10, kAnchorD = 23;
+    static std::string dated(const std::string &body, int64_t shift_days);
 
 private:
     std::string m_root;

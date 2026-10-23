@@ -36,8 +36,9 @@ public:
     /* The focus came down from the tab bar. */
     virtual void enter_from_top() {}
     /* Another screen sends the user here: a view of this one, at a time (the
-     * Home row's ✕ opens the Library's guide on that week). */
-    virtual void go_to(int view, time_t when) {}
+     * Home row's ✕ opens the Library's guide on that week), or on an item (a
+     * disk's sheet, from Home's alerts). */
+    virtual void go_to(int view, time_t when, const std::string &item) {}
     /* The background for what has the focus now: key names it, ref is the
      * picture (empty: the generated one for seed). false: the shell's. */
     virtual bool backdrop(std::string *key, art::Ref *ref, int *seed) const { return false; }

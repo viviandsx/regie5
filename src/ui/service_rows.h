@@ -29,7 +29,7 @@ public:
     /* Every row has an answer (none still testing). */
     bool settled() const;
 
-    /* The row height for this many rows in a pane: compact past five. */
+    /* The row height for this many rows in a pane: a little lower at six, compact past. */
     static float row_height(int n);
     /* The rows inside a pane whose inner area starts at (x, y), w wide; the
      * pane itself and the focus drop are the caller's (focus: the row it is

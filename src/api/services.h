@@ -140,6 +140,14 @@ public:
     /* The playback diagnosis. */
     void encoding(std::function<void(Result<model::EncodingInfo>)> done);
     void server_load(std::function<void(Result<model::ServerLoad>)> done);   /* Glances */
+    /* Scrutiny (optional): every disk, and a disk's last week. */
+    void disks(std::function<void(Result<model::DiskReport>)> done);
+    void disk_detail(const std::string &key, std::function<void(Result<model::DiskDetail>)> done);
+    /* Playback Reporting (optional, Jellyfin only): its version, "" when it is
+     * not there (Disabled: not Jellyfin, or "statistics": false). */
+    void stats_plugin(std::function<void(Result<std::string>)> done);
+    /* The last days' statistics (7, 30, 365), ending today. */
+    void play_stats(int days, std::function<void(Result<model::PlayStats>)> done);
     void items(const std::vector<std::string> &ids, std::function<void(Result<std::vector<model::JellyfinItem>>)> done);
 
     /* Seerr. */
@@ -195,6 +203,8 @@ private:
     /* The media server config.json names (the three are kept: answers on
      * their way after config.json changed still find theirs). */
     MediaServer &media() const;
+    /* Statistics can be asked: Jellyfin, on, and not "statistics": false. */
+    bool stats_possible() const;
     http::Request make(config::Service s, const std::string &method, const std::string &path, int instance = 0) const;
     /* parse: on the worker; false when the body is not what was expected. */
     template <typename T>

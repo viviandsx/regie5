@@ -97,8 +97,19 @@ bool Shell::input(const input::State &in, double now)
         m_whats_new.input(in);
         return true;
     }
+    /* A screen sends the user elsewhere (from a sheet too: Home's alerts open a disk). */
+    auto follow = [&] {
+        if (m_ctx.go.tab < 0)
+            return;
+        const Context::Goto go = m_ctx.go;
+        m_ctx.go = {};
+        m_on_bar = false;
+        switch_tab(go.tab, now);
+        m_screens[m_tab]->go_to(go.view, go.when, go.item);
+    };
     if (m_screens[m_tab]->modal()) {   /* a sheet has every press */
         m_screens[m_tab]->input(in);
+        follow();
         return true;
     }
     /* L1 / R1 change tab from anywhere. */
@@ -123,13 +134,7 @@ bool Shell::input(const input::State &in, double now)
     }
     if (m_screens[m_tab]->input(in) == Action::ToTabs)
         m_on_bar = true;
-    if (m_ctx.go.tab >= 0) {   /* a screen sends the user elsewhere */
-        const Context::Goto go = m_ctx.go;
-        m_ctx.go = {};
-        m_on_bar = false;
-        switch_tab(go.tab, now);
-        m_screens[m_tab]->go_to(go.view, go.when);
-    }
+    follow();
     /* config.json changed a service: the other tabs start afresh (their data
      * came from the old addresses; answers still on their way are dropped
      * with the screens that asked). */

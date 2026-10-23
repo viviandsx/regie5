@@ -30,7 +30,7 @@ fi
 cmake --build "${BUILD}" >/dev/null
 mkdir -p "${OUT}"
 
-ALL=sonarr,radarr,seerr,jellyfin
+ALL=sonarr,radarr,seerr,jellyfin,scrutiny
 
 # The tour: Home, the Library's views (series, films, guide, missing, cleanup),
 # Activity (queue, journal), Requests, Jellyfin, Settings. With data, also the
@@ -62,7 +62,9 @@ tour() {
     s+="cross 2.5 shot:${p}-requests-issues.ppm "
     [[ ${sheets} == 1 ]] && s+="down cross 1.5 shot:${p}-requests-issue-thread.ppm circle 0.6 options 1 shot:${p}-requests-issue-options.ppm circle 0.6 "
     s+="r1 2.5 shot:${p}-jellyfin.ppm "
-    [[ ${sheets} == 1 ]] && s+="cross 1 shot:${p}-jellyfin-diagnosis.ppm circle 0.6 "
+    # (the focus comes in on the pills, Serveur · Statistiques: Playback Reporting is in fixtures/)
+    [[ ${sheets} == 1 ]] && s+="down cross 1 shot:${p}-jellyfin-diagnosis.ppm circle 0.6 "
+    [[ ${sheets} == 1 ]] && s+="up right cross 2 shot:${p}-jellyfin-stats.ppm left cross 1 "
     s+="r1 3 shot:${p}-settings.ppm "
     # Settings' buttons: Test all, Cleanup, Display refresh, Setup (the welcome screens).
     [[ ${sheets} == 1 ]] && s+="down down down down down right right right 1 shot:${p}-settings-buttons.ppm "
@@ -107,8 +109,8 @@ for state in "${STATES[@]}"; do
         data) sheets=1 ;;
         loading) env=(REGIE5_MOCK_DELAY_MS=600000 REGIE5_MOCK_CLEANUP=1) ;;
         empty) env+=(REGIE5_MOCK_EMPTY="${ALL}") ;;
-        offline) env+=(REGIE5_MOCK_FAIL="sonarr:unreachable,radarr:unreachable,seerr:unreachable,jellyfin:unreachable") ;;
-        unauthorized) env+=(REGIE5_MOCK_FAIL="sonarr:unauthorized,radarr:unauthorized,seerr:unauthorized,jellyfin:unauthorized") ;;
+        offline) env+=(REGIE5_MOCK_FAIL="sonarr:unreachable,radarr:unreachable,seerr:unreachable,jellyfin:unreachable,scrutiny:unreachable") ;;
+        unauthorized) env+=(REGIE5_MOCK_FAIL="sonarr:unauthorized,radarr:unauthorized,seerr:unauthorized,jellyfin:unauthorized,scrutiny:unauthorized") ;;
         mixed) env+=(REGIE5_MOCK_FAIL="radarr:unreachable,seerr:badjson" REGIE5_MOCK_EMPTY=sonarr) ;;
         off) env+=(REGIE5_MOCK_OFF="${ALL}") ;;
         noconfig)

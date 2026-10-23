@@ -42,7 +42,7 @@ public:
         m_header = true;
         m_header_focus = slot_of(m_view);
     }
-    void go_to(int view, time_t when) override;
+    void go_to(int view, time_t when, const std::string &item) override;
     bool backdrop(std::string *key, art::Ref *ref, int *seed) const override;
     bool modal() const override { return m_sheet.is_open() || m_cleanup.modal(); }
     void draw_overlay(float dt, bool *animating) override

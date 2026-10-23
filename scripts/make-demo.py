@@ -21,6 +21,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -341,6 +342,9 @@ def main():
         with open(p, "w", encoding="utf-8") as f:
             json.dump(d, f, ensure_ascii=False, indent=1)
             f.write("\n")
+    # The disks and the viewing statistics: made for the demo's users and films.
+    subprocess.run([sys.executable, "-I", os.path.join(ROOT, "scripts", "make-disks-stats-fixtures.py"), "--out", OUT],
+                   check=True)
     if args.pictures:
         make_pictures(args.pictures, images)
     have = set(os.listdir(images)) if os.path.isdir(images) else set()

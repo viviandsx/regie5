@@ -5,6 +5,7 @@
 #include "ui/service_rows.h"
 
 #include "core/i18n.h"
+#include "api/json.h"
 #include "core/versions.h"
 #include "ui/format.h"
 #include "ui/style.h"
@@ -92,16 +93,31 @@ void ServiceRows::test(Context &ctx, int row)
                 }
         },
         inst);
+    /* The media server's statistics (Playback Reporting): said beside its version. */
+    st.extra.clear();
+    if (svc == config::Jellyfin && inst == 0)
+        ctx.services->stats_plugin([this, alive, gen](api::Result<std::string> res) {
+            if (alive.expired() || !res.ok())
+                return;
+            for (Row &x : m_rows)
+                if (x.service == config::Jellyfin && x.instance == 0 && x.gen == gen)
+                    x.status.extra = res.value.empty() ? std::string(i18n::tr(i18n::StatsPluginOff))
+                                                       : fmt::f(i18n::tr(i18n::StatsPluginOn),
+                                                                res.value.substr(0, res.value.find('.')).c_str());
+        });
 }
 
-float ServiceRows::row_height(int n) { return n > 5 ? std::min(kRowH, 400.f / n) : kRowH; }
+/* Six rows (every service once, Glances and Scrutiny included): a little
+ * lower, still two lines each; past six, compact. */
+float ServiceRows::row_height(int n) { return n > 6 ? std::min(kRowH, 400.f / n) : n == 6 ? 74.f : kRowH; }
 
 void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int focus, double now,
                        bool *animating) const
 {
     const int n = (int)m_rows.size();
-    const bool compact = n > 5;
+    const bool compact = n > 6;
     const float row_h = row_height(n);
+    const float l1 = row_h * 40 / kRowH, l2 = row_h * 70 / kRowH;   /* the two lines' baselines */
     const config::MediaServer media = ctx.services ? ctx.services->config().media : config::MediaServer::Jellyfin;
     const bool jellyfin = media == config::MediaServer::Jellyfin;
     const bool both_media = ctx.services && ctx.services->config().both_media;
@@ -118,8 +134,13 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
         case model::ServiceStatus::Ok:
             dot = kGreen;
             status = i18n::tr(i18n::StatusOk);
-            /* A version; Glances has none to give: its CPU's name. */
-            detail = st.version.empty() ? "" : row.service == config::Glances ? st.version : "v" + st.version;
+            /* A version; Glances has none to give: its CPU's name; Scrutiny: its disks. */
+            detail = st.version.empty()                 ? ""
+                     : row.service == config::Glances  ? st.version
+                     : row.service == config::Scrutiny ? fmt::count(i18n::DiskOne, i18n::DiskMany, json::int_of(st.version))
+                                                       : "v" + st.version;
+            if (row.service == config::Jellyfin && !st.extra.empty())   /* Playback Reporting */
+                detail += (detail.empty() ? "" : " · ") + st.extra;
             if (row.service == config::Jellyfin && media == config::MediaServer::Plex)   /* "v1.43.4.10903", not its build's hash */
                 detail = detail.substr(0, detail.find('-'));
             if (!versions::supported(row.service, st.version, media)) {   /* it answers, but too old to rely on */
@@ -143,7 +164,7 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
         case model::ServiceStatus::Disabled: status = i18n::tr(i18n::StatusDisabled); break;
         case model::ServiceStatus::NotConfigured:
         case model::ServiceStatus::Unknown:
-            status = i18n::tr(row.service == config::Glances ? i18n::GlancesOptional : i18n::StatusNotConfigured);
+            status = i18n::tr(config::keyless(row.service) ? i18n::GlancesOptional : i18n::StatusNotConfigured);
             break;
         }
         if (ctx.services && row.service == config::Jellyfin && jellyfin) {
@@ -183,20 +204,20 @@ void ServiceRows::draw(const Context &ctx, float x0, float y0, float kListW, int
                                                                    : config::service_name(row.service);
         const bool show_url = !c.url.empty() && !ctx.mock && !compact;
         const float name_w =
-            gfx::text(x0 + 86, ry + (show_url ? 40 : row_h / 2 + 11), name, {gfx::SemiBold, compact ? 28.f : 32.f}, kText);
+            gfx::text(x0 + 86, ry + (show_url ? l1 : row_h / 2 + 11), name, {gfx::SemiBold, compact ? 28.f : 32.f}, kText);
         if (row.service == config::Jellyfin && !jellyfin && !both_media)   /* Emby (0.4.0) and Plex (0.6.0) are in beta */
-            draw_chip(x0 + 86 + name_w + 14, ry + (show_url ? 40 : row_h / 2 + 11) - 28, i18n::tr(i18n::EmbyBeta),
+            draw_chip(x0 + 86 + name_w + 14, ry + (show_url ? l1 : row_h / 2 + 11) - 28, i18n::tr(i18n::EmbyBeta),
                       kOrange, 1.f, 18);
         if (show_url)
-            gfx::text(x0 + 86, ry + 70, address_of(c.url), {gfx::Regular, 22, kListW * 0.4f}, kText3);
+            gfx::text(x0 + 86, ry + l2, address_of(c.url), {gfx::Regular, 22, kListW * 0.4f}, kText3);
         const uint32_t ink = st.state == model::ServiceStatus::Failed ? 0xffff8a80u
                              : st.state == model::ServiceStatus::Ok && !versions::supported(row.service, st.version, media)
                                  ? 0xffffd60au
                                  : kText;
         const bool two = !detail.empty() && !compact;
-        gfx::text(x0 + kListW - 44, ry + (two ? 40 : row_h / 2 + 10), status, {gfx::Medium, 27, kListW * 0.55f}, ink, 2);
+        gfx::text(x0 + kListW - 44, ry + (two ? l1 : row_h / 2 + 10), status, {gfx::Medium, 27, kListW * 0.55f}, ink, 2);
         if (two)
-            gfx::text(x0 + kListW - 44, ry + 70, detail, {gfx::Regular, 21, kListW * 0.55f}, kText3, 2);
+            gfx::text(x0 + kListW - 44, ry + l2, detail, {gfx::Regular, 21, kListW * 0.55f}, kText3, 2);
     }
 }
 

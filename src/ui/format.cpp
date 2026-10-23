@@ -242,6 +242,57 @@ std::string transcode_reasons(const std::vector<std::string> &reasons)
     return out;
 }
 
+std::string disk_alert(const disks::Alert &a, const model::Disk &d, time_t now)
+{
+    switch (a.kind) {
+    case disks::Alert::FailedSmart: return i18n::tr(i18n::DkAlertSmart);
+    case disks::Alert::FailedScrutiny: return i18n::tr(i18n::DkAlertScrutiny);
+    case disks::Alert::Hot: return f(i18n::tr(i18n::DkAlertHot), d.temp);
+    case disks::Alert::Warm: return f(i18n::tr(i18n::DkAlertWarm), d.temp);
+    case disks::Alert::Stale: return f(i18n::tr(i18n::DkAlertStale), ago(d.collected, now).c_str());
+    }
+    return {};
+}
+
+std::string disk_state(disks::State s)
+{
+    switch (s) {
+    case disks::State::Passed: return i18n::tr(i18n::DiskHealthy);
+    case disks::State::FailedSmart: return i18n::tr(i18n::DiskFailedSmart);
+    case disks::State::FailedScrutiny: return i18n::tr(i18n::DiskFailedScrutiny);
+    case disks::State::FailedBoth: return i18n::tr(i18n::DiskFailedBoth);
+    case disks::State::Unknown: break;
+    }
+    return i18n::tr(i18n::DiskNoReading);
+}
+
+std::string disk_kind(const model::Disk &d)
+{
+    return i18n::tr(d.kind == model::Disk::Nvme ? i18n::DiskKindNvme
+                    : d.kind == model::Disk::Ssd ? i18n::DiskKindSsd
+                                                 : i18n::DiskKindHdd);
+}
+
+std::string grouped(int64_t n)
+{
+    const std::string code = i18n::code();
+    const char sep = code == "en" ? ',' : code == "fr" ? ' ' : '.';
+    std::string digits = std::to_string(n < 0 ? -n : n), out;
+    for (size_t i = 0; i < digits.size(); i++) {
+        if (i > 0 && (digits.size() - i) % 3 == 0)
+            out += sep;
+        out += digits[i];
+    }
+    return n < 0 ? "-" + out : out;
+}
+
+std::string watch_time(int64_t seconds)
+{
+    if (seconds < 86400)
+        return duration(seconds);
+    return grouped((seconds + 1800) / 3600) + " h";
+}
+
 std::string labelled(const std::string &who, const std::string &what)
 {
     return f(i18n::tr(i18n::LabelPattern), who.c_str(), what.c_str());

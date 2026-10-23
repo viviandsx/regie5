@@ -1,0 +1,560 @@
+{
+ "success": true,
+ "data": {
+  "device": {
+   "CreatedAt": "2026-06-01T08:00:00Z",
+   "UpdatedAt": "2026-10-19T00:00:00Z",
+   "DeletedAt": null,
+   "archived": false,
+   "wwn": "0x5000000000000004",
+   "device_name": "nvme0",
+   "device_uuid": "",
+   "device_serial_id": "",
+   "device_label": "",
+   "manufacturer": "",
+   "model_name": "Disque de démonstration",
+   "interface_type": "",
+   "interface_speed": "",
+   "serial_number": "",
+   "firmware": "",
+   "rotational_speed": 0,
+   "capacity": 1000204886016,
+   "form_factor": "",
+   "smart_support": true,
+   "device_protocol": "NVMe",
+   "device_type": "nvme",
+   "label": "",
+   "host_id": "",
+   "device_status": 0,
+   "scrutiny_uuid": "00000000-0000-4000-8000-000000000004"
+  },
+  "smart_results": [
+   {
+    "date": "2026-10-13T00:00:00Z",
+    "device_wwn": "",
+    "scrutiny_uuid": "00000000-0000-4000-8000-000000000004",
+    "device_protocol": "NVMe",
+    "temp": 46,
+    "power_on_hours": 5976,
+    "power_cycle_count": 280,
+    "attrs": {
+     "critical_warning": {
+      "attribute_id": "critical_warning",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "temperature": {
+      "attribute_id": "temperature",
+      "value": 48,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "available_spare": {
+      "attribute_id": "available_spare",
+      "value": 100,
+      "thresh": 10,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "percentage_used": {
+      "attribute_id": "percentage_used",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "media_errors": {
+      "attribute_id": "media_errors",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "num_err_log_entries": {
+      "attribute_id": "num_err_log_entries",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_on_hours": {
+      "attribute_id": "power_on_hours",
+      "value": 6120,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_cycles": {
+      "attribute_id": "power_cycles",
+      "value": 280,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "unsafe_shutdowns": {
+      "attribute_id": "unsafe_shutdowns",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     }
+    },
+    "Status": 0
+   },
+   {
+    "date": "2026-10-14T00:00:00Z",
+    "device_wwn": "",
+    "scrutiny_uuid": "00000000-0000-4000-8000-000000000004",
+    "device_protocol": "NVMe",
+    "temp": 47,
+    "power_on_hours": 6000,
+    "power_cycle_count": 280,
+    "attrs": {
+     "critical_warning": {
+      "attribute_id": "critical_warning",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "temperature": {
+      "attribute_id": "temperature",
+      "value": 48,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "available_spare": {
+      "attribute_id": "available_spare",
+      "value": 100,
+      "thresh": 10,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "percentage_used": {
+      "attribute_id": "percentage_used",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "media_errors": {
+      "attribute_id": "media_errors",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "num_err_log_entries": {
+      "attribute_id": "num_err_log_entries",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_on_hours": {
+      "attribute_id": "power_on_hours",
+      "value": 6120,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_cycles": {
+      "attribute_id": "power_cycles",
+      "value": 280,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "unsafe_shutdowns": {
+      "attribute_id": "unsafe_shutdowns",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     }
+    },
+    "Status": 0
+   },
+   {
+    "date": "2026-10-15T00:00:00Z",
+    "device_wwn": "",
+    "scrutiny_uuid": "00000000-0000-4000-8000-000000000004",
+    "device_protocol": "NVMe",
+    "temp": 48,
+    "power_on_hours": 6024,
+    "power_cycle_count": 280,
+    "attrs": {
+     "critical_warning": {
+      "attribute_id": "critical_warning",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "temperature": {
+      "attribute_id": "temperature",
+      "value": 48,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "available_spare": {
+      "attribute_id": "available_spare",
+      "value": 100,
+      "thresh": 10,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "percentage_used": {
+      "attribute_id": "percentage_used",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "media_errors": {
+      "attribute_id": "media_errors",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "num_err_log_entries": {
+      "attribute_id": "num_err_log_entries",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_on_hours": {
+      "attribute_id": "power_on_hours",
+      "value": 6120,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_cycles": {
+      "attribute_id": "power_cycles",
+      "value": 280,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "unsafe_shutdowns": {
+      "attribute_id": "unsafe_shutdowns",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     }
+    },
+    "Status": 0
+   },
+   {
+    "date": "2026-10-16T00:00:00Z",
+    "device_wwn": "",
+    "scrutiny_uuid": "00000000-0000-4000-8000-000000000004",
+    "device_protocol": "NVMe",
+    "temp": 47,
+    "power_on_hours": 6048,
+    "power_cycle_count": 280,
+    "attrs": {
+     "critical_warning": {
+      "attribute_id": "critical_warning",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "temperature": {
+      "attribute_id": "temperature",
+      "value": 48,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "available_spare": {
+      "attribute_id": "available_spare",
+      "value": 100,
+      "thresh": 10,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "percentage_used": {
+      "attribute_id": "percentage_used",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "media_errors": {
+      "attribute_id": "media_errors",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "num_err_log_entries": {
+      "attribute_id": "num_err_log_entries",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_on_hours": {
+      "attribute_id": "power_on_hours",
+      "value": 6120,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_cycles": {
+      "attribute_id": "power_cycles",
+      "value": 280,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "unsafe_shutdowns": {
+      "attribute_id": "unsafe_shutdowns",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     }
+    },
+    "Status": 0
+   },
+   {
+    "date": "2026-10-17T00:00:00Z",
+    "device_wwn": "",
+    "scrutiny_uuid": "00000000-0000-4000-8000-000000000004",
+    "device_protocol": "NVMe",
+    "temp": 48,
+    "power_on_hours": 6072,
+    "power_cycle_count": 280,
+    "attrs": {
+     "critical_warning": {
+      "attribute_id": "critical_warning",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "temperature": {
+      "attribute_id": "temperature",
+      "value": 48,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "available_spare": {
+      "attribute_id": "available_spare",
+      "value": 100,
+      "thresh": 10,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "percentage_used": {
+      "attribute_id": "percentage_used",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "media_errors": {
+      "attribute_id": "media_errors",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "num_err_log_entries": {
+      "attribute_id": "num_err_log_entries",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_on_hours": {
+      "attribute_id": "power_on_hours",
+      "value": 6120,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_cycles": {
+      "attribute_id": "power_cycles",
+      "value": 280,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "unsafe_shutdowns": {
+      "attribute_id": "unsafe_shutdowns",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     }
+    },
+    "Status": 0
+   },
+   {
+    "date": "2026-10-18T00:00:00Z",
+    "device_wwn": "",
+    "scrutiny_uuid": "00000000-0000-4000-8000-000000000004",
+    "device_protocol": "NVMe",
+    "temp": 48,
+    "power_on_hours": 6096,
+    "power_cycle_count": 280,
+    "attrs": {
+     "critical_warning": {
+      "attribute_id": "critical_warning",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "temperature": {
+      "attribute_id": "temperature",
+      "value": 48,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "available_spare": {
+      "attribute_id": "available_spare",
+      "value": 100,
+      "thresh": 10,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "percentage_used": {
+      "attribute_id": "percentage_used",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "media_errors": {
+      "attribute_id": "media_errors",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "num_err_log_entries": {
+      "attribute_id": "num_err_log_entries",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_on_hours": {
+      "attribute_id": "power_on_hours",
+      "value": 6120,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_cycles": {
+      "attribute_id": "power_cycles",
+      "value": 280,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "unsafe_shutdowns": {
+      "attribute_id": "unsafe_shutdowns",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     }
+    },
+    "Status": 0
+   },
+   {
+    "date": "2026-10-19T00:00:00Z",
+    "device_wwn": "",
+    "scrutiny_uuid": "00000000-0000-4000-8000-000000000004",
+    "device_protocol": "NVMe",
+    "temp": 48,
+    "power_on_hours": 6120,
+    "power_cycle_count": 280,
+    "attrs": {
+     "critical_warning": {
+      "attribute_id": "critical_warning",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "temperature": {
+      "attribute_id": "temperature",
+      "value": 48,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "available_spare": {
+      "attribute_id": "available_spare",
+      "value": 100,
+      "thresh": 10,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "percentage_used": {
+      "attribute_id": "percentage_used",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "media_errors": {
+      "attribute_id": "media_errors",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "num_err_log_entries": {
+      "attribute_id": "num_err_log_entries",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_on_hours": {
+      "attribute_id": "power_on_hours",
+      "value": 6120,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "power_cycles": {
+      "attribute_id": "power_cycles",
+      "value": 280,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     },
+     "unsafe_shutdowns": {
+      "attribute_id": "unsafe_shutdowns",
+      "value": 0,
+      "thresh": -1,
+      "transformed_value": 0,
+      "status": 0
+     }
+    },
+    "Status": 0
+   }
+  ]
+ },
+ "metadata": {}
+}

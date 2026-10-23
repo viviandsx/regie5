@@ -5,6 +5,7 @@
 #include "ui/screens/home.h"
 
 #include "api/arr.h"
+#include "core/disks.h"
 #include "core/jelly5.h"
 #include "core/schedule.h"
 #include "core/welcome.h"
@@ -133,6 +134,11 @@ void HomeScreen::reload()
             },
             inst);
     }
+    m_disks.state = load::Loading;
+    svc->disks([this, alive](api::Result<model::DiskReport> r) {
+        if (!alive.expired())
+            m_disks.take(std::move(r), platform::now());
+    });
     m_recent.state = load::Loading;
     svc->recent([this, alive](api::Result<std::vector<model::RecentItem>> r) {
         if (alive.expired())
@@ -239,14 +245,38 @@ void HomeScreen::open_alerts()
             rows.push_back({rank, std::move(it)});
         }
     }
-    std::stable_sort(rows.begin(), rows.end(),
-                     [](const auto &a, const auto &b) { return a.first < b.first; });
+    /* The disks' (Scrutiny): ✕ opens the disk in the media server's tab. */
+    std::vector<std::string> disk_of(rows.size());
+    const time_t now = time(nullptr);
+    if (m_disks.ready())
+        for (const auto &d : m_disks.value.disks)
+            for (const auto &a : disks::alerts(d, m_disks.value.threshold, now)) {
+                ListSheet::Item it;
+                it.chips.push_back({config::service_name(config::Scrutiny), 0xff8e8e93u});
+                it.chips.push_back({fmt::health_level(a.error ? model::Health::Error : model::Health::Warning),
+                                    a.error ? kRed : kOrange});
+                it.text = fmt::labelled(disks::name(d), fmt::disk_alert(a, d, now));
+                it.detail = fmt::f(i18n::tr(i18n::DiskSeeServer), i18n::media_server());
+                it.action = i18n::tr(i18n::HintOpen);
+                rows.push_back({a.error ? 0 : 1, std::move(it)});
+                disk_of.push_back(d.key);
+            }
+    std::vector<int> order(rows.size());
+    for (int i = 0; i < (int)order.size(); i++)
+        order[i] = i;
+    std::stable_sort(order.begin(), order.end(), [&](int a, int b) { return rows[a].first < rows[b].first; });
     std::vector<ListSheet::Item> items;
-    for (auto &r : rows)
-        items.push_back(std::move(r.second));
+    std::vector<std::string> keys;
+    for (int i : order) {
+        items.push_back(std::move(rows[i].second));
+        keys.push_back(disk_of[i]);
+    }
     const std::string title = std::string(i18n::tr(i18n::HealthTitle)) +
                               (items.empty() ? "" : " (" + std::to_string(items.size()) + ")");
-    m_alerts.open(title, std::move(items), i18n::tr(i18n::HealthNoAlert));
+    m_alerts.open(title, std::move(items), i18n::tr(i18n::HealthNoAlert), [this, keys](int row) {
+        if (row >= 0 && row < (int)keys.size() && !keys[row].empty())
+            m_ctx.go = {TabJellyfin, 0, 0, keys[row]};
+    });
 }
 
 const HomeScreen::Card *HomeScreen::menu_card() const
@@ -330,7 +360,7 @@ Action HomeScreen::input(const input::State &in)
         open_menu();
     } else if (m_row == 1 && (p & input::Cross) && m_rows[0].focus < (int)m_rows[0].cards.size()) {
         /* An upcoming episode or film: its week in the Library's guide. */
-        m_ctx.go = {TabLibrary, LibraryScreen::Guide, m_rows[0].cards[m_rows[0].focus].when};
+        m_ctx.go = {TabLibrary, LibraryScreen::Guide, m_rows[0].cards[m_rows[0].focus].when, {}};
     }
     return Action::None;
 }
@@ -406,6 +436,29 @@ void HomeScreen::draw_banner(float x0, float y, float dt, bool *animating)
                 first_rank = rank;
                 first = fmt::labelled(name_of(src), fmt::health(h));
             }
+        }
+    }
+    /* The disks (Scrutiny): their alerts beside Sonarr's and Radarr's. */
+    const bool disks_on = m_disks.state != load::Off;
+    if (disks_on) {
+        all_off = false;
+        loading |= m_disks.loading();
+        if (m_disks.state == load::Failed)
+            failures += (failures.empty() ? "" : " · ") +
+                        fmt::labelled(config::service_name(config::Scrutiny), fmt::error(m_disks.error, m_disks.http_status));
+        if (m_disks.ready()) {
+            any = true;
+            const time_t now = time(nullptr);
+            for (const auto &d : m_disks.value.disks)
+                for (const auto &a : disks::alerts(d, m_disks.value.threshold, now)) {
+                    alerts++;
+                    errors += a.error;
+                    const int rank = a.error ? 0 : 1;
+                    if (rank < first_rank) {
+                        first_rank = rank;
+                        first = fmt::labelled(disks::name(d), fmt::disk_alert(a, d, now));
+                    }
+                }
         }
     }
     float x = r.x + 24;

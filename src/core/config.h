@@ -13,9 +13,10 @@
 
 namespace config {
 
-/* Glances is optional (the server's load, read-only): an address, and a user
- * and a password only if it asks for them. */
-enum Service { Sonarr = 0, Radarr, Seerr, Jellyfin, Glances, ServiceCount };
+/* Glances (the server's load) and Scrutiny (its disks' health) are optional
+ * and read-only: an address, and a user and a password only if they ask for
+ * them (HTTP Basic, a reverse proxy's). */
+enum Service { Sonarr = 0, Radarr, Seerr, Jellyfin, Glances, Scrutiny, ServiceCount };
 
 /* The media server in the Jellyfin slot: Jellyfin, Emby (config.json's
  * "emby" key, in place of "jellyfin") or Plex ("plex"). Emby speaks
@@ -32,7 +33,7 @@ struct ServiceConfig {
     bool enabled = false;
     std::string url;      /* "http://192.168.1.10:8989", no trailing slash */
     std::string api_key;
-    std::string username, password;   /* Glances behind --password (HTTP Basic) */
+    std::string username, password;   /* Glances behind --password, Scrutiny behind a proxy (HTTP Basic) */
     /* Plex: the server's token ("token") is kept in api_key, the one secret
      * of a service. Without one, Plex lets in only the networks it was told
      * to (its "allowed without auth" setting). */
@@ -47,13 +48,16 @@ struct ServiceConfig {
      * administrator ("isAdmin"; some screens need one). An API key wins. */
     std::string token, user;
     bool admin = true;
+    /* The media server's "statistics": false hides Statistiques even when
+     * Playback Reporting is there. */
+    bool stats = true;
     /* Signed in by Quick Connect (no API key: the account's session). */
     bool session() const { return api_key.empty() && !token.empty(); }
     bool operator==(const ServiceConfig &o) const
     {
         return name == o.name && enabled == o.enabled && url == o.url && api_key == o.api_key &&
                username == o.username && password == o.password && is4k == o.is4k &&
-               insecure == o.insecure && token == o.token && admin == o.admin;
+               insecure == o.insecure && token == o.token && admin == o.admin && stats == o.stats;
     }
 };
 
@@ -81,6 +85,9 @@ struct Config {
 
 /* "Jellyfin", "Emby" or "Plex": the name the interface gives the media server. */
 const char *media_name(MediaServer m);
+
+/* The optional services read with no key (Glances, Scrutiny). */
+inline bool keyless(Service s) { return s == Glances || s == Scrutiny; }
 
 /* SetAside: readable, but not loaded at this start (core/boot_guard: the
  * app crashed at start with it, twice in a row). */

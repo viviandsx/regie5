@@ -1,0 +1,98 @@
+[
+ {
+  "latest_date": "2026-10-23T21:12:00",
+  "user_id": "b8fd473b3ac193997e6a57da283ba7cf",
+  "total_count": 5,
+  "total_time": 15240,
+  "item_name": "",
+  "client_name": "",
+  "user_name": "Alice",
+  "has_image": false,
+  "last_seen": "",
+  "total_play_time": ""
+ },
+ {
+  "latest_date": "2026-10-23T21:12:00",
+  "user_id": "824cffe518867503fd5aff4fc1796993",
+  "total_count": 5,
+  "total_time": 15240,
+  "item_name": "",
+  "client_name": "",
+  "user_name": "Emma",
+  "has_image": false,
+  "last_seen": "",
+  "total_play_time": ""
+ },
+ {
+  "latest_date": "2026-10-23T21:12:00",
+  "user_id": "71f69b94d11ef41925fa1b1cd0fabaff",
+  "total_count": 1,
+  "total_time": 2940,
+  "item_name": "",
+  "client_name": "",
+  "user_name": "Farid",
+  "has_image": false,
+  "last_seen": "",
+  "total_play_time": ""
+ },
+ {
+  "latest_date": "2026-10-23T21:12:00",
+  "user_id": "42b6593eb8f9d59f9ab10dcf1d4db2c0",
+  "total_count": 4,
+  "total_time": 12660,
+  "item_name": "",
+  "client_name": "",
+  "user_name": "Gaëlle",
+  "has_image": false,
+  "last_seen": "",
+  "total_play_time": ""
+ },
+ {
+  "latest_date": "2026-10-21T21:12:00",
+  "user_id": "876476501bb5d500c82453f3322c63bb",
+  "total_count": 3,
+  "total_time": 10920,
+  "item_name": "",
+  "client_name": "",
+  "user_name": "Karim",
+  "has_image": false,
+  "last_seen": "",
+  "total_play_time": ""
+ },
+ {
+  "latest_date": "2026-10-20T21:12:00",
+  "user_id": "99af51b1dca4d4c4a13663673f8411ac",
+  "total_count": 3,
+  "total_time": 10800,
+  "item_name": "",
+  "client_name": "",
+  "user_name": "Bruno",
+  "has_image": false,
+  "last_seen": "",
+  "total_play_time": ""
+ },
+ {
+  "latest_date": "2026-10-20T21:12:00",
+  "user_id": "7e69a767f386f568be8e79b590ae9517",
+  "total_count": 4,
+  "total_time": 13200,
+  "item_name": "",
+  "client_name": "",
+  "user_name": "David",
+  "has_image": false,
+  "last_seen": "",
+  "total_play_time": ""
+ },
+ {
+  "latest_date": "2026-10-17T21:12:00",
+  "user_id": "cb2bc992e05ebd15064bb49c6dea3e82",
+  "total_count": 1,
+  "total_time": 2280,
+  "item_name": "",
+  "client_name": "",
+  "user_name": "Hugo",
+  "has_image": false,
+  "last_seen": "",
+  "total_play_time": ""
+ }
+]

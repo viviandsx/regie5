@@ -46,8 +46,8 @@ button.small{padding:6px 10px;font-size:14px}
 <form id="f"></form>
 <script>
 const T = __T__;
-const SERVICES = [["sonarr","Sonarr",true],["radarr","Radarr",true],["seerr","Seerr",false],["jellyfin","Jellyfin",false],["emby","Emby",false],["plex","Plex",false],["glances","Glances",false]];
-const PORTS = {sonarr: 8989, radarr: 7878, seerr: 5055, jellyfin: 8096, emby: 8096, plex: 32400, glances: 61208};
+const SERVICES = [["sonarr","Sonarr",true],["radarr","Radarr",true],["seerr","Seerr",false],["jellyfin","Jellyfin",false],["emby","Emby",false],["plex","Plex",false],["glances","Glances",false],["scrutiny","Scrutiny",false]];
+const PORTS = {sonarr: 8989, radarr: 7878, seerr: 5055, jellyfin: 8096, emby: 8096, plex: 32400, glances: 61208, scrutiny: 8080};
 const MEDIA = ["jellyfin", "emby", "plex"];
 const query = new URLSearchParams(location.search);
 const code = query.get("c") || (prompt(T.askCode) || "").replace(/\D/g, "");
@@ -63,7 +63,7 @@ function say(kind, text){ msg.className = kind; msg.textContent = text; msg.scro
 function el(tag, props, kids){ const e = document.createElement(tag); Object.assign(e, props || {}); (kids || []).forEach(k => e.appendChild(k)); return e; }
 function field(label, input){ return el("div", {}, [el("label", {textContent: label}), input]); }
 function instance(key, multi, data, from){
-  const g = key === "glances";
+  const g = key === "glances" || key === "scrutiny";
   const box = el("div", {className: "inst"});
   box.dataset.from = from;
   const name = el("input", {type: "text", value: data.name || "", className: "name"});
@@ -215,7 +215,9 @@ function build(view){
     sec.appendChild(head);
     if (key === "emby" && !media) sec.appendChild(el("p", {className: "lead", textContent: T.embyNote}));
     if (key === "plex" && !media) sec.appendChild(el("p", {className: "lead", textContent: T.plexNote}));
-    (list.length ? list : [{enabled: key !== "glances" && (!["emby", "plex"].includes(key) || media === key)}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
+    if (key === "jellyfin") sec.appendChild(el("p", {className: "hint", textContent: T.statsNote}));
+    if (key === "scrutiny") sec.appendChild(el("p", {className: "lead", textContent: T.scrutinyNote}));
+    (list.length ? list : [{enabled: key !== "glances" && key !== "scrutiny" && (!["emby", "plex"].includes(key) || media === key)}]).forEach((d, i) => holder.appendChild(instance(key, multi, d, list.length ? i : -1)));
     sec.appendChild(holder);
     form.appendChild(sec);
   }
@@ -231,7 +233,7 @@ function collect(){
                  url: b.querySelector(".url").value.trim(), enabled: b.querySelector(".on").checked,
                  insecure: b.querySelector(".url").value.trim().toLowerCase().startsWith("https://") && b.querySelector(".insecure").checked};
       const secret = b.querySelector(".secret").value.trim();
-      if (key === "glances") { o.username = b.querySelector(".user").value.trim(); o.password = secret; }
+      if (key === "glances" || key === "scrutiny") { o.username = b.querySelector(".user").value.trim(); o.password = secret; }
       else o.apiKey = secret;
       const k4 = b.querySelector(".k4"); if (k4) o.is4k = k4.checked;
       return o;
@@ -329,6 +331,8 @@ std::string page_html()
         {"plexFailed", i18n::PhonePlexFailed},
         {"plexDone", i18n::PhonePlexDone},
         {"plexOwnerWarn", i18n::PhonePlexOwnerWarn},
+        {"statsNote", i18n::PhoneStatsNote},
+        {"scrutinyNote", i18n::PhoneScrutinyNote},
     };
     std::string t = "{";
     for (const auto &x : kTexts)

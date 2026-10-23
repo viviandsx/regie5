@@ -1,0 +1,32 @@
+[
+ {
+  "Name": "TMDb",
+  "Version": "12.2.0.0",
+  "ConfigurationFileName": "",
+  "Description": "",
+  "Id": "b8715ed16c4745289ad3f72deb539cd4",
+  "CanUninstall": true,
+  "HasImage": false,
+  "Status": "Active"
+ },
+ {
+  "Name": "Playback Reporting",
+  "Version": "19.0.0.0",
+  "ConfigurationFileName": "",
+  "Description": "",
+  "Id": "5c53438191a343cb907a35aa02eb9d2c",
+  "CanUninstall": true,
+  "HasImage": false,
+  "Status": "Active"
+ },
+ {
+  "Name": "Open Subtitles",
+  "Version": "25.0.0.0",
+  "ConfigurationFileName": "",
+  "Description": "",
+  "Id": "4b9ed42f5925486b8d2c1b7b6f4cd9d5",
+  "CanUninstall": true,
+  "HasImage": false,
+  "Status": "Active"
+ }
+]

@@ -399,6 +399,62 @@ struct ServerLoad {
     std::string cpu_name;
 };
 
+/* A disk as Scrutiny (optional) sees it. Never its serial number, its WWN
+ * (but as the key of 0.8), its model, maker or firmware, nor the host's
+ * name: the parser does not copy them. */
+struct Disk {
+    std::string key;      /* Scrutiny's id for it (0.9: scrutiny_uuid; 0.8: the WWN): asked with, never shown */
+    std::string label;    /* the name its owner gave it, if any */
+    std::string device;   /* "sda", "nvme0" */
+    int64_t capacity = 0; /* bytes */
+    enum Kind { Hdd, Ssd, Nvme } kind = Hdd;
+    int status = 0;       /* Scrutiny's device_status: bit 1 SMART failed, bit 2 Scrutiny's thresholds failed */
+    bool has_smart = false;   /* a reading came in */
+    time_t collected = 0;     /* when */
+    int temp = 0;             /* °C, 0: unknown */
+    int64_t hours = 0;        /* powered on */
+};
+
+/* Every disk, and which of Scrutiny's failures count (its settings'
+ * metrics.status_threshold: 1 SMART, 2 Scrutiny, 3 both). */
+struct DiskReport {
+    std::vector<Disk> disks;
+    int threshold = 3;
+};
+
+/* One SMART attribute of a disk's last reading that is not fine. */
+struct DiskAttribute {
+    std::string id;          /* "5" (ATA), "media_errors" (NVMe), "scsi_grown_defect_list" (SCSI) */
+    int status = 0;          /* bit 1 failed (SMART), 2 warning (Scrutiny), 4 failed (Scrutiny) */
+    int64_t raw = 0;         /* its raw value (a count) */
+};
+
+/* A disk's sheet: its last reading's attributes that are not fine, and the
+ * last days' temperatures. */
+struct DiskDetail {
+    std::vector<DiskAttribute> attributes;
+    std::vector<std::pair<time_t, int>> temps;   /* oldest first */
+    int64_t power_cycles = 0;
+};
+
+/* Viewing statistics (Jellyfin's Playback Reporting plugin, optional), over
+ * a period. Names, titles and time: never a device or a client. */
+struct PlayStats {
+    struct User {
+        std::string name;
+        int64_t seconds = 0;
+        int plays = 0;
+    };
+    struct Title {
+        std::string name;
+        int64_t seconds = 0;
+        int plays = 0;
+    };
+    std::vector<User> users;                          /* most time first */
+    std::vector<std::pair<std::string, int64_t>> days;   /* "2026-10-21" → seconds, every user, oldest first */
+    std::vector<Title> movies, series;                /* most plays first */
+};
+
 /* Jellyfin's transcoding settings that the diagnosis needs. */
 struct EncodingInfo {
     std::string hw_accel;   /* "none", "vaapi"... */
@@ -437,6 +493,7 @@ struct RecentItem {
 struct ServiceStatus {
     enum State { Unknown, Disabled, NotConfigured, Testing, Ok, Failed } state = Unknown;
     std::string version;   /* when Ok */
+    std::string extra;     /* a word more (the media server: its statistics' plugin) */
     int error = 0;         /* api::Error when Failed */
     int http_status = 0;
 };

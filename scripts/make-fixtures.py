@@ -28,6 +28,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 import time
@@ -567,6 +568,9 @@ def main():
                 shutil.rmtree(dst)
             shutil.move(os.path.join(tmp, svc), dst)
     shutil.rmtree(tmp, ignore_errors=True)
+    # The disks and the viewing statistics are made up, never read: written again.
+    subprocess.run([sys.executable, "-I", os.path.join(ROOT, "scripts", "make-disks-stats-fixtures.py"), "--out", OUT],
+                   check=True)
     print("fixtures/: %d files written" % len(files))
     return 0
 

@@ -83,8 +83,8 @@ TEST(config_example_is_valid)
     config::Config c;
     CHECK(config::load(std::string(REGIE5_SOURCE) + "/config.example.json", &c) == config::LoadError::None);
     for (int i = 0; i < config::ServiceCount; i++) {
-        /* Glances is optional: described, off until installed. */
-        CHECK(c.services[i].enabled == (i != config::Glances));
+        /* Glances and Scrutiny are optional: described, off until installed. */
+        CHECK(c.services[i].enabled == !config::keyless((config::Service)i));
         CHECK(c.services[i].url.rfind("http://192.168.", 0) == 0);   /* local addresses in the example */
     }
 }

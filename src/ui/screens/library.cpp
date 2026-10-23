@@ -135,7 +135,7 @@ int LibraryScreen::slot_of(View v) const
     return 0;
 }
 
-void LibraryScreen::go_to(int view, time_t when)
+void LibraryScreen::go_to(int view, time_t when, const std::string &)
 {
     if (view < 0 || view >= ViewCount)
         return;
