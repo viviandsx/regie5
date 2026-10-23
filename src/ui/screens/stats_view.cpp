@@ -34,6 +34,12 @@ std::string lowered(const std::string &s)
     return out;
 }
 
+/* "2 204 plays": the count grouped as the hours are. */
+std::string plays(int n)
+{
+    return fmt::f(i18n::tr(i18n::singular(n) ? i18n::StatsPlayOne : i18n::StatsPlayMany), fmt::grouped(n).c_str());
+}
+
 /* Local noon of a date: its weekday, whatever the time zone. */
 time_t noon(int y, int m, int d)
 {
@@ -177,7 +183,7 @@ void StatsView::draw_titles(const std::vector<model::PlayStats::Title> &t, bool 
         const art::Ref ref = p ? art::Ref{p->from, arr::mediacover_path(p->id, "poster-250.jpg"), p->instance} : art::Ref{};
         draw_poster_card({px, y, kPosterW, kPosterH}, ref, title.name, seed_of(title.name), 0.f, 1.f);
         gfx::text(px, y + kPosterH + 28, title.name, {gfx::Medium, 19, kPosterW + 8}, kText2);
-        gfx::text(px, y + kPosterH + 52, fmt::count(i18n::StatsPlayOne, i18n::StatsPlayMany, title.plays),
+        gfx::text(px, y + kPosterH + 52, plays(title.plays),
                   {gfx::Regular, 18, kPosterW + 8}, kText3);
     }
 }
@@ -213,7 +219,7 @@ void StatsView::draw(double now, float x0, float top, float dt, bool *animating)
     const float tw = gfx::text(x0, top + 68, fmt::watch_time(stats::total_seconds(s)), {gfx::Bold, 64}, kText);
     gfx::text(x0 + tw + 20, top + 68,
               std::string(i18n::tr(i18n::StatsWatched)) + " · " +
-                  fmt::count(i18n::StatsPlayOne, i18n::StatsPlayMany, stats::total_plays(s)),
+                  plays(stats::total_plays(s)),
               {gfx::Regular, 28}, kText2);
 
     /* By day (month) on the left, by user on the right. */

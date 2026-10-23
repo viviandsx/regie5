@@ -24,7 +24,11 @@ constexpr float kSessionH = 156, kTaskH = 84, kGap = 14, kButtonH = 76;
 constexpr float kListW = gfx::W - 2 * kPad;
 constexpr float kViewTop = 240;   /* where the page shows from (under the title), without pills */
 constexpr float kBarY = 250;      /* the pills (Serveur · Statistiques) */
-constexpr float kPillsShift = 72;
+/* With the pills, as Activité and Demandes: the content from 352 (the
+ * pills end at 322), cut from 332 when it scrolls. */
+constexpr float kPillsBottom = kBarY + 72;
+constexpr float kPillsTop = 378;       /* the first section title's baseline: its letters from about 352 */
+constexpr float kPillsViewTop = kPillsBottom + 10;
 
 std::string clock_of(int64_t ticks)
 {
@@ -37,6 +41,43 @@ std::string clock_of(int64_t ticks)
 std::string media_title(const model::Session &s) { return s.series_name.empty() ? s.item_name : s.series_name; }
 
 } // namespace
+
+/* list_scroll's rule, then the top of the view moved to the nearest stop
+ * (page coordinates; origin: the view's top in page coordinates at 0): a
+ * pane is shown whole or not at all under the pills. Further down when the
+ * focused part still fits, else further up. */
+static float page_scroll(Anim &a, float focus_y, float focus_h, float view_h, float list_h, std::vector<float> stops,
+                  float origin, float dt, bool *animating)
+{
+    const float margin = std::clamp((view_h - focus_h) / 2, 0.f, 120.f);
+    const float most = std::max(0.f, list_h - view_h);
+    float t = a.target;
+    if (focus_y - t < margin)
+        t = focus_y - margin;
+    if (focus_y + focus_h - t > view_h - margin)
+        t = focus_y + focus_h - view_h + margin;
+    t = std::clamp(t, 0.f, most);
+    if (t > 0 && t < most) {
+        for (float &s : stops)
+            s -= origin;
+        std::sort(stops.begin(), stops.end());
+        float down = -1, up = -1;
+        for (float s : stops) {
+            if (s >= t && down < 0)
+                down = s;
+            if (s <= t)
+                up = s;
+        }
+        if (down >= 0 && down <= focus_y && down <= most)
+            t = down;
+        else if (up >= 0 && focus_y + focus_h - up <= view_h)
+            t = std::max(0.f, up);
+    }
+    a.to(t);
+    if (a.step(dt, 12.f) && animating)
+        *animating = true;
+    return a.value;
+}
 
 JellyfinScreen::JellyfinScreen(Context &ctx) : m_ctx(ctx) {}
 
@@ -72,7 +113,6 @@ void JellyfinScreen::activate()
         m_statsv.load(false, now);
 }
 
-float JellyfinScreen::shift() const { return pills() ? kPillsShift : 0.f; }
 
 void JellyfinScreen::enter_from_top()
 {
@@ -213,8 +253,8 @@ void JellyfinScreen::refresh_tasks()
 void JellyfinScreen::layout()
 {
     m_slots.clear();
-    m_top = kTop + shift();
-    m_view_top = kViewTop + shift();
+    m_top = pills() ? kPillsTop : kTop;
+    m_view_top = pills() ? kPillsViewTop : kViewTop;
     float y = m_top + 26;
     const int ns = m_sessions.ready() ? (int)m_sessions.value.size() : 0;
     for (int i = 0; i < ns; i++) {
@@ -249,6 +289,7 @@ void JellyfinScreen::layout()
         m_slots.push_back({Slot::Task, i, y, kTaskH});
         y += kTaskH + 8;
     }
+    m_page_end = nt > 0 ? y : y + 120;   /* the tasks' empty or loading state */
     if (!m_focus_disk.empty() && m_disks.ready()) {
         for (int i = 0; i < (int)m_slots.size(); i++)
             if (m_slots[i].kind == Slot::Disk && m_slots[i].index < (int)m_disks.value.disks.size() &&
@@ -455,7 +496,7 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
                        on_periods ? m_bar_focus - ViewCount : m_statsv.period(), on_periods, m_period_drop, dt, animating,
                        true);
             m_drop.hide();
-            m_statsv.draw(now, x0, kBarY + 90, dt, animating);
+            m_statsv.draw(now, x0, kPillsBottom + 18, dt, animating);
             return;
         }
     }
@@ -464,11 +505,39 @@ void JellyfinScreen::draw(double now, float dt, float ox, bool *animating)
         return;
     }
 
-    /* The page scrolls to keep the focused slot in view. */
-    const Slot &fs = m_slots[std::min(m_focus, (int)m_slots.size() - 1)];
-    const float page_h = m_slots.back().y + m_slots.back().h + 60;
-    const float scroll = list_scroll(m_scroll, fs.y - m_view_top, fs.h, gfx::H - 120 - m_view_top, page_h - m_view_top,
-                                     dt, animating);
+    /* The page scrolls to keep the focused slot in view, with its section's
+     * title when it is the section's first (the scan button: the playbacks
+     * above it); the pills focused: back to the top. Never a pane left half
+     * under the pills by a focus that went back up. */
+    const int fi = std::min(m_focus, (int)m_slots.size() - 1);
+    const Slot &fs = m_slots[fi];
+    const float page_h = m_page_end + 60;   /* what is drawn, empty sections' states included */
+    float focus_top = fs.y, focus_bottom = fs.y + fs.h;
+    if (m_bar) {
+        focus_top = m_top - 40, focus_bottom = m_top;
+    } else if (fs.kind == Slot::Scan) {
+        focus_top = m_top - 40;
+    } else if (fi == 0 || m_slots[fi - 1].kind != fs.kind) {
+        const float title = fs.kind == Slot::Session ? m_top
+                            : fs.kind == Slot::Disk  ? m_disks_y
+                            : fs.kind == Slot::Library ? m_libs_y
+                            : fs.kind == Slot::User  ? m_users_y
+                                                     : m_tasks_y;
+        focus_top = title - 40;
+    }
+    /* Taller than the view (playbacks and the scan): the focused slot wins. */
+    const float view_h = gfx::H - 120 - m_view_top;
+    if (focus_bottom - focus_top > view_h)
+        focus_top = fs.y;
+    /* Where the view's top may stop: a section's title, a pane's top. */
+    std::vector<float> stops = {m_top - 40};
+    for (const Slot &s : m_slots)
+        stops.push_back(s.y - 14);
+    for (float t : {m_disks_y, m_libs_y, m_users_y, m_tasks_y})
+        if (t > 0)
+            stops.push_back(t - 40);
+    const float scroll = page_scroll(m_scroll, focus_top - m_view_top, focus_bottom - focus_top, view_h,
+                                     page_h - m_view_top, stops, m_view_top, dt, animating);
     const float dy = -scroll;
     gfx::push_scissor({0, m_view_top, gfx::W, gfx::H - 110 - m_view_top});
 

@@ -58,7 +58,6 @@ private:
     void open_disk(const std::string &key);
     /* Playback Reporting answered: the pills (Serveur · Statistiques) show. */
     bool pills() const { return m_plugin.ready() && !m_plugin.value.empty(); }
-    float shift() const;   /* how far the page is pushed down by the pills */
     const model::Session *session(const std::string &id) const;
     void layout();
     void confirm_stop(const model::Session &s);
@@ -71,6 +70,7 @@ private:
     Load<std::vector<model::Session>> m_sessions;
     Load<std::vector<model::Task>> m_tasks;
     std::vector<Slot> m_slots;
+    float m_page_end = 0;   /* the last section's bottom (page coordinates) */
     float m_top = 300, m_view_top = 240;   /* the first title's baseline, where the page shows from (pills: lower) */
     float m_disks_y = 0, m_libs_y = 0, m_users_y = 0, m_tasks_y = 0;   /* the sections' titles (page coordinates) */
     JellyfinStats m_stats{m_ctx};

@@ -57,17 +57,20 @@ tour() {
     [[ ${cleanup} == 1 && ${sheets} == 1 ]] && s+="down options 1 shot:${p}-library-cleanup-options.ppm circle 0.6 "
     s+="r1 2.5 shot:${p}-activity-queue.ppm right cross 2.5 shot:${p}-activity-journal.ppm "
     s+="r1 2.5 shot:${p}-requests.ppm "
-    [[ ${sheets} == 1 ]] && s+="down cross 1 shot:${p}-requests-sheet.ppm circle 0.6 options 1 shot:${p}-requests-options.ppm circle 0.6 up left "
+    # ↑ from the list: the filters; ← ← past Découvrir (0.5.0): Signalements.
+    [[ ${sheets} == 1 ]] && s+="down cross 1 shot:${p}-requests-sheet.ppm circle 0.6 options 1 shot:${p}-requests-options.ppm circle 0.6 up left left "
     [[ ${sheets} == 1 ]] || s+="right "
     s+="cross 2.5 shot:${p}-requests-issues.ppm "
     [[ ${sheets} == 1 ]] && s+="down cross 1.5 shot:${p}-requests-issue-thread.ppm circle 0.6 options 1 shot:${p}-requests-issue-options.ppm circle 0.6 "
     s+="r1 2.5 shot:${p}-jellyfin.ppm "
-    # (the focus comes in on the pills, Serveur · Statistiques: Playback Reporting is in fixtures/)
-    [[ ${sheets} == 1 ]] && s+="down cross 1 shot:${p}-jellyfin-diagnosis.ppm circle 0.6 "
+    # The focus comes in on the first playback (the pills, Serveur · Statistiques,
+    # show once Playback Reporting has answered: fixtures/ has it); ↑ reaches them.
+    [[ ${sheets} == 1 ]] && s+="cross 1 shot:${p}-jellyfin-diagnosis.ppm circle 0.6 "
     [[ ${sheets} == 1 ]] && s+="up right cross 2 shot:${p}-jellyfin-stats.ppm left cross 1 "
     s+="r1 3 shot:${p}-settings.ppm "
-    # Settings' buttons: Test all, Cleanup, Display refresh, Setup (the welcome screens).
-    [[ ${sheets} == 1 ]] && s+="down down down down down right right right 1 shot:${p}-settings-buttons.ppm "
+    # Settings' buttons (under six rows: Glances and Scrutiny too): Test all, Cleanup,
+    # Display refresh, Setup (the welcome screens).
+    [[ ${sheets} == 1 ]] && s+="down down down down down down right right right 1 shot:${p}-settings-buttons.ppm "
     s+="quit"
     echo "${s}"
 }
